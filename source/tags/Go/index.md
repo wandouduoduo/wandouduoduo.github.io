@@ -1,5 +1,4 @@
 ---
-title: 标签
+title: Go
 date: 2019-05-25 19:55:28
-type: "tags"
 ---
