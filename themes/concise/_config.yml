@@ -1,0 +1,47 @@
+# Header
+menu:
+  首页: /
+  分类: /categories
+  标签: /tags
+  归档: /archives
+  关于: /about
+
+# Content
+excerpt_link: 阅读更多
+
+# Sidebar
+author:
+  name: WanDouDuoDuo
+  work: SRE &amp; Devops
+  location: ShangHai, China
+  avatar_url: /images/me.jpg
+
+# Links:
+links:
+  - svg: ./source/svg/github.svg
+    url: https://github.com/wandouduoduo
+  - svg: ./source/svg/more.svg
+    url: https://gitee.com/wandouduoduo
+  - svg: ./source/svg/twitter.svg
+    url: https://twitter.com/wandouduoduo
+
+
+# github comment 
+git_commit:
+  enable: true
+  client_id: 0e2125a1774fbbf7ee9b
+  client_secret: 6bf4c158ed0fa879a66a78ec069cb9d28ed2ed75
+  repo: wandouduoduo.github.io
+  owner: wandouduoduo
+  admin:
+    - wandouduoduo
+  per_page: 10
+
+
+# 百度统计
+baidu:
+  id: e4027971a230b210f4671f485b33846a
+
+# Miscellaneous
+rss: /atom.xml
+favicon: /images/me.ico
