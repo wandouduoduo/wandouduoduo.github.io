@@ -1,7 +1,8 @@
 ---
 title: 神级的Go开源项目
 date: 2019-05-27 14:05:01
-categories: Go
+categories: 
+- 开源项目
 tags:
 - Go
 
@@ -17,6 +18,7 @@ star数：53789
 [https://github.com/golang/go](https://github.com/golang/go)
 
 <!-- more -->
+
 ## Docker
 介绍：  
 Docker项目在2014年9月份就拿到了C轮4000万美元融资，版本迭代速度超快，目前从GitHub看到已有78个版本，而它仅仅是再2013年初才正式开始的一个项目而已。目前，国内Docker技术推广也进行的如火如荼，比如 Docker中文社区，CSDN也建立了 Docker专区。CSDN CODE也将在近期与Docker中文社区合作，推出Docker技术文章翻译活动，届时也请大家多多关注，及时关注与参与。Docker团队之所以喜欢用Go语言，主要是Go具有强大的标准库、全开发环境、跨平台构建的能力。  
