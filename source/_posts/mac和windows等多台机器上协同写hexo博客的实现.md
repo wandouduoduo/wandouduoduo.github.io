@@ -3,7 +3,7 @@ title: mac和windows等多台机器上协同写hexo博客的实现
 categories: 
 - 技巧实现
 tags: 
-- hexo
+- Hexo
 copyright: true
 date: 2019-05-29 00:44:16
 

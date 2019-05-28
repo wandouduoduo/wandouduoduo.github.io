@@ -4,7 +4,7 @@ categories:
 - 学习教程
 - hexo优化
 tags: 
-- hexo
+- Hexo
 copyright: true
 date: 2019-05-29 01:26:12
 
