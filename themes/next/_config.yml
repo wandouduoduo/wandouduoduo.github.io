@@ -177,8 +177,9 @@ site_state: true
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, globe icon will be loaded.
 social:
   GitHub: https://github.com/wandouduoduo || github
-  E-Mail: wandouduoduo@163.com || envelope
+  E-Mail: mailto:wandouduoduo@163.com || envelope
   Gitee: https://gitee.com/wandouduoduo || heartbeat
+  微博: https://weibo.com/u/1989032071/home?topnav=1&wvr=6 || weibo
   #Google: https://plus.google.com/yourname || google
   #Twitter: https://twitter.com/yourname || twitter
   #FB Page: https://www.facebook.com/yourname || facebook
@@ -569,13 +570,13 @@ gitment:
 # Demo: https://gitalk.github.io
 # Reference: https://asdfv1929.github.io/2018/01/20/gitalk/, https://liujunzhou.top/2018/8/10/gitalk-error/
 gitalk:
-  enable: false
-  github_id:  # Github repo owner
-  repo:  # Repository name to store issues.
-  client_id:  # Github Application Client ID
-  client_secret:  # Github Application Client Secret
-  admin_user:  # GitHub repo owner and collaborators, only these guys can initialize github issues
-  distraction_free_mode: true # Facebook-like distraction free mode
+  enable: true
+  github_id: wandouduoduo
+  repo:  wandouduoduo@github.io
+  client_id: 0e2125a1774fbbf7ee9b
+  client_secret: 6bf4c158ed0fa879a66a78ec069cb9d28ed2ed75
+  admin_user: wandouduoduo
+  distraction_free_mode: true
 
 # Baidu Share
 # Available values: button | slide
@@ -854,7 +855,7 @@ pace: true
 # pace-theme-fill-left | pace-theme-flash | pace-theme-loading-bar | pace-theme-mac-osx | pace-theme-minimal
 # For example
 # pace_theme: pace-theme-center-simple
-pace_theme: pace-theme-minimal
+pace_theme: pace-theme-flash
 
 # Canvas-nest
 # Dependencies: https://github.com/theme-next/theme-next-canvas-nest
