@@ -6,6 +6,7 @@ categories:
 tags:
 - Hexo
 - Github
+copyright: ture
 ---
 
 
@@ -13,12 +14,9 @@ tags:
 ## 安装node.js
 
 在 Windows 环境下安装 Node.js 非常简单，仅须到[官网下载](https://nodejs.org/en/download/)安装文件并执行即可完成安装。
-
-![](https://img-blog.csdn.net/20180416160055358)
-
 像我的是Windows 64位，直接下载安装，无脑下一步就行了，不需要配置环境变量。
 
-*<!--more-->*
+<!--more-->
 
 ## 安装git
 

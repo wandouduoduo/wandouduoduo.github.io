@@ -340,7 +340,11 @@
     {% include 'passage-end-tag.swig' %}
   {% endif %}
 </div>
-
+<div>
+      {% if not is_index %}
+        {% include 'my-copyright.swig' %}
+      {% endif %}
+</div>
     {% if theme.wechat_subscriber.enabled and not is_index %}
       <div>
         {% include '../_partials/post/wechat-subscriber.swig' %}
