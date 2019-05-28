@@ -203,8 +203,8 @@ social_icons:
 # Blog rolls
 links_icon: link
 links_title: 推荐阅读
-links_layout: block
-#links_layout: inline
+#links_layout: block
+links_layout: inline
 links:
   菜鸟教程: https://www.runoob.com/
   自强学堂: https://code.ziqiangxuetang.com/
@@ -303,7 +303,7 @@ post_meta:
 symbols_count_time:
   separated_meta: true
   item_text_post: true
-  item_text_total: false
+  item_text_total: true
   awl: 4
   wpm: 275
 
@@ -313,9 +313,9 @@ codeblock:
   border_radius:
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Show text copy result
-    show_result: false
+    show_result: true
 
 # Wechat Subscriber
 #wechat_subscriber:
@@ -327,10 +327,10 @@ codeblock:
 # If true, reward would be displayed in every article by default.
 # And you can show or hide one article specially through add page variable `reward: true/false`.
 reward:
-  enable: false
-  #comment: Donate comment here
-  #wechatpay: /images/wechatpay.jpg
-  #alipay: /images/alipay.jpg
+  enable: true
+  comment: 原创技术分享，您的支持将鼓励我继续创作
+  wechatpay: /images/wechatpay.png
+  alipay: /images/alipay.jpg
   #bitcoin: /images/bitcoin.jpg
 
 # Related popular posts
@@ -572,9 +572,9 @@ gitment:
 gitalk:
   enable: true
   github_id: wandouduoduo
-  repo:  wandouduoduo@github.io
-  client_id: 0e2125a1774fbbf7ee9b
-  client_secret: 6bf4c158ed0fa879a66a78ec069cb9d28ed2ed75
+  repo: wandouduoduo.github.io
+  client_id: ad83725549e82facce82
+  client_secret: b67c2056b52d0447f1d78f413f268a5b853e8a6e
   admin_user: wandouduoduo
   distraction_free_mode: true
 
@@ -815,7 +815,7 @@ reading_progress:
 
 # Use velocity to animate everything.
 motion:
-  enable: true
+  enable: false
   async: false
   transition:
     # Transition variants:
