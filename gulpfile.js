@@ -40,7 +40,5 @@ return gulp.src(['./public/**/*.js', '!./public/**/*.min.js'])
 //]);
 //4.0以后的写法
 // 执行 gulp 命令时执行的任务
-gulp.task('default', gulp.parallel('minify-html', 'minify-css', 'minify-js', function() {
-    return 'HTTP Server Started';
-}));
+gulp.task('default', gulp.parallel('minify-html', 'minify-css', 'minify-js', (done) => done()));
  
