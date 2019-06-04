@@ -1,11 +1,12 @@
 ---
 title: 分布式开源监控系统open-falcon安装使用笔记
-categories: 
-- 服务搭建
-- 监控系统
-tags: 
-- Open-falcon
+categories:
+  - 服务搭建
+  - 监控系统
+tags:
+  - Open-falcon
 copyright: true
+abbrlink: 4354c695
 date: 2019-05-29 18:22:45
 ---
 

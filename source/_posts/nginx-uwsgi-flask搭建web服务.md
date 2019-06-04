@@ -1,13 +1,14 @@
 ---
 title: nginx+uwsgi+flask搭建web服务
-categories: 
-- 服务搭建
-- web服务
-tags: 
-- nginx
-- uwsgi
-- flask
+categories:
+  - 服务搭建
+  - web服务
+tags:
+  - Nginx
+  - Uwsgi
+  - Flask
 copyright: true
+abbrlink: e67f5ae2
 date: 2019-06-03 14:42:05
 ---
 

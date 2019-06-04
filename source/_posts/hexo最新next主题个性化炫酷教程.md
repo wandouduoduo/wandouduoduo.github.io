@@ -1,13 +1,13 @@
 ---
 title: hexo最新next主题个性化炫酷教程
-categories: 
-- 学习教程
-- hexo优化
-tags: 
-- Hexo
+categories:
+  - 学习教程
+  - hexo优化
+tags:
+  - Hexo
 copyright: true
+abbrlink: 1071f0bc
 date: 2019-05-29 01:26:12
-
 ---
 
 # 目的

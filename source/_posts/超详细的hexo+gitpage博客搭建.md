@@ -1,12 +1,13 @@
 ---
 title: 超详细的hexo+github page搭建.md
-date: 2019-05-27 14:05:01
-categories: 
-- 服务搭建
+categories:
+  - 服务搭建
 tags:
-- Hexo
-- Github
+  - Hexo
+  - Github
 copyright: true
+abbrlink: d2a49991
+date: 2019-05-27 14:05:01
 ---
 
 

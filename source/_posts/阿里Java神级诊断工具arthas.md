@@ -1,11 +1,12 @@
 ---
 title: 阿里Java神级诊断工具arthas
-categories: 
-- 编程语言
-- Java
-tags: 
-- Java
+categories:
+  - 编程语言
+  - Java
+tags:
+  - Java
 copyright: true
+abbrlink: 9655b613
 date: 2019-05-30 16:56:21
 ---
 
@@ -160,9 +161,7 @@ java -jar arthas-boot.jar
 
 Arthas支持使用管道对上述命令的结果进行进一步的处理，如`sm java.lang.String * | grep 'index'`
 
-- grep——搜索满足条件的结果
-- plaintext——将命令的结果去除ANSI颜色
-- wc——按行统计输出结果
+
 
 ### 后台异步任务
 

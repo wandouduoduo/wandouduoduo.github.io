@@ -4,8 +4,8 @@
 
 # Site
 title: 豌豆多多
-subtitle:
-description:
+subtitle: SRE & Deveops Study Notes
+description: 当你的才华还撑不起你的野心的时候，你就应该静下心来学习；当你的能力还驾驭不了你的目标时，就应该沉下心来历练；梦想，不是浮躁，而是沉淀和积累，只有拼出来的美丽，没有等出来的辉煌。
 keywords:
 author: WanDouDuoDuo
 language: zh-CN
@@ -15,7 +15,7 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://wandouduoduo.github.io
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
