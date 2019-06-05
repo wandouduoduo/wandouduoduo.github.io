@@ -5,7 +5,7 @@
 # Site
 title: 豌豆多多
 subtitle: SRE & Deveops Study Notes
-description: 当你的才华还撑不起你的野心的时候，你就应该静下心来学习；当你的能力还驾驭不了你的目标时，就应该沉下心来历练；梦想，不是浮躁，而是沉淀和积累，只有拼出来的美丽，没有等出来的辉煌。
+description: 
 keywords:
 author: WanDouDuoDuo
 language: zh-CN
@@ -106,6 +106,14 @@ live2d:
     height: 300
   mobile:
     show: true
+
+# hexo-tag-cloud
+tag_cloud:
+    textFont: Trebuchet MS, Helvetica
+    textColor: '#333'
+    textHeight: 25
+    outlineColor: '#E2E1D1'
+    maxSpeed: 0.1 
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
