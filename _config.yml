@@ -15,8 +15,12 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://wandouduoduo.github.io
 root: /
-permalink: :title/
-permalink_defaults:
+#permalink: :year/:month/:day/:title/
+#permalink_defaults:
+permalink: articles/:abbrlink.html
+abbrlink:
+  alg: crc32  # 算法：crc16(default) and crc32
+  rep: hex    # 进制：dec(default) and hex
 
 # Directory
 source_dir: source
@@ -85,6 +89,23 @@ symbols_count_time:
  # 网页底部是否显示
   total_symbols: true
   total_time: true
+
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: live2d-widget-model-shizuku
+  display:
+    position: right
+    width: 150
+    height: 300
+  mobile:
+    show: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
