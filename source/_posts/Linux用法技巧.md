@@ -31,3 +31,24 @@ sudo -H -u www bash -c 'nohup /home/web/ke/upfileserver /home/web/ke/up/conf.jso
 ```shell
 netstat` `-an | ``awk` `'/^tcp/ {++S[$NF]}  END {for (a in S) print a,S[a]} '
 ```
+
+### 删除乱码
+
+```shell
+find . ! -regex '.*\.jar\|.*\.war\|.*\.zip'|xargs rm
+```
+
+### 过滤IP
+
+```SHELL
+grep -E -o "172.18.[0-9]{1,3}[\.][0-9]{1,3}" filename
+```
+
+### 获取本机IP
+
+```SHELL
+ipaddr=$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)/, "\\1", "g", $2)}')
+
+echo $ipaddr
+```
+

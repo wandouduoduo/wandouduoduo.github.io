@@ -4,7 +4,7 @@ categories:
   - 服务搭建
 tags:
   - Hexo
-  - Github
+  - Git
 copyright: true
 abbrlink: d2a49991
 date: 2019-05-27 14:05:01
@@ -413,8 +413,9 @@ f1g1ns1.dnspod.net
 
 但是如何获取ip值呢？打开运行，输入cmd，打开命令窗口输入 ping 域名 ， 查看解析ip地址
 
-
 将IP输入过去，然后会提示你到域名注册的地方修改DNS。等待生效，最迟72小时生效。即可通过你的域名浏览你的博客主页。
+
+
 
 ## 结语
 

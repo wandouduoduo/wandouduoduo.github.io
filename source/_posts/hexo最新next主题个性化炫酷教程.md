@@ -332,7 +332,7 @@ code {
 
 ### 实现效果图
 
-![img](/Users/Sun/blog/sunhexo/source/_posts/hexo最新next主题个性化炫酷教程/13.png)
+![img](hexo最新next主题个性化炫酷教程/13.png)
 
 ### 具体实现方法
 
@@ -752,7 +752,7 @@ Authorization callback URL：# 网站URL，`https://wandouduoduo.github.io`
 
 在主题配置文件`next/_config.yml`中添加如下内容
 
-```
+```shell
 gitalk:
   enable: true
   githubID: github帐号  # 例：asdfv1929   
@@ -762,3 +762,66 @@ gitalk:
   adminUser: github帐号 #指定可初始化评论账户
   distractionFreeMode: true
 ```
+
+
+
+## 修改文章链接
+
+Hexo 默认的文章链接形式为 `domain/year/month/day/postname` ，当我们把文章源文件名改掉之后，链接也会改变，很不友好，并且四级目录，不利于 SEO。
+
+因此，使用 `hexo-abbrlink` 插件，生成文章的永久链接，后期无论怎么修改也不会改变该链接。
+
+```shell
+npm install hexo-abbrlink --save
+```
+
+在站点配置文件 `_config.yml` 中修改：
+
+```shell
+permalink: post/:abbrlink.html
+abbrlink: 
+  alg: crc32 # 算法：crc16(default) and crc32
+  rep: hex   # 进制：dec(default) and hex
+```
+
+可选择模式有：
+
+- crc16 & hex
+- crc16 & dec
+- crc32 & hex
+- crc32 & dec
+
+## 寻找图床
+
+当向文章中添加图片时，如果图片来源于网络，那么还比较好办，直接引用那个链接即可，不过也有问题，那就是如果那个链接挂了那么你的图片也就无法显示。另外如果你的图片来源于本地，那么更麻烦了。一种做法是使用第三方服务器，比如七牛，当需要插入图片时，先把图片上传到七牛的服务器然后再使用，我觉得很麻烦。这里选择另外一种方法。
+
+首先修改 `_config.yml` (在站点目录下) 中 `post_asset_folder` 字段：
+
+```
+# post_asset_folder: false
+post_asset_folder: true
+```
+
+当设置该字段为 `true` 时，在建立文件时，Hexo 会自动建立一个与文章同名的文件夹，你就可以把与该文章相关的所有资源都放到那个文件夹，这么一来，你就可以很方便的使用资源。例如，文章 `post` 需要插入图片 `test.png` 时，就可以使用 `[图片上传失败...(image-773548-1546505826136)]` 。
+
+问题是这样在本地显示没有问题，但是发布之后就无法显示，使用 `hexo-asset-image` 插件来解决。
+
+在博客根目录右击打开 `git bash` ，执行以下命令：
+
+```shell
+npm install https://github.com/CodeFalling/hexo-asset-image --save
+```
+
+重新生成之后就可以在你自己的网页上正常显示了。
+
+> 注意：对于因为 SEO 优化，使用 `abbrlink` 插件修改过文章链接的朋友而言，这种方法还需要进一步修改一下。由于原来的 `permalink: :year/:month/:day/:title/` 变成了 `permalink: post/:abbrlink.html` 。打开博客根目录下 `node_modules\hexo-asset-image\index.js` ，增加一行命令，如下所示：
+>
+> ```
+>   var config = hexo.config;
+>   if(config.post_asset_folder){
+>     var link = data.permalink;
+>     link = link.replace('.html', '/');    //新增加，针对修改后的 permalink
+>   var beginPos = getPosition(link, '/', 3) + 1;
+> ```
+>
+> 之后就可以正常显示了，仅供参考。对于修改成其他链接形式的朋友也有一定的参考意义。
