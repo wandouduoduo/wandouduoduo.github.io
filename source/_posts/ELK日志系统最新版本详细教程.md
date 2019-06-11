@@ -2,7 +2,7 @@
 title: ELK日志系统最新版本详细教程
 categories:
   - 服务搭建
-  - 监控服务
+  - ELK日志服务
 tags:
   - Elk
 copyright: true
