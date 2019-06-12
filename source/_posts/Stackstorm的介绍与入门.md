@@ -2,6 +2,7 @@
 title: Stackstorm的介绍与入门
 categories:
   - 自动化运维
+  - Stackstorm
 tags:
   - Stackstorm
 copyright: true
@@ -40,6 +41,10 @@ date: 2019-06-12 17:25:00
 - **工作流（Workflows）**将动作拼接成“超级动作”，定义顺序，转换条件以及传递数据。 大多数自动化不止一步，因此需要多个动作。 工作流就像“原子”动作一样，可在Action库中使用，并且可以手动调用或由规则触发。
 - **包(Packs)**是内容部署的单位。 它们通过对集成（触发器和动作）和自动化（规则和工作流）进行分组，简化了StackStorm可插拔内容的管理和共享。 StackStorm Exchange上有越来越多的包可用。 用户可以创建自己的包，在Github上共享它们，或者提交给StackStorm Exchange.
 - **审计跟踪（Audit Trail）**记录并存储手动或自动操作执行的审计跟踪，并存储触发上下文和执行结果的全部细节。 它还被记录在审计日志中，用于集成外部日志记录和分析工具：LogStash，Splunk，statsd，syslog
+
+StackStorm是一种具有模块化架构的服务。它包括松散耦合的服务组件，这些组件通过消息总线进行通信，并且可以水平扩展以实现大规模自动化。StackStorm具有Web UI，CLI客户端，当然还有完整的REST API。我们还提供Python客户端绑定，以使开发人员的生活更轻松。
+
+
 
 ## 流程
 
