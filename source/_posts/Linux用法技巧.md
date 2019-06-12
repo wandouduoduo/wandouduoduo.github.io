@@ -52,3 +52,37 @@ ipaddr=$(ip addr | awk '/^[0-9]+: / {}; /inet.*global/ {print gensub(/(.*)\/(.*)
 echo $ipaddr
 ```
 
+### **TIME_WAIT过多的解决办法**
+
+```shell
+查看当前状态
+cat /proc/sys/net/ipv4/tcp_tw_reuse
+cat /proc/sys/net/ipv4/tcp_tw_recycle
+netstat -n | awk '/^tcp/ {++state[$NF]} END {for(key in state) print key,"/t",state[key]}'
+
+修改内核参数
+方法一：直接修改参数文件
+echo "1" > /proc/sys/net/ipv4/tcp_tw_reuse
+#让TIME_WAIT尽快回收，我也不知是多久，观察大概是一秒钟
+echo "1" > /proc/sys/net/ipv4/tcp_tw_recycle
+方法二：命名修改内核参数并生效
+[root@aaa1 ~]# sysctl -a|grep net.ipv4.tcp_tw
+net.ipv4.tcp_tw_reuse = 0
+net.ipv4.tcp_tw_recycle = 0
+[root@aaa1 ~]#
+
+vi /etc/sysctl
+增加或修改net.ipv4.tcp_tw值：
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
+
+使内核参数生效：
+[root@aaa1 ~]# sysctl -p
+
+[root@aaa1 ~]# sysctl -a|grep net.ipv4.tcp_tw
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_tw_recycle = 1
+
+用netstat再观察正常
+```
+
