@@ -1,8 +1,8 @@
 ---
 title: Git命令汇总
 categories:
-  - 学习教程
-  - Linux详解
+  - 系统运维
+  - 命令详解
 tags:
   - Git
 copyright: true

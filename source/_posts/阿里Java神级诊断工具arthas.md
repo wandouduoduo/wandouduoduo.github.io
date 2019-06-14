@@ -1,8 +1,8 @@
 ---
 title: 阿里Java神级诊断工具arthas
 categories:
-  - 编程语言
-  - Java
+  - 应用运维
+  - 服务优化
 tags:
   - Java
 copyright: true

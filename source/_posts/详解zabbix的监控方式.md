@@ -1,8 +1,8 @@
 ---
 title: 详解zabbix的监控方式
 categories:
-  - 学习教程
-  - Zabbix详解
+  - 应用运维
+  - 监控积累
 tags:
   - Zabbix
 copyright: true

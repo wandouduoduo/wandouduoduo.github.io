@@ -1,10 +1,9 @@
 ---
 title: Tomcat性能优化和测试
 categories:
-  - 学习教程
+  - 应用运维
   - 容器优化
 tags:
-  - Java
   - Tomcat
 copyright: true
 abbrlink: 6f151fe3

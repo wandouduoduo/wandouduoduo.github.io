@@ -1,8 +1,7 @@
 ---
 title: hexo最新next主题个性化炫酷教程
 categories:
-  - 学习教程
-  - hexo优化
+  - 应用运维
 tags:
   - Hexo
 copyright: true

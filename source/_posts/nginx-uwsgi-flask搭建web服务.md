@@ -1,8 +1,8 @@
 ---
 title: nginx+uwsgi+flask搭建web服务
 categories:
+  - 应用运维
   - 服务搭建
-  - web服务
 tags:
   - Nginx
   - Uwsgi

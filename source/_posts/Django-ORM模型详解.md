@@ -1,8 +1,8 @@
 ---
 title: Django ORM模型详解
 categories:
-  - 编程语言
-  - Python
+  - 运维研发
+  - 语言积累
 tags:
   - Python
   - Django

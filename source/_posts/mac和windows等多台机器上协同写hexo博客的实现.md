@@ -1,7 +1,7 @@
 ---
 title: mac和windows等多台机器上协同写hexo博客的实现
 categories:
-  - 技巧实现
+  - 应用运维
 tags:
   - Hexo
 copyright: true

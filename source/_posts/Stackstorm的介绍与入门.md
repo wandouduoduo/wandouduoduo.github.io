@@ -1,8 +1,8 @@
 ---
 title: Stackstorm的介绍与入门
 categories:
-  - 自动化运维
-  - Stackstorm
+  - 运维研发
+  - 自动化平台
 tags:
   - Stackstorm
 copyright: true

@@ -1,8 +1,8 @@
 ---
 title: Dig命令详解
 categories:
-  - 学习教程
-  - Linux详解
+  - 系统运维
+  - 命令详解
 tags:
   - Linux
 copyright: true

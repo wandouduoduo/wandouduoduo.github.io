@@ -1,8 +1,8 @@
 ---
 title: nginx之后端节点健康检查
 categories:
-  - 学习教程
-  - Nginx优化
+  - 应用运维
+  - 服务优化
 tags:
   - Nginx
 copyright: true

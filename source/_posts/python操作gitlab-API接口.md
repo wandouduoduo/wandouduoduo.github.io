@@ -1,8 +1,8 @@
 ---
 title: python操作gitlab API接口
 categories:
-  - 学习教程
-  - Linux详解
+  - 系统运维
+  - 语言详解
 tags:
   - Git
 copyright: true

@@ -1,8 +1,8 @@
 ---
 title: 分布式开源监控系统open-falcon安装使用笔记
 categories:
+  - 应用运维
   - 服务搭建
-  - 监控系统
 tags:
   - Open-falcon
 copyright: true

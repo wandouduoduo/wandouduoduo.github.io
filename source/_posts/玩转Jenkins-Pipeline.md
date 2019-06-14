@@ -1,7 +1,8 @@
 ---
 title: 玩转Jenkins Pipeline
 categories:
-  - 技巧实现
+  - 应用运维
+  - 服务优化
 tags:
   - Jenkins
 copyright: true

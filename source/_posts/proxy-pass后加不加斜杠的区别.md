@@ -1,8 +1,8 @@
 ---
 title: proxy_pass后加不加斜杠的区别
 categories:
-  - 学习教程
-  - Nginx优化
+  - 应用运维
+  - 服务优化
 tags:
   - Nginx
 copyright: true

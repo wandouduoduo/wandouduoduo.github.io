@@ -1,6 +1,7 @@
 ---
 title: sftp和ftp文件传输服务
 categories:
+  - 应用运维
   - 服务搭建
 tags:
   - Linux

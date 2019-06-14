@@ -1,8 +1,8 @@
 ---
 title: Linux用法技巧
 categories:
-  - 学习教程
-  - Linux详解
+  - 系统运维
+  - 用法技巧
 tags:
   - Linux
 copyright: true
