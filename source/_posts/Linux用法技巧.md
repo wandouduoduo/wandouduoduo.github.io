@@ -2,7 +2,6 @@
 title: Linux用法技巧
 categories:
   - 系统运维
-  - 用法技巧
 tags:
   - Linux
 copyright: true
