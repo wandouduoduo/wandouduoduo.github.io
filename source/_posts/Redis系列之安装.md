@@ -49,20 +49,70 @@ yum install gcc -y  #安装C依赖
 wget http://download.redis.io/redis-stable.tar.gz  #下载稳定版本
 tar zxvf redis-stable.tar.gz  #解压
 cd redis-stable
-make PREFIX=/opt/redis install   #指定目录编译，也可以不用指定
+make PREFIX=/opt/redis test   #指定目录编译，也可以不用指定
 make install
-mkdir /etc/redis   #建立配置目录
-cp redis.conf /etc/redis/6379.conf # 拷贝配置文件
-cp utils/redis_init_script /etc/init.d/redis  #拷贝init启动脚本针对6.X系统
-chmod a+x  /etc/init.d/redis  #添加执行权限
-vi /etc/redis/6379.conf #修改配置文件： 
-bind 0.0.0.0      #监听地址
-maxmemory 4294967296   #限制最大内存（4G）：
-daemonize yes   #后台运行
+
+
+
+
+
+
 
 ####启动与停止
 /etc/init.d/redis start
 /etc/init.d/redis stop
+```
+
+## 开机自启动
+
+1，设置redis.conf中daemonize为yes,确保守护进程开启,也就是在后台可以运行.
+
+```shell
+vi /etc/redis/6379.conf #修改配置文件： 
+bind 0.0.0.0      #监听地址
+maxmemory 4294967296   #限制最大内存（4G）：
+daemonize yes   #后台运行
+```
+
+2. 复制redis配置文件(启动脚本需要用到配置文件内容,所以要复制)
+
+```shell
+`[root@localhost /]# mkdir /etc/redis    #在/etc下新建redis文件夹``[root@localhost redis]# cp /opt/redis-3.0.5/redis.conf /etc/redis/6379.conf   #把安装redis目录里面的redis.conf文件复制到/etc/redis/6379.conf里面,6379.conf启动脚本里面的变量会读取这个名称,6379是redis的端口号       `
+```
+
+3. 复制redis启动脚本
+
+```shell
+`[root@localhost redis]# find / -name redis_init_script    #redis启动脚本一般在redis根目录的utils,如果不知道路径,可以先查看路径``/usr/redis/redis-3.2.4/utils/redis_init_script``[root@localhost redis]# cp /opt/redis-3.0.5/utils/redis_init_script /etc/init.d/redis    #复制启动脚本到/etc/rc.d/init.d/redis文件中`
+```
+
+4. 修改启动脚本参数
+
+```shell
+`[root@localhost redis]# vim /etc/rc.d/init.d/redis``#在/etc/init.d/redis文件的头部添加下面两行注释代码,也就是在文件中#!/bin/sh的下方添加``# chkconfig: 2345 10 90 ``# description: Start and Stop redis`
+```
+
+同时还要修改参数,指定redis的安装路径
+
+```shell
+`以下是我的安装路径：``REDISPORT=6379``EXEC=/opt/redis-3.0.5/src/redis-server``CLIEXEC=/opt/redis-3.0.5/src/redis-cli`
+```
+
+5. 设置redis开机自启动
+
+```shell
+chkconfig --add redis   
+chkconfig redis on   #开启开机启动
+chkconfig redis off  #关闭开机启动
+
+#打开redis命令：
+service redis start
+
+#关闭redis命令：
+service redis stop
+
+#重启redis命令：
+service redis restart
 ```
 
 ## 验证
