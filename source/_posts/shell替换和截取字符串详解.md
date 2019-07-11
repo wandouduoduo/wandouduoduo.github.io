@@ -1,0 +1,91 @@
+---
+title: shell替换和截取字符串详解
+categories:
+  - 应用运维
+tags:
+  - Shell
+copyright: true
+abbrlink: 150d8700
+date: 2019-07-11 17:30:17
+---
+
+## 目的
+
+本文详细介绍了shell中替换和截取字符串等其他的妙用。
+
+<!--more-->
+
+## 截断
+
+```shell
+例子：file=/dir1/dir2/dir3/my.file.txt
+${file#*/}:       拿掉第一条/及其左边的字符串：dir1/dir2/dir3/my.file.txt
+${file##*/}:    拿掉最后一条/及其左边的字符串：my.file.txt
+${file#*.}:       拿掉第一个.及其左边的字符串：file.txt
+${file##*.}:    拿掉最后一个.及其左边的字符串：txt
+${file%/*}:     拿掉最后条/及其右边的字符串：/dir1/dir2/dir3
+${file%%/*}: 拿掉第一条/及其右边的字符串：(空值)
+${file%.*}:    拿掉最后一个.及其右边的字符串：/dir1/dir2/dir3/my.file
+${file%%.*}: 拿掉第一个.及其右边的字符串：/dir1/dir2/dir3/my
+
+记忆的方法为：
+#是去掉左边, ##最后一个
+%是去掉右边, %%第一个
+```
+
+[list]#是去掉左边, ##最后一个
+
+​      %是去掉右边, %%第一个
+
+## 提取 
+
+单一符号是最小匹配﹔两个符号是最大匹配。
+
+```shell
+${file:0:5}：提取最左边的 5 个字节：/dir1
+${file:5:5}：提取第 5 个字节右边的连续 5 个字节：/dir2
+```
+
+## 替换
+
+```shell
+${file/dir/path}：将第一个 dir 提换为 path：/path1/dir2/dir3/my.file.txt
+${file//dir/path}：将全部 dir 提换为 path：/path1/path2/path3/my.file.txt
+```
+
+
+
+## 针对不同的变量状态赋值(没设定、空值、非空值)：
+
+```shell
+${file-my.file.txt}: 若$file没有设定，则使用my.file.txt作返回值。(空值及非空值时不作处理)
+${file:-my.file.txt}:若$file没有设定或为空值，则使用my.file.txt作返回值。(非空值时不作处理)
+${file+my.file.txt}: 若$file设为空值或非空值，均使用my.file.txt作返回值。(没设定时不作处理)
+${file:+my.file.txt}:若$file为非空值，则使用my.file.txt作返回值。(没设定及空值时不作处理)
+${file=my.file.txt}: 若$file没设定，则使用my.file.txt作返回值，同时将$file 赋值为 my.file.txt。(空值及非空值时不作处理)
+${file:=my.file.txt}:若$file没设定或为空值，则使用my.file.txt作返回值，同时将 $file 赋值为 my.file.txt。(非空值时不作处理)
+${file?my.file.txt}: 若$file没设定，则将my.file.txt输出至 STDERR。(空值及非空值时不作处理)
+${file:?my.file.txt}:若$file没设定或为空值，则将my.file.txt输出至STDERR。(非空值时不作处理)
+
+注意: 
+":+"的情况是不包含空值的.
+":-", ":="等只要有号就是包含空值(null).
+```
+
+## 变量的长度
+
+```shell
+${#file}
+```
+
+## 数组运算
+
+```shell
+A=(a b c def)
+${A[@]} 或 ${A[*]} 可得到 a b c def (全部组数)
+${A[0]} 可得到 a (第一个组数)，${A[1]} 则为第二个组数...
+${#A[@]} 或 ${#A[*]} 可得到 4 (全部组数数量)
+${#A[0]} 可得到 1 (即第一个组数(a)的长度)，${#A[3]} 可得到 3 (第四个组数(def)的长度)
+```
+
+ 
