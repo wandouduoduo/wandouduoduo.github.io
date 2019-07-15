@@ -100,3 +100,32 @@ Top用于查看Linux系统下进程信息，有时候需要选择显示那些列
 
 输入大写P，则结果按CPU占用降序排序。输入大写M，结果按内存占用降序排序。（注：大写P可以在capslock状态输入p，或者按Shift+p）
 
+### no space left on device的解决方法(iNode满导致)
+
+今天在腾讯云的服务器被攻击后，apache启动报错，查找原因发现是磁盘空间不够no space left on device，
+
+![img](Linux用法技巧/1.png)
+
+诡异的是df命令磁盘占用仅55%
+
+![img](Linux用法技巧/2.png)
+
+继续查找原因，发现是iNode已满，即没有索引空间
+
+![img](Linux用法技巧/3.png)
+
+这就好办了，首先定位哪个目录占用iNode最多，命令如下：
+
+```shell
+find */ ! -type l | cut -d / -f 1 | uniq -c
+```
+
+定位完成，清理目录，整个世界都清净了
+
+```shell
+find /tmp -type f -exec rm {} \;
+
+find /home -type f -size 0 -exec rm {} \; 
+```
+
+![img](Linux用法技巧/4.png)
