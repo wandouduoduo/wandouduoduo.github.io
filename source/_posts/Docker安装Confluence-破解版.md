@@ -66,7 +66,7 @@ docker inspect confluence
 
 
 
-# **破解confluence**
+## **破解confluence**
 
 下载破解confluence文件：
 
@@ -162,45 +162,45 @@ docker cp atlassian-universal-plugin-manager-plugin-2.22.jar  confluence:/opt/at
 
 **下面说下confluence邮箱功能（不多赘述，直接看截图）：**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_II5f.jpg)**
+**![img](Docker安装Confluence-破解版/26.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_gtyE.jpg)**
+**![img](Docker安装Confluence-破解版/27.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_c1uA.jpg)**
+**![img](Docker安装Confluence-破解版/28.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_k2Kq.jpg)**
+**![img](Docker安装Confluence-破解版/29.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_mW5M.jpg)**
+**![img](Docker安装Confluence-破解版/30.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_rqWy.jpg)**
+**![img](Docker安装Confluence-破解版/31.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_UnMo.jpg)**
+**![img](Docker安装Confluence-破解版/32.jpg)**
 
-![img](https://static.oschina.net/uploads/img/201803/23163553_lOJW.jpg)
+![img](Docker安装Confluence-破解版/33.jpg)
 
 **有上面配置后，就已经配置好了confluence的邮件功能了。下面说下在管理员账号下创建或邀请其他用户的做法：**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163553_pMs3.jpg)**
+**![img](Docker安装Confluence-破解版/34.jpg)**
 
 **一般要禁止用户注册自己注册，要在管理员账号下创建新用户或邀请新用户（通过邮件的方式）**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163554_gvX7.jpg)**
+**![img](Docker安装Confluence-破解版/35.jpg)**
 
 **如下在管理员账号下"添加用户",添加后给用户设置一个初始密码，用户收到邮件后，可以登陆修改密码。**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163554_ONi1.jpg)**
+**![img](Docker安装Confluence-破解版/36.jpg)**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163554_uxbi.jpg)**
+**![img](Docker安装Confluence-破解版/37.jpg)**
 
 **-----------------------------------------------------------------------------------------------------------**
 **也可以通过"邀请用户"的方式来创建新用户，用户收到邮件后，按照邮件提示进行用户创建**
 
-**![img](https://static.oschina.net/uploads/img/201803/23163554_rmdo.jpg)**
+**![img](Docker安装Confluence-破解版/38.jpg)**
 
 **-----------------------------------------------------------------------------------------------------------**
 **邮件功能设置后，在分享文章的时候，可以以邮件的方式分享到用户的邮箱里。**
 
-![img](https://static.oschina.net/uploads/img/201803/23163554_xvGS.jpg)
+![img](Docker安装Confluence-破解版/39.jpg)
 
 注意：在创建文章时 ，左边的页面或子页面的创建时，可以点击左下角的"空间管理"-"配置侧边栏"
 **到此，confluence的安装破解已经完全搞定！后续再介绍下confluence跟jira接连、及其它们对接LDAP的做法！**
