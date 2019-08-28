@@ -26,6 +26,8 @@ date: 2019-08-28 13:54:54
 前提条件，为了方便配置防火墙以及禁用selinux
 配置示例:dc=example,dc=com
 
+<!--more-->
+
 ## OpenLDAP服务基础配置
 
 本文档假设2个节点都已经设置好了[OpenLDAP服务基础配置](https://wandouduoduo.github.io/articles/be8d00d3.html#more)

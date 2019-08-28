@@ -39,8 +39,7 @@ mkdir -p /data/openldap/ldap
 #存放配置
 mkdir -p /data/openldap/slapd.d
 
-docker run -p 389:389 --name sunopenldap --network bridge --hostname openldap-host --env LDAP_ORGANISATION="wandouduoduo" --env LDAP_DOMAIN="wandouduoduo.com" --env LDAP_ADMIN_PASSWORD="Sun123456" -v /data/openldap/ldap:/var/lib/ldap 
--v /data/openldap/slapd.d:/etc/openldap/slapd.d  --detach osixia/openldap
+docker run -p 389:389 --name openldap -v /data/openldap/ldap:/var/lib/ldap -v /data/openldap/slapd.d:/etc/openldap/slapd.d --network bridge --hostname openldap-host --env LDAP_ORGANISATION="wandouduoduo" --env LDAP_DOMAIN="wandouduoduo.com" --env LDAP_ADMIN_PASSWORD="Sun123456" --detach osixia/openldap
 ```
 
 配置LDAP域：`--env LDAP_DOMAIN="wandouduoduo.com"`
