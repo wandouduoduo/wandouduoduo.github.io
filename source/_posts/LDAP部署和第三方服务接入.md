@@ -2,9 +2,8 @@
 title: LDAP部署和第三方服务接入
 categories:
   - 应用运维
-  - 服务搭建
 tags:
-  - Ldap
+  - Openldap
 copyright: true
 abbrlink: 543cefa7
 date: 2019-07-25 16:17:53
