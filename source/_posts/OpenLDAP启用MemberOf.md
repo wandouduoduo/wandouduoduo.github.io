@@ -25,6 +25,20 @@ OpenLDAP版本为2.4.44
 
 ## 步骤
 
+#### 先查看openldap的数据库信息
+
+```bash
+ls /etc/openldap/slapd.d/cn=config/
+```
+
+得到的结果大概如下，不一样也不要害怕:
+
+```bash
+cn=module{0}.ldif cn=schema/ cn=schema.ldif olcDatabase={0}config.ldif olcDatabase={-1}frontend.ldif olcDatabase={1}monitor.ldif olcDatabase={2}bdb/ olcDatabase={2}bdb.ldif
+```
+
+其中有一个带什么`db.ldif`的就是你最终需要修改的数据库文件，我这里是`bdb.ldif`，你的可能是`mdb.ldif`，还有人是`hdb.ldif`，不管什么`db`，总之你要改的是一个叫`db`的文件就对了，你可以`cat`打开看一看，但是不要用`vi`去修改它。
+
 #### 准备memberof_conf.ldif文件
 
 ```bash
@@ -77,7 +91,8 @@ objectClass: olcOverlayConfig
 objectClass: olcRefintConfig
 objectClass: top
 olcOverlay: refint
-olcRefintAttribute: memberof uniqueMember  manager owner
+olcRefintAttribute: memberof member manager owner
+#olcRefintAttribute: memberof uniqueMember  manager owner
 ```
 
 ![](OpenLDAP启用MemberOf/3.jpeg)
@@ -85,6 +100,7 @@ olcRefintAttribute: memberof uniqueMember  manager owner
 #### 导入配置
 
 ```bash
+#注意：导入时文件路径跟绝对路径
 ldapadd -Q -Y EXTERNAL -H ldapi:/// -f  /data/disk1/openladp/memberof_conf.ldif 
 ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f  /data/disk1/openladp/refint1.ldif 
 ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /data/disk1/openladp/refint2.ldif 
@@ -95,6 +111,14 @@ ldapadd -Q -Y EXTERNAL -H ldapi:/// -f /data/disk1/openladp/refint2.ldif
 以上步骤就完成了OpenLDAP的MemberOf模块启用。
 
 ## 验证
+
+验证一下配置，这个命令可以列出所有配置
+
+```bash
+slapcat -b cn=config
+```
+
+
 
 **创建用户测试**
 
