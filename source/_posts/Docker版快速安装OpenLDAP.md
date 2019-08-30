@@ -108,3 +108,6 @@ docker run -d --privileged -p 10004:80 --name myphpldapadmin --env PHPLDAPADMIN_
 通过本文可以快速搭建和使用openldap, 但是默认openldap是没有打开memerof功能的，如有兴趣，请参考
 
 [OpenLDAP启用MemberOf](https://wandouduoduo.github.io/articles/53f92c3c.html)
+
+[ldapsearch用法](https://blog.csdn.net/Michaelwubo/article/details/80525284)
+

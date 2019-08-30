@@ -29,6 +29,8 @@ OpenLDAP版本为2.4.44
 
 ```bash
 ls /etc/openldap/slapd.d/cn=config/
+或者
+ldapsearch -Q -LLL -Y EXTERNAL -H ldapi:/// -b cn=config dn
 ```
 
 得到的结果大概如下，不一样也不要害怕:
@@ -183,3 +185,10 @@ ldapsearch -LL -Y EXTERNAL -H ldapi:/// "(uid=cdsw_a)" -b dc=fayson,dc=com membe
 在OpenLDAP中配置启用MemberOf时需要注意配置文件的通配符{0}/{2},这个数字不是随意指定的而是根据当前的/etc/openldap/slapd.d/cn\=config/生成的内容得出
 
 ![](OpenLDAP启用MemberOf/8.jpeg)
+
+搜索例子
+
+```
+docker exec xxxx ldapsearch -x -D "cn=admin,dc=xxxx,dc=com" -w "xxxx" -b "dc=xxxx,dc=com" "cn=*"
+```
+
