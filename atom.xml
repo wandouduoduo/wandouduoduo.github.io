@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wandouduoduo.github.io/"/>
-  <updated>2019-08-30T10:51:10.552Z</updated>
+  <updated>2019-09-02T05:20:40.520Z</updated>
   <id>http://wandouduoduo.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>confluence6.3.1升级最新版本6.15.8</title>
+    <link href="http://wandouduoduo.github.io/articles/4afcf658.html"/>
+    <id>http://wandouduoduo.github.io/articles/4afcf658.html</id>
+    <published>2019-09-02T04:00:40.000Z</published>
+    <updated>2019-09-02T05:20:40.520Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>收到公司总部安全部门扫描测试，查出公司内部confluence的版本太低，存在安全漏洞。给出的解决方案是升级到最新版本，最新版本已经把该漏洞修复。本文就详细介绍下confluence的升级过程。</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cwiki.us/display/CONFLUENCEWIKI/Upgrading+Confluence" target="_blank" rel="noopener">官方文档</a></p><a id="more"></a><h2 id="升级流程"><a href="#升级流程" class="headerlink" title="升级流程"></a>升级流程</h2><h3 id="备份你的数据"><a href="#备份你的数据" class="headerlink" title="备份你的数据"></a>备份你的数据</h3><h4 id="官方备份方法"><a href="#官方备份方法" class="headerlink" title="官方备份方法"></a>官方备份方法</h4><p>点击一般设置的，点击备份和还原</p><p><img src="/articles/4afcf658/1.png" alt></p><h3 id="自行备份"><a href="#自行备份" class="headerlink" title="自行备份"></a>自行备份</h3><p>1，备份数据源。默认路径为：/var/atlassian/application-data/confluence/confluence.cfg.xml</p><p>2，备份附件。默认路径为：/var/atlassian/application-data/confluence/attachments</p><h2 id="安装部署最新版"><a href="#安装部署最新版" class="headerlink" title="安装部署最新版"></a>安装部署最新版</h2><h4 id="破解文件备份"><a href="#破解文件备份" class="headerlink" title="破解文件备份"></a>破解文件备份</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.4.1.jar ~/atlassian-extras-2.4.jar</span><br></pre></td></tr></table></figure><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a href="https://www.atlassian.com/software/confluence/download" target="_blank" rel="noopener">官网下载地址</a>，放在/opt</p><h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x atlassian-confluence-6.15.1-x64.bin   <span class="comment">#赋予可执行权限</span></span><br><span class="line">./atlassian-confluence-6.15.1-x64.bin  <span class="comment">#执行安装</span></span><br></pre></td></tr></table></figure><p>到了红圈这步选择3，回车。表示升级</p><p><img src="/articles/4afcf658/2.png" alt></p><h4 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h4><p>下面询问你是否要备份，上面我们已经自己备份了，也可选他默认备份</p><p><img src="/articles/4afcf658/3.png" alt></p><h4 id="确认更新"><a href="#确认更新" class="headerlink" title="确认更新"></a>确认更新</h4><p>会展示了一些改变的文件（破解文件变了，下面伏笔），问你同意</p><p><img src="/articles/4afcf658/4.png" alt></p><h4 id="成功部署"><a href="#成功部署" class="headerlink" title="成功部署"></a>成功部署</h4><p>访问  ip:8090</p><h4 id="重新破解"><a href="#重新破解" class="headerlink" title="重新破解"></a>重新破解</h4><p>破解包被升级，有机会出现下面画面，代表验证不通过</p><p><img src="/articles/4afcf658/5.png" alt></p><p>把备份的atlassian-extras-2.4.jar文件复制到/opt/atlassian/confluence/confluence/WEB-INF/lib，并重命名为该版本的文件名</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv ~/atlassian-extras-2.4.jar /opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.4.1.jar</span><br></pre></td></tr></table></figure><p>重启服务</p><p>数据和附件，无损升级到，6.15.8</p><p><img src="/articles/4afcf658/6.png" alt></p><h2 id="破解教程"><a href="#破解教程" class="headerlink" title="破解教程"></a>破解教程</h2><p>有的同学可能没有备份破解文件，或者可能不是自己搭建的，现在刚刚接手。那么如何破解呢？</p><h4 id="下载破解工具"><a href="#下载破解工具" class="headerlink" title="下载破解工具"></a>下载破解工具</h4><p>链接: <a href="https://pan.baidu.com/s/13GZ-3XutMEyE3cUl9rwg_Q" target="_blank" rel="noopener">https://pan.baidu.com/s/13GZ-3XutMEyE3cUl9rwg_Q</a> 提取码: 7gtd </p><p>破解工具是个jar包，所以需要jdk环境。jdk环境配置在网上很多，这里省略。java -jar 破解文件.jar</p><p><img src="/articles/4afcf658/7.png" alt></p><h4 id="获取信息"><a href="#获取信息" class="headerlink" title="获取信息"></a>获取信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 升级时</span></span><br><span class="line">grep -Po <span class="string">"(?&lt;=server.id\"\&gt;).*(?=\&lt;)"</span> /var/atlassian/application-data/confluence/confluence.cfg.xml</span><br><span class="line"><span class="comment"># 全新安装此步骤跳过</span></span><br></pre></td></tr></table></figure><h4 id="生产key"><a href="#生产key" class="headerlink" title="生产key"></a>生产key</h4><p>先点.patch加载从服务器复制出来的atlassian-extras-2.4.jar文件，然后点.gen破解</p><p><img src="/articles/4afcf658/8.png" alt></p><h4 id="破解"><a href="#破解" class="headerlink" title="破解"></a>破解</h4><p>如权限安装，如下图填写</p><p><img src="/articles/4afcf658/9.png" alt></p><p>如升级，如下图更改配置</p><p>vim /var/atlassian/application-data/confluence/confluence.cfg.xml</p><p><img src="/articles/4afcf658/10.png" alt></p><p>把破解后的文件atlassian-extras-2.4.jar复制到服务器的/opt/atlassian/confluence/confluence/WEB-INF/lib/，并重命名为该版本的名称，如：atlassian-extras-decoder-v2-3.4.1.jar</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;收到公司总部安全部门扫描测试，查出公司内部confluence的版本太低，存在安全漏洞。给出的解决方案是升级到最新版本，最新版本已经把该漏洞修复。本文就详细介绍下confluence的升级过程。&lt;/p&gt;
+&lt;h2 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.cwiki.us/display/CONFLUENCEWIKI/Upgrading+Confluence&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方文档&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="应用运维" scheme="http://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="Confluence" scheme="http://wandouduoduo.github.io/tags/Confluence/"/>
+    
+  </entry>
   
   <entry>
     <title>cmdbuild接入openldap方法</title>
@@ -34,9 +57,9 @@
       <category term="应用运维" scheme="http://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="http://wandouduoduo.github.io/tags/Openldap/"/>
-    
       <category term="Cmdb" scheme="http://wandouduoduo.github.io/tags/Cmdb/"/>
+    
+      <category term="Openldap" scheme="http://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
@@ -543,43 +566,6 @@
     
     
       <category term="Docker" scheme="http://wandouduoduo.github.io/tags/Docker/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用Prometheus+Grafana监控JVM</title>
-    <link href="http://wandouduoduo.github.io/articles/fd3e6049.html"/>
-    <id>http://wandouduoduo.github.io/articles/fd3e6049.html</id>
-    <published>2019-07-24T09:56:09.000Z</published>
-    <updated>2019-08-07T02:06:43.864Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>工具：</p><ul><li>Docker，本文大量使用了Docker来启动各个应用。</li><li><a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>，负责抓取/存储指标信息，并提供查询功能。</li><li><a href="https://grafana.com/" target="_blank" rel="noopener">Grafana</a>，负责数据可视化。</li><li><a href="https://github.com/prometheus/jmx_exporter" target="_blank" rel="noopener">JMX exporter</a>，提供JMX中和JVM相关的metrics。</li><li>Tomcat，用来模拟一个Java应用。</li></ul><p>步骤：</p><ol><li>利用<a href="https://github.com/prometheus/jmx_exporter" target="_blank" rel="noopener">JMX exporter</a>，在Java进程内启动一个小型的Http server</li><li>配置<a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>抓取那个Http server提供的metrics。</li><li>配置<a href="https://grafana.com/" target="_blank" rel="noopener">Grafana</a>连接<a href="https://prometheus.io/" target="_blank" rel="noopener">Prometheus</a>，配置Dashboard。</li></ol><a id="more"></a><h2 id="启动Java测试实例"><a href="#启动Java测试实例" class="headerlink" title="启动Java测试实例"></a>启动Java测试实例</h2><p>1) 新建一个目录，名字叫做<code>prom-jvm-demo</code>。</p><p>2) <a href="https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_javaagent/0.3.1/jmx_prometheus_javaagent-0.3.1.jar" target="_blank" rel="noopener">下载JMX exporter</a>到这个目录</p><p>3) 新建一个文件<code>simple-config.yml</code>内容如下：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">lowercaseOutputLabelNames:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">lowercaseOutputName:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">whitelistObjectNames:</span> <span class="string">["java.lang:type=OperatingSystem"]</span></span><br><span class="line"><span class="attr">rules:</span></span><br><span class="line"><span class="attr"> - pattern:</span> <span class="string">'java.lang&lt;type=OperatingSystem&gt;&lt;&gt;((?!process_cpu_time)\w+):'</span></span><br><span class="line"><span class="attr">   name:</span> <span class="string">os_$1</span></span><br><span class="line"><span class="attr">   type:</span> <span class="string">GAUGE</span></span><br><span class="line"><span class="attr">   attrNameSnakeCase:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure><p>4) 运行以下命令启动3个Tomcat，记得把<code>&lt;path-to-prom-jvm-demo&gt;</code>替换成正确的路径：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name tomcat-1 \</span><br><span class="line">  -v &lt;path-to-prom-jvm-demo&gt;:/jmx-exporter \</span><br><span class="line">  -e CATALINA_OPTS="-Xms64m -Xmx128m -javaagent:/jmx-exporter/jmx_prometheus_javaagent-0.3.1.jar=6060:/jmx-exporter/simple-config.yml" \</span><br><span class="line">  -p 6060:6060 \</span><br><span class="line">  -p 8080:8080 \</span><br><span class="line">  tomcat:8.5-alpine</span><br><span class="line"></span><br><span class="line">docker run -d \</span><br><span class="line">  --name tomcat-2 \</span><br><span class="line">  -v &lt;path-to-prom-jvm-demo&gt;:/jmx-exporter \</span><br><span class="line">  -e CATALINA_OPTS="-Xms64m -Xmx128m -javaagent:/jmx-exporter/jmx_prometheus_javaagent-0.3.1.jar=6060:/jmx-exporter/simple-config.yml" \</span><br><span class="line">  -p 6061:6060 \</span><br><span class="line">  -p 8081:8080 \</span><br><span class="line">  tomcat:8.5-alpine</span><br><span class="line"></span><br><span class="line">docker run -d \</span><br><span class="line">  --name tomcat-3 \</span><br><span class="line">  -v &lt;path-to-prom-jvm-demo&gt;:/jmx-exporter \</span><br><span class="line">  -e CATALINA_OPTS="-Xms64m -Xmx128m -javaagent:/jmx-exporter/jmx_prometheus_javaagent-0.3.1.jar=6060:/jmx-exporter/simple-config.yml" \</span><br><span class="line">  -p 6062:6060 \</span><br><span class="line">  -p 8082:8080 \</span><br><span class="line">  tomcat:8.5-alpine</span><br></pre></td></tr></table></figure><p>5) 访问<code>http://localhost:8080|8081|8082</code>看看Tomcat是否启动成功。</p><p>6) 访问对应的<code>http://localhost:6060|6061|6062</code>看看JMX exporter提供的metrics。</p><p>备注：这里提供的<code>simple-config.yml</code>仅仅提供了JVM的信息，更复杂的配置请参考<a href="https://github.com/prometheus/jmx_exporter" target="_blank" rel="noopener">JMX exporter文档</a>。</p><h2 id="启动Prometheus"><a href="#启动Prometheus" class="headerlink" title="启动Prometheus"></a>启动Prometheus</h2><p>1) 在之前新建目录<code>prom-jvm-demo</code>，新建一个文件<code>prom-jmx.yml</code>，内容如下：</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line"><span class="attr">  - job_name:</span> <span class="string">'java'</span></span><br><span class="line"><span class="attr">    scrape_interval:</span> <span class="number">30</span><span class="string">s</span></span><br><span class="line"><span class="attr">    static_configs:</span></span><br><span class="line"><span class="attr">    - targets:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'&lt;host-ip&gt;:6060'</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'&lt;host-ip&gt;:6061'</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">'&lt;host-ip&gt;:6062'</span></span><br></pre></td></tr></table></figure><p>2) 启动Prometheus：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  --name=prometheus \</span><br><span class="line">  -p 9090:9090 \</span><br><span class="line">  -v &lt;path-to-prom-jvm-demo&gt;:/prometheus-config \</span><br><span class="line">  prom/prometheus --config.file=/prometheus-config/prom-jmx.yml</span><br></pre></td></tr></table></figure><p>3) 访问<a href="http://localhost:9090/" target="_blank" rel="noopener">http://localhost:9090</a>看看Prometheus是否启动成功，在输入框里输入<code>jvm_info</code>然后执行，应该可以看到如下图的结果：</p><p><img src="/articles/fd3e6049/1.png" alt></p><p>如果没有看到三个instance，那么等一会儿再试。</p><h2 id="启动Grafana"><a href="#启动Grafana" class="headerlink" title="启动Grafana"></a>启动Grafana</h2><p>1) 启动Grafana：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name=grafana -p 3000:3000 grafana/grafana</span><br></pre></td></tr></table></figure><p>2) 访问<a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000</a>，使用<code>admin/admin</code>登录。</p><p>3) 添加Prometheus数据源，如下图所示到添加数据源页面：</p><p><img src="/articles/fd3e6049/2.png" alt></p><p>4) 配置数据源信息：</p><ul><li>Name：随便取</li><li>Type：Prometheus</li><li>URL：<code>http://&lt;host-ip&gt;:9090</code></li><li>其余不要设置，点击<code>Save &amp; Test</code>，应该会返回成功结果</li></ul><p>5) 导入Dashboard。我们不需要重头自己做Dashboard，用现成的就行，按下图所示进入导入页面</p><p><img src="/articles/fd3e6049/3.png" alt></p><p>6) 使用我制作的<a href="https://grafana.com/dashboards/8563" target="_blank" rel="noopener">JVM Dashboard</a>，页面右侧出现的ID号是<code>8563</code>，记住这个号，填在如下图所示的位置：</p><p><img src="/articles/fd3e6049/4.png" alt></p><p>7) 然后鼠标点击别处稍等一下，出现下图，选择一下数据源就可以了</p><p><img src="/articles/fd3e6049/5.png" alt></p><p>8) 最后打开刚刚导入的Dashboard，如下图：</p><p><img src="/articles/fd3e6049/6.png" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;摘要&quot;&gt;&lt;a href=&quot;#摘要&quot; class=&quot;headerlink&quot; title=&quot;摘要&quot;&gt;&lt;/a&gt;摘要&lt;/h2&gt;&lt;p&gt;工具：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Docker，本文大量使用了Docker来启动各个应用。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://prometheus.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Prometheus&lt;/a&gt;，负责抓取/存储指标信息，并提供查询功能。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://grafana.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Grafana&lt;/a&gt;，负责数据可视化。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/prometheus/jmx_exporter&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JMX exporter&lt;/a&gt;，提供JMX中和JVM相关的metrics。&lt;/li&gt;
-&lt;li&gt;Tomcat，用来模拟一个Java应用。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;步骤：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;利用&lt;a href=&quot;https://github.com/prometheus/jmx_exporter&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;JMX exporter&lt;/a&gt;，在Java进程内启动一个小型的Http server&lt;/li&gt;
-&lt;li&gt;配置&lt;a href=&quot;https://prometheus.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Prometheus&lt;/a&gt;抓取那个Http server提供的metrics。&lt;/li&gt;
-&lt;li&gt;配置&lt;a href=&quot;https://grafana.com/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Grafana&lt;/a&gt;连接&lt;a href=&quot;https://prometheus.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Prometheus&lt;/a&gt;，配置Dashboard。&lt;/li&gt;
-&lt;/ol&gt;
-    
-    </summary>
-    
-      <category term="应用运维" scheme="http://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
-    
-      <category term="监控积累" scheme="http://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/%E7%9B%91%E6%8E%A7%E7%A7%AF%E7%B4%AF/"/>
-    
-    
-      <category term="Prometheus" scheme="http://wandouduoduo.github.io/tags/Prometheus/"/>
     
   </entry>
   
