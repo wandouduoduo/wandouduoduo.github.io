@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wandouduoduo.github.io/"/>
-  <updated>2019-09-03T09:01:27.252Z</updated>
+  <updated>2019-09-03T10:09:07.771Z</updated>
   <id>http://wandouduoduo.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://wandouduoduo.github.io/articles/d83ca733.html"/>
     <id>http://wandouduoduo.github.io/articles/d83ca733.html</id>
     <published>2019-09-03T07:17:12.000Z</published>
-    <updated>2019-09-03T09:01:27.252Z</updated>
+    <updated>2019-09-03T10:09:07.771Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。</p><p>在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。</p><h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a href="https://github.com/wandouduoduo/docker-ssp" target="_blank" rel="noopener">参考文档</a></p><a id="more"></a><p>按照参考文档正确配置并构建镜像，运行后，登录网页访问，通过网页修改账号密码验证</p><p><img src="/articles/d83ca733/1.png" alt></p><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>如果遇到以下错误：</p><p><img src="/articles/d83ca733/2.png" alt></p><p>修改配置:</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$keyphrase = &quot;secret&quot;;  改为  $keyphrase = &quot;sunxu&quot;; #任意字符串</span><br></pre></td></tr></table></figure><p>重启容器，再次访问。</p><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>邮件重置密码：</p><p><img src="/articles/d83ca733/3.png" alt></p><p>查看邮件</p><p><img src="/articles/d83ca733/4.png" alt></p><p>修改完成会收到一条邮件：</p><p><img src="/articles/d83ca733/5.png" alt></p>]]></content>
     
@@ -81,9 +81,9 @@
       <category term="应用运维" scheme="http://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="http://wandouduoduo.github.io/tags/Openldap/"/>
-    
       <category term="Cmdb" scheme="http://wandouduoduo.github.io/tags/Cmdb/"/>
+    
+      <category term="Openldap" scheme="http://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
