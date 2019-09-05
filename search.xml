@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[docker安装redmine服务]]></title>
+    <url>%2Farticles%2F40baf0f.html</url>
+    <content type="text"><![CDATA[目的快速搭建redmine服务，以便能够对项目和工作流进行管控。 参考文档官方文档或者docker官方 步骤用SQLite3运行Redmine这是最简单的方式 1docker run -d --name sunredmine redmine 使用数据库容器运行Redmine建议使用数据库服务器运行Redmine。 1, 启动数据库容器 PostgreSQL 1docker run -d --name some-postgres --network some-network -e POSTGRES_PASSWORD=secret -e POSTGRES_USER=redmine postgres MySQL的（替代-e REDMINE_DB_POSTGRES=some-postgres与-e REDMINE_DB_MYSQL=some-mysql运行管理平台时） 1docker run -d --name some-mysql --network some-network -e MYSQL_USER=redmine -e MYSQL_PASSWORD=secret -e MYSQL_DATABASE=redmine -e MYSQL_RANDOM_ROOT_PASSWORD=1 mysql:5.7 2, 运行redmine 1docker run -d --name some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret redmine 完整例子假设已有postgres数据库容器 1234567891011121314151617docker run --name pgsql -p 5432:5432 -e POSTGRES_PASSWORD=sunxu123 -v /data/postgres:/var/lib/postgresql/data -d postgres:9.4# 进入容器后操作docker exec -it pgsql /bin/bash# 进Postgresql账号su postgres#CREATE USER redmine WITH PASSWORD 'Sun123';# 建库createdb -O redmine redmine 和 CREATE DATABASE redmine OWNER redmine等效,二选一即可# 赋权GRANT ALL PRIVILEGES ON DATABASE redmine to redmine;# 启动redminedocker run --name redmine -p 10083:3000 -v /data/redmine/data:/usr/src/redmine/files --link pgsql:remine -d redmine# 查看日志docker logs -f remine]]></content>
+      <categories>
+        <category>应用运维</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[docker构建自己的openldap自助密码服务]]></title>
     <url>%2Farticles%2Fd83ca733.html</url>
     <content type="text"><![CDATA[背景OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。 在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。 教程参考文档 按照参考文档正确配置并构建镜像，运行后，登录网页访问，通过网页修改账号密码验证 问题如果遇到以下错误： 修改配置: 1$keyphrase = &quot;secret&quot;; 改为 $keyphrase = &quot;sunxu&quot;; #任意字符串 重启容器，再次访问。 验证邮件重置密码： 查看邮件 修改完成会收到一条邮件：]]></content>
