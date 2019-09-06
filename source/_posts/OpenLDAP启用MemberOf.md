@@ -189,6 +189,12 @@ ldapsearch -LL -Y EXTERNAL -H ldapi:/// "(uid=cdsw_a)" -b dc=fayson,dc=com membe
 搜索例子
 
 ```
+# docker openldap
 docker exec xxxx ldapsearch -x -D "cn=admin,dc=xxxx,dc=com" -w "xxxx" -b "dc=xxxx,dc=com" "cn=*"
+
+#现在默认用docker安装openldap是开启了memberof，所以直接添加用户，添加用户组后，直接用下面命令验证
+ldapsearch -LL  -H ldapi:/// -D "cn=admin,dc=xxx,dc=net" -W "(uid=sunxu)" -b dc=xxx,dc=net memberOf
 ```
+
+![](OpenLDAP启用MemberOf/8.png)
 

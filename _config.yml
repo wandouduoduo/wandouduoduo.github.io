@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://wandouduoduo.github.io
+url: https://wandouduoduo.github.io
 root: /
 #permalink: :year/:month/:day/:title/
 #permalink_defaults:
@@ -74,6 +74,12 @@ time_format: HH:mm:ss
 per_page: 10
 pagination_dir: page
 
+# sitemap
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 Plugins: hexo-generate-feed
@@ -89,6 +95,12 @@ symbols_count_time:
  # 网页底部是否显示
   total_symbols: true
   total_time: true
+
+baidu_url_submit:
+  count: 100 ## 比如3，代表提交最新的三个链接
+  host: wandouduoduo.github.io ## 在百度站长平台中注册的域名
+  token: xxxxxxxxxxxx ## 请注意这是您的秘钥， 请不要发布在公众仓库里!
+  path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 
 live2d:
   enable: true
@@ -118,6 +130,7 @@ tag_cloud:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
+- type: git
   repository: https://github.com/wandouduoduo/wandouduoduo.github.io.git
   branch: master
+- type: baidu_url_submitter
