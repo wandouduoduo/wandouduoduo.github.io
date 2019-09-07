@@ -135,3 +135,22 @@ vim /var/atlassian/application-data/confluence/confluence.cfg.xml
 ![](confluence6-3-1升级最新版本6-15-8/10.png)
 
 把破解后的文件atlassian-extras-2.4.jar复制到服务器的/opt/atlassian/confluence/confluence/WEB-INF/lib/，并重命名为该版本的名称，如：atlassian-extras-decoder-v2-3.4.1.jar
+
+## 接入Ldap
+
+管理员登录，一般配置-->用户目录-->添加用户目录-->Ldap
+
+![](confluence6-3-1升级最新版本6-15-8/11.png)
+
+填写信息
+
+![](confluence6-3-1升级最新版本6-15-8/12.png)
+
+![](confluence6-3-1升级最新版本6-15-8/13.png)
+
+![](confluence6-3-1升级最新版本6-15-8/14.png)
+
+![](confluence6-3-1升级最新版本6-15-8/15.png)
+
+![](confluence6-3-1升级最新版本6-15-8/16.png)
+

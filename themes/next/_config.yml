@@ -207,7 +207,7 @@ links_title: 推荐阅读
 #links_layout: block
 links_layout: inline
 links:
-  菜鸟教程: https://www.runoob.com/
+  菜鸟教程: https://www.runoob.com/   
   自强学堂: https://code.ziqiangxuetang.com/
 
 # Sidebar Avatar
@@ -634,7 +634,7 @@ google_site_verification: igfxU5A6c_28PmCJ5Zw1kMMKNCL3wvbBMwUqfOJ4kKg
 baidu_site_verification: u9DwW9DlmK
 
 # CNZZ count
-#cnzz_siteid:
+cnzz_siteid: true
 
 # Application Insights
 # See: https://azure.microsoft.com/en-us/services/application-insights
