@@ -10,4 +10,4 @@ Disallow: /fonts/
 Disallow: /images/
 
 Sitemap: https://wandouduoduo.github.io/sitemap.xml
-Sitemap: https://wandouduoduo.github.io/baidusitemap.xml
+Sitemap: https://wandouduoduo.coding.me/baidusitemap.xml
