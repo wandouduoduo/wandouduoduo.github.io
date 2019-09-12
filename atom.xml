@@ -5,9 +5,9 @@
   <subtitle>Deveops Study Notes</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://wandouduoduo.netlify.com/"/>
+  <link href="https://wandouduoduo.github.io/"/>
   <updated>2019-09-05T11:02:44.711Z</updated>
-  <id>https://wandouduoduo.netlify.com/</id>
+  <id>https://wandouduoduo.github.io/</id>
   
   <author>
     <name>WanDouDuoDuo</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>docker安装redmine服务</title>
-    <link href="https://wandouduoduo.netlify.com/articles/40baf0f.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/40baf0f.html</id>
+    <link href="https://wandouduoduo.github.io/articles/40baf0f.html"/>
+    <id>https://wandouduoduo.github.io/articles/40baf0f.html</id>
     <published>2019-09-05T05:38:52.000Z</published>
     <updated>2019-09-05T11:02:44.711Z</updated>
     
@@ -32,17 +32,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Docker" scheme="https://wandouduoduo.netlify.com/tags/Docker/"/>
+      <category term="Docker" scheme="https://wandouduoduo.github.io/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>docker构建自己的openldap自助密码服务</title>
-    <link href="https://wandouduoduo.netlify.com/articles/d83ca733.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/d83ca733.html</id>
+    <link href="https://wandouduoduo.github.io/articles/d83ca733.html"/>
+    <id>https://wandouduoduo.github.io/articles/d83ca733.html</id>
     <published>2019-09-03T07:17:12.000Z</published>
     <updated>2019-09-03T10:09:07.771Z</updated>
     
@@ -56,17 +56,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>confluence6.3.1升级最新版本6.15.8</title>
-    <link href="https://wandouduoduo.netlify.com/articles/4afcf658.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/4afcf658.html</id>
+    <link href="https://wandouduoduo.github.io/articles/4afcf658.html"/>
+    <id>https://wandouduoduo.github.io/articles/4afcf658.html</id>
     <published>2019-09-02T04:00:40.000Z</published>
     <updated>2019-09-06T10:12:19.870Z</updated>
     
@@ -79,21 +79,21 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Confluence" scheme="https://wandouduoduo.netlify.com/tags/Confluence/"/>
+      <category term="Confluence" scheme="https://wandouduoduo.github.io/tags/Confluence/"/>
     
   </entry>
   
   <entry>
     <title>cmdbuild接入openldap方法</title>
-    <link href="https://wandouduoduo.netlify.com/articles/364a7d87.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/364a7d87.html</id>
+    <link href="https://wandouduoduo.github.io/articles/364a7d87.html"/>
+    <id>https://wandouduoduo.github.io/articles/364a7d87.html</id>
     <published>2019-08-30T10:19:54.000Z</published>
     <updated>2019-08-30T10:51:10.552Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>cmdbuid接入openldap用户权限，便于用户统一管理。</p><a id="more"></a><h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><p>已安装好cmdbuid和openldap。</p><p><a href="https://wandouduoduo.github.io/articles/4fcc594d.html" target="_blank" rel="noopener">安装cmdbuild</a></p><p><a href="https://wandouduoduo.github.io/articles/931613a4.html#more" target="_blank" rel="noopener">安装openldap</a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1,  参考官方文档，如下图</p><p><img src="/articles/364a7d87/1.png" alt></p><p>翻译大意是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">LDAP协议配置</span><br><span class="line">在本节中，我们将看到LDAP协议的配置选项。</span><br><span class="line">CMDBuild目前仅支持使用简单绑定进行身份验证。但是可以使用</span><br><span class="line">匿名绑定以在LDAP树中搜索用户。</span><br><span class="line">要在CMDBuild中处理用户权限，必须存在要进行身份验证的用户在用户数据库表中。</span><br><span class="line">例如，如果具有LDAP UID j.doe的用户需要访问CMDBuild使用Tech Group必须遵循以下步骤：</span><br><span class="line">•使用任何密码在CMDBuild中创建用户j.doe</span><br><span class="line">•创建Tech组并定义其权限</span><br><span class="line">•将j.doe添加到Tech组</span><br><span class="line">经过上面三步后，当用户j.doe尝试验证自己时，系统将验证提供的凭据在LDAP服务器上（按身份验证类型链指定的顺序）。</span><br><span class="line"></span><br><span class="line">所以就是所需要事先安装openldap树在cmdbuild中创建用户组和用户，这样配置后才能认证，感觉有点多次一举，我既然都事先创建了，干嘛还要接入openldap。最好的方法是直接读取认证，但是目前官方不支持。</span><br><span class="line">有个想法是直接写脚本把openldap信息读取出来定时写入到cmdbuild数据库中，这样就可以实现统一管控。</span><br></pre></td></tr></table></figure><p>2,  配置cmdbuild认证文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/tomcat/webapps/ROOT/WEB-INF/conf/auth.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">## Authentication method chain (the first match stops the auth chain)</span></span><br><span class="line"><span class="comment">#auth.methods=HeaderAuthenticator,CasAuthenticator,LdapAuthenticator,DBAuthenticator</span></span><br><span class="line">auth.methods=LdapAuthenticator</span><br><span class="line"></span><br><span class="line"><span class="comment">#auth.case.insensitive=false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#force.ws.password.digest=true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## HEADER</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#header.attribute.name=username</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## CAS</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#cas.server.url=https://casserver/cas</span></span><br><span class="line"><span class="comment">#cas.login.page=/login</span></span><br><span class="line"><span class="comment">#cas.service.param=service</span></span><br><span class="line"><span class="comment">#cas.ticket.param=ticket</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## LDAP</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line">ldap.server.address=xxx.xxx.xxxx.xxx</span><br><span class="line">ldap.server.port=389</span><br><span class="line">ldap.use.ssl=<span class="literal">false</span></span><br><span class="line">ldap.basedn=dc=wandouduoduo,dc=com</span><br><span class="line">ldap.bind.attribute=uid</span><br><span class="line"></span><br><span class="line">ldap.search.filter=(objectClass=*)</span><br><span class="line"><span class="comment">##Accept only none (anonymous bind) and simple (simple bind)</span></span><br><span class="line"><span class="comment">#ldap.search.auth.method=none</span></span><br><span class="line"><span class="comment">##This section is only for simple bind</span></span><br><span class="line">ldap.search.auth.method=simple</span><br><span class="line">ldap.search.auth.principal=cn=admin,dc=wandouduoduo,dc=com</span><br><span class="line">ldap.search.auth.password=xxxx</span><br></pre></td></tr></table></figure><p>3，重启cmdbuild，生效配置。</p><p>4，日志改为debug模式，便于观察。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/tomcat/webapps/ROOT/WEB-INF/conf/log4j.conf</span><br></pre></td></tr></table></figure><p><img src="/articles/364a7d87/2.png" alt></p><p>经过上述步骤就可实现接入步骤，观察日志，如下图：</p><p><img src="/articles/364a7d87/3.png" alt></p><p>表示认证成功，后续会补充同步脚本。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>cmdbuid接入openldap用户权限，便于用户统一管理。</p><a id="more"></a><h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><p>已安装好cmdbuid和openldap。</p><p><a href="https://wandouduoduo.github.io/articles/4fcc594d.html">安装cmdbuild</a></p><p><a href="https://wandouduoduo.github.io/articles/931613a4.html#more">安装openldap</a></p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>1,  参考官方文档，如下图</p><p><img src="/articles/364a7d87/1.png" alt></p><p>翻译大意是</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">LDAP协议配置</span><br><span class="line">在本节中，我们将看到LDAP协议的配置选项。</span><br><span class="line">CMDBuild目前仅支持使用简单绑定进行身份验证。但是可以使用</span><br><span class="line">匿名绑定以在LDAP树中搜索用户。</span><br><span class="line">要在CMDBuild中处理用户权限，必须存在要进行身份验证的用户在用户数据库表中。</span><br><span class="line">例如，如果具有LDAP UID j.doe的用户需要访问CMDBuild使用Tech Group必须遵循以下步骤：</span><br><span class="line">•使用任何密码在CMDBuild中创建用户j.doe</span><br><span class="line">•创建Tech组并定义其权限</span><br><span class="line">•将j.doe添加到Tech组</span><br><span class="line">经过上面三步后，当用户j.doe尝试验证自己时，系统将验证提供的凭据在LDAP服务器上（按身份验证类型链指定的顺序）。</span><br><span class="line"></span><br><span class="line">所以就是所需要事先安装openldap树在cmdbuild中创建用户组和用户，这样配置后才能认证，感觉有点多次一举，我既然都事先创建了，干嘛还要接入openldap。最好的方法是直接读取认证，但是目前官方不支持。</span><br><span class="line">有个想法是直接写脚本把openldap信息读取出来定时写入到cmdbuild数据库中，这样就可以实现统一管控。</span><br></pre></td></tr></table></figure><p>2,  配置cmdbuild认证文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/tomcat/webapps/ROOT/WEB-INF/conf/auth.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">## Authentication method chain (the first match stops the auth chain)</span></span><br><span class="line"><span class="comment">#auth.methods=HeaderAuthenticator,CasAuthenticator,LdapAuthenticator,DBAuthenticator</span></span><br><span class="line">auth.methods=LdapAuthenticator</span><br><span class="line"></span><br><span class="line"><span class="comment">#auth.case.insensitive=false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#force.ws.password.digest=true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## HEADER</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#header.attribute.name=username</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## CAS</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#cas.server.url=https://casserver/cas</span></span><br><span class="line"><span class="comment">#cas.login.page=/login</span></span><br><span class="line"><span class="comment">#cas.service.param=service</span></span><br><span class="line"><span class="comment">#cas.ticket.param=ticket</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"><span class="comment">## LDAP</span></span><br><span class="line"><span class="comment">##</span></span><br><span class="line"></span><br><span class="line">ldap.server.address=xxx.xxx.xxxx.xxx</span><br><span class="line">ldap.server.port=389</span><br><span class="line">ldap.use.ssl=<span class="literal">false</span></span><br><span class="line">ldap.basedn=dc=wandouduoduo,dc=com</span><br><span class="line">ldap.bind.attribute=uid</span><br><span class="line"></span><br><span class="line">ldap.search.filter=(objectClass=*)</span><br><span class="line"><span class="comment">##Accept only none (anonymous bind) and simple (simple bind)</span></span><br><span class="line"><span class="comment">#ldap.search.auth.method=none</span></span><br><span class="line"><span class="comment">##This section is only for simple bind</span></span><br><span class="line">ldap.search.auth.method=simple</span><br><span class="line">ldap.search.auth.principal=cn=admin,dc=wandouduoduo,dc=com</span><br><span class="line">ldap.search.auth.password=xxxx</span><br></pre></td></tr></table></figure><p>3，重启cmdbuild，生效配置。</p><p>4，日志改为debug模式，便于观察。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/tomcat/webapps/ROOT/WEB-INF/conf/log4j.conf</span><br></pre></td></tr></table></figure><p><img src="/articles/364a7d87/2.png" alt></p><p>经过上述步骤就可实现接入步骤，观察日志，如下图：</p><p><img src="/articles/364a7d87/3.png" alt></p><p>表示认证成功，后续会补充同步脚本。</p>]]></content>
     
     <summary type="html">
     
@@ -101,23 +101,23 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Cmdb" scheme="https://wandouduoduo.netlify.com/tags/Cmdb/"/>
+      <category term="Cmdb" scheme="https://wandouduoduo.github.io/tags/Cmdb/"/>
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>Docker版快速安装OpenLDAP</title>
-    <link href="https://wandouduoduo.netlify.com/articles/931613a4.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/931613a4.html</id>
+    <link href="https://wandouduoduo.github.io/articles/931613a4.html"/>
+    <id>https://wandouduoduo.github.io/articles/931613a4.html</id>
     <published>2019-08-28T06:58:44.000Z</published>
     <updated>2019-08-30T10:57:18.170Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。</p><a id="more"></a><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.openldap.org" target="_blank" rel="noopener">官网</a></p><p><a href="https://github.com/osixia/docker-openldap" target="_blank" rel="noopener">镜像文档</a></p><!--more--><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a><strong>拉取镜像</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull osixia/openldap</span><br></pre></td></tr></table></figure><h4 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a><strong>运行镜像</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存放数据库</span></span><br><span class="line">mkdir -p /data/openldap/ldap</span><br><span class="line"><span class="comment">#存放配置</span></span><br><span class="line">mkdir -p /data/openldap/slapd.d</span><br><span class="line"></span><br><span class="line">docker run -p 389:389 --name openldap -v /data/openldap/ldap:/var/lib/ldap -v /data/openldap/slapd.d:/etc/openldap/slapd.d --network bridge --hostname openldap-host --env LDAP_ORGANISATION=<span class="string">"wandouduoduo"</span> --env LDAP_DOMAIN=<span class="string">"wandouduoduo.com"</span> --env LDAP_ADMIN_PASSWORD=<span class="string">"Sun123456"</span> --detach osixia/openldap</span><br></pre></td></tr></table></figure><p>配置LDAP域：<code>--env LDAP_DOMAIN=&quot;wandouduoduo.com&quot;</code></p><p>配置LDAP密码：<code>--env LDAP_ADMIN_PASSWORD=&quot;Sun123456&quot;</code></p><p>默认登录用户名：<code>admin</code></p><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h4 id="LDAP-Admin客户端"><a href="#LDAP-Admin客户端" class="headerlink" title="LDAP Admin客户端"></a>LDAP Admin客户端</h4><p>Ldap Admin是一个用于LDAP目录管理的免费Windows LDAP客户端和管理工具。此应用程序允许您在LDAP服务器上浏览，搜索，修改，创建和删除对象。它还支持更复杂的操作，例如目录复制和在远程服务器之间移动，并扩展常用编辑功能以支持特定对象类型（例如组和帐户）。</p><p>支持系统：<code>Winndows&amp;Linux</code></p><p><a href="http://www.ldapadmin.org/" target="_blank" rel="noopener">官网</a></p><p>下载安装LDAP Admin客户端，新增连接如下：</p><p><img src="/articles/931613a4/1.png" alt></p><p>连接成功即表明OpenLDAP安装成功。</p><h4 id="PHPLdapAdmin客户端"><a href="#PHPLdapAdmin客户端" class="headerlink" title="PHPLdapAdmin客户端"></a>PHPLdapAdmin客户端</h4><p>phpLDAPadmin（也称为PLA）是一个基于Web的LDAP客户端。它为LDAP服务器提供简单，随处可访问的多语言管理。</p><p>其分层树查看器和高级搜索功能使您可以直观地浏览和管理LDAP目录。由于它是一个Web应用程序，因此该LDAP浏览器可在许多平台上运行，使您可以从任何位置轻松管理LDAP服务器。</p><p>phpLDAPadmin是LDAP专业人员和新手的完美LDAP浏览器。其用户群主要由LDAP管理专业人员组成。</p><p><a href="http://phpldapadmin.sourceforge.net/wiki/index.php/Main_Page" target="_blank" rel="noopener">官网</a></p><h4 id="使用docker-安装-PHPLdapAdmin"><a href="#使用docker-安装-PHPLdapAdmin" class="headerlink" title="使用docker 安装 PHPLdapAdmin"></a>使用docker 安装 PHPLdapAdmin</h4><p><a href="https://github.com/osixia/docker-phpLDAPadmin" target="_blank" rel="noopener">https://github.com/osixia/docker-phpLDAPadmin</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --privileged -p 10004:80 --name myphpldapadmin --env PHPLDAPADMIN_HTTPS=<span class="literal">false</span> --env PHPLDAPADMIN_LDAP_HOSTS=172.17.0.6 --detach osixia/phpldapadmin</span><br></pre></td></tr></table></figure><p>配置的Ldap地址：<code>--env PHPLDAPADMIN_LDAP_HOSTS=172.17.0.6</code></p><p>配置不开启HTTPS：<code>--env PHPLDAPADMIN_HTTPS=false</code>（默认是true）</p><p>如果开启HTTPS，需要配置443端口映射：<code>-p 8443:443</code>，并采用https访问</p><p><strong>通过访问<a href="http://localhost:10004" target="_blank" rel="noopener">http://localhost:10004</a> 来管理，登陆界面</strong></p><p><img src="/articles/931613a4/2.png" alt></p><p><strong>点击login进行登录</strong></p><p><strong>Login DN：</strong><code>cn=admin,dc=wandouduoduo,dc=com</code></p><p><strong>Password：</strong><code>ldap123</code></p><p><strong>登录成功后如下：</strong></p><p><img src="/articles/931613a4/3.png" alt></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过本文可以快速搭建和使用openldap, 但是默认openldap是没有打开memerof功能的，如有兴趣，请参考</p><p><a href="https://wandouduoduo.github.io/articles/53f92c3c.html" target="_blank" rel="noopener">OpenLDAP启用MemberOf</a></p><p><a href="https://blog.csdn.net/Michaelwubo/article/details/80525284" target="_blank" rel="noopener">ldapsearch用法</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。</p><a id="more"></a><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.openldap.org" target="_blank" rel="noopener">官网</a></p><p><a href="https://github.com/osixia/docker-openldap" target="_blank" rel="noopener">镜像文档</a></p><!--more--><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h4 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a><strong>拉取镜像</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull osixia/openldap</span><br></pre></td></tr></table></figure><h4 id="运行镜像"><a href="#运行镜像" class="headerlink" title="运行镜像"></a><strong>运行镜像</strong></h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#存放数据库</span></span><br><span class="line">mkdir -p /data/openldap/ldap</span><br><span class="line"><span class="comment">#存放配置</span></span><br><span class="line">mkdir -p /data/openldap/slapd.d</span><br><span class="line"></span><br><span class="line">docker run -p 389:389 --name openldap -v /data/openldap/ldap:/var/lib/ldap -v /data/openldap/slapd.d:/etc/openldap/slapd.d --network bridge --hostname openldap-host --env LDAP_ORGANISATION=<span class="string">"wandouduoduo"</span> --env LDAP_DOMAIN=<span class="string">"wandouduoduo.com"</span> --env LDAP_ADMIN_PASSWORD=<span class="string">"Sun123456"</span> --detach osixia/openldap</span><br></pre></td></tr></table></figure><p>配置LDAP域：<code>--env LDAP_DOMAIN=&quot;wandouduoduo.com&quot;</code></p><p>配置LDAP密码：<code>--env LDAP_ADMIN_PASSWORD=&quot;Sun123456&quot;</code></p><p>默认登录用户名：<code>admin</code></p><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><h4 id="LDAP-Admin客户端"><a href="#LDAP-Admin客户端" class="headerlink" title="LDAP Admin客户端"></a>LDAP Admin客户端</h4><p>Ldap Admin是一个用于LDAP目录管理的免费Windows LDAP客户端和管理工具。此应用程序允许您在LDAP服务器上浏览，搜索，修改，创建和删除对象。它还支持更复杂的操作，例如目录复制和在远程服务器之间移动，并扩展常用编辑功能以支持特定对象类型（例如组和帐户）。</p><p>支持系统：<code>Winndows&amp;Linux</code></p><p><a href="http://www.ldapadmin.org/" target="_blank" rel="noopener">官网</a></p><p>下载安装LDAP Admin客户端，新增连接如下：</p><p><img src="/articles/931613a4/1.png" alt></p><p>连接成功即表明OpenLDAP安装成功。</p><h4 id="PHPLdapAdmin客户端"><a href="#PHPLdapAdmin客户端" class="headerlink" title="PHPLdapAdmin客户端"></a>PHPLdapAdmin客户端</h4><p>phpLDAPadmin（也称为PLA）是一个基于Web的LDAP客户端。它为LDAP服务器提供简单，随处可访问的多语言管理。</p><p>其分层树查看器和高级搜索功能使您可以直观地浏览和管理LDAP目录。由于它是一个Web应用程序，因此该LDAP浏览器可在许多平台上运行，使您可以从任何位置轻松管理LDAP服务器。</p><p>phpLDAPadmin是LDAP专业人员和新手的完美LDAP浏览器。其用户群主要由LDAP管理专业人员组成。</p><p><a href="http://phpldapadmin.sourceforge.net/wiki/index.php/Main_Page" target="_blank" rel="noopener">官网</a></p><h4 id="使用docker-安装-PHPLdapAdmin"><a href="#使用docker-安装-PHPLdapAdmin" class="headerlink" title="使用docker 安装 PHPLdapAdmin"></a>使用docker 安装 PHPLdapAdmin</h4><p><a href="https://github.com/osixia/docker-phpLDAPadmin" target="_blank" rel="noopener">https://github.com/osixia/docker-phpLDAPadmin</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --privileged -p 10004:80 --name myphpldapadmin --env PHPLDAPADMIN_HTTPS=<span class="literal">false</span> --env PHPLDAPADMIN_LDAP_HOSTS=172.17.0.6 --detach osixia/phpldapadmin</span><br></pre></td></tr></table></figure><p>配置的Ldap地址：<code>--env PHPLDAPADMIN_LDAP_HOSTS=172.17.0.6</code></p><p>配置不开启HTTPS：<code>--env PHPLDAPADMIN_HTTPS=false</code>（默认是true）</p><p>如果开启HTTPS，需要配置443端口映射：<code>-p 8443:443</code>，并采用https访问</p><p><strong>通过访问<a href="http://localhost:10004" target="_blank" rel="noopener">http://localhost:10004</a> 来管理，登陆界面</strong></p><p><img src="/articles/931613a4/2.png" alt></p><p><strong>点击login进行登录</strong></p><p><strong>Login DN：</strong><code>cn=admin,dc=wandouduoduo,dc=com</code></p><p><strong>Password：</strong><code>ldap123</code></p><p><strong>登录成功后如下：</strong></p><p><img src="/articles/931613a4/3.png" alt></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过本文可以快速搭建和使用openldap, 但是默认openldap是没有打开memerof功能的，如有兴趣，请参考</p><p><a href="https://wandouduoduo.github.io/articles/53f92c3c.html">OpenLDAP启用MemberOf</a></p><p><a href="https://blog.csdn.net/Michaelwubo/article/details/80525284" target="_blank" rel="noopener">ldapsearch用法</a></p>]]></content>
     
     <summary type="html">
     
@@ -125,17 +125,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>OpenLDAP启用MemberOf</title>
-    <link href="https://wandouduoduo.netlify.com/articles/53f92c3c.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/53f92c3c.html</id>
+    <link href="https://wandouduoduo.github.io/articles/53f92c3c.html"/>
+    <id>https://wandouduoduo.github.io/articles/53f92c3c.html</id>
     <published>2019-08-28T06:35:09.000Z</published>
     <updated>2019-09-04T07:41:09.131Z</updated>
     
@@ -147,21 +147,21 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>Centos7上配置最新版openldap服务多主模式(镜像模式)</title>
-    <link href="https://wandouduoduo.netlify.com/articles/3337f7d4.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/3337f7d4.html</id>
+    <link href="https://wandouduoduo.github.io/articles/3337f7d4.html"/>
+    <id>https://wandouduoduo.github.io/articles/3337f7d4.html</id>
     <published>2019-08-28T05:54:54.000Z</published>
     <updated>2019-08-28T11:26:27.212Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在实际产线运维环境下，使用最多的就是镜像模式，当然多IDC机房的情况下也会结合使用其他模式，例如主从模式。</p><p>镜像模式只允许2个主节点，如果超过2个节点其他节点只会同步获取前面2个节点的配置（这个是博客文档里面看到的，没有验证）</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><table><thead><tr><th align="center">主机名称</th><th align="center">地址</th><th align="center">版本</th><th align="center">角色</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">sysldap-shylf-1</td><td align="center">10.116.72.11</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">sysldap-shylf-2</td><td align="center">10.116.72.12</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">systerm-shylf-1</td><td align="center">10.116.72.15</td><td align="center">CentOS7.6 min</td><td align="center">openLdap client</td><td align="center"></td></tr></tbody></table><p>前提条件，为了方便配置防火墙以及禁用selinux<br>配置示例:dc=example,dc=com</p><a id="more"></a><h2 id="OpenLDAP服务基础配置"><a href="#OpenLDAP服务基础配置" class="headerlink" title="OpenLDAP服务基础配置"></a>OpenLDAP服务基础配置</h2><p>本文档假设2个节点都已经设置好了<a href="https://wandouduoduo.github.io/articles/be8d00d3.html#more" target="_blank" rel="noopener">OpenLDAP服务基础配置</a></p><h2 id="配置OpenLDAP-双主结构（mirrormode）"><a href="#配置OpenLDAP-双主结构（mirrormode）" class="headerlink" title="配置OpenLDAP 双主结构（mirrormode）"></a>配置OpenLDAP 双主结构（mirrormode）</h2><h3 id="OpenLDAP的2个主节点都需要添加模块syncprov"><a href="#OpenLDAP的2个主节点都需要添加模块syncprov" class="headerlink" title="OpenLDAP的2个主节点都需要添加模块syncprov"></a>OpenLDAP的2个主节点都需要添加模块syncprov</h3><p><strong><code>2个主节点都需要执行</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vim mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=module,cn=config</span><br><span class="line">objectClass: olcModuleList</span><br><span class="line">cn: module</span><br><span class="line">olcModulePath: /usr/lib64/openldap</span><br><span class="line">olcModuleLoad: syncprov.la</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------</span></span><br><span class="line">vim syncprov.ldif</span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line">olcSpSessionLog: 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov.ldif</span><br></pre></td></tr></table></figure><h3 id="主节点1配置-10-116-72-11-同步"><a href="#主节点1配置-10-116-72-11-同步" class="headerlink" title="主节点1配置(10.116.72.11)同步"></a>主节点1配置(10.116.72.11)同步</h3><p>需要根据实际情况修改的参数：<br>provider 同步来源，也就是主节点，可以包含多个主节点<br>binddn 主节点管理账户<br>credentials 主节点管理账户密码<br>searchbase 根目录<br><strong><code>特别主机：2个主节点属性 olcServerID的值不能相同，provider指向对方</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">vim master_node_1.ldif</span><br><span class="line">dn: cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">replace: olcServerID</span><br><span class="line">olcServerID: 0</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.12:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line">-</span><br><span class="line">add: olcMirrorMode</span><br><span class="line">olcMirrorMode: TRUE</span><br><span class="line"></span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: add</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f master_node_1.ldif</span><br></pre></td></tr></table></figure><h3 id="主节点2配置-10-116-72-12-同步"><a href="#主节点2配置-10-116-72-12-同步" class="headerlink" title="主节点2配置(10.116.72.12)同步"></a>主节点2配置(10.116.72.12)同步</h3><p><strong>特别主机：2个主节点属性 olcServerID的值不能相同，provider指向对方</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">vim master_node_2.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">replace: olcServerID</span><br><span class="line">olcServerID: 1</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.11:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line">-</span><br><span class="line">add: olcMirrorMode</span><br><span class="line">olcMirrorMode: TRUE</span><br><span class="line"></span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: add</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f master_node_2.ldif</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">从服务节点验证数据是否同步正常</span><br><span class="line">ldapsearch -x -b <span class="string">'ou=People,dc=example,dc=com'</span></span><br><span class="line">[输出内容省略]</span><br><span class="line"></span><br><span class="line">验证是OK的。</span><br></pre></td></tr></table></figure><h3 id="远程主机配置（客户端-10-116-72-15）"><a href="#远程主机配置（客户端-10-116-72-15）" class="headerlink" title="远程主机配置（客户端 10.116.72.15）"></a>远程主机配置（客户端 10.116.72.15）</h3><p>客户端 可以指定多个openldap uri 修改配置如下（当然也可以只配置其中1个）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authconfig --enableldap --enableldapauth --ldapserver=<span class="string">"10.116.72.11,10.116.72.12"</span> --ldapbasedn=<span class="string">"dc=example,dc=com"</span> --update</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh  800001@10.116.72.15</span><br><span class="line">Warning: Permanently added <span class="string">'10.116.72.15'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">800001@10.116.72.15<span class="string">'s password: </span></span><br><span class="line"><span class="string">Last login: Thu Jul  4 17:59:32 2019 from 10.116.71.200</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[800001@systerm-shylf-1 ~]$</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在实际产线运维环境下，使用最多的就是镜像模式，当然多IDC机房的情况下也会结合使用其他模式，例如主从模式。</p><p>镜像模式只允许2个主节点，如果超过2个节点其他节点只会同步获取前面2个节点的配置（这个是博客文档里面看到的，没有验证）</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><table><thead><tr><th align="center">主机名称</th><th align="center">地址</th><th align="center">版本</th><th align="center">角色</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">sysldap-shylf-1</td><td align="center">10.116.72.11</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">sysldap-shylf-2</td><td align="center">10.116.72.12</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">systerm-shylf-1</td><td align="center">10.116.72.15</td><td align="center">CentOS7.6 min</td><td align="center">openLdap client</td><td align="center"></td></tr></tbody></table><p>前提条件，为了方便配置防火墙以及禁用selinux<br>配置示例:dc=example,dc=com</p><a id="more"></a><h2 id="OpenLDAP服务基础配置"><a href="#OpenLDAP服务基础配置" class="headerlink" title="OpenLDAP服务基础配置"></a>OpenLDAP服务基础配置</h2><p>本文档假设2个节点都已经设置好了<a href="https://wandouduoduo.github.io/articles/be8d00d3.html#more">OpenLDAP服务基础配置</a></p><h2 id="配置OpenLDAP-双主结构（mirrormode）"><a href="#配置OpenLDAP-双主结构（mirrormode）" class="headerlink" title="配置OpenLDAP 双主结构（mirrormode）"></a>配置OpenLDAP 双主结构（mirrormode）</h2><h3 id="OpenLDAP的2个主节点都需要添加模块syncprov"><a href="#OpenLDAP的2个主节点都需要添加模块syncprov" class="headerlink" title="OpenLDAP的2个主节点都需要添加模块syncprov"></a>OpenLDAP的2个主节点都需要添加模块syncprov</h3><p><strong><code>2个主节点都需要执行</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vim mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=module,cn=config</span><br><span class="line">objectClass: olcModuleList</span><br><span class="line">cn: module</span><br><span class="line">olcModulePath: /usr/lib64/openldap</span><br><span class="line">olcModuleLoad: syncprov.la</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------</span></span><br><span class="line">vim syncprov.ldif</span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line">olcSpSessionLog: 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov.ldif</span><br></pre></td></tr></table></figure><h3 id="主节点1配置-10-116-72-11-同步"><a href="#主节点1配置-10-116-72-11-同步" class="headerlink" title="主节点1配置(10.116.72.11)同步"></a>主节点1配置(10.116.72.11)同步</h3><p>需要根据实际情况修改的参数：<br>provider 同步来源，也就是主节点，可以包含多个主节点<br>binddn 主节点管理账户<br>credentials 主节点管理账户密码<br>searchbase 根目录<br><strong><code>特别主机：2个主节点属性 olcServerID的值不能相同，provider指向对方</code></strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">vim master_node_1.ldif</span><br><span class="line">dn: cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">replace: olcServerID</span><br><span class="line">olcServerID: 0</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.12:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line">-</span><br><span class="line">add: olcMirrorMode</span><br><span class="line">olcMirrorMode: TRUE</span><br><span class="line"></span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: add</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f master_node_1.ldif</span><br></pre></td></tr></table></figure><h3 id="主节点2配置-10-116-72-12-同步"><a href="#主节点2配置-10-116-72-12-同步" class="headerlink" title="主节点2配置(10.116.72.12)同步"></a>主节点2配置(10.116.72.12)同步</h3><p><strong>特别主机：2个主节点属性 olcServerID的值不能相同，provider指向对方</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">vim master_node_2.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">replace: olcServerID</span><br><span class="line">olcServerID: 1</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.11:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line">-</span><br><span class="line">add: olcMirrorMode</span><br><span class="line">olcMirrorMode: TRUE</span><br><span class="line"></span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: add</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f master_node_2.ldif</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">从服务节点验证数据是否同步正常</span><br><span class="line">ldapsearch -x -b <span class="string">'ou=People,dc=example,dc=com'</span></span><br><span class="line">[输出内容省略]</span><br><span class="line"></span><br><span class="line">验证是OK的。</span><br></pre></td></tr></table></figure><h3 id="远程主机配置（客户端-10-116-72-15）"><a href="#远程主机配置（客户端-10-116-72-15）" class="headerlink" title="远程主机配置（客户端 10.116.72.15）"></a>远程主机配置（客户端 10.116.72.15）</h3><p>客户端 可以指定多个openldap uri 修改配置如下（当然也可以只配置其中1个）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authconfig --enableldap --enableldapauth --ldapserver=<span class="string">"10.116.72.11,10.116.72.12"</span> --ldapbasedn=<span class="string">"dc=example,dc=com"</span> --update</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh  800001@10.116.72.15</span><br><span class="line">Warning: Permanently added <span class="string">'10.116.72.15'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">800001@10.116.72.15<span class="string">'s password: </span></span><br><span class="line"><span class="string">Last login: Thu Jul  4 17:59:32 2019 from 10.116.71.200</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[800001@systerm-shylf-1 ~]$</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -203,21 +203,21 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>Centos7上配置最新版openldap服务主从架构</title>
-    <link href="https://wandouduoduo.netlify.com/articles/760f3c02.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/760f3c02.html</id>
+    <link href="https://wandouduoduo.github.io/articles/760f3c02.html"/>
+    <id>https://wandouduoduo.github.io/articles/760f3c02.html</id>
     <published>2019-08-28T05:44:44.000Z</published>
     <updated>2019-08-28T06:06:51.100Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在实际产线运维环境下，可能包含多个IDC机房，每个机房的主机都需要通过OpenLDAP体系管理运维账户登录。这种情况下可以配置OpenLDAP的主从架构实现(当然同一个机房也可以配置主从架构，客户端配置ldap uri指定多个地址)。主openldap节点称为“provider”可读可写，从openldap节点称为“consumer”只读。</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><table><thead><tr><th align="center">主机名称</th><th align="center">地址</th><th align="center">版本</th><th align="center">角色</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">sysldap-shylf-1</td><td align="center">10.116.72.11</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">sysldap-shylf-2</td><td align="center">10.116.72.12</td><td align="center">CentOS7.6 min</td><td align="center">openLdap</td><td align="center">从节点，可以配置多从的</td></tr><tr><td align="center">systerm-shylf-1</td><td align="center">10.116.72.15</td><td align="center">CentOS7.6 min</td><td align="center">openLdap client</td><td align="center"></td></tr></tbody></table><p>前提条件，为了方便配置防火墙以及禁用selinux<br>配置示例:dc=example,dc=com</p><a id="more"></a><h2 id="OpenLDAP服务基础配置"><a href="#OpenLDAP服务基础配置" class="headerlink" title="OpenLDAP服务基础配置"></a>OpenLDAP服务基础配置</h2><p>本文档假设2个节点都已经设置好了<a href="https://wandouduoduo.github.io/articles/be8d00d3.html#more" target="_blank" rel="noopener">OpenLDAP服务基础配置</a></p><h2 id="配置OpenLDAP主从结构"><a href="#配置OpenLDAP主从结构" class="headerlink" title="配置OpenLDAP主从结构"></a>配置OpenLDAP主从结构</h2><h3 id="主节点配置-10-116-72-11-，添加模块syncprov"><a href="#主节点配置-10-116-72-11-，添加模块syncprov" class="headerlink" title="主节点配置(10.116.72.11)，添加模块syncprov"></a>主节点配置(10.116.72.11)，添加模块syncprov</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vim mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=module,cn=config</span><br><span class="line">objectClass: olcModuleList</span><br><span class="line">cn: module</span><br><span class="line">olcModulePath: /usr/lib64/openldap</span><br><span class="line">olcModuleLoad: syncprov.la</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------</span></span><br><span class="line">vim syncprov.ldif</span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line">olcSpSessionLog: 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov.ldif</span><br></pre></td></tr></table></figure><h3 id="从节点配置-10-116-72-12-同步"><a href="#从节点配置-10-116-72-12-同步" class="headerlink" title="从节点配置(10.116.72.12)同步"></a>从节点配置(10.116.72.12)同步</h3><p>需要根据实际情况修改的参数：<br>provider 同步来源，也就是主节点，可以包含多个主节点<br>binddn 主节点管理账户<br>credentials 主节点管理账户密码<br>searchbase 根目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vim syncrepl.ldif</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.11:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncrepl.ldif</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">从服务节点验证数据是否同步正常</span><br><span class="line">ldapsearch -x -b &apos;ou=People,dc=example,dc=com&apos;</span><br><span class="line">[输出内容省略]</span><br><span class="line"></span><br><span class="line">验证是OK的。</span><br></pre></td></tr></table></figure><h3 id="远程主机配置（客户端-10-116-72-15）"><a href="#远程主机配置（客户端-10-116-72-15）" class="headerlink" title="远程主机配置（客户端 10.116.72.15）"></a>远程主机配置（客户端 10.116.72.15）</h3><p>客户端 可以指定多个openldap uri 修改配置如下（当然也可以只配置其中1个）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authconfig --enableldap --enableldapauth --ldapserver=<span class="string">"10.116.72.11,10.116.72.12"</span> --ldapbasedn=<span class="string">"dc=example,dc=com"</span> --update</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh  800001@10.116.72.15</span><br><span class="line">Warning: Permanently added <span class="string">'10.116.72.15'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">800001@10.116.72.15<span class="string">'s password: </span></span><br><span class="line"><span class="string">Last login: Thu Jul  4 17:59:32 2019 from 10.116.71.200</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[800001@systerm-shylf-1 ~]$</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在实际产线运维环境下，可能包含多个IDC机房，每个机房的主机都需要通过OpenLDAP体系管理运维账户登录。这种情况下可以配置OpenLDAP的主从架构实现(当然同一个机房也可以配置主从架构，客户端配置ldap uri指定多个地址)。主openldap节点称为“provider”可读可写，从openldap节点称为“consumer”只读。</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><table><thead><tr><th align="center">主机名称</th><th align="center">地址</th><th align="center">版本</th><th align="center">角色</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">sysldap-shylf-1</td><td align="center">10.116.72.11</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">sysldap-shylf-2</td><td align="center">10.116.72.12</td><td align="center">CentOS7.6 min</td><td align="center">openLdap</td><td align="center">从节点，可以配置多从的</td></tr><tr><td align="center">systerm-shylf-1</td><td align="center">10.116.72.15</td><td align="center">CentOS7.6 min</td><td align="center">openLdap client</td><td align="center"></td></tr></tbody></table><p>前提条件，为了方便配置防火墙以及禁用selinux<br>配置示例:dc=example,dc=com</p><a id="more"></a><h2 id="OpenLDAP服务基础配置"><a href="#OpenLDAP服务基础配置" class="headerlink" title="OpenLDAP服务基础配置"></a>OpenLDAP服务基础配置</h2><p>本文档假设2个节点都已经设置好了<a href="https://wandouduoduo.github.io/articles/be8d00d3.html#more">OpenLDAP服务基础配置</a></p><h2 id="配置OpenLDAP主从结构"><a href="#配置OpenLDAP主从结构" class="headerlink" title="配置OpenLDAP主从结构"></a>配置OpenLDAP主从结构</h2><h3 id="主节点配置-10-116-72-11-，添加模块syncprov"><a href="#主节点配置-10-116-72-11-，添加模块syncprov" class="headerlink" title="主节点配置(10.116.72.11)，添加模块syncprov"></a>主节点配置(10.116.72.11)，添加模块syncprov</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vim mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=module,cn=config</span><br><span class="line">objectClass: olcModuleList</span><br><span class="line">cn: module</span><br><span class="line">olcModulePath: /usr/lib64/openldap</span><br><span class="line">olcModuleLoad: syncprov.la</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------</span></span><br><span class="line">vim syncprov.ldif</span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line">olcSpSessionLog: 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov.ldif</span><br></pre></td></tr></table></figure><h3 id="从节点配置-10-116-72-12-同步"><a href="#从节点配置-10-116-72-12-同步" class="headerlink" title="从节点配置(10.116.72.12)同步"></a>从节点配置(10.116.72.12)同步</h3><p>需要根据实际情况修改的参数：<br>provider 同步来源，也就是主节点，可以包含多个主节点<br>binddn 主节点管理账户<br>credentials 主节点管理账户密码<br>searchbase 根目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vim syncrepl.ldif</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.11:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncrepl.ldif</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">从服务节点验证数据是否同步正常</span><br><span class="line">ldapsearch -x -b &apos;ou=People,dc=example,dc=com&apos;</span><br><span class="line">[输出内容省略]</span><br><span class="line"></span><br><span class="line">验证是OK的。</span><br></pre></td></tr></table></figure><h3 id="远程主机配置（客户端-10-116-72-15）"><a href="#远程主机配置（客户端-10-116-72-15）" class="headerlink" title="远程主机配置（客户端 10.116.72.15）"></a>远程主机配置（客户端 10.116.72.15）</h3><p>客户端 可以指定多个openldap uri 修改配置如下（当然也可以只配置其中1个）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authconfig --enableldap --enableldapauth --ldapserver=<span class="string">"10.116.72.11,10.116.72.12"</span> --ldapbasedn=<span class="string">"dc=example,dc=com"</span> --update</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh  800001@10.116.72.15</span><br><span class="line">Warning: Permanently added <span class="string">'10.116.72.15'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">800001@10.116.72.15<span class="string">'s password: </span></span><br><span class="line"><span class="string">Last login: Thu Jul  4 17:59:32 2019 from 10.116.71.200</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[800001@systerm-shylf-1 ~]$</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -258,17 +258,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>Centos7上单节点安装配置最新版openldap服务</title>
-    <link href="https://wandouduoduo.netlify.com/articles/be8d00d3.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/be8d00d3.html</id>
+    <link href="https://wandouduoduo.github.io/articles/be8d00d3.html"/>
+    <id>https://wandouduoduo.github.io/articles/be8d00d3.html</id>
     <published>2019-08-28T03:31:13.000Z</published>
     <updated>2019-08-28T04:34:44.918Z</updated>
     
@@ -283,17 +283,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>基于OpenLDAP_MirrorMode的OpenLDAP高可用</title>
-    <link href="https://wandouduoduo.netlify.com/articles/1c70a485.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/1c70a485.html</id>
+    <link href="https://wandouduoduo.github.io/articles/1c70a485.html"/>
+    <id>https://wandouduoduo.github.io/articles/1c70a485.html</id>
     <published>2019-08-19T04:06:31.000Z</published>
     <updated>2019-08-28T06:06:19.186Z</updated>
     
@@ -305,17 +305,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
+      <category term="Openldap" scheme="https://wandouduoduo.github.io/tags/Openldap/"/>
     
   </entry>
   
   <entry>
     <title>自制yum源离线安装开发代码时的对应版本ansible</title>
-    <link href="https://wandouduoduo.netlify.com/articles/fe96187b.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/fe96187b.html</id>
+    <link href="https://wandouduoduo.github.io/articles/fe96187b.html"/>
+    <id>https://wandouduoduo.github.io/articles/fe96187b.html</id>
     <published>2019-08-16T08:59:17.000Z</published>
     <updated>2019-08-16T10:03:05.355Z</updated>
     
@@ -327,17 +327,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Ansible" scheme="https://wandouduoduo.netlify.com/tags/Ansible/"/>
+      <category term="Ansible" scheme="https://wandouduoduo.github.io/tags/Ansible/"/>
     
   </entry>
   
   <entry>
     <title>Docker安装Confluence(破解版)</title>
-    <link href="https://wandouduoduo.netlify.com/articles/f9f96949.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/f9f96949.html</id>
+    <link href="https://wandouduoduo.github.io/articles/f9f96949.html"/>
+    <id>https://wandouduoduo.github.io/articles/f9f96949.html</id>
     <published>2019-07-30T10:17:29.000Z</published>
     <updated>2019-08-07T02:06:43.496Z</updated>
     
@@ -349,17 +349,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Docker" scheme="https://wandouduoduo.netlify.com/tags/Docker/"/>
+      <category term="Docker" scheme="https://wandouduoduo.github.io/tags/Docker/"/>
     
   </entry>
   
   <entry>
     <title>Redis-cluster集群[四]:redis-cluster集群配置</title>
-    <link href="https://wandouduoduo.netlify.com/articles/d2e62a87.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/d2e62a87.html</id>
+    <link href="https://wandouduoduo.github.io/articles/d2e62a87.html"/>
+    <id>https://wandouduoduo.github.io/articles/d2e62a87.html</id>
     <published>2019-07-30T10:01:08.000Z</published>
     <updated>2019-08-07T02:06:43.665Z</updated>
     
@@ -377,17 +377,17 @@
     
     </summary>
     
-      <category term="数据库运维" scheme="https://wandouduoduo.netlify.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
+      <category term="数据库运维" scheme="https://wandouduoduo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Redis" scheme="https://wandouduoduo.netlify.com/tags/Redis/"/>
+      <category term="Redis" scheme="https://wandouduoduo.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>Redis-cluster集群[三]:redis主从复制</title>
-    <link href="https://wandouduoduo.netlify.com/articles/1e52f2e4.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/1e52f2e4.html</id>
+    <link href="https://wandouduoduo.github.io/articles/1e52f2e4.html"/>
+    <id>https://wandouduoduo.github.io/articles/1e52f2e4.html</id>
     <published>2019-07-30T09:54:51.000Z</published>
     <updated>2019-08-07T02:06:43.664Z</updated>
     
@@ -405,17 +405,17 @@
     
     </summary>
     
-      <category term="数据库运维" scheme="https://wandouduoduo.netlify.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
+      <category term="数据库运维" scheme="https://wandouduoduo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Redis" scheme="https://wandouduoduo.netlify.com/tags/Redis/"/>
+      <category term="Redis" scheme="https://wandouduoduo.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>Redis-cluster集群[二]:redis持久化</title>
-    <link href="https://wandouduoduo.netlify.com/articles/8d5e3656.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/8d5e3656.html</id>
+    <link href="https://wandouduoduo.github.io/articles/8d5e3656.html"/>
+    <id>https://wandouduoduo.github.io/articles/8d5e3656.html</id>
     <published>2019-07-30T07:14:21.000Z</published>
     <updated>2019-08-07T02:06:43.665Z</updated>
     
@@ -427,17 +427,17 @@
     
     </summary>
     
-      <category term="数据库运维" scheme="https://wandouduoduo.netlify.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
+      <category term="数据库运维" scheme="https://wandouduoduo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Redis" scheme="https://wandouduoduo.netlify.com/tags/Redis/"/>
+      <category term="Redis" scheme="https://wandouduoduo.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>Redis-cluster集群[一]:redis安装及redis数据类型</title>
-    <link href="https://wandouduoduo.netlify.com/articles/88f598bf.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/88f598bf.html</id>
+    <link href="https://wandouduoduo.github.io/articles/88f598bf.html"/>
+    <id>https://wandouduoduo.github.io/articles/88f598bf.html</id>
     <published>2019-07-30T06:25:29.000Z</published>
     <updated>2019-08-07T02:06:43.663Z</updated>
     
@@ -456,17 +456,17 @@
     
     </summary>
     
-      <category term="数据库运维" scheme="https://wandouduoduo.netlify.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
+      <category term="数据库运维" scheme="https://wandouduoduo.github.io/categories/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Redis" scheme="https://wandouduoduo.netlify.com/tags/Redis/"/>
+      <category term="Redis" scheme="https://wandouduoduo.github.io/tags/Redis/"/>
     
   </entry>
   
   <entry>
     <title>Python之进程线程协程</title>
-    <link href="https://wandouduoduo.netlify.com/articles/fa6bf072.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/fa6bf072.html</id>
+    <link href="https://wandouduoduo.github.io/articles/fa6bf072.html"/>
+    <id>https://wandouduoduo.github.io/articles/fa6bf072.html</id>
     <published>2019-07-29T01:37:25.000Z</published>
     <updated>2019-08-07T02:06:43.659Z</updated>
     
@@ -481,19 +481,19 @@
     
     </summary>
     
-      <category term="运维开发" scheme="https://wandouduoduo.netlify.com/categories/%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91/"/>
+      <category term="运维开发" scheme="https://wandouduoduo.github.io/categories/%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91/"/>
     
-      <category term="语言积累" scheme="https://wandouduoduo.netlify.com/categories/%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91/%E8%AF%AD%E8%A8%80%E7%A7%AF%E7%B4%AF/"/>
+      <category term="语言积累" scheme="https://wandouduoduo.github.io/categories/%E8%BF%90%E7%BB%B4%E5%BC%80%E5%8F%91/%E8%AF%AD%E8%A8%80%E7%A7%AF%E7%B4%AF/"/>
     
     
-      <category term="Python" scheme="https://wandouduoduo.netlify.com/tags/Python/"/>
+      <category term="Python" scheme="https://wandouduoduo.github.io/tags/Python/"/>
     
   </entry>
   
   <entry>
     <title>Java定时器设定详解</title>
-    <link href="https://wandouduoduo.netlify.com/articles/d0e68aab.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/d0e68aab.html</id>
+    <link href="https://wandouduoduo.github.io/articles/d0e68aab.html"/>
+    <id>https://wandouduoduo.github.io/articles/d0e68aab.html</id>
     <published>2019-07-29T01:29:39.000Z</published>
     <updated>2019-08-07T02:06:43.611Z</updated>
     
@@ -505,17 +505,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Java" scheme="https://wandouduoduo.netlify.com/tags/Java/"/>
+      <category term="Java" scheme="https://wandouduoduo.github.io/tags/Java/"/>
     
   </entry>
   
   <entry>
     <title>lsof文件句柄工具</title>
-    <link href="https://wandouduoduo.netlify.com/articles/6915627d.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/6915627d.html</id>
+    <link href="https://wandouduoduo.github.io/articles/6915627d.html"/>
+    <id>https://wandouduoduo.github.io/articles/6915627d.html</id>
     <published>2019-07-29T01:25:02.000Z</published>
     <updated>2019-08-07T02:06:43.800Z</updated>
     
@@ -528,17 +528,17 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Linux" scheme="https://wandouduoduo.netlify.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://wandouduoduo.github.io/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>tmux参考手册</title>
-    <link href="https://wandouduoduo.netlify.com/articles/a5e32f5.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/a5e32f5.html</id>
+    <link href="https://wandouduoduo.github.io/articles/a5e32f5.html"/>
+    <id>https://wandouduoduo.github.io/articles/a5e32f5.html</id>
     <published>2019-07-29T01:21:26.000Z</published>
     <updated>2019-08-07T02:06:43.843Z</updated>
     
@@ -550,10 +550,10 @@
     
     </summary>
     
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
+      <category term="应用运维" scheme="https://wandouduoduo.github.io/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
     
     
-      <category term="Linux" scheme="https://wandouduoduo.netlify.com/tags/Linux/"/>
+      <category term="Linux" scheme="https://wandouduoduo.github.io/tags/Linux/"/>
     
   </entry>
   
