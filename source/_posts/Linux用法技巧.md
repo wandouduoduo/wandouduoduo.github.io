@@ -28,7 +28,7 @@ sudo -H -u www bash -c 'nohup /home/web/ke/upfileserver /home/web/ke/up/conf.jso
 ### 统计机器中网络连接各个状态个数
 
 ```shell
-netstat` `-an | ``awk` `'/^tcp/ {++S[$NF]}  END {for (a in S) print a,S[a]} '
+netstat -an | awk '/^tcp/ {++S[$NF]}  END {for (a in S) print a,S[a]} '
 ```
 
 ### 删除乱码
