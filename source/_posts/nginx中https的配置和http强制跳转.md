@@ -1,11 +1,11 @@
 ---
-title: nginx https的配置和http强制跳转
+title: nginx中https的配置和http强制跳转
 categories:
   - 应用运维
 tags:
   - Nginx
 copyright: true
-abbrlink: d81e2889
+abbrlink: ebb4cd52
 date: 2019-09-20 19:11:13
 ---
 
@@ -13,9 +13,7 @@ date: 2019-09-20 19:11:13
 
 随着现在网络互联网的告诉发展，给人们带来的很多便利，但也出现了很多隐患。作为站长，网站的安全至关重要。怎么做才安全呢？建议把http改为https，因为增加了证书认证，相对来说就会安全很多，并且对用户的体验也比较好，谁也不想访问个网站，在地址栏中显示不安全或直接显示不安全等。
 
-![](nginx-https的配置和http强制跳转/1.png)
-
-![](nginx-https的配置和http强制跳转/2.jpg)
+![](nginx中https的配置和http强制跳转/1.png)
 
 <!--more-->
 
@@ -29,7 +27,7 @@ centos7
 
 ## 前提
 
-1，nginx有安装ssl模块，这样才可以使用证书。
+1，nginx有安装ssl模块，这样才可以使用证书。[参考文档](https://wandouduoduo.github.io/articles/88000f44.html)
 
 2，购买或申请获取的证书文件。
 
