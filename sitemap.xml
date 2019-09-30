@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wandouduoduo.netlify.com/guide/index.html</loc>
+    
+    <lastmod>2019-09-30T03:02:51.699Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wandouduoduo.netlify.com/articles/ac0d3377.html</loc>
     
     <lastmod>2019-09-30T02:46:42.787Z</lastmod>
@@ -142,13 +149,6 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/guide/index.html</loc>
-    
-    <lastmod>2019-08-07T02:06:44.135Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wandouduoduo.netlify.com/categories/index.html</loc>
     
     <lastmod>2019-08-07T02:06:44.134Z</lastmod>
@@ -184,14 +184,14 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/93a903d8.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/b45f8ddd.html</loc>
     
     <lastmod>2019-08-07T02:06:44.085Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/b45f8ddd.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/93a903d8.html</loc>
     
     <lastmod>2019-08-07T02:06:44.085Z</lastmod>
     
@@ -303,14 +303,14 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/9bd04711.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/fd3e6049.html</loc>
     
     <lastmod>2019-08-07T02:06:43.864Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/fd3e6049.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/9bd04711.html</loc>
     
     <lastmod>2019-08-07T02:06:43.864Z</lastmod>
     
@@ -352,7 +352,7 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/f13b8f05.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/e7844ae3.html</loc>
     
     <lastmod>2019-08-07T02:06:43.842Z</lastmod>
     
@@ -366,9 +366,16 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/e7844ae3.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/f13b8f05.html</loc>
     
     <lastmod>2019-08-07T02:06:43.842Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wandouduoduo.netlify.com/articles/81de25e2.html</loc>
+    
+    <lastmod>2019-08-07T02:06:43.841Z</lastmod>
     
   </url>
   
@@ -381,13 +388,6 @@
   
   <url>
     <loc>https://wandouduoduo.netlify.com/articles/3f430996.html</loc>
-    
-    <lastmod>2019-08-07T02:06:43.841Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wandouduoduo.netlify.com/articles/81de25e2.html</loc>
     
     <lastmod>2019-08-07T02:06:43.841Z</lastmod>
     
@@ -457,13 +457,6 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/1652fdb7.html</loc>
-    
-    <lastmod>2019-08-07T02:06:43.739Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wandouduoduo.netlify.com/articles/68ead32e.html</loc>
     
     <lastmod>2019-08-07T02:06:43.739Z</lastmod>
@@ -471,14 +464,21 @@
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/e4025678.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/1652fdb7.html</loc>
+    
+    <lastmod>2019-08-07T02:06:43.739Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wandouduoduo.netlify.com/articles/5806080f.html</loc>
     
     <lastmod>2019-08-07T02:06:43.738Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://wandouduoduo.netlify.com/articles/5806080f.html</loc>
+    <loc>https://wandouduoduo.netlify.com/articles/e4025678.html</loc>
     
     <lastmod>2019-08-07T02:06:43.738Z</lastmod>
     
