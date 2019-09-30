@@ -23,7 +23,8 @@ date: 2019-07-25 15:07:14
 #### yum安装docker
 
 ```shell
-`yum update ``# 更新yum``yum ``install` `docker ``# yum安装docker`
+yum update # 更新yum
+yum install docker # yum安装docker`
 ```
 
 #### 开启镜像加速
@@ -31,19 +32,21 @@ date: 2019-07-25 15:07:14
 由于国内网络问题拉取 Docker 镜像会十分缓慢，所以可以添加网易镜像地址：http://hub-mirror.c.163.com 加速。
 
 ```shell
-`vi` `/etc/docker/daemon``.json`
+vi /etc/docker/daemon.json
 ```
 
 将其中的内容替换为如下，当然你可以添加其它镜像地址。
 
 ```json
-`{``  ``"registry-mirrors"``: [``"http://hub-mirror.c.163.com"``]``}`
+{"registry-mirrors": ["http://hub-mirror.c.163.com"]}
 ```
 
 #### 启动docker
 
 ```shell
-`docker --version ``# 查看docker版本``service docker start ``# 启动docker``ps` `-ef | ``grep` `docker ``# 查看docker进程是否正常启动`
+docker --version # 查看docker版本
+service docker start # 启动docker
+ps -ef | grep docker # 查看docker进程是否正常启动
 ```
 
 ## 安装数据库PostgreSQL
@@ -53,7 +56,7 @@ date: 2019-07-25 15:07:14
 #### 安装PostgreSQL
 
 ```shell
-`docker run --name postgresdb -p 5432:5432 -e POSTGRES_PASSWORD=W**** -d postgres`
+docker run --name postgresdb -p 5432:5432 -e POSTGRES_PASSWORD=W**** -d postgres
 ```
 
 注：
@@ -64,7 +67,11 @@ date: 2019-07-25 15:07:14
 #### 进入docker容器并创建confluence数据库
 
 ```shell
-`docker ``exec` `-it postgresdb ``bash` `# 进入docker容器``psql -U postgres ``\l``CREATE DATABASE confluence WITH OWNER postgres; ``\q`
+docker exec -it postgresdb bash # 进入docker容器
+psql -U postgres 
+\l
+CREATE DATABASE confluence WITH OWNER postgres; 
+\q
 ```
 
 ## 安装wiki Confluence
@@ -76,25 +83,28 @@ date: 2019-07-25 15:07:14
 #### 安装wiki Confluence
 
 ```shell
-`docker run -d --name confluence -p 8090:8090 --link postgresdb:db --user root:root cptactionhank``/atlassian-confluence``:latest`
+docker run -d --name confluence -p 8090:8090 --link postgresdb:db --user root:root cptactionhank /atlassian-confluence:latest
 ```
 
 以上命令将在主机上开放8090端口，如果想使用80端口访问wiki请使用一下命令安装
 
 ```shell
-`docker run -d --name confluence -p 80:8090 --link postgresdb:db --user root:root cptactionhank``/atlassian-confluence``:latest`
+docker run -d --name confluence -p 80:8090 --link postgresdb:db --user root:root cptactionhank /atlassian-confluence:latest
 ```
 
 #### 检查confluence是否启动
 
 ```shell
-`docker ``ps` `# 列出运行的容器`
+docker ps # 列出运行的容器
 ```
 
 可以看到刚才安装的两个容器，启动 wiki confluence
 
 ```shell
-`docker start postgresdb ``# 启动数据库 postgresdb``docker start confluence ``# 启动 Wiki confluence``docker ``ps` `# 列出运行的容器`
+docker start postgresdb # 启动数据库 
+postgresdb
+docker start confluence # 启动 Wiki confluence``docker 
+ps # 列出运行的容器
 ```
 
 可以看到 wiki confluence已经启动
@@ -130,7 +140,7 @@ find -name "*decoder*" # 查找名称中包括 decoder 的文件
 将decoder.jar文件从容器中复制出来，其中 “confluence:” 是Wiki confluence容器名称，atlassian-extras-decoder-v2-3.3.0.jar 是安装版本wiki的decode文件
 
 ```shell
-`docker ``cp`  `confluence:``/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3``.3.0.jar .`
+docker cp  confluence:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar .
 ```
 
 #### 破解
@@ -164,7 +174,7 @@ find -name "*decoder*" # 查找名称中包括 decoder 的文件
 #### 将破解后的文件复制回 confluence 容器
 
 ```shell
-`docker ``cp` `atlassian-extras-decoder-v2-3.3.0.jar  confluence:``/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3``.3.0.jar`
+docker cp atlassian-extras-decoder-v2-3.3.0.jar  confluence:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar
 ```
 
 #### 启动 confluence 容器
@@ -187,7 +197,7 @@ http://ip
 
 #### 点击 ”My own database“ 后点击 next
 
-![](/Users/Sun/blog/sunhexo/source/_posts/Docker中安装Wiki软件Confluence/7.png)
+![](Docker中安装Wiki软件Confluence\7.png)
 
 #### 输入数据库连接信息，用户名密码是之前创建数据库中的用户名和密码
 
@@ -238,19 +248,22 @@ docker exec -it confluence /bin/bash # 进入docker容器 confluence
 修改java配置
 
 ```shell
-`vi` `/opt/atlassian/confluence/bin/catalina``.sh`
+vi /opt/atlassian/confluence/bin/catalina.sh
 ```
 
 在 “cygwin=false” 上面添加如下内容，最大内存为2G
 
 ```shell
-`JAVA_OPTS=``"-Xms256m -Xmx2048m -XX:PermSize=128m -XX:MaxPermSize=512m"``或``CATALINA_OPTS=``"-Xms256m -Xmx2048m -XX:PermSize=128m -XX:MaxPermSize=512m"`
+JAVA_OPTS="-Xms256m -Xmx2048m -XX:PermSize=128m -XX:MaxPermSize=512m"
+或
+CATALINA_OPTS="-Xms256m -Xmx2048m -XX:PermSize=128m -XX:MaxPermSize=512m"
 ```
 
 重启 wiki confluence
 
 ```shell
-`docker stop confluence ``# 停止``docker start confluence ``# 启动`
+docker stop confluence # 停止
+docker start confluence # 启动`
 ```
 
 这时候可以看到内存为 2G 可用为 73%
