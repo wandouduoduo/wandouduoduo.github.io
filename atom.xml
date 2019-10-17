@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wandouduoduo.netlify.com/"/>
-  <updated>2019-10-12T11:46:50.922Z</updated>
+  <updated>2019-10-12T11:47:21.004Z</updated>
   <id>https://wandouduoduo.netlify.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wandouduoduo.netlify.com/articles/a8e9001f.html"/>
     <id>https://wandouduoduo.netlify.com/articles/a8e9001f.html</id>
     <published>2019-10-12T09:50:10.000Z</published>
-    <updated>2019-10-12T11:46:50.922Z</updated>
+    <updated>2019-10-12T11:47:21.004Z</updated>
     
     <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>公司的测试数据库所在的服务器有问题，总是会不定时宕机。作为SRE为了能够提供高质量的服务，就考虑把数据库都迁移走。</p><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h4 id="mysql迁移"><a href="#mysql迁移" class="headerlink" title="mysql迁移"></a>mysql迁移</h4><p><strong>备份</strong></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#全库导出</span><br><span class="line">mysqldump -uroot -p --all-databases &gt; sqlfile.sql</span><br></pre></td></tr></table></figure><p><strong>恢复</strong></p><p>安装新mysql server</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">下载源</span></span><br><span class="line">rpm -Uvh http://repo.mysql.com/yum/mysql-community/el/6/x86_64/mysql-community-release-el6-5.noarch.rpm</span><br><span class="line"><span class="meta">#</span><span class="bash">安装服务</span></span><br><span class="line">yum install mysql-community-server</span><br><span class="line"><span class="meta">#</span><span class="bash">启动</span></span><br><span class="line">service mysqld start</span><br></pre></td></tr></table></figure><p>数据导入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p &lt;./sqlfile.sql</span><br></pre></td></tr></table></figure>]]></content>
     
