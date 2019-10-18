@@ -24,24 +24,37 @@ date: 2019-07-24 14:32:39
 
 ## 安装
 
-```shell
+```yaml
 # 构建外挂目录
-mkdir -p /etc/gitlab /var/log/gitlab /var/opt/gitlab
+mkdir -p /data/gitlab/{config,logs,data}
 
-# 拉取镜像并运行实例
-docker run -d \
-    -p 9999:80 \ # 指定web访问端口
-    --cpu-shares 2048 \ # 限制CPU资源，最少2core，参考：https://docs.gitlab.com.cn/ce/install/requirements.html
-    --cpu-period=20000 \
-    --cpu-quota=20000 \
-    --memory 4294967296 \ # 限制内存，最少4G
-    --hostname xxxx.com \ # 绑定git clone的访问域名，与ngx上一致
-    --name gitlab \
-    --privileged=true \ # 忽略挂载目录的权限
-    -v /etc/gitlab:/etc/gitlab \ # 外挂相关路径
-    -v /var/log/gitlab:/var/log/gitlab \
-    -v /var/opt/gitlab:/var/opt/gitlab \
-    twang2218/gitlab-ce-zh:10.2
+# 编辑docker-compose.yml
+# 其中访问ip,访问port,ssh_port根据自己情况，自己替换
+version: '3'
+services:
+    web:
+      image: 'twang2218/gitlab-ce-zh:10.5'
+      container_name: sungitlab
+      restart: always
+      hostname: '访问ip'
+      environment:
+        TZ: 'Asia/Shanghai'
+        GITLAB_OMNIBUS_CONFIG: |
+          external_url 'http://访问ip:访问port'
+          gitlab_rails['gitlab_shell_ssh_port'] = ssh_port
+          unicorn['port'] = 8888
+          nginx['listen_port'] = 8080
+      ports:
+        - '访问port:8080'
+        - '8443:443'
+        - 'ssh_port:22'
+      volumes:
+        - /data/gitlab/config:/etc/gitlab
+        - /data/gitlab/data:/var/opt/gitlab
+        - /data/gitlab/logs:/var/log/gitlab
+
+# 启动
+docker-compost up -d
 ```
 
 
@@ -52,7 +65,7 @@ docker run -d \
 
 默认配置中，worker进程数与本机CPU个数一致，会大量占用内存，导致容器的内存持续增长，直至服务宕机，报5xx
 
-解决方案：修改/etc/gitlab/gitlab.rb中配置
+解决方案：修改/data/gitlab/config/gitlab.rb中配置
 
 ```shell
 ################################################################################
@@ -71,7 +84,7 @@ unicorn['worker_processes'] = 2 # 去除原注释，指定worker数和分配的C
 
 #### 启用邮件通知
 
-编辑/etc/gitlab/gitlab.rb
+编辑 /data/gitlab/config/gitlab.rb
 
 ```shell
 ……之前配置略……
@@ -104,7 +117,7 @@ gitlab_rails['smtp_enable_starttls_auto'] = true
 ###### **Gitlab的备份目录路径设置**
 
 ```shell
-vim /etc/gitlab/gitlab.rb
+vim /data/gitlab/config/gitlab.rb
 
 gitlab_rails['manage_backup_path'] = true
 gitlab_rails['backup_path'] = "/data/gitlab/backups"   //gitlab备份目录
