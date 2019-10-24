@@ -1,10 +1,11 @@
 ---
 title: git拉取项目下单个目录
-categories: 
- - 应用运维
-tags: 
- - Git
+categories:
+  - 应用运维
+tags:
+  - Git
 copyright: true
+abbrlink: 25be17f8
 date: 2019-10-24 22:13:58
 ---
 

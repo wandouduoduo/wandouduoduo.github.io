@@ -1,10 +1,11 @@
 ---
 title: Docker知识点
-categories: 
- - 应用运维
-tags: 
- - Docker
+categories:
+  - 应用运维
+tags:
+  - Docker
 copyright: true
+abbrlink: 1e48ce52
 date: 2019-10-24 22:08:06
 ---
 
