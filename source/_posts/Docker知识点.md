@@ -9,13 +9,19 @@ abbrlink: 1e48ce52
 date: 2019-10-24 22:08:06
 ---
 
+## 目的
+
+运维日常工作中常见服务的docker快速安装汇总。
+
+
+
 cadvisor docker监控
 
 ```
 docker run —cpu-period=100000 —cpu-quota=100000 -m 1g --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=9999:8080 --name=cadvisor google/cadvisor -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=172.18.203.15:8086 -storage_driver_user=cadvisor -storage_driver_password=cadvisor
 ```
 
-
+<!--more-->
 
 启动postgresql容器
 
