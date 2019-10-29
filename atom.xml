@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wandouduoduo.netlify.com/"/>
-  <updated>2019-10-29T09:26:02.779Z</updated>
+  <updated>2019-10-29T11:35:46.088Z</updated>
   <id>https://wandouduoduo.netlify.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SSH隧道与端口转发及内网穿透</title>
+    <link href="https://wandouduoduo.netlify.com/articles/95ca2546.html"/>
+    <id>https://wandouduoduo.netlify.com/articles/95ca2546.html</id>
+    <published>2019-10-29T11:30:24.000Z</published>
+    <updated>2019-10-29T11:35:46.088Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="SSH隧道与端口转发及内网穿透"><a href="#SSH隧道与端口转发及内网穿透" class="headerlink" title="SSH隧道与端口转发及内网穿透"></a>SSH隧道与端口转发及内网穿透</h2><p>大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。</p><p><strong>SSH/plink命令的基本资料：</strong></p><p>首先，认识下这三个非常强大的命令：</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host</span><br><span class="line">&gt; ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host</span><br><span class="line">&gt; ssh -C -f -N -g -D listen_port user@Tunnel_Host</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>相关参数的解释：</p><p>-f Fork into background after authentication.<br>后台认证用户/密码，通常和-N连用，不用登录到远程主机。</p><p>-L port:host:hostport<br>将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport</p><p>-R port:host:hostport<br>将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport</p><p>-D port<br>指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.</p><p>-C Enable compression.<br>压缩数据传输。</p><p>-N Do not execute a shell or command.<br>不执行脚本或命令，通常与-f连用。</p><p>-g Allow remote hosts to connect to forwarded ports.<br>在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。</p><a id="more"></a><p><strong>建立本地SSH隧道例子</strong></p><p>在我们计划建立一个本地SSH隧道之前，我们必须清楚下面这些数据：</p><ol><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 中间服务器d的IP地址</span><br><span class="line">2. 要访问服务器c的IP地址</span><br><span class="line">3. 要访问服务器c的端口</span><br></pre></td></tr></table></figure></li></ol><p>现在，我们把上面这张图变得具体一些，给这些机器加上IP地址。并且根据下面这张图列出我们的计划：</p><ol><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 需要访问234.234.234.234的FTP服务，也就是端口21</span><br><span class="line">2. 中间服务器是123.123.123.123</span><br></pre></td></tr></table></figure></li></ol><p>现在我们使用下面这条命令来达成我们的目的</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -N -f -L 2121:234.234.234.234:21 123.123.123.123</span><br><span class="line">&gt; ftp localhost:2121 # 现在访问本地2121端口，就能连接234.234.234.234的21端口了</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>这里我们用到了SSH客户端的三个参数，下面我们一一做出解释：</p><ul><li>-N 告诉SSH客户端，这个连接不需要执行任何命令。仅仅做端口转发</li><li>-f 告诉SSH客户端在后台运行</li><li>-L 做本地映射端口，被冒号分割的三个部分含义分别是<ul><li>需要使用的本地端口号</li><li>需要访问的目标机器IP地址（IP: 234.234.234.234）</li><li>需要访问的目标机器端口（端口: 21)</li></ul></li><li>最后一个参数是我们用来建立隧道的中间机器的IP地址(IP: 123.123.123.123)</li></ul><p>我们再重复一下-L参数的行为。-L X:Y:Z的含义是，将IP为Y的机器的Z端口通过中间服务器映射到本地机器的X端口。</p><p>在这条命令成功执行之后，我们已经具有绕过公司防火墙的能力，并且成功访问到了我们喜欢的一个FTP服务器了。</p><h5 id="如何建立远程SSH隧道"><a href="#如何建立远程SSH隧道" class="headerlink" title="如何建立远程SSH隧道"></a>如何建立远程SSH隧道</h5><p>通过建立本地SSH隧道，我们成功地绕过防火墙开始下载FTP上的资源了。那么当我们在家里的时候想要察看下载进度怎么办呢？大多数公司的网络是通过路由器接入互联网的，公司内部的机器不会直接与互联网连接，也就是不能通过互联网直接访问。通过线路D-B-A访问公司里的机器a便是不可能的。也许你已经注意到了，虽然D-B-A这个方向的连接不通，但是A-B-D这个方向的连接是没有问题的。那么，我们能否利用一条已经连接好的A-B-D方向的连接来完成D-B-A方向的访问呢？答案是肯定的，这就是远程SSH隧道的用途。</p><p>与本地SSH一样，我们在建立远程SSH隧道之前要清楚下面几个参数：</p><ul><li>需要访问内部机器的远程机器的IP地址（这里是123.123.123.123）</li><li>需要让远程机器能访问的内部机器的IP地址(这里因为是想把本机映射出去，因此IP是127.0.0.1)</li><li>需要让远程机器能访问的内部机器的端口号(端口:22)</li></ul><p>在清楚了上面的参数后，我们使用下面的命令来建立一个远程SSH隧道</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -N -f -R 2222:127.0.0.1:22 123.123.123.123</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>现在，在IP是123.123.123.123的机器上我们用下面的命令就可以登陆公司的IP是192.168.0.100的机器了。</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -p 2222 localhost</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>-N，-f 这两个参数我们已经在本地SSH隧道中介绍过了。我们现在重点说说参数-R。该参数的三个部分的含义分别是:</p><ul><li>远程机器使用的端口（2222）</li><li>需要映射的内部机器的IP地址(127.0.0.1)</li><li>需要映射的内部机器的端口(22)</li></ul><p>例如：-R X:Y:Z 就是把我们内部的Y机器的Z端口映射到远程机器的X端口上。</p><p><strong>建立SSH隧道的几个技巧</strong></p><p><strong>自动重连</strong></p><p>隧道可能因为某些原因断开，例如：机器重启，长时间没有数据通信而被路由器切断等等。因此我们可以用程序控制隧道的重新连接，例如一个简单的循环或者使用 <a href="http://cr.yp.to/daemontools.html" target="_blank" rel="noopener">djb’s daemontools</a> . 不管用哪种方法，重连时都应避免因输入密码而卡死程序。关于如何安全的避免输入密码的方法，请参考我的 <a href="http://blog.jianingy.com/node/73" target="_blank" rel="noopener">如何实现安全的免密码ssh登录</a> 。这里请注意，如果通过其他程序控制隧道连接，应当避免将SSH客户端放到后台执行，也就是去掉-f参数。</p><p><strong>保持长时间连接</strong></p><p>有些路由器会把长时间没有通信的连接断开。SSH客户端的TCPKeepAlive选项可以避免这个问题的发生，默认情况下它是被开启的。如果它被关闭了，可以在ssh的命令上加上-o TCPKeepAlive=yes来开启。</p><p>另一种方法是，去掉-N参数，加入一个定期能产生输出的命令。例如: top或者vmstat。下面给出一个这种方法的例子：</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -R 2222:localhost:22 123.123.123.123 &quot;vmstat 30&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p><strong>检查隧道状态</strong></p><p>有些时候隧道会因为一些原因通信不畅而卡死，例如：由于传输数据量太大，被路由器带入stalled状态。这种时候，往往SSH客户端并不退出，而是卡死在那里。一种应对方法是，使用SSH客户端的ServerAliveInterval和ServerAliveCountMax选项。 ServerAliveInterval会在隧道无通信后的一段设置好的时间后发送一个请求给服务器要求服务器响应。如果服务器在 ServerAliveCountMax次请求后都没能响应，那么SSH客户端就自动断开连接并退出，将控制权交给你的监控程序。这两个选项的设置方法分别是在ssh时加入-o ServerAliveInterval=n和-o ServerAliveCountMax=m。其中n, m可以自行定义。</p><p><strong>如何将端口绑定到外部地址上</strong></p><p>使用上面的方法，映射的端口只能绑定在127.0.0.1这个接口上。也就是说，只能被本机自己访问到。如何才能让其他机器访问这个端口呢？我们可以把这个映射的端口绑定在0.0.0.0的接口上，方法是加上参数-b 0.0.0.0。同时还需要打开SSH服务器端的一个选项－GatewayPorts。默认情况下它应当是被打开的。如果被关闭的话，可以在/etc /sshd_config中修改GatewayPorts no为GatewayPorts yes来打开它。</p><p><strong>通过SSH隧道建立SOCKS服务器</strong></p><p>如果我们需要借助一台中间服务器访问很多资源，一个个映射显然不是高明的办法（事实上，高明确实没有用这个方法）。幸好，SSH客户端为我们提供了通过SSH隧道建立SOCKS服务器的功能。</p><p>通过下面的命令我们可以建立一个通过123.123.123.123的SOCKS服务器。</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -N -f -D 1080 123.123.123 # 将端口绑定在127.0.0.1上</span><br><span class="line">&gt; ssh -N -f -D 0.0.0.0:1080 123.123.123.123 # 将端口绑定在0.0.0.0上</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>通过SSH建立的SOCKS服务器使用的是SOCKS5协议，在为应用程序设置SOCKS代理的时候要特别注意。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;SSH隧道与端口转发及内网穿透&quot;&gt;&lt;a href=&quot;#SSH隧道与端口转发及内网穿透&quot; class=&quot;headerlink&quot; title=&quot;SSH隧道与端口转发及内网穿透&quot;&gt;&lt;/a&gt;SSH隧道与端口转发及内网穿透&lt;/h2&gt;&lt;p&gt;大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;SSH/plink命令的基本资料：&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;首先，认识下这三个非常强大的命令：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ssh -C -f -N -g -D listen_port user@Tunnel_Host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;相关参数的解释：&lt;/p&gt;
+&lt;p&gt;-f Fork into background after authentication.&lt;br&gt;后台认证用户/密码，通常和-N连用，不用登录到远程主机。&lt;/p&gt;
+&lt;p&gt;-L port:host:hostport&lt;br&gt;将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p&gt;
+&lt;p&gt;-R port:host:hostport&lt;br&gt;将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p&gt;
+&lt;p&gt;-D port&lt;br&gt;指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.&lt;/p&gt;
+&lt;p&gt;-C Enable compression.&lt;br&gt;压缩数据传输。&lt;/p&gt;
+&lt;p&gt;-N Do not execute a shell or command.&lt;br&gt;不执行脚本或命令，通常与-f连用。&lt;/p&gt;
+&lt;p&gt;-g Allow remote hosts to connect to forwarded ports.&lt;br&gt;在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="系统运维" scheme="https://wandouduoduo.netlify.com/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="Network" scheme="https://wandouduoduo.netlify.com/tags/Network/"/>
+    
+  </entry>
   
   <entry>
     <title>Zabbix Server增加微信告警</title>
@@ -484,61 +519,6 @@
 &lt;td align=&quot;center&quot;&gt;CentOS7.6 min&lt;/td&gt;
 &lt;td align=&quot;center&quot;&gt;openLdap, httpd, phpldapadmin&lt;/td&gt;
 &lt;td align=&quot;center&quot;&gt;主节点&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;systerm-shylf-1&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;10.116.72.15&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;CentOS7.6 min&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;openLdap client&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;&lt;/table&gt;
-&lt;p&gt;前提条件，为了方便配置防火墙以及禁用selinux&lt;br&gt;配置示例:dc=example,dc=com&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="应用运维" scheme="https://wandouduoduo.netlify.com/categories/%E5%BA%94%E7%94%A8%E8%BF%90%E7%BB%B4/"/>
-    
-    
-      <category term="Openldap" scheme="https://wandouduoduo.netlify.com/tags/Openldap/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Centos7上配置最新版openldap服务主从架构</title>
-    <link href="https://wandouduoduo.netlify.com/articles/760f3c02.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/760f3c02.html</id>
-    <published>2019-08-28T05:44:44.000Z</published>
-    <updated>2019-08-28T06:06:51.100Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>在实际产线运维环境下，可能包含多个IDC机房，每个机房的主机都需要通过OpenLDAP体系管理运维账户登录。这种情况下可以配置OpenLDAP的主从架构实现(当然同一个机房也可以配置主从架构，客户端配置ldap uri指定多个地址)。主openldap节点称为“provider”可读可写，从openldap节点称为“consumer”只读。</p><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><table><thead><tr><th align="center">主机名称</th><th align="center">地址</th><th align="center">版本</th><th align="center">角色</th><th align="center">备注</th></tr></thead><tbody><tr><td align="center">sysldap-shylf-1</td><td align="center">10.116.72.11</td><td align="center">CentOS7.6 min</td><td align="center">openLdap, httpd, phpldapadmin</td><td align="center">主节点</td></tr><tr><td align="center">sysldap-shylf-2</td><td align="center">10.116.72.12</td><td align="center">CentOS7.6 min</td><td align="center">openLdap</td><td align="center">从节点，可以配置多从的</td></tr><tr><td align="center">systerm-shylf-1</td><td align="center">10.116.72.15</td><td align="center">CentOS7.6 min</td><td align="center">openLdap client</td><td align="center"></td></tr></tbody></table><p>前提条件，为了方便配置防火墙以及禁用selinux<br>配置示例:dc=example,dc=com</p><a id="more"></a><h2 id="OpenLDAP服务基础配置"><a href="#OpenLDAP服务基础配置" class="headerlink" title="OpenLDAP服务基础配置"></a>OpenLDAP服务基础配置</h2><p>本文档假设2个节点都已经设置好了<a href="https://wandouduoduo.github.io/articles/be8d00d3.html#more" target="_blank" rel="noopener">OpenLDAP服务基础配置</a></p><h2 id="配置OpenLDAP主从结构"><a href="#配置OpenLDAP主从结构" class="headerlink" title="配置OpenLDAP主从结构"></a>配置OpenLDAP主从结构</h2><h3 id="主节点配置-10-116-72-11-，添加模块syncprov"><a href="#主节点配置-10-116-72-11-，添加模块syncprov" class="headerlink" title="主节点配置(10.116.72.11)，添加模块syncprov"></a>主节点配置(10.116.72.11)，添加模块syncprov</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">vim mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line">dn: cn=module,cn=config</span><br><span class="line">objectClass: olcModuleList</span><br><span class="line">cn: module</span><br><span class="line">olcModulePath: /usr/lib64/openldap</span><br><span class="line">olcModuleLoad: syncprov.la</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f mod_syncprov.ldif</span><br><span class="line"></span><br><span class="line"><span class="comment">#--------------------------------------</span></span><br><span class="line">vim syncprov.ldif</span><br><span class="line">dn: olcOverlay=syncprov,olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">objectClass: olcOverlayConfig</span><br><span class="line">objectClass: olcSyncProvConfig</span><br><span class="line">olcOverlay: syncprov</span><br><span class="line">olcSpSessionLog: 100</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncprov.ldif</span><br></pre></td></tr></table></figure><h3 id="从节点配置-10-116-72-12-同步"><a href="#从节点配置-10-116-72-12-同步" class="headerlink" title="从节点配置(10.116.72.12)同步"></a>从节点配置(10.116.72.12)同步</h3><p>需要根据实际情况修改的参数：<br>provider 同步来源，也就是主节点，可以包含多个主节点<br>binddn 主节点管理账户<br>credentials 主节点管理账户密码<br>searchbase 根目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">vim syncrepl.ldif</span><br><span class="line"></span><br><span class="line">dn: olcDatabase=&#123;2&#125;hdb,cn=config</span><br><span class="line">changetype: modify</span><br><span class="line">add: olcSyncRepl</span><br><span class="line">olcSyncRepl: rid=001</span><br><span class="line">  provider=ldap://10.116.72.11:389/</span><br><span class="line">  bindmethod=simple</span><br><span class="line">  binddn=<span class="string">"cn=Manager,dc=example,dc=com"</span></span><br><span class="line">  credentials=openldap</span><br><span class="line">  searchbase=<span class="string">"dc=example,dc=com"</span></span><br><span class="line">  scope=sub</span><br><span class="line">  schemachecking=on</span><br><span class="line">  <span class="built_in">type</span>=refreshAndPersist</span><br><span class="line">  retry=<span class="string">"30 5 300 3"</span></span><br><span class="line">  interval=00:00:05:00</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发送配置使之生效</span></span><br><span class="line">ldapadd -Y EXTERNAL -H ldapi:/// -f syncrepl.ldif</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">从服务节点验证数据是否同步正常</span><br><span class="line">ldapsearch -x -b &apos;ou=People,dc=example,dc=com&apos;</span><br><span class="line">[输出内容省略]</span><br><span class="line"></span><br><span class="line">验证是OK的。</span><br></pre></td></tr></table></figure><h3 id="远程主机配置（客户端-10-116-72-15）"><a href="#远程主机配置（客户端-10-116-72-15）" class="headerlink" title="远程主机配置（客户端 10.116.72.15）"></a>远程主机配置（客户端 10.116.72.15）</h3><p>客户端 可以指定多个openldap uri 修改配置如下（当然也可以只配置其中1个）</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">authconfig --enableldap --enableldapauth --ldapserver=<span class="string">"10.116.72.11,10.116.72.12"</span> --ldapbasedn=<span class="string">"dc=example,dc=com"</span> --update</span><br></pre></td></tr></table></figure><ul><li>验证</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ssh  800001@10.116.72.15</span><br><span class="line">Warning: Permanently added <span class="string">'10.116.72.15'</span> (ECDSA) to the list of known hosts.</span><br><span class="line">800001@10.116.72.15<span class="string">'s password: </span></span><br><span class="line"><span class="string">Last login: Thu Jul  4 17:59:32 2019 from 10.116.71.200</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">[800001@systerm-shylf-1 ~]$</span></span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;在实际产线运维环境下，可能包含多个IDC机房，每个机房的主机都需要通过OpenLDAP体系管理运维账户登录。这种情况下可以配置OpenLDAP的主从架构实现(当然同一个机房也可以配置主从架构，客户端配置ldap uri指定多个地址)。主openldap节点称为“provider”可读可写，从openldap节点称为“consumer”只读。&lt;/p&gt;
-&lt;h2 id=&quot;环境&quot;&gt;&lt;a href=&quot;#环境&quot; class=&quot;headerlink&quot; title=&quot;环境&quot;&gt;&lt;/a&gt;环境&lt;/h2&gt;&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;主机名称&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;地址&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;版本&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;角色&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;备注&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;sysldap-shylf-1&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;10.116.72.11&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;CentOS7.6 min&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;openLdap, httpd, phpldapadmin&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;主节点&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td align=&quot;center&quot;&gt;sysldap-shylf-2&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;10.116.72.12&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;CentOS7.6 min&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;openLdap&lt;/td&gt;
-&lt;td align=&quot;center&quot;&gt;从节点，可以配置多从的&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td align=&quot;center&quot;&gt;systerm-shylf-1&lt;/td&gt;
