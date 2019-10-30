@@ -445,9 +445,9 @@
       
         <tags>
             
-            <tag> Openldap </tag>
-            
             <tag> Cmdb </tag>
+            
+            <tag> Openldap </tag>
             
         </tags>
       
@@ -1288,7 +1288,7 @@
       
         <tags>
             
-            <tag> Ssh </tag>
+            <tag> Network </tag>
             
         </tags>
       
