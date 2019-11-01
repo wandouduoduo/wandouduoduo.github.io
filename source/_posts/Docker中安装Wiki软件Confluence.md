@@ -1,8 +1,8 @@
 ---
 title: Docker中安装Wiki软件Confluence
 categories:
-  - 应用监控
-  - 服务搭建
+  - 运维技术
+  - 服务部署
 tags:
   - Docker
 copyright: true

@@ -1,7 +1,7 @@
 ---
 title: Http认证
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Http
 copyright: true

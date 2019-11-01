@@ -1,7 +1,8 @@
 ---
 title: hexo最新next主题个性化炫酷教程
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Hexo
 copyright: true

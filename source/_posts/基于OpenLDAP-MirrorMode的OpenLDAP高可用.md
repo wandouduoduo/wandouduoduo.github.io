@@ -1,7 +1,8 @@
 ---
 title: 基于OpenLDAP_MirrorMode的OpenLDAP高可用
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Openldap
 copyright: true

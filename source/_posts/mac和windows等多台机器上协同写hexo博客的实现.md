@@ -1,7 +1,8 @@
 ---
 title: mac和windows等多台机器上协同写hexo博客的实现
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Hexo
 copyright: true

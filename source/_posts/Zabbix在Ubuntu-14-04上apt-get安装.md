@@ -1,7 +1,8 @@
 ---
 title: Zabbix在Ubuntu 14.04上apt-get安装
 categories:
-  - 应用运维
+  - 监控技术
+  - Zabbix
 tags:
   - Zabbix
 copyright: true

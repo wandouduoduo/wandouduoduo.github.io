@@ -1,7 +1,8 @@
 ---
 title: centos7 yum安装zabbix4.0长期稳定版及优化
 categories:
-  - 监控运维
+  - 监控技术
+  - Zabbix
 tags:
   - Zabbix
 copyright: true

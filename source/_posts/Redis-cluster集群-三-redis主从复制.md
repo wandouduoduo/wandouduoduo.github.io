@@ -1,7 +1,9 @@
 ---
 title: 'Redis-cluster集群[三]:redis主从复制'
 categories:
-  - 数据库运维
+  - 数据库
+  - NoSQL
+  - Redis
 tags:
   - Redis
 copyright: true

@@ -1,7 +1,8 @@
 ---
 title: shell替换和截取字符串详解
 categories:
-  - 应用运维
+  - 编程积累
+  - Shell
 tags:
   - Shell
 copyright: true

@@ -1,7 +1,7 @@
 ---
 title: iptables原理详解
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Iptables
 copyright: true

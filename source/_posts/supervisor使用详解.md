@@ -1,7 +1,8 @@
 ---
 title: supervisor使用详解
 categories:
-  - 应用运维
+  - 运维技术
+  - Linux
 tags:
   - Supervisor
 copyright: true

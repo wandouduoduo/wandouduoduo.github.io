@@ -1,7 +1,9 @@
 ---
 title: mysql之yum安装
 categories:
-  - 数据库运维
+  - 数据库
+  - SQL
+  - Mysql
 tags:
   - Mysql
 copyright: true

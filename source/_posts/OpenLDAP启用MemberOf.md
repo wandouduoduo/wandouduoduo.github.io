@@ -1,7 +1,8 @@
 ---
 title: OpenLDAP启用MemberOf
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Openldap
 copyright: true

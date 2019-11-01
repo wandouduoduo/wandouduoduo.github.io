@@ -1,8 +1,8 @@
 ---
 title: 使用Prometheus+Grafana监控JVM
 categories:
-  - 应用运维
-  - 监控积累
+  - 监控技术
+  - Prometheus
 tags:
   - Prometheus
 copyright: true

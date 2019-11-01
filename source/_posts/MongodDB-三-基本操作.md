@@ -1,7 +1,9 @@
 ---
 title: 'MongodDB[三]:基本操作'
 categories:
-  - 数据库运维
+  - 数据库
+  - NoSQL
+  - MongoDB
 tags:
   - MongoDB
 copyright: true

@@ -1,7 +1,7 @@
 ---
 title: confd模板语法详解
 categories:
-  - 应用运维
+  - 自动化
 tags:
   - Confd
 copyright: true

@@ -1,8 +1,8 @@
 ---
 title: 超详细的hexo+github page搭建.md
 categories:
-  - 应用运维
-  - 服务搭建
+  - 运维技术
+  - 服务部署
 tags:
   - Hexo
   - Git

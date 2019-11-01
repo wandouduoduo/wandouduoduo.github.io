@@ -1,8 +1,8 @@
 ---
 title: zabbix-proxy安装部署
 categories:
-  - 应用运维
-  - 服务搭建
+  - 监控技术
+  - Zabbix
 tags:
   - Zabbix
 copyright: true

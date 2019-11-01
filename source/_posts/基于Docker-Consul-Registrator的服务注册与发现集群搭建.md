@@ -1,7 +1,7 @@
 ---
 title: 基于Docker+Consul+Registrator的服务注册与发现集群搭建
 categories:
-  - 应用运维
+  - 自动化
 tags:
   - Docker
 copyright: true

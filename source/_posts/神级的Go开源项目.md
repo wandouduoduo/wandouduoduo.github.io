@@ -1,8 +1,8 @@
 ---
 title: 神级的Go开源项目
 categories:
-  - 运维研发
-  - 语言积累
+  - 编程积累
+  - Go
 tags:
   - Go
 copyright: true

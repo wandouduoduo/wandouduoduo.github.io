@@ -1,7 +1,8 @@
 ---
 title: nginx升级或重新加载模块
 categories:
-  - 应用运维
+  - Web服务
+  - Nginx
 tags:
   - Nginx
 copyright: true

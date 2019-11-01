@@ -1,7 +1,9 @@
 ---
 title: centos7下使用yum源安装mysql5.7
 categories:
-  - 数据库运维
+  - 数据库
+  - SQL
+  - Mysql
 tags:
   - Mysql
 copyright: true

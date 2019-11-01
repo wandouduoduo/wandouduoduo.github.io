@@ -1,7 +1,8 @@
 ---
 title: Linux修改时区正确姿势
 categories:
-  - 系统运维
+  - 运维技术
+  - Linux
 tags:
   - Linux
 copyright: true

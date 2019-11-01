@@ -1,7 +1,7 @@
 ---
 title: DNS解析过程详解
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Dns
 copyright: true

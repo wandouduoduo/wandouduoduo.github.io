@@ -1,7 +1,7 @@
 ---
 title: SSH隧道与端口转发及内网穿透
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Network
 copyright: true

@@ -1,7 +1,8 @@
 ---
 title: Zabbix Server增加微信告警
 categories:
-  - 应用运维
+  - 监控技术
+  - Zabbix
 tags:
   - Zabbix
 copyright: true

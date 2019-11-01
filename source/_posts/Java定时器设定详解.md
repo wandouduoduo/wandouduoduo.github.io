@@ -1,7 +1,8 @@
 ---
 title: Java定时器设定详解
 categories:
-  - 应用运维
+  - 运维技术
+  - 命令详解
 tags:
   - Java
 copyright: true

@@ -1,9 +1,10 @@
 ---
 title: Rocketchat安装手册
 categories:
-  - 智能工程
+  - 运维技术
+  - 服务部署
 tags:
-  - Ai
+  - RocketChat
 copyright: true
 abbrlink: 1f64fa0e
 date: 2019-07-16 19:19:23

@@ -1,7 +1,7 @@
 ---
 title: IaaS、PaaS、SaaS的区别
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Cloud
 copyright: true

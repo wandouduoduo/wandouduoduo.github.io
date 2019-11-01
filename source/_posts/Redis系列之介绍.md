@@ -1,8 +1,9 @@
 ---
 title: Redis系列之介绍
 categories:
-  - 数据库运维
-  - Nosql详解
+  - 数据库
+  - NoSQL
+  - Redis
 tags:
   - Redis
 copyright: true

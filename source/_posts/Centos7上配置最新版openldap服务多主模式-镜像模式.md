@@ -1,7 +1,8 @@
 ---
 title: Centos7上配置最新版openldap服务多主模式(镜像模式)
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Openldap
 copyright: true

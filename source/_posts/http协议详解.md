@@ -1,7 +1,7 @@
 ---
 title: http协议详解
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Http
 copyright: true
@@ -304,7 +304,7 @@ set localecho
 ​    
    /*我们可以变换请求方法,请求桂林电子主页内容,输入消息如下*/
 ​    open [www.guet.edu.cn](http://www.guet.edu.cn/) 80 
-   
+
 ​    GET /index.asp HTTP/1.0  //请求资源的内容
 ​    Host:www.guet.edu.cn  
 

@@ -1,7 +1,8 @@
 ---
 title: nginx中https的配置和http强制跳转
 categories:
-  - 应用运维
+  - Web服务
+  - Nginx
 tags:
   - Nginx
 copyright: true

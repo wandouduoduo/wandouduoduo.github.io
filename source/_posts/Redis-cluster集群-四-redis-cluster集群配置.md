@@ -1,7 +1,9 @@
 ---
 title: 'Redis-cluster集群[四]:redis-cluster集群配置'
 categories:
-  - 数据库运维
+  - 数据库
+  - NoSQL
+  - Redis
 tags:
   - Redis
 copyright: true

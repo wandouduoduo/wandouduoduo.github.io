@@ -1,8 +1,9 @@
 ---
 title: 'MongoDB[一]:初识'
 categories:
-  - 数据库运维
-  - Nosql详解
+  - 数据库
+  - NoSQL
+  - MongoDB
 tags:
   - MongoDB
 copyright: true

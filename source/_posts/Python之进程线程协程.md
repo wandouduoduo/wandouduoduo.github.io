@@ -1,8 +1,8 @@
 ---
 title: Python之进程线程协程
 categories:
-  - 运维开发
-  - 语言积累
+  - 编程积累
+  - Python
 tags:
   - Python
 copyright: true

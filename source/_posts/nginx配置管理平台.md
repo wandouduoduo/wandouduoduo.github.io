@@ -1,7 +1,8 @@
 ---
 title: nginx配置管理平台
 categories: 
- - 应用运维
+ - Web服务
+ - Nginx
 tags: 
  - Nginx
 copyright: true

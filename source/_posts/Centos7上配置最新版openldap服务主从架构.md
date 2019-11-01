@@ -1,7 +1,8 @@
 ---
 title: Centos7上配置最新版openldap服务主从架构
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Openldap
 copyright: true

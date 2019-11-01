@@ -1,8 +1,8 @@
 ---
 title: 业务监控工具Sentry的搭建与使用
 categories:
-  - 应用运维
-  - 服务搭建
+  - 运维技术
+  - 服务部署
 tags:
   - Sentry
 copyright: true

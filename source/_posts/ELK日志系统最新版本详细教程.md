@@ -1,8 +1,8 @@
 ---
 title: ELK日志系统最新版本详细教程
 categories:
-  - 应用运维
-  - 服务搭建
+  - 运维技术
+  - 服务部署
 tags:
   - Elk
 copyright: true

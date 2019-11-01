@@ -1,7 +1,7 @@
 ---
 title: DNS中的七大资源记录详解
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Dns
 copyright: true

@@ -1,8 +1,8 @@
 ---
 title: zabbix3.0.x在lnmp全编译安装
 categories:
-  - 应用运维
-  - 服务搭建
+  - 监控技术
+  - Zabbix
 tags:
   - Zabbix
 copyright: true

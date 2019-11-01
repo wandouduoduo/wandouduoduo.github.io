@@ -1,11 +1,10 @@
 ---
 title: Django ORM模型详解
 categories:
-  - 运维研发
-  - 语言积累
+  - 编程积累
+  - Python
 tags:
   - Python
-  - Django
 copyright: true
 abbrlink: 2c7f73f3
 date: 2019-06-12 15:52:34

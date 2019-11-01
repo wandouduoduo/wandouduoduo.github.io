@@ -1,7 +1,7 @@
 ---
 title: Nat回环(Lan-->Lan端口映射原理)
 categories:
-  - 系统运维
+  - 网络技术
 tags:
   - Network
 copyright: true

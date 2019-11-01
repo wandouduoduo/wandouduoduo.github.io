@@ -1,8 +1,8 @@
 ---
 title: Tomcat性能优化和测试
 categories:
-  - 应用运维
-  - 容器优化
+  - 容器化
+  - Tomcat
 tags:
   - Tomcat
 copyright: true

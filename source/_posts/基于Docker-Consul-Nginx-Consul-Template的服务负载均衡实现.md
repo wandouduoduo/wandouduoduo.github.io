@@ -1,7 +1,8 @@
 ---
 title: 基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现
 categories:
-  - 应用运维
+  - Web服务
+  - Nginx
 tags:
   - Nginx
   - Docker

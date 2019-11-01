@@ -1,7 +1,8 @@
 ---
 title: lsof文件句柄工具
 categories:
-  - 应用运维
+  - 运维技术
+  - 命令详解
 tags:
   - Linux
 copyright: true

@@ -1,8 +1,8 @@
 ---
 title: 详解linux中文件的三种time
 categories:
-  - 系统运维
-  - 系统详解
+  - 运维技术
+  - Linux
 tags:
   - Linux
 copyright: true

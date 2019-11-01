@@ -1,8 +1,8 @@
 ---
 title: openfalcon的基本原理和使用
 categories:
-  - 应用运维
-  - 监控积累
+  - 监控技术
+  - Open-falcon
 tags:
   - Open-falcon
 copyright: true

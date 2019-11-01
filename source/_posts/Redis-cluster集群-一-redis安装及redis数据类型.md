@@ -1,7 +1,9 @@
 ---
 title: 'Redis-cluster集群[一]:redis安装及redis数据类型'
 categories:
-  - 数据库运维
+  - 数据库
+  - NoSQL
+  - Redis
 tags:
   - Redis
 copyright: true

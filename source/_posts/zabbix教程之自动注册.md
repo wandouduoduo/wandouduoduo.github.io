@@ -1,7 +1,8 @@
 ---
 title: zabbix教程之自动注册
 categories:
-  - 应用运维
+  - 监控技术
+  - Zabbix
 tags:
   - Zabbix
 copyright: true

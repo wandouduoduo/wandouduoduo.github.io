@@ -1,7 +1,7 @@
 ---
 title: Dig命令详解
 categories:
-  - 系统运维
+  - 运维技术
   - 命令详解
 tags:
   - Linux

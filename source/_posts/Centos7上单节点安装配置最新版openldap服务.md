@@ -1,7 +1,8 @@
 ---
 title: Centos7上单节点安装配置最新版openldap服务
 categories:
-  - 应用运维
+  - 运维技术
+  - 服务部署
 tags:
   - Openldap
 copyright: true

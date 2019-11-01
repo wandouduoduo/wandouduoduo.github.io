@@ -1,8 +1,8 @@
 ---
 title: windows批处理用法之FOR
 categories:
-  - 运维研发
-  - 语言积累
+  - 编程积累
+  - 批处理
 tags:
   - Windows
 copyright: true

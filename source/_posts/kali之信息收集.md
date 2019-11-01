@@ -1,7 +1,8 @@
 ---
 title: kali之信息收集
 categories:
-  - 运维安全
+  - 运维技术
+  - 安全工具
 tags:
   - Kali
 copyright: true

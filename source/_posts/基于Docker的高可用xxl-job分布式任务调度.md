@@ -1,7 +1,8 @@
 ---
 title: 基于Docker的高可用集群xxl-job分布式任务调度
 categories:
-  - 运维研发
+  - 运维技术
+  - 服务部署
 tags:
   - Docker
 copyright: true

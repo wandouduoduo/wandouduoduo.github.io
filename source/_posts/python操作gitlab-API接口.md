@@ -1,10 +1,11 @@
 ---
 title: python操作gitlab API接口
 categories:
-  - 系统运维
-  - 语言详解
+  - 编程积累
+  - Python
 tags:
   - Git
+  - Python
 copyright: true
 abbrlink: 79cf2ce7
 date: 2019-06-10 17:09:34

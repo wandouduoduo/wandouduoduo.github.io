@@ -1,7 +1,9 @@
 ---
 title: 'Redis-cluster集群[二]:redis持久化'
 categories:
-  - 数据库运维
+  - 数据库
+  - NoSQL
+  - Redis
 tags:
   - Redis
 copyright: true

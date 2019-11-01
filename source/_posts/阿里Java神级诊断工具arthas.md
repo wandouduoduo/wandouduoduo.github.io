@@ -1,8 +1,8 @@
 ---
 title: 阿里Java神级诊断工具arthas
 categories:
-  - 应用运维
-  - 服务优化
+  - 运维技术
+  - 服务部署
 tags:
   - Java
 copyright: true

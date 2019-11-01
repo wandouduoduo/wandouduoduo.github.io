@@ -1,7 +1,7 @@
 ---
 title: Git命令汇总
 categories:
-  - 系统运维
+  - 运维技术
   - 命令详解
 tags:
   - Git

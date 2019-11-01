@@ -1,7 +1,8 @@
 ---
 title: git拉取项目下单个目录
 categories:
-  - 应用运维
+  - 运维技术
+  - 命令详解
 tags:
   - Git
 copyright: true

@@ -1,9 +1,11 @@
 ---
 title: PostgreSQL基本命令
 categories:
-  - 数据库运维
+  - 数据库
+  - SQL
+  - PostgreSQL
 tags:
-  - Postgresql
+  - PostgreSQL
 copyright: true
 abbrlink: 6d5035d1
 date: 2019-06-27 14:37:33

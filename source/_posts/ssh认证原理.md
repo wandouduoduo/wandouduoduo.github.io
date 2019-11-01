@@ -1,9 +1,9 @@
 ---
 title: ssh认证原理
 categories:
-  - 系统运维
+  - 网络技术
 tags:
-  - Ssh
+  - Network
 copyright: true
 abbrlink: e7844ae3
 date: 2019-07-15 15:40:26

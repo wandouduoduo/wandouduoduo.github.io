@@ -1,7 +1,8 @@
 ---
 title: CentOS7下CMDBuild源码安装
 categories:
-  - 系统运维
+  - 运维技术
+  - 服务部署
 tags:
   - Cmdb
 copyright: true
