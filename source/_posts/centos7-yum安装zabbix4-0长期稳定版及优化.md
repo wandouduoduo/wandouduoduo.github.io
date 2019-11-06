@@ -97,7 +97,7 @@ rpm -qa httpd php mariadb            #安装完成后检查应用版本
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/7.png)
 
-![](centos7-yum安装zabbix4-0长期稳定版及优化\8.png)
+![](centos7-yum安装zabbix4-0长期稳定版及优化/8.png)
 
 #### **编辑httpd**
 
@@ -315,6 +315,8 @@ vim oneoaas/templates/graphtree/graphtree.tpl
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/39.png)
 
 重启httpd服务然后查看效果
+
+**注意：遇到了个很大的坑，可能你反复修改后不能正常跳转，看到效果，清理缓存后，再重试。**
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/40.png)
 

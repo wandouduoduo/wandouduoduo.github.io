@@ -73,6 +73,8 @@ bind-key R source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 
 **tmux kill-server**　　关闭所有会话
 
+
+
 **常用快捷键**
 
 **prefix s**　　列出会话，可进行切换
