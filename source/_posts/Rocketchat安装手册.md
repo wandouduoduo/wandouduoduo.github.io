@@ -23,7 +23,7 @@ date: 2019-07-16 19:19:23
 **1，启动mongodb实例：**
 
 ```bash
-`docker run --name db -d mongo:3.0 --smallfiles` 
+docker run --name db -d mongo:3.0 --smallfiles
 ```
 
 **2，启动rocketchat server:**
@@ -31,7 +31,7 @@ date: 2019-07-16 19:19:23
 注意替换your_public_ip
 
 ```bash
-`docker run --name rocketchat -p 80:3000 --``env` `ROOT_URL=http:``//``{your_public_ip} --link db -d rocket.chat:0.62`
+docker run --name rocketchat -p 80:3000 --env ROOT_URL=http://{your_public_ip} --link db -d rocket.chat:0.62
 ```
 
 启动成功后，访问: http://{your_public_ip} 即可。
@@ -41,7 +41,7 @@ date: 2019-07-16 19:19:23
 添加robot前，确保server中已添加改账号，并设置了邮件为已验证。
 
 ```bash
-`docker run -it -e ROCKETCHAT_URL=http:``//``{rocket_chat_server_ip}:{port} \``    ``-e ROCKETCHAT_ROOM=``'general'` `\``    ``-e LISTEN_ON_ALL_PUBLIC=``true` `\``    ``-e ROCKETCHAT_USER=bot \``    ``-e ROCKETCHAT_PASSWORD=password \``    ``-e ROCKETCHAT_AUTH=password \``    ``-e BOT_NAME=bot \``    ``-e EXTERNAL_SCRIPTS=hubot-pugme,hubot-help \``    ``-``v` `$PWD``/scripts``:``/home/hubot/scripts` `\``    ``rocketchat``/hubot-rocketchat`
+docker run -it -d --name rocketchat-hubot -e ROCKETCHAT_URL=http://{rocket_chat_server_ip}:{port}  -e ROCKETCHAT_ROOM='general'  -e LISTEN_ON_ALL_PUBLIC=true   -e ROCKETCHAT_USER=bot   -e ROCKETCHAT_PASSWORD=password     -e ROCKETCHAT_AUTH=password    -e BOT_NAME=bot     -e EXTERNAL_SCRIPTS=hubot-pugme,hubot-help    -v $PWD/scripts:/home/hubot/scripts   rocketchat/hubot-rocketchat
 ```
 
 说明（下面未提及，不用更改）:
