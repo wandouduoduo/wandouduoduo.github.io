@@ -75,7 +75,7 @@ make && make install
 cd tomcat_home/bin
 tar -zxvf tomcat-native.tar.gz
 cd tomcat-native-1.2.23-src/native/
-./configure  --prefix=/usr/local/tomcat-native --with-apr=/usr/local/apr 
+./configure  --with-apr=/usr/local/apr 
 make && make install
 ```
 
@@ -97,7 +97,7 @@ make && make install
 安装成功openssl后再次编译还是报错，说明没找到，可以添加绝对路径编译
 
 ```bash
-./configure --prefix=/usr/local/tomcat-native --with-apr=/usr/local/apr --with-ssl=/usr/local/openssl
+./configure  --with-apr=/usr/local/apr --with-ssl=/usr/local/openssl
 make && make install
 ```
 
