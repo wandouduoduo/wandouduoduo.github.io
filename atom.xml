@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wandouduoduo.netlify.com/"/>
-  <updated>2019-12-20T01:53:48.446Z</updated>
+  <updated>2019-12-23T07:17:55.020Z</updated>
   <id>https://wandouduoduo.netlify.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Elasticsearch分片副本机制</title>
+    <link href="https://wandouduoduo.netlify.com/articles/688d9226.html"/>
+    <id>https://wandouduoduo.netlify.com/articles/688d9226.html</id>
+    <published>2019-12-23T06:46:15.000Z</published>
+    <updated>2019-12-23T07:17:55.020Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>日常运维工作中，保证系统服务的稳定是第一优先级的。做好高可用方案是关键。在用Elasticsearch作为存储的服务中，保证Elasticsearch数据的高可用，数据的安全性和一致性至关重要。本文就针对这一问题详细介绍了Elasticsearch的分片和副本机制。</p><a id="more"></a><h2 id="分片和副本机制"><a href="#分片和副本机制" class="headerlink" title="分片和副本机制"></a>分片和副本机制</h2><ol><li><p>index(索引) 包含多个 shard(分片)，创建 index 时可以在settings中设置分片数，不设置时默认是5个。</p></li><li><p>每个 shard 都是一个最小工作单元，承载部分数据；每个 shard 都是一个 lucene 实例，并且具有完整的建立索引和处理能力。</p></li><li><p>增减节点时，shard 会自动在 nodes 中负载均衡。</p></li><li><p>primary shard（主分片） 和 replica shard（副本分片），每个 document 肯定只存在于某一个 primary shard 以及对应的 replica shard 中，不可能存在于多个 primary shard 。</p><p><img src="/articles/688d9226/1.png" alt></p></li><li><p>replica shard 是 primary shard 的副本，负责容错，以及承担读请求负载。</p></li><li><p>primary shard 的数量在创建索引的时候就固定了，不可更改；replica shard 的数量可以随时修改。</p></li><li><p>primary shard 的默认数量是5，replica 默认是1，默认有10个 shard，5个 primary shard ，5个 replica shard 。</p></li><li><p>primary shard 不能和自己的 replica shard 放在同一个节点上，否则节点宕机，primary shard 和副本都丢失，容错机制将失效；但是可以和其他 primary shard 的 replica shard 放在同一个节点上。</p><p><img src="/articles/688d9226/2.png" alt></p></li></ol><h2 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h2><p>Shards分片个数:  3</p><p>Replica副本个数：3</p><h4 id="单节点环境下"><a href="#单节点环境下" class="headerlink" title="单节点环境下"></a>单节点环境下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">PUT /myindex</span><br><span class="line">&#123;</span><br><span class="line">    &quot;settings&quot;: &#123;</span><br><span class="line">        &quot;number_of_shards&quot;: 3,</span><br><span class="line">        &quot;number_of_replica&quot;: 1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"># 查看集群健康状态 --- 将返回yellow，说明集群状态不健康</span><br><span class="line">GET _cat/health</span><br></pre></td></tr></table></figure><p>此时，因为是单节点环境，3个 primary shard 只能分配到这个仅有的 node 上，另外3个 replica shard 是无法分配的（一个 shard 的副本 replica，两个是不能在同一个节点），集群可以正常工作；但出现宕机，数据全部丢失，而且集群不可用，无法接受任何请求。</p><h4 id="两个节点环境下"><a href="#两个节点环境下" class="headerlink" title="两个节点环境下"></a>两个节点环境下</h4><p>将3个 primary shard 分配到一个 node 上，另外3个 replica shard 分配到另一个节点上；<br>primary shard 和 replica shard 保持同步；<br>primary shard 和 replica shard 都可以处理客户端的读请求。</p><p><img src="/articles/688d9226/3.png" alt></p><h4 id="三个节点环境下"><a href="#三个节点环境下" class="headerlink" title="三个节点环境下"></a>三个节点环境下</h4><p>将3个 primary shard 分别分配到一个 node 上，另外3个 replica shard 也交叉分配到另一个节点上；</p><p><img src="/articles/688d9226/1.png" alt></p><p>这样3个节点都可以负载均衡增大访问量，同时如果一台服务器宕机后，数据也不会丢失，还可以对外正常提供服务。保证了服务的高可用和数据的安全。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>建议:  primary shard的个数和集群节点数一致，replica shard 数可以根据业务需求量决定，需求量大可以设定多个replica shard，来增加读取操作。但是至少每个primary shard设置1个replica shard，来保证高可用和数据的安全性。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot; title=&quot;背景&quot;&gt;&lt;/a&gt;背景&lt;/h2&gt;&lt;p&gt;日常运维工作中，保证系统服务的稳定是第一优先级的。做好高可用方案是关键。在用Elasticsearch作为存储的服务中，保证Elasticsearch数据的高可用，数据的安全性和一致性至关重要。本文就针对这一问题详细介绍了Elasticsearch的分片和副本机制。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="数据库" scheme="https://wandouduoduo.netlify.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
+    
+      <category term="Elasticsearch" scheme="https://wandouduoduo.netlify.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Elasticsearch/"/>
+    
+    
+      <category term="Elasticsearch" scheme="https://wandouduoduo.netlify.com/tags/Elasticsearch/"/>
+    
+  </entry>
   
   <entry>
     <title>Nginx之正反代理详解</title>
@@ -635,41 +659,6 @@
 &lt;p&gt;然而我们知道，mysql在传输数据时是进行明文传输的，如果主机A与主机B只能通过公网进行通讯，那么暴露在公网的mysql通讯是非常不安全的，所以，我们需要借助一些手段，提高访问mysql服务时的安全性，比如，我们可以使用SSL证书为数据加密，或者使用stunnel加密隧道，我们还可以使用VPN，当然，这些方法都不是这篇文章所要描述的重点，我们此处要总结的是”ssh隧道”这种方法，我们可以利用ssh，搭建出一条”通道”，然后将mysq的客户端与服务端通过这条”ssh通道”连接起来，如下图所示&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;/articles/b406f6c6/2.png&quot; alt=&quot;ssh端口转发：ssh隧道&quot;&gt;&lt;/p&gt;
 &lt;p&gt;mysql的客户端与服务端的连接方式从原来直连的方式变成了如上图所示的连接方式，它们之间并不直接进行通讯，而是借助ssh隧道将通讯数据转发，虽然仍然跨越了公网，但是由于ssh本身的安全特性，所以别人无法看到明文传输的数据，数据依靠ssh隧道实现了加密的效果，达到了保护数据安全的作用，提升了mysql的客户端与服务端通讯的安全性。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="网络技术" scheme="https://wandouduoduo.netlify.com/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Network" scheme="https://wandouduoduo.netlify.com/tags/Network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SSH隧道与端口转发及内网穿透</title>
-    <link href="https://wandouduoduo.netlify.com/articles/95ca2546.html"/>
-    <id>https://wandouduoduo.netlify.com/articles/95ca2546.html</id>
-    <published>2019-10-29T11:30:24.000Z</published>
-    <updated>2019-11-01T02:54:24.770Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="SSH隧道与端口转发及内网穿透"><a href="#SSH隧道与端口转发及内网穿透" class="headerlink" title="SSH隧道与端口转发及内网穿透"></a>SSH隧道与端口转发及内网穿透</h2><p>大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。</p><p><strong>SSH/plink命令的基本资料：</strong></p><p>首先，认识下这三个非常强大的命令：</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host</span><br><span class="line">&gt; ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host</span><br><span class="line">&gt; ssh -C -f -N -g -D listen_port user@Tunnel_Host</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>相关参数的解释：</p><p>-f Fork into background after authentication.<br>后台认证用户/密码，通常和-N连用，不用登录到远程主机。</p><p>-L port:host:hostport<br>将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport</p><p>-R port:host:hostport<br>将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport</p><p>-D port<br>指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.</p><p>-C Enable compression.<br>压缩数据传输。</p><p>-N Do not execute a shell or command.<br>不执行脚本或命令，通常与-f连用。</p><p>-g Allow remote hosts to connect to forwarded ports.<br>在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。</p><a id="more"></a><p><strong>建立本地SSH隧道例子</strong></p><p>在我们计划建立一个本地SSH隧道之前，我们必须清楚下面这些数据：</p><ol><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 中间服务器d的IP地址</span><br><span class="line">2. 要访问服务器c的IP地址</span><br><span class="line">3. 要访问服务器c的端口</span><br></pre></td></tr></table></figure></li></ol><p>现在，我们把上面这张图变得具体一些，给这些机器加上IP地址。并且根据下面这张图列出我们的计划：</p><ol><li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 需要访问234.234.234.234的FTP服务，也就是端口21</span><br><span class="line">2. 中间服务器是123.123.123.123</span><br></pre></td></tr></table></figure></li></ol><p>现在我们使用下面这条命令来达成我们的目的</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -N -f -L 2121:234.234.234.234:21 123.123.123.123</span><br><span class="line">&gt; ftp localhost:2121 # 现在访问本地2121端口，就能连接234.234.234.234的21端口了</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>这里我们用到了SSH客户端的三个参数，下面我们一一做出解释：</p><ul><li>-N 告诉SSH客户端，这个连接不需要执行任何命令。仅仅做端口转发</li><li>-f 告诉SSH客户端在后台运行</li><li>-L 做本地映射端口，被冒号分割的三个部分含义分别是<ul><li>需要使用的本地端口号</li><li>需要访问的目标机器IP地址（IP: 234.234.234.234）</li><li>需要访问的目标机器端口（端口: 21)</li></ul></li><li>最后一个参数是我们用来建立隧道的中间机器的IP地址(IP: 123.123.123.123)</li></ul><p>我们再重复一下-L参数的行为。-L X:Y:Z的含义是，将IP为Y的机器的Z端口通过中间服务器映射到本地机器的X端口。</p><p>在这条命令成功执行之后，我们已经具有绕过公司防火墙的能力，并且成功访问到了我们喜欢的一个FTP服务器了。</p><h5 id="如何建立远程SSH隧道"><a href="#如何建立远程SSH隧道" class="headerlink" title="如何建立远程SSH隧道"></a>如何建立远程SSH隧道</h5><p>通过建立本地SSH隧道，我们成功地绕过防火墙开始下载FTP上的资源了。那么当我们在家里的时候想要察看下载进度怎么办呢？大多数公司的网络是通过路由器接入互联网的，公司内部的机器不会直接与互联网连接，也就是不能通过互联网直接访问。通过线路D-B-A访问公司里的机器a便是不可能的。也许你已经注意到了，虽然D-B-A这个方向的连接不通，但是A-B-D这个方向的连接是没有问题的。那么，我们能否利用一条已经连接好的A-B-D方向的连接来完成D-B-A方向的访问呢？答案是肯定的，这就是远程SSH隧道的用途。</p><p>与本地SSH一样，我们在建立远程SSH隧道之前要清楚下面几个参数：</p><ul><li>需要访问内部机器的远程机器的IP地址（这里是123.123.123.123）</li><li>需要让远程机器能访问的内部机器的IP地址(这里因为是想把本机映射出去，因此IP是127.0.0.1)</li><li>需要让远程机器能访问的内部机器的端口号(端口:22)</li></ul><p>在清楚了上面的参数后，我们使用下面的命令来建立一个远程SSH隧道</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -N -f -R 2222:127.0.0.1:22 123.123.123.123</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>现在，在IP是123.123.123.123的机器上我们用下面的命令就可以登陆公司的IP是192.168.0.100的机器了。</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -p 2222 localhost</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>-N，-f 这两个参数我们已经在本地SSH隧道中介绍过了。我们现在重点说说参数-R。该参数的三个部分的含义分别是:</p><ul><li>远程机器使用的端口（2222）</li><li>需要映射的内部机器的IP地址(127.0.0.1)</li><li>需要映射的内部机器的端口(22)</li></ul><p>例如：-R X:Y:Z 就是把我们内部的Y机器的Z端口映射到远程机器的X端口上。</p><p><strong>建立SSH隧道的几个技巧</strong></p><p><strong>自动重连</strong></p><p>隧道可能因为某些原因断开，例如：机器重启，长时间没有数据通信而被路由器切断等等。因此我们可以用程序控制隧道的重新连接，例如一个简单的循环或者使用 <a href="http://cr.yp.to/daemontools.html" target="_blank" rel="noopener">djb’s daemontools</a> . 不管用哪种方法，重连时都应避免因输入密码而卡死程序。关于如何安全的避免输入密码的方法，请参考我的 <a href="http://blog.jianingy.com/node/73" target="_blank" rel="noopener">如何实现安全的免密码ssh登录</a> 。这里请注意，如果通过其他程序控制隧道连接，应当避免将SSH客户端放到后台执行，也就是去掉-f参数。</p><p><strong>保持长时间连接</strong></p><p>有些路由器会把长时间没有通信的连接断开。SSH客户端的TCPKeepAlive选项可以避免这个问题的发生，默认情况下它是被开启的。如果它被关闭了，可以在ssh的命令上加上-o TCPKeepAlive=yes来开启。</p><p>另一种方法是，去掉-N参数，加入一个定期能产生输出的命令。例如: top或者vmstat。下面给出一个这种方法的例子：</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -R 2222:localhost:22 123.123.123.123 &quot;vmstat 30&quot;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p><strong>检查隧道状态</strong></p><p>有些时候隧道会因为一些原因通信不畅而卡死，例如：由于传输数据量太大，被路由器带入stalled状态。这种时候，往往SSH客户端并不退出，而是卡死在那里。一种应对方法是，使用SSH客户端的ServerAliveInterval和ServerAliveCountMax选项。 ServerAliveInterval会在隧道无通信后的一段设置好的时间后发送一个请求给服务器要求服务器响应。如果服务器在 ServerAliveCountMax次请求后都没能响应，那么SSH客户端就自动断开连接并退出，将控制权交给你的监控程序。这两个选项的设置方法分别是在ssh时加入-o ServerAliveInterval=n和-o ServerAliveCountMax=m。其中n, m可以自行定义。</p><p><strong>如何将端口绑定到外部地址上</strong></p><p>使用上面的方法，映射的端口只能绑定在127.0.0.1这个接口上。也就是说，只能被本机自己访问到。如何才能让其他机器访问这个端口呢？我们可以把这个映射的端口绑定在0.0.0.0的接口上，方法是加上参数-b 0.0.0.0。同时还需要打开SSH服务器端的一个选项－GatewayPorts。默认情况下它应当是被打开的。如果被关闭的话，可以在/etc /sshd_config中修改GatewayPorts no为GatewayPorts yes来打开它。</p><p><strong>通过SSH隧道建立SOCKS服务器</strong></p><p>如果我们需要借助一台中间服务器访问很多资源，一个个映射显然不是高明的办法（事实上，高明确实没有用这个方法）。幸好，SSH客户端为我们提供了通过SSH隧道建立SOCKS服务器的功能。</p><p>通过下面的命令我们可以建立一个通过123.123.123.123的SOCKS服务器。</p><blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; ssh -N -f -D 1080 123.123.123 # 将端口绑定在127.0.0.1上</span><br><span class="line">&gt; ssh -N -f -D 0.0.0.0:1080 123.123.123.123 # 将端口绑定在0.0.0.0上</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure></blockquote><p>通过SSH建立的SOCKS服务器使用的是SOCKS5协议，在为应用程序设置SOCKS代理的时候要特别注意。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;SSH隧道与端口转发及内网穿透&quot;&gt;&lt;a href=&quot;#SSH隧道与端口转发及内网穿透&quot; class=&quot;headerlink&quot; title=&quot;SSH隧道与端口转发及内网穿透&quot;&gt;&lt;/a&gt;SSH隧道与端口转发及内网穿透&lt;/h2&gt;&lt;p&gt;大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;SSH/plink命令的基本资料：&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;首先，认识下这三个非常强大的命令：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt; ssh -C -f -N -g -D listen_port user@Tunnel_Host&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;相关参数的解释：&lt;/p&gt;
-&lt;p&gt;-f Fork into background after authentication.&lt;br&gt;后台认证用户/密码，通常和-N连用，不用登录到远程主机。&lt;/p&gt;
-&lt;p&gt;-L port:host:hostport&lt;br&gt;将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p&gt;
-&lt;p&gt;-R port:host:hostport&lt;br&gt;将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p&gt;
-&lt;p&gt;-D port&lt;br&gt;指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.&lt;/p&gt;
-&lt;p&gt;-C Enable compression.&lt;br&gt;压缩数据传输。&lt;/p&gt;
-&lt;p&gt;-N Do not execute a shell or command.&lt;br&gt;不执行脚本或命令，通常与-f连用。&lt;/p&gt;
-&lt;p&gt;-g Allow remote hosts to connect to forwarded ports.&lt;br&gt;在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。&lt;/p&gt;
     
     </summary>
     
