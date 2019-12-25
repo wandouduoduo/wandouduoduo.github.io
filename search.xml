@@ -3848,8 +3848,8 @@
         <category>服务部署</category>
       </categories>
       <tags>
-        <tag>Cmdb</tag>
         <tag>Openldap</tag>
+        <tag>Cmdb</tag>
       </tags>
   </entry>
   <entry>
@@ -14922,8 +14922,8 @@
         <category>服务部署</category>
       </categories>
       <tags>
-        <tag>Git</tag>
         <tag>Hexo</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
 </search>
