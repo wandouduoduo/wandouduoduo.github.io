@@ -4,8 +4,8 @@
 
 # Site
 title: 豌豆多多
-subtitle: Deveops Study Notes
-description: 
+subtitle: Senior O & M Architect
+description: 沪漂资深运维架构师的呕心笔记
 keywords:
 author: WanDouDuoDuo
 language: zh-CN
@@ -126,6 +126,14 @@ tag_cloud:
     textHeight: 25
     outlineColor: '#E2E1D1'
     maxSpeed: 0.1 
+
+# readmore
+plugins:
+  readmore:
+    blogId: 19128-1577246103864-519
+    name: 豌豆多多追梦记
+    qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
+    keyword: vip
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

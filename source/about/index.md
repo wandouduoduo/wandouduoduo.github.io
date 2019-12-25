@@ -1,8 +1,3 @@
----
-title: 关于我
-date: 2019-05-25 18:53:53
----
-
 ## 喜欢的名言
 
 当你的才华还撑不起你的野心的时候，你就应该静下心来学习；当你的能力还驾驭不了你的目标时，就应该沉下心来，历练；梦想，不是浮躁，而是沉淀和积累，只有拼出来的美丽，没有等出来的辉煌，机会永远是留给最渴望的那个人，学会与内心深处的你对话，问问自己，想要怎样的人生，静心学习，耐心沉淀，送给自己，共勉。
@@ -32,8 +27,18 @@ date: 2019-05-25 18:53:53
 ## 社交账号
 
 - QQ:          751837961
+
 - WeChat:   sunxv9
+
 - Email:    wandouduoduo@163.com
+
 - Github:  https://github.com/wandouduoduo
+
 - 博客：    https://wandouduoduo.netlify.com 或 https://wandouduoduo.github.io
+
 - 站长：www.wandouduoduo.com 
+
+  #### 微信公众号![](index/gongzhonghao.jpg)
+
+  #### 头条号![](index/toutiaohao.jpeg)
+
