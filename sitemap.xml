@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wandouduoduo.netlify.com/about/index.html</loc>
+    
+    <lastmod>2019-12-25T03:06:37.423Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wandouduoduo.netlify.com/articles/c5ecc6c0.html</loc>
     
     <lastmod>2019-12-24T04:16:05.986Z</lastmod>
@@ -880,13 +887,6 @@
     <loc>https://wandouduoduo.netlify.com/articles/970a7010.html</loc>
     
     <lastmod>2019-10-31T10:40:08.777Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wandouduoduo.netlify.com/about/index.html</loc>
-    
-    <lastmod>2019-09-20T04:00:53.561Z</lastmod>
     
   </url>
   
