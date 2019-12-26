@@ -63,7 +63,7 @@ $ hexo init
 
 安装 Hexo 完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下： 
 
-![](https://img-blog.csdn.net/20180416185713504)
+![](超详细的hexo+gitpage博客搭建/3.png)
 
 本地查看效果
 执行下面语句，执行完即可登录localhost:4000查看效果
@@ -209,11 +209,11 @@ $ git config --global user.email  "wandouduoduo@163.com"//填写自己的邮箱
 
 第四步、打开你一开始创建的Hexo文件夹（如E:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件
 
-![](https://img-blog.csdn.net/20180416190938241)
+![](超详细的hexo+gitpage博客搭建/4.png)
 
 第五步、在配置文件里作如下修改，保存
 
-![](https://img-blog.csdn.net/20180416191018411)
+![](超详细的hexo+gitpage博客搭建/5.png)
 
 第六步、在Hexo文件夹下执行：
 
@@ -243,7 +243,7 @@ npm install hexo-deployer-git --save
 
 当然，每一个人都可以通过这个地址访问到你的博客了。
 
-![](https://img-blog.csdn.net/2018041619120244)
+![](超详细的hexo+gitpage博客搭建/6.png)
 
 ## 美化自己博客
 
@@ -253,12 +253,12 @@ npm install hexo-deployer-git --save
 
 一、进入[Hexo的官网主题专栏](https://hexo.io/themes/)
 
-![](https://img-blog.csdn.net/20180416191239885)
+![](超详细的hexo+gitpage博客搭建/1.png)
 
 二、挑选我们喜欢的主题
 可以看到有很多主题给我们选，我们只要选择喜欢的主题点击进去，然后进入到它的github地址，我们只要把这个地址复制下来(例如我是选择：hexo-theme-next这个主题)
 
-![](https://img-blog.csdn.net/20180416191313698)
+![](超详细的hexo+gitpage博客搭建/2.png)
 
 三、克隆主题
 再打开Hexo文件夹下的themes目录（E:\Blog\hexo\themes），右键Git Bash，在命令行输入命令下载:
@@ -287,7 +287,7 @@ hexo s
 
 打开浏览器，输入 http://localhost:4000/ 即可看见我们的主题已经更换了。
 
-![](https://img-blog.csdn.net/20180416191455122)
+![](超详细的hexo+gitpage博客搭建/7.png)
 
 六、如果效果满意，将它部署到Github上
 打开Hexo文件夹，右键Git Bash，输入
@@ -324,7 +324,7 @@ $ hexo d #部署 # 可与hexo g合并为 hexo d -g
 
 我们注意到在 \Hexo\source_posts 文件夹下存放着我们的文章，它们的格式都是以.md格式结尾的，没错，Hexo也是支持Markdown语法的，所以当我们需要写具有格式化的文章时，我们可以使用支持Markdown语法的编辑器进行文章编译，然后保存文件到 \Hexo\source_posts 文件夹下即可。
 
-![](https://img-blog.csdn.net/20180416191622199)
+![](超详细的hexo+gitpage博客搭建/8.png)
 
 复制进去之后，只要执行
 
@@ -361,7 +361,7 @@ Web 端上，我强烈推荐 简书 这款产品。
 
 选择你喜欢的域名，然后购买即可。
 
-![](https://img-blog.csdn.net/20180416191714614)
+![](超详细的hexo+gitpage博客搭建/9.png)
 
 ### 二、配置CNAME文件
 
@@ -369,7 +369,7 @@ Web 端上，我强烈推荐 简书 这款产品。
 
 内容为你的域名
 
-![](https://img-blog.csdn.net/2018041619174593)
+![](超详细的hexo+gitpage博客搭建/10.png)
 
 
 在Hexo文件夹提交
@@ -384,11 +384,11 @@ hexo g -d
 
 1.如果你是在阿里云购买域名的话，请登录阿里云网站。打开个人中心，点击域名
 
-![](https://img-blog.csdn.net/20180416191855845)
+![](超详细的hexo+gitpage博客搭建/11.png)
 
 2.选择管理
 
-![](https://img-blog.csdn.net/20180416191923488)
+![](超详细的hexo+gitpage博客搭建/12.png)
 
 3.修改DNS为
 
@@ -397,7 +397,7 @@ f1g1ns2.dnspod.net
 f1g1ns1.dnspod.net
 ```
 
-![](https://img-blog.csdn.net/20180416192006942)
+![](超详细的hexo+gitpage博客搭建/13.png)
 
 ### 四、域名解析
 
@@ -405,12 +405,12 @@ f1g1ns1.dnspod.net
 
 点击添加域名，把你的域名添加进去，如无意外，添加完之后就是以下这个状态 
 
-![](https://img-blog.csdn.net/20180416192041164)
+![](超详细的hexo+gitpage博客搭建/14.png)
 
 
 此时点击添加记录，添加两个记录，一个主机记录为@， 一个为www，而记录值都是填同一个，填你的博客主页对应的ip，添加完后如下。 
 
-![](https://img-blog.csdn.net/20180416192152537)
+![](超详细的hexo+gitpage博客搭建/15.png)
 
 但是如何获取ip值呢？打开运行，输入cmd，打开命令窗口输入 ping 域名 ， 查看解析ip地址
 
