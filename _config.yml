@@ -103,7 +103,7 @@ baidu_url_submit:
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 
 live2d:
-  enable: false
+  enable: true
   scriptFrom: local
   pluginRootPath: live2dw/
   pluginJsPath: lib/
@@ -128,12 +128,12 @@ tag_cloud:
     maxSpeed: 0.1 
 
 # readmore
-plugins:
-  readmore:
-    blogId: 19128-1577246103864-519
-    name: 豌豆多多追梦记
-    qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
-    keyword: vip
+# plugins:
+#   readmore:
+#     blogId: 19128-1577246103864-519
+#     name: 豌豆多多追梦记
+#     qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
+#     keyword: vip
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
