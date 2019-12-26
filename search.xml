@@ -12647,7 +12647,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
 
 <p>安装 Hexo 完成后，Hexo 将会在指定文件夹中新建所需要的文件。Hexo文件夹下的目录如下： </p>
-<p><img src="https://img-blog.csdn.net/20180416185713504" alt></p>
+<p><img src="/articles/d2a49991/3.png" alt></p>
 <p>本地查看效果<br>执行下面语句，执行完即可登录localhost:4000查看效果</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
 
@@ -12700,9 +12700,9 @@
 <p>第三步、复制地址</p>
 <p><img src="/articles/d2a49991/github8.png" alt></p>
 <p>第四步、打开你一开始创建的Hexo文件夹（如E:\Blog\Hexo），用记事本打开刚文件夹下的_config.yml文件</p>
-<p><img src="https://img-blog.csdn.net/20180416190938241" alt></p>
+<p><img src="/articles/d2a49991/4.png" alt></p>
 <p>第五步、在配置文件里作如下修改，保存</p>
-<p><img src="https://img-blog.csdn.net/20180416191018411" alt></p>
+<p><img src="/articles/d2a49991/5.png" alt></p>
 <p>第六步、在Hexo文件夹下执行：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
@@ -12716,13 +12716,13 @@
 <p>这样，你再执行hexo g -d，你的博客就部署到Github上了。</p>
 <p>第七步、在浏览器上输入自己的主页地址<br>在浏览器上输入Github Pager为我们生成的外链（例如我的是：<a href="https://wandouduoduo.github.io，而你的只需要把你的github用户名替换掉这个链接中的wandouduoduo，因为我的用户名是这个）即可看到自己的博客了。" target="_blank" rel="noopener">https://wandouduoduo.github.io，而你的只需要把你的github用户名替换掉这个链接中的wandouduoduo，因为我的用户名是这个）即可看到自己的博客了。</a></p>
 <p>当然，每一个人都可以通过这个地址访问到你的博客了。</p>
-<p><img src="https://img-blog.csdn.net/2018041619120244" alt></p>
+<p><img src="/articles/d2a49991/6.png" alt></p>
 <h2 id="美化自己博客"><a href="#美化自己博客" class="headerlink" title="美化自己博客"></a>美化自己博客</h2><p>那么现在我们的博客已经挂在了Github服务器上面，别人已经可以通过地址来登陆我们的博客了，但是我们这时就有了新的需求，就是自己的博客并不好看，那怎么办的？这很简单，要知道很多前端开发者在Hexo框架下开发了很多的主题给我们使用，我们只需要把他们的主题克隆过来，然后通过修改配置文件即可达到我们所需要的效果。</p>
 <p>那么我们应该怎么修改呢？</p>
 <p>一、进入<a href="https://hexo.io/themes/" target="_blank" rel="noopener">Hexo的官网主题专栏</a></p>
-<p><img src="https://img-blog.csdn.net/20180416191239885" alt></p>
+<p><img src="/articles/d2a49991/1.png" alt></p>
 <p>二、挑选我们喜欢的主题<br>可以看到有很多主题给我们选，我们只要选择喜欢的主题点击进去，然后进入到它的github地址，我们只要把这个地址复制下来(例如我是选择：hexo-theme-next这个主题)</p>
-<p><img src="https://img-blog.csdn.net/20180416191313698" alt></p>
+<p><img src="/articles/d2a49991/2.png" alt></p>
 <p>三、克隆主题<br>再打开Hexo文件夹下的themes目录（E:\Blog\hexo\themes），右键Git Bash，在命令行输入命令下载:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/iissnan/hexo-theme-next(此处地址替换成你需要使用的主题的地址)</span><br></pre></td></tr></table></figure>
 
@@ -12734,7 +12734,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
 
 <p>打开浏览器，输入 <a href="http://localhost:4000/" target="_blank" rel="noopener">http://localhost:4000/</a> 即可看见我们的主题已经更换了。</p>
-<p><img src="https://img-blog.csdn.net/20180416191455122" alt></p>
+<p><img src="/articles/d2a49991/7.png" alt></p>
 <p>六、如果效果满意，将它部署到Github上<br>打开Hexo文件夹，右键Git Bash，输入</p>
 <p>hexo clean   (必须要，不然有时因为缓存问题，服务器更新不了主题)<br>hexo g -d</p>
 <p>七、打开自己的主页，即可看到修改后的效果<br>更多修改效果请查看对应主题的说明文档，点击此查看本主题(Next)对应的说明文档。</p>
@@ -12746,7 +12746,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo g #生成</span><br><span class="line">$ hexo d #部署 # 可与hexo g合并为 hexo d -g</span><br></pre></td></tr></table></figure>
 
 <h3 id="二、用Markdown写文章"><a href="#二、用Markdown写文章" class="headerlink" title="二、用Markdown写文章"></a>二、用Markdown写文章</h3><p>我们注意到在 \Hexo\source_posts 文件夹下存放着我们的文章，它们的格式都是以.md格式结尾的，没错，Hexo也是支持Markdown语法的，所以当我们需要写具有格式化的文章时，我们可以使用支持Markdown语法的编辑器进行文章编译，然后保存文件到 \Hexo\source_posts 文件夹下即可。</p>
-<p><img src="https://img-blog.csdn.net/20180416191622199" alt></p>
+<p><img src="/articles/d2a49991/8.png" alt></p>
 <p>复制进去之后，只要执行</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo d -g</span><br></pre></td></tr></table></figure>
 
@@ -12757,26 +12757,26 @@
 <h2 id="将自己的域名关联到Github-Pages上"><a href="#将自己的域名关联到Github-Pages上" class="headerlink" title="将自己的域名关联到Github Pages上"></a>将自己的域名关联到Github Pages上</h2><p>很多朋友创建了自己的博客之后会选择买一个属于自己的域名，然后将自己域名绑定到自己的Github Pages博客上，其实这也并不难，只要你有个域名。</p>
 <h3 id="一、购买域名"><a href="#一、购买域名" class="headerlink" title="一、购买域名"></a>一、购买域名</h3><p>如果你不是很有钱，在<a href="https://wanwang.aliyun.com/domain/?spm=5176.383338.1907008.1.LWIFhw" target="_blank" rel="noopener">阿里云</a>上，你只要几块钱就可以买到一个域名。</p>
 <p>选择你喜欢的域名，然后购买即可。</p>
-<p><img src="https://img-blog.csdn.net/20180416191714614" alt></p>
+<p><img src="/articles/d2a49991/9.png" alt></p>
 <h3 id="二、配置CNAME文件"><a href="#二、配置CNAME文件" class="headerlink" title="二、配置CNAME文件"></a>二、配置CNAME文件</h3><p>在 \hexo\source 文件夹下创建文件 CNAME （新建记事本文件命名CNAME，然后打开）</p>
 <p>内容为你的域名</p>
-<p><img src="https://img-blog.csdn.net/2018041619174593" alt></p>
+<p><img src="/articles/d2a49991/10.png" alt></p>
 <p>在Hexo文件夹提交</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
 
 <h3 id="三、修改DNS的DNS"><a href="#三、修改DNS的DNS" class="headerlink" title="三、修改DNS的DNS"></a>三、修改DNS的DNS</h3><p>1.如果你是在阿里云购买域名的话，请登录阿里云网站。打开个人中心，点击域名</p>
-<p><img src="https://img-blog.csdn.net/20180416191855845" alt></p>
+<p><img src="/articles/d2a49991/11.png" alt></p>
 <p>2.选择管理</p>
-<p><img src="https://img-blog.csdn.net/20180416191923488" alt></p>
+<p><img src="/articles/d2a49991/12.png" alt></p>
 <p>3.修改DNS为</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">f1g1ns2.dnspod.net </span><br><span class="line">f1g1ns1.dnspod.net</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdn.net/20180416192006942" alt></p>
+<p><img src="/articles/d2a49991/13.png" alt></p>
 <h3 id="四、域名解析"><a href="#四、域名解析" class="headerlink" title="四、域名解析"></a>四、域名解析</h3><p>打开<a href="https://www.dnspod.cn/" target="_blank" rel="noopener">DNSPOD</a>，注册一个账户</p>
 <p>点击添加域名，把你的域名添加进去，如无意外，添加完之后就是以下这个状态 </p>
-<p><img src="https://img-blog.csdn.net/20180416192041164" alt></p>
+<p><img src="/articles/d2a49991/14.png" alt></p>
 <p>此时点击添加记录，添加两个记录，一个主机记录为@， 一个为www，而记录值都是填同一个，填你的博客主页对应的ip，添加完后如下。 </p>
-<p><img src="https://img-blog.csdn.net/20180416192152537" alt></p>
+<p><img src="/articles/d2a49991/15.png" alt></p>
 <p>但是如何获取ip值呢？打开运行，输入cmd，打开命令窗口输入 ping 域名 ， 查看解析ip地址</p>
 <p>将IP输入过去，然后会提示你到域名注册的地方修改DNS。等待生效，最迟72小时生效。即可通过你的域名浏览你的博客主页。</p>
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>按照上述操作，开始建立你自己的博客吧，还在等什么呢？用博客展现自己的能力和分享自己心得，你会交到很多志同道合的朋友和成就。</p>
