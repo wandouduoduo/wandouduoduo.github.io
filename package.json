@@ -44,6 +44,6 @@
     "live2d-widget-model-shizuku": "^1.0.5"
   },
   "scripts": {
-    "push": "hexo cl && hexo g && gulp && hexo d"
+    "push": "hexo cl && hexo g && gulp && hexo s"
   }
 }
