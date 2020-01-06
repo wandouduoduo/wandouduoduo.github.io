@@ -51,7 +51,5 @@
   {% elif theme.gitalk.enable %}
     <div class="comments" id="gitalk-container">
     </div>
-
   {% endif %}
-
 {% endif %}
