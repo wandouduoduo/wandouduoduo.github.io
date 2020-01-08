@@ -426,7 +426,7 @@
         {% endif %}
         </div>
       {% endif %}
-      {% endif %}
+      {% endif %}     
 
       {% if not is_index and (post.prev or post.next) %}
         <div class="post-nav">
@@ -454,6 +454,7 @@
       {% if is_index and not isLast %}
         <div class="post-eof"></div>
       {% endif %}
+
     </footer>
   </div>
   {######################}
