@@ -52,4 +52,8 @@
     <div class="comments" id="gitalk-container">
     </div>
   {% endif %}
+
+  <!-- 提交下面 -->
+  {% include 'google_comments_adsense.swig' %}
+  
 {% endif %}

@@ -86,7 +86,7 @@
               {% endif %}
             </nav>
           {% endif %}
-
+          
           {% if theme.rss %}
             <div class="feed-link motion-element">
               <a href="{{ url_for(theme.rss) }}" rel="alternate">
@@ -196,8 +196,8 @@
           </div>
       </div>
       {% endif %}
-
-      {% include '../_custom/google_adsense.swig' %}
+      <!-- 星云下面 -->
+      {% include 'google_adsense.swig' %}
       
     </div>
   </aside>
