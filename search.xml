@@ -131,6 +131,13 @@
     <title>详解开源远程办公openvpn</title>
     <url>/articles/decac6ef.html</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>运维技术</category>
+        <category>服务部署</category>
+      </categories>
+      <tags>
+        <tag>openvpn</tag>
+      </tags>
   </entry>
   <entry>
     <title>Hexo增加APlayer播放音乐</title>
