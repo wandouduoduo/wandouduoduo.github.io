@@ -275,7 +275,7 @@
       </tags>
   </entry>
   <entry>
-    <title>详解开源远程办公openvpn</title>
+    <title>Centos7搭建神器openvpn</title>
     <url>/articles/decac6ef.html</url>
     <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>OpenVPN是一个开源的应用程序，它允许您通过公共互联网创建一个安全的专用网络。OpenVPN实现一个虚拟专用网（VPN）来创建一个安全连接。OpenVPN使用OpenSSL库提供加密，它提供了几种身份验证机制，如基于证书的、预共享密钥和用户名/密码身份验证。本文详细介绍了OpenVPN搭建过程，并利用pam_sqlite3插件实现用户认证；通过openvpn_web进行用户管理与日志系统。</p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a><strong>环境</strong></h2><p>服务端：CentOS7.x</p>
