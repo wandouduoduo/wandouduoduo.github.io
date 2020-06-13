@@ -342,8 +342,11 @@ ServerC中开启了mysql服务，监听了3306端口。
 
 创建本地转发模式的ssh隧道，命令如下
 
-```
+```shell
 ssh -g -f -N -L forwardingPort:targetIP:targetPort user@sshServerIP
+例如：
+ssh -g -f -NL 0.0.0.0:23306:192.168.4.94:3306 huawuprod@192.168.4.47
+#功能:  建立隧道将远程数据库192.168.4.94:3306映射为本机23306端口。隧道ip为本机ip（192.168.4.47）
 ```
 
 本机上的forwardingPort将会被监听，访问本机的forwardingPort，就相当于访问targetIP的targetPort，ssh隧道建立在本机与sshServer之间。
@@ -352,7 +355,7 @@ ssh -g -f -N -L forwardingPort:targetIP:targetPort user@sshServerIP
 
 创建远程转发模式的ssh隧道，命令如下
 
-```
+```shell
 ssh -f -N -R forwardingPort:targetIP:targetPort user@sshServerIP
 ```
 

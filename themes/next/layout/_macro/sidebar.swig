@@ -197,7 +197,6 @@
       </div>
       {% endif %}
       <!-- 星云下面 -->
-      {% include 'google_adsense.swig' %}
       
     </div>
   </aside>
