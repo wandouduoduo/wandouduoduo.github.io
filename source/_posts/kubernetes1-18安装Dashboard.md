@@ -1,8 +1,8 @@
 ---
 title: kubernetes1.18安装Dashboard
 categories:
-  - 运维技术
-  - 容器化技术
+  - 容器化
+  - Docker
 tags:
   - K8s
 copyright: true

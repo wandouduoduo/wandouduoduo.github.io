@@ -1,8 +1,8 @@
 ---
 title: centos7使用kubeadm安装kubernetes集群
 categories:
-  - 运维技术
-  - 容器化技术
+  - 容器化
+  - Docker
 tags:
   - K8s
 copyright: true
