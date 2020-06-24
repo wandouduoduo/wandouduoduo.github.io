@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Centos7.x安装opensips并实现通话成功</title>
+    <url>/articles/a63421f.html</url>
+    <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>先是使用<code>opensips</code>官方的<code>docker</code>尝试，好不容易装好了，软电话（<code>sipphone</code>）上注册不成功，主要是我<code>docker</code>又是装在<code>VirtualBox</code>的虚拟机里的，网络结构致使调试困难，直接新开一个虚拟机，很顺利的就安装成功并且实现局域网终端之间通话。</p>
+<a id="more"></a>
+
+
+
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install mysql mysql-server mysql-devel gcc gcc-c++ ncurses-devel flex bison -y</span><br></pre></td></tr></table></figure>
+
+<p>机器上已经又<code>mysql</code>正常运行的话就跳过<code>mysql</code>相关的安装了。<br>注意在安装<code>mysql-server</code>的时候可能会出现找不到包，提示使用<code>mariadb-server</code>替代，那就老实使用<code>yum install mariadb-server mariadb</code>安装吧。</p>
+<h4 id="mysql-设置密码并打开远程访问权限"><a href="#mysql-设置密码并打开远程访问权限" class="headerlink" title="mysql 设置密码并打开远程访问权限"></a>mysql 设置密码并打开远程访问权限</h4><p>装好的<code>mysql</code>启动默认是没有密码的，进入<code>mysql</code>后进去运行下面的代码。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 设置密码</span><br><span class="line"><span class="built_in">set</span> password <span class="keyword">for</span> <span class="string">'root'</span>@<span class="string">'localhost'</span> =password(<span class="string">'123456'</span>);</span><br><span class="line">// 设置远程访问及全表权限</span><br><span class="line">grant all privileges on *.* to root@<span class="string">'%'</span>identified by <span class="string">'123456'</span>;</span><br><span class="line">// 更新权限</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure>
+
+<p>这里的设置根据需要来就好了。</p>
+<h4 id="开启防火墙5060端口"><a href="#开启防火墙5060端口" class="headerlink" title="开启防火墙5060端口"></a>开启防火墙5060端口</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=5060/udp --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装opensips"><a href="#安装opensips" class="headerlink" title="安装opensips"></a>安装opensips</h2><h4 id="下载源码并选择模块"><a href="#下载源码并选择模块" class="headerlink" title="下载源码并选择模块"></a>下载源码并选择模块</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/src </span><br><span class="line">git <span class="built_in">clone</span> https://github.com/OpenSIPS/opensips.git -b 2.4 opensips-2.4</span><br><span class="line"><span class="built_in">cd</span> opensips-2.4</span><br><span class="line">make all</span><br><span class="line"><span class="comment"># 如果这里报错，停止，装好依赖再make all</span></span><br><span class="line">make menuconfig</span><br></pre></td></tr></table></figure>
+
+<p><img src="/articles/a63421f/1.png" alt></p>
+<p>进入这个菜单后，根据需要使用这个工具（左右键进入返回，空格键选中，回车键确定），但有个必须的是进入<code>Configure Compile Options</code>，选中<code>db_mysql</code>保存，返回主菜单选择<code>Compile And Install OpenSIPS</code>编译安装即可。完成后会回到这个界面，保存退出。</p>
+<h4 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 配置文件目录</span></span><br><span class="line">ls /usr/<span class="built_in">local</span>/etc/opensips/</span><br><span class="line"></span><br><span class="line">opensips.cfg  opensipsctlrc  osipsconsolerc  scenario_callcenter.xml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行程序目录</span></span><br><span class="line">ls /usr/<span class="built_in">local</span>/sbin</span><br><span class="line"></span><br><span class="line">opensips  opensipsctl  opensipsdbctl  opensipsunix  osipsconfig  osipsconsole</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置</span></span><br><span class="line">vim opensipsctlrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后的配置</span></span><br><span class="line"><span class="comment"># $Id$</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># The OpenSIPS configuration file for the control tools.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Here you can set variables used in the opensipsctl and opensipsdbctl setup</span></span><br><span class="line"><span class="comment"># scripts. Per default all variables here are commented out, the control tools</span></span><br><span class="line"><span class="comment"># will use their internal default values.</span></span><br><span class="line"><span class="comment">## your SIP domain</span></span><br><span class="line">SIP_DOMAIN=192.168.0.191</span><br><span class="line"><span class="comment">## chrooted directory</span></span><br><span class="line"><span class="comment"># $CHROOT_DIR="/path/to/chrooted/directory"</span></span><br><span class="line"><span class="comment">## database type: MYSQL, PGSQL, ORACLE, DB_BERKELEY, DBTEXT, or SQLITE</span></span><br><span class="line"><span class="comment">## by default none is loaded</span></span><br><span class="line"><span class="comment"># If you want to setup a database with opensipsdbctl, you must at least specify</span></span><br><span class="line"><span class="comment"># this parameter.</span></span><br><span class="line">DBENGINE=MYSQL</span><br><span class="line"><span class="comment">## database port (PostgreSQL=5432 default; MYSQL=3306 default)</span></span><br><span class="line">DBPORT=3306</span><br><span class="line"><span class="comment">## database host</span></span><br><span class="line">DBHOST=localhost</span><br><span class="line"><span class="comment">## database name (for ORACLE this is TNS name)</span></span><br><span class="line">DBNAME=opensips</span><br><span class="line"><span class="comment"># database path used by dbtext, db_berkeley, or sqlite</span></span><br><span class="line">DB_PATH=<span class="string">"/usr/local/etc/opensips/dbtext"</span></span><br><span class="line"><span class="comment">## database read/write user</span></span><br><span class="line">DBRWUSER=opensips</span><br><span class="line"><span class="comment">## password for database read/write user</span></span><br><span class="line">DBRWPW=<span class="string">"opensipsrw"</span></span><br><span class="line"><span class="comment">## engine type for the MySQL/MariaDB tabels (default InnoDB)</span></span><br><span class="line">MYSQL_ENGINE=<span class="string">"MyISAM"</span></span><br><span class="line"><span class="comment">## database super user (for ORACLE this is 'scheme-creator' user)</span></span><br><span class="line">DBROOTUSER=<span class="string">"root"</span></span><br></pre></td></tr></table></figure>
+
+<p>这里主要是<code>mysql</code>连接信息，保证能正常连接即可。还有一个<code>SIP_DOMAIN</code>能连接到本服务的域名或者<code>IP地址</code>即可。</p>
+<p><strong>修改opensips.cfg</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim opensips.cfg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改配置项</span></span><br><span class="line">listen=udp:192.168.0.191:5060 <span class="comment"># CUSTOMIZE ME</span></span><br></pre></td></tr></table></figure>
+
+<p>这里如果你不确定该怎么填的话，运行下面的命令看一下，一般是本机<code>IP</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip route get 8.8.8.8 | head -n +1 | tr -s <span class="string">" "</span> | cut -d <span class="string">" "</span> -f 7</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建数据库"><a href="#创建数据库" class="headerlink" title="创建数据库"></a>创建数据库</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/sbin</span><br><span class="line"></span><br><span class="line">opensipsdbctl create</span><br><span class="line">……</span><br><span class="line">INFO: creating database opensips ...</span><br><span class="line">INFO: Using table engine MyISAM.</span><br><span class="line">INFO: Core OpenSIPS tables successfully created.</span><br><span class="line">Install presence related tables? (Y/n): y</span><br><span class="line">INFO: creating presence tables into opensips ...</span><br><span class="line">INFO: Presence tables successfully created.</span><br><span class="line">Install tables <span class="keyword">for</span> </span><br><span class="line">    b2b</span><br><span class="line">    cachedb_sql</span><br><span class="line">    call_center</span><br><span class="line">    carrierroute</span><br><span class="line">    cpl</span><br><span class="line">    domainpolicy</span><br><span class="line">    emergency</span><br><span class="line">    fraud_detection</span><br><span class="line">    freeswitch_scripting</span><br><span class="line">    imc</span><br><span class="line">    registrant</span><br><span class="line">    siptrace</span><br><span class="line">    userblacklist</span><br><span class="line">? (Y/n): y</span><br><span class="line">INFO: creating extra tables into opensips ...</span><br><span class="line">INFO: Extra tables successfully created.</span><br></pre></td></tr></table></figure>
+
+<p>之后就是根据提示傻瓜操作创建数据库就好了，如果前面的<code>mysql</code>环境没装好，数据库连接有问题，这里就会报错，如果提示类似下面的编码问题，输入<code>latin1</code>即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">WARNING: Your current default mysql characters <span class="built_in">set</span> cannot be used to create DB. Please choice another one from the following list:</span><br></pre></td></tr></table></figure>
+
+<p>这一步完成之后，会在数据库新建一个<code>opensips</code>（名字是在上面的配置文件里设置的）的数据库。</p>
+<h4 id="启动opensips"><a href="#启动opensips" class="headerlink" title="启动opensips"></a>启动opensips</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">[root@localhost sbin]<span class="comment"># opensipsctl start</span></span><br><span class="line">INFO: Starting OpenSIPS : </span><br><span class="line">INFO: started (pid: 26051)</span><br><span class="line"><span class="comment"># 查看opensips进程</span></span><br><span class="line">[root@localhost sbin]<span class="comment"># ps -aux | grep opensips</span></span><br><span class="line">root      3504  0.0  0.4  70536  4420 ?        S    3月07   0:00 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3505  3.1  0.1  70776  1368 ?        S    3月07  12:35 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3506  0.1  0.0  70536   476 ?        S    3月07   0:29 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3507  0.0  0.0  70536   688 ?        S    3月07   0:08 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3508  0.0  0.2  70536  2396 ?        S    3月07   0:03 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3509  0.0  0.1  70536  1424 ?        S    3月07   0:01 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3510  0.0  0.1  70536  1912 ?        S    3月07   0:01 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3511  0.0  0.2  70536  2392 ?        S    3月07   0:01 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line">root      3512  0.0  0.1  70536  1164 ?        S    3月07   0:01 /usr/<span class="built_in">local</span>/sbin/opensips -P /var/run/opensips.pid</span><br><span class="line"><span class="comment"># 注册用户格式 opensipsctl 用户名 密码</span></span><br><span class="line">[root@localhost sbin]<span class="comment"># opensipsctl add 1001 1001</span></span><br><span class="line">new user <span class="string">'1001'</span> added</span><br><span class="line">[root@localhost sbin]<span class="comment"># opensipsctl add 1002 1002</span></span><br><span class="line">new user <span class="string">'1002'</span> added</span><br></pre></td></tr></table></figure>
+
+<p>到这里就成功的启动了服务并添加了两个用户（1001，1002），下面我们来在局域网测试一下。</p>
+<h4 id="测试通话"><a href="#测试通话" class="headerlink" title="测试通话"></a>测试通话</h4><p>在同一个局域网的手机上装上支持<code>sip</code>的软电话应用市场搜<code>sip phone</code>应该能找到不少，电脑端也有。<br>配置一般是这样的</p>
+<p><img src="/articles/a63421f/2.png" alt></p>
+<p>拨打电话成功</p>
+<p><img src="/articles/a63421f/3.png" alt></p>
+<p>配置好两个终端直接拨号就行了，号码就是1001，1002，经测试视频通话也是默认就支持的，很6哦。至此，借助<code>opensips</code>实现<code>sip</code>通话已经完成，只是实现最基本的功能，<code>opensips</code>还有很多好用的功能供大家来挖掘。</p>
+]]></content>
+      <categories>
+        <category>运维技术</category>
+      </categories>
+      <tags>
+        <tag>Opensips</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>kubernetes1.18安装Dashboard</title>
     <url>/articles/674d1146.html</url>
     <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>k8s的集群搭建已经完成，那么页面怎么管理呢？本文详细介绍k8s-dashboard页面管理。</p>
@@ -13854,6 +13906,52 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
       </tags>
   </entry>
   <entry>
+    <title>神级的Go开源项目</title>
+    <url>/articles/b45f8ddd.html</url>
+    <content><![CDATA[<h2 id="Golang-go"><a href="#Golang-go" class="headerlink" title="Golang/go"></a>Golang/go</h2><p>介绍：<br>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。go本身，也是用go语言实现的，包括他的编译器。与C++相比，Go并不包括如枚举、异常处理、继承、泛型、断言、虚函数等功能，但增加了 切片(Slice) 型、并发、管道、垃圾回收、接口（Interface）等特性的语言级支持。Go 2.0版本将支持泛型，对于断言的存在，则持负面态度，同时也为自己不提供类型继承来辩护。</p>
+<p>star数：53789<br>地址：<br><a href="https://github.com/golang/go" target="_blank" rel="noopener">https://github.com/golang/go</a></p>
+<a id="more"></a>
+
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>介绍：<br>Docker项目在2014年9月份就拿到了C轮4000万美元融资，版本迭代速度超快，目前从GitHub看到已有78个版本，而它仅仅是再2013年初才正式开始的一个项目而已。目前，国内Docker技术推广也进行的如火如荼，比如 Docker中文社区，CSDN也建立了 Docker专区。CSDN CODE也将在近期与Docker中文社区合作，推出Docker技术文章翻译活动，届时也请大家多多关注，及时关注与参与。Docker团队之所以喜欢用Go语言，主要是Go具有强大的标准库、全开发环境、跨平台构建的能力。  </p>
+<p>star数：52339<br>地址：<br><a href="https://github.com/moby/moby" target="_blank" rel="noopener">https://github.com/moby/moby</a>（Docker的新马甲）</p>
+<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>介绍：<br>Kubernetes是Google开源的一个容器编排引擎，它支持自动化部署、大规模可伸缩、应用容器化管理。在生产环境中部署一个应用程序时，通常要部署该应用的多个实例以便对应用请求进行负载均衡。在Kubernetes中，我们可以创建多个容器，每个容器里面运行一个应用实例，然后通过内置的负载均衡策略，实现对这一组应用实例的管理、发现、访问，而这些细节都不需要运维人员去进行复杂的手工配置和处理。  </p>
+<p>star数：48830<br>地址：<br><a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes</a></p>
+<h2 id="Lantern"><a href="#Lantern" class="headerlink" title="Lantern"></a>Lantern</h2><p>介绍：<br>蓝灯，翻墙利器。  </p>
+<p>star数：40492<br>地址：<br><a href="https://github.com/getlantern/lantern" target="_blank" rel="noopener">https://github.com/getlantern/lantern</a></p>
+<h2 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h2><p>介绍：<br>etcd是由CoreOS开发并维护键值存储系统，它使用Go语言编写，并通过Raft一致性算法处理日志复制以保证强一致性。目前，Google的容器集群管理系统Kubernetes、开源PaaS平台Cloud Foundry和CoreOS的Fleet都广泛使用了etcd。Fleet则是一个分布式的初始化系统。它们之所以选择使用Go语言，则是因为Go语言对跨平台的良好支持，以及其背后的强大社区。  </p>
+<p>star数：23187<br>地址：<br><a href="https://github.com/etcd-io/etcd" target="_blank" rel="noopener">https://github.com/etcd-io/etcd</a></p>
+<h2 id="InfluxDB"><a href="#InfluxDB" class="headerlink" title="InfluxDB"></a>InfluxDB</h2><p>介绍：<br>一个Go语音编写的开源分布式的时序、事件和指标数据库，无需外部依赖。其设计目标是实现分布式和水平伸缩扩展。  </p>
+<p>star数：15681<br>地址：<br><a href="https://github.com/influxdata/influxdb" target="_blank" rel="noopener">https://github.com/influxdata/influxdb</a></p>
+<h2 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h2><p>介绍：<br>一款极速的静态页面生成器，让你可以很快的搭建个人网站，提供了多套主题可供使用，并且可以自己定制，和NodeJS的Hexo是一样的。  </p>
+<p>star数：33044<br>地址：<br><a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">https://github.com/gohugoio/hugo</a></p>
+<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>介绍：<br>一款开源监控度量的看板系统，可以接Graphite,Elasticsearch,InfluxDB等数据源，定制化很高。  </p>
+<p>star数：27027<br>地址：<br><a href="https://github.com/grafana/grafana" target="_blank" rel="noopener">https://github.com/grafana/grafana</a></p>
+<h2 id="Codis"><a href="#Codis" class="headerlink" title="Codis"></a>Codis</h2><p>介绍：<br>Codis是一个分布式Redis解决方案,其实就是一个数据库代理，让你在使用Redis集群的时候，就像使用单机版的Redis是一样的，对开发者透明。  </p>
+<p>star数：8840<br>地址：<br><a href="https://github.com/CodisLabs/codis" target="_blank" rel="noopener">https://github.com/CodisLabs/codis</a></p>
+<h2 id="Gin-amp-Beego"><a href="#Gin-amp-Beego" class="headerlink" title="Gin &amp; Beego"></a>Gin &amp; Beego</h2><p>介绍：<br>两个快速开发Go应用的http框架，很好用很简洁，笔者亲测。  </p>
+<p>star数：分别为24692和19086<br>地址：<br>分别为<a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">https://github.com/gin-gonic/gin</a>和<a href="https://github.com/astaxie/beego" target="_blank" rel="noopener">https://github.com/astaxie/beego</a></p>
+<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><p>介绍：<br>Prometheus是一个开源监控系统，它前身是SoundCloud的警告工具包。从2012年开始，许多公司和组织开始使用Prometheus。该项目的开发人员和用户社区非常活跃，越来越多的开发人员和用户参与到该项目中。目前它是一个独立的开源项目，且不依赖与任何公司。为了强调这点和明确该项目治理结构，Prometheus在2016年继Kurberntes之后，加入了Cloud Native Computing Foundation。  </p>
+<p>star数：22325<br>地址：<br><a href="https://github.com/prometheus/prometheus" target="_blank" rel="noopener">https://github.com/prometheus/prometheus</a></p>
+<h2 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h2><p>介绍：<br>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其他分布式服务注册与发现的方案，Consul的方案更“一站式”，内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（比如ZooKeeper等）。  </p>
+<p>star数：15040<br>地址：<br><a href="ttps://github.com/hashicorp/consul" target="_blank" rel="noopener">https://github.com/hashicorp/consul</a></p>
+<h2 id="Nsq"><a href="#Nsq" class="headerlink" title="Nsq"></a>Nsq</h2><p>介绍：<br>NSQ是Go语言编写的，开源的分布式消息队列中间件，其设计的目的是用来大规模地处理每天数以十亿计级别的消息。NSQ 具有分布式和去中心化拓扑结构，该结构具有无单点故障、故障容错、高可用性以及能够保证消息的可靠传递的特征，是一个成熟的、已在大规模生成环境下应用的产品。  </p>
+<p>star数：14559<br>地址：<br><a href="https://github.com/nsqio/nsq" target="_blank" rel="noopener">https://github.com/nsqio/nsq</a></p>
+<h2 id="Awesome-go"><a href="#Awesome-go" class="headerlink" title="Awesome-go"></a>Awesome-go</h2><p>介绍：<br>这不是一个go项目，他是一个学习go的资料网站，属于著名的awesome系列，里面关于go的资源非常详细。  </p>
+<p>star数：40465<br>地址：<br><a href="https://github.com/avelino/awesome-go" target="_blank" rel="noopener">https://github.com/avelino/awesome-go</a></p>
+<h2 id="Open-falcon"><a href="#Open-falcon" class="headerlink" title="Open-falcon"></a>Open-falcon</h2><p>介绍：<br>越来越fashion的监控系统，小米开源。  </p>
+<p>star数：4267<br>地址：<br><a href="https://github.com/open-falcon/falcon-plus" target="_blank" rel="noopener">https://github.com/open-falcon/falcon-plus</a></p>
+<h2 id="Tidb"><a href="#Tidb" class="headerlink" title="Tidb"></a>Tidb</h2><p>介绍：<br>TiDB 是一个分布式 NewSQL 数据库。它支持水平弹性扩展、ACID 事务、标准 SQL、MySQL 语法和 MySQL 协议，具有数据强一致的高可用特性，是一个不仅适合 OLTP 场景还适合 OLAP 场景的混合数据库。    </p>
+<p>star数：17508<br>地址：<br><a href="https://github.com/pingcap/tidb" target="_blank" rel="noopener">https://github.com/pingcap/tidb</a></p>
+]]></content>
+      <categories>
+        <category>编程积累</category>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>超详细的hexo+github page搭建.md</title>
     <url>/articles/d2a49991.html</url>
     <content><![CDATA[<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>在 Windows 环境下安装 Node.js 非常简单，仅须到<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">官网下载</a>安装文件并执行即可完成安装，其中LTS是长期支持版，Current为最新版，但最新版一般都在开发阶段，还不稳定。建议选择LTS版本</p>
@@ -14015,54 +14113,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>服务部署</category>
       </categories>
       <tags>
-        <tag>Hexo</tag>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神级的Go开源项目</title>
-    <url>/articles/b45f8ddd.html</url>
-    <content><![CDATA[<h2 id="Golang-go"><a href="#Golang-go" class="headerlink" title="Golang/go"></a>Golang/go</h2><p>介绍：<br>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。go本身，也是用go语言实现的，包括他的编译器。与C++相比，Go并不包括如枚举、异常处理、继承、泛型、断言、虚函数等功能，但增加了 切片(Slice) 型、并发、管道、垃圾回收、接口（Interface）等特性的语言级支持。Go 2.0版本将支持泛型，对于断言的存在，则持负面态度，同时也为自己不提供类型继承来辩护。</p>
-<p>star数：53789<br>地址：<br><a href="https://github.com/golang/go" target="_blank" rel="noopener">https://github.com/golang/go</a></p>
-<a id="more"></a>
-
-<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>介绍：<br>Docker项目在2014年9月份就拿到了C轮4000万美元融资，版本迭代速度超快，目前从GitHub看到已有78个版本，而它仅仅是再2013年初才正式开始的一个项目而已。目前，国内Docker技术推广也进行的如火如荼，比如 Docker中文社区，CSDN也建立了 Docker专区。CSDN CODE也将在近期与Docker中文社区合作，推出Docker技术文章翻译活动，届时也请大家多多关注，及时关注与参与。Docker团队之所以喜欢用Go语言，主要是Go具有强大的标准库、全开发环境、跨平台构建的能力。  </p>
-<p>star数：52339<br>地址：<br><a href="https://github.com/moby/moby" target="_blank" rel="noopener">https://github.com/moby/moby</a>（Docker的新马甲）</p>
-<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>介绍：<br>Kubernetes是Google开源的一个容器编排引擎，它支持自动化部署、大规模可伸缩、应用容器化管理。在生产环境中部署一个应用程序时，通常要部署该应用的多个实例以便对应用请求进行负载均衡。在Kubernetes中，我们可以创建多个容器，每个容器里面运行一个应用实例，然后通过内置的负载均衡策略，实现对这一组应用实例的管理、发现、访问，而这些细节都不需要运维人员去进行复杂的手工配置和处理。  </p>
-<p>star数：48830<br>地址：<br><a href="https://github.com/kubernetes/kubernetes" target="_blank" rel="noopener">https://github.com/kubernetes/kubernetes</a></p>
-<h2 id="Lantern"><a href="#Lantern" class="headerlink" title="Lantern"></a>Lantern</h2><p>介绍：<br>蓝灯，翻墙利器。  </p>
-<p>star数：40492<br>地址：<br><a href="https://github.com/getlantern/lantern" target="_blank" rel="noopener">https://github.com/getlantern/lantern</a></p>
-<h2 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h2><p>介绍：<br>etcd是由CoreOS开发并维护键值存储系统，它使用Go语言编写，并通过Raft一致性算法处理日志复制以保证强一致性。目前，Google的容器集群管理系统Kubernetes、开源PaaS平台Cloud Foundry和CoreOS的Fleet都广泛使用了etcd。Fleet则是一个分布式的初始化系统。它们之所以选择使用Go语言，则是因为Go语言对跨平台的良好支持，以及其背后的强大社区。  </p>
-<p>star数：23187<br>地址：<br><a href="https://github.com/etcd-io/etcd" target="_blank" rel="noopener">https://github.com/etcd-io/etcd</a></p>
-<h2 id="InfluxDB"><a href="#InfluxDB" class="headerlink" title="InfluxDB"></a>InfluxDB</h2><p>介绍：<br>一个Go语音编写的开源分布式的时序、事件和指标数据库，无需外部依赖。其设计目标是实现分布式和水平伸缩扩展。  </p>
-<p>star数：15681<br>地址：<br><a href="https://github.com/influxdata/influxdb" target="_blank" rel="noopener">https://github.com/influxdata/influxdb</a></p>
-<h2 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h2><p>介绍：<br>一款极速的静态页面生成器，让你可以很快的搭建个人网站，提供了多套主题可供使用，并且可以自己定制，和NodeJS的Hexo是一样的。  </p>
-<p>star数：33044<br>地址：<br><a href="https://github.com/gohugoio/hugo" target="_blank" rel="noopener">https://github.com/gohugoio/hugo</a></p>
-<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>介绍：<br>一款开源监控度量的看板系统，可以接Graphite,Elasticsearch,InfluxDB等数据源，定制化很高。  </p>
-<p>star数：27027<br>地址：<br><a href="https://github.com/grafana/grafana" target="_blank" rel="noopener">https://github.com/grafana/grafana</a></p>
-<h2 id="Codis"><a href="#Codis" class="headerlink" title="Codis"></a>Codis</h2><p>介绍：<br>Codis是一个分布式Redis解决方案,其实就是一个数据库代理，让你在使用Redis集群的时候，就像使用单机版的Redis是一样的，对开发者透明。  </p>
-<p>star数：8840<br>地址：<br><a href="https://github.com/CodisLabs/codis" target="_blank" rel="noopener">https://github.com/CodisLabs/codis</a></p>
-<h2 id="Gin-amp-Beego"><a href="#Gin-amp-Beego" class="headerlink" title="Gin &amp; Beego"></a>Gin &amp; Beego</h2><p>介绍：<br>两个快速开发Go应用的http框架，很好用很简洁，笔者亲测。  </p>
-<p>star数：分别为24692和19086<br>地址：<br>分别为<a href="https://github.com/gin-gonic/gin" target="_blank" rel="noopener">https://github.com/gin-gonic/gin</a>和<a href="https://github.com/astaxie/beego" target="_blank" rel="noopener">https://github.com/astaxie/beego</a></p>
-<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><p>介绍：<br>Prometheus是一个开源监控系统，它前身是SoundCloud的警告工具包。从2012年开始，许多公司和组织开始使用Prometheus。该项目的开发人员和用户社区非常活跃，越来越多的开发人员和用户参与到该项目中。目前它是一个独立的开源项目，且不依赖与任何公司。为了强调这点和明确该项目治理结构，Prometheus在2016年继Kurberntes之后，加入了Cloud Native Computing Foundation。  </p>
-<p>star数：22325<br>地址：<br><a href="https://github.com/prometheus/prometheus" target="_blank" rel="noopener">https://github.com/prometheus/prometheus</a></p>
-<h2 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h2><p>介绍：<br>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其他分布式服务注册与发现的方案，Consul的方案更“一站式”，内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（比如ZooKeeper等）。  </p>
-<p>star数：15040<br>地址：<br><a href="ttps://github.com/hashicorp/consul" target="_blank" rel="noopener">https://github.com/hashicorp/consul</a></p>
-<h2 id="Nsq"><a href="#Nsq" class="headerlink" title="Nsq"></a>Nsq</h2><p>介绍：<br>NSQ是Go语言编写的，开源的分布式消息队列中间件，其设计的目的是用来大规模地处理每天数以十亿计级别的消息。NSQ 具有分布式和去中心化拓扑结构，该结构具有无单点故障、故障容错、高可用性以及能够保证消息的可靠传递的特征，是一个成熟的、已在大规模生成环境下应用的产品。  </p>
-<p>star数：14559<br>地址：<br><a href="https://github.com/nsqio/nsq" target="_blank" rel="noopener">https://github.com/nsqio/nsq</a></p>
-<h2 id="Awesome-go"><a href="#Awesome-go" class="headerlink" title="Awesome-go"></a>Awesome-go</h2><p>介绍：<br>这不是一个go项目，他是一个学习go的资料网站，属于著名的awesome系列，里面关于go的资源非常详细。  </p>
-<p>star数：40465<br>地址：<br><a href="https://github.com/avelino/awesome-go" target="_blank" rel="noopener">https://github.com/avelino/awesome-go</a></p>
-<h2 id="Open-falcon"><a href="#Open-falcon" class="headerlink" title="Open-falcon"></a>Open-falcon</h2><p>介绍：<br>越来越fashion的监控系统，小米开源。  </p>
-<p>star数：4267<br>地址：<br><a href="https://github.com/open-falcon/falcon-plus" target="_blank" rel="noopener">https://github.com/open-falcon/falcon-plus</a></p>
-<h2 id="Tidb"><a href="#Tidb" class="headerlink" title="Tidb"></a>Tidb</h2><p>介绍：<br>TiDB 是一个分布式 NewSQL 数据库。它支持水平弹性扩展、ACID 事务、标准 SQL、MySQL 语法和 MySQL 协议，具有数据强一致的高可用特性，是一个不仅适合 OLTP 场景还适合 OLAP 场景的混合数据库。    </p>
-<p>star数：17508<br>地址：<br><a href="https://github.com/pingcap/tidb" target="_blank" rel="noopener">https://github.com/pingcap/tidb</a></p>
-]]></content>
-      <categories>
-        <category>编程积累</category>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
+        <tag>Hexo</tag>
       </tags>
   </entry>
 </search>
