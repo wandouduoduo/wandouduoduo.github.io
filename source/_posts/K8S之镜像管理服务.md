@@ -1,0 +1,192 @@
+---
+title: K8S之镜像管理服务
+categories:
+  - 容器化
+  - Docker
+tags:
+  - K8s
+copyright: true
+abbrlink: b9ccc582
+date: 2020-06-28 15:41:52
+---
+
+## 简介
+
+Harbor是构建企业级私有docker镜像的仓库的开源解决方案，它是Docker Registry的更高级封装，它除了提供友好的Web UI界面，角色和用户权限管理，用户操作审计等功能外，它还整合了K8s的插件(Add-ons)仓库，即Helm通过chart方式下载，管理，安装K8s插件，而chartmuseum可以提供存储chart数据的仓库【注:helm就相当于k8s的yum】。另外它还整合了两个开源的安全组件，一个是Notary，另一个是Clair，Notary类似于私有CA中心，而Clair则是容器安全扫描工具，它通过各大厂商提供的CVE漏洞库来获取最新漏洞信息，并扫描用户上传的容器是否存在已知的漏洞信息，这两个安全功能对于企业级私有仓库来说是非常具有意义的。
+
+
+
+<!--more-->
+
+## 部署
+
+#### 下载harbor软件包
+
+从[官方下载地址](https://github.com/goharbor/harbor/releases)下载稳定软件包，这里用   harbor-offline-installer-v1.10.3.tgz。可以参考[官方安装文档](https://github.com/goharbor/harbor/blob/master/docs/install-config/_index.md)
+
+
+
+#### Docker-compose安装
+
+[官方文档](https://docs.docker.com/compose/install/)
+
+**方法一**
+
+```bash
+# 下载
+curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+# 授权
+chmod +x /usr/local/bin/docker-compose
+
+# 验证
+docker-compose --version
+
+# 如有报错，可能为路径没有包含/usr/local/bin/
+ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+```
+
+**方法二**
+
+```bash
+# 安装python-pip
+yum -y install epel-release
+yum -y install python-pip
+
+# 安装docker-compose
+pip install docker-compose
+
+# 验证
+docker-compose --version
+```
+
+#### 安装
+
+```bash
+# 将下载好的Harbor二进制包上传到服务器上面，然后解压出来
+tar -xzvf harbor-offline-installer-v1.10.3.tgz -C /usr/local
+```
+
+#### 配置
+
+```bash
+# 进入解压出来的文件夹harbor中，查看
+cd /usr/local/harbor
+ls 
+
+common.sh  harbor.v1.10.3.tar.gz  harbor.yml  install.sh  LICENSE  prepare
+
+# 修改配置
+vim harbor.yml
+
+# 设置为外网ip
+hostname: 10.145.197.182
+
+# 关闭https
+# https related config
+#https:
+  #https port for harbor, default is 443
+  #port: 443
+  #The path of cert and key files for nginx
+  #certificate: /your/certificate/path
+  #private_key: /your/private/key/path
+  
+# 修改harbor的登录密码：为了方便起见，我修改为123456,大家可自行修改
+harbor_admin_password: 123456
+
+# 预执行
+./prepare
+
+# 安装
+./install.sh
+```
+
+![](K8S之镜像管理服务/1.png)
+
+![](K8S之镜像管理服务/2.png)
+
+#### 查看状态
+
+```
+docker-compose ps
+```
+
+![](K8S之镜像管理服务/3.png)
+
+#### 访问
+
+用浏览器访问，方式为：http://ip，用户名：admin/自行配置的密码
+
+![](K8S之镜像管理服务/4.png)
+
+## 使用
+
+#### 创建用户
+
+进入到里面后，在用户管理中创建了一个用户  sun 。大家自行创建，为了后期需要把一些依赖镜像先推送到harbor仓库中。
+
+![](K8S之镜像管理服务/5.png)
+
+#### 项目规划
+
+创建项目，并且在每个项目中都加入了刚才所创建的用户，方便后期登录并推送镜像
+
+![](K8S之镜像管理服务/6.png)
+
+ops主要是用来存放的jenkins和slave等运维镜像；appimages 主要存放应用镜像，供k8s拉取发布。
+
+至此，harbor部署完成。
+
+#### 镜像操作
+
+###### 配置私有库
+
+docker 默认是按 https 请求的，由于搭建的私有库是 http 的，所以需要修改 docker 配置，将信任的库的地址写上修改文件 `/etc/docker/daemon.json`
+
+```json
+vim /etc/docker/daemon.json
+
+{
+  "registry-mirrors": [ "https://gcr.azk8s.cn", "https://docker.mirrors.ustc.edu.cn", "http://hub-mirror.c.163.com", "https://registry.docker-cn.com"],
+  "insecure-registries": ["10.145.197.182"]
+}
+```
+
+###### 重启docker
+
+```
+systemctl restart docker
+```
+
+###### 配置验证
+
+执行 docker info,  看一下IP地址是否生效，发现已加入。再试一下登录，发现登录成功，然后开始推送把。
+
+![](K8S之镜像管理服务/7.png)
+
+###### 登录harbor仓库
+
+```bash
+docker login 10.145.197.182
+```
+
+![](K8S之镜像管理服务/8.png)
+
+###### 制作镜像和上传
+
+```bash
+# 拉取镜像
+docker pull jenkins
+# 重新打tag
+docker tag jenkins:latest 10.145.197.182/ops/jenkins
+# 推送
+docker push 10.145.197.182/ops/jenkins
+```
+
+![](K8S之镜像管理服务/9.png)
+
+###### 上传验证
+
+web页面查看
+
+![](K8S之镜像管理服务/10.png)

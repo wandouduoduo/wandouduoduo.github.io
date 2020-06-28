@@ -55,6 +55,16 @@ hostnamectl set-hostname --static k8s-node1
 hostnamectl set-hostname --static k8s-node2
 ```
 
+所有节点上添加hosts
+
+```bash
+192.168.6.201  k8s-master
+192.168.6.202  k8s-node1
+192.168.6.203  k8s-node2
+```
+
+
+
 #### 安装docker-ce
 
 所有节点上（k8s-master, k8s-node1, k8s-node2）安装docker-ce：
@@ -202,7 +212,19 @@ vim sun-k8s.sh
 
 #!/bin/bash
 
-ImageLists=`kubeadm config images list 2>/dev/null`
+# ImageLists可以指定版本或拉取最新版本，但只能用一个
+ImageLists=(
+k8s.gcr.io/kube-apiserver:v1.18.3 
+k8s.gcr.io/kube-controller-manager:v1.18.3 
+k8s.gcr.io/kube-scheduler:v1.18.3 
+k8s.gcr.io/kube-proxy:v1.18.3
+k8s.gcr.io/pause:3.2
+k8s.gcr.io/etcd:3.4.3-0 
+k8s.gcr.io/coredns:1.6.7
+)
+
+#ImageLists=`kubeadm config images list 2>/dev/null`
+
 for i in ${ImageLists[@]};do
 imagename=`echo $i|awk -F\/ '{print $2}'`
 srcimage="daocloud.io/daocloud/${imagename}"
@@ -225,7 +247,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address 192.
 
 ```bash
 # 初始化master
-[root@k8s-master ~]# kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address 192.168.92.201
+[root@k8s-master ~]# kubeadm init --kubernetes-version=v1.18.3 --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address 192.168.92.201
 W0523 16:21:59.515265   10688 version.go:102] could not fetch a Kubernetes version from the internet: unable to get URL "https://dl.k8s.io/release/stable-1.txt": Get https://dl.k8s.io/release/stable-1.txt: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)
 W0523 16:21:59.515315   10688 version.go:103] falling back to the local client version: v1.18.3
 W0523 16:21:59.515387   10688 configset.go:202] WARNING: kubeadm cannot validate component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io]
