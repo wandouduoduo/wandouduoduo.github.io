@@ -4,6 +4,8 @@
     <title>详解nexus私服仓库</title>
     <url>/articles/79a09f66.html</url>
     <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Nexus 是Maven仓库管理器，如果你使用Maven，你可以从Maven中央仓库 下载所需要的构件（artifact），但这通常不是一个好的做法，你应该在本地架设一个Maven仓库服务器，在代理远程仓库的同时维护本地仓库，以节省带宽和时间，Nexus就可以满足这样的需要。此外，他还提供了强大的仓库管理功能，构件搜索功能，它基于REST，友好的UI是一个extjs的REST客户端，它占用较少的内存，基于简单文件系统而非数据库。这些优点使其日趋成为最流行的Maven仓库管理器。</p>
+<a id="more"></a>
+
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>操作系统：Linux（以CentOS为例）</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p>从<a href="http://www.sonatype.org/nexus/" target="_blank" rel="noopener">官方地址</a>下载</p>
 <h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>将压缩包解压到/usr目录下。</p>
