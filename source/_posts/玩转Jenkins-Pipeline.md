@@ -2,7 +2,7 @@
 title: 玩转Jenkins Pipeline
 categories:
   - 运维技术
-  - 服务部署
+  - CI/CD
 tags:
   - Jenkins
 copyright: true
