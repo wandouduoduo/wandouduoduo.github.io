@@ -127,13 +127,13 @@ tag_cloud:
     outlineColor: '#E2E1D1'
     maxSpeed: 0.1 
 
-# readmore
-# plugins:
-#   readmore:
-#     blogId: 19128-1577246103864-519
-#     name: 豌豆多多追梦记
-#     qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
-#     keyword: vip
+#readmore
+plugins:
+  readmore:
+    blogId: 19128-1593691079092-122
+    name: 豌豆多多笔记
+    qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
+    keyword: vip
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
