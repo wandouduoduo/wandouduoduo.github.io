@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://wandouduoduo.com
+url: https://wandouduoduo.netlify.com
 root: /
 #permalink: :year/:month/:day/:title/
 #permalink_defaults:
@@ -98,8 +98,7 @@ symbols_count_time:
 
 baidu_url_submit:
   count: 200 ## 比如3，代表提交最新的三个链接
-  #host: wandouduoduo.netlify.com ## 在百度站长平台中注册的域名
-  host: wandouduoduo.com ## 在百度站长平台中注册的域名
+  host: wandouduoduo.netlify.com ## 在百度站长平台中注册的域名
   token: FjBwPH1cgYDxPvCn ## 请注意这是您的秘钥， 请不要发布在公众仓库里!
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 
@@ -133,7 +132,7 @@ plugins:
   readmore:
     blogId: 19128-1593691079092-122
     name: 豌豆多多笔记
-    qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
+    qrcode: https://wandouduoduo.gitee.io/about/index/gongzhonghao.jpg
     keyword: vip
 
 # Deployment
@@ -143,6 +142,5 @@ deploy:
   repo: 
     github: https://github.com/wandouduoduo/wandouduoduo.github.io.git
     gitee: https://gitee.com/wandouduoduo/wandouduoduo.git
-    coding: https://e.coding.net/wandouduoduo/blog/blog.git
   branch: master
 - type: baidu_url_submitter
