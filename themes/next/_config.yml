@@ -577,12 +577,13 @@ gitment:
 gitalk:
   enable: true
   github_id: wandouduoduo
+  id: location.pathname
   repo: wandouduoduo.github.io
   client_id: ad83725549e82facce82
   client_secret: b67c2056b52d0447f1d78f413f268a5b853e8a6e
   admin_user: wandouduoduo
   distraction_free_mode: true
-
+  language: zh-CN
 # Baidu Share
 # Available values: button | slide
 # Warning: Baidu Share does not support https.

@@ -757,7 +757,7 @@ sns.osyunwei.com 解析到192.168.21.254；
 
 ![2885](haproxy-keepalived实现Web服务器负载均衡/2885.jpg)
 
-![2886](haproxy-keepalived实现Web服务器负载均衡\2886.jpg)
+![2886](haproxy-keepalived实现Web服务器负载均衡/2886.jpg)
 
 可以看出现在VIP：192.168.21.253指向192.168.21.129；VIP：192.168.21.254指向192.168.21.130；
 
@@ -842,3 +842,4 @@ tail -f /var/log/haproxy.log
 ```
 
 **至此，HAProxy+Keepalived实现Web服务器负载均衡配置完成。**
+

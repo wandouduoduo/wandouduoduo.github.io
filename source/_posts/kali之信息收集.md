@@ -1,8 +1,8 @@
 ---
 title: kali之信息收集
 categories:
-  - 运维技术
-  - 安全工具
+  - 信息安全
+  - Kali
 tags:
   - Kali
 copyright: true
@@ -384,6 +384,6 @@ Metagoofil是一款利用Google收集信息的工具，目前支持的类型如�
 
 通过生成的HTML版的报告，我们可以非常清晰的看到我们收集的信息种类：
 
-![](/Users/Sun/blog/sunhexo/source/_posts/kali之信息收集/31.png)
+![](kali之信息收集/31.png)
 
 至此，我们的信息收集工具介绍已经完成。每个渗透目标，想要通过不同的途径获取目标大量信息。

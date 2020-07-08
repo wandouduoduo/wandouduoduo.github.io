@@ -1,8 +1,7 @@
 ---
 title: ELK日志系统最新版本详细教程
 categories:
-  - 运维技术
-  - 服务部署
+  - 日志管理
 tags:
   - Elk
 copyright: true
@@ -915,13 +914,22 @@ nohup /opt/logstash/bin/logstash -f /opt/logstash/config/kafka_to_es.conf &
 **上传自定义模版**
 
 ```shell
-curl -XPUT http://10.10.0.195:9200/_template/logstash2 -d '
+# 查看模板列表
+curl -H "Content-Type: application/json" -XGET http://localhost:9200/_cat/templates
+
+# 查看具体模板信息
+curl -H "Content-Type: application/json" -XGET http://localhost:9200/_templates/{模板名}
+
+# 更新添加模板
+curl -H "Content-Type: application/json" -XPUT http://10.10.0.195:9200/_template/logstash2 -d '
 {
         "order":1,
         "template":"logstash-*",
         "settings":{
             "index":{
-                "refresh_interval":"120s"
+                "refresh_interval":"120s",
+                "number_of_shards": 3,
+        		"number_of_replicas": 0
             }
         },
         "mappings":{
@@ -932,6 +940,9 @@ curl -XPUT http://10.10.0.195:9200/_template/logstash2 -d '
             }
     }
 }'
+
+# 删除模板
+curl -XDELETE http://localhost:9200/_template/logstash2
 ```
 
 由于这个自定义模版，我把优先级 order 定义的比logstash模版高，而模版的匹配规则又一样，所以这个自定义模版的配置会覆盖原logstash模版。
