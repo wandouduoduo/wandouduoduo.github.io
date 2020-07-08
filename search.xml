@@ -4868,7 +4868,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 <p>在两台HAProxy服务器：192.168.21.129、192.168.21.130上执行命令：ip addr</p>
 <p>如下图所示:</p>
 <p><img src="/articles/c0e454fd/2885.jpg" alt="2885"></p>
-<p><img src="/articles/c0e454fd/haproxy-keepalived%E5%AE%9E%E7%8E%B0Web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%5C2886.jpg" alt="2886"></p>
+<p><img src="/articles/c0e454fd/2886.jpg" alt="2886"></p>
 <p>可以看出现在VIP：192.168.21.253指向192.168.21.129；VIP：192.168.21.254指向192.168.21.130；</p>
 <p>在浏览器中打开</p>
 <p><a href="http://bbs.osyunwei.com/" target="_blank" rel="noopener">http://bbs.osyunwei.com/</a></p>
