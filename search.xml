@@ -2763,11 +2763,10 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>数据库</category>
-        <category>Elasticsearch</category>
+        <category>日志管理</category>
       </categories>
       <tags>
-        <tag>Elasticsearch</tag>
+        <tag>Elk</tag>
       </tags>
   </entry>
   <entry>
@@ -10644,7 +10643,6 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 		]]></content>
       <categories>
         <category>信息安全</category>
-        <category>Kali</category>
       </categories>
       <tags>
         <tag>Kali</tag>
@@ -13898,8 +13896,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>安全工具</category>
+        <category>信息安全</category>
       </categories>
       <tags>
         <tag>Kali</tag>
