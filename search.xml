@@ -110,11 +110,15 @@
 
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Kubernetes 暴露服务的有三种方式：分别为 LoadBlancer Service、NodePort Service、Ingress。</p>
 <p>官网对 Ingress 的定义为管理对外服务到集群内服务之间规则的集合。通俗点讲就是它定义规则来允许进入集群的请求被转发到集群中对应服务上，从来实现服务暴露。 Ingress 能把集群内 Service 配置成外网能够访问的 URL，流量负载均衡，终止SSL，提供基于域名访问的虚拟主机等等。</p>
-<h3 id="LoadBlancer-Service"><a href="#LoadBlancer-Service" class="headerlink" title="LoadBlancer Service"></a>LoadBlancer Service</h3><p>LoadBlancer Service 是 Kubernetes 结合云平台的组件，如国外 GCE、AWS、国内阿里云等等，使用它向使用的底层云平台申请创建负载均衡器来实现，有局限性，对于使用云平台的集群比较方便，但有局限，费用高。</p>
-<h3 id="NodePort-Service"><a href="#NodePort-Service" class="headerlink" title="NodePort Service"></a>NodePort Service</h3><p>NodePort Service 是通过在节点上暴露端口，然后通过将端口映射到具体某个服务上来实现服务暴露，比较直观方便，但是对于集群来说，随着 Service 的不断增加，需要的端口越来越多，很容易出现端口冲突，而且不容易管理。当然对于小规模的集群服务，还是比较不错的。但是还是有安全风险，因为看过前面k8s教程，并动手操作搭建的同学都知道，在搭建前会把各个节点的防火墙等等都关闭。那么如果用这种方式又打开很多端口，那么安全会面临很大挑战。</p>
+<p><strong>LoadBlancer</strong></p>
+<p>LoadBlancer Service 是 Kubernetes 结合云平台的组件，如国外 GCE、AWS、国内阿里云等等，使用它向使用的底层云平台申请创建负载均衡器来实现，有局限性，对于使用云平台的集群比较方便，但有局限，费用高。</p>
+<p><strong>NodePort</strong></p>
+<p>NodePort Service 是通过在节点上暴露端口，然后通过将端口映射到具体某个服务上来实现服务暴露，比较直观方便，但是对于集群来说，随着 Service 的不断增加，需要的端口越来越多，很容易出现端口冲突，而且不容易管理。当然对于小规模的集群服务，还是比较不错的。但是还是有安全风险，因为看过前面k8s教程，并动手操作搭建的同学都知道，在搭建前会把各个节点的防火墙等等都关闭。那么如果用这种方式又打开很多端口，那么安全会面临很大挑战。</p>
+<p><img src="/articles/f6f38be4/8.png" alt></p>
 <p><strong><em>总结：以上两种服务从各方面看似都不太理想，所以通过情况下，我们会通过Ingress对象来实现安全，方便统一管理。</em></strong></p>
 <h2 id="Ingress概述"><a href="#Ingress概述" class="headerlink" title="Ingress概述"></a>Ingress概述</h2><p>在k8s集群中，我们知道service和pod的ip为内网ip，仅能在集群内部才可以访问。如果外部应用想要直接访问集群内的服务，就需要把外部请求通过负载均衡转发到service上，然后再由kube-proxy组件将其转发给相关的pod。</p>
 <p>而Ingress的作用就是为进入集群的请求提供路由规则集合和转发。通俗点就是提供外部访问集群的入口，将外部的请求转发到集群内部service上。</p>
+<p><img src="/articles/f6f38be4/9.png" alt></p>
 <h2 id="Ingress组成"><a href="#Ingress组成" class="headerlink" title="Ingress组成"></a>Ingress组成</h2><p>Ingress 使用开源的反向代理负载均衡器来实现对外暴露服务目的，比如用Nginx、Apache、Haproxy等。用的最多的是使用nginx来做的。</p>
 <p>Nginx Ingress 一般有三个组件组成：</p>
 <ul>
@@ -133,7 +137,53 @@
 </ul>
 <h2 id="Ingress解决痛点"><a href="#Ingress解决痛点" class="headerlink" title="Ingress解决痛点"></a><strong>Ingress解决痛点</strong></h2><p><strong>动态配置服务</strong><br>如果按照传统方式，当新增加一个服务时，我们可能需要在流量入口加一个反向代理指向我们新的服务，而使用ingress，只需要配置好ingress，当服务启动时，会自动注册到ingress当中，不需要额外的操作。</p>
 <p><strong>减少不必要的Port暴露（安全，端口容易管理）</strong><br>我们知道部署k8s时，是需要关闭防火墙的，主要原因是k8s的很多服务会以nodeport方式映射出去，这样对于宿主机来说是非常的不安全的，而ingress可以避免这个问题，只需要将ingress自身服务映射出去，就可代理后端所有的服务，则后端服务不需要映射出去。</p>
-<h2 id="部署Ingress-nginx"><a href="#部署Ingress-nginx" class="headerlink" title="部署Ingress-nginx"></a>部署Ingress-nginx</h2><p>未完待续</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>k8s 版本为1.18.3</p>
+<p><em>版本API 相关弃用</em></p>
+<p><em>所有资源的 API <code>apps/v1beta1</code> 和 <code>apps/v1beta2</code> 都将弃用，请改用 <code>apps/v1</code> 替代。</em><br><em><code>daemonsets</code>, <code>deployments</code>, <code>replicasets</code> 资源的 API <code>extensions/v1beta1</code> 将被弃用，请改用 apps/v1 替代。</em><br><em><code>networkpolicies</code> 资源的 API <code>extensions/v1beta1</code> 将被弃用，请改用 networking.k8s.io/v1 替代。</em><br><em><code>podsecuritypolicies</code> 资源的 API <code>extensions/v1beta1</code> 将被弃用，请使用 <code>policy/v1beta1</code> 替代。</em></p>
+<h2 id="部署Ingress-nginx"><a href="#部署Ingress-nginx" class="headerlink" title="部署Ingress-nginx"></a>部署Ingress-nginx</h2><p>可以将上面的Ingress理解为在集群的前端加了一个Nginx，用来提供Nginx所能提供的一切功能，例如基于url的反向代理，https认证，用户鉴权，域名重定向等等</p>
+<p><img src="/articles/f6f38be4/10.png" alt></p>
+<p>需要注意几点：</p>
+<ul>
+<li><p>Nginx是基于url的，如果没有DNS解析url到集群中任意ip可以考虑hosts文件劫持</p>
+</li>
+<li><p>Nginx的本质也是NodePort的方式暴露给集群外的一个特殊Service</p>
+</li>
+<li><p>Nginx的配置文件根据Ingress的规则自动添加和修改</p>
+<p><em>更详细的介绍可以查看[官方网站]</em>(<a href="https://kubernetes.github.io/ingress-nginx/)。" target="_blank" rel="noopener">https://kubernetes.github.io/ingress-nginx/)。</a><br>下面通过nodepore和ingree-nginx对比实战，让你充分理解。</p>
+</li>
+</ul>
+<h4 id="先用NodePort测试"><a href="#先用NodePort测试" class="headerlink" title="先用NodePort测试"></a>先用NodePort测试</h4><h6 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h6><p>需要使用到httpd、tomcat镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull httpd</span><br><span class="line">docker pull tomcat</span><br></pre></td></tr></table></figure>
+
+<p><img src="/articles/f6f38be4/2.png" alt></p>
+<h6 id="创建namespace"><a href="#创建namespace" class="headerlink" title="创建namespace"></a>创建namespace</h6><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">##创建yaml文件：</span></span><br><span class="line"><span class="string">vim</span> <span class="string">ns.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Namespace</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">ingress-test</span></span><br><span class="line">  </span><br><span class="line"><span class="comment">#创建并查看namespace：</span></span><br><span class="line"> <span class="string">kubectl</span> <span class="string">create</span> <span class="bullet">-f</span> <span class="string">ns.yaml</span> </span><br><span class="line"> <span class="string">kubectl</span>  <span class="string">get</span> <span class="string">ns</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/articles/f6f38be4/3.png" alt></p>
+<h6 id="创建deployment及service资源"><a href="#创建deployment及service资源" class="headerlink" title="创建deployment及service资源"></a><strong>创建deployment及service资源</strong></h6><p><strong>创建httpd及service资源文件</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#mkdir ingress-nginx</span></span><br><span class="line"><span class="comment">#cd ingress-nginx</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#vim httpd.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">ingress-test</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">        image:</span> <span class="number">10.145</span><span class="number">.197</span><span class="number">.182</span><span class="string">/ops/httpd:latest</span>  <span class="comment">#镜像从私有仓库中进行拉取</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">httpd-svc</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">ingress-test</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">NodePort</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">httpd</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="attr">  - protocol:</span> <span class="string">TCP</span></span><br><span class="line"><span class="attr">    port:</span> <span class="number">80</span></span><br><span class="line"><span class="attr">    targetPort:</span> <span class="number">80</span></span><br><span class="line"><span class="attr">    nodePort:</span> <span class="number">32134</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>创建tomcat及service资源文件</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># vim tomcat.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">apps/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Deployment</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">tomcat</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">ingress-test</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    matchLabels:</span></span><br><span class="line"><span class="attr">      name:</span> <span class="string">tomcat</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        name:</span> <span class="string">tomcat</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">      - name:</span> <span class="string">tomcat</span></span><br><span class="line"><span class="attr">        image:</span> <span class="number">10.145</span><span class="number">.197</span><span class="number">.182</span><span class="string">/ops/tomcat:latest</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">tomcat-svc</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">ingress-test</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">NodePort</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    name:</span> <span class="string">tomcat</span></span><br><span class="line"><span class="attr">  ports:</span></span><br><span class="line"><span class="attr">  - protocol:</span> <span class="string">TCP</span></span><br><span class="line"><span class="attr">    port:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">    targetPort:</span> <span class="number">8080</span></span><br><span class="line"><span class="attr">    nodePort:</span> <span class="number">32135</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>创建并查看</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#创建</span></span><br><span class="line">kubectl create -f  httpd.yaml </span><br><span class="line">kubectl create -f tomcat.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看状态</span></span><br><span class="line">kubectl get pods -n ingress-test</span><br><span class="line">kubectl get svc -n ingress-test</span><br></pre></td></tr></table></figure>
+
+<p><img src="/articles/f6f38be4/4.png" alt></p>
+<p><img src="/articles/f6f38be4/5.png" alt></p>
+<p>可以看到通过nodeport暴露的方式是没有问题的，但是到该种方式在大规模的集群服务中，有很大的缺陷，所以接下来通过ingress-nginx进行实现。</p>
+<h4 id="创建ingress-nginx"><a href="#创建ingress-nginx" class="headerlink" title="创建ingress-nginx"></a>创建ingress-nginx</h4><p>从GitHub上下载yaml文件：<a href="https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md" target="_blank" rel="noopener">官方地址</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/cloud/deploy.yaml</span><br><span class="line">kubectl apply -f deploy.yaml</span><br></pre></td></tr></table></figure>
+
+<p><img src="/articles/f6f38be4/6.png" alt></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#查看ingress-nginx pod是否运行</span><br><span class="line">kubectl get svc -n ingress-nginx</span><br><span class="line">kubectl get pods -n ingress-nginx</span><br></pre></td></tr></table></figure>
+
+<p><img src="/articles/f6f38be4/7.png" alt></p>
+<p>从上面的svc可以看到，有个以NodePort暴露出来的<code>ingress-nginx-controller</code>的service，对外暴露30240端口对应nginx的80端口，暴露31750端口对应nginx的443端口。下面在实际操作的时候会用到这两个外部端口。</p>
+<h4 id="创建ingress规则"><a href="#创建ingress规则" class="headerlink" title="创建ingress规则"></a><strong>创建ingress规则</strong></h4><p>yaml文件内容如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 创建该规则就是用于分别代理后端的apache和tomcat服务。</span></span><br><span class="line"><span class="string">vim</span> <span class="string">ingress-rule.yaml</span></span><br><span class="line"></span><br><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line"><span class="attr">  name:</span> <span class="string">test-ingress</span></span><br><span class="line"><span class="attr">  namespace:</span> <span class="string">ingress-test</span></span><br><span class="line"><span class="attr">  annotations:</span></span><br><span class="line">    <span class="string">nginx.ingress.kubernetes.io/rewrite-target:</span> <span class="string">/</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line"><span class="attr">  rules:</span></span><br><span class="line"><span class="attr">  - host:</span> <span class="string">ingress.test.com</span>   <span class="comment">#后端应用通过该域名进行访问</span></span><br><span class="line"><span class="attr">    http:</span></span><br><span class="line"><span class="attr">      paths:</span></span><br><span class="line"><span class="attr">      - path:</span> <span class="string">/</span>   <span class="comment">#apache的网页根目录：/</span></span><br><span class="line"><span class="attr">        backend:</span></span><br><span class="line"><span class="attr">          serviceName:</span> <span class="string">httpd-svc</span></span><br><span class="line"><span class="attr">          servicePort:</span> <span class="number">80</span></span><br><span class="line"><span class="attr">      - path:</span> <span class="string">/tomcat</span>   <span class="comment">#tomcat的网页更目录：/tomcat</span></span><br><span class="line"><span class="attr">        backend:</span></span><br><span class="line"><span class="attr">          serviceName:</span> <span class="string">tomcat-svc</span></span><br><span class="line"><span class="attr">          servicePort:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 规则生效</span></span><br></pre></td></tr></table></figure>
+
 </div>
 
 			<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
@@ -152,8 +202,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -215,8 +265,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -328,8 +378,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -375,10 +425,10 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器技术</category>
       </categories>
       <tags>
+        <tag>Centos</tag>
         <tag>Docker</tag>
       </tags>
   </entry>
@@ -612,8 +662,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -736,8 +786,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -889,8 +939,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -972,8 +1022,8 @@
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器编排</category>
+        <category>K8s</category>
       </categories>
       <tags>
         <tag>K8s</tag>
@@ -2660,9 +2710,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>心得体会</category>
-        <category>使用技巧</category>
-        <category>Hexo</category>
+        <category>网站平台</category>
+        <category>博客</category>
       </categories>
       <tags>
         <tag>Hexo</tag>
@@ -5684,8 +5733,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>容器化</category>
-        <category>Docker</category>
+        <category>容器技术</category>
       </categories>
       <tags>
         <tag>Docker</tag>
@@ -6258,11 +6306,11 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
         <tag>Docker</tag>
+        <tag>Redmine</tag>
       </tags>
   </entry>
   <entry>
@@ -6305,10 +6353,10 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
+        <tag>Docker</tag>
         <tag>Openldap</tag>
       </tags>
   </entry>
@@ -6502,10 +6550,10 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
+        <tag>Docker</tag>
         <tag>Openldap</tag>
       </tags>
   </entry>
@@ -7192,11 +7240,11 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
         <tag>Docker</tag>
+        <tag>Wiki</tag>
       </tags>
   </entry>
   <entry>
@@ -8169,11 +8217,11 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
         <tag>Docker</tag>
+        <tag>Wiki</tag>
       </tags>
   </entry>
   <entry>
@@ -8307,10 +8355,10 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
+        <tag>Docker</tag>
         <tag>Git</tag>
       </tags>
   </entry>
@@ -13555,8 +13603,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
         <tag>Cmdb</tag>
@@ -14363,11 +14410,11 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>运维技术</category>
-        <category>服务部署</category>
+        <category>容器技术</category>
       </categories>
       <tags>
         <tag>Docker</tag>
+        <tag>Xxl-job</tag>
       </tags>
   </entry>
   <entry>
