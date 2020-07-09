@@ -516,7 +516,7 @@
 			</script>
 		]]></content>
       <categories>
-        <category>持续集成部署</category>
+        <category>CI&amp;CD</category>
         <category>Jenkins</category>
       </categories>
       <tags>
@@ -2962,7 +2962,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>自动化</category>
+        <category>服务CAP</category>
         <category>Zookeeper</category>
       </categories>
       <tags>
@@ -7167,7 +7167,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>自动化</category>
+        <category>配置管理</category>
         <category>Ansible</category>
       </categories>
       <tags>
@@ -13645,8 +13645,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
         <tag>Cmdb</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -14682,7 +14682,6 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 		]]></content>
       <categories>
         <category>自动化</category>
-        <category>Stackstorm</category>
       </categories>
       <tags>
         <tag>Stackstorm</tag>
@@ -14743,7 +14742,6 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 		]]></content>
       <categories>
         <category>自动化</category>
-        <category>Stackstorm</category>
       </categories>
       <tags>
         <tag>Stackstorm</tag>
@@ -15677,7 +15675,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 			</script>
 		]]></content>
       <categories>
-        <category>持续集成部署</category>
+        <category>CI&amp;CD</category>
         <category>Jenkins</category>
       </categories>
       <tags>
