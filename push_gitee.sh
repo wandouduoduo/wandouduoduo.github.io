@@ -13,3 +13,7 @@ then
 else
     echo "Fail! Please Check"
 fi
+# 更新gitee
+echo -e "update gitee\n"
+cd $PUBLIC_WWW
+python3 update_gitee.py
