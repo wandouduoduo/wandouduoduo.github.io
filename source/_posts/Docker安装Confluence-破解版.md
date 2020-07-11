@@ -1,10 +1,10 @@
 ---
 title: Docker安装Confluence(破解版)
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
   - Docker
+  - Wiki
 copyright: true
 abbrlink: f9f96949
 date: 2019-07-30 18:17:29

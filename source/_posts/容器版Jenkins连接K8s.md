@@ -1,8 +1,8 @@
 ---
 title: 容器版Jenkins连接K8s
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - K8s
 tags:
   - K8s
   - Jenkins

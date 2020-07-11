@@ -4,7 +4,7 @@
 
 # Site
 title: 豌豆多多
-subtitle: Senior O & M Architect
+subtitle: SRE & Devops & Architect
 description: 沪漂资深运维架构师的呕心笔记
 keywords: 豌豆多多,运维,wandouduoduo,架构,工程师,技术,笔记
 author: WanDouDuoDuo
@@ -13,7 +13,7 @@ timezone: Asia/Shanghai
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://wandouduoduo.gitee.io
+url: https://wandouduoduo.github.io
 root: /
 #permalink: :year/:month/:day/:title/
 #permalink_defaults:
@@ -98,7 +98,7 @@ symbols_count_time:
 
 baidu_url_submit:
   count: 200 ## 比如3，代表提交最新的三个链接
-  host: wandouduoduo.gitee.io ## 在百度站长平台中注册的域名
+  host: wandouduoduo.github.io ## 在百度站长平台中注册的域名
   token: FjBwPH1cgYDxPvCn ## 请注意这是您的秘钥， 请不要发布在公众仓库里!
   path: baidu_urls.txt ## 文本文档的地址， 新链接会保存在此文本文档里
 
@@ -128,12 +128,12 @@ tag_cloud:
     maxSpeed: 0.1 
 
 #readmore
-plugins:
-  readmore:
-    blogId: 19128-1593691079092-122
-    name: 豌豆多多笔记
-    qrcode: https://wandouduoduo.gitee.io/about/index/gongzhonghao.jpg
-    keyword: vip
+# plugins:
+#   readmore:
+#     blogId: 19128-1593691079092-122
+#     name: 豌豆多多笔记
+#     qrcode: https://wandouduoduo.gitee.io/about/index/gongzhonghao.jpg
+#     keyword: vip
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

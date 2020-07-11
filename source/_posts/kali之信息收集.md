@@ -2,7 +2,6 @@
 title: kali之信息收集
 categories:
   - 信息安全
-  - Kali
 tags:
   - Kali
 copyright: true

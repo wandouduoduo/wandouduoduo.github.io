@@ -1,10 +1,11 @@
 ---
 title: kubernetes1.18安装Dashboard
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - K8s
 tags:
   - K8s
+  - Docker
 copyright: true
 abbrlink: 674d1146
 date: 2020-06-22 12:06:34

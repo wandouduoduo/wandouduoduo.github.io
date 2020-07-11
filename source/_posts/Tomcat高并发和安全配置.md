@@ -1,7 +1,7 @@
 ---
 title: Tomcat高并发和安全配置
 categories:
-  - 容器化
+  - 应用服务
   - Tomcat
 tags:
   - Tomcat

@@ -1,9 +1,9 @@
 ---
 title: Docker版快速安装OpenLDAP
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
+  - Docker
   - Openldap
 copyright: true
 abbrlink: 931613a4

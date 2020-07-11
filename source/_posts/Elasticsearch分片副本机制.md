@@ -1,10 +1,9 @@
 ---
 title: Elasticsearch分片副本机制
 categories:
-  - 数据库
-  - Elasticsearch
+  - 日志管理
 tags:
-  - Elasticsearch
+  - Elk
 copyright: true
 abbrlink: 688d9226
 date: 2019-12-23 14:46:15

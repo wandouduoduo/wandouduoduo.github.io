@@ -1,10 +1,10 @@
 ---
 title: gitlab安装配置手册(Docker版)
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
   - Git
+  - Docker
 copyright: true
 abbrlink: 87b11c95
 date: 2019-07-24 14:32:39

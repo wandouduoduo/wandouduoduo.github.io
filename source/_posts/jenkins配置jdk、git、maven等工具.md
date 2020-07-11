@@ -1,8 +1,8 @@
 ---
 title: jenkins配置jdk、git、maven等工具
 categories:
-  - 运维技术
-  - CI/CD
+  - CI&CD
+  - Jenkins
 tags:
   - Jenkins
 copyright: true

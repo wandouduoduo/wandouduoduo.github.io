@@ -1,8 +1,8 @@
 ---
 title: K8S之镜像管理服务
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - K8s
 tags:
   - K8s
 copyright: true

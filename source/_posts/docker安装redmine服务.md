@@ -1,10 +1,10 @@
 ---
 title: docker安装redmine服务
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
   - Docker
+  - Redmine
 copyright: true
 abbrlink: 40baf0f
 date: 2019-09-05 13:38:52

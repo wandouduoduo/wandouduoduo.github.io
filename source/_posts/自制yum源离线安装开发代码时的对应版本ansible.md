@@ -1,7 +1,7 @@
 ---
 title: 自制yum源离线安装开发代码时的对应版本ansible
 categories:
-  - 自动化
+  - 配置管理
   - Ansible
 tags:
   - Ansible

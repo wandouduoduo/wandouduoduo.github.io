@@ -2,7 +2,6 @@
 title: Stackstorm之一键安装
 categories:
   - 自动化
-  - Stackstorm
 tags:
   - Stackstorm
 copyright: true

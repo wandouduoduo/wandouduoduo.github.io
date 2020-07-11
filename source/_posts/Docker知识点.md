@@ -1,8 +1,7 @@
 ---
 title: Docker知识点
 categories:
-  - 容器化
-  - Docker
+  - 容器技术
 tags:
   - Docker
 copyright: true

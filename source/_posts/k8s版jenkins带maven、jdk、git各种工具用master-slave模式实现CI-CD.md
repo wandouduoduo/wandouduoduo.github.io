@@ -1,8 +1,8 @@
 ---
 title: k8s版jenkins带maven、jdk、git各种工具用master/slave模式实现CI/CD
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - K8s
 tags:
   - K8s
   - Jenkins

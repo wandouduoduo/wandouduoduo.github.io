@@ -1,10 +1,10 @@
 ---
 title: Docker中安装Wiki软件Confluence
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
   - Docker
+  - Wiki
 copyright: true
 abbrlink: ac0d3377
 date: 2019-07-25 15:07:14

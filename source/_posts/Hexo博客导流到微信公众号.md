@@ -1,9 +1,8 @@
 ---
 title: Hexo博客导流到微信公众号
 categories:
-  - 心得体会
-  - 使用技巧
-  - Hexo
+  - 网站平台
+  - 博客
 tags:
   - Hexo
 copyright: true

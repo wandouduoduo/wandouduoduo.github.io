@@ -1,9 +1,10 @@
 ---
 title: Mesos集群搭建(host)
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - Mesos
 tags:
+  - Mesos
   - Docker
 copyright: true
 abbrlink: 1c48fe84

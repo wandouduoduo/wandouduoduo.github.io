@@ -1,7 +1,7 @@
 ---
 title: Tomcat优化之APR模式
 categories:
-  - 容器化
+  - 应用服务
   - Tomcat
 tags:
   - Tomcat

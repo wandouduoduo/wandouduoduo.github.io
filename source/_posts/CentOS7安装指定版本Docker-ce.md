@@ -1,9 +1,9 @@
 ---
 title: CentOS7安装指定版本Docker-ce
 categories:
-  - 容器化
-  - Docker
+  - 容器技术
 tags:
+  - Centos
   - Docker
 copyright: true
 abbrlink: e09b4ef6

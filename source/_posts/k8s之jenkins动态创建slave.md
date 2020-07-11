@@ -1,8 +1,8 @@
 ---
 title: k8s之jenkins动态创建slave
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - K8s
 tags:
   - K8s
   - Jenkins

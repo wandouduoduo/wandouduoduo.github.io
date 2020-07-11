@@ -1,7 +1,7 @@
 ---
 title: zookeeper集群脑裂探讨
 categories:
-  - 自动化
+  - 服务CAP
   - Zookeeper
 tags:
   - Zookeeper

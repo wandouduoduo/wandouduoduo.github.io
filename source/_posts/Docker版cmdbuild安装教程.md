@@ -1,8 +1,7 @@
 ---
 title: Docker版cmdbuild安装教程
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
   - Docker
   - Cmdb

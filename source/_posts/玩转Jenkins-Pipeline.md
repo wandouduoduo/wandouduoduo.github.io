@@ -1,8 +1,8 @@
 ---
 title: 玩转Jenkins Pipeline
 categories:
-  - 运维技术
-  - CI/CD
+  - CI&CD
+  - Jenkins
 tags:
   - Jenkins
 copyright: true

@@ -1,9 +1,9 @@
 ---
 title: docker构建自己的openldap自助密码服务
 categories:
-  - 运维技术
-  - 服务部署
+  - 容器技术
 tags:
+  - Docker
   - Openldap
 copyright: true
 abbrlink: d83ca733

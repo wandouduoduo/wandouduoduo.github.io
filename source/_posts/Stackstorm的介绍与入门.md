@@ -2,7 +2,6 @@
 title: Stackstorm的介绍与入门
 categories:
   - 自动化
-  - Stackstorm
 tags:
   - Stackstorm
 copyright: true

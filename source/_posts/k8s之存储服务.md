@@ -1,8 +1,8 @@
 ---
 title: k8s之存储服务
 categories:
-  - 容器化
-  - Docker
+  - 容器编排
+  - K8s
 tags:
   - K8s
 copyright: true
