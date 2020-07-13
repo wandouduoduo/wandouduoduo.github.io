@@ -10238,7 +10238,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 <p>输出：<code>/tmp/services.conf</code></p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">upstream cust1 &#123;</span><br><span class="line">    server 10.0.0.1:80;</span><br><span class="line">    server 10.0.0.2:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    server_name cust1.example.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass cust1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">upstream cust2 &#123;</span><br><span class="line">    server 10.0.0.3:80;</span><br><span class="line">    server 10.0.0.4:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    server_name cust2.example.com;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass cust2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>自动化</category>
+        <category>配置管理</category>
       </categories>
       <tags>
         <tag>Confd</tag>
@@ -10328,7 +10328,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 
 ]]></content>
       <categories>
-        <category>自动化</category>
+        <category>配置管理</category>
       </categories>
       <tags>
         <tag>Confd</tag>
@@ -11697,8 +11697,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
         <tag>Cmdb</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
