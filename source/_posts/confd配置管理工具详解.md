@@ -1,7 +1,7 @@
 ---
 title: confd配置管理工具详解
 categories:
-  - 自动化
+  - 配置管理
 tags:
   - Confd
 copyright: true

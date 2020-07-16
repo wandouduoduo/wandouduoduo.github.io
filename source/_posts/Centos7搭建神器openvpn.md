@@ -152,8 +152,12 @@ keepalive 10 120
 tls-auth /etc/openvpn/ta.key 0
 #加密认证算法
 cipher AES-256-CBC
+auth SHA512
+tls-version-min 1.2
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
 #使用lzo压缩的通讯,服务端和客户端都必须配置
 comp-lzo
+compress "lz4"
 #最大连接用户
 max-clients 100 
 #定义运行的用户和组
@@ -237,9 +241,13 @@ key client.key
 ns-cert-type server
 tls-auth ta.key 1
 cipher AES-256-CBC
+auth SHA512
+tls-version-min 1.2
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-128-GCM-SHA256:TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA
 auth-nocache
 verb 4
 comp-lzo
+compress "lz4"
 ```
 
 #### **启动OpenVPN GUI软件**
@@ -352,7 +360,7 @@ auth-user-pass
 
 
 
-## 管理界面安装<待验证>
+## 管理界面安装
 
 #### 下载pam_sqlite3并安装
 
@@ -387,16 +395,38 @@ sqlite> .quit
 
 #### 在服务端配置添加认证插件
 
+**生成插件**
+
+因为用yum安装默认是没有插件的，所以需要用源码先生成插件。有了这个插件openvpn才能用数据库来管理
+
+```bash
+# 安装依赖组件，如果不安装会报错
+yum install lzo-devel
+# 下载源码包
+wget https://files01.tchspt.com/temp/openvpn-2.4.9.tar.gz
+# 解压
+tar -xzvf openvpn-2.4.9.tar.gz
+# 插件生成
+cd openvpn-2.4.9
+./configure 
+cd src/plugins/auth-pam/
+make -j4
+cd .libs/
+cp openvpn-plugin-auth-pam.so /etc/openvpn/
+```
+
+在openvpn的服务器配置中添加下面配置
+
 ```
 verify-client-cert none
 username-as-common-name
-plugin /usr/local/openvpn/lib/openvpn/plugins/openvpn-plugin-auth-pam.so openvpn
+plugin /etc/openvpn/openvpn-plugin-auth-pam.so openvpn
 ```
 
 #### 安装依赖
 
 ```bash
-pip2 install peewee tornado
+pip2 install peewee tornado==5.1.1
 ```
 
 #### 下载openvpn-web
@@ -409,7 +439,7 @@ git clone https://gitee.com/lang13002/openvpn_web.git
 
 ```bash
 # sqlite3 /etc/openvpn/openvpn.db
-sqlite> .import openvpn_web/model/openvpn.sql
+sqlite> .read openvpn_web/model/openvpn.sql
 ```
 
 #### OpenVPN运行脚本写日志

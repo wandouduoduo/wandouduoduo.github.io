@@ -40,7 +40,7 @@ Capistrano、CodeDeploy等
 Jenkins、Hudson、Bamboo等
 
 #配置管理
-Ansible、SaltStack、Chef、Puppet、ScriptRock GuardRail等
+Ansible、SaltStack、confd、Chef、Puppet、ScriptRock GuardRail等
 
 #容器技术
 Docker、LXC、第三方厂商如AWS等
@@ -96,7 +96,7 @@ Kali、BT5等
 zstask、openstask、kvm等
 
 #自动化
-stackstom等
+stackstom、Selenium等
 ```
 
 
@@ -119,9 +119,7 @@ stackstom等
 
 - 仓库:      https://github.com/wandouduoduo
 
-- 博客：   https://wandouduoduo.github.io（国外）
-
-  ​			   https://wandouduoduo.gitee.io  (国内)
+- 博客：   https://wandouduoduo.github.io（国外） https://wandouduoduo.gitee.io  (国内)
 
 - 站长：   www.wandouduoduo.com 
 
