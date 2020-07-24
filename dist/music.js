@@ -6,20 +6,20 @@ const ap = new APlayer({
 	   {
         name: "还有多少个十年",
         artist: '沈宁',
-        url: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/dist/audio/%E8%BF%98%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%8D%81%E5%B9%B4.mp3',
-        cover: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/dist/images/%E8%BF%98%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%8D%81%E5%B9%B4.jpg',
+        url: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/dist/audio/%E8%BF%98%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%8D%81%E5%B9%B4.mp3',
+        cover: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/dist/images/%E8%BF%98%E6%9C%89%E5%A4%9A%E5%B0%91%E4%B8%AA%E5%8D%81%E5%B9%B4.jpg',
       },
       {
         name: '麻雀',
         artist: '李荣浩',
-        url: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/dist/audio/%E9%BA%BB%E9%9B%80.mp3',
-        cover: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/dist/images/%E9%BA%BB%E9%9B%80.jpg',
+        url: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/dist/audio/%E9%BA%BB%E9%9B%80.mp3',
+        cover: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/dist/images/%E9%BA%BB%E9%9B%80.jpg',
       },
       {
         name: '我们的时光',
         artist: '赵雷',
-        url: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/dist/audio/我们的时光.mp3',
-        cover: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/dist/images/我们的时光.jpg',
+        url: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/dist/audio/我们的时光.mp3',
+        cover: 'https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/dist/images/我们的时光.jpg',
       }
     ]
 });
