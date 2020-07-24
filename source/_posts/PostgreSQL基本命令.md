@@ -34,7 +34,7 @@ pg_ctl --version
 ### 命令行登录数据库
 
 ```plsql
-`psql -U username -d dbname -h hostip -p port`
+psql -U username -d dbname -h hostip -p port
 ```
 
 ### 列出所有数据库
@@ -46,7 +46,7 @@ pg_ctl --version
 ### 切换数据库
 
 ```plsql
-`\c dbname`
+\c dbname
 ```
 
 ### 列出当前数据库的所有表
@@ -58,7 +58,7 @@ pg_ctl --version
 ### 查看指定表的所有字段
 
 ```plsql
-`\d  tablename`
+\d  tablename
 ```
 
 ![img](PostgreSQL基本命令/1.png)
@@ -66,7 +66,7 @@ pg_ctl --version
 ### 查看指定表的基本情况
 
 ```plsql
-`\d+  tablename`
+\d+  tablename
 ```
 
 ![img](PostgreSQL基本命令/2.png)
@@ -74,7 +74,7 @@ pg_ctl --version
 ### 退出操作
 
 ```plsql
-`q`
+q
 ```
 
 ### 新建表
@@ -105,7 +105,7 @@ n INTEGER
 ### 删除表
 
 ```plsql
-`drop table REL_CROSS_NODE;`
+drop table REL_CROSS_NODE;
 ```
 
 ### 清空表
@@ -127,7 +127,7 @@ TRUNCATE TABLE  [表名]
 ### 添加字段
 
 ```plsql
-`alter table [表名] add column [字段名] [类型];`
+alter table [表名] add column [字段名] [类型];
 ```
 
 ### 更改字段
@@ -157,7 +157,7 @@ alter table test_data alter column task_id type bigint using task_id::bigint
 ### 删除字段
 
 ```plsql
-`alter table [表名] drop column [字段名];`
+alter table [表名] drop column [字段名];
 ```
 
 
@@ -165,13 +165,13 @@ alter table test_data alter column task_id type bigint using task_id::bigint
 ### 表中插入一行数据
 
 ```plsql
-`insert into [表名] (字段``1``,字段``2``) values (值``1``,值``2``);`
+insert into [表名] (字段 1 ,字段 2 ) values (值 1 ,值 2 );
 ```
 
 例如：    
 
 ```plsql
-`insert into assist_info (``id``, maat_id, block_type) values (``'F006'``, ``'F7775'``, 1)  `
+insert into assist_info (id, maat_id, block_type) values ('F006', 'F7775', 1)  
 ```
 
 **注**：
@@ -184,7 +184,7 @@ alter table test_data alter column task_id type bigint using task_id::bigint
 ### 表中删除一行数据
 
 ```plsql
-`delete from [表名] where [该行特征];`
+delete from [表名] where [该行特征];
 ```
 
 
@@ -192,7 +192,7 @@ alter table test_data alter column task_id type bigint using task_id::bigint
 ### 修改表中数据
 
 ```plsql
-`update [表名] set [目标字段名]=[目标值] where [该行特征]`
+update [表名] set [目标字段名]=[目标值] where [该行特征]
 ```
 
 
@@ -200,7 +200,7 @@ alter table test_data alter column task_id type bigint using task_id::bigint
 ### 删除表
 
 ```plsql
-`drop table [表名];`
+drop table [表名];
 ```
 
 
@@ -216,7 +216,7 @@ alter table test_data alter column task_id type bigint using task_id::bigint
 ### 两个查询结果做差 except
 
 ```plsql
-`(select node_id from node where node_id=``1` `or node_id=``2``) except (select node_id from node where node_id=``1``);`` ``node_id``---------``       ``2``(``1` `row)`
+(select node_id from node where node_id=1 or node_id=2) except (select node_id from node where node_id=1); 
 ```
 
 ### 复制表
@@ -295,8 +295,6 @@ psql -h 10.125.7.68 -p 5432 -d postgres -U postgres -W postgres -f 2.sql
 
 
 ### \x
-
-[![复制代码](file:///var/folders/13/5_qy4sz928nbrf6spnjzf5kr0000gn/T/WizNote/8b487178-0682-4cd1-a63c-4db33d0fe744/index_files/55842ede-951a-4751-982b-14f25fc09ff1.gif)]()
 
 ```plsql
 postgres=> \x

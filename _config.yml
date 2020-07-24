@@ -111,7 +111,8 @@ live2d:
   tagMode: false
   debug: false
   model:
-    use: live2d-widget-model-shizuku
+    use: https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/live2dw/assets/shizuku.model.json
+    #use: live2d-widget-model-shizuku
   display:
     position: right
     width: 150
@@ -122,7 +123,7 @@ live2d:
 # hexo-tag-cloud
 tag_cloud:
     textFont: Trebuchet MS, Helvetica
-    textColor: '#333'
+    #textColor: '#333'
     textHeight: 25
     outlineColor: '#E2E1D1'
     maxSpeed: 0.1 

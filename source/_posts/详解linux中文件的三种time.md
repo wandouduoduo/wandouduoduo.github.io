@@ -1,7 +1,7 @@
 ---
 title: 详解linux中文件的三种time
 categories:
-  - 运维技术
+  - 操作系统
   - Linux
 tags:
   - Linux

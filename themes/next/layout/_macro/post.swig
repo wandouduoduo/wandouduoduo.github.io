@@ -254,6 +254,7 @@
       </header>
     {% endif %}
 
+
     {#################}
     {### POST BODY ###}
     {#################}
@@ -323,7 +324,11 @@
             {{ post.content }}
           {% endif %}
         {% endif %}
+        <!-- 文章中 -->
+        {% include 'google_pages_adsense.swig' %}
       {% else %}
+        <!-- 标题下 -->
+        {% include 'google_title_adsense.swig' %}        
         {{ post.content }}
       {% endif %}
     </div>
@@ -340,6 +345,8 @@
     {% include 'passage-end-tag.swig' %}
   {% endif %}
 </div>
+
+
 <div>
       {% if not is_index %}
         {% include 'my-copyright.swig' %}

@@ -1,7 +1,7 @@
 ---
 title: inotify+rsync实现百万级数据同步
 categories:
-  - 运维技术
+  - 操作系统
   - Linux
 tags:
   - Linux

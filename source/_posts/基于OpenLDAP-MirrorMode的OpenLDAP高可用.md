@@ -264,7 +264,6 @@ systemctl start httpd
 访问用http://ip/phpldapadmin访问如图
 ```
 
-
 ![111](基于OpenLDAP-MirrorMode的OpenLDAP高可用/2.jpeg)
 ![222](基于OpenLDAP-MirrorMode的OpenLDAP高可用/3.jpeg)
 在10.10.1.132上创建了一个OU名为testou,会发现10.10.1.132会自动同步到本地，如图:
@@ -272,5 +271,5 @@ systemctl start httpd
 ![444](基于OpenLDAP-MirrorMode的OpenLDAP高可用/5.jpeg)
 两服务器日志如下：
 ![555](基于OpenLDAP-MirrorMode的OpenLDAP高可用/6.png)
-![666](https://yqfile.alicdn.com/224de6f3795b999de2bf35524cab63c4d066cb10.jpeg)
 以上结果得知，在镜像模式下，当其中一台服务器增加操作OU时，另一台也会同步增加，两台服务器均可进行读写操作，任何一台信息发生变化，都会以推的方式进行通知。
+

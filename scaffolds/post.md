@@ -1,7 +1,19 @@
 ---
 title: {{ title }}
 date: {{ date }}
-categories: []
-tags: []
+categories: 
+ -
+tags: 
+ - 
+description: {{ title }}
 copyright: true
 ---
+
+
+
+
+
+
+
+
+<!--more-->

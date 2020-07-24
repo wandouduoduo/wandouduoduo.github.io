@@ -97,6 +97,9 @@ zstask、openstask、kvm等
 
 #自动化
 stackstom、Selenium等
+
+#操作系统
+Linux、windows、macos等
 ```
 
 
@@ -119,11 +122,11 @@ stackstom、Selenium等
 
 - 仓库:      https://github.com/wandouduoduo
 
-- 博客：   https://wandouduoduo.github.io（国外） https://wandouduoduo.gitee.io  (国内)
+- 博客：   https://wandouduoduo.github.io
 
 - 站长：   www.wandouduoduo.com 
 
-  #### 公众号![](index/gongzhonghao.jpg)
+  #### 公众号![](https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/about/index/gongzhonghao.jpg)
 
-  #### 头条号![](index/toutiaohao.jpeg)
+  #### 头条号![](https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/about/index/toutiaohao.jpeg)
 

@@ -1,7 +1,7 @@
 ---
 title: 使用ELRepo第三方源为CentOS 6/7/8升级最新内核版本
 categories:
-  - 运维技术
+  - 操作系统
   - Linux
 tags:
   - Linux
