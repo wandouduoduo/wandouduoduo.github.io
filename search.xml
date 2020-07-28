@@ -1,6 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>vim粘贴技巧</title>
+    <url>/articles/ecd2483d.html</url>
+    <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>vi(vim)作为所有linux发行版本中默认的文本编辑工具，因其功能强大和适用而广受欢迎。用法这里就不再赘述，本文是介绍了vim粘贴代码时的一个技巧。</p>
+<a id="more"></a>
+
+<h2 id="详情"><a href="#详情" class="headerlink" title="详情"></a>详情</h2><h4 id="问题显现"><a href="#问题显现" class="headerlink" title="问题显现"></a>问题显现</h4><p>当我们用终端登录服务器，在用vim粘贴代码时，如果代码中有注释，那么粘贴后就惨不忍睹，如下图:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/ecd2483d/1.png" alt="1595931731437"></p>
+<p>粘贴代码内容如下：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//打印函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_hex</span><span class="params">(<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>*data,<span class="keyword">int</span> length,<span class="keyword">int</span> radix=<span class="number">16</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i%radix==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0x "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%02x "</span>,data[i]);</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">4</span>==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"  "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i%radix==radix<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上述代码也是很正常的c语言代码，那么出现这种情况的原因是什么呢?  大家是否想过呢？</p>
+<h4 id="刨根问底"><a href="#刨根问底" class="headerlink" title="刨根问底"></a>刨根问底</h4><p>我们在vim中，输入 :set，就可以得到选项列表如下图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/ecd2483d/2.png" alt="1595932444339"></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">formatoptions=croql</span><br></pre></td></tr></table></figure>
+
+<p>看到上面这个选项，这个选项就是罪魁祸首，选项意思为：vim注释自动格式化</p>
+<p>所以希望在~/.vimrc中设置环境变量，比如设置为 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set formatoptions=tcpmM</span><br></pre></td></tr></table></figure>
+
+<p>但是vim不识别此行有报错，又无法禁止这个选项，那要怎么解决呢？</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>经过大量搜索，我们可以在粘贴前vim先进入粘贴插入模式，即不会自动缩进和连续注释。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set paste</span><br></pre></td></tr></table></figure>
+
+<p>然后再进入插入模式粘贴，如图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/ecd2483d/3.png" alt="1595933129736"></p>
+<p>如上图，在插入模式后多了一个paste。这样就可以按照完整粘贴了。</p>
+<h4 id="提示和建议"><a href="#提示和建议" class="headerlink" title="提示和建议"></a><strong>提示和建议</strong></h4><p>完整粘贴解决了，但是在粘贴插入模式下代码是不会自动按格式缩进的，这是就需要使用nopaste设置回来</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set nopaste</span><br></pre></td></tr></table></figure>
+
+<p>也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set pastetoggle=&lt;F9&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样直接在插入模式按F9就会在“插入”模式和“插入（粘贴）”模式自由切换</p>
+<h2 id="探秘"><a href="#探秘" class="headerlink" title="探秘"></a>探秘</h2><p>我们也可以这样设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:set noai nosi</span><br></pre></td></tr></table></figure>
+
+<p>含义是<strong>取消了自动缩进和智能缩进</strong>。这样粘贴就不会错行了，但不是所有的都适用，有的vim这样设置后还是排版错乱。</p>
+<p>更好用的设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:set paste</span><br></pre></td></tr></table></figure>
+
+<p>进入paste模式以后，可以在插入模式下粘贴内容，不会有任何变形，非常好用。</p>
+<p>那么set  paste做了哪些事呢？</p>
+<p>经过探究，做了如下这么多事</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">textwidth设置为0</span><br><span class="line">wrapmargin设置为0</span><br><span class="line"><span class="built_in">set</span> noai</span><br><span class="line"><span class="built_in">set</span> nosi</span><br><span class="line">softtabstop设置为0</span><br><span class="line">revins重置</span><br><span class="line">ruler重置</span><br><span class="line">showmatch重置</span><br><span class="line">formatoptions使用空值</span><br><span class="line"></span><br><span class="line"><span class="comment">#下面的选项值不变，但却被禁用：</span></span><br><span class="line">lisp</span><br><span class="line">indentexpr</span><br><span class="line">cindent</span><br><span class="line"><span class="comment">#怪不得之前只设置noai和nosi不行，原来与这么多因素有关！</span></span><br></pre></td></tr></table></figure>
+
+<p>但要做上述所有动作比较麻烦的，就用set  paste来一次操作了。但每次要粘贴的话，先set paste，然后粘贴，然后再set nopaste。有没有更方便的呢？对的，强烈建议设置快捷键。</p>
+<p>GUI操作系统的粘贴板，粘贴到命令行的vim中,有快捷键吗???</p>
+<p>事实证明,不太好用，这是最方便的吗？Vimer们对高效的追求永无止境，还有其他更好地方法吗？</p>
+<p>你可能想到了：vim寄存器。</p>
+<p>对，使用vim寄存器 “+p 粘贴即可。这样就不用考虑是否自动缩进，是否paste模式，直接原文传递！</p>
+<h2 id="vim寄存器"><a href="#vim寄存器" class="headerlink" title="vim寄存器"></a>vim寄存器</h2><p>要从vim文件间的复制粘贴说起。Vim 中，若要复制当前行，普通模式下按 yy 即可，在要粘贴的地方按 p 。这时vim将复制内容保存到了自己的寄存器中的缘故。如果在其他地方执行yy，新的内容将覆盖掉原寄存器中内容。如果想保存原寄存器中内容而同时增加新的内容呢？这时就要在yy前增加标签了。标签以双引号开始，跟着的是标签名称，可以是数字0-9，也可以是26个字母，然后就是复制操作，这样就把复制内容保存到该标签寄存器里。通过下面命令显示所有寄存器内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">:reg</span><br></pre></td></tr></table></figure>
+
+<p>其中注意两个特殊的寄存器：<strong>”* 和 “+</strong>。这两个寄存器是和系统相通的，前者关联系统选择缓冲区，后者关联系统剪切板。通过它们可以和其他程序进行数据交换。</p>
+<p><strong>备注</strong><br>若寄存器列表里无”* 或 “+ 寄存器，则可能是由于没有安装vim的图形界面所致。</p>
+<p>Debian/Ubuntu下可以通过安装vim-gnome解决。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install vim-gnome</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>操作系统</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux性能监控神级工具</title>
     <url>/articles/32267dc9.html</url>
     <content><![CDATA[<p>本文中罗列了一系列使用最频繁的性能监控工具，并对介绍到的每一个工具提供了相应的简介链接，大致将其划分为两类，基于命令行的和提供图形化接口的。</p>
