@@ -6,13 +6,13 @@
     <content><![CDATA[<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>vi(vim)作为所有linux发行版本中默认的文本编辑工具，因其功能强大和适用而广受欢迎。用法这里就不再赘述，本文是介绍了vim粘贴代码时的一个技巧。</p>
 <a id="more"></a>
 
-<h2 id="详情"><a href="#详情" class="headerlink" title="详情"></a>详情</h2><h4 id="问题显现"><a href="#问题显现" class="headerlink" title="问题显现"></a>问题显现</h4><p>当我们用终端登录服务器，在用vim粘贴代码时，如果代码中有注释，那么粘贴后就惨不忍睹，如下图:</p>
+<h2 id="详情"><a href="#详情" class="headerlink" title="详情"></a>详情</h2><h3 id="问题显现"><a href="#问题显现" class="headerlink" title="问题显现"></a>问题显现</h3><p>当我们用终端登录服务器，在用vim粘贴代码时，如果代码中有注释，那么粘贴后就惨不忍睹，如下图:</p>
 <p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/ecd2483d/1.png" alt="1595931731437"></p>
 <p>粘贴代码内容如下：</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="comment">//打印函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_hex</span><span class="params">(<span class="keyword">const</span> <span class="keyword">unsigned</span> <span class="keyword">char</span>*data,<span class="keyword">int</span> length,<span class="keyword">int</span> radix=<span class="number">16</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(i%radix==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"0x "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%02x "</span>,data[i]);</span><br><span class="line">        <span class="keyword">if</span>(i%<span class="number">4</span>==<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"  "</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(i%radix==radix<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>上述代码也是很正常的c语言代码，那么出现这种情况的原因是什么呢?  大家是否想过呢？</p>
-<h4 id="刨根问底"><a href="#刨根问底" class="headerlink" title="刨根问底"></a>刨根问底</h4><p>我们在vim中，输入 :set，就可以得到选项列表如下图：</p>
+<h3 id="刨根问底"><a href="#刨根问底" class="headerlink" title="刨根问底"></a>刨根问底</h3><p>我们在vim中，输入 :set，就可以得到选项列表如下图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/ecd2483d/2.png" alt="1595932444339"></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">formatoptions=croql</span><br></pre></td></tr></table></figure>
 
@@ -21,13 +21,13 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set formatoptions=tcpmM</span><br></pre></td></tr></table></figure>
 
 <p>但是vim不识别此行有报错，又无法禁止这个选项，那要怎么解决呢？</p>
-<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>经过大量搜索，我们可以在粘贴前vim先进入粘贴插入模式，即不会自动缩进和连续注释。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>经过大量搜索，我们可以在粘贴前vim先进入粘贴插入模式，即不会自动缩进和连续注释。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set paste</span><br></pre></td></tr></table></figure>
 
 <p>然后再进入插入模式粘贴，如图：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/ecd2483d/3.png" alt="1595933129736"></p>
 <p>如上图，在插入模式后多了一个paste。这样就可以按照完整粘贴了。</p>
-<h4 id="提示和建议"><a href="#提示和建议" class="headerlink" title="提示和建议"></a><strong>提示和建议</strong></h4><p>完整粘贴解决了，但是在粘贴插入模式下代码是不会自动按格式缩进的，这是就需要使用nopaste设置回来</p>
+<h3 id="提示和建议"><a href="#提示和建议" class="headerlink" title="提示和建议"></a><strong>提示和建议</strong></h3><p>完整粘贴解决了，但是在粘贴插入模式下代码是不会自动按格式缩进的，这是就需要使用nopaste设置回来</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">set nopaste</span><br></pre></td></tr></table></figure>
 
 <p>也可以在.vimrc中设置切换的快捷键，比如设置F9，则可以在.vimrc中加入：</p>
@@ -5969,8 +5969,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Openldap</tag>
         <tag>Docker</tag>
+        <tag>Openldap</tag>
       </tags>
   </entry>
   <entry>
@@ -6118,8 +6118,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Openldap</tag>
         <tag>Docker</tag>
+        <tag>Openldap</tag>
       </tags>
   </entry>
   <entry>
