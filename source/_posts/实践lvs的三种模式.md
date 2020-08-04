@@ -17,7 +17,7 @@ date: 2020-06-11 19:31:15
 
 ## 实践
 
-#### **NAT模式**
+### **NAT模式**
 
 **实验环境**
 
@@ -95,7 +95,7 @@ echo "rs2rs2" >/usr/share/nginx/html/index.html
 
 *注意，切记一定要在两台 RS 上设置网关的 IP 为 director 的内网 IP。*
 
-#### **DR模式**
+### **DR模式**
 
 **实验环境**
 
@@ -172,7 +172,7 @@ bash /usr/local/sbin/lvs_dr_rs.sh
 
 
 
-#### **LVS结合keepalive**
+### **LVS结合keepalive**
 
 LVS可以实现负载均衡，但是不能够进行健康检查，比如一个rs出现故障，LVS 仍然会把请求转发给故障的rs服务器，这样就会导致请求的无效性。keepalive 软件可以进行健康检查，而且能同时实现 LVS 的高可用性，解决 LVS 单点故障的问题，其实 keepalive 就是为 LVS 而生的。
 

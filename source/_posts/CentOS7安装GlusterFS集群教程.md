@@ -42,7 +42,7 @@ client:
 
 CentOS 安装 glusterfs 非常的简单
 
-#### 安装glusterfs
+### 安装glusterfs
 
 在三个节点都执行
 
@@ -51,7 +51,7 @@ yum install centos-release-gluster
 yum install -y glusterfs glusterfs-server glusterfs-fuse glusterfs-rdma
 ```
 
-#### 配置 GlusterFS 集群
+### 配置 GlusterFS 集群
 
 启动 glusterFS
 
@@ -74,7 +74,7 @@ peer probe: success.
 peer probe: success.
 ```
 
-#### **查看集群状态**
+### **查看集群状态**
 
 ```shell
 [root@swarm-manager ~]#gluster peer status
@@ -89,7 +89,7 @@ Uuid: da068e0b-eada-4a50-94ff-623f630986d7
 State: Peer in Cluster (Connected)
 ```
 
-#### 创建数据存储目录
+### 创建数据存储目录
 
 ```shell
 [root@swarm-manager ~]#mkdir -p /opt/gluster/data
@@ -97,7 +97,7 @@ State: Peer in Cluster (Connected)
 [root@swarm-node-2 ~]# mkdir -p /opt/gluster/data
 ```
 
-#### 查看volume 状态
+### 查看volume 状态
 
 ```shell
 [root@swarm-manager ~]#gluster volume info
@@ -106,7 +106,7 @@ No volumes present
 
 
 
-#### 创建GlusterFS磁盘：
+### 创建GlusterFS磁盘：
 
 ```bash
 [root@swarm-manager ~]#gluster volume create models replica 3 swarm-manager:/opt/gluster/data swarm-node-1:/opt/gluster/data swarm-node-2:/opt/gluster/data force
@@ -184,7 +184,7 @@ gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1
 
 
 
-#### 查看 volume 状态
+### 查看 volume 状态
 
 ```bash
 [root@swarm-manager ~]#gluster volume info
@@ -205,7 +205,7 @@ performance.readdir-ahead: on
 
 
 
-#### 启动 models
+### 启动 models
 
 ```shell
 [root@swarm-manager ~]#gluster volume start models

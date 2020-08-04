@@ -19,7 +19,7 @@ date: 2019-06-24 18:01:25
 
 ## 安装
 
-#### 下载官方的Yum源
+### 下载官方的Yum源
 
 ```shell
 `[root@BrianZhu /]``# wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm`
@@ -27,13 +27,13 @@ date: 2019-06-24 18:01:25
 
 使用上面的命令就直接下载了安装用的Yum Repository，大概25KB的样子。
 
-#### 安装Yum源
+### 安装Yum源
 
 ```shell
 `[root@BrianZhu /]``# yum -y install mysql57-community-release-el7-10.noarch.rpm`
 ```
 
-#### 安装MySQL
+### 安装MySQL
 
 ```shell
 `[root@BrianZhu /]``# yum -y install mysql-community-server`
@@ -47,13 +47,13 @@ date: 2019-06-24 18:01:25
 
 ## 数据库设置
 
-#### 启动
+### 启动
 
 ```shell
 `[root@BrianZhu /]``# systemctl start  mysqld.service`
 ```
 
-#### 查看运行状态
+### 查看运行状态
 
 ```shell
 `[root@BrianZhu /]``# systemctl status mysqld.service`

@@ -125,7 +125,7 @@ fail_timeout=time       # 设定服务器被认为不可用的时间段以及统
 
 下面是部署流程！
 
-#### 下载nginx_upstream_check_module模块
+### 下载nginx_upstream_check_module模块
 
 ```shell
 [root@localhost ~]# cd /usr/local/src
@@ -135,7 +135,7 @@ unzip master
 drwxr-xr-x. 6 root root 4096 Dec  1 02:28 nginx_upstream_check_module-master
 ```
 
-#### 为nginx打补丁
+### 为nginx打补丁
 
 ```shell
 [root@localhost /usr/local/src]# cd nginx-1.6.0 # 进入nginx的源码目录
@@ -148,7 +148,7 @@ make (注意：此处只make，编译参数需要和之前的一样)
 [root@localhost nginx-1.6.0]# kill -USR2 `cat /usr/local/nginx/logs/nginx.pid`
 ```
 
-#### 在nginx.conf配置文件里面的upstream加入健康检查
+### 在nginx.conf配置文件里面的upstream加入健康检查
 
 ```shell
 upstream name {

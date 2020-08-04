@@ -19,7 +19,7 @@ date: 2019-07-15 17:49:45
 
 ## NoSQL介绍
 
-#### **NoSQL简介**
+### **NoSQL简介**
 
 NoSQL,全称是”Not Only Sql”,指的是非关系型的数据库。
 
@@ -31,7 +31,7 @@ NoSQL 的拥护者们提倡运用非关系型的数据存储,通常的应用如:
 
 NoSQL 被我们用得最多的当数 **key-value 存储（如Redis）**,当然还 有其他的**文档型的、列存储、图型数据库、xml 数据库**等。 
 
-#### **为什么会有NoSQL**
+### **为什么会有NoSQL**
 
 通用关系数据库功能强大，遵循SQL标准，而且性能卓越而且稳定为什么会出现NoSQL呢？
 
@@ -83,7 +83,7 @@ web2.0 网站要根据用户个性化信息来实时生成动态页面和提供�
 
 **为了解决如上问题NoSQL就诞生了~**
 
-#### **NoSQL特点**
+### **NoSQL特点**
 
 1、它可以处理超大量的数据
 2、它运行在便宜的服务器集群上集群扩充起来非常方便并且成本很低。
@@ -114,7 +114,7 @@ MongoDB最大的特点：它支持的查询语言非常强大,**其语法有点�
 
 包括数组和文档. 我们把这个数据格式称作 “BSON” 即 “Binary Serialized dOcument Notation.”
 
-#### **MongoDB特点**
+### **MongoDB特点**
 
 1. 面向集合存储,易于存储对象类型的数据
 2. 模式自由
@@ -128,7 +128,7 @@ MongoDB最大的特点：它支持的查询语言非常强大,**其语法有点�
 10. 文件存储格式为 BSON(一种 JSON 的扩展)
 11. 可通过网络访问
 
-#### **MongoDB功能**
+### **MongoDB功能**
 
 1. 面向集合的存储:适合存储对象及 JSON 形式的数据
 2. 动态查询:MongoDB 支持丰富的查询表达式。查询指令使用 JSON 形式的标记,可轻易查询文档中内嵌的对象及数组
@@ -139,7 +139,7 @@ MongoDB最大的特点：它支持的查询语言非常强大,**其语法有点�
 7. 高效的传统存储方式:支持二进制数据及大型对象(如照片或图片)
 8. 自动分片以支持云级 的伸缩性:自动分片功能支持水平的数据库集群,可动态添加额外的机器
 
-#### **适用场景**
+### **适用场景**
 
 1. 网站数据:MongoDB 非常适合实时的插入,更新与查询,并具备网站实时数据存储所需的复制及高度伸缩性
 2. 缓存:由于性能很高,MongoDB 也适合作为信息基础设施的缓存层。在系统重启之后, 由 MongoDB 搭建的持久化缓存层可以避免下层的数据源过载
@@ -149,7 +149,7 @@ MongoDB最大的特点：它支持的查询语言非常强大,**其语法有点�
 
 ## MongoDB部署与维护
 
-#### **安装MongoDB**
+### **安装MongoDB**
 
 MongoDB维护者还事相当的人性化的给我们提供了YUM源安装就相当的方便了，当然也可以通过源码去安装！
 
@@ -190,7 +190,7 @@ yum install -y mongodb-enterprise
 yum install -y mongodb-enterprise-3.2.1 mongodb-enterprise-server-3.2.1 mongodb-enterprise-shell-3.2.1 mongodb-enterprise-mongos-3.2.1 mongodb-enterprise-tools-3.2.1
 ```
 
-#### **卸载MongoDB**
+### **卸载MongoDB**
 
 停止服务
 
@@ -211,7 +211,7 @@ sudo rm -r /var/log/mongodb
 sudo rm -r /var/lib/mongo
 ```
 
-#### **源码安装MongoDB**
+### **源码安装MongoDB**
 
 通过MongoDB官网就可以打开下载地址：https://www.mongodb.com/download-center?jmp=nav&_ga=1.114046535.1911966133.1464573239#community 从里面获取到下载地址之后直接在服务器上下载即可！
 

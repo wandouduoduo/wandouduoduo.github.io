@@ -155,7 +155,7 @@ server inst1 192.168.1.187:8000 check inter 5000 fall 3
 
 ## 验证测试
 
-#### 两台机器上分别执行
+### 两台机器上分别执行
 
 ```
 ip add
@@ -176,13 +176,13 @@ valid_lft forever preferred_lft forever
 
 
 
-#### 停掉主上的haproxy
+### 停掉主上的haproxy
 
 3秒后keepalived会自动将其再次启动
 
 
 
-#### 停掉主的keepalived
+### 停掉主的keepalived
 
 备机马上接管服务
 备: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast qlen 1000
@@ -194,7 +194,7 @@ valid_lft forever preferred_lft forever
 
 
 
-#### 更改hosts
+### 更改hosts
 
 192.168.1.200 test.com
 192.168.1.200 test.domain.com

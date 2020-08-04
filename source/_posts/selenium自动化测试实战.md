@@ -35,7 +35,7 @@ python安装这里省略，可以参考[python官网](www.python.org)
 
 ## 安装
 
-#### 安装模块
+### 安装模块
 
 ```bash
 pip install selenium
@@ -45,7 +45,7 @@ pip install selenium
 
 友情提示：如果无法访问，可以使用这个工具代理上网。https://github.com/getlantern/lantern
 
-#### 安装Chrome WebDriver
+### 安装Chrome WebDriver
 
 通过在Chrome地址栏中输入chrome://version/来查看浏览器版本
 
@@ -67,12 +67,12 @@ pip install selenium
 
 
 
-#### 知识点
+### 知识点
 
 - 运用了Selenium定位web元素的方法
 - 浏览器调试工具使用
 
-#### 流程
+### 流程
 
 1） 人工走一遍流程，对自动化的流程心中有数
 2） 按步骤拆分，然后对每一个小步骤编写自动化脚本
@@ -80,7 +80,7 @@ pip install selenium
 
 
 
-#### 打开12306官网
+### 打开12306官网
 
 ![](selenium自动化测试实战/5.png)
 
@@ -88,7 +88,7 @@ pip install selenium
 
 ![](selenium自动化测试实战/6.png)
 
-#### 登录12306
+### 登录12306
 
 1）在chrome界面，按F12快捷键，弹出chrome的调试工具
 2）找出登录按钮的id和username、password的id
@@ -111,7 +111,7 @@ pip install selenium
 
 ![](selenium自动化测试实战/12.png)
 
-#### 选择出发地
+### 选择出发地
 
 ![](selenium自动化测试实战/13.png)
 
@@ -127,7 +127,7 @@ setTimeout(function(){debugger;}, 5000)
 
 ![](selenium自动化测试实战/15.png)
 
-#### 选择出发日
+### 选择出发日
 
 ![](selenium自动化测试实战/16.png)
 
@@ -135,19 +135,19 @@ setTimeout(function(){debugger;}, 5000)
 
 ![](selenium自动化测试实战/17.png)
 
-#### 选择车次类型
+### 选择车次类型
 
 ![](selenium自动化测试实战/19.png)
 
 ![](selenium自动化测试实战/20.png)
 
-#### 查询
+### 查询
 
 ![](selenium自动化测试实战/21.png)
 
 ![](selenium自动化测试实战/22.png)
 
-#### 循环刷票
+### 循环刷票
 
 ![](selenium自动化测试实战/23.png)
 

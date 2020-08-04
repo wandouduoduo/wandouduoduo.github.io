@@ -466,9 +466,9 @@ mv /opt/kafka_2.11-1.0.1 /opt/kafka
 ```shell
 vim /opt/kafka/conf/server.properties
 
-############################# Server Basics #############################
+###################### Server Basics ######################
 broker.id=1
-############################# Socket Server Settings #############################
+###################### Socket Server Settings ######################
 num.network.threads=3
 # The number of threads doing disk I/O
 num.io.threads=8
@@ -478,20 +478,20 @@ socket.send.buffer.bytes=102400
 socket.receive.buffer.bytes=102400
 # The maximum size of a request that the socket server will accept (protection against OOM)
 socket.request.max.bytes=104857600
-############################# Log Basics #############################
+###################### Log Basics ######################
 log.dirs=/opt/kafka/data
 num.partitions=6
 num.recovery.threads.per.data.dir=1
-############################# Log Flush Policy #############################
+###################### Log Flush Policy ######################
 # The number of messages to accept before forcing a flush of data to disk
 #log.flush.interval.messages=10000
 # The maximum amount of time a message can sit in a log before we force a flush
 #log.flush.interval.ms=1000
-############################# Log Retention Policy #############################
+###################### Log Retention Policy ######################
 log.retention.hours=60
 log.segment.bytes=1073741824
 log.retention.check.interval.ms=300000
-############################# Zookeeper #############################
+###################### Zookeeper ######################
 zookeeper.connect=10.10.0.193:2181,10.10.0.194:2181,10.10.0.195:2181
 zookeeper.connection.timeout.ms=6000
 ```
@@ -637,7 +637,7 @@ yum install filebeat-6.2.2-x86_64.rpm -y
 ```shell
 vim  /etc/filebeat/filebeat.yml
 
-###################### Filebeat Configuration Example #########################
+################# Filebeat Configuration Example ###################
 
 # This file is an example configuration file highlighting only the most common
 # options. The filebeat.reference.yml file from the same directory contains all the

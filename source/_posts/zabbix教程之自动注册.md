@@ -24,7 +24,7 @@ date: 2019-10-25 10:25:23
 
 ## 教程
 
-#### zabbix-agent批量安装脚本
+### zabbix-agent批量安装脚本
 
 ```bash
 #!/bin/bash
@@ -53,7 +53,7 @@ else
 fi
 ```
 
-#### zabbix-server页面配置
+### zabbix-server页面配置
 
 配置---->动作----->事件源选择自动注册---->创建动作
 

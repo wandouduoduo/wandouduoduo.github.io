@@ -49,7 +49,7 @@ Nginx:  Nginx是一款轻量级的Web服务器/反向代理服务器以及电子
 
 ## 软件部署
 
-#### 安装etcd
+### 安装etcd
 
 注意：这里安装的单机,集群环境根据自己的需求选取
 
@@ -59,7 +59,7 @@ sed -i  's/localhost/0.0.0.0/g'  /etc/etcd/etcd.conf  #配置监听地址
 systemctl   start  etcd  &&  systemctl  enable  etcd  #启动服务设置开机动
 ```
 
-#### 安装nginx
+### 安装nginx
 
 ```shell
 # 安装依赖包
@@ -104,7 +104,7 @@ vim  /usr/local/nginx/conf/nginx.conf
 
 ```
 
-#### 安装confd
+### 安装confd
 
 ```shell
 下载地址https://github.com/kelseyhightower/confd/releases
@@ -113,14 +113,14 @@ cp confd  /usr/bin/confd
 which  confd
 #/usr/bin/confd
 ```
-#### 创建配置文件目录
+### 创建配置文件目录
 
 ```shell
 mkdir -p /etc/confd/{conf.d,templates}
 # conf.d          # 资源模板，下面文件必须以toml后缀
 # templates       # 配置文件模板，下面文件必须以tmpl后缀
 ```
-#### 创建confd配置文件
+### 创建confd配置文件
 
 ```shell
 vim /etc/confd/conf.d/test.conf.toml
@@ -134,7 +134,7 @@ keys = [
 check_cmd = "/usr/local/nginx/sbin/nginx -t"   #配置文件测试
 reload_cmd ="/usr/local/nginx/sbin/nginx -s reload"   #加载配置文件
 ```
-#### 创建confd模板
+### 创建confd模板
 
 ```shell
 vi  /etc/confd/templates/app01.conf.tmpl 
@@ -164,7 +164,7 @@ vi  /etc/confd/templates/app01.conf.tmpl
 			   }
 	}
 ```
-#### 在Ectd中写入变量
+### 在Ectd中写入变量
 
 ```shell
 etcdctl set /Shopping/nginx/cluster1/proxy_name test.com
@@ -173,13 +173,13 @@ etcdctl set /Shopping/nginx/cluster1/upstream/serverA 192.168.1.2:8080
 etcdctl set /Shopping/nginx/cluster1/upstream/serverB 192.168.1.3:8080
 ```
 
-#### 启动confd并设置开机启动
+### 启动confd并设置开机启动
 
 ```shell
 # 需要更改etcd 的连接地址即可
 nohup confd -watch -backend etcd -node http://localhost:2379 &
 ```
-#### 验证
+### 验证
 
 confd启动后会自动生成配置文件，如图：
 
@@ -199,7 +199,7 @@ vim  /root/.pip/pip.conf          #修改为阿里云的pip源
 	[list]
 	format=columns
 ```
-#### 创建虚拟环境
+### 创建虚拟环境
 
 ```shell
 pip install   virtualenv         #安装沙盒工具
@@ -211,7 +211,7 @@ cd  Conf_Web/ospweb/
 pip install -r requirement.txt   #安装相关软件
 ```
 
-#### 创建数据库并将表刷入数据库
+### 创建数据库并将表刷入数据库
 
 ```shell
 mysql  -p          #登录数据库为平台创建一个数据库
@@ -233,19 +233,19 @@ vi opsweb/settings.py   #这里数据库信息改为自己的数据库信息
 		
 python manage.py   migrate          #提交迁移文件至数据库,将表刷入数据库
 ```
-#### 创建超级管理员账号
+### 创建超级管理员账号
 
 ```shell
 python manage.py  createsuperuser
 ```
 
-#### 运行平台
+### 运行平台
 
 ```shell
 python manage.py  runserver 0:8000
 # 访问地址就是 http://ip:8000   账号密码就是上一步创建的超级管理员账号密码
 ```
-#### 登录平台为nginx创建key/value  
+### 登录平台为nginx创建key/value  
 
 	以Shopping 平台为例
 	
@@ -288,7 +288,7 @@ etcd 里面存储的值
 
 ## nginx + uwsgi + django项目部署
 
-#### uwsgi 部署
+### uwsgi 部署
 
 ```shell
 source  env/bin/activate      #使用沙盒
@@ -321,7 +321,7 @@ pidfile = uwsgi.pid
 /home/env/bin/uwsgi --ini uwsgi.ini   #启动服务
 ```
 
-#### nginx 配置
+### nginx 配置
 
 ```shell
 vim  /usr/local/nginx/conf/vhost/ops.conf

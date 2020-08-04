@@ -54,7 +54,7 @@ yum update nss
 
 ## 自动从源中安装
 
-#### 首先安装ELRepo源
+### 首先安装ELRepo源
 
 ```bash
 #centos6
@@ -70,13 +70,13 @@ rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org
 rpm -Uvh https://www.elrepo.org/elrepo-release-8.0-2.el8.elrepo.noarch.rpm
 ```
 
-#### **启用ELRepo源仓库**
+### **启用ELRepo源仓库**
 
 ```bash
 yum --disablerepo="\*" --enablerepo="elrepo-kernel" list available
 ```
 
-#### **安装新内核**
+### **安装新内核**
 
 ```bash
 yum -y --enablerepo=elrepo-kernel install kernel-lt kernel-lt-devel  kernel-lt-doc  kernel-lt-headers
@@ -88,7 +88,7 @@ yum -y --enablerepo=elrepo-kernel install kernel-lt kernel-lt-devel  kernel-lt-d
 
 ## 手动下载安装
 
-#### 内核报错
+### 内核报错
 
 如安装内核有报错：No package kernel-lt available. 如下图
 
@@ -96,7 +96,7 @@ yum -y --enablerepo=elrepo-kernel install kernel-lt kernel-lt-devel  kernel-lt-d
 
 新内核下载地址：https://elrepo.org/linux/kernel/el7/x86_64/RPMS/
 
-#### 下载安装内核
+### 下载安装内核
 
 ```bash
 wget https://elrepo.org/linux/kernel/el6/x86_64/RPMS/kernel-lt-4.4.207-1.el6.elrepo.x86_64.rpm
@@ -105,7 +105,7 @@ rpm -ivh kernel-lt-4.4.207-1.el6.elrepo.x86_64.rpm
 
 
 
-#### 更新kernel-lt-headers
+### 更新kernel-lt-headers
 
 ```
 wget https://elrepo.org/linux/kernel/el6/x86_64/RPMS/kernel-lt-headers-4.4.207-1.el6.elrepo.x86_64.rpm
@@ -127,14 +127,14 @@ rpm -ivh kernel-lt-headers-4.4.207-1.el6.elrepo.x86_64.rpm
 
 
 
-#### 更新kernel-lt-devel
+### 更新kernel-lt-devel
 
 ```
 wget https://elrepo.org/linux/kernel/el6/x86_64/RPMS/kernel-lt-devel-4.4.207-1.el6.elrepo.x86_64.rpm
 rpm -ivh kernel-lt-devel-4.4.207-1.el6.elrepo.x86_64.rpm
 ```
 
-#### 更新kernel-lt-doc
+### 更新kernel-lt-doc
 
 ```
 wget https://elrepo.org/linux/kernel/el6/x86_64/RPMS/kernel-lt-doc-4.4.207-1.el6.elrepo.noarch.rpm
@@ -147,9 +147,9 @@ rpm -ivh kernel-lt-doc-4.4.207-1.el6.elrepo.noarch.rpm
 
 这里因为系统差异原因，对centos7以上版本和centos6版本差异处理。
 
-#### centos7以上
+### centos7以上
 
-###### 查看当前grub中内核版本列表
+##### 查看当前grub中内核版本列表
 
 ```bash
 #centos7以上版本
@@ -164,7 +164,7 @@ Centos7及以上版本会返回信息,可能如下：
 
 
 
-###### 修改设置并生成新的grub配置文件
+##### 修改设置并生成新的grub配置文件
 
 ```bash
 grub2-set-default 0
@@ -173,9 +173,9 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 
 
-#### Centos6
+### Centos6
 
-###### 查看安装的内核版本
+##### 查看安装的内核版本
 
 ```bash
 rpm -qa | grep -i kernel
@@ -183,7 +183,7 @@ rpm -qa | grep -i kernel
 
 ![](使用ELRepo第三方源为CentOS-6-7-8升级最新内核版本/6.png)
 
-###### 编辑配置
+##### 编辑配置
 
 更改/etc/grub.conf文件中default的值,设定为**0**如下图：
 

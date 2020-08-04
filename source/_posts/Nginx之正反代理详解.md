@@ -91,7 +91,7 @@ nginx的负载均衡规则如下：
 
 了解了正反向代理和负载均衡，那么要怎么实现呢？如何去配置。
 
-#### **正向代理配置**
+### **正向代理配置**
 
 现在我登录上代理服务器上, 打开/etc/nginx/conf.d/default.conf
 添加`resolver`和`proxy_pass`,设置如下:
@@ -120,11 +120,11 @@ server {
 
 然后，只需要在本机系统或浏览器配置代理即可访问。
 
-###### **windows配置**
+##### **windows配置**
 
 ![](Nginx之正反代理详解/3.png)
 
-###### **Linux系统**
+##### **Linux系统**
 
 **使用yum 的设置代理的方法**
 
@@ -134,8 +134,8 @@ server {
 [root@localhost ~]# vim /etc/yum.conf 
 proxy=http://192.168.99.99:80
 #proxy=ftp://192.168.99.99:80
-#proxy_username=username                 #####代理的用户名
-#proxy_password=password                  #####代理的密码
+#proxy_username=username                 ####代理的用户名
+#proxy_password=password                  ####代理的密码
 #然后直接用yum安装即可
 ```
 
@@ -172,7 +172,7 @@ export ftp_proxy
 
 
 
-#### 反向代理配置
+### 反向代理配置
 
 反向代理的演示更为简单一些。
 首先在/etc/nginx/conf.d/下新建一个default.conf:

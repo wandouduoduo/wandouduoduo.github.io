@@ -147,7 +147,7 @@ logdir /var/log/chrony
 
 ## mount brick
 
-#### 创建分区
+### 创建分区
 
 ```bash
 # 各brick server的磁盘挂载前需要创建分区并格式化，以glusterfs01节点为例；
@@ -166,7 +166,7 @@ Command (m for help): w
 
 ![img](GlusterFS分布式存储集群之部署/4.png)
 
-#### 格式化分区
+### 格式化分区
 
 ```bash
 [root@glusterfs01 ~]# mkfs.xfs -i size=512 /dev/sdb1
@@ -174,7 +174,7 @@ Command (m for help): w
 
 ![img](GlusterFS分布式存储集群之部署/5.png)
 
-#### 挂载分区
+### 挂载分区
 
 ```bash
 # 创建挂载目录，目录名自定义；
@@ -201,14 +201,14 @@ Command (m for help): w
 
 ## 启动glusterfs-server
 
-#### 安装glusterfs-server
+### 安装glusterfs-server
 
 ```bash
 # 在4个brick server节点安装glusterfs-server，以glusterfs01节点为例
 [root@glusterfs01 ~]# yum install -y glusterfs-server
 ```
 
-#### 启动glusterfs-server
+### 启动glusterfs-server
 
 ```bash
 [root@glusterfs01 ~]# systemctl enable glusterd

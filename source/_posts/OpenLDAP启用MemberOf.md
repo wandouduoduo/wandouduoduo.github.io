@@ -26,7 +26,7 @@ OpenLDAP版本为2.4.44
 
 ## 步骤
 
-#### 先查看openldap的数据库信息
+### 先查看openldap的数据库信息
 
 ```bash
 ls /etc/openldap/slapd.d/cn=config/
@@ -42,7 +42,7 @@ cn=module{0}.ldif cn=schema/ cn=schema.ldif olcDatabase={0}config.ldif olcDataba
 
 其中有一个带什么`db.ldif`的就是你最终需要修改的数据库文件，我这里是`bdb.ldif`，你的可能是`mdb.ldif`，还有人是`hdb.ldif`，不管什么`db`，总之你要改的是一个叫`db`的文件就对了，你可以`cat`打开看一看，但是不要用`vi`去修改它。
 
-#### 准备memberof_conf.ldif文件
+### 准备memberof_conf.ldif文件
 
 ```bash
 vim memberof_conf.ldif
@@ -71,7 +71,7 @@ olcMemberOfMemberOfAD: memberOf
 
 ![](OpenLDAP启用MemberOf/1.jpeg)
 
-#### 编辑refint1.ldif文件
+### 编辑refint1.ldif文件
 
 ```bash
 vim refint1.ldif 
@@ -83,7 +83,7 @@ olcmoduleload: refint
 
 ![](OpenLDAP启用MemberOf/2.png)
 
-#### 编辑refint2.ldif文件
+### 编辑refint2.ldif文件
 
 ```bash
  vim refint2.ldif 
@@ -100,7 +100,7 @@ olcRefintAttribute: memberof member manager owner
 
 ![](OpenLDAP启用MemberOf/3.jpeg)
 
-#### 导入配置
+### 导入配置
 
 ```bash
 #注意：导入时文件路径跟绝对路径

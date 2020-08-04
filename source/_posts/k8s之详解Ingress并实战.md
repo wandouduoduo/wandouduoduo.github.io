@@ -124,9 +124,9 @@ k8s 版本为1.18.3
 
   
 
-#### 先用NodePort测试
+### 先用NodePort测试
 
-###### 拉取镜像
+##### 拉取镜像
 
 需要使用到httpd、tomcat镜像
 
@@ -137,7 +137,7 @@ docker pull tomcat
 
 ![](k8s之详解Ingress并实战/2.png)
 
-###### 创建namespace
+##### 创建namespace
 
 ```yaml
 ##创建yaml文件：
@@ -155,7 +155,7 @@ metadata:
 
 ![](k8s之详解Ingress并实战/3.png)
 
-###### **创建deployment及service资源**
+##### **创建deployment及service资源**
 
 **创建httpd及service资源文件**
 
@@ -260,7 +260,7 @@ kubectl get svc -n ingress-test
 
 
 
-#### 创建ingress-nginx
+### 创建ingress-nginx
 
 从GitHub上下载yaml文件：[官方地址](https://github.com/kubernetes/ingress-nginx/blob/master/docs/deploy/index.md)
 
@@ -1013,7 +1013,7 @@ kubectl get pods -n ingress-nginx
 
 
 
-#### **创建ingress规则**
+### **创建ingress规则**
 
 yaml文件内容如下：
 
@@ -1067,7 +1067,7 @@ kubectl exec -it -n ingress-nginx ingress-nginx-controller-cf5dx /bin/bash
 
 通过查看nginx配置文件，我们可以清楚的知道之前所说的ingress-controller会根据我们编写的ingress规则（代理后端应用），动态的去更改nginx的配置文件。
 
-#### **通过域名访问集群内的服务**
+### **通过域名访问集群内的服务**
 
 ```
 #当前我们需要知道ingress运行在那个node上
@@ -1144,7 +1144,7 @@ kubectl get ingresses. -n ingress-test
 
 通过部署ingress后，我们不必按照常规的，为后端所有的pod都颁发一个证书，只需为ingress代理的域名颁发证书就能够实现。
 
-#### **创建CA证书**
+### **创建CA证书**
 
 ```bash
 mkdir https
@@ -1156,7 +1156,7 @@ ls
 
 ![](k8s之详解Ingress并实战/18.png)
 
-#### **创建deployment，service，ingress资源:（以nginx服务来实践）**
+### **创建deployment，service，ingress资源:（以nginx服务来实践）**
 
 ```yaml
 vim nginx-ingress2.yaml
@@ -1227,7 +1227,7 @@ kubectl get svc -n ingress-nginx
 
 ![](k8s之详解Ingress并实战/20.png)
 
-#### **通过ingress代理的443端口访问nginx服务**
+### **通过ingress代理的443端口访问nginx服务**
 
 ```
 #在hosts文件中绑定域名：

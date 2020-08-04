@@ -67,7 +67,7 @@ ns-int.isc.org.         2351    IN      AAAA    2001:4f8:0:2::15
 
 最后一段默认输出包含了查询的统计数据，可以用+[no]stats保留。
 
-#### **我们可以查询什么呢？**
+### **我们可以查询什么呢？**
 
 Dig可以让你有效地查询DNS，最常用的查询是A记录，TXT（文本注释），MX记录，NS记录，或者任意综合查询。
 
@@ -104,7 +104,7 @@ dig yahoo.com AAAA +short
 如果你要查询的域允许转发，你也可以查询到相关的信息，比如DNS记录在internet上的生存周期，但是，现
 在只有很少的DNS允许无限制转发。
 
-#### **我们怎样查询？获得精简答案呢？**
+### **我们怎样查询？获得精简答案呢？**
 
 当我们需要一个快速回答时，+short选项是你最好的朋友:
 
@@ -113,7 +113,7 @@ dig yahoo.com +short
 204.152.184.88
 ```
 
-#### **获得一个不是十分精简的答案？**
+### **获得一个不是十分精简的答案？**
 
 精简答案和只有一个答案是不一样的，
 
@@ -131,7 +131,7 @@ fsf.org.                3583    IN      MX      10 mx10.gnu.org.
 fsf.org.                3583    IN      MX      20 mx20.gnu.org.
 ```
 
-#### **获得一个详细答案？**
+### **获得一个详细答案？**
 
 通过它的man page，你可以通过+multiline选项获得冗长的多行模式人性化注释的DSN的SOA记录，一般来说，
 用+multiline选项获得的信息可以显示很多，就像BIND配置文件一样。
@@ -153,7 +153,7 @@ ogi.edu.   14267 IN NS cse.ogi.edu.
 ogi.edu.   14267 IN NS fork.admin.ogi.edu.
 ```
 
-#### **查找PTR记录？**
+### **查找PTR记录？**
 
 可以用 -x的选项查找IP地址的主机名。
 
@@ -210,7 +210,7 @@ dig -f /path/to/host-list.txt +noall +answer
 
 但是我要告诉你的是，dig 9.2.3以及以后的版本都不支持使用-f的选项反向查询了。
 
-#### 验证DNS映射
+### 验证DNS映射
 
 不正确的DNS配置会给你带来很多苦恼，你可以通过如下两种方式验证你的DNS配置：
 1.每个主机名应该被解析到一个IP地址，而且那个IP地址也应该反指向那个主机名。
@@ -271,7 +271,7 @@ done
 
 ## **有趣的dig**
 
-#### 创建属于你自己的named.root文件
+### 创建属于你自己的named.root文件
 
 任何连接到internet 的DNS服务器肯定会有InterNIC的named.root文件的拷贝，文件列出所有internet的根
 DNS，如果你不怕麻烦的话，你可以经常从InterNIC的ftp服务器上把它下载下来，或者，你可以使用dig命令
@@ -284,7 +284,7 @@ dig +nocmd . NS +noall +answer +additional
 
 你的TTL值在这边可能会很小，但是它是你找到最新的named.root文件！
 
-#### **跟踪dig的查询路径**
+### **跟踪dig的查询路径**
 
 你可能是个traceroute的狂热爱好者，经常喜欢查看如何从点A连接点B。那你可以使用dig +trace选项做类似
 的事。
@@ -295,7 +295,7 @@ dig gentoo.de +trace
 
 你可以在dig输出的头部分看到根DNS，然后找到负责解析所有*.de的DNS，最后找到gentoo.de的域名IP。
 
-#### **获取SOA记录**
+### **获取SOA记录**
 
 作为一个DNS管理员，我有时会（对DNS配置）做一些改变，并且想知道我的DNS解析是否推送的还是旧数据，
 这个+nssearch选项可以给你的公众服务器提供清楚的统计信息。
@@ -308,7 +308,7 @@ dig cse.ogi.edu +nssearch
 dig cse.ogi.edu +nssearch | cut -d' ' -f4,11
 ```
 
-#### **解释TTL数值**
+### **解释TTL数值**
 
 我喜爱google有很多原因，其中一个原因就是它在我的WEB日志中提供了精确的链接，它会使我很容易地指出
 哪种类型的查询引导人们来访问这个站点的页面。
@@ -351,42 +351,42 @@ gmail.com.        1       IN      MX      20 gsmtp57.google.com.
 ## 用法
 
 下面是 dig 的一些比较常用的命令: 
-#### dig 最基本的用法
+### dig 最基本的用法
 ```
 dig @server qianlong.com
 ```
 
-#### 用 dig 查看 zone 数据传输
+### 用 dig 查看 zone 数据传输
 ```
 dig @server qianlong.com AXFR
 ```
 
-#### 用 dig 查看 zone 数据的增量传输
+### 用 dig 查看 zone 数据的增量传输
 ```
 dig @server qianlong.com IXFR=N
 ```
 
-#### 用 dig 查看反向解析
+### 用 dig 查看反向解析
 ```
 dig -x 124.42.102.203 @server
 ```
 
-#### 查找一个域的授权 dns 服务器
+### 查找一个域的授权 dns 服务器
 ```
 dig  qianlong.com +nssearch
 ```
 
-#### 从根服务器开始追踪一个域名的解析过程
+### 从根服务器开始追踪一个域名的解析过程
 ```
 dig  qianlong.com +trace
 ```
 
-#### 查看你使用的是哪个 F root dns server 
+### 查看你使用的是哪个 F root dns server 
 ```
 dig +norec @F.ROOT-SERVERS.NET HOSTNAME.BIND CHAOS TXT
 ```
 
-#### 查看 bind 的版本号
+### 查看 bind 的版本号
 ```
 dig @bind_dns_server CHAOS TXT version.bind
 ```

@@ -42,7 +42,7 @@ sysstemctl start jenkins.service
 /usr/local/tomcat/bin/startup.sh  #启动tomcat
 ```
 
-#### 方法一
+### 方法一
 
 ```bash
 # 赋予脚本可执行权限（/opt/script/autostart.sh是你的脚本路径）
@@ -55,7 +55,7 @@ chmod +x /opt/script/autostart.sh
 chmod +x /etc/rc.d/rc.local
 ```
 
-#### 方法二
+### 方法二
 
 ```bash
 # 将脚本移动到/etc/rc.d/init.d目录下

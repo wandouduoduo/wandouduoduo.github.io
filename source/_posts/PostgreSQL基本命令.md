@@ -138,7 +138,7 @@ alter table [表名] rename column [旧字段名] to [新字段名];
 例：把表table_ex字段col_1限制非空去掉：ALTER TABLE table_eg ALTER col_1 drop not NULL
 ```
 
-##### **更改字段属性，含空格**
+#### **更改字段属性，含空格**
 
 如果把字段colname把属性Text转化为int，原来text里面存在空啥的，可以
 
@@ -146,7 +146,7 @@ alter table [表名] rename column [旧字段名] to [新字段名];
 ALTER TABLE tablename ALTER COLUMN colname TYPE int USING (trim(colname)::integer);
 ```
 
-##### **更改字段由int4-->int8**
+#### **更改字段由int4-->int8**
 
 ```plsql
 alter table test_data alter column task_id type bigint using task_id::bigint

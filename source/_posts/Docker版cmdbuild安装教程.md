@@ -48,7 +48,7 @@ postgres     9.4
 
 ## 安装
 
-#### 环境调整
+### 环境调整
 
 关闭防火墙
 
@@ -58,7 +58,7 @@ systemctl stop firewalld.service
 
 
 
-#### PostgreSQL的安装
+### PostgreSQL的安装
 
 cmdbuild数据存储是在PostgreSQL中的，生产环境建议建立PostgreSQL数据库集群，这里为单点。
 
@@ -85,7 +85,7 @@ psql -U postgres -d cmdbuild < /tmp/cmdbuild_db_dump_2018-07-13.sql
 # 退出容器
 ```
 
-#### Cmdbuild安装
+### Cmdbuild安装
 
 ```shell
 #拉取镜像

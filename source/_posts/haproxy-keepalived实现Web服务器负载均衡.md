@@ -49,7 +49,7 @@ HAProxy服务器：192.168.21.129、192.168.21.130
 
 **两台HAProxy服务器上分别操作**
 
-#### 关闭SElinux
+### 关闭SElinux
 
 ```bash
 vim /etc/selinux/config
@@ -65,7 +65,7 @@ SELINUX=disabled #增加
 setenforce 0 #使配置立即生效
 ```
 
-#### 配置防火墙
+### 配置防火墙
 
 ```bash
 vim /etc/sysconfig/iptables  #编辑
@@ -81,9 +81,9 @@ vim /etc/sysconfig/iptables  #编辑
 /etc/init.d/iptables restart #重启防火墙使配置生效
 ```
 
-#### 安装HAProxy
+### 安装HAProxy
 
-###### 创建HAProxy运行账户和组
+##### 创建HAProxy运行账户和组
 
 ```
 groupadd haproxy #添加haproxy组
@@ -91,13 +91,13 @@ groupadd haproxy #添加haproxy组
 useradd -g haproxy haproxy -s /bin/false #创建nginx运行账户haproxy并加入到haproxy组，不允许haproxy用户直接登录系统
 ```
 
-###### 安装编译工具
+##### 安装编译工具
 
 ```
 yum install  gcc gcc-c++ make openssl-devel kernel-devel
 ```
 
-###### 安装HAProxy
+##### 安装HAProxy
 
 ```bash
 HAProxy下载地址：http://haproxy.1wt.eu/download/1.4/src/haproxy-1.4.24.tar.gz
@@ -127,7 +127,7 @@ CPU=x86_64   #使用uname -r查看系统信息，如x86_64 x86_64 x86_64 GNU/Lin
 PREFIX=/usr/local/haprpxy   #/usr/local/haprpxy为haprpxy安装路径
 ```
 
-###### 设置HAProxy
+##### 设置HAProxy
 
 ```bash
 mkdir -p  /usr/local/haproxy/conf  #创建配置文件目录
@@ -157,14 +157,14 @@ chkconfig haproxy on  #设置开机启动
 ln -s  /usr/local/haproxy/sbin/haproxy  /usr/sbin  #添加软连接
 ```
 
-###### 配置haproxy.cfg参数
+##### 配置haproxy.cfg参数
 
 ```bash
 cp  /usr/local/haproxy/conf/haproxy.cfg   /usr/local/haproxy/conf/haproxy.cfg-bak  #备份
 
 vim  /usr/local/haproxy/conf/haproxy.cfg  #编辑，修改
 
-\#####################################################################
+\####################################################
 
 \# this config needs haproxy-1.1.28 or haproxy-1.2.1
 
@@ -302,7 +302,7 @@ errorfile 503 /etc/haproxy/errorfiles/503.http
 
 errorfile 504 /etc/haproxy/errorfiles/504.http
 
-\#####################################################################
+\####################################################
 
 :wq! #保存退出
 
@@ -313,7 +313,7 @@ service haproxy stop  #关闭
 service haproxy restart  #重启
 ```
 
-###### 设置HAProxy日志
+##### 设置HAProxy日志
 
 ```bash
 vim  /etc/syslog.conf  #编辑，在最下边增加
@@ -335,7 +335,7 @@ SYSLOGD_OPTIONS="-r -m 0"   #接收远程服务器日志
 service syslog restart  #重启syslog
 ```
 
-#### 安装keepalived
+### 安装keepalived
 
 ```bash
 下载keeplived：http://www.keepalived.org/software/keepalived-1.2.12.tar.gz
@@ -381,14 +381,14 @@ service keepalived stop  #关闭
 service keepalived restart  #重启
 ```
 
-###### 配置keepalived
+##### 配置keepalived
 
 ```bash
 cp /etc/keepalived/keepalived.conf  /etc/keepalived/keepalived.conf-bak
 
 vi /etc/keepalived/keepalived.conf  #编辑，修改为以下代码
 
-\#########################################################
+\###########################################
 
 \#以下为192.168.21.129服务器：
 
@@ -492,13 +492,13 @@ notify_master "/etc/keepalived/clean_arp.sh  192.168.21.254"  #更新虚拟服�
 
 }
 
-\#########################################################
+\###########################################
 
 :wq! #保存退出
 ```
 
 ```bash
-#########################################################
+###########################################
 
 \#以下为192.168.21.130服务器：
 
@@ -604,19 +604,19 @@ notify_master "/etc/keepalived/clean_arp.sh  192.168.21.254"  #更新虚拟服�
 
 }
 
-\#########################################################
+\###########################################
 
 :wq! #保存退出
 ```
 
 
 
-#### 设置HAproxy服务监控脚本
+### 设置HAproxy服务监控脚本
 
 ```bash
 vim  /etc/keepalived/check_haproxy.sh #编辑，添加以下代码
 
-\#########################################################
+\###########################################
 
 \#!/bin/bash
 
@@ -636,14 +636,14 @@ fi
 
 fi
 
-\#########################################################
+\###########################################
 
 :wq! #保存退出
 
 chmod +x /etc/keepalived/check_haproxy.sh   #添加执行权限
 ```
 
-#### 设置更新虚拟服务器（VIP）地址的arp记录到网关脚本
+### 设置更新虚拟服务器（VIP）地址的arp记录到网关脚本
 
 ```bash
 vim  /etc/keepalived/clean_arp.sh  #编辑，添加以下代码
@@ -661,7 +661,7 @@ GATEWAY=192.168.21.2 #网关地址
 chmod +x /etc/keepalived/clean_arp.sh  #添加脚本执行权限
 ```
 
-#### 系统内核优化
+### 系统内核优化
 
 在两台HAProxy服务器上分别操作
 
@@ -731,9 +731,9 @@ echo -e "net.ipv4.netfilter.ip_conntrack_tcp_timeout_fin_wait = 120" >> /etc/sys
 
 ## 测试验证
 
-#### **测试HAProxy+Keepalived是否正常运行**
+### **测试HAProxy+Keepalived是否正常运行**
 
-###### 打开HAProxy监控页面
+##### 打开HAProxy监控页面
 
 http://bbs.osyunwei.com/haproxy-status
 
@@ -745,7 +745,7 @@ http://bbs.osyunwei.com/haproxy-status
 
 ![2884](haproxy-keepalived实现Web服务器负载均衡/2884.jpg)
 
-###### 解析
+##### 解析
 
 bbs.osyunwei.com 解析到192.168.21.253；
 
@@ -773,7 +773,7 @@ http://sns.osyunwei.com/
 
 此时，bbs和sns域名都被均衡到192.168.21.127上面
 
-###### 停止192.168.21.127上面的nginx服务
+##### 停止192.168.21.127上面的nginx服务
 
 ```
 service nginx stop
@@ -785,7 +785,7 @@ service nginx stop
 
 此时，bbs和sns域名都被均衡到192.168.21.128上面（由于192.168.21.127服务器nginx服务被关闭，实现了故障转移）
 
-###### 关闭192.168.21.129上面的keepalived服务
+##### 关闭192.168.21.129上面的keepalived服务
 
 ```
 service  keepalived  stop
@@ -809,7 +809,7 @@ service  keepalived  stop
 
 可以正常访问
 
-###### 恢复192.168.21.129上面的keepalived服务，恢复192.168.21.127上面的nginx服务
+##### 恢复192.168.21.129上面的keepalived服务，恢复192.168.21.127上面的nginx服务
 
 停止192.168.21.130上面的Keepalived服务
 

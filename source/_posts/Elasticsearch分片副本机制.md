@@ -47,7 +47,7 @@ Replica副本个数：3
 
 
 
-#### 单节点环境下
+### 单节点环境下
 
 ```
 PUT /myindex
@@ -65,7 +65,7 @@ GET _cat/health
 
 
 
-#### 两个节点环境下
+### 两个节点环境下
 
 将3个 primary shard 分配到一个 node 上，另外3个 replica shard 分配到另一个节点上；
 primary shard 和 replica shard 保持同步；
@@ -73,7 +73,7 @@ primary shard 和 replica shard 都可以处理客户端的读请求。
 
 ![](Elasticsearch分片副本机制/3.png)
 
-#### 三个节点环境下
+### 三个节点环境下
 
 将3个 primary shard 分别分配到一个 node 上，另外3个 replica shard 也交叉分配到另一个节点上；
 

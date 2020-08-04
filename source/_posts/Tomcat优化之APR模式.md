@@ -24,7 +24,7 @@ APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)�
 
 ## APR模式配置
 
-#### 获取APR组件依赖包
+### 获取APR组件依赖包
 
 首先需要下载APR的三个依赖包 [官方下载地址](http://apr.apache.org/download.cgi) 
 
@@ -32,15 +32,15 @@ APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)�
 
 然后把包上传到服务器。
 
-#### 编译安装各个组件
+### 编译安装各个组件
 
-###### 安装相关环境包
+##### 安装相关环境包
 
 ```bash
 yum -y install cmake gcc expat-devel
 ```
 
-###### 安装apr
+##### 安装apr
 
 ```
 tar -xzvf apr-1.7.0.tar.gz
@@ -49,7 +49,7 @@ cd apr-1.7.0
 make && make install
 ```
 
-###### 安装apr-iconv
+##### 安装apr-iconv
 
 ```bash
 tar -xzvf apr-iconv-1.2.2.tar.gz
@@ -58,7 +58,7 @@ cd apr-iconv-1.2.2
 make && make install
 ```
 
-###### 安装apr-util
+##### 安装apr-util
 
 ```bash
 tar -xzvf apr-util-1.6.1.tar.gz
@@ -67,7 +67,7 @@ cd apr-util-1.6.1
 make && make install
 ```
 
-###### 安装Tomcat-native
+##### 安装Tomcat-native
 
 两种方式获取安装包：1，[从官方网站下载](http://tomcat.apache.org/download-native.cgi)；2，Tomcat中就包含该安装包，目录在: tomcat_home/bin/下。本教程采用第二种。
 
@@ -101,7 +101,7 @@ make && make install
 make && make install
 ```
 
-###### 设置环境变量
+##### 设置环境变量
 
 ```bash
 vim /etc/profile
@@ -111,9 +111,9 @@ export LD_LIBRARY_PATH=/usr/local/apr/lib ##添加apr path
 source /etc/profile
 ```
 
-#### 修改tomcat配置文件
+### 修改tomcat配置文件
 
-###### 修改protocol值
+##### 修改protocol值
 
 Tomcat默认是HTTP/1.1，如果运行apr模式需要把protocol值修改成apr模式：**org.apache.coyote.http11.Http11AprProtocol**
 
@@ -123,7 +123,7 @@ Tomcat默认是HTTP/1.1，如果运行apr模式需要把protocol值修改成apr�
 <Connector port="8080" protocol="org.apache.coyote.http11.Http11AprProtocol"
 ```
 
-###### 修改SSLEngine
+##### 修改SSLEngine
 
 ```bash
 # vim server.xml

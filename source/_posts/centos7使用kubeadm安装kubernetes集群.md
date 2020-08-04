@@ -33,7 +33,7 @@ Kubernetes是Google 2014年创建管理的，是Google 10多年大规模容器�
 
 ## 安装
 
-#### 设置主机名
+### 设置主机名
 
 192.168.6.201上执行
 
@@ -66,7 +66,7 @@ hostnamectl set-hostname --static k8s-node2
 
 
 
-#### 安装docker-ce
+### 安装docker-ce
 
 所有节点上（k8s-master, k8s-node1, k8s-node2）安装docker-ce：
 
@@ -100,7 +100,7 @@ systemctl daemon-reload
 systemctl restart docker
 ```
 
-#### 环境准备
+### 环境准备
 
 所有节点上（k8s-master, k8s-node1, k8s-node2）做如下准备工作
 
@@ -128,7 +128,7 @@ sysctl --system
 modprobe br_netfilter
 ```
 
-#### 安装kubelet kubeadm kubectl
+### 安装kubelet kubeadm kubectl
 
 所有节点上（k8s-master, k8s-node1, k8s-node2）安装kubelet kubeadm kubectl：
 
@@ -156,7 +156,7 @@ yum install kubelet-1.18.3 kubectl-1.18.3 kubeadm-1.18.3 --setopt=obsoletes=0
 systemctl enable kubelet && systemctl start kubelet
 ```
 
-#### 下载镜像
+### 下载镜像
 
 k8s-master节点上执行如下命令获取下载镜像所需列表
 
@@ -235,7 +235,7 @@ docker rmi ${srcimage}
 done
 ```
 
-#### 初始化master节点
+### 初始化master节点
 
 在k8s-master节点上执行初始化操作
 
@@ -341,7 +341,7 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 
-#### 安装网络插件
+### 安装网络插件
 
 这里选择安装flannel网络插件，也可以安装其他网络插件。master节点上安装flannel网络插件:
 
@@ -372,7 +372,7 @@ kube-system   kube-scheduler-k8s-master            1/1     Running   0          
 [root@k8s-master ~]#
 ```
 
-#### 加入node节点
+### 加入node节点
 
 master初始化成功时，屏幕会输出加入节点的命令如下所示:
 
@@ -408,7 +408,7 @@ Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 [root@k8s-node1 ~]#
 ```
 
-#### 确认集群状态
+### 确认集群状态
 
 kubernetes集群安装完成，确认集群状态：
 

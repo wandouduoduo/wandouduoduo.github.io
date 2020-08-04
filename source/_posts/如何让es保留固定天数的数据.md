@@ -79,23 +79,23 @@ print(response.json())
 
 ## Es Curator
 
-#### 简介
+### 简介
 
 curator 是一个官方的，可以管理elasticsearch索引的工具，可以实现创建，删除，段合并等等操作。
 
 
 
-#### 文档
+### 文档
 
 [官方文档](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/index.html)
 
 
 
-#### 版本
+### 版本
 
 ![](如何让es保留固定天数的数据/2.png)
 
-#### 安装
+### 安装
 
 安装非常简单，直接通过pip安装即可。 其他安装方案，详见官方文档：[安装](https://www.elastic.co/guide/en/elasticsearch/client/curator/current/installation.html)
 
@@ -103,7 +103,7 @@ curator 是一个官方的，可以管理elasticsearch索引的工具，可以�
 pip install elasticsearch-curator
 ```
 
-#### 使用
+### 使用
 
  安装后，便可以在命令行中直接使用，使用--help查看一下使用方法
 

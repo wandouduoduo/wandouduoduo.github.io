@@ -26,20 +26,20 @@ Lua 是一种轻量小巧的脚本语言，用标准C语言编写并以源代码
 
 ## 安装
 
-#### 关闭防火墙
+### 关闭防火墙
 
 ```bash
 systemctl stop firewalld.service #停止firewall
 systemctl disable firewalld.service #禁止firewall开机启动
 ```
 
-#### 安装依赖环境
+### 安装依赖环境
 
 ```bash
 yum -y install yum-utils gcc zlib zlib-devel pcre-devel openssl openssl-devel wget
 ```
 
-#### 安装LuaJIT
+### 安装LuaJIT
 
 ```bash
 wget http://luajit.org/download/LuaJIT-2.0.2.tar.gz
@@ -48,7 +48,7 @@ cd LuaJIT-2.0.2
 make install
 ```
 
-#### 安装nginx
+### 安装nginx
 
 **下载ngx_devel_kit、lua-nginx-module、nginx**
 
@@ -62,20 +62,20 @@ tar -xvf v0.10.9rc7.tar.gz
 tar -xvf nginx-1.12.1.tar.gz
 ```
 
-#### 编译Nginx
+### 编译Nginx
 
 ```bash
 cd nginx-1.12.1
 ./configure --prefix=/usr/local/nginx --add-module=../ngx_devel_kit-0.3.0 --add-module=../lua-nginx-module-0.10.9rc7  --with-http_ssl_module  --with-http_stub_status_module  --with-http_gzip_static_module
 ```
 
-#### 安装
+### 安装
 
 ```bash
 make && make install
 ```
 
-#### 启动nginx
+### 启动nginx
 
 启动时会nginx可能会报错
 

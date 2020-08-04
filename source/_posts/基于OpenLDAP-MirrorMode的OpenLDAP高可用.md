@@ -71,12 +71,12 @@ LDAP是一款轻量级目录访问协议（Lightweight Directory Access Protocol
 
 ## 安装openldap和Berkeley DB
 
-#### 1. 写在安装之前：
+### 1. 写在安装之前：
 
 编译安装openldap需要数据库的支持，openldap的数据库支持
 Berkeley DB,Oracle,Mysql,MariaDB,GDBM等数据库。默认openldap采用Berkeley DB，并且openldap对数据库有一定的要求，openldap 2.4的软件为例，需要Berkeley DB 4.4版本以上,所以在编译安装openldap源码包时需要先下载安装Berkeley DB
 
-#### 2. 编译安装Berkeley DB
+### 2. 编译安装Berkeley DB
 
 ```shell
 tar -xf db-4.6.21.tar.gz -C /usr/local/src
@@ -88,7 +88,7 @@ ldconfig -v
 ln -sv /usr/local/BDB/include /usr/include/BDB
 ```
 
-#### 3. 编译安装openldap
+### 3. 编译安装openldap
 
 ```bash
 tar -xf openldap-2.4.23.tgz -C /usr/local/src/
@@ -107,25 +107,25 @@ ln -s /usr/local/openldap/sbin/* /usr/local/sbin/
 
 ## 配置openldap
 
-#### 1. 配置openldap的方法有两种：
+### 1. 配置openldap的方法有两种：
 
 - 通过修改配置文件实现配置
 - 通过配置数据库的形式完成配置（slapd.d下的数据库配置文件）,属于动态配置不需要重启slapd进程,
   此配置文件在cn=config目录下的LDIF的配置文件 。此文件不建议手动修改，用ldap命令生成。
 
-#### 2. 配置rootdn密码(optional)
+### 2. 配置rootdn密码(optional)
 
 ```bash
 /usr/local/openldap/bin/slappasswd  #此密码记住，后面配置openldap会用到。
 ```
 
-#### 3. 创建用户ldap
+### 3. 创建用户ldap
 
 ```bash
 useradd ldap
 ```
 
-#### 4. 创建数据目录以及日志文件
+### 4. 创建数据目录以及日志文件
 
 ```bash
 mkdir /data/openldap/{data,log,var} -p
@@ -133,7 +133,7 @@ cd /data/openldap/var/
 mkdir run
 ```
 
-#### 5. 修改权限：
+### 5. 修改权限：
 
 ```bash
 cp /usr/local/openldap/etc/openldap/DB_CONFIG.example /data/openldap/data/DB_CONFIG
@@ -143,7 +143,7 @@ chmod 700 -R /data/openldap/data
 
 
 
-#### 6. 修改openldap配置文件
+### 6. 修改openldap配置文件
 
 ```bash
 #编辑配置文件vim slapd.conf
@@ -194,7 +194,7 @@ mirrormode on
 
 
 
-#### 7.开启日志功能
+### 7.开启日志功能
 
 - 通过修改配置文件开启日志功能
 
@@ -224,7 +224,7 @@ ldapadd -x -D "cn=Manager,dc=boe,dc=com" -f ./loglevel.ldif -w secret
 
 ## 配置phpldpadmin工具
 
-#### 1. 安装和配置LDAP管理工具PHPldapadmin
+### 1. 安装和配置LDAP管理工具PHPldapadmin
 
 ```bash
 yum -y install httpd php php-ldap php-gd php-mbstring php-pear php-bcmath php-xml
@@ -234,7 +234,7 @@ yum --enablerepo=epel -y install phpldapadmin
 
 
 
-#### 2. 修改配置文件
+### 2. 修改配置文件
 
 ```bash
 vim /etc/phpldapadmin/config.php +398
@@ -253,7 +253,7 @@ Allow from ::1
 
 
 
-#### 3. 设置开机自启并启动Apache
+### 3. 设置开机自启并启动Apache
 
 ```bash
 systemctl enable httpd

@@ -19,11 +19,11 @@ date: 2019-06-25 17:22:41
 
 ## 软件介绍
 
-#### Nginx
+### Nginx
 
 一个高性能的 `HTTP` 和**反向代理服务器**，用于前端访问流量到后台应用服务器**负载均衡**和**请求转发**。
 
-#### Consul-template
+### Consul-template
 
 `Consul-template` 是 `HashiCorp` 基于 `Consul` 所提供的可扩展的工具，通过监听 `Consul` 中的**数据变化**，动态地修改一些**配置文件**中地**模板**。常用于在 `Nginx`、`HAProxy` 上动态配置健康状态下的客户端反向代理信息。
 
@@ -37,7 +37,7 @@ date: 2019-06-25 17:22:41
 
 > `Consul-template` 和 `nginx` 必须安装在同一台机器上，因为 `Consul-template` 需要动态修改 `nginx` 的配置文件 `nginx.conf`，然后执行 `nginx -s reload` 命令进行路由更新，达到**动态负载均衡**的目的。
 
-#### 传统负载均衡
+### 传统负载均衡
 
 传统的负载均衡，就是 `Client` 支姐访问 `Nginx`，然后被转发到后端某一台 `Web Server`。如果后端有**添加**/**删除** `Web Server`，运维需要手动改下 `nginx.conf` ，然后**重新载入配置**，就可以动态的调整负载均衡。
 
@@ -60,7 +60,7 @@ date: 2019-06-25 17:22:41
 
 ## 环境准备
 
-#### 系统环境
+### 系统环境
 
 | 软件           | 版本                                         |
 | :------------- | :------------------------------------------- |
@@ -68,7 +68,7 @@ date: 2019-06-25 17:22:41
 | docker         | Docker version 1.12.6, build 78d1802         |
 | docker-compose | docker-compose version 1.8.0                 |
 
-#### 节点规划
+### 节点规划
 
 | 主机IP        | 组件                                                         |
 | :------------ | :----------------------------------------------------------- |
@@ -83,7 +83,7 @@ date: 2019-06-25 17:22:41
 
 这里的3台主机 - `192.168.1.182`、`192.168.1.183` 和 `192.168.1.185`，每台主机部署两个 `Client WebApp` 容器和一个 `Client Server` 容器，用于模拟**服务层**的负载均衡。
 
-#### 镜像构建
+### 镜像构建
 
 -  **Consul**：consul:latest
 -  **Registrator**：gliderlabs/registrator:latest
@@ -107,7 +107,7 @@ docker images
 
 ![](基于Docker-Consul-Nginx-Consul-Template的服务负载均衡实现/3.png)
 
-#### 部署模型
+### 部署模型
 
 五台主机，其中 `192.168.1.181` 和 `192.168.1.186` 两台主机的主要作用如下：
 
@@ -128,7 +128,7 @@ docker images
 
 ## 开始搭建
 
-#### Consul Server主机
+### Consul Server主机
 
 (a). 分别编写 `docker-compose.yml`，注意 `Registrator` 需要配置各自的 `IP`地址。
 
@@ -244,11 +244,11 @@ docker   ps
 
 两台 `Consul Server` 主机上的容器服务实例均正常启动！
 
-#### Consul Client主机
+### Consul Client主机
 
 一般情况下，我们把 `Consul` 作为服务注册与发现中心，会使用它提供的**服务定义** (`Service Definition`) 和**健康检查定义** (`Health Check Definition`) 功能，相关配置说明参考如下：
 
-##### 服务定义
+#### 服务定义
 
 | 环境变量Key    | 环境变量Value | 说明                                                         |
 | :------------- | :------------ | :----------------------------------------------------------- |
@@ -259,7 +259,7 @@ docker   ps
 | SERVICE_PORT   | 50001         | 应用的IP, 如果应用监听了多个端口，理应被视为多个应用         |
 | SERVICE_IGNORE | Boolean       | 是否忽略本Container，可以为一些不需要注册的Container添加此属性 |
 
-##### 服健康检查定义
+#### 服健康检查定义
 
 配置原则为: `SERVICE_XXX_*`。如果你的应用监听的是 `5000` 端口，则改为 `SERVICE_5000_CHECK_HTTP`，其它环境变量配置同理。
 
@@ -282,7 +282,7 @@ docker   ps
 | --- 其他                     | ---                              | ---                              |
 | SERVICE_CHECK_INITIAL_STATUS | passing                          | Consul默认注册后的服务为failed   |
 
-##### 配置说明
+#### 配置说明
 
 (a). 分别编写 `docker-compose.yml`，同样注意 `Registrator` 需要配置各自的 `IP` 地址。`test-server` 和 `test-client` 的**服务实例**在配置时需要指定相关的**环境变量**。
 
@@ -548,9 +548,9 @@ docker-compose up -d
 
 ## 结果验证
 
-#### Nginx负载均衡
+### Nginx负载均衡
 
-##### 访问Nginx
+#### 访问Nginx
 
 `Nginx` 默认访问端口号为`80`，任选一台 `Nginx` 访问，比如： `http://192.168.1.181/swagger-ui.html`。
 
@@ -558,7 +558,7 @@ docker-compose up -d
 
 请求转发至 `Test Client` 的 `Swagger`页面，表明 `nginx`配置文件 `nginx.conf` 被 `Consul-template` 成功修改。
 
-##### 进入Nginx容器
+#### 进入Nginx容器
 
 运行 `docker ps` 查看 `nginx-consul-template` 的容器 `ID`，比如这里是：`4f2731a7e0cb`。进入 `nginx-consul-template` 容器。
 
@@ -594,9 +594,9 @@ consul-template -consul-addr=consul:8500 -template /etc/consul-templates/nginx.c
 
 同样的，重新启动 `test-client` 恢复容器，又可以发现 `Nginx` 的**路由转发列表** 再次自动将其添加!
 
-#### 服务负载均衡
+### 服务负载均衡
 
-##### 接口测试
+#### 接口测试
 
 `test-client` 通过 `http` 通信方式请求任意一台 `test-server`，返回响应结果 (请求处理时间 `ms` )。
 
@@ -606,7 +606,7 @@ consul-template -consul-addr=consul:8500 -template /etc/consul-templates/nginx.c
 
 ![](基于Docker-Consul-Nginx-Consul-Template的服务负载均衡实现/24.png)
 
-##### 日志分析
+#### 日志分析
 
 **服务的负载均衡**并不是很好观察，这里直接截取了一段 `test-client` 的**服务缓存列表**动态定时刷新时打印的日志：
 
@@ -635,7 +635,7 @@ my-web-server: [
 ]]
 ```
 
-#### 服务实例
+### 服务实例
 
 -  `test-server-http-service` 所有**健康**的服务实例：
 

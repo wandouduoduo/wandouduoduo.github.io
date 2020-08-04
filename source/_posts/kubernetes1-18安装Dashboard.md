@@ -21,13 +21,13 @@ k8s的集群搭建已经完成，那么页面怎么管理呢？本文详细介�
 
 ## 安装
 
-#### 下载yaml文件
+### 下载yaml文件
 
 ```bash
 wget https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 ```
 
-#### 修改配置
+### 修改配置
 
 修改kubernetes-dashboard的service类型为NodePort类型，使用nodeport方式访问Dashboard 。
 
@@ -51,7 +51,7 @@ spec:
     k8s-app: kubernetes-dashboard
 ```
 
-#### 安装Dashboard
+### 安装Dashboard
 
 ```
 [root@k8s-master dashboard]# kubectl create -f recommended.yaml 
@@ -71,7 +71,7 @@ service/dashboard-metrics-scraper created
 deployment.apps/dashboard-metrics-scraper created
 ```
 
-#### 确认状态
+### 确认状态
 
 ```
 [root@k8s-master dashboard]# kubectl get pod,svc -n kubernetes-dashboard
@@ -84,7 +84,7 @@ service/dashboard-metrics-scraper   ClusterIP   10.105.74.63   <none>        800
 service/kubernetes-dashboard        NodePort    10.98.84.244   <none>        443:30444/TCP   2m52s
 ```
 
-#### 创建管理员用户yaml
+### 创建管理员用户yaml
 
 默认Dashboard为最小RBAC权限，添加集群管理员权限以便从Dashboard操作集群资源
 
@@ -111,7 +111,7 @@ subjects:
   namespace: kubernetes-dashboard
 ```
 
-#### 创建管理员权限
+### 创建管理员权限
 
 ```bash
 [root@k8s-master dashboard]# kubectl create -f adminuser.yaml
@@ -125,11 +125,11 @@ kubectl delete -f ***.yaml
 
 ## 访问
 
-#### 浏览器访问[https://IP:304](https://ip:30001/)43
+### 浏览器访问[https://IP:304](https://ip:30001/)43
 
 ![](kubernetes1-18安装Dashboard/1.png)
 
-#### 查看token
+### 查看token
 
 获取token，用于登录Dashboard UI
 
@@ -150,7 +150,7 @@ namespace:  20 bytes
 token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IlNEa2dTVGZhM09xd0MyNWtqaGFoZEc5R0NuYnVsZ0FfVlJQODNaQUFhZjgifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlcm5ldGVzLWRhc2hib2FyZCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLWs0Z2RnIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJkMTE2ZjU2MC0xNWEyLTQ1Y2EtOTMwZi00MGY0ZmMxMmNlNDQiLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZXJuZXRlcy1kYXNoYm9hcmQ6YWRtaW4tdXNlciJ9.qn98x11n4rPUGkDBU6ceImElgeVbM-b2SeXeeiUEm0rj41_vWXzlpd-r1Z1leuRHuveYnLpquR3QhMlFdjxLAIVAQ83KnDNhHyXYY08ZFeoGqGqlOWIAI-OCS9_IhClIskmmqYwA0kQ5AkHWbEsCKEMiYL-dZH7ECPziV0icFfBIYa6zK8-RLUBHR56rvzgjcap1WeTPdu84vr1jl8a4ZLMrzdwW_WmC4rsesA67DH6cQLgoKZRejGf6Sp4h7izO3DEwcGCUrNbg8biDRoqJwzusKoM7IJbC_C14Omg1kGrozFrMufHs8n7ujjpyuLeUyGjseX9eazlnyNkAwY0XIw
 ```
 
-#### 登录
+### 登录
 
 输入第二部获取到的token值，点击登录按钮
 

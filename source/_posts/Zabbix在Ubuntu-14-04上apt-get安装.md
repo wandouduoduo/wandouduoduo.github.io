@@ -23,7 +23,7 @@ sudo apt-get install apache2 mysql-server libapache2-mod-php5 php5-gd php5-mysql
 
 ## 服务端配置
 
-#### 配置数据库连接
+### 配置数据库连接
 
 ```
 sudo vim /etc/zabbix/zabbix_server.conf
@@ -39,7 +39,7 @@ DBPassword=zabbix
 StartDiscoverers=5
 ```
 
-#### 创建mysql账号
+### 创建mysql账号
 
 ```
 mysql -u root -p
@@ -50,7 +50,7 @@ mysql> flush privileges;
 mysql> exit;
 ```
 
-#### 导入初始化数据
+### 导入初始化数据
 
 ```
 cd /usr/share/zabbix-server-mysql/
@@ -60,7 +60,7 @@ mysql -u zabbix -p zabbix < images.sql
 mysql -u zabbix -p zabbix < data.sql
 ```
 
-#### 修改 PHP 参数
+### 修改 PHP 参数
 
 ```
 sudo vim /etc/php5/apache2/php.ini
@@ -77,7 +77,7 @@ date.timezone = "Asia/Shanghai"
 
 
 
-####  配置网页
+###  配置网页
 
 ```
 sudo cp /usr/share/doc/zabbix-frontend-php/examples/zabbix.conf.php.example /etc/zabbix/zabbix.conf.php
@@ -101,7 +101,7 @@ sudo a2enmod alias
 sudo service apache2 restart
 ```
 
-#### 配置 zabbix server 启动
+### 配置 zabbix server 启动
 
 ```
 sudo vim /etc/default/zabbix-server
@@ -119,14 +119,14 @@ START=yes
 sudo service zabbix-server start
 ```
 
-#### 本机监控
+### 本机监控
 
 ```
 sudo apt-get install zabbix-agent
 sudo service zabbix-agent restart
 ```
 
-#### 访问
+### 访问
 
 ```
 http://xxx.xxx.xxx.xxx/zabbix

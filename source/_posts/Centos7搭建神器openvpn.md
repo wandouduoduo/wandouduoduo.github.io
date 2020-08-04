@@ -28,7 +28,7 @@ OpenVPN是一个开源的应用程序，它允许您通过公共互联网创建�
 
 ## 服务端安装
 
-#### 安装openvpn
+### 安装openvpn
 
 ```bash
 #临时关闭selinux
@@ -43,7 +43,7 @@ wget -O /etc/yum.repos.d/epel-7.repo http://mirrors.aliyun.com/repo/epel-7.repo
 yum install openvpn -y
 ```
 
-#### **配置EasyRSA**
+### **配置EasyRSA**
 
 ```bash
 #下载EasyRSA 3.0.7
@@ -54,7 +54,7 @@ cp -r easyRSA-3.0.7/ /etc/openvpn/easy-rsa3
 cp /etc/openvpn/easy-rsa3/vars.example /etc/openvpn/easy-rsa3/vars
 ```
 
-#### **创建相关证书和秘钥**
+### **创建相关证书和秘钥**
 
 ```bash
 cd /etc/openvpn/easy-rsa3/
@@ -101,7 +101,7 @@ openvpn --genkey --secret /etc/openvpn/ta.key
 
 ![](Centos7搭建神器openvpn/4.png)
 
-#### **拷贝证书到目录**
+### **拷贝证书到目录**
 
 ```bash
 #目录自定义，配置文件中要用到
@@ -111,7 +111,7 @@ cp private/server.key issued/server.crt /etc/openvpn/server/
 cp private/client.key issued/client.crt /etc/openvpn/client/
 ```
 
-#### **编辑配置文件**
+### **编辑配置文件**
 
 ```bash
 cd /etc/openvpn/
@@ -177,7 +177,7 @@ verb 4
 mute 20
 ```
 
-#### **配置系统转发和开放端口，云服务器记得安全组要开放对应端口**
+### **配置系统转发和开放端口，云服务器记得安全组要开放对应端口**
 
 ```shell
 #修改文件目录权限
@@ -198,7 +198,7 @@ service iptables save
 systemctl restart iptables
 ```
 
-#### **启动openvpn服务**
+### **启动openvpn服务**
 
 ```bash
 #启动openvpn服务
@@ -213,15 +213,15 @@ ps -ef|grep openvpn
 
 ## **win10客户端连接测试**
 
-#### **下载客户端:**
+### **下载客户端:**
 
  [openvpn-install-2.4.8-I602-Win10.exe](https://ossjc-1252545319.cos.ap-shanghai.myqcloud.com/other/Software/openvpn/openvpn-install-2.4.8-I602-Win10.exe)
 
-#### **证书配置**
+### **证书配置**
 
 把ca.crt、client.crt、client.key、ta.key 4个文件放到软件安装目录下\OpenVPN\config
 
-#### 编辑配置文件
+### 编辑配置文件
 
 新建文件client.ovpn,把下面的参数粘贴到里面
 
@@ -250,7 +250,7 @@ comp-lzo
 compress "lz4"
 ```
 
-#### **启动OpenVPN GUI软件**
+### **启动OpenVPN GUI软件**
 
 ![](Centos7搭建神器openvpn/6.png)
 
@@ -258,7 +258,7 @@ compress "lz4"
 
 
 
-#### **连通性和上网测试**
+### **连通性和上网测试**
 
 ![](Centos7搭建神器openvpn/8.png)
 
@@ -272,7 +272,7 @@ compress "lz4"
 
 **在证书认证的基础上修改openvpn配置**
 
-#### **修改服务端 server.conf配置文件**
+### **修改服务端 server.conf配置文件**
 
 ```shell
 #添加几个参数
@@ -289,14 +289,14 @@ username-as-common-name
 script-security 3
 ```
 
-#### **创建脚本和用户密码文件**
+### **创建脚本和用户密码文件**
 
 ```bash
 #脚本
 vim /etc/openvpn/checkpsw.sh
 
 #!/bin/bash
-###########################################################
+#############################################
 # checkpsw.sh (C) 2004 Mathias Sundman <mathias@openvpn.se>
 #
 # This script will authenticate OpenVPN users against
@@ -308,7 +308,7 @@ PASSFILE="/etc/openvpn/psw-file"
 LOG_FILE="/var/log/openvpn-password.log"
 TIME_STAMP=`date "+%Y-%m-%d %T"`
 
-###########################################################
+#############################################
 
 if [ ! -r "${PASSFILE}" ]; then
     echo "${TIME_STAMP}: Could not open password file \"${PASSFILE}\" for reading." >>  ${LOG_FILE}
@@ -345,7 +345,7 @@ chown root.openvpn /etc/openvpn/* -R
 systemctl restart openvpn@server
 ```
 
-#### **win10 客户端配置文件修改**
+### **win10 客户端配置文件修改**
 
 ```bash
 #注释掉
@@ -362,7 +362,7 @@ auth-user-pass
 
 ## 管理界面安装
 
-#### 下载pam_sqlite3并安装
+### 下载pam_sqlite3并安装
 
 ```shell
 git clone https://gitee.com/lang13002/pam_sqlite3.git
@@ -370,7 +370,7 @@ cd pam_sqlite3
 make && make install
 ```
 
-#### 添加pam认证文件
+### 添加pam认证文件
 
 ```shell
 # vim /etc/pam.d/openvpn
@@ -379,7 +379,7 @@ auth        required    pam_sqlite3.so db=/etc/openvpn/openvpn.db table=t_user u
 account     required    pam_sqlite3.so db=/etc/openvpn/openvpn.db table=t_user user=username passwd=password expire=expire crypt=1
 ```
 
-#### 创建sqlite3数据库文件
+### 创建sqlite3数据库文件
 
 ```shell
 # sqlite3 /etc/openvpn/openvpn.db
@@ -393,7 +393,7 @@ sqlite> create table t_user (
 sqlite> .quit
 ```
 
-#### 在服务端配置添加认证插件
+### 在服务端配置添加认证插件
 
 **生成插件**
 
@@ -423,26 +423,26 @@ username-as-common-name
 plugin /etc/openvpn/openvpn-plugin-auth-pam.so openvpn
 ```
 
-#### 安装依赖
+### 安装依赖
 
 ```bash
 pip2 install peewee tornado==5.1.1
 ```
 
-#### 下载openvpn-web
+### 下载openvpn-web
 
 ```bash
 git clone https://gitee.com/lang13002/openvpn_web.git
 ```
 
-#### 创建相应的数据库表
+### 创建相应的数据库表
 
 ```bash
 # sqlite3 /etc/openvpn/openvpn.db
 sqlite> .read openvpn_web/model/openvpn.sql
 ```
 
-#### OpenVPN运行脚本写日志
+### OpenVPN运行脚本写日志
 
  服务端配置添加运行脚本   
 
@@ -502,13 +502,13 @@ conn.commit()
 conn.close()
 ```
 
-#### 启动服务
+### 启动服务
 
 ```bash
 python myapp.py
 ```
 
-#### 管理界面
+### 管理界面
 
 ![img](Centos7搭建神器openvpn/162533_61adb798_1097803.png)
 

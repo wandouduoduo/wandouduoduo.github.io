@@ -53,9 +53,7 @@
     </div>
   {% endif %}
 
-  <div>
   <!-- 提交下面 -->
-  {% include 'google_comments_adsense.swig' %}
-  </div>
+  {#{% include 'google_comments_adsense.swig' %}#}
   
 {% endif %}

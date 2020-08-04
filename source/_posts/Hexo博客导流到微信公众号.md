@@ -46,7 +46,7 @@ date: 2019-12-25 14:05:19
 
 hexo配置导流很简单的，主要用到工具就是[OpenWrite](https://openwrite.cn/)。
 
-#### 注册
+### 注册
 
 web页面填写邮箱和密码注册openwrite。
 
@@ -54,7 +54,7 @@ web页面填写邮箱和密码注册openwrite。
 
 ![](Hexo博客导流到微信公众号/3.png)
 
-#### 导流公众号设定
+### 导流公众号设定
 
 增长工具-->添加-->填写信息-->保存
 
@@ -70,7 +70,7 @@ web页面填写邮箱和密码注册openwrite。
 
 ![](Hexo博客导流到微信公众号/7.png)
 
-#### Hexo配置
+### Hexo配置
 
 在hexo `_config.yml` 配置文件中,添加配置 `readmore` 插件相关信息
 
@@ -93,7 +93,7 @@ plugins:
 
 注意: **一定要替换成自己的在使用指南中显示的相关配置**!
 
-#### Hexo安装组件
+### Hexo安装组件
 
 开通readmore功能，原本需要手动更改主题的配置文件，但现在有牛人进行了封装。有兴趣可以看下
 
@@ -105,7 +105,7 @@ npm install hexo-plugin-readmore --save
 cnpm install hexo-plugin-readmore --save
 ```
 
-#### 构建发布
+### 构建发布
 
 插件安装完成后，保存配置，构建发布即可。
 

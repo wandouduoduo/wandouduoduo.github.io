@@ -34,13 +34,13 @@ centos7
 
 首先，需要说明的是nginx因为其开放性而广受欢迎，其中开放性就是：松耦合，需要啥模块，重新加载编译后替换就可以了，所以完全不需要担心。
 
-#### 安装依赖包
+### 安装依赖包
 
 ```bash
 yum install -y gcc gcc-c++ pcre pcre-devel zlib zlib-devel openssl openssl-devel
 ```
 
-#### 查看nginx原有模块
+### 查看nginx原有模块
 
 ```
 nginx -V
@@ -50,7 +50,7 @@ nginx -V
 
 可以看到没有加载模块
 
-#### 重新编译
+### 重新编译
 
 ```bash
 # 进入到源码包
@@ -62,7 +62,7 @@ make
 注意：这里不要进行make install，否则就是覆盖安装
 ```
 
-#### 替换
+### 替换
 
 ```bash
 # 备份

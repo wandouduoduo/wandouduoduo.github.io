@@ -27,7 +27,7 @@ date: 2019-09-17 17:21:05
 
 ## 配置yum源
 
-#### 下载yum源：
+### 下载yum源：
 
 ```bash
 wget 'https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm'
@@ -35,7 +35,7 @@ wget 'https://dev.mysql.com/get/mysql57-community-release-el7-11.noarch.rpm'
 
 ![](centos7下使用yum源安装mysql5-7/1.png)
 
-#### 安装yum源
+### 安装yum源
 
 ```bash
 rpm -Uvh mysql57-community-release-el7-11.noarch.rpm
@@ -68,7 +68,7 @@ systemctl status mysqld
 
 ## 配置
 
-#### 修改数据库密码
+### 修改数据库密码
 
 mysql5.7的新特性之一就是在初始化的时候会生成一个自定义的密码，然后你需要找到这个密码，登录的时候输入。注意，输入密码的时候是不显示。
 
@@ -104,7 +104,7 @@ flush privileges;
 
 ![](centos7下使用yum源安装mysql5-7/6.png)
 
-#### 优化配置
+### 优化配置
 
 mysql的配置文件真的很多，有的还很蛋疼。比如默认的字符集是拉丁字符集，每次创建数据库的时候要设置字符集；默认还不支持group by语句，默认的时区也不是我们现在的北京时间(东八区)，会导致我们的时间差了13个点。针对以上说几个简要的配置，更多的配置在以后遇到了再加上，或者留言吧！
 

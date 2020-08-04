@@ -45,7 +45,7 @@ cat /proc/version         #查看存放与内核相关的文件
 
 ## **搭建之前的操作**
 
-#### **升级系统组件到最新的版本**
+### **升级系统组件到最新的版本**
 
 ```bash
 yum -y update
@@ -53,7 +53,7 @@ yum -y update
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/2.png)
 
-#### **关闭selinux** 
+### **关闭selinux** 
 
 ```bash
 vim /etc/selinux/config    #将SELINUX=enforcing改为SELINUX=disabled 设置后需要重启才能生效
@@ -68,7 +68,7 @@ getenforce         #检测selinux是否关闭，Disabled 为关闭
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/4.png)
 
-#### **关闭防火墙**
+### **关闭防火墙**
 
 ```bash
 firewall-cmd --state    #查看默认防火墙状态，关闭后显示not running，开启后显示running
@@ -85,7 +85,7 @@ systemctl disable firewalld.service #禁止firewall开机启动
 
 ## **搭建LAMP环境**
 
-#### **安装所需所有软体仓库**
+### **安装所需所有软体仓库**
 
 Zabbix是建立在LAMP或者LNMP环境之上，在此为了方便就使用yum安装LAMP环境.
 
@@ -99,7 +99,7 @@ rpm -qa httpd php mariadb            #安装完成后检查应用版本
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/8.png)
 
-#### **编辑httpd**
+### **编辑httpd**
 
 ```bash
 vim /etc/httpd/conf/httpd.conf
@@ -110,7 +110,7 @@ DirectoryIndex index.html index.php   # 添加首页支持格式　
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/9.png)
 
-#### **编辑配置php，配置中国时区**
+### **编辑配置php，配置中国时区**
 
 ```bash
 vi /etc/php.ini
@@ -120,7 +120,7 @@ date.timezone = Asia/Shanghai   # 配置时区
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/10.png)
 
-#### **启动httpd和mysqld服务**
+### **启动httpd和mysqld服务**
 
 ```bash
 systemctl start httpd   #启动并加入开机自启动httpd
@@ -138,7 +138,7 @@ ss -naplt | grep mysqld  #查看mysqld启动情况，3306端口监控表示mysql
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/13.png)
 
-#### **创建一个测试页**
+### **创建一个测试页**
 
 ```bash
 vi /var/www/html/index.php #创建一个测试页，并编辑
@@ -152,7 +152,7 @@ phpinfo()
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/15.png)
 
-####  本地测试
+###  本地测试
 
 ```bash
 curl http://127.0.0.1 -I         #本地测试
@@ -160,7 +160,7 @@ curl http://127.0.0.1 -I         #本地测试
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/16.png)
 
-#### **配置mysql和权限**
+### **配置mysql和权限**
 
 ```bash
 mysqladmin -u root password ykadmin123           #设置数据库root密码
@@ -190,7 +190,7 @@ drop user ''@localhost;  #删除空用户　
 
 ## 安装zabbix
 
-#### **安装依赖包 + 组件**
+### **安装依赖包 + 组件**
 
 ```bash
 yum -y install net-snmp net-snmp-devel curl curl-devel libxml2 libxml2-devel libevent-devel.x86_64 javacc.noarch  javacc-javadoc.noarch javacc-maven-plugin.noarch javacc*
@@ -198,7 +198,7 @@ yum -y install net-snmp net-snmp-devel curl curl-devel libxml2 libxml2-devel lib
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/20.png)
 
-#### 安装zabbix-server，并初始化库
+### 安装zabbix-server，并初始化库
 
 ```bash
 yum install php-bcmath php-mbstring -y #安装php支持zabbix组件
@@ -245,7 +245,7 @@ netstat -anpt | grep zabbix      //监听在10051端口上,如果没监听成功
 
 建议重启服务器，再继续。
 
-#### **web界面安装zabbix**
+### **web界面安装zabbix**
 
 如果以上步骤无误，现在可以使用web打开  
 
@@ -271,7 +271,7 @@ http://172.18.20.224/zabbix　　//注意这里IE浏览器打不开，本次测�
 
 ## 优化
 
-#### 安装graphtree
+### 安装graphtree
 
 graphtree的功能
 
@@ -322,11 +322,11 @@ vim oneoaas/templates/graphtree/graphtree.tpl
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/41.png)
 
-#### 中文乱码
+### 中文乱码
 
 ![](centos7-yum安装zabbix4-0长期稳定版及优化/42.png)
 
-###### 复制字体
+#### 复制字体
 
 复制本地电脑C:\Windows\Fonts\simkai.ttf（楷体）上传到zabbix服务器网站目录的fonts目录下
 
@@ -338,7 +338,7 @@ yum或rpm安装的zabbix-server字体目录为：/usr/share/zabbix/assets/fonts
 
 graphfont.ttf是zabbix默认字符集，simkai.ttf是从windows复制过来的字体文件，权限最好给777，要不会影响到zabbix图形显示异常。
 
-###### 字体替换
+#### 字体替换
 
 方法一：
 

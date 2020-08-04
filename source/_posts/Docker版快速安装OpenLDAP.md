@@ -26,13 +26,13 @@ date: 2019-08-28 14:58:44
 
 ## 步骤
 
-#### **拉取镜像**
+### **拉取镜像**
 
 ```
 docker pull osixia/openldap
 ```
 
-#### **运行镜像**
+### **运行镜像**
 
 ```bash
 #存放数据库
@@ -51,7 +51,7 @@ docker run -p 389:389 --name openldap -v /data/openldap/ldap:/var/lib/ldap -v /d
 
 ## 客户端
 
-#### LDAP Admin客户端
+### LDAP Admin客户端
 
 Ldap Admin是一个用于LDAP目录管理的免费Windows LDAP客户端和管理工具。此应用程序允许您在LDAP服务器上浏览，搜索，修改，创建和删除对象。它还支持更复杂的操作，例如目录复制和在远程服务器之间移动，并扩展常用编辑功能以支持特定对象类型（例如组和帐户）。
 
@@ -65,7 +65,7 @@ Ldap Admin是一个用于LDAP目录管理的免费Windows LDAP客户端和管理
 
 连接成功即表明OpenLDAP安装成功。
 
-#### PHPLdapAdmin客户端
+### PHPLdapAdmin客户端
 
 phpLDAPadmin（也称为PLA）是一个基于Web的LDAP客户端。它为LDAP服务器提供简单，随处可访问的多语言管理。
 
@@ -76,7 +76,7 @@ phpLDAPadmin是LDAP专业人员和新手的完美LDAP浏览器。其用户群主
 
 [官网](http://phpldapadmin.sourceforge.net/wiki/index.php/Main_Page)
 
-#### 使用docker 安装 PHPLdapAdmin
+### 使用docker 安装 PHPLdapAdmin
 
 https://github.com/osixia/docker-phpLDAPadmin
 

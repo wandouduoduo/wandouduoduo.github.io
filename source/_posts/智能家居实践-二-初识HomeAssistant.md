@@ -15,7 +15,7 @@ date: 2019-07-15 14:53:03
 
 <!--more-->
 
-#### **开启 Samba**
+### **开启 Samba**
 
 还记得上一节中我们使用的 FTP 软件吗？你可以在 `/home/pi/hassbian-scripts` 这个目录下找到一些已经预装好的脚本，如果没有，可以以 pi 的身份 clone 这个 [repo](https://github.com/home-assistant/hassbian-scripts.git) :
 
@@ -39,7 +39,7 @@ sudo ./hassbian-scripts/install_samba.sh
 
 ![img](智能家居实践-二-初识HomeAssistant/3.png)
 
-#### **Configuration.yaml**
+### **Configuration.yaml**
 
 集成的所有服务可以在 [Components](https://home-assistant.io/components/#search/system) 页面搜索。
 
@@ -59,11 +59,11 @@ sudo systemctl restart home-assistant.service
 
 ## 举些例子：
 
-#### **homeassistant** [文档](https://home-assistant.io/docs/configuration/basic/)
+### **homeassistant** [文档](https://home-assistant.io/docs/configuration/basic/)
 
 这个服务下面提供一些全局的信息配置。`latitude` 和 `longitude` 字段填入自己所在位置的经纬度，方便一些需要用到经纬度的服务准确获取信息，比如 `sunrise` 服务就可以准确获取你当前位置的日出日落时间；`unit_system` 使用英制单位还是公制单位；`time_zone` 你的时区....
 
-#### **automation** [文档](https://home-assistant.io/components/automation/)
+### **automation** [文档](https://home-assistant.io/components/automation/)
 
 这是一个内置的自动机，类似 IFTTT，都是当满足条件时触发操作，但 automation 的操作空间比 IFTTT 大的多，他不仅可以设置多个条件，还有触发一系列操作。
 
@@ -92,7 +92,7 @@ automation 1:
 
 其中 trigger 的 platform 字段必须制定一个值， [event(事件总线)](https://home-assistant.io/docs/configuration/events/) 是 HA 内建的一个 platform ，任何服务都可以获取和监听系统事件总线的事件，比如 `HOMEASSISTANT_START` , `HOMEASSISTANT_STOP` , `SERVICE_REGISTERED` .... 我在上面的 automation 里监听了 HA 启动的事件，没有 `condition` ,直接触发 `action`，`action` 的 `service` 也必须指定一个服务。
 
-#### **notify** [文档](https://home-assistant.io/components/notify/)
+### **notify** [文档](https://home-assistant.io/components/notify/)
 
 这就是 HA 的推送服务了，基本你能想到的和你想不到的 platform 都已经集成进来了，具体请看文档。比如我用的是 `pushbullet`。
 
@@ -122,7 +122,7 @@ automation 3:
 
 注意我这里的 action 就用了 notify.notify 来找到你在其他地方配置的这个 notify 服务。
 
-#### **IFTTT** [文档](https://home-assistant.io/components/ifttt/)
+### **IFTTT** [文档](https://home-assistant.io/components/ifttt/)
 
 ```yaml
 ifttt:  

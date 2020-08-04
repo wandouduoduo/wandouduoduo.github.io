@@ -30,7 +30,7 @@ date: 2019-08-16 16:59:17
 
 ### 旧代码机器操作
 
-##### 安装 yumdownloader
+#### 安装 yumdownloader
 
 准备一台可以连接互联网的相同版本系统的操作系统(安装环境一样)，使用yumdownloader工具下载ansible安装包以及所有依赖包。并以 root 身份安装 yumdownloader工具：
 
@@ -38,7 +38,7 @@ date: 2019-08-16 16:59:17
 yum  -y install  yum-utils
 ```
 
-##### 创建文件夹
+#### 创建文件夹
 
 用于存放依赖的安装包
 
@@ -46,7 +46,7 @@ yum  -y install  yum-utils
 mkdir   /root/packages
 ```
 
-##### 更新国内yum源
+#### 更新国内yum源
 
 由于默认的源里没有 ansible，需要安装国内快速稳定的yum源, 这里选择阿里源：
 
@@ -60,7 +60,7 @@ yum update
 
 
 
-##### 下载 ansible 和 所有依赖包
+#### 下载 ansible 和 所有依赖包
 
 ```bash
 #下载ansible依赖包
@@ -86,7 +86,7 @@ tar -Jxvf  packages.tar.xz   -C  /mnt/
 
 
 
-##### 首先创建 安装createrepo   
+#### 首先创建 安装createrepo   
 
 进入 /mnt/packages 目录中
 
@@ -96,7 +96,7 @@ rpm -ivh python-deltarpm-3.6-3.el7.x86_64.rpm
 rpm -ivh createrepo-0.9.9-28.el7.noarch.rpm
 ```
 
-##### 然后使用createrepo生成符合要求的yum仓库
+#### 然后使用createrepo生成符合要求的yum仓库
 
 ```bash
 # cd  /mnt
@@ -113,7 +113,7 @@ Sqlite DBs complete
 
 
 
-##### 配置本地 yum源
+#### 配置本地 yum源
 
 把当前存在 yum 做备份，并移走别的目录
 
@@ -132,7 +132,7 @@ yum makecache
 
 
 
-##### 使用 yum安装 ansible
+#### 使用 yum安装 ansible
 
 ```bash
 yum -y install ansible
@@ -140,7 +140,7 @@ yum -y install ansible
 
 
 
-##### 验证安装成功：
+#### 验证安装成功：
 
 ```bash
 # ansible --version

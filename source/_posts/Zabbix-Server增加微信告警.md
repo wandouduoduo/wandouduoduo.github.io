@@ -59,7 +59,7 @@ Running with OpenSSL 1.0.1e-fips 11 Feb 2013
 
 ## 申请企业微信号
 
-##### 申请企业号并记录相关信息
+#### 申请企业号并记录相关信息
 
 ```bash
 https://qy.weixin.qq.com
@@ -69,7 +69,7 @@ https://qy.weixin.qq.com
         或者：企业微信客户端：工作台 - 管理企业 - 企业信息 - 企业ID
 ```
 
-##### 创建应用
+#### 创建应用
 
 ```bash
 登录网页 - 应用与小程序 - 创建应用。创建完成后记录以下信息：
@@ -77,7 +77,7 @@ https://qy.weixin.qq.com
     Secret：SacUM-xxxxxxxxxx
 ```
 
-##### 添加通讯录（添加后才可接受告警消息）
+#### 添加通讯录（添加后才可接受告警消息）
 
 ```bash
 登录网页 - 通讯录 - 添加成员
@@ -85,13 +85,13 @@ https://qy.weixin.qq.com
 
 ## 设置Python脚本
 
-##### 安装依赖
+#### 安装依赖
 
 ```bash
 yum install -y python-requests
 ```
 
-##### 准备Python脚本
+#### 准备Python脚本
 
 ```bash
 附录内有具体脚本内容，这里是使用Python脚本来实现的。
@@ -119,7 +119,7 @@ chmod 755 /usr/lib/zabbix/alertscripts/weixin.py
 如果没有错误的话，收件人将可以在手机APP企业微信上收到此消息。
 ```
 
-##### 手动建立日志文件并赋予写入权限
+#### 手动建立日志文件并赋予写入权限
 
 ```bash
 因为Python脚本设置了记录日志，但是脚本所在路径隶属于root组
@@ -132,7 +132,7 @@ chmod 766 /usr/lib/zabbix/alertscripts/weixin.log
 
 ## 设置Zabbix Server开启微信告警
 
-##### 添加告警媒介
+#### 添加告警媒介
 
 ```bash
 管理 - 报警媒介类型 - 创建媒体类型
@@ -145,7 +145,7 @@ chmod 766 /usr/lib/zabbix/alertscripts/weixin.log
         {ALERT.MESSAGE}
 ```
 
-##### 为用户添加报警媒介
+#### 为用户添加报警媒介
 
 ```bash
 管理 - 用户 - 报警媒介 - 添加
@@ -156,7 +156,7 @@ chmod 766 /usr/lib/zabbix/alertscripts/weixin.log
     已启用：必须勾选
 ```
 
-##### 打开触发器动作
+#### 打开触发器动作
 
 ```bash
 1.管理 - 动作：这里默认是停用状态，需要手动开启
@@ -170,7 +170,7 @@ chmod 766 /usr/lib/zabbix/alertscripts/weixin.log
               (发送间隔是下边的【步骤持续时间】）
 ```
 
-#### 模拟测试
+### 模拟测试
 
 ```bash
 将新某台被监控主机关机或zabbix-agentd暂停，查看是否能收到微信告警。

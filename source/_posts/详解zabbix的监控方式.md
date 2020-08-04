@@ -106,7 +106,7 @@ zabbix支持的主要监控方式：
 
 ### Agent监控方式
 
-####     1、通过Agent方式监控Linux服务器
+###     1、通过Agent方式监控Linux服务器
 
 ​        （1）需要在Linux服务器上安装zabbix-agent客户端安装包，需要先导入软件安装源:
 
@@ -150,9 +150,9 @@ systemctl start zabbix-agent
 
 ![image.png](详解zabbix的监控方式/3.png)
 
-####     
+###     
 
-#### 2、通过Agent方式监控windows服务器 
+### 2、通过Agent方式监控windows服务器 
 
 ​        （1）下载Windows的zabbix客户端
 
@@ -213,7 +213,7 @@ zabbix_agentd.exe -c D:\zabbix-agent\conf\zabbix_agentd.win.conf -s
 
 ### zabbix Trapper监控方式
 
-####     1、zabbix Trapper 工作原理
+###     1、zabbix Trapper 工作原理
 
 ​        zabbix获取数据时有时会出现超时，如果一些数据需要执行较长的时间才能获取的话，那么zabbix会出现异常，考虑到这种情况，zabbix增加了Trapper功能，客户端自己提交数据给zabbix。
 
@@ -223,7 +223,7 @@ zabbix_agentd.exe -c D:\zabbix-agent\conf\zabbix_agentd.win.conf -s
 
 ​        zabbix_sender是一个命令行工具，可以用来发送zabbix服务器处理性能数据。该工具通常用于长时间运行的用户 脚本，用于定期发送可用性和性能数据。
 
-####     2、zabbix_sender命令：
+###     2、zabbix_sender命令：
 
 ​        rpm导入zabbix_sender安装源：
 
@@ -256,7 +256,7 @@ ls
 ​ -v --verbose     详细模式， -vv 更详细
 ```
 
-####     3、监控项配置
+###     3、监控项配置
 
 ​        创建监控项（Configuration --> Template --> Items --> Create item 或Configuration --> Host --> Items --> Create item）
 
@@ -301,7 +301,7 @@ netstat -anop | grep -i zabbix
 
 ### Zabbix SNMP监控方式
 
-####     1、SNMP监控介绍
+###     1、SNMP监控介绍
 
 ​        如果要监控打印机、路由器、交换机、UPS等设备，肯定不能使用zabbix agentd，因为他们不能安装软件，但是一般都支持SNMP协议，可以使用SNMP来监控。SNMP检查基于UDP协议。
 
@@ -309,7 +309,7 @@ netstat -anop | grep -i zabbix
 
 ​                        以前SNMPv3协议只支持MD5和DES加密，从zabbix2.2开始支持SHA与AES加密协议。
 
-####     2、Zabbix SNMP监控Linux操作系统
+###     2、Zabbix SNMP监控Linux操作系统
 
 ​        （1）zabbix服务器端需要先安装SNMP服务
 
@@ -389,7 +389,7 @@ systemctl stop firewalld   关闭防火墙
 
 
 
-####     3、zabbix SNMP监控windows系统
+###     3、zabbix SNMP监控windows系统
 
 ​        （1）windows系统启动SNMP功能：
 
@@ -411,7 +411,7 @@ systemctl stop firewalld   关闭防火墙
 
 ​         大概需要等待五分钟左右，查看主机监控成功。
 
-####    4、zabbix SNMP 监控网设备
+###    4、zabbix SNMP 监控网设备
 
 ​       “配置”-“主机”-“创建主机”，添写要监控的设备信息：
 
@@ -425,13 +425,13 @@ systemctl stop firewalld   关闭防火墙
 
 ### zabbix JMX监控方式
 
-####     1、zabbix JMX 简介
+###     1、zabbix JMX 简介
 
 ​        在企业中，很多程序是基于Java来编写的，java程序运行在JVM之上，而JVM自己就可以监听在某个套接字上，将自己内部的状态信息输出出去，所以监控服务器只需要直接连接JVM的套接字就可以获取到Java进程的相关信息，不需要通过Agent、SNMP；可是zabbix是没办法自己连接JVM套接字的，也就是说，zabbix自身是不能够作为客户端来链接该套接字的。所以，就需要额外安装一个服务来连接JVM套接字的。这个服务就是zabbix-java-gateway.x86_64(Java网关）；可以通过该网关来监听多个JVM；zabbix-agent-gateway可以是一个单独的主机，可以和zabbix server安装到一台主机上；
 
 
 
-####     2、zabbix server 安装java gateway
+###     2、zabbix server 安装java gateway
 
 ​        zabbix提供了一个java gateway的应用去监控jmx（Java Management Extensions，即Java管理扩展）是一个为应用程序、设备、系统等植入管理功能的框架。JMX可以跨越一系列异构操作平台、系统体系结构和网络传输协议，灵活的开发无缝集成的系统、网络和服务管理应用。
 
@@ -439,7 +439,7 @@ systemctl stop firewalld   关闭防火墙
 yum install -y java java-devel zabbix-java-gateway
 ```
 
-####     3、添加java环境
+###     3、添加java环境
 
 ```shell
 vim /etc/profile
@@ -455,7 +455,7 @@ vim /etc/profile
 source /etc/profile
 ```
 
-####     4、修改java-gateway配置文件
+###     4、修改java-gateway配置文件
 
 ```shell
 grep ^[a-Z]  /etc/zabbix/zabbix_java_gateway.conf
@@ -469,13 +469,13 @@ vim zabbix_java_gateway.conf  修改以下信息：
 ​ TIMEOUT=3
 ```
 
-####     5、重启java-gateway服务
+###     5、重启java-gateway服务
 
 ```
  systemctl restart zabbix-java-gateway
 ```
 
-####     6、修改zabbix_server配置文件
+###     6、修改zabbix_server配置文件
 
 ```shell
 find / -name zabbix_java_gateway
@@ -486,13 +486,13 @@ vim /usr/sbin/zabbix_java_gateway    修改以下配置信息
 ​ StartJavaPollers=5
 ```
 
-####     7、重启zabbix_server服务
+###     7、重启zabbix_server服务
 
 ```
  systemctl restart zabbix-server
 ```
 
-####     8、客户端配置
+###     8、客户端配置
 
 ​        在Tomcat下的/bin/catalina.sh文件中添加以下内容：
 
@@ -504,7 +504,7 @@ CATALINA_OPTS="$CATALINA_OPTS -Djavax.management.builder.initial= -Dcom.sun.mana
 
 ​        ![image.png](详解zabbix的监控方式/24.png)
 
-####     9、zabbix中添加监控
+###     9、zabbix中添加监控
 
 ​        选择配置：主机-模板-选择-模板-：![image.png](详解zabbix的监控方式/25.png)
 
@@ -512,11 +512,11 @@ CATALINA_OPTS="$CATALINA_OPTS -Djavax.management.builder.initial= -Dcom.sun.mana
 
 ### zabbix IPMI监控方式  
 
-####     介绍
+###     介绍
 
 ​        IPMI（Intelligent PlatformManagement Interface）既智能平台管理接口是使硬件管理具备“智能化”的新一代通用接口标准。用户可以利用IPMI监视服务器的物理特性，如温度、电压、电扇工作状态、电源供应以及机箱入侵等。Ipmi最大的优势在于它是独立于 CPU BIOS 和OS的，所以用户无论在开机还是关机的状态下，只要接通电源就可以实现对服务器的监控。Ipmi是一种规范的标准，其中最重要的物理部件就是BMC（Baseboard Management Controller），一种嵌入式管理微控制器，它相当于整个平台管理的“大脑”，通过它 ipmi 可以监控各个传感器的数据并记录各种事件的日志。
 
-#### 	 条件
+### 	 条件
 
 ​        使用 ipmi 的先决条件，想要实现对服务器的 ipmi 管理，必须在硬件、OS、管理工具等几个方面都满足：
 
@@ -524,6 +524,6 @@ CATALINA_OPTS="$CATALINA_OPTS -Djavax.management.builder.initial= -Dcom.sun.mana
 
 ​         b.操作系统提供相应的 ipmi 驱动通过操作系统监控服务器自身的 ipmi 信息时需要系统内核提供相应的支持，linux 系统通过内核对OpenIPMI（ipmi 驱动）的支持来提供对 ipmi 的系统接口。
 
-####     实例
+###     实例
 
 日常监控中使用IPMI的方式不多，在此不举例说明了。

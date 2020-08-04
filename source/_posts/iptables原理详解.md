@@ -15,25 +15,25 @@ netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火�
 
 <!--more-->
 
-#### **iptables的优点**
+### **iptables的优点**
 
 netfilter/iptables的最大优点是它可以配置有状态的防火墙。有状态的防火墙能够指定并记住为发送或接收数据包所建立的连接状态。防火墙可以从数据包的连接跟踪状态获得该信息。在决定新的数据包过滤时，防火墙所使用的这些状态信息可以增加其效率和速度。有四种有效状态，分别为：ESTABLISHED (已建立的连接)、INVALID(非法或无法识别) 、NEW(已经或将启动新的连接)和RELATED(正在启动新连接)。另一个优点：用户可以完全自己控制防火墙配置和数据包过滤，也可以定制自己的规则来满足特定的需求，从而允许想要的网络流量进入
 
-#### **iptables和netfilter关系**
+### **iptables和netfilter关系**
 
 netfilter和iptables通常都可以用来指的是Linux防火墙，但二者是有区别的，如：netfilter：是内核的一部分，指的是Linux内核中实现包过滤防火墙的内部结构，也称为"内核空间（kernelspace）",不以程序或文件的形式而存在；iptables:指的是管理Linux防火墙的命令工具，也被称为"用户空间（userspace）"，程序通常位于/sbin/iptables，由用户直接使用，而我们经常使用的也就是iptables管理工具，而真正实现防火墙功能的是netfilter.
 
-#### **iptables基础知识**
+### **iptables基础知识**
 
 规则(rules)也是就管理员定义的条件，规则一般的定义为"如果数据包符合定义的条件，就按规则处理这个数据包"，如果规则中没有定义就匹配默认的策略。规则是存储在内核空间的信息包过滤表中，这些规则分别定义了源地址、目标地址、传输协议(如TCP、ICMP、UDP)和服务类型(如HTTP、FTP、SMTP)等。当数据包与定义的规则匹配时，iptables就根据规则所定义的方法来处理这些数据包，如：允许(ACCEPT)、拒绝(REJECT)、丢弃(DROP)、目标地址转换(DNAT)、源地址转换(SNAT)、日志(LOG)等
 
-#### **包过滤的工作层次**
+### **包过滤的工作层次**
 
    主要是工作在网络层，针对IP数据包，在对数据包内的IP地址、端口、内容等处理上，如下图：
 
 ![](iptables原理详解/1.png)
 
-#### **iptables传输数据包的过程**
+### **iptables传输数据包的过程**
 
 1、当一个数据包进入网卡时，它首先进入PREROUTING链，内核根据数据包目的IP判断是否需要转送出去。 
 2、如果数据包就是进入本机的，它会经过路由选择到达INPUT链。数据包到了INPUT链后，任何进程都会收到它。本机上运行的程序可以发送数据包，这些数据包会经过OUTPUT链，然后到达POSTROUTING链输出。 
@@ -41,7 +41,7 @@ netfilter和iptables通常都可以用来指的是Linux防火墙，但二者是�
 
 ![](iptables原理详解/2.png)
 
-#### **iptables的规则链和表**
+### **iptables的规则链和表**
 
 **规则表（tables）：**
 
@@ -85,7 +85,7 @@ PREROUTING:路由选择前处理数据包，做目标地址转换
 
 ![](iptables原理详解/3.png)
 
-#### **管理和设置iptables**
+### **管理和设置iptables**
 
 iptables命令语法格式： iptables [-t 表名] 管理选项 [链名] [条件匹配] [-j 目标动作或跳转]
 

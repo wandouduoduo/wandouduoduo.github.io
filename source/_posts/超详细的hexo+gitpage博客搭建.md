@@ -96,7 +96,7 @@ hexo server
 
 配置Github的SSH密钥可以让本地git项目与远程的github建立联系，让我们在本地写了代码之后直接通过git操作就可以实现本地代码库与Github代码库同步。操作如下：
 
-#### 第一步、看看是否存在SSH密钥(keys)
+### 第一步、看看是否存在SSH密钥(keys)
 
 首先，我们需要看看是否看看本机是否存在SSH keys,打开Git Bash,并运行:
 
@@ -107,7 +107,7 @@ hexo server
 
 如果，不存在此目录，则进行第二步操作，否则，你本机已经存在ssh公钥和私钥，可以略过第二步，直接进入第三步操作。
 
-#### 第二步、创建一对新的SSH密钥(keys)
+### 第二步、创建一对新的SSH密钥(keys)
 
 ```
 $ssh-keygen -t rsa -C "your_email@example.com"
@@ -135,7 +135,7 @@ The key fingerprint is:
 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@example.com
 ```
 
-#### 第三步、在GitHub账户中添加你的公钥
+### 第三步、在GitHub账户中添加你的公钥
 
 运行如下命令，将公钥的内容复制到系统粘贴板(clipboard)中，或者打开~/.ssh/id_rsa.pub后复制。
 
@@ -160,7 +160,7 @@ clip < ~/.ssh/id_rsa.pub
 
 ![](超详细的hexo+gitpage博客搭建/github5.png)
 
-#### 第四步、测试
+### 第四步、测试
 
 可以输入下面的命令，看看设置是否成功，git@github.com的部分不要修改：
 
@@ -178,7 +178,7 @@ Are you sure you want to continue connecting (yes/no)?
 
 不要紧张，输入yes就好。
 
-#### 第五步、设置用户信息
+### 第五步、设置用户信息
 
 现在你已经可以通过SSH链接到GitHub了，还有一些个人信息需要完善的。 Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信息来做权限的处理，输入下面的代码进行个人信息的设置，把名称和邮箱替换成你自己的，名字根据自己的喜好自己取，而不是GitHub的昵称。
 
@@ -189,7 +189,7 @@ $ git config --global user.email  "wandouduoduo@163.com"//填写自己的邮箱
 
 
 
-#### 第六步、SSH Key配置成功
+### 第六步、SSH Key配置成功
 
 本机已成功连接到github。
 

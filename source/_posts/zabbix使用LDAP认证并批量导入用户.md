@@ -28,7 +28,7 @@ zabbix4.0.x
 
 ## 配置zabbix
 
-#### **安装php-ldap模块**
+### **安装php-ldap模块**
 
 php需要这个模块来进行ldap认证，安装方法网上都有这里只列举一种；
 
@@ -40,7 +40,7 @@ yum install php-ldap
 ldap
 ```
 
-#### **zabbix页面配置**
+### **zabbix页面配置**
 
 ![](zabbix使用LDAP认证并批量导入用户/1.png)
 
@@ -59,7 +59,7 @@ User password：在DC中创建Admin用户的密码
 
 点击"Test"。如果没有报什么错误，就可以点击"Save"。现在ZABBIX的LDAP认证方式就已经配置完成了。
 
-#### **用户配置**
+### **用户配置**
 
 上述配置完成后已经把ldap和zabbix打通了，用户登录zabbix时，会先到ldap认证，判断用户是否有效；但是zabbix不会把ldap的用户同步过了，你要登录，得先在zabbix上创建和ldap内同名的用户才行。
 
@@ -69,7 +69,7 @@ User password：在DC中创建Admin用户的密码
 
 ![](zabbix使用LDAP认证并批量导入用户/3.png)
 
-#### 同步用户
+### 同步用户
 
 上面显得很被动了，于是写个脚本，定时往zabbix数据库插入用户，这样就免去手工创建的用户的烦恼。
 

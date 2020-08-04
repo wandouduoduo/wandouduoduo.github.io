@@ -47,8 +47,8 @@ cache:
 favicon:
   small: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/next-favicon-16.png
   medium: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/next-favicon-32.png
-  apple_touch_icon: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/apple-touch-icon-next.png
-  safari_pinned_tab: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/logo.svg
+  #apple_touch_icon: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/apple-touch-icon-next.png
+  #safari_pinned_tab: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/logo.svg
   #android_manifest: /images/manifest.json
   #ms_browserconfig: /images/browserconfig.xml
 
@@ -261,9 +261,9 @@ sidebar:
   # Sidebar offset from top menubar in pixels (only for Pisces | Gemini).
   offset: 12
   # Back to top in sidebar.
-  b2t: false
+  b2t: true
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
   # Enable sidebar on narrow view (only for Muse | Mist).
   onmobile: false
 

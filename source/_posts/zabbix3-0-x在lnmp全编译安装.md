@@ -18,7 +18,7 @@ zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视�
 
 ## 环境版本：
 
-#### lnmp系统：
+### lnmp系统：
 
 ​	ubuntu 14.04
 
@@ -28,7 +28,7 @@ zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视�
 
 ​	php 5.6.23
 
-#### 监控系统：
+### 监控系统：
 
 ​	zabbix 3.0.3
 
@@ -36,7 +36,7 @@ zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视�
 
 ​	grafana 3.1.0
 
-#### 安装路径：
+### 安装路径：
 
 程序安装路径：/opt/zabbix
 
@@ -48,14 +48,14 @@ zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视�
 
 ### 安装nginx + php
 
-#### 安装依赖包
+### 安装依赖包
 
 ```shell
 sudo apt-get update
 sudo apt-get -y install make gcc g++ libpcre3-dev libssl-dev libpng-dev libxml2-dev libcurl4-openssl-dev
 ```
 
-#### 编译安装nginx
+### 编译安装nginx
 
 创建运行账户及组
 
@@ -142,7 +142,7 @@ sudo update-rc.d nginx defaults
 
 ### 安装php
 
-#### 安装bzip2
+### 安装bzip2
 
 ```shell
 cd /opt
@@ -155,7 +155,7 @@ sudo make
 sudo make install PREFIX=/opt/bzip2
 ```
 
-#### 安装zlib
+### 安装zlib
 
 ```shell
 cd /opt
@@ -167,7 +167,7 @@ sudo make
 sudo make install
 ```
 
-#### 安装libmcrypt
+### 安装libmcrypt
 
 ```shell
 cd /opt
@@ -179,7 +179,7 @@ sudo make
 sudo make install
 ```
 
-#### 安装freetype
+### 安装freetype
 
 ```shell
 cd /opt
@@ -191,7 +191,7 @@ sudo make
 sudo make install
 ```
 
-#### 安装jpegsrc（zabbix需要）
+### 安装jpegsrc（zabbix需要）
 
 ```shell
 cd /opt
@@ -203,7 +203,7 @@ sudo make
 sudo make install
 ```
 
-#### 编译安装php
+### 编译安装php
 
 ```shell
 cd /opt
@@ -219,7 +219,7 @@ sudo chown -R www.www php
 
 ### 整合nginx + php
 
-#### 创建php、php-fpm配置文件
+### 创建php、php-fpm配置文件
 
 ```shell
 sudo cp /opt/php-5.6.23/php.ini-production /opt/php/etc/php.ini
@@ -234,7 +234,7 @@ group = www
 pid = run/php-fpm.pid
 ```
 
-#### 创建php-fpm启动脚本、启动php-fpm
+### 创建php-fpm启动脚本、启动php-fpm
 
 ```shell
 sudo vim /etc/init.d/php-fpm
@@ -283,7 +283,7 @@ sudo /etc/init.d/php-fpm start
 sudo update-rc.d php-fpm defaults
 ```
 
-#### 修改nginx配置文件，创建index.php，测试整合成功
+### 修改nginx配置文件，创建index.php，测试整合成功
 
 ```
 sudo vim /opt/nginx/conf/nginx.conf
@@ -305,7 +305,7 @@ location ~ \.php$ {
         }
 ```
 
-#### 创建测试页面index.php
+### 创建测试页面index.php
 
 ```
 sudo vim /opt/nginx/html/index.php
@@ -314,7 +314,7 @@ phpinfo();
 ?>
 ```
 
-#### 重启nginx
+### 重启nginx
 
 ```shell
 sudo /etc/init.d/nginx restart
@@ -328,7 +328,7 @@ sudo /etc/init.d/nginx restart
 
 ### 编译安装mysql
 
-#### 安装依赖包 
+### 安装依赖包 
 
 ```shell
 sudo apt-get -y install g++ cmake ncurses-dev
@@ -337,7 +337,7 @@ sudo wget http://heanet.dl.sourceforge.net/project/boost/boost/1.59.0/boost_1_59
 sudo tar zxvf boost_1_59_0.tar.gz
 ```
 
-#### 创建用户和用户组
+### 创建用户和用户组
 
 ```shell
 #创建mysql用户及用户组，创建mysql-data目录
@@ -348,7 +348,7 @@ cd /data/postmall/
 sudo chown -R mysql.mysql mysql
 ```
 
-#### 编译安装mysql
+### 编译安装mysql
 
 ```shell
 sudo wget http://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.13.tar.gz
@@ -361,7 +361,7 @@ cd /opt
 chown -R mysql.mysql mysql 
 ```
 
-#### 初始化mysql
+### 初始化mysql
 
 ```shell
 cd /opt/mysql/bin
@@ -375,13 +375,13 @@ cd /opt/mysql/bin
 sudo cp mysql /usr/bin/
 ```
 
-#### 启动并登陆mysql
+### 启动并登陆mysql
 
 ```shell
  sudo /etc/init.d/mysqld start
 ```
 
-#### mysql主备配置:
+### mysql主备配置:
 
    修改主服务器master:  
 
@@ -476,7 +476,7 @@ mkdir -p  /opt/zabbix
 make && make install 
 ```
 
-#### 配置zabbix
+### 配置zabbix
 
 创建zabbix数据库，并导入zabbix数据库文件
 
@@ -499,7 +499,7 @@ mysql -uzabbix -pzabbix zabbix < images.sql
 mysql -uzabbix -pzabbix zabbix < data.sql
 ```
 
-#### 配置zabbix_server.conf
+### 配置zabbix_server.conf
 
 ```shell
 vim /opt/zabbix/etc/zabbix_server.conf
@@ -510,7 +510,7 @@ DBUser=zabbix
 DBPassword=zabbix
 ```
 
-#### 配置php.ini
+### 配置php.ini
 
 ```shell
 sudo vim /opt/php/etc/php.ini
@@ -519,7 +519,7 @@ max_execution_time = 300
 max_input_time = 300
 ```
 
-#### 配置zabbix页面 
+### 配置zabbix页面 
 
 ```shell
 cd /opt/zabbix-3.0.3/frontends/php/
@@ -535,7 +535,7 @@ $DB['USER'] = 'zabbix';
 $DB['PASSWORD'] = 'zabbix'
 ```
 
-#### 配置nginx.conf
+### 配置nginx.conf
 
 ```shell
 sudo vim /opt/nginx/conf/nginx.conf
@@ -552,7 +552,7 @@ sudo vim /opt/nginx/conf/nginx.conf
         }
 ```
 
-#### 重启zabbix、php-fpm 、nginx
+### 重启zabbix、php-fpm 、nginx
 
 ```shell
 sudo /etc/init.d/zabbix_server restart

@@ -61,18 +61,18 @@ docker-compost up -d
 
 ## 配置优化
 
-#### **限制worker进程数**
+### **限制worker进程数**
 
 默认配置中，worker进程数与本机CPU个数一致，会大量占用内存，导致容器的内存持续增长，直至服务宕机，报5xx
 
 解决方案：修改/data/gitlab/config/gitlab.rb中配置
 
 ```shell
-################################################################################
+############################################################
 ## GitLab Unicorn
 ##! Tweak unicorn settings.
 ##! Docs: https://docs.gitlab.com/omnibus/settings/unicorn.html
-################################################################################
+############################################################
 
 # unicorn['worker_timeout'] = 60
 ###! Minimum worker_processes is 2 at this moment
@@ -82,7 +82,7 @@ unicorn['worker_processes'] = 2 # 去除原注释，指定worker数和分配的C
 
 **然后重启**
 
-#### 启用邮件通知
+### 启用邮件通知
 
 编辑 /data/gitlab/config/gitlab.rb
 
@@ -112,9 +112,9 @@ gitlab_rails['smtp_enable_starttls_auto'] = true
 
 ## 使用
 
-#### 备份操作
+### 备份操作
 
-###### **Gitlab的备份目录路径设置**
+##### **Gitlab的备份目录路径设置**
 
 ```shell
 vim /data/gitlab/config/gitlab.rb
@@ -131,7 +131,7 @@ chmod -R 777 /data/gitlab/backups
 gitlab-ctl reconfigure  #重新加载配置
 ```
 
-###### **GItlab备份操作**
+##### **GItlab备份操作**
 
 ```shell
 # 手动备份
@@ -157,11 +157,11 @@ vim gitlab_backup.sh
 0 0,6,12,18 * * * /bin/bash -x /data/gitlab/backups/gitlab_backup.sh > /dev/null 2>&1
 ```
 
-#### 恢复操作
+### 恢复操作
 
 注意：GItlab只能还原到与备份文件相同的gitlab版本。
 
-###### 停止相关数据连接服务
+##### 停止相关数据连接服务
 
 ```shell
 gitlab-ctl stop unicorn
@@ -169,7 +169,7 @@ gitlab-ctl stop sidekiq
 gitlab-ctl status
 ```
 
-###### 恢复
+##### 恢复
 
 ```shell
 #进入目录

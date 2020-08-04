@@ -19,7 +19,7 @@ date: 2020-06-23 10:51:42
 
 ## 准备工作
 
-#### 安装依赖
+### 安装依赖
 
 ```bash
 yum install mysql mysql-server mysql-devel gcc gcc-c++ ncurses-devel flex bison -y
@@ -28,7 +28,7 @@ yum install mysql mysql-server mysql-devel gcc gcc-c++ ncurses-devel flex bison 
 机器上已经又`mysql`正常运行的话就跳过`mysql`相关的安装了。
 注意在安装`mysql-server`的时候可能会出现找不到包，提示使用`mariadb-server`替代，那就老实使用`yum install mariadb-server mariadb`安装吧。
 
-#### mysql 设置密码并打开远程访问权限
+### mysql 设置密码并打开远程访问权限
 
 装好的`mysql`启动默认是没有密码的，进入`mysql`后进去运行下面的代码。
 
@@ -43,7 +43,7 @@ flush privileges;
 
 这里的设置根据需要来就好了。
 
-#### 开启防火墙5060端口
+### 开启防火墙5060端口
 
 ```bash
 firewall-cmd --zone=public --add-port=5060/udp --permanent
@@ -52,7 +52,7 @@ firewall-cmd --reload
 
 ## 安装opensips
 
-#### 下载源码并选择模块
+### 下载源码并选择模块
 
 ```bash
 cd /usr/local/src 
@@ -67,7 +67,7 @@ make menuconfig
 
 进入这个菜单后，根据需要使用这个工具（左右键进入返回，空格键选中，回车键确定），但有个必须的是进入`Configure Compile Options`，选中`db_mysql`保存，返回主菜单选择`Compile And Install OpenSIPS`编译安装即可。完成后会回到这个界面，保存退出。
 
-#### 修改配置文件
+### 修改配置文件
 
 ```bash
 # 配置文件目录
@@ -135,7 +135,7 @@ listen=udp:192.168.0.191:5060 # CUSTOMIZE ME
 ip route get 8.8.8.8 | head -n +1 | tr -s " " | cut -d " " -f 7
 ```
 
-#### 创建数据库
+### 创建数据库
 
 ```bash
 cd /usr/local/sbin
@@ -175,7 +175,7 @@ WARNING: Your current default mysql characters set cannot be used to create DB. 
 
 这一步完成之后，会在数据库新建一个`opensips`（名字是在上面的配置文件里设置的）的数据库。
 
-#### 启动opensips
+### 启动opensips
 
 ```bash
 # 启动
@@ -202,7 +202,7 @@ new user '1002' added
 
 到这里就成功的启动了服务并添加了两个用户（1001，1002），下面我们来在局域网测试一下。
 
-#### 测试通话
+### 测试通话
 
 在同一个局域网的手机上装上支持`sip`的软电话应用市场搜`sip phone`应该能找到不少，电脑端也有。
 配置一般是这样的

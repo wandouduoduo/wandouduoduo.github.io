@@ -30,7 +30,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/1.png)
 
-#### 创建存储目录（optional）
+### 创建存储目录（optional）
 
 ```bash
 # 在brick server节点创建存储目录，即brick所在；
@@ -38,7 +38,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 [root@glusterfs01 ~]# mkdir -p /brick1/dis_volume
 ```
 
-#### 创建分布式卷
+### 创建分布式卷
 
 ```bash
 # 命令：gluster volume create NEW-VOLNAME [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
@@ -49,7 +49,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/2.png)
 
-#### 卷信息/状态
+### 卷信息/状态
 
 ```bash
 # 命令”gluster volume list”可列出已创建的卷；
@@ -69,7 +69,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/4.png)
 
-#### 启动卷
+### 启动卷
 
 ```bash
 [root@glusterfs01 ~]# gluster volume start distributed-volume
@@ -84,7 +84,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/6.png)
 
-#### client挂载
+### client挂载
 
 ```bash
 # 在客户端创建挂载目录
@@ -95,7 +95,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 [root@glusterfs-client ~]# mount.glusterfs 172.30.200.51:distributed-volume /mnt/distributed/
 ```
 
-#### 查看挂载情况
+### 查看挂载情况
 
 ```bash
 # 通过“df -Th”命令可查看被挂载的volume，被挂载的文件系统，已经挂载卷的容量是2个brick容量之和
@@ -104,7 +104,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/7.png)
 
-#### 查看brick的监听端口
+### 查看brick的监听端口
 
 ```bash
 # server节点上每启动1个brick，即启动1个brick服务，具备相应的服务监听端口，起始端口号是tcp49152
@@ -120,7 +120,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/9.png)
 
-#### 存储测试
+### 存储测试
 
 ```bash
 # 在client的挂载目录下创建若干文件
@@ -153,7 +153,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/12.png)
 
-#### 创建条带卷
+### 创建条带卷
 
 ```bash
 # 命令：gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | dma | tcp,rdma]] NEW-BRICK...
@@ -166,7 +166,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/13.png)
 
-#### 启动卷
+### 启动卷
 
 ```bash
 [root@glusterfs01 ~]# gluster volume start stripe-volume
@@ -174,14 +174,14 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/14.png)
 
-#### client挂载
+### client挂载
 
 ```bash
 [root@glusterfs-client ~]# mkdir /mnt/stripe
 [root@glusterfs-client ~]# mount.glusterfs 172.30.200.51:stripe-volume /mnt/stripe/
 ```
 
-#### 查看挂载情况
+### 查看挂载情况
 
 ```bash
 # 已挂载卷的容量是3个brick容量之和
@@ -190,7 +190,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/15.png)
 
-#### 存储测试
+### 存储测试
 
 ```bash
 # 在client的挂载目录下创建若干文件
@@ -238,7 +238,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/19.png)
 
-#### 创建复制卷
+### 创建复制卷
 
 ```bash
 # 命令：gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
@@ -252,7 +252,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/20.png)
 
-#### 启动卷
+### 启动卷
 
 ```bash
 [root@glusterfs01 ~]# gluster volume start replica-volume
@@ -261,14 +261,14 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/21.png)
 
-#### client挂载
+### client挂载
 
 ```bash
 [root@glusterfs-client ~]# mkdir /mnt/replica
 [root@glusterfs-client ~]# mount.glusterfs 172.30.200.51:replica-volume /mnt/replica/
 ```
 
-#### 查看挂载情况
+### 查看挂载情况
 
 ```bash
 # 已挂载卷的容量是1个brick的容量
@@ -277,7 +277,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/22.png)
 
-#### 存储测试
+### 存储测试
 
 ```bash
 # 在client的挂载目录下创建若干文件
@@ -303,7 +303,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 **结论：复制卷将1个文件同步镜像到多个brick server，数据有冗余备份。**
 
-#### AFR恢复原理
+### AFR恢复原理
 
 数据恢复只针对复制卷，AFR数据修复主要涉及三个方面：ENTRY，META，DATA。
 
@@ -353,7 +353,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/26.png)
 
-#### 创建分布式复制卷
+### 创建分布式复制卷
 
 ```bash
 # 命令：gluster volume create NEW-VOLNAME [replica COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
@@ -372,7 +372,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/27.png)
 
-#### 启动卷
+### 启动卷
 
 ```bash
 # 卷类型：分布式复制卷
@@ -383,14 +383,14 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/28.png)
 
-#### client挂载
+### client挂载
 
 ```bash
 [root@glusterfs-client ~]# mkdir /mnt/distributed-replica
 [root@glusterfs-client ~]# mount.glusterfs 172.30.200.51:distributed-replica-volume /mnt/distributed-replica/
 ```
 
-#### 查看挂载情况
+### 查看挂载情况
 
 ```bash
 # 已挂载卷的容量是2个副本集（replicated sets ）容量之和
@@ -399,7 +399,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/29.png)
 
-#### 存储测试
+### 存储测试
 
 ```bash
 # 在client的挂载目录下创建若干文件
@@ -449,7 +449,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/34.png)
 
-#### 创建分布式条带卷
+### 创建分布式条带卷
 
 ```bash
 # 命令：gluster volume create NEW-VOLNAME [stripe COUNT] [transport [tcp | rdma | tcp,rdma]] NEW-BRICK...
@@ -467,7 +467,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/35.png)
 
-#### 启动卷
+### 启动卷
 
 ```bash
 # 卷类型：分布式条带卷
@@ -478,14 +478,14 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/36.png)
 
-#### client挂载
+### client挂载
 
 ```bash
 [root@glusterfs-client ~]# mkdir /mnt/distributed-stripe
 [root@glusterfs-client ~]# mount.glusterfs 172.30.200.51:distributed-stripe-volume /mnt/distributed-stripe/
 ```
 
-#### 查看挂载情况
+### 查看挂载情况
 
 ```bash
 # 已挂载卷的容量是4个brick容量之和
@@ -494,7 +494,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/37.png)
 
-#### 存储测试
+### 存储测试
 
 ```bash
 # 在client的挂载目录下创建若干文件
@@ -565,7 +565,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 6. 卷中所有brick容量需要相同，否则最小的brick满容量时，数据无法写入；
 7. 实际部署时，redundancy < #bricks / 2 (or equivalently, redundancy * 2 < #bricks)，即brick至少是3个；redundancy设置为0时，DispersedVolume等同于分布式卷；若redundancy设置为brick/2时，DispersedVolume等同于复制卷。
 
-#### 创建纠删卷
+### 创建纠删卷
 
 ```bash
 # 命令：gluster volume create [disperse [<count>]] [redundancy <count>] [transport tcp | rdma | tcp,rdma]
@@ -583,7 +583,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/44.png)
 
-#### 启动卷
+### 启动卷
 
 ```bash
 # 卷类型：disperse卷
@@ -594,14 +594,14 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/45.png)
 
-#### client挂载
+### client挂载
 
 ```bash
 [root@glusterfs-client ~]# mkdir /mnt/disperse
 [root@glusterfs-client ~]# mount.glusterfs 172.30.200.51:disperse-volume /mnt/disperse/
 ```
 
-#### 查看挂载情况
+### 查看挂载情况
 
 ```bash
 # 已挂载卷的容量是2个brick容量之和，<usable size> = <brick size> * (#bricks - redundancy)
@@ -610,7 +610,7 @@ glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合
 
 ![img](GlusterFS分布式存储集群之使用/46.png)
 
-#### 存储测试
+### 存储测试
 
 ```bash
 # 在client的挂载目录下创建若干文件

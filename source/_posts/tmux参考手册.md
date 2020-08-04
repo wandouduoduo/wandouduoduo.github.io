@@ -49,7 +49,7 @@ bind-key R source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 
 
 
-#### 会话管理
+### 会话管理
 
 **常用命令**
 
@@ -87,7 +87,7 @@ bind-key R source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 
 　　
 
-#### 窗口管理
+### 窗口管理
 
 **prefix c**　　创建一个新窗口
 
@@ -113,7 +113,7 @@ bind-key R source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 
 　
 
-#### **窗格管理**
+### **窗格管理**
 
 **prefix %**　　水平方向创建窗格
 
@@ -145,7 +145,7 @@ bind-key R source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded."
 
  
 
-#### **其他命令**
+### **其他命令**
 
 **tmux list-key**　　列出所有绑定的键，等同于**prefix ?**
 

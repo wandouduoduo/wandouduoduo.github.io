@@ -36,7 +36,7 @@ centos7
 
 ## 配置教程
 
-#### 放置证书
+### 放置证书
 
 ```
 mkdir -p /usr/local/nginx/conf/ssl
@@ -45,7 +45,7 @@ cd /usr/local/nginx/conf/ssl/
 unzip 证书.zip
 ```
 
-#### 配置https
+### 配置https
 
 ```bash
 server {
@@ -75,7 +75,7 @@ server {
 }
 ```
 
-#### 配置强制跳转
+### 配置强制跳转
 
 ```bash
 

@@ -40,7 +40,7 @@ Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能�
 
 ## 部署
 
-#### 下载安装包
+### 下载安装包
 
 [官方稳定包下载](https://github.com/ctripcorp/apollo/releases)
 
@@ -52,7 +52,7 @@ apollo-configservice-1.6.1-github.zip
 
 apollo-portal-1.6.1-github.zip  
 
-#### 创建ApolloPortalDB
+### 创建ApolloPortalDB
 
 通过各种MySQL客户端导入[sql/apolloportaldb.sql](https://github.com/nobodyiam/apollo-build-scripts/blob/master/sql/apolloportaldb.sql)即可
 
@@ -66,7 +66,7 @@ select `Id`, `AppId`, `Name` from ApolloPortalDB.App;
 | :--: | :-------: | :--------: |
 |  1   | SampleApp | Sample App |
 
-#### 创建ApolloConfigDB
+### 创建ApolloConfigDB
 
 通过各种MySQL客户端导入[sql/apolloconfigdb.sql](https://github.com/nobodyiam/apollo-build-scripts/blob/master/sql/apolloconfigdb.sql)即可
 导入成功后，可以通过执行以下sql语句来验证
@@ -79,7 +79,7 @@ select `NamespaceId`, `Key`, `Value`, `Comment` from ApolloConfigDB.Item;
 | :---------: | :-----: | :---: | :----------------: |
 |      1      | timeout |  100  | sample timeout配置 |
 
-#### 修改数据库配置文件
+### 修改数据库配置文件
 
 ```bash
 # 创建应用目录
@@ -109,7 +109,7 @@ spring.datasource.password = 123456
 #apollo.eureka.client.enabled=true
 ```
 
-#### 启动apollo服务
+### 启动apollo服务
 
 启动顺序
 

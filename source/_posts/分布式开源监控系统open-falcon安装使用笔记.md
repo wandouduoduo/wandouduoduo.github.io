@@ -173,7 +173,7 @@ for x in `find ./tmp/ -name "*.tar.gz"`;do app=`echo $x|cut -d'-' -f2`;mkdir -p 
 
 ### **第一部分：绘图组件安装**
 
-##### **组件列表：**
+#### **组件列表：**
 
 | **组件名称** | **用途**                                                     | **服务端口**                      | **备注**                                              |
 | :----------: | ------------------------------------------------------------ | --------------------------------- | ----------------------------------------------------- |
@@ -184,7 +184,7 @@ for x in `find ./tmp/ -name "*.tar.gz"`;do app=`echo $x|cut -d'-' -f2`;mkdir -p 
 |  Dashboard   | 查询监控历史趋势图的web端                                    | http: 8081                        | 1.需要python虚拟环境 2.需要连接数据库dashborad、graph |
 |     Task     | 负责一些定时任务，索引全量更新、垃圾索引清理、自身组件监控等 | http: 8002                        | 1.需要连接数据库graph                                 |
 
-##### **安装Agent**
+#### **安装Agent**
 
 agent用于采集机器负载监控指标，比如cpu.idle、load.1min、disk.io.util等等，每隔60秒push给Transfer。agent与Transfer建立了长连接，数据发送速度比较快，agent提供了一个http接口/v1/push用于接收用户手工push的一些数据，然后通过长连接迅速转发给Transfer。
 
@@ -206,7 +206,7 @@ vim cfg.json
 ./control tail
 ```
 
-##### **安装Transfer**
+#### **安装Transfer**
 
 transfer默认监听在:8433端口上，agent会通过jsonrpc的方式来push数据上来。
 
@@ -225,7 +225,7 @@ curl -s "http://127.0.0.1:6060/health"
 ./control tail
 ```
 
-##### **安装Graph**
+#### **安装Graph**
 
 graph组件是存储绘图数据、历史数据的组件。transfer会把接收到的数据，转发给graph。
 
@@ -247,7 +247,7 @@ mv cfg.example.json cfg.json
 curl -s "http://127.0.0.1:6071/health"
 ```
 
-##### **安装Query**
+#### **安装Query**
 
 query组件，绘图数据的查询接口，query组件收到用户的查询请求后，会从后端的多个graph，查询相应的数据，聚合后，再返回给用户。
 
@@ -263,7 +263,7 @@ mv cfg.example.json cfg.json
 ./control tail
 ```
 
-##### **安装Dashboard**
+#### **安装Dashboard**
 
 dashboard是面向用户的查询界面，在这里，用户可以看到push到graph中的所有数据，并查看其趋势图。
 
@@ -286,7 +286,7 @@ http://IP:8081
 ./control tail
 ```
 
-##### **安装Task**
+#### **安装Task**
 
 task是监控系统一个必要的辅助模块。定时任务，实现了如下几个功能：
 
@@ -314,7 +314,7 @@ task是监控系统一个必要的辅助模块。定时任务，实现了如下�
 
 ### **第二部分：报警组件安装**
 
-##### **组件列表：**
+#### **组件列表：**
 
 | **组件名称**  |                           **用途**                           |     **服务端口**     |                       **备注**                       |
 | :-----------: | :----------------------------------------------------------: | :------------------: | :--------------------------------------------------: |
@@ -330,7 +330,7 @@ task是监控系统一个必要的辅助模块。定时任务，实现了如下�
 |    Nodata     |                    检测监控数据的上报异常                    |      http: 6090      |           1.需要连接数据库：falcon_portal            |
 |  Aggregator   | 集群聚合模块——聚合某集群下的所有机器的某个指标的值，提供一种集群视角的监控体验。 |                      |                                                      |
 
-##### 报警准备：mail-provider & sms-provider
+#### 报警准备：mail-provider & sms-provider
 
 监控系统产生报警事件之后需要发送报警邮件或者报警短信，各个公司可能有自己的邮件服务器，有自己的邮件发送方法；有自己的短信通道，有自己的短信发送方法。falcon为了适配各个公司，在接入方案上做了一个规范，需要各公司提供http的短信和邮件发送接口。
 
@@ -367,7 +367,7 @@ url=您公司提供的http邮件接口
 curl -X POST $url-d"content=xxx&tos=ulric.qin@gmail.com,user@example.com&subject=xxx"
 ```
 
-##### **安装使用mail-provider**
+#### **安装使用mail-provider**
 
 这里使用小米提供的mail-provider，我是通过网友编译好的二级制包安装的，也可自行编译。
 
@@ -417,7 +417,7 @@ cd mail-provider/
 curl http://127.0.0.1:4000/sender/mail -d "tos=29235373@qq.com&subject=xxxx&content=yyyy"
 ```
 
-##### 建立sms-provider
+#### 建立sms-provider
 
 这里我自己写了个基于python的http server 作为短信接口http api
 
@@ -507,7 +507,7 @@ curl http://192.168.20.99:4040/ -d "tos=1358888888,1868888888&content=testmsg"
 #openfalcon的sender是post方式传递数据给http api的，所以我需要获取sender post过来的tos和content参数，再发送到公司内部的sms api。
 ```
 
-##### 安装alarm
+#### 安装alarm
 
 alarm模块是处理报警event的，judge产生的报警event写入redis，alarm从redis读取，这个模块被业务搞得很糟乱，各个公司可以根据自己公司的需求重写
 
@@ -526,7 +526,7 @@ mv cfg.example.json cfg.json
 git clone https://github.com/chensambb/open-falcon-alarm-by-weixin/
 ```
 
-##### 安装sender
+#### 安装sender
 
 调用各个公司提供的mail-provider和sms-provider，按照某个并发度，从redis中读取邮件、短信并发送，alarm生成的报警短信和报警邮件都是直接写入redis即可，sender来发送。
 
@@ -569,7 +569,7 @@ mv cfg.example.json cfg.json
 ./control start
 ```
 
-##### 安装fe
+#### 安装fe
 
 ```
 cd /opt/openfalcon/fe
@@ -584,7 +584,7 @@ mv cfg.example.json cfg.json
 ./control stop
 ```
 
-##### 安装portal
+#### 安装portal
 
 portal是用于配置报警策略的地方
 
@@ -607,7 +607,7 @@ virtualenv ./env
 portal默认监听在5050端口，浏览器访问即可
 ```
 
-##### 安装HBS(heartbeat Server)
+#### 安装HBS(heartbeat Server)
 
 心跳服务器，只依赖Portal的DB
 
@@ -624,7 +624,7 @@ mv cfg.example.json cfg.json
 
 如果先安装的绘图组件又来安装报警组件，那应该已经安装过agent了，hbs启动之后会监听一个http端口，一个rpc端口，agent要和hbs通信，重新去修改agent的配置cfg.json，把heartbeat那项enabled设置为true，并配置上hbs的rpc地址，`./control restart`重启agent，之后agent就可以和hbs心跳了
 
-##### 安装judge
+#### 安装judge
 
 报警判断模块，judge依赖于HBS，所以得先搭建HBS
 
@@ -642,7 +642,7 @@ mv cfg.example.json cfg.json
 ./control start
 ```
 
-##### 安装Links
+#### 安装Links
 
 Links是为报警合并功能写的组件。如果你不想使用报警合并功能，这个组件是无需安装的。
 
@@ -661,7 +661,7 @@ virtualenv ./env
 ./control start
 ```
 
-##### 安装Nodata
+#### 安装Nodata
 
 nodata用于检测监控数据的上报异常。nodata和实时报警judge模块协同工作，过程为: 配置了nodata的采集项超时未上报数据，nodata生成一条默认的模拟数据；用户配置相应的报警策略，收到mock数据就产生报警。采集项上报异常检测，作为judge模块的一个必要补充，能够使judge的实时报警功能更加可靠、完善。
 
@@ -678,7 +678,7 @@ curl -s "127.0.0.1:6090/health"
 ./control stop
 ```
 
-##### 安装Aggregator
+#### 安装Aggregator
 
 集群聚合模块。聚合某集群下的所有机器的某个指标的值，提供一种集群视角的监控体验。
 
@@ -701,7 +701,7 @@ vim cfg.json
 
 参考[官方book](http://book.open-falcon.org/zh/usage/index.html)
 
-##### 查看监控数据
+#### 查看监控数据
 
 我们说agent只要部署到机器上，并且配置好了heartbeat和transfer就自动采集数据了，我们就可以去dashboard上面搜索监控数据查看了。dashboard是个web项目，浏览器访问之。左侧输入endpoint搜索，endpoint是什么？应该用什么搜索？对于agent采集的数据，endpoint都是机器名，去目标机器上执行`hostname`，看到的输出就是endpoint，拿着hostname去搜索。
 
@@ -713,7 +713,7 @@ vim cfg.json
 
 ![](分布式开源监控系统open-falcon安装使用笔记/5.png)
 
-##### 配置报警策略
+#### 配置报警策略
 
 上节我们已经了解到如何查看监控数据了，如果数据达到阈值，比如cpu.idle太小的时候，我们应该如何配置告警呢？
 
@@ -721,13 +721,13 @@ falcon的报警接收人不是一个具体的手机号，也不是一个具体�
 
 浏览器访问UIC，如果启用了LDAP，那就用LDAP账号登陆，如果没有启用，那就注册一个或者找管理员帮忙开通。创建一个Team，名称姑且叫falcon，把自己加进去，待会用来做测试。
 
-##### 创建HostGroup
+#### 创建HostGroup
 
 比如我们要对falcon-judge这个组件做端口监控，那首先创建一个HostGroup，把所有部署了falcon-judge这个模块的机器都塞进去，以后要扩容或下线机器的时候直接从这个HostGroup增删机器即可，报警策略会自动生效、失效。咱们为这个HostGroup取名为：sa.dev.falcon.judge，这个名称有讲究，sa是我们部门，dev是我们组，falcon是项目名，judge是组件名，传达出了很多信息，这样命名比较容易管理，推荐大家这么做。
 
 在往组里加机器的时候如果报错，需要检查portal的数据库中host表，看里边是否有相关机器。那host表中的机器从哪里来呢？agent有个heartbeat(hbs)的配置，agent每分钟会发心跳给hbs，把自己的ip、hostname、agent version等信息告诉hbs，hbs负责写入host表。如果host表中没数据，需要检查这条链路是否通畅。
 
-##### 创建策略模板
+#### 创建策略模板
 
 portal最上面有个Templates链接，这就是策略模板管理的入口。我们进去之后创建一个模板，名称姑且也叫：sa.dev.falcon.judge，与HostGroup名称相同，在里边配置一个端口监控，通常进程监控有两种手段，一个是进程本身是否存活，一个是端口是否在监听，此处我们使用端口监控。
 
@@ -735,11 +735,11 @@ portal最上面有个Templates链接，这就是策略模板管理的入口。�
 
 右上角那个加号按钮是用于增加策略的，一个模板中可以有多个策略，此处我们只添加了一个。下面可以配置报警接收人，此处填写的是falcon，这是之前在UIC中创建的Team。
 
-##### 将HostGroup与模板绑定
+#### 将HostGroup与模板绑定
 
 一个模板是可以绑定到多个HostGroup的，现在我们重新回到HostGroups页面，找到sa.dev.falcon.judge这个HostGroup，右侧有几个超链接，点击【templates】进入一个新页面，输入模板名称，绑定一下就行了。
 
-##### 补充
+#### 补充
 
 上面步骤做完了，也就配置完了。如果judge组件宕机，端口不再监听了，就会报警。不过大家不要为了测试报警效果，直接把judge组件给干掉了，因为judge本身就是负责判断报警的，把它干掉了，那就没法判断了……所以说falcon现在并不完善，没法用来监控本身的组件。为了测试，大家可以修改一下端口监控的策略配置，改成一个没有在监听的端口，这样就触发报警了。
 
@@ -755,7 +755,7 @@ portal最上面有个Templates链接，这就是策略模板管理的入口。�
 
 大家可能不知道各个指标分别叫什么，自己push的数据肯定知道自己的metric了，agent push的数据可以参考：https://github.com/open-falcon/agent/tree/master/funcs
 
-##### 如何配置策略表达式
+#### 如何配置策略表达式
 
 策略表达式，即expression，具体可以参考[HostGroup与Tags设计理念](http://book.open-falcon.org/zh/philosophy/tags-and-hostgroup.html)，这里只是举个例子：
 

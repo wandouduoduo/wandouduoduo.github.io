@@ -119,18 +119,18 @@ SENTRY_USE_BIG_INTS = True
 # If you're expecting any kind of real traffic on Sentry, we highly recommend
 # configuring the CACHES and Redis settings
 
-###########
+#########
 # General #
-###########
+#########
 
 # Instruct Sentry that this install intends to be run by a single organization
 # and thus various UI optimizations should be enabled.
 SENTRY_SINGLE_ORGANIZATION = True
 DEBUG = False
 
-#########
+#######
 # Cache #
-#########
+#######
 
 # Sentry currently utilizes two separate mechanisms. While CACHES is not a
 # requirement, it will optimize several high throughput patterns.
@@ -150,9 +150,9 @@ DEBUG = False
 # A primary cache is required for things such as processing events
 SENTRY_CACHE = 'sentry.cache.redis.RedisCache'
 
-#########
+#######
 # Queue #
-#########
+#######
 
 # See https://docs.sentry.io/on-premise/server/queue/ for more
 # information on configuring your queue broker and workers. Sentry relies
@@ -160,18 +160,18 @@ SENTRY_CACHE = 'sentry.cache.redis.RedisCache'
 CELERY_ALWAYS_EAGER = False
 BROKER_URL = 'redis://127.0.0.1:6379'
 
-###############
+############
 # Rate Limits #
-###############
+############
 
 # Rate limits apply to notification handlers and are enforced per-project
 # automatically.
 
 SENTRY_RATELIMITER = 'sentry.ratelimits.redis.RedisRateLimiter'
 
-##################
+##############
 # Update Buffers #
-##################
+##############
 
 # Buffers (combined with queueing) act as an intermediate layer between the
 # database and the storage API. They will greatly improve efficiency on large
@@ -180,35 +180,35 @@ SENTRY_RATELIMITER = 'sentry.ratelimits.redis.RedisRateLimiter'
 
 SENTRY_BUFFER = 'sentry.buffer.redis.RedisBuffer'
 
-##########
+########
 # Quotas #
-##########
+########
 
 # Quotas allow you to rate limit individual projects or the Sentry install as
 # a whole.
 
 SENTRY_QUOTAS = 'sentry.quotas.redis.RedisQuota'
 
-########
+######
 # TSDB #
-########
+######
 
 # The TSDB is used for building charts as well as making things like per-rate
 # alerts possible.
 
 SENTRY_TSDB = 'sentry.tsdb.redis.RedisTSDB'
 
-###########
+#########
 # Digests #
-###########
+#########
 
 # The digest backend powers notification summaries.
 
 SENTRY_DIGESTS = 'sentry.digests.backends.redis.RedisBackend'
 
-################
+############
 # File storage #
-################
+############
 
 # Any Django storage backend is compatible with Sentry. For more solutions see
 # the django-storages package: https://django-storages.readthedocs.org/en/latest/
@@ -218,9 +218,9 @@ SENTRY_FILESTORE_OPTIONS = {
     'location': '/tmp/sentry-files',
 }
 
-##############
+###########
 # Web Server #
-##############
+###########
 
 # If you're using a reverse SSL proxy, you should enable the X-Forwarded-Proto
 # header and uncomment the following settings

@@ -95,7 +95,7 @@ XXL-Job如何实现集群？底层已经实现好了！如果感兴趣可以详�
 
 ### 安装Maven
 
-#### 导入Maven镜像源
+### 导入Maven镜像源
 
 在shell中运行以下命令，导入Maven镜像源：
 
@@ -103,7 +103,7 @@ XXL-Job如何实现集群？底层已经实现好了！如果感兴趣可以详�
 wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
 ```
 
-#### 安装Maven
+### 安装Maven
 
 在shell中运行以下命令，安装Maven：
 
@@ -113,7 +113,7 @@ yum install -y apache-maven
 
 ### 编译xxl-job源码
 
-#### 安装Git客户端
+### 安装Git客户端
 
 在shell中运行以下命令，安装Git客户端：
 
@@ -121,7 +121,7 @@ yum install -y apache-maven
 yum install -y git
 ```
 
-#### 克隆代码库
+### 克隆代码库
 
 在shell中运行以下命令，克隆代码库至本地目录：
 

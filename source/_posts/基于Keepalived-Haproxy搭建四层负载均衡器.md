@@ -35,7 +35,7 @@ Serivce Port: 11231
 
 ## 安装配置
 
-#### **添加非本机IP邦定支持**
+### **添加非本机IP邦定支持**
 
 #vim  /etc/sysctl.conf
 
@@ -45,7 +45,7 @@ net.ipv4.ip_nonlocal_bind=1
 #sysctl –p
 ```
 
-#### 配置平台日志支持
+### 配置平台日志支持
 
 \#vim  /etc/syslog.conf  添加
 
@@ -64,7 +64,7 @@ SYSLOGD_OPTIONS="-r -m 0"
 
 \#/etc/init.d/syslog restart
 
-#### 关闭SELINUX
+### 关闭SELINUX
 
 vim /etc/sysconfig/selinux
 修改
@@ -75,7 +75,7 @@ SELINUX=disabled
 
 \#setenforce 0
 
-#### 配置iptables
+### 配置iptables
 
 添加VRRP通讯支持
 
@@ -83,7 +83,7 @@ SELINUX=disabled
 iptables -A INPUT -d 224.0.0.18 -j ACCEPT
 ```
 
-#### Keepalived的安装、配置
+### Keepalived的安装、配置
 
 ```bash
 #mkdir -p /home/install/keepalivedha
@@ -148,7 +148,7 @@ vrrp_instance VI_1 {  
 }  
 ```
 
-#### Haproxy的安装与配置
+### Haproxy的安装与配置
 
 ```
 #cd /home/install/keepalivedha
@@ -210,7 +210,7 @@ listen stats_auth 192.168.0.20:80  
 
 
 
-#### 邮件通知程序(python实现)
+### 邮件通知程序(python实现)
 
 \#vim  /etc/keepalived/Mailnotify.py
 
@@ -278,7 +278,7 @@ smtp.quit()  
 #service keepalived start
 ```
 
-#### 查看VRRP通讯记录
+### 查看VRRP通讯记录
 
 ```
 #tcpdump vrrp

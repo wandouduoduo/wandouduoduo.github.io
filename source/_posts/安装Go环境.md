@@ -18,7 +18,7 @@ date: 2019-06-14 14:31:30
 
 ## 搭建
 
-#### 下载
+### 下载
 
 打开[官网下载地址](https://studygolang.com/dl)选择对应的系统版本, 这里我选择的是最新稳定版：[go1.12.linux-amd64.tar.gz](https://dl.google.com/go/go1.12.linux-amd64.tar.gz)
 
@@ -34,7 +34,7 @@ date: 2019-06-14 14:31:30
 
 
 
-#### 配置
+### 配置
 
 执行`tar`解压到`/usr/loacl`目录下，得到`go`文件夹
 
@@ -55,7 +55,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 source /etc/profile
 ```
 
-#### 验证
+### 验证
 
 ```shell
 go version

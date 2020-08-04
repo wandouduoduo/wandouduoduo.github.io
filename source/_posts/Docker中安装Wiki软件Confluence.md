@@ -20,14 +20,14 @@ date: 2019-07-25 15:07:14
 
 ## 安装docker
 
-#### yum安装docker
+### yum安装docker
 
 ```shell
 yum update # 更新yum
 yum install docker # yum安装docker`
 ```
 
-#### 开启镜像加速
+### 开启镜像加速
 
 由于国内网络问题拉取 Docker 镜像会十分缓慢，所以可以添加网易镜像地址：http://hub-mirror.c.163.com 加速。
 
@@ -41,7 +41,7 @@ vi /etc/docker/daemon.json
 {"registry-mirrors": ["http://hub-mirror.c.163.com"]}
 ```
 
-#### 启动docker
+### 启动docker
 
 ```shell
 docker --version # 查看docker版本
@@ -53,7 +53,7 @@ ps -ef | grep docker # 查看docker进程是否正常启动
 
 安装 PostgreSQL 所使用的镜像在：https://hub.docker.com/_/postgres/
 
-#### 安装PostgreSQL
+### 安装PostgreSQL
 
 ```shell
 docker run --name postgresdb -p 5432:5432 -e POSTGRES_PASSWORD=W**** -d postgres
@@ -64,7 +64,7 @@ docker run --name postgresdb -p 5432:5432 -e POSTGRES_PASSWORD=W**** -d postgres
 1. -p 5432:5432 选项是可选的，因为在后面启动Confluence容器的时候，postgresdb这个容器会以别名db连接到confluence容器，也就是说对confluence这个容器来说，可以通过db:5432的网络地址访问到postgresql服务，不需要在主机上开放5432端口。
 2. W**** 是密码需要设置成你需要的密码
 
-#### 进入docker容器并创建confluence数据库
+### 进入docker容器并创建confluence数据库
 
 ```shell
 docker exec -it postgresdb bash # 进入docker容器
@@ -80,7 +80,7 @@ CREATE DATABASE confluence WITH OWNER postgres;
 
 也可以使用 https://github.com/jgrodziski/docker-confluence/blob/master/Dockerfile 这个镜像他把PostgreSQL和 Confluence包含在一个image里面，参考：[http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/](http://blogs.atlassian.com/2013/11/docker-all-the-things-at-atlassian-automation-and-wiring/)
 
-#### 安装wiki Confluence
+### 安装wiki Confluence
 
 ```shell
 docker run -d --name confluence -p 8090:8090 --link postgresdb:db --user root:root cptactionhank /atlassian-confluence:latest
@@ -92,7 +92,7 @@ docker run -d --name confluence -p 8090:8090 --link postgresdb:db --user root:ro
 docker run -d --name confluence -p 80:8090 --link postgresdb:db --user root:root cptactionhank /atlassian-confluence:latest
 ```
 
-#### 检查confluence是否启动
+### 检查confluence是否启动
 
 ```shell
 docker ps # 列出运行的容器
@@ -109,25 +109,25 @@ ps # 列出运行的容器
 
 可以看到 wiki confluence已经启动
 
-#### 浏览器访问 
+### 浏览器访问 
 
 http://ip/就可以看到Confluence的配置页面
 
 ## 破解Confluence
 
-#### 访问页面记录Server ID 
+### 访问页面记录Server ID 
 
 ![](Docker中安装Wiki软件Confluence/1.png)
 
 ![](Docker中安装Wiki软件Confluence/2.png)
 
-#### 停止 confluence
+### 停止 confluence
 
 ```shell
 docker stop confluence #停止 confluence 容器
 ```
 
-#### 进入confluence 容器, 查找decoder.jar文件
+### 进入confluence 容器, 查找decoder.jar文件
 
 ```shell
 docker exec -it confluence /bin/bash # 进入docker容器 confluence
@@ -143,7 +143,7 @@ find -name "*decoder*" # 查找名称中包括 decoder 的文件
 docker cp  confluence:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar .
 ```
 
-#### 破解
+### 破解
 
 1. 1. 下载 atlassian-extras-decoder-v2-3.3.0.jar 文件到windows上
 
@@ -171,19 +171,19 @@ docker cp  confluence:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian
 
    10. 将 “atlassian-extras-decoder-v2-3.3.0.jar” 文件上传回服务器
 
-#### 将破解后的文件复制回 confluence 容器
+### 将破解后的文件复制回 confluence 容器
 
 ```shell
 docker cp atlassian-extras-decoder-v2-3.3.0.jar  confluence:/opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.3.0.jar
 ```
 
-#### 启动 confluence 容器
+### 启动 confluence 容器
 
 ```shell
 docker start confluence
 ```
 
-#### 再次访问页面
+### 再次访问页面
 
 ```shell
 http://ip
@@ -191,45 +191,45 @@ http://ip
 
 ## 平台配置
 
-#### 输入之前复制的key后点击下一步
+### 输入之前复制的key后点击下一步
 
 ![](Docker中安装Wiki软件Confluence/6.png)
 
-#### 点击 ”My own database“ 后点击 next
+### 点击 ”My own database“ 后点击 next
 
 ![](Docker中安装Wiki软件Confluence\7.png)
 
-#### 输入数据库连接信息，用户名密码是之前创建数据库中的用户名和密码
+### 输入数据库连接信息，用户名密码是之前创建数据库中的用户名和密码
 
 注意：用户名为 postgres没有db
 
 ![](Docker中安装Wiki软件Confluence/8.png)
 
-#### 单击 ”Empty Site“
+### 单击 ”Empty Site“
 
 ![](Docker中安装Wiki软件Confluence/9.png)
 
-#### 点击 “Manage users and groups within Confluence”
+### 点击 “Manage users and groups within Confluence”
 
 ![](Docker中安装Wiki软件Confluence/10.png)
 
-#### 填入管理员信息后点击 “next”
+### 填入管理员信息后点击 “next”
 
 ![](Docker中安装Wiki软件Confluence/11.png)
 
-#### 点击 ”start“
+### 点击 ”start“
 
 ![](Docker中安装Wiki软件Confluence/12.png)
 
-#### 设置一些信息后就完成了
+### 设置一些信息后就完成了
 
 ![](Docker中安装Wiki软件Confluence/13.png)
 
-#### 查看授权信息，使用管理员用户登录
+### 查看授权信息，使用管理员用户登录
 
 ![](Docker中安装Wiki软件Confluence/14.png)
 
-#### 可以看到是评估版本，但过期时间是3千多个月后
+### 可以看到是评估版本，但过期时间是3千多个月后
 
 ![](Docker中安装Wiki软件Confluence/15.png)
 

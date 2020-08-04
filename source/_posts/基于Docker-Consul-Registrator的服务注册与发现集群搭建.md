@@ -19,7 +19,7 @@ date: 2019-06-25 19:01:05
 
 ## 服务发现与注册
 
-#### 具体流程
+### 具体流程
 
 -  **服务注册中心：**作为整个架构中的核心，要支持**分布式**、**持久化存储**，**注册信息变动**实时通知消费者。
 -  **服务提供者：**服务以 `docker` **容器化**方式部署(实现**服务端口**的**动态生成**)，可以通过 `docker-compose` 的方式来管理。通过 `Registrator` 检测到 `docker` 进程信息以完成服务的**自动注册**。
@@ -35,7 +35,7 @@ date: 2019-06-25 19:01:05
 4.  **调用服务：**先**查找**本地缓存，找不到再去注册中心**拉取**服务地址，然后发送服务请求；
 5.  **变更通知：**服务节点**变动**时 (**新增**、**删除**等)，注册中心将通知监听节点，**更新**服务信息。
 
-#### 相关组件
+### 相关组件
 
 一个服务发现系统主要由三部分组成：
 
@@ -43,7 +43,7 @@ date: 2019-06-25 19:01:05
 2.  **注册表(registry)：**存储服务信息。常见的解决方案有zookeeper、etcd、cousul等。
 3.  **发现机制(discovery)：**从注册表读取服务信息，给用户封装访问接口。
 
-#### 第三方实现
+### 第三方实现
 
 对于第三方的服务注册与发现的实现，现有的工具主要有以下三种：
 
@@ -57,7 +57,7 @@ date: 2019-06-25 19:01:05
 
 ## Consul和Registrator
 
-#### Consul简介
+### Consul简介
 
 **Consul是什么**
 
@@ -94,7 +94,7 @@ date: 2019-06-25 19:01:05
 
 其它信息包括各个节点之间的**通信方式**，还有**一些协议信息**、**算法**。它们是用于保证节点之间的**数据同步**、**实时性要求**等等一系列集群问题的解决。这些有兴趣的自己看看官方文档。
 
-#### Registrator简介
+### Registrator简介
 
 **什么是Registrator**
  `Registrator`是一个独立于服务注册表的**自动服务注册/注销组件**，一般以`Docker container`的方式进行部署。`Registrator`会自动侦测它所在的**宿主机**上的所有`Docker`容器状态（启用/销毁），并根据容器状态到对应的**服务注册列表**注册/注销服务。
@@ -105,7 +105,7 @@ date: 2019-06-25 19:01:05
 
 ## Docker安装Consul集群
 
-#### 集群节点规划
+### 集群节点规划
 
 我本地的使用的是`Ubuntu16.04`的虚拟机：
 
@@ -116,7 +116,7 @@ date: 2019-06-25 19:01:05
 | node3    | 172.17.0.4 | 10500 -> 8500 | 192.168.127.128 | Server        |
 | node4    | 172.17.0.5 | 11500 -> 8500 | 192.168.127.128 | Client        |
 
-#### Consul集群安装
+### Consul集群安装
 
 `Consul`的配置参数信息说明：
 
@@ -145,13 +145,13 @@ date: 2019-06-25 19:01:05
 
 
 
-#### 拉取consul官方镜像
+### 拉取consul官方镜像
 
 ```shell
 docker pull consul:latest
 ```
 
-#### 启动Server节点
+### 启动Server节点
 
 运行`consul`镜像，启动`Server Master`节点`node1`：
 
@@ -235,7 +235,7 @@ docker run -d --name=node3 --restart=always \
 
 观察日志发现，`node2`和`node3`都成功join到了`node1`所在的数据中心`dc1`。当集群中有3台`Consul Server`启动时，`node1`被选举为`dc1`中的主节点。然后，`node1`会通过心跳检查的方式，不断地对`node2`和`node3`进行健康检查。
 
-#### 启动Client节点
+### 启动Client节点
 
 **node4**:
 
@@ -262,7 +262,7 @@ docker run -d --name=node4  --restart=always \
 
 可以发现：`node4`是以`Client`模式启动运行的。启动后完成后，把`dc1`数据中心中的以`Server`模式启动的节点`node1`、`node2`和`node3`都添加到**本地缓存列表**中。当客户端向`node4`发起服务发现的请求后，`node4`会通过`RPC`将请求转发给`Server`节点中的其中一台做处理。
 
-#### 查看集群状态
+### 查看集群状态
 
 ```shell
 docker exec -t node1 consul members
@@ -274,13 +274,13 @@ docker exec -t node1 consul members
 
 ## Docker安装Registrator
 
-#### 拉取Registrator的镜像
+### 拉取Registrator的镜像
 
 ```shell
 docker pull gliderlabs/registrator:latest
 ```
 
-#### 启动Registrator节点
+### 启动Registrator节点
 
 ```shell
 docker run -d --name=registrator \
@@ -303,7 +303,7 @@ docker run -d --name=registrator \
 2. 同步当前宿主机的启用容器，以及所有的服务端口；
 3. 分别将各个容器发布的服务地址/端口注册到Consul的服务注册列表。
 
-#### 查看Consul的注册状态
+### 查看Consul的注册状态
 
 `Consul`提供了一个`Web UI`来可视化**服务注册列表**、**通信节点**、**数据中心**和**键/值存储**等，直接访问宿主机的`8500`端口。
 

@@ -18,7 +18,7 @@ date: 2019-06-17 10:44:36
 
 ## 环境配置
 
-#### **查看selinux状态**
+### **查看selinux状态**
 
 ```shell
 [root@localhost ~]# sestatus  
@@ -42,13 +42,13 @@ Policy deny_unknown status:     allowed
 Max kernel policy version:      28
 ```
 
-####  **临时关闭 sellinux**
+###  **临时关闭 sellinux**
 
 ```shell
 [root@localhost ~]# setenforce 0
 ```
 
-####  永久关闭
+###  永久关闭
 
 ```shell
 #可以修改配置文件/etc/selinux/config,将其中SELINUX设置为disabled。
@@ -87,7 +87,7 @@ SELINUXTYPE=targeted
 SELinux status:                 disabled
 ```
 
-####  **关闭防火墙**
+###  **关闭防火墙**
 
 直接关闭防火墙
 
@@ -100,7 +100,7 @@ systemctldisable firewalld.service #禁止firewall开机启动
 
 我们现在来配置mysql数据库。
 
-#### 开机自启动mysql，并启动mysql
+### 开机自启动mysql，并启动mysql
 
 ```shell
 systemctlenable mariadb
@@ -112,7 +112,7 @@ systemctlstart mariadb
 
  
 
-#### 初始化mysql数据库，并配置root用户密码
+### 初始化mysql数据库，并配置root用户密码
 
 ```shell
 mysql_secure_installation
@@ -132,7 +132,7 @@ mysql_secure_installation
 
 上图中主要是配置匿名用户、test用户以及root用户远程连接等相关配置。
 
-#### 创建zabbix数据库及其用户
+### 创建zabbix数据库及其用户
 
 ```shell
 mysql -u root –p
@@ -171,7 +171,7 @@ yum install -y  zabbix-proxy zabbix-java-gateway zabbix-agent zabbix-get mariadb
 
 以上安装完毕后，我们现在开始进行zabbix的相关配置。
 
-#### 导入zabbix数据库结构：
+### 导入zabbix数据库结构：
 
 ```shell
 cd /usr/share/doc/zabbix-proxy-mysql-3.0.9/
@@ -180,7 +180,7 @@ zcat schema.sql.gz| mysql -uroot -p zabbix_proxy
 
 ![img](zabbix-proxy安装部署/8.png)
 
-#### 修改zabbix proxy的配置文件
+### 修改zabbix proxy的配置文件
 
 ```shell
 vim  /etc/zabbix/zabbix-proxy.conf
@@ -234,7 +234,7 @@ StartSNMPTrapper=1
 
 ![img](zabbix-proxy安装部署/9.png)
 
-####  启动服务
+###  启动服务
 
 ```shell
 # service  zabbix-java-gateway start
@@ -247,7 +247,7 @@ StartSNMPTrapper=1
 
  
 
-#### 更新备监控的主机zabbix_agentd.win.conf
+### 更新备监控的主机zabbix_agentd.win.conf
 
 ```shell
 Server=192.168.11.140

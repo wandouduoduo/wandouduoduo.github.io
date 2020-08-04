@@ -17,7 +17,7 @@ glusterfs作为分布式存储，优点和安装这里就不再赘述了，看�
 
 ## 命令详解
 
-####  服务器节点
+###  服务器节点
 
 ```bash
 #查看所有节点信息，显示时不包括本节点
@@ -30,7 +30,7 @@ gluster peer detach NODE-NAME
 
  
 
-#### glusterd服务
+### glusterd服务
 
 ```bash
 #启动glusterd服务
@@ -43,9 +43,9 @@ gluster peer detach NODE-NAME
 
  
 
-#### 卷管理
+### 卷管理
 
-##### 创建卷
+#### 创建卷
 
 **复制卷**
 
@@ -95,13 +95,13 @@ gluster peer detach NODE-NAME
 示例：gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1/brick server2:/exp2/brick server3:/exp3/brick server4:/exp4/brick
 ```
 
-##### 启动卷
+#### 启动卷
 
 ```bash
 gluster volume start test-volume
 ```
 
-#####  停止卷
+####  停止卷
 
 ```bash
 gluster volume stop test-volume
@@ -114,7 +114,7 @@ gluster volume stop test-volume
 gluster volume delete test-volume 
 ```
 
-##### 查看卷
+#### 查看卷
 
 ```bash
 #列出集群中的所有卷
@@ -127,20 +127,20 @@ gluster volume status [all]
 gluster volume status [detail| clients | mem | inode | fd]
 ```
 
-##### 配置卷
+#### 配置卷
 
 ```bash
  gluster volume set <VOLNAME> <OPTION> <PARAMETER>
 ```
 
-#####  扩展卷
+####  扩展卷
 
 ```bash
 gluster volume add-brick <VOLNAME> <NEW-BRICK>
 #注意，如果是复制卷或者条带卷，则每次添加的Brick数必须是replica或者stripe的整数倍。
 ```
 
-##### 收缩卷
+#### 收缩卷
 
 ```bash
 #先将数据迁移到其它可用的Brick，迁移结束后才将该Brick移除：
@@ -152,7 +152,7 @@ gluster volume remove-brick commit
 #注意，如果是复制卷或者条带卷，则每次移除的Brick数必须是replica或者stripe的整数倍。
 ```
 
-#####  迁移卷
+####  迁移卷
 
 ```bash
 #使用start命令开始进行迁移：
@@ -167,7 +167,7 @@ gluster volume replace-brick status
 gluster volume replace-brick commit
 ```
 
-##### 重新均衡卷
+#### 重新均衡卷
 
 ```bash
 #不迁移数据：
@@ -178,15 +178,15 @@ gluster volume rebalance status
 gluster volume rebalance stop
 ```
 
-#### Brick管理
+### Brick管理
 
-##### 添加Brick
+#### 添加Brick
 
 ```bash
 gluster volume add-brick test-volume 192.168.1.{151,152}:/mnt/brick2
 ```
 
-##### 删除Brick
+#### 删除Brick
 
 ```bash
 #若是副本卷，则移除的Bricks数是replica的整数倍
@@ -197,7 +197,7 @@ gluster volume remove-brick test-volume 192.168.1.{151,152}:/mnt/brick2 status
 gluster volume remove-brick test-volume 192.168.1.{151,152}:/mnt/brick2 commit
 ```
 
-##### 替换Brick
+#### 替换Brick
 
 任务：把192.168.1.151:/mnt/brick0 替换为192.168.1.151:/mnt/brick2
 
@@ -235,7 +235,7 @@ gluster volume replace-brick test-volume 192.168.1.151:/mnt/brick0 .152:/mnt/bri
 #此时我们再往 /sf/data/vs/gfs/rep2上添加数据的话，数据会同步到 192.168.1.152:/mnt/brick0和192.168.1.152:/mnt/brick2上。而不会同步到192.168.1.151:/mnt/brick0 上。
 ```
 
-#### 文件系统扩展属性
+### 文件系统扩展属性
 
 ```bash
 #获取文件扩展属性
@@ -245,7 +245,7 @@ getfattr -d -m "trusted.afr.*" -e hex filename
 
 ## 案例
 
-#### 增加节点
+### 增加节点
 
 ```bash
 #hosts文件中添加对应服务器解析
@@ -264,7 +264,7 @@ mkdir -p /brick/gv0
 gluster volume add-brick gv0 replica 2 gs2:/brick/gv0  force
 ```
 
-#### 删除节点
+### 删除节点
 
 ```bash
 #查看节点信息

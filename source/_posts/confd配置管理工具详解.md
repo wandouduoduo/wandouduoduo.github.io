@@ -51,7 +51,7 @@ confd --help
 
 `Confd`通过读取后端存储的配置信息来动态更新对应的配置文件，对应的后端存储可以是`etcd`，`redis`等，其中etcd的v3版本对应的存储后端为`etcdv3`。
 
-#### 创建confdir
+### 创建confdir
 
 confdir底下包含两个目录:
 
@@ -62,7 +62,7 @@ confdir底下包含两个目录:
 mkdir -p /etc/confd/{conf.d,templates}
 ```
 
-#### 模板源
+### 模板源
 
 模板源配置文件是`TOML`格式的文件，主要包含配置的生成逻辑，例如模板源，后端存储对应的keys，命令执行等。默认目录在`/etc/confd/conf.d`。
 
@@ -99,7 +99,7 @@ check_cmd = "/usr/sbin/nginx -t -c {{.src}}"
 reload_cmd = "/usr/sbin/service nginx reload"
 ```
 
-#### 模板
+### 模板
 
 `Template`定义了单一应用配置的模板，默认存储在`/etc/confd/templates`目录下，模板文件符合Go的[`text/template`](http://golang.org/pkg/text/template/)格式。
 

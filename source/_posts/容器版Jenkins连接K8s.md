@@ -29,13 +29,13 @@ date: 2020-07-02 17:08:51
 
 ## 教程
 
-#### 安装k8s插件
+### 安装k8s插件
 
 系统管理->管理插件->可选插件,   搜索kubernetes plugin（没有选择kubernetes）并选择安装。
 
 
 
-#### 配置插件连接k8s集群
+### 配置插件连接k8s集群
 
 点击系统管理->系统设置->添加一个云,  在下拉菜单中选择kubernets并添加，如下图所示：
 
@@ -43,7 +43,7 @@ date: 2020-07-02 17:08:51
 
 
 
-#### 云kubernetes配置
+### 云kubernetes配置
 
 注：Name值任意添加，Kubernetes URL值添加K8S  apiserver连接地址和端口，jenkins URL值添加jenkins UI访问地址和端口,如下图所示：
 
@@ -51,13 +51,13 @@ date: 2020-07-02 17:08:51
 
 
 
-#### 添加云pod template并配置
+### 添加云pod template并配置
 
 [参考教程](https://wandouduoduo.github.io/articles/7aff7329.html)
 
 
 
-#### 配置云连接K8S集群的验证文件
+### 配置云连接K8S集群的验证文件
 
 ```bash
 #在jenkins所在的node节点上操作
@@ -79,7 +79,7 @@ mkdir -p /opt/crt/
 
 ```
 
-#### 生产Client P12认证文件cert.pfx，并下载至本地windows
+### 生产Client P12认证文件cert.pfx，并下载至本地windows
 
 ```bash
 openssl pkcs12 -export -out /opt/crt/cert.pfx -inkey /opt/crt/client.key -in /opt/crt/client.crt -certfile /opt/crt/ca.crt
@@ -91,7 +91,7 @@ sz /opt/crt/cert.pfx
 #注：自定义一个password并牢记
 ```
 
-#### 在云k8s中添加凭证
+### 在云k8s中添加凭证
 
 添加凭证--> 首先密码填写123--> 类型 --> Certificate -->  Upload PKCS#12 certificate --> 上传证书 --> 选择文件--> cert --> 打开 --> 上传 --> 添加 --> 选择凭证
 
@@ -109,19 +109,19 @@ sz /opt/crt/cert.pfx
 
 ![](容器版Jenkins连接K8s/8.png)
 
-#### 添加命名空间
+### 添加命名空间
 
 Kubernetes 命名空间中的值添加/root/.kube/config文件中cluster部分中name的内容（否则连接失败）
 
 ![](容器版Jenkins连接K8s/9.png)
 
-#### 测试连接kubernetes集群
+### 测试连接kubernetes集群
 
 ![](容器版Jenkins连接K8s/10.png)
 
 ![](容器版Jenkins连接K8s/11.png)
 
-#### 配置jenkins jnlp代理端口
+### 配置jenkins jnlp代理端口
 
 系统管理->全局安全配置中的"代理"项,指定端口为50000
 
@@ -129,7 +129,7 @@ Kubernetes 命名空间中的值添加/root/.kube/config文件中cluster部分�
 
 ## 拍错
 
-#### 显示证书不对
+### 显示证书不对
 
 Error testing connection https://192.168.0.91:6443: Get Key failed: Given final block not properly padded. Such issues can arise if a bad key is used during decryption
 
@@ -139,7 +139,7 @@ Error testing connection https://192.168.0.91:6443: Get Key failed: Given final 
 
 
 
-#### 显示无法连接
+### 显示无法连接
 
 解决：
 

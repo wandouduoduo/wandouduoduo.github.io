@@ -20,7 +20,7 @@ date: 2020-06-30 12:19:41
 
 ## 概述
 
-#### Volume
+### Volume
 
 Volume可以支持`local`、`nfs`、`cephfs`、`glusterfs`以及各种云计算平台。
 
@@ -47,7 +47,7 @@ spec:
       type: Directory
 ```
 
-#### **PV和PVC**
+### **PV和PVC**
 
 PV的全称是: PersistentVolume (持久化卷)，是对底层的共享存储的一种抽象，PV由管理员进行创建和配置，它和具体的底层的共享存储技术的实现方式有关，比如Ceph、GlusterFS、NFS等，都是通过插件机制完成与共享存储的对接.
 
@@ -59,7 +59,7 @@ PVC的全称是: PersistenVolumeClaim (持久化卷声明)，PVC是用户存储�
 
 ## 演示
 
-#### 安装NFS服务
+### 安装NFS服务
 
 #这里我使用单独服务器进行演示，实际上随便一台服务器安装nfs都可以 (建议和kubernetes集群分开，找单独一台机器)
 
@@ -91,7 +91,7 @@ systemctl status nfs
  rpcinfo |grep nfs
 ```
 
-#### NFS客户端
+### NFS客户端
 
 **我们nfs server端已经完毕，接下来在所有需要nfs挂载的集群节点安装以下**
 
@@ -124,7 +124,7 @@ mount -t nfs 10.4.82.118:/data1/k8s-volume /data1/k8s
 #所有需要nfs节点这样挂载就可以
 ```
 
-#### 创建PV
+### 创建PV
 
 有了我们NFS共享存储，下面就可以来使用PV和PVC。PV作为存储资源，主要包括存储能力、访问模式、存储类型、回收策略等关键信息。pv.yaml如下
 
@@ -189,7 +189,7 @@ AccessModes 是用来对PV进行访问模式的设置，用于描述用户应用
 
   
 
-#### **创建PVC**
+### **创建PVC**
 
 前面说过，PV实际上没有创建存储，相当于我们node一样，还需要创建Pod进行消费，接下来我们进行PVC的创建与配置
 
@@ -223,7 +223,7 @@ kubectl get pv
 #在Kubernetes中会自动帮我们查看pv状态为Available并且根据声明pvc容量storage的大小进行筛选匹配，同时还会根据AccessMode进行匹配。如果pvc匹配不到pv会一直处于pending状态
 ```
 
-#### **使用Labels匹配PV与PVC**
+### **使用Labels匹配PV与PVC**
 
 pv与pvc中间还可以通过label标签进行匹配，配置如下
 
@@ -268,7 +268,7 @@ kubectl get pv, pvc
 #需要注意，当我们pvc申请的容量小于我们pv的容量是可以进行绑定的，当我们申请pvc的容量大于pv的容量是无法进行绑定的。 
 ```
 
-#### **Deployment引用pvc**
+### **Deployment引用pvc**
 
 ```yaml
 apiVersion: extensions/v1beta1

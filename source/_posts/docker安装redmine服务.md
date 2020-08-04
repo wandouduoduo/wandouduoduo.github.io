@@ -26,7 +26,7 @@ date: 2019-09-05 13:38:52
 
 ## 步骤
 
-#### 用SQLite3运行Redmine
+### 用SQLite3运行Redmine
 
 这是最简单的方式
 
@@ -34,7 +34,7 @@ date: 2019-09-05 13:38:52
 docker run -d --name sunredmine redmine:3.4
 ```
 
-#### 使用数据库容器运行Redmine
+### 使用数据库容器运行Redmine
 
 建议使用数据库服务器运行Redmine。
 
@@ -88,7 +88,7 @@ docker logs -f remine
 
 ## 功能完善
 
-#### 邮件
+### 邮件
 
 ```bash
 docker redmine:/usr/src/redmine/config/configuration.yml.example  ./
@@ -116,7 +116,7 @@ default:
 
 如果没有配置成功，则这个选项卡显示的是黄色的字，如未对邮件进行配置，config/configuration.yml。
 
-#### ldap接入和用户同步
+### ldap接入和用户同步
 
 原始的ldap认证，我试了下不完美，他需要创建用户然后使用ldap认证，也就是说还是需要先去创建用户。这样显得很麻烦
 

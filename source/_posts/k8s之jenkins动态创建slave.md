@@ -51,7 +51,7 @@ date: 2020-06-30 15:42:05
 
 ## 安装
 
-#### 创建namespace
+### 创建namespace
 
 创建一个kube-ops的 namespace（为了方便管理）
 
@@ -59,7 +59,7 @@ date: 2020-06-30 15:42:05
 $ kubectl create namespace kube-ops
 ```
 
-#### 创建pv和pvc
+### 创建pv和pvc
 
 创建pv、pvc或使用storageclass都可以，本实验使用前者（pvc.yaml）
 
@@ -102,7 +102,7 @@ spec:
 $ kubectl create -f pvc.yaml
 ```
 
-#### 权限绑定
+### 权限绑定
 
 给jenkins绑定权限（rbac.yaml），如果对rbac不熟悉，可以先给定cluster-admin权限
 
@@ -163,7 +163,7 @@ role.rbac.authorization.k8s.io "jenkins" created
 rolebinding.rbac.authorization.k8s.io "jenkins" created
 ```
 
-#### 创建jenkins  master
+### 创建jenkins  master
 
 新建一个 Deployment：(jenkins.yaml)
 
@@ -267,7 +267,7 @@ deployment.extensions "jenkins" created
 service "jenkins" created
 ```
 
-#### 排错
+### 排错
 
 创建完成后，要去拉取镜像可能需要等待一会儿，查看下 Pod 的状态：
 
@@ -322,7 +322,7 @@ NAME                        READY     STATUS        RESTARTS   AGE
 jenkins-7f5494cd44-smn2r   1/1       Running       0          25s
 ```
 
-#### 访问
+### 访问
 
 等到服务启动成功后，可以根据Node节点的 IP:30002 端口就可以访问 jenkins 服务了，可以根据提示信息进行安装配置即可：
 
@@ -343,7 +343,7 @@ cat /data/k8s/jenkins/secrets/initialAdminPassword
 
 ![](k8s之jenkins动态创建slave/4.png)
 
-#### 配置jenkins动态slave
+### 配置jenkins动态slave
 
 **安装kubernetes 插件**
 

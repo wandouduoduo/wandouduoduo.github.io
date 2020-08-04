@@ -26,7 +26,7 @@ date: 2020-07-01 19:26:55
 
 ![](jenkins配置jdk、git、maven等工具/1.png)
 
-#### 配置jdk
+### 配置jdk
 
 **查找jdk安装路径**
 
@@ -46,7 +46,7 @@ echo $JAVA_HOME
 
 ![](jenkins配置jdk、git、maven等工具/3.png)
 
-#### 配置git
+### 配置git
 
 **查找git安装路径**
 
@@ -62,7 +62,7 @@ git: /usr/bin/git /usr/share/man/man1/git.1.gz
 
 ![](jenkins配置jdk、git、maven等工具/4.png)
 
-#### 配置maven
+### 配置maven
 
 **查找maven安装路径**
 

@@ -5,7 +5,6 @@ categories:
  -
 tags: 
  - 
-description: {{ title }}
 copyright: true
 ---
 
@@ -17,3 +16,4 @@ copyright: true
 
 
 <!--more-->
+

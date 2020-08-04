@@ -26,7 +26,7 @@ date: 2019-09-02 12:00:40
 
 ### 备份你的数据
 
-#### 官方备份方法
+### 官方备份方法
 
 点击一般设置的，点击备份和还原
 
@@ -40,7 +40,7 @@ date: 2019-09-02 12:00:40
 
 ## 安装部署最新版
 
-#### 破解文件备份
+### 破解文件备份
 
 ```
 mv /opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-3.4.1.jar ~/atlassian-extras-2.4.jar
@@ -48,11 +48,11 @@ mv /opt/atlassian/confluence/confluence/WEB-INF/lib/atlassian-extras-decoder-v2-
 
 
 
-#### 下载
+### 下载
 
 [官网下载地址](https://www.atlassian.com/software/confluence/download)，放在/opt
 
-#### 执行
+### 执行
 
 ```bash
 chmod +x atlassian-confluence-6.15.1-x64.bin   #赋予可执行权限
@@ -63,23 +63,23 @@ chmod +x atlassian-confluence-6.15.1-x64.bin   #赋予可执行权限
 
 ![](confluence6-3-1升级最新版本6-15-8/2.png)
 
-#### 备份
+### 备份
 
 下面询问你是否要备份，上面我们已经自己备份了，也可选他默认备份
 
 ![](confluence6-3-1升级最新版本6-15-8/3.png)
 
-#### 确认更新
+### 确认更新
 
 会展示了一些改变的文件（破解文件变了，下面伏笔），问你同意
 
 ![](confluence6-3-1升级最新版本6-15-8/4.png)
 
-#### 成功部署
+### 成功部署
 
 访问  ip:8090
 
-#### 重新破解
+### 重新破解
 
 破解包被升级，有机会出现下面画面，代表验证不通过
 
@@ -101,7 +101,7 @@ mv ~/atlassian-extras-2.4.jar /opt/atlassian/confluence/confluence/WEB-INF/lib/a
 
 有的同学可能没有备份破解文件，或者可能不是自己搭建的，现在刚刚接手。那么如何破解呢？
 
-#### 下载破解工具
+### 下载破解工具
 
 链接: https://pan.baidu.com/s/13GZ-3XutMEyE3cUl9rwg_Q 提取码: 7gtd 
 
@@ -109,7 +109,7 @@ mv ~/atlassian-extras-2.4.jar /opt/atlassian/confluence/confluence/WEB-INF/lib/a
 
 ![](confluence6-3-1升级最新版本6-15-8/7.png)
 
-#### 获取信息
+### 获取信息
 
 ```bash
 # 升级时
@@ -117,13 +117,13 @@ grep -Po "(?<=server.id\"\>).*(?=\<)" /var/atlassian/application-data/confluence
 # 全新安装此步骤跳过
 ```
 
-#### 生产key
+### 生产key
 
 先点.patch加载从服务器复制出来的atlassian-extras-2.4.jar文件，然后点.gen破解
 
 ![](confluence6-3-1升级最新版本6-15-8/8.png)
 
-#### 破解
+### 破解
 
 如权限安装，如下图填写
 

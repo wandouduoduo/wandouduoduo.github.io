@@ -18,11 +18,11 @@ date: 2019-07-16 18:12:45
 
 ## 环境
 
-#### 操作系统
+### 操作系统
 
 系统：[CentOS](http://www.linuxidc.com/topicnews.aspx?tid=14)-7-x86_64-Everything-1511
 
-#### 版本控制
+### 版本控制
 
 jdk版本(cmdb推荐版本1.8，采用1.8.0_131)：[http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 
 
@@ -36,14 +36,14 @@ tomcat版本(cmdb推荐版本7.068，采用7.0.79)：[http://mirror.bit.edu.cn/a
 
 ### 安装jdk
 
-#### 1）下载jdk
+### 1）下载jdk
 
 ```bash
 cd /usr/local/src/
 wget http://download.Oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.rpm?AuthParam=1499065226_0efcc513ff7eb3edb189b0ee0eb7f2d1
 ```
 
-#### 2）安装jdk
+### 2）安装jdk
 
 ```shell
 #安装完成后可使用"java --version"查看环境是否准备就绪
@@ -52,14 +52,14 @@ rpm -ivh jdk-8u131-linux-x64.rpm
 
 ### 安装tomcat 
 
-#### 1）下载tomcat
+### 1）下载tomcat
 
 ```bash
 #注意是下载二进制包，非src包" apache-tomcat-7.0.79-src.tar.gz"
 wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-7/v7.0.79/bin/apache-tomcat-7.0.79.tar.gz
 ```
 
-#### 2）解压&设置tomcat
+### 2）解压&设置tomcat
 
 ```bash
 tar -zxvf apache-tomcat-7.0.79.tar.gz -C /usr/local/
@@ -67,7 +67,7 @@ cd /usr/local/
 mv apache-tomcat-7.0.79/ tomcat7/
 ```
 
-#### 3）设置环境变量
+### 3）设置环境变量
 
 ```bash
 #"tomcat7.sh"中的"tomcat7"部分自定义
@@ -79,7 +79,7 @@ export PATH=$PATH:$CATALINA_HOME/bin
 source /etc/profile
 ```
 
-#### 4）设置iptables
+### 4）设置iptables
 
 ```bash
 #tcp5432是postgresql的监听端口，tcp8080是tomcat的监听端口
@@ -91,7 +91,7 @@ vim /etc/sysconfig/iptables
 service iptables restart
 ```
 
-#### 5）设置开机启动（CentOS7.x）
+### 5）设置开机启动（CentOS7.x）
 
 **增加tomcat启动参数**
 
@@ -128,22 +128,22 @@ WantedBy=multi-user.target
 systemctl enable tomcat.service
 ```
 
-#### 6）启动&验证tomcat
+### 6）启动&验证tomcat
 
-##### **启动tomcat**
+#### **启动tomcat**
 
 ```bash
 #或者使用systemctl命令
 catalina.sh start
 ```
 
-##### 查看端口
+#### 查看端口
 
 ```bash
 netstat -tunlp
 ```
 
-##### web访问
+#### web访问
 
 浏览器：http://ip:8080
 

@@ -26,13 +26,13 @@ hexo搭建完静态博客后，有同学只看技术文档比较枯燥，会犯�
 
 ## 方法一
 
-#### 播放器安装
+### 播放器安装
 
 [APlayer](https://github.com/MoePlayer/APlayer)，下载github压缩包，解压后把dist文件夹复制到\themes\next\source目录中。
 
 ![](Hexo增加APlayer播放音乐/2.png)
 
-#### 播放列表配置
+### 播放列表配置
 
 在dist目录里，新建music.js文件，并把如下代码粘贴进去。
 
@@ -66,7 +66,7 @@ const ap = new APlayer({
 
 ![](Hexo增加APlayer播放音乐/3.png)
 
-#### 播放器引入
+### 播放器引入
 
 播放器和列表准备好后，需要在网站中引入后，才可以正常使用。
 
@@ -84,7 +84,7 @@ const ap = new APlayer({
 
 ![](Hexo增加APlayer播放音乐/5.png)
 
-#### 部署网站
+### 部署网站
 
 播放器加入完成，网站需重新部署
 
@@ -98,19 +98,19 @@ hexo cl && hexo g && gulp && hexo d
 
 是直接嵌入外链播放器即可，以网易云为例。具体步骤如下：
 
-#### 生成外链播放器代码
+### 生成外链播放器代码
 
 ![](Hexo增加APlayer播放音乐/6.png)
 
 ![](Hexo增加APlayer播放音乐/7.png)
 
-#### 嵌入网站
+### 嵌入网站
 
 在themes\next\layout\_macro\sidebar.swig文件中找到合适位置，把上面生成的外链播放器代码加入即可。
 
 ![](Hexo增加APlayer播放音乐/8.png)
 
-#### 部署网站
+### 部署网站
 
 播放器加入完成，网站需重新部署
 

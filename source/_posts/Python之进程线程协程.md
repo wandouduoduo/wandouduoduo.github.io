@@ -34,7 +34,7 @@ python中的多线程，有一个GIL在同一时间只有一个线程在工作�
 
 ThreadingTCPServer实现的Socket服务器内部会为每个client创建一个 “**线程**”，该线程用来和客户端进行交互。
 
-#### ThreadingTCPServer基础
+### ThreadingTCPServer基础
 
 使用ThreadingTCPServer:
 
@@ -92,7 +92,7 @@ while True:
 sk.close()
 ```
 
-#### ThreadingTCPServer源码剖析
+### ThreadingTCPServer源码剖析
 
  ![](Python之进程线程协程/2.png)
 

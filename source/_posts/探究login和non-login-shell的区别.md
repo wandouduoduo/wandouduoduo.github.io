@@ -14,11 +14,11 @@ date: 2020-07-13 16:41:47
 
 ## 介绍
 
-#### login shell
+### login shell
 
 取得bash时需要完整的登入流程的，就称为login shell。举例来说，你要由tty1~tty6登入，需要输入用户的账号和密码，此时取得的bash就称为『login shell』啰；
 
-#### non-login shell
+### non-login shell
 
 取得bash接口的方法不需要重复登入的举动。
 
@@ -79,7 +79,7 @@ export AAA=$((AAA+1))
 export AAA=$((AAA+10))
 ```
 
-#### login shell
+### login shell
 
 **按照环境变量的加载顺序:**
 
@@ -99,7 +99,7 @@ AAA=$((AAA+10)),AAA=1,AAA=$((AAA+10))=11
 
 
 
-#### non-login shell
+### non-login shell
 
 采用ssh远程执行来验证
 **按照环境变量的加载顺序**：
@@ -118,7 +118,7 @@ root@1.1.1.2's password:
 
 
 
-#### login shell下启动bash子进程
+### login shell下启动bash子进程
 
 bash子进程是一个non-login shell，但是它会继承父进程中的环境变量
 **按照环境变量的加载顺序**：

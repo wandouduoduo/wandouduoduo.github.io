@@ -31,7 +31,7 @@ nfs/Ceph持久存储   [参考教程](https://wandouduoduo.github.io/articles/3a
 
 ## M/S模式实现
 
-#### 创建Master镜像文件
+### 创建Master镜像文件
 
 ```bash
 #编写Dockerfile：
@@ -57,7 +57,7 @@ EOF
 #安装libltdl7.* 库，否则无法使用宿主机的docker
 ```
 
-#### 构建Master镜像
+### 构建Master镜像
 
 ```bash
 docker build -t jenkinsci/jenkins:v1 /home/jenkins-dockerfile/
@@ -65,7 +65,7 @@ docker build -t jenkinsci/jenkins:v1 /home/jenkins-dockerfile/
 
 
 
-#### 启动YAML配置文件
+### 启动YAML配置文件
 
 ```bash
 #jenkins命令空间创建
@@ -204,7 +204,7 @@ EOF
 
 
 
-#### 启动Jenkins Master容器
+### 启动Jenkins Master容器
 
 ```bash
 kubectl create -f namespace-jenkins.yaml
@@ -215,7 +215,7 @@ kubectl apply -f jenkins-service.yaml
 
 
 
-#### 创建Jenkins slave镜像文件
+### 创建Jenkins slave镜像文件
 
 ```bash
 #需要使用官方镜像cnych-jenkins，其他的镜像里面都没有kubectl工具，都试过。
@@ -241,13 +241,13 @@ EOF
 #设置启动用户为root
 ```
 
-#### 构建Slave镜像
+### 构建Slave镜像
 
 ```bash
 docker build -t cnych/jenkins:v1 /home/jenkins-dockerfile/
 ```
 
-#### 查看镜像列表
+### 查看镜像列表
 
 ```
 docker images
@@ -255,7 +255,7 @@ docker images
 
 
 
-#### 浏览器访问
+### 浏览器访问
 
 ```bash
 #访问jenkins
@@ -270,9 +270,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 471234cd0eb44ec3bfc4015fbacd599b
 ```
 
-#### 页面配置master
+### 页面配置master
 
-###### 升级和重置密码
+##### 升级和重置密码
 
 ```bash
 #然后会要求安装一些插件，这里选择默认安装即可，否则下一步打开是空白页
@@ -292,7 +292,7 @@ admin/471234cd0eb44ec3bfc4015fbacd599b
 #点击右上角的admin-》设置-》修改里面的密码为（jenkins@123）-》保存-》重新登录-》输入账号密码
 ```
 
-###### 安装插件
+##### 安装插件
 
 ```bash
 #Kubernetes Cli Plugin：该插件可直接在Jenkins中使用kubernetes命令行进行操作。
@@ -309,7 +309,7 @@ admin/471234cd0eb44ec3bfc4015fbacd599b
 
 
 
-###### 增加一个kubernetes云
+##### 增加一个kubernetes云
 
 ```bash
 #系统管理->系统设置，往下拉可看到云，点击新增一个云来新增一个kubernetes云
@@ -319,7 +319,7 @@ admin/471234cd0eb44ec3bfc4015fbacd599b
 
 
 
-###### 配置K8s Pod Template
+##### 配置K8s Pod Template
 
 其实就是配置Jenkins的jnlp-slave
 
@@ -339,7 +339,7 @@ admin/471234cd0eb44ec3bfc4015fbacd599b
 
 ![](k8s版jenkins带maven、jdk、git各种工具用master-slave模式实现CI-CD/4.png)
 
-###### 全局配置
+##### 全局配置
 
 点击 系统管理->全局工具配置，此处可配置配置一些常用的工具配置，比如java、ant、maven、docker
 
@@ -347,9 +347,9 @@ admin/471234cd0eb44ec3bfc4015fbacd599b
 
 
 
-#### 创建流水线任务项目
+### 创建流水线任务项目
 
-###### 新建任务项目
+##### 新建任务项目
 
 点击新建Item --> 进入任务配置界面-->选择Pipeline（中文版为：流水线）-->确定。则可编写Pipeline，进行任务配置
 
@@ -392,7 +392,7 @@ podTemplate(label: label, cloud: 'kubernetes',containers: [
 
 ![](k8s版jenkins带maven、jdk、git各种工具用master-slave模式实现CI-CD/7.png)
 
-###### 构建
+##### 构建
 
 ```bash
 #查看构建前的pod个数
@@ -418,17 +418,17 @@ kubectl get pod -n [NAMEspace]
 
 ## 使用宿主机的kubectl命令
 
-#### 镜像选择
+### 镜像选择
 
 slave镜像需要使用cnych/jenkins:jnlp，这个官方镜像里面有kubectl工具，其他的没有，都试过，上面就是用的这个镜像，所以直接下一步
 
-#### 挂载kubectl工具
+### 挂载kubectl工具
 
 /root/.kube 目录，我们将这个目录挂载到容器的 /home/jenkins/.kube 目录下面这是为了让我们能够在 Pod 的容器中能够使用 kubectl 工具来访问我们的 Kubernetes 集群，方便我们后面在 Slave Pod 部署 Kubernetes 应用。添加一个挂在路径，如下图所示：
 
 ![](k8s版jenkins带maven、jdk、git各种工具用master-slave模式实现CI-CD/10.png)
 
-#### pipline脚本
+### pipline脚本
 
 先试试是否能使用宿主机的kubectl命令，只查看一个pod情况：
 
@@ -456,7 +456,7 @@ podTemplate(label: label, cloud: 'kubernetes',containers: [
 
 
 
-#### 构建，查看控制台输出
+### 构建，查看控制台输出
 
 ![](k8s版jenkins带maven、jdk、git各种工具用master-slave模式实现CI-CD/11.png)
 
@@ -464,11 +464,11 @@ podTemplate(label: label, cloud: 'kubernetes',containers: [
 
 
 
-#### 使用jenkins-salve创建nignx项目
+### 使用jenkins-salve创建nignx项目
 
 
 
-###### pipline脚本
+##### pipline脚本
 
 ```bash
 def label = "jnlp-slave"
@@ -549,11 +549,11 @@ EOF
 }
 ```
 
-###### 开始构建
+##### 开始构建
 
 ![](k8s版jenkins带maven、jdk、git各种工具用master-slave模式实现CI-CD/12.png)
 
-###### 查看命名空间下的pod验证
+##### 查看命名空间下的pod验证
 
 ```bash
 #多次执行下面命令，对比输出结果
@@ -562,7 +562,7 @@ kubectl get pod -n jenkins
 
 
 
-###### 测试访问nginx
+##### 测试访问nginx
 
 浏览器访问http://x.x.x.x:31000
 
@@ -574,7 +574,7 @@ kubectl get pod -n jenkins
 
 
 
-###### 编写pipline脚本
+##### 编写pipline脚本
 
 
 
@@ -718,7 +718,7 @@ EOF
 
 
 
-###### 查看harbor仓库
+##### 查看harbor仓库
 
 http://192.168.0.98:5000
 
@@ -726,7 +726,7 @@ http://192.168.0.98:5000
 
 ## 补充
 
-#### 生成自定义Jenkins master镜像
+### 生成自定义Jenkins master镜像
 
 Dockerfile：
 
@@ -760,7 +760,7 @@ ENV PATH ${JAVA_HOME}/bin:${MAVEN_HOME}/bin:${PATH}
 3. 配置Maven仓库位置，以便启动时挂载宿主机仓库为容器中Maven仓库;
 4. 设置启动用户为root。
 
-#### 生成自定义Jenkins slave镜像
+### 生成自定义Jenkins slave镜像
 
 Dockerfile：
 

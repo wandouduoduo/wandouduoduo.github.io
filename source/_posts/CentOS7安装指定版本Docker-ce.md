@@ -28,7 +28,7 @@ Docker-EE指Docker企业版，为收费版本，由售后团队和技术团队�
 
 ## 安装
 
-#### 配置docker yum源
+### 配置docker yum源
 
 ```bash
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
@@ -36,7 +36,7 @@ yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce
 
 ![](CentOS7安装指定版本Docker-ce/1.png)
 
-#### 安装指定版本docker-ce
+### 安装指定版本docker-ce
 
 ```bash
 sudo yum update
@@ -53,7 +53,7 @@ yum install docker-ce-<VERSION STRING>
 
 ![](CentOS7安装指定版本Docker-ce/2.png)
 
-#### 启动docker
+### 启动docker
 
 ```bash
 systemctl start docker

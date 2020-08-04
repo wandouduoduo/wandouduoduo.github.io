@@ -38,7 +38,7 @@ LVS、Nginx、HAProxy 是目前使用最广泛的三种软件负载均衡软件�
 
 目前关于网站架构一般比较合理流行的架构方案：Web 前端采用 Nginx/HAProxy+Keepalived 作负载均衡器；后端采用 MySQ L数据库一主多从和读写分离，采用 LVS+Keepalived 的架构。
 
-#### **LVS**
+### **LVS**
 
 LVS 是 Linux Virtual Server 的简称，也就是 Linux 虚拟服务器。现在 LVS 已经是 Linux 标准内核的一部分，从 Linux2.4 内核以后，已经完全内置了 LVS 的各个功能模块，无需给内核打任何补丁，可以直接使用 LVS 提供的各种功能。
 
@@ -97,7 +97,7 @@ DR 负载均衡模式数据分发过程中不修改 IP 地址，只修改 mac �
 - 软件本身不支持正则表达式处理，不能做动静分离；而现在许多网站在这方面都有较强的需求，这个是 Nginx、HAProxy+Keepalived 的优势所在。
 - 如果是网站应用比较庞大的话，LVS/DR+Keepalived 实施起来就比较复杂了，相对而言，Nginx/HAProxy+Keepalived就简单多了。
 
-#### **Nginx**
+### **Nginx**
 
 Nginx 是一个强大的 Web 服务器软件，用于处理高并发的 HTTP 请求和作为反向代理服务器做负载均衡。具有高性能、轻量级、内存消耗少，强大的负载均衡能力等优势。
 
@@ -146,7 +146,7 @@ Nginx 实现负载均衡的分配策略有很多，Nginx 的 upstream 目前支�
 - Nginx 仅能支 持http、https 和 Email 协议，这样就在适用范围上面小些，这个是它的缺点
 - 对后端服务器的健康检查，只支持通过端口来检测，不支持通过 ur l来检测。不支持 Session 的直接保持，但能通过 ip_hash 来解决
 
-#### **HAProxy**
+### **HAProxy**
 
 HAProxy 的优点能够补充 Nginx 的一些缺点，比如支持 Session 的保持，Cookie 的引导；同时支持通过获取指定的 url 来检测后端服务器的状态。
 
@@ -158,7 +158,7 @@ HAProxy 负载均衡策略非常多：Round-robin（轮循）、Weight-round-rob
 
 ## 部署
 
-#### 准备
+### 准备
 
 修改系统内核文件
 
@@ -168,7 +168,7 @@ vim /etc/sysctl.conf 修改默认值0为1，开启内核路由转发模式
 net.ipv4.ip_forward = 1
 ```
 
-#### **源码安装**
+### **源码安装**
 
 ```bash
 yum install ipvsadm*
@@ -177,7 +177,7 @@ tar -zxvf ipvsadm-1.26.tar.gz
 make && make install
 ```
 
-#### 配置
+### 配置
 
 ```bash
 #添加虚拟IP地址，wrr表示给予权重的轮询。rr表示轮询
