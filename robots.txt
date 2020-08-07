@@ -1,13 +1,6 @@
 User-agent: *
 Allow: /
-Allow: /categories/
-Allow: /tags/ 
-Allow: /archives/
-Allow: /about/
-Disallow: /js/
-Disallow: /css/
-Disallow: /fonts/
-Disallow: /images/
+Disallow: /about/
 
 Sitemap: https://wandouduoduo.github.io/sitemap.xml
 Sitemap: https://wandouduoduo.gitee.io/sitemap.xml
