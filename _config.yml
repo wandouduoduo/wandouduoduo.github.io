@@ -30,7 +30,7 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render:
+skip_render: google25bff695acced0bf.html
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -127,6 +127,15 @@ tag_cloud:
     textHeight: 25
     outlineColor: '#E2E1D1'
     maxSpeed: 0.1 
+
+
+nofollow:
+  enable: true
+  field: site
+  exclude:
+    - 'wandouduoduo.github.io'
+    - 'wandouduoduo.gitee.io'
+    - 'wandouduoduo.netlify.com'
 
 #readmore
 # plugins:

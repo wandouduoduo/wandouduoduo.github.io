@@ -1,15 +1,22 @@
 User-agent: *
+
 Allow: /
 Allow: /categories/
-Allow: /tags/ 
+Allow: /tags/
 Allow: /archives/
 Allow: /about/
+Allow: /articles/
+Allow: /page/
+
+Disallow: /images/
 Disallow: /js/
 Disallow: /css/
-Disallow: /fonts/
-Disallow: /images/
+Disallow: /src/
+Disallow: /dist/
+Disallow: /static/
+Disallow: /live2dw/
 
 Sitemap: https://wandouduoduo.github.io/sitemap.xml
-Sitemap: https://wandouduoduo.gitee.io/sitemap.xml
+Sitemap: https://wandouduoduo.gitee.io/giteesitemap.xml
 Sitemap: https://wandouduoduo.github.io/baidusitemap.xml
-Sitemap: https://wandouduoduo.gitee.io/baidusitemap.xml
+Sitemap: https://wandouduoduo.gitee.io/giteebaidusitemap.xml

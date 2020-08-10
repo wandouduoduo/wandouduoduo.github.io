@@ -23,6 +23,7 @@
     "hexo-asset-image": "git+https://github.com/CodeFalling/hexo-asset-image.git",
     "hexo-baidu-url-submit": "^0.0.6",
     "hexo-deployer-git": "^1.0.0",
+    "hexo-filter-nofollow": "^2.0.2",
     "hexo-generator-archive": "^0.1.5",
     "hexo-generator-baidu-sitemap": "^0.1.6",
     "hexo-generator-category": "^0.1.3",
@@ -44,6 +45,6 @@
     "live2d-widget-model-shizuku": "^1.0.5"
   },
   "scripts": {
-    "push": "hexo cl && hexo g && gulp && hexo d && bash push_gitee.sh"
+    "push": "hexo cl && hexo g && gulp && bash push_gitee.sh && hexo d && python3 update_gitee.py" 
   }
 }
