@@ -1,7 +1,5 @@
-# 允许所有用户代理的浏览器爬虫进行访问
 User-agent: *
 
-# 允许访问的内容
 Allow: /
 Allow: /categories/
 Allow: /tags/
@@ -10,7 +8,6 @@ Allow: /about/
 Allow: /articles/
 Allow: /page/
 
-# 不允许访问的内容
 Disallow: /images/
 Disallow: /js/
 Disallow: /css/
@@ -18,7 +15,6 @@ Disallow: /src/
 Disallow: /dist/
 Disallow: /static/
 Disallow: /live2dw/
-
 
 Sitemap: https://wandouduoduo.github.io/sitemap.xml
 Sitemap: https://wandouduoduo.gitee.io/gitee_sitemap.xml
