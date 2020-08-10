@@ -21,6 +21,6 @@ Disallow: /live2dw/
 
 
 Sitemap: https://wandouduoduo.github.io/sitemap.xml
-Sitemap: https://wandouduoduo.gitee.io/sitemap.xml
+Sitemap: https://wandouduoduo.gitee.io/gitee_sitemap.xml
 Sitemap: https://wandouduoduo.github.io/baidusitemap.xml
-Sitemap: https://wandouduoduo.gitee.io/baidusitemap.xml
+Sitemap: https://wandouduoduo.gitee.io/gitee_baidusitemap.xml
