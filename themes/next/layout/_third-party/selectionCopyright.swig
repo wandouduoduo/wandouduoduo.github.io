@@ -30,7 +30,6 @@
 <button id="selectionCopyright" disabled="disabled">本文发表于[<a href="http://wandouduoduo.github.io/">豌豆多多</a>]分享请注明来源！</button>
 
 <script>
-window.onload = function() {
     function selectText() {
         if (document.selection) { //IE浏览器下
             return document.selection.createRange().text; //返回选中的文字
@@ -38,7 +37,8 @@ window.onload = function() {
             return window.getSelection().toString(); //返回选中的文字
         }
     }
-    var content = document.getElementsByTagName("body")[0];
+    // var content = document.getElementsByTagName("body")[0];
+    var content = document.getElementById("content");
     var scTip = document.getElementById('selectionCopyright');
 
     content.onmouseup = function(ev) { //设定一个onmouseup事件
@@ -65,5 +65,4 @@ window.onload = function() {
     document.onclick = function() {
         scTip.style.display = 'none';
     };
-};
 </script>

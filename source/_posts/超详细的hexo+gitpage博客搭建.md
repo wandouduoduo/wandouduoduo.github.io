@@ -1,8 +1,8 @@
 ---
 title: 超详细的hexo+github page搭建.md
 categories:
-  - 运维技术
-  - 服务部署
+  - 网站平台
+  - 博客
 tags:
   - Hexo
   - Git

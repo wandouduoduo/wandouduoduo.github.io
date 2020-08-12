@@ -142,7 +142,7 @@ menu:
   tags: /tags/ || tags
   archives: /archives/ || archive
   about: /about/ || user
-  #schedule: /schedule/ || calendar
+  tools: /tools/ || heartbeat
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
 
@@ -209,10 +209,7 @@ links:
   菜鸟教程: https://www.runoob.com/   
   自强学堂: https://code.ziqiangxuetang.com/
   朱双印博客: http://www.zsythink.net/
-  于佩康博客: http://www.ypk1226.com/
-  逗哥架构师之路: https://www.dgstack.cn/
   运维饼铛: https://pincheng.xyz/
-  靳闯博客: https://me.jinchuang.org/
 
 # Sidebar Avatar
 avatar:

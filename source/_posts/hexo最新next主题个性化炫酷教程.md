@@ -1,8 +1,8 @@
 ---
-title: hexo最新next主题个性化炫酷教程
+title: hexo最新next主题炫酷特效教程
 categories:
-  - 运维技术
-  - 服务部署
+  - 网站平台
+  - 博客
 tags:
   - Hexo
 copyright: true
@@ -10,11 +10,11 @@ abbrlink: 1071f0bc
 date: 2019-05-29 01:26:12
 ---
 
-# 目的
+有很多next主题的网站都配置了很多特效，网站看起来很是炫酷。人都是视觉动物，让你的网站或博客酷炫、与众不同，是提高网站逼格和吸引人气的必备技能。那么这些特效都是是怎么配置的呢？接下来我会讲一讲如何配置next6.x或7.x最新版本实现一些炫酷的效果。先看下我博客网站的效果吧：wandouduoduo.github.io
 
-看到有些next主题的网站很炫酷，那么是怎么配置的呢？接下来我会讲一讲如何配置next6.x或7.x最新版本实现一些炫酷的效果。先看下我博客网站的效果吧：wandouduoduo.github.io
 
-# 参考
+
+## 参考
 
 [Hexo官网](https://hexo.io/zh-cn/)
 

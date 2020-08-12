@@ -1,10 +1,11 @@
 ---
 title: Hexo增加APlayer播放音乐
 categories:
-  - 运维技术
-  - 服务部署
+  - 网站平台
+  - 博客
 tags:
   - Hexo
+  - Aplayer
 copyright: true
 abbrlink: 4929566e
 date: 2020-01-15 17:38:10

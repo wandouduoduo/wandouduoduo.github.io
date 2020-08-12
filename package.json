@@ -45,6 +45,6 @@
     "live2d-widget-model-shizuku": "^1.0.5"
   },
   "scripts": {
-    "push": "hexo cl && hexo g && gulp && bash push_gitee.sh && hexo d && python3 update_gitee.py" 
+    "push": "hexo cl && hexo g && gulp && bash push_gitee.sh && hexo d && python3 update_gitee.py"
   }
 }

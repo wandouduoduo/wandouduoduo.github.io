@@ -183,7 +183,6 @@
           {% endif %}
         </div>
       {% endif %}
-
       
       {% if site.tags.length > 1 %}
       <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>

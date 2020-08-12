@@ -8,6 +8,7 @@ Allow: /about/
 Allow: /articles/
 Allow: /page/
 
+DisAllow: /tools/
 Disallow: /images/
 Disallow: /js/
 Disallow: /css/
