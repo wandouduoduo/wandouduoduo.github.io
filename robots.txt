@@ -12,7 +12,10 @@ DisAllow: /tools/
 Disallow: /images/
 Disallow: /js/
 Disallow: /css/
-
+Disallow: /src/
+Disallow: /dist/
+Disallow: /static/
+Disallow: /live2dw/
 
 Sitemap: https://wandouduoduo.github.io/sitemap.xml
 Sitemap: https://wandouduoduo.gitee.io/giteesitemap.xml
