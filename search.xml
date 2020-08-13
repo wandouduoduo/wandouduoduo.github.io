@@ -2516,18 +2516,16 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
     <title>CentOS7安装GlusterFS集群教程</title>
     <url>/articles/afd78e52.html</url>
     <content><![CDATA[<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>通过本文教程，帮助你搭建glusterfs集群共享存储。</p>
-<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>3台机器安装 GlusterFS 组成一个集群。<br>使用 docker volume plugin GlusterFS</p>
-<p>服务器：<br>10.6.0.140<br>10.6.0.192<br>10.6.0.196</p>
-<p>配置 hosts</p>
-<p>10.6.0.140 swarm-manager<br>10.6.0.192 swarm-node-1<br>10.6.0.196 swarm-node-2</p>
-<p>client:<br>10.6.0.94 node-94</p>
+<h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>3台机器安装 GlusterFS 组成一个集群</p>
+<p>服务器<br>10.6.0.140<br>10.6.0.192<br>10.6.0.196</p>
+<p>客户端：<br>10.6.0.94 node-94</p>
 <a id="more"></a>
 
 
 
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>CentOS 安装 glusterfs 非常的简单</p>
 <h3 id="安装glusterfs"><a href="#安装glusterfs" class="headerlink" title="安装glusterfs"></a>安装glusterfs</h3><p>在三个节点都执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install centos-release-gluster</span><br><span class="line">yum install -y glusterfs glusterfs-server glusterfs-fuse glusterfs-rdma</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#配置 hosts</span></span><br><span class="line">10.6.0.140 swarm-manager</span><br><span class="line">10.6.0.192 swarm-node-1</span><br><span class="line">10.6.0.196 swarm-node-2</span><br><span class="line"></span><br><span class="line">yum install centos-release-gluster</span><br><span class="line">yum install -y glusterfs glusterfs-server glusterfs-fuse glusterfs-rdma</span><br></pre></td></tr></table></figure>
 
 <h3 id="配置-GlusterFS-集群"><a href="#配置-GlusterFS-集群" class="headerlink" title="配置 GlusterFS 集群"></a>配置 GlusterFS 集群</h3><p>启动 glusterFS</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl start glusterd.service</span><br><span class="line">systemctl enable glusterd.service</span><br></pre></td></tr></table></figure>
@@ -2570,7 +2568,7 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 <p>七、 三种模式混合, 至少需要8台 服务器才能创建。 stripe 2 replica 2 , 每4个节点 组成一个 组。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/afd78e52/E:%5CBlog%5Csunhexo%5Csource_posts%5CCentOS7%E5%AE%89%E8%A3%85GlusterFS%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B%5C487774-20160824150956230-1177006347.png" alt="img"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/afd78e52/487774-20160824150956230-1177006347.png" alt="img"></p>
 <h3 id="查看-volume-状态"><a href="#查看-volume-状态" class="headerlink" title="查看 volume 状态"></a>查看 volume 状态</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@swarm-manager ~]<span class="comment">#gluster volume info</span></span><br><span class="line"></span><br><span class="line">Volume Name: models</span><br><span class="line">Type: Replicate</span><br><span class="line">Volume ID: e539ff3b-2278-4f3f-a594-1f101eabbf1e</span><br><span class="line">Status: Created</span><br><span class="line">Number of Bricks: 1 x 3 = 3</span><br><span class="line">Transport-type: tcp</span><br><span class="line">Bricks:</span><br><span class="line">Brick1: swarm-manager:/opt/gluster/data</span><br><span class="line">Brick2: swarm-node-1:/opt/gluster/data</span><br><span class="line">Brick3: swarm-node-2:/opt/gluster/data</span><br><span class="line">Options Reconfigured:</span><br><span class="line">performance.readdir-ahead: on</span><br></pre></td></tr></table></figure>
 
 <h3 id="启动-models"><a href="#启动-models" class="headerlink" title="启动 models"></a>启动 models</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@swarm-manager ~]#gluster volume start models</span><br><span class="line">volume start: models: success</span><br></pre></td></tr></table></figure>
@@ -2596,45 +2594,70 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 <h2 id="部署GlusterFS客户端"><a href="#部署GlusterFS客户端" class="headerlink" title="部署GlusterFS客户端"></a>部署GlusterFS客户端</h2><p>mount GlusterFS文件系统 (客户端必须加入 glusterfs hosts 否则报错。)</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@node-94 ~]#yum install -y glusterfs glusterfs-fuse</span><br><span class="line">[root@node-94 ~]#mkdir -p /opt/gfsmnt</span><br><span class="line">[root@node-94 ~]#mount -t glusterfs swarm-manager:models /opt/gfsmnt/</span><br><span class="line"></span><br><span class="line">[root@node-94 ~]#df -h</span><br><span class="line">文件系统 容量 已用 可用 已用% 挂载点</span><br><span class="line">/dev/mapper/vg001-root 98G 1.2G 97G 2% /</span><br><span class="line">devtmpfs 32G 0 32G 0% /dev</span><br><span class="line">tmpfs 32G 0 32G 0% /dev/shm</span><br><span class="line">tmpfs 32G 130M 32G 1% /run</span><br><span class="line">tmpfs 32G 0 32G 0% /sys/fs/cgroup</span><br><span class="line">/dev/mapper/vg001-opt 441G 71G 370G 17% /opt</span><br><span class="line">/dev/sda2 497M 153M 344M 31% /boot</span><br><span class="line">tmpfs 6.3G 0 6.3G 0% /run/user/0</span><br><span class="line">swarm-manager:models 441G 18G 424G 4% /opt/gfsmnt</span><br></pre></td></tr></table></figure>
 
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>DHT 模式 客户端 创建一个 1G 的文件</p>
-<p>[root@node-94 ~]#time dd if=/dev/zero of=hello bs=1000M count=1<br>记录了1+0 的读入<br>记录了1+0 的写出<br>1048576000字节(1.0 GB)已复制，9.1093 秒，115 MB/秒</p>
-<p>real 0m9.120s<br>user 0m0.000s<br>sys 0m1.134s</p>
-<p>AFR 模式 客户端 创建一个 1G 的文件</p>
-<p>[root@node-94 ~]#time dd if=/dev/zero of=hello.txt bs=1024M count=1<br>录了1+0 的读入<br>记录了1+0 的写出<br>1073741824字节(1.1 GB)已复制，27.4566 秒，39.1 MB/秒</p>
-<p>real 0m27.469s<br>user 0m0.000s<br>sys 0m1.065s</p>
-<p>Striped 模式 客户端 创建一个 1G 的文件</p>
-<p>[root@node-94 ~]#time dd if=/dev/zero of=hello bs=1000M count=1<br>记录了1+0 的读入<br>记录了1+0 的写出<br>1048576000字节(1.0 GB)已复制，9.10669 秒，115 MB/秒</p>
-<p>real 0m9.119s<br>user 0m0.001s<br>sys 0m0.953s</p>
-<p>条带复制卷模式 (Number of Bricks: 1 x 2 x 2 = 4) 客户端 创建一个 1G 的文件</p>
-<p>[root@node-94 ~]#time dd if=/dev/zero of=hello bs=1000M count=1<br>记录了1+0 的读入<br>记录了1+0 的写出<br>1048576000字节(1.0 GB)已复制，17.965 秒，58.4 MB/秒</p>
-<p>real 0m17.978s<br>user 0m0.000s<br>sys 0m0.970s</p>
-<p>分布式复制模式 (Number of Bricks: 2 x 2 = 4) 客户端 创建一个 1G 的文件</p>
-<p>[root@node-94 ~]#time dd if=/dev/zero of=haha bs=100M count=10<br>记录了10+0 的读入<br>记录了10+0 的写出<br>1048576000字节(1.0 GB)已复制，17.7697 秒，59.0 MB/秒</p>
-<p>real 0m17.778s<br>user 0m0.001s<br>sys 0m0.886s</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><h3 id="单文件测试"><a href="#单文件测试" class="headerlink" title="单文件测试"></a>单文件测试</h3><p><code>测试方式：客户端创建一个 1G 的文件</code></p>
+<p><strong>DHT模式</strong> </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time dd <span class="keyword">if</span>=/dev/zero of=hello bs=1000M count=1</span><br><span class="line"></span><br><span class="line">记录了1+0 的读入</span><br><span class="line">记录了1+0 的写出</span><br><span class="line">1048576000字节(1.0 GB)已复制，9.1093 秒，115 MB/秒</span><br><span class="line"></span><br><span class="line">real 0m9.120s</span><br><span class="line">user 0m0.000s</span><br><span class="line">sys 0m1.134s</span><br></pre></td></tr></table></figure>
+
+<p><strong>AFR 模式</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time dd <span class="keyword">if</span>=/dev/zero of=hello.txt bs=1024M count=1</span><br><span class="line"></span><br><span class="line">录了1+0 的读入</span><br><span class="line">记录了1+0 的写出</span><br><span class="line">1073741824字节(1.1 GB)已复制，27.4566 秒，39.1 MB/秒</span><br><span class="line"></span><br><span class="line">real 0m27.469s</span><br><span class="line">user 0m0.000s</span><br><span class="line">sys 0m1.065s</span><br></pre></td></tr></table></figure>
+
+<p><strong>Striped 模式</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">time dd <span class="keyword">if</span>=/dev/zero of=hello bs=1000M count=1</span><br><span class="line"></span><br><span class="line">记录了1+0 的读入</span><br><span class="line">记录了1+0 的写出</span><br><span class="line">1048576000字节(1.0 GB)已复制，9.10669 秒，115 MB/秒</span><br><span class="line"></span><br><span class="line">real 0m9.119s</span><br><span class="line">user 0m0.001s</span><br><span class="line">sys 0m0.953s</span><br></pre></td></tr></table></figure>
+
+<p> <strong>条带复制卷模式 (Number of Bricks: 1 x 2 x 2 = 4)</strong> </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@node-94 ~]<span class="comment">#time dd if=/dev/zero of=hello bs=1000M count=1</span></span><br><span class="line">记录了1+0 的读入</span><br><span class="line">记录了1+0 的写出</span><br><span class="line">1048576000字节(1.0 GB)已复制，17.965 秒，58.4 MB/秒</span><br><span class="line"></span><br><span class="line">real 0m17.978s</span><br><span class="line">user 0m0.000s</span><br><span class="line">sys 0m0.970s</span><br></pre></td></tr></table></figure>
+
+<p><strong>分布式复制模式 (Number of Bricks: 2 x 2 = 4)</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@node-94 ~]<span class="comment">#time dd if=/dev/zero of=haha bs=100M count=10</span></span><br><span class="line">记录了10+0 的读入</span><br><span class="line">记录了10+0 的写出</span><br><span class="line">1048576000字节(1.0 GB)已复制，17.7697 秒，59.0 MB/秒</span><br><span class="line"></span><br><span class="line">real 0m17.778s</span><br><span class="line">user 0m0.001s</span><br><span class="line">sys 0m0.886s</span><br></pre></td></tr></table></figure>
+
+
+
 <p>针对 分布式复制模式还做了如下测试：</p>
-<p>4K随机写 测试:<br>安装 fio (yum -y install libaio-devel (否则运行fio 会报错engine libaio not loadable, 已安装需重新编译，否则一样报错))</p>
-<p>[root@node-94 ~]#fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randwrite -size=10G -filename=1.txt -name=”EBS 4KB randwrite test” -iodepth=32 -runtime=60</p>
-<p>write: io=352204KB, bw=5869.9KB/s, iops=1467, runt= 60002msec<br>WRITE: io=352204KB, aggrb=5869KB/s, minb=5869KB/s, maxb=5869KB/s, mint=60002msec, maxt=60002msec</p>
-<p>4K随机读 测试：<br>fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randread -size=10G -filename=1.txt -name=”EBS 4KB randread test” -iodepth=8 -runtime=60</p>
-<p>read: io=881524KB, bw=14692KB/s, iops=3672, runt= 60001msec<br>READ: io=881524KB, aggrb=14691KB/s, minb=14691KB/s, maxb=14691KB/s, mint=60001msec, maxt=60001msec</p>
-<p>512K 顺序写 测试：<br>fio -ioengine=libaio -bs=512k -direct=1 -thread -rw=write -size=10G -filename=512.txt -name=”EBS 512KB seqwrite test” -iodepth=64 -runtime=60</p>
-<p>write: io=3544.0MB, bw=60348KB/s, iops=117, runt= 60135msec<br>WRITE: io=3544.0MB, aggrb=60348KB/s, minb=60348KB/s, maxb=60348KB/s, mint=60135msec, maxt=60135msec</p>
-<h2 id="其他的维护命令："><a href="#其他的维护命令：" class="headerlink" title="其他的维护命令："></a>其他的维护命令：</h2><p>\1. 查看GlusterFS中所有的volume:<br>[root@swarm-manager ~]#gluster volume list</p>
-<p>\2. 删除GlusterFS磁盘：<br>[root@swarm-manager ~]#gluster volume stop models #停止名字为 models 的磁盘<br>[root@swarm-manager ~]#gluster volume delete models #删除名字为 models 的磁盘</p>
-<p>注： 删除 磁盘 以后，必须删除 磁盘( /opt/gluster/data ) 中的 （ .glusterfs/ .trashcan/ ）目录。<br>否则创建新 volume 相同的 磁盘 会出现文件 不分布，或者 类型 错乱 的问题。</p>
-<p>\3. 卸载某个节点GlusterFS磁盘<br>[root@swarm-manager ~]#gluster peer detach swarm-node-2</p>
-<p>\4. 设置访问限制,按照每个volume 来限制<br>[root@swarm-manager ~]#gluster volume set models auth.allow 10.6.0.<em>,10.7.0.</em></p>
-<p>\5. 添加GlusterFS节点：<br>[root@swarm-manager ~]#gluster peer probe swarm-node-3<br>[root@swarm-manager ~]#gluster volume add-brick models swarm-node-3:/opt/gluster/data<br>注：如果是复制卷或者条带卷，则每次添加的Brick数必须是replica或者stripe的整数倍</p>
-<p>\6. 配置卷<br>[root@swarm-manager ~]# gluster volume set</p>
-<p>\7. 缩容volume:</p>
-<p>先将数据迁移到其它可用的Brick，迁移结束后才将该Brick移除：<br>[root@swarm-manager ~]#gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start</p>
-<p>在执行了start之后，可以使用status命令查看移除进度：<br>[root@swarm-manager ~]#gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status</p>
-<p>不进行数据迁移，直接删除该Brick：<br>[root@swarm-manager ~]#gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit<br>注意，如果是复制卷或者条带卷，则每次移除的Brick数必须是replica或者stripe的整数倍。</p>
-<p>扩容：</p>
-<p>gluster volume add-brick models swarm-node-2:/opt/gluster/data </p>
-<p>\8. 修复命令:<br>[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit -force</p>
-<p>\9. 迁移volume:<br>[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start<br>pause 为暂停迁移<br>[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data pause<br>abort 为终止迁移<br>[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data abort<br>status 查看迁移状态<br>[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status<br>迁移结束后使用commit 来生效<br>[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit</p>
-<p>\10. 均衡volume:<br>[root@swarm-manager ~]#gluster volume models lay-outstart<br>[root@swarm-manager ~]#gluster volume models start<br>[root@swarm-manager ~]#gluster volume models startforce<br>[root@swarm-manager ~]#gluster volume models status<br>[root@swarm-manager ~]#gluster volume models stop</p>
+<h3 id="4K随机测试"><a href="#4K随机测试" class="headerlink" title="4K随机测试"></a>4K随机测试</h3><p><strong>写测试</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装fio </span></span><br><span class="line">yum -y install libaio-devel</span><br><span class="line"></span><br><span class="line">fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randwrite -size=10G -filename=1.txt -name=<span class="string">"EBS 4KB randwrite test"</span> -iodepth=32 -runtime=60</span><br><span class="line"></span><br><span class="line">write: io=352204KB, bw=5869.9KB/s, iops=1467, runt= 60002msec</span><br><span class="line">WRITE: io=352204KB, aggrb=5869KB/s, minb=5869KB/s, maxb=5869KB/s, mint=60002msec, maxt=60002msec</span><br></pre></td></tr></table></figure>
+
+<p><strong>读测试</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randread -size=10G -filename=1.txt -name=<span class="string">"EBS 4KB randread test"</span> -iodepth=8 -runtime=60</span><br><span class="line"></span><br><span class="line"><span class="built_in">read</span>: io=881524KB, bw=14692KB/s, iops=3672, runt= 60001msec</span><br><span class="line">READ: io=881524KB, aggrb=14691KB/s, minb=14691KB/s, maxb=14691KB/s, mint=60001msec, maxt=60001msec</span><br></pre></td></tr></table></figure>
+
+<p><strong>512K顺序写测试</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">fio -ioengine=libaio -bs=512k -direct=1 -thread -rw=write -size=10G -filename=512.txt -name=<span class="string">"EBS 512KB seqwrite test"</span> -iodepth=64 -runtime=60</span><br><span class="line"></span><br><span class="line">write: io=3544.0MB, bw=60348KB/s, iops=117, runt= 60135msec</span><br><span class="line">WRITE: io=3544.0MB, aggrb=60348KB/s, minb=60348KB/s, maxb=60348KB/s, mint=60135msec, maxt=60135msec</span><br></pre></td></tr></table></figure>
+
+<h2 id="其他的维护命令："><a href="#其他的维护命令：" class="headerlink" title="其他的维护命令："></a>其他的维护命令：</h2><p><strong>查看GlusterFS中所有的volume</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster volume list</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除GlusterFS磁盘</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster volume stop models #停止名字为 models 的磁盘</span><br><span class="line">gluster volume delete models #删除名字为 models 的磁盘</span><br></pre></td></tr></table></figure>
+
+<p> 注： 删除 磁盘 以后，必须删除 磁盘( /opt/gluster/data ) 中的 （ .glusterfs/ .trashcan/ ）目录。<br>否则创建新 volume 相同的 磁盘 会出现文件 不分布，或者 类型 错乱 的问题。</p>
+<p><strong>卸载某个节点GlusterFS磁盘</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster peer detach swarm-node-2</span><br></pre></td></tr></table></figure>
+
+<p><strong>设置访问限制,按照每个volume 来限制</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster volume set models auth.allow 10.6.0.*,10.7.0.</span><br></pre></td></tr></table></figure>
+
+<p> <strong>添加GlusterFS节点</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster peer probe swarm-node-3</span><br><span class="line">gluster volume add-brick models swarm-node-3:/opt/gluster/data</span><br></pre></td></tr></table></figure>
+
+<p>注：如果是复制卷或者条带卷，则每次添加的Brick数必须是replica或者stripe的整数倍</p>
+<p><strong>配置卷</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster volume set</span><br></pre></td></tr></table></figure>
+
+<p><strong>缩容volume</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#先将数据迁移到其它可用的Brick，迁移结束后才将该Brick移除：</span></span><br><span class="line">gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start</span><br><span class="line"></span><br><span class="line"><span class="comment">#在执行了start之后，可以使用status命令查看移除进度：</span></span><br><span class="line">gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status</span><br><span class="line"></span><br><span class="line"><span class="comment">#不进行数据迁移，直接删除该Brick：</span></span><br><span class="line">gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit</span><br></pre></td></tr></table></figure>
+
+<p>注意，如果是复制卷或者条带卷，则每次移除的Brick数必须是replica或者stripe的整数倍。</p>
+<p><strong>扩容</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gluster volume add-brick models swarm-node-2:/opt/gluster/data</span><br></pre></td></tr></table></figure>
+
+<p><strong>修复命令</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit -force</span><br></pre></td></tr></table></figure>
+
+<p><strong>迁移volume</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start</span><br><span class="line"><span class="comment">#pause 为暂停迁移</span></span><br><span class="line">gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data pause</span><br><span class="line"><span class="comment">#abort 为终止迁移</span></span><br><span class="line">gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data abort</span><br><span class="line"><span class="comment">#status 查看迁移状态</span></span><br><span class="line">gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status</span><br><span class="line"><span class="comment">#迁移结束后使用commit 来生效</span></span><br><span class="line">gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit</span><br></pre></td></tr></table></figure>
+
+<p><strong>均衡volume</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gluster volume models lay-outstart</span><br><span class="line">gluster volume models start</span><br><span class="line">gluster volume models startforce</span><br><span class="line">gluster volume models status</span><br><span class="line">gluster volume models stop</span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
         <category>数据库</category>
