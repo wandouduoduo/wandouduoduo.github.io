@@ -327,6 +327,8 @@
         <!-- 更多下 -->
         {% include 'google_more_adsense.swig' %} 
       {% else %}
+        <!-- 标题下 -->
+        {% include 'google_pages_adsense.swig' %}
         {{ post.content }}
       {% endif %}
     </div>
@@ -340,8 +342,6 @@
     {#####################}
 <div>
   {% if not is_index %}
-    <!-- 标题下 -->
-    {% include 'google_pages_adsense.swig' %}
     {% include 'passage-end-tag.swig' %}
   {% endif %}
 </div>

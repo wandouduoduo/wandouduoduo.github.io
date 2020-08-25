@@ -17,21 +17,14 @@ date: 2020-04-16 19:12:47
 
 ## 环境说明
 
-3台机器安装 GlusterFS 组成一个集群。
-使用 docker volume plugin GlusterFS
+3台机器安装 GlusterFS 组成一个集群
 
-服务器：
+服务器
 10.6.0.140
 10.6.0.192
 10.6.0.196
 
-配置 hosts
-
-10.6.0.140 swarm-manager
-10.6.0.192 swarm-node-1
-10.6.0.196 swarm-node-2
-
-client:
+客户端：
 10.6.0.94 node-94
 
 <!--more-->
@@ -47,6 +40,11 @@ CentOS 安装 glusterfs 非常的简单
 在三个节点都执行
 
 ```bash
+#配置 hosts
+10.6.0.140 swarm-manager
+10.6.0.192 swarm-node-1
+10.6.0.196 swarm-node-2
+
 yum install centos-release-gluster
 yum install -y glusterfs glusterfs-server glusterfs-fuse glusterfs-rdma
 ```
@@ -180,7 +178,7 @@ gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1
 gluster volume create test-volume stripe 2 replica 2 transport tcp server1:/exp1 server2:/exp2 server3:/exp3 server4:/exp4 server5:/exp5 server6:/exp6 server7:/exp7 server8:/exp8
 ```
 
-![img](E:\Blog\sunhexo\source\_posts\CentOS7安装GlusterFS集群教程\487774-20160824150956230-1177006347.png)
+![img](CentOS7安装GlusterFS集群教程/487774-20160824150956230-1177006347.png)
 
 
 
@@ -276,9 +274,15 @@ swarm-manager:models 441G 18G 424G 4% /opt/gfsmnt
 
 ## 测试
 
-DHT 模式 客户端 创建一个 1G 的文件
+### 单文件测试
 
-[root@node-94 ~]#time dd if=/dev/zero of=hello bs=1000M count=1
+`测试方式：客户端创建一个 1G 的文件`
+
+**DHT模式** 
+
+```bash
+time dd if=/dev/zero of=hello bs=1000M count=1
+
 记录了1+0 的读入
 记录了1+0 的写出
 1048576000字节(1.0 GB)已复制，9.1093 秒，115 MB/秒
@@ -286,12 +290,13 @@ DHT 模式 客户端 创建一个 1G 的文件
 real 0m9.120s
 user 0m0.000s
 sys 0m1.134s
+```
 
+**AFR 模式**
 
+```bash
+time dd if=/dev/zero of=hello.txt bs=1024M count=1
 
-AFR 模式 客户端 创建一个 1G 的文件
-
-[root@node-94 ~]#time dd if=/dev/zero of=hello.txt bs=1024M count=1
 录了1+0 的读入
 记录了1+0 的写出
 1073741824字节(1.1 GB)已复制，27.4566 秒，39.1 MB/秒
@@ -299,11 +304,13 @@ AFR 模式 客户端 创建一个 1G 的文件
 real 0m27.469s
 user 0m0.000s
 sys 0m1.065s
+```
 
+**Striped 模式**
 
-Striped 模式 客户端 创建一个 1G 的文件
+```bash
+time dd if=/dev/zero of=hello bs=1000M count=1
 
-[root@node-94 ~]#time dd if=/dev/zero of=hello bs=1000M count=1
 记录了1+0 的读入
 记录了1+0 的写出
 1048576000字节(1.0 GB)已复制，9.10669 秒，115 MB/秒
@@ -311,11 +318,11 @@ Striped 模式 客户端 创建一个 1G 的文件
 real 0m9.119s
 user 0m0.001s
 sys 0m0.953s
+```
 
- 
+ **条带复制卷模式 (Number of Bricks: 1 x 2 x 2 = 4)** 
 
-条带复制卷模式 (Number of Bricks: 1 x 2 x 2 = 4) 客户端 创建一个 1G 的文件
-
+```bash
 [root@node-94 ~]#time dd if=/dev/zero of=hello bs=1000M count=1
 记录了1+0 的读入
 记录了1+0 的写出
@@ -324,10 +331,11 @@ sys 0m0.953s
 real 0m17.978s
 user 0m0.000s
 sys 0m0.970s
+```
 
+**分布式复制模式 (Number of Bricks: 2 x 2 = 4)**
 
-分布式复制模式 (Number of Bricks: 2 x 2 = 4) 客户端 创建一个 1G 的文件
-
+```bash
 [root@node-94 ~]#time dd if=/dev/zero of=haha bs=100M count=10
 记录了10+0 的读入
 记录了10+0 的写出
@@ -336,105 +344,141 @@ sys 0m0.970s
 real 0m17.778s
 user 0m0.001s
 sys 0m0.886s
+```
 
  
 
 针对 分布式复制模式还做了如下测试：
 
-4K随机写 测试:
-安装 fio (yum -y install libaio-devel (否则运行fio 会报错engine libaio not loadable, 已安装需重新编译，否则一样报错))
+### 4K随机测试
 
-[root@node-94 ~]#fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randwrite -size=10G -filename=1.txt -name="EBS 4KB randwrite test" -iodepth=32 -runtime=60
+**写测试**
 
+```bash
+# 安装fio 
+yum -y install libaio-devel
+
+fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randwrite -size=10G -filename=1.txt -name="EBS 4KB randwrite test" -iodepth=32 -runtime=60
 
 write: io=352204KB, bw=5869.9KB/s, iops=1467, runt= 60002msec
 WRITE: io=352204KB, aggrb=5869KB/s, minb=5869KB/s, maxb=5869KB/s, mint=60002msec, maxt=60002msec
+```
 
+**读测试**
 
-4K随机读 测试：
+```bash
 fio -ioengine=libaio -bs=4k -direct=1 -thread -rw=randread -size=10G -filename=1.txt -name="EBS 4KB randread test" -iodepth=8 -runtime=60
-
 
 read: io=881524KB, bw=14692KB/s, iops=3672, runt= 60001msec
 READ: io=881524KB, aggrb=14691KB/s, minb=14691KB/s, maxb=14691KB/s, mint=60001msec, maxt=60001msec
+```
 
+**512K顺序写测试**
 
-512K 顺序写 测试：
+```bash
 fio -ioengine=libaio -bs=512k -direct=1 -thread -rw=write -size=10G -filename=512.txt -name="EBS 512KB seqwrite test" -iodepth=64 -runtime=60
 
 write: io=3544.0MB, bw=60348KB/s, iops=117, runt= 60135msec
 WRITE: io=3544.0MB, aggrb=60348KB/s, minb=60348KB/s, maxb=60348KB/s, mint=60135msec, maxt=60135msec
+```
 
 
 
 ## 其他的维护命令：
 
-\1. 查看GlusterFS中所有的volume:
-[root@swarm-manager ~]#gluster volume list
+**查看GlusterFS中所有的volume**
 
-\2. 删除GlusterFS磁盘：
-[root@swarm-manager ~]#gluster volume stop models #停止名字为 models 的磁盘
-[root@swarm-manager ~]#gluster volume delete models #删除名字为 models 的磁盘
+```
+gluster volume list
+```
 
- 
+**删除GlusterFS磁盘**
 
-注： 删除 磁盘 以后，必须删除 磁盘( /opt/gluster/data ) 中的 （ .glusterfs/ .trashcan/ ）目录。
+```
+gluster volume stop models #停止名字为 models 的磁盘
+gluster volume delete models #删除名字为 models 的磁盘
+```
+
+ 注： 删除 磁盘 以后，必须删除 磁盘( /opt/gluster/data ) 中的 （ .glusterfs/ .trashcan/ ）目录。
 否则创建新 volume 相同的 磁盘 会出现文件 不分布，或者 类型 错乱 的问题。
 
+**卸载某个节点GlusterFS磁盘**
 
-\3. 卸载某个节点GlusterFS磁盘
-[root@swarm-manager ~]#gluster peer detach swarm-node-2
+```
+gluster peer detach swarm-node-2
+```
 
+**设置访问限制,按照每个volume 来限制**
 
-\4. 设置访问限制,按照每个volume 来限制
-[root@swarm-manager ~]#gluster volume set models auth.allow 10.6.0.*,10.7.0.*
+```
+gluster volume set models auth.allow 10.6.0.*,10.7.0.
+```
 
+ **添加GlusterFS节点**
 
-\5. 添加GlusterFS节点：
-[root@swarm-manager ~]#gluster peer probe swarm-node-3
-[root@swarm-manager ~]#gluster volume add-brick models swarm-node-3:/opt/gluster/data
+```
+gluster peer probe swarm-node-3
+gluster volume add-brick models swarm-node-3:/opt/gluster/data
+```
+
 注：如果是复制卷或者条带卷，则每次添加的Brick数必须是replica或者stripe的整数倍
 
-\6. 配置卷
-[root@swarm-manager ~]# gluster volume set
+**配置卷**
+
+```
+gluster volume set
+```
+
+**缩容volume**
+
+```bash
+#先将数据迁移到其它可用的Brick，迁移结束后才将该Brick移除：
+gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start
+
+#在执行了start之后，可以使用status命令查看移除进度：
+gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status
+
+#不进行数据迁移，直接删除该Brick：
+gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit
+```
 
 
-\7. 缩容volume:
-
-先将数据迁移到其它可用的Brick，迁移结束后才将该Brick移除：
-[root@swarm-manager ~]#gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start
-
-在执行了start之后，可以使用status命令查看移除进度：
-[root@swarm-manager ~]#gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status
-
-不进行数据迁移，直接删除该Brick：
-[root@swarm-manager ~]#gluster volume remove-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit
 注意，如果是复制卷或者条带卷，则每次移除的Brick数必须是replica或者stripe的整数倍。
 
-扩容：
+**扩容**
 
+```
 gluster volume add-brick models swarm-node-2:/opt/gluster/data 
+```
+
+**修复命令**
+
+```bash
+gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit -force
+```
+
+**迁移volume**
+
+```bash
+gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start
+#pause 为暂停迁移
+gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data pause
+#abort 为终止迁移
+gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data abort
+#status 查看迁移状态
+gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status
+#迁移结束后使用commit 来生效
+gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit
+```
+
+**均衡volume**
+
+```bash
+gluster volume models lay-outstart
+gluster volume models start
+gluster volume models startforce
+gluster volume models status
+gluster volume models stop
+```
 
 
-\8. 修复命令:
-[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit -force
-
-
-\9. 迁移volume:
-[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data start
-pause 为暂停迁移
-[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data pause
-abort 为终止迁移
-[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data abort
-status 查看迁移状态
-[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data status
-迁移结束后使用commit 来生效
-[root@swarm-manager ~]#gluster volume replace-brick models swarm-node-2:/opt/gluster/data swarm-node-3:/opt/gluster/data commit
-
-
-\10. 均衡volume:
-[root@swarm-manager ~]#gluster volume models lay-outstart
-[root@swarm-manager ~]#gluster volume models start
-[root@swarm-manager ~]#gluster volume models startforce
-[root@swarm-manager ~]#gluster volume models status
-[root@swarm-manager ~]#gluster volume models stop
