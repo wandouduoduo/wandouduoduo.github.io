@@ -204,3 +204,6 @@ git branch --set-upstream master origin/master
 git branch --set-upstream develop origin/develop
 ```
 
+## 思维导图
+
+![](Git命令汇总/1.png)
