@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>openssl版本升级</title>
+    <url>/articles/41a25a14.html</url>
+    <content><![CDATA[<p><strong>OpenSSL</strong>是一个<a href="https://baike.baidu.com/item/开放源代码" rel="noopener" target="_blank">开放源代码</a>的<a href="https://baike.baidu.com/item/软件" rel="noopener" target="_blank">软件</a><a href="https://baike.baidu.com/item/库" rel="noopener" target="_blank">库</a>包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
+<a id="more"></a>
+
+
+
+<h2 id="升级教程"><a href="#升级教程" class="headerlink" title="升级教程"></a>升级教程</h2><h3 id="查看openssl版本"><a href="#查看openssl版本" class="headerlink" title="查看openssl版本"></a>查看openssl版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl version</span><br><span class="line"></span><br><span class="line">OpenSSL 1.0.1e-fips 11 Feb 2013</span><br></pre></td></tr></table></figure>
+
+<h3 id="下载指定版本的openssl软件"><a href="#下载指定版本的openssl软件" class="headerlink" title="下载指定版本的openssl软件"></a>下载指定版本的openssl软件</h3><p>在<a href="https://www.openssl.org/source/" rel="noopener" target="_blank">官网</a>下载最新长期支持版本，教程文档编写时，最新长期支持版本为1.1.1</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.1g.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -xf openssl-1.1.1g.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-1.1.1g</span><br><span class="line">./config shared zlib</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line">mv /usr/include/openssl /usr/include/openssl.bak</span><br><span class="line">find / -name openssl</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/bin/openssl /usr/bin/openssl</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/include/openssl /usr/include/openssl</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/usr/local/lib64/"</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line">ldconfig </span><br><span class="line">openssl version -a</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl version </span><br><span class="line"></span><br><span class="line">OpenSSL 1.1.1g  14 Sep 2020</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>操作系统</category>
+      </categories>
+      <tags>
+        <tag>Openssl</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>用cat3.0集群构建实时监控系统</title>
     <url>/articles/77f415e1.html</url>
     <content><![CDATA[<p>我们在日常工作中常常遇到很多问题，出现问题不可怕，可怕的是不知道问题出在哪里。当出现问题时，我们如无头苍蝇，无所适从，不知所措。这是因为我们的眼睛还不够犀利，没有洞察本质。要怎么解决下面的情况，擦亮我们的眼睛呢？</p>

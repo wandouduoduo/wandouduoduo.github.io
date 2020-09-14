@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wandouduoduo.github.io/"/>
-  <updated>2020-08-27T11:57:12.883Z</updated>
+  <updated>2020-09-14T03:10:12.455Z</updated>
   <id>https://wandouduoduo.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openssl版本升级</title>
+    <link href="https://wandouduoduo.github.io/articles/41a25a14.html"/>
+    <id>https://wandouduoduo.github.io/articles/41a25a14.html</id>
+    <published>2020-09-14T02:58:59.000Z</published>
+    <updated>2020-09-14T03:10:12.455Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>OpenSSL</strong>是一个<a href="https://baike.baidu.com/item/开放源代码" rel="noopener" target="_blank">开放源代码</a>的<a href="https://baike.baidu.com/item/软件" rel="noopener" target="_blank">软件</a><a href="https://baike.baidu.com/item/库" rel="noopener" target="_blank">库</a>包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p><a id="more"></a><h2 id="升级教程"><a href="#升级教程" class="headerlink" title="升级教程"></a>升级教程</h2><h3 id="查看openssl版本"><a href="#查看openssl版本" class="headerlink" title="查看openssl版本"></a>查看openssl版本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl version</span><br><span class="line"></span><br><span class="line">OpenSSL 1.0.1e-fips 11 Feb 2013</span><br></pre></td></tr></table></figure><h3 id="下载指定版本的openssl软件"><a href="#下载指定版本的openssl软件" class="headerlink" title="下载指定版本的openssl软件"></a>下载指定版本的openssl软件</h3><p>在<a href="https://www.openssl.org/source/" rel="noopener" target="_blank">官网</a>下载最新长期支持版本，教程文档编写时，最新长期支持版本为1.1.1</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://www.openssl.org/<span class="built_in">source</span>/openssl-1.1.1g.tar.gz</span><br></pre></td></tr></table></figure><h3 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar -xf openssl-1.1.1g.tar.gz</span><br><span class="line"><span class="built_in">cd</span> openssl-1.1.1g</span><br><span class="line">./config shared zlib</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure><h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mv /usr/bin/openssl /usr/bin/openssl.bak</span><br><span class="line">mv /usr/include/openssl /usr/include/openssl.bak</span><br><span class="line">find / -name openssl</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/bin/openssl /usr/bin/openssl</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/include/openssl /usr/include/openssl</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"/usr/local/lib64/"</span> &gt;&gt; /etc/ld.so.conf</span><br><span class="line">ldconfig </span><br><span class="line">openssl version -a</span><br></pre></td></tr></table></figure><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl version </span><br><span class="line"></span><br><span class="line">OpenSSL 1.1.1g  14 Sep 2020</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;OpenSSL&lt;/strong&gt;是一个&lt;a href=&quot;https://baike.baidu.com/item/开放源代码&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;开放源代码&lt;/a&gt;的&lt;a href=&quot;https://baike.baidu.com/item/软件&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;软件&lt;/a&gt;&lt;a href=&quot;https://baike.baidu.com/item/库&quot; rel=&quot;noopener&quot; target=&quot;_blank&quot;&gt;库&lt;/a&gt;包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="操作系统" scheme="https://wandouduoduo.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+      <category term="Openssl" scheme="https://wandouduoduo.github.io/tags/Openssl/"/>
+    
+  </entry>
   
   <entry>
     <title>用cat3.0集群构建实时监控系统</title>
@@ -403,10 +425,10 @@
     
       &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在使用 logstash 编写多个配置文件，写入到 elasticsearch 时，会出现数据写入混乱的问题，举例来说：&lt;/p&gt;
 &lt;p&gt;多个配置文件中规则如下：&lt;/p&gt;
-&lt;!--�696--&gt;
+&lt;!--�701--&gt;
 
 &lt;p&gt;然而当 logstash 服务运行起来的时候并不是这样的，可能出现如下想象：&lt;/p&gt;
-&lt;!--�697--&gt;
+&lt;!--�702--&gt;
 
 &lt;p&gt;&lt;strong&gt;究其原因，是因为 logstash 运行起来的时候，会将所有的配置文件合并执行。因此，每个 input 的数据都必须有一个唯一的标识，在 filter 和 output 时，通过这个唯一标识来实现过滤或者存储到不同的索引。&lt;/strong&gt;&lt;/p&gt;
     
@@ -498,34 +520,6 @@
       <category term="K8s" scheme="https://wandouduoduo.github.io/tags/K8s/"/>
     
       <category term="Jenkins" scheme="https://wandouduoduo.github.io/tags/Jenkins/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CentOS7安装指定版本Docker-ce</title>
-    <link href="https://wandouduoduo.github.io/articles/e09b4ef6.html"/>
-    <id>https://wandouduoduo.github.io/articles/e09b4ef6.html</id>
-    <published>2020-07-02T06:09:58.000Z</published>
-    <updated>2020-08-04T06:27:19.565Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Docker版本说明"><a href="#Docker版本说明" class="headerlink" title="Docker版本说明"></a><strong>Docker版本说明</strong></h2><p>Docker-CE指Docker社区版，由社区维护和提供技术支持，为免费版本，适合个人开发人员和小团队使用。</p><p>Docker-EE指Docker企业版，为收费版本，由售后团队和技术团队提供技术支持，专为企业开发和IT团队而设计。</p><p>相比Docker-EE，增加一些额外功能，更重要的是提供了更安全的保障。</p><p>此外，Docker的发布版本分为Stable版和Edge版，区别在于前者是按季度发布的稳定版(发布慢)，后者是按月发布的边缘版(发布快)。</p><p>通常情况下，Docker-CE足以满足我们的需求。</p><a id="more"></a><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="配置docker-yum源"><a href="#配置docker-yum源" class="headerlink" title="配置docker yum源"></a>配置docker yum源</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/e09b4ef6/1.png" alt></p><h3 id="安装指定版本docker-ce"><a href="#安装指定版本docker-ce" class="headerlink" title="安装指定版本docker-ce"></a>安装指定版本docker-ce</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo yum install -y yum-utils</span><br><span class="line">sudo yum install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看可安装的版本</span></span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"></span><br><span class="line"><span class="comment">#安装指定版本</span></span><br><span class="line">yum install docker-ce-&lt;VERSION STRING&gt;</span><br><span class="line"><span class="comment">#如果不指定，默认安装最新版本</span></span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/e09b4ef6/2.png" alt></p><h3 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line"><span class="comment">#加入开机启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br><span class="line">docker run hello-world</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/e09b4ef6/3.png" alt></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;Docker版本说明&quot;&gt;&lt;a href=&quot;#Docker版本说明&quot; class=&quot;headerlink&quot; title=&quot;Docker版本说明&quot;&gt;&lt;/a&gt;&lt;strong&gt;Docker版本说明&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;Docker-CE指Docker社区版，由社区维护和提供技术支持，为免费版本，适合个人开发人员和小团队使用。&lt;/p&gt;
-&lt;p&gt;Docker-EE指Docker企业版，为收费版本，由售后团队和技术团队提供技术支持，专为企业开发和IT团队而设计。&lt;/p&gt;
-&lt;p&gt;相比Docker-EE，增加一些额外功能，更重要的是提供了更安全的保障。&lt;/p&gt;
-&lt;p&gt;此外，Docker的发布版本分为Stable版和Edge版，区别在于前者是按季度发布的稳定版(发布慢)，后者是按月发布的边缘版(发布快)。&lt;/p&gt;
-&lt;p&gt;通常情况下，Docker-CE足以满足我们的需求。&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="容器技术" scheme="https://wandouduoduo.github.io/categories/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="Centos" scheme="https://wandouduoduo.github.io/tags/Centos/"/>
-    
-      <category term="Docker" scheme="https://wandouduoduo.github.io/tags/Docker/"/>
     
   </entry>
   
