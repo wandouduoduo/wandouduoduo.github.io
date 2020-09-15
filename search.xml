@@ -1,6 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Centos7文件共享服务Samba的部署</title>
+    <url>/articles/bf19f399.html</url>
+    <content><![CDATA[<p>搭建Samba服务器是为了实现Linux共享目录之后，在Windows可以直接访问该共享目录。</p>
+<a id="more"></a>
+
+
+
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><h3 id="关闭selinux服务"><a href="#关闭selinux服务" class="headerlink" title="关闭selinux服务"></a><strong>关闭selinux服务</strong></h3><p><em>该服务不关闭会导致Windows没有访问权限</em></p>
+<h4 id="临时关闭"><a href="#临时关闭" class="headerlink" title="临时关闭"></a><strong>临时关闭</strong></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">setenforce 0（只对当前有效，重启后，该服务又会重新启动。）</span><br></pre></td></tr></table></figure>
+
+<h4 id="永久关闭"><a href="#永久关闭" class="headerlink" title="永久关闭"></a><strong>永久关闭</strong></h4><p>打开selinux的配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/sysconfig/selinux</span><br></pre></td></tr></table></figure>
+
+<p>将SELINUX=enforcing修改为SELINUX=disabled</p>
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#关闭防火墙</span></span><br><span class="line">systemctl stop firewalld</span><br><span class="line"><span class="comment">#关闭防火墙开机启动</span></span><br><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看是已安装samba包"><a href="#查看是已安装samba包" class="headerlink" title="查看是已安装samba包"></a>查看是已安装samba包</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -qa | grep samba</span><br><span class="line">------------------------------------</span><br><span class="line">samba-common-4.8.3-4.el7.noarch</span><br><span class="line">samba-client-libs-4.8.3-4.el7.x86_64</span><br><span class="line">samba-client-4.8.3-4.el7.x86_64</span><br><span class="line">samba-common-libs-4.8.3-4.el7.x86_64</span><br><span class="line">------------------------------------</span><br></pre></td></tr></table></figure>
+
+<p>这里列出所有已安装的samba包，但是现在samba服务还未安装。</p>
+<h3 id="安装Samba服务"><a href="#安装Samba服务" class="headerlink" title="安装Samba服务"></a><strong>安装Samba服务</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y samba</span><br></pre></td></tr></table></figure>
+
+<p>使用yum安装是因为安装时会自动检测需要的依赖并安装。</p>
+<h3 id="Samba配置"><a href="#Samba配置" class="headerlink" title="Samba配置"></a>Samba配置</h3><p>至此，我们已经将Samba安装完毕，现在进行Samba的配置。</p>
+<h4 id="创建共享目录"><a href="#创建共享目录" class="headerlink" title="创建共享目录"></a><strong>创建共享目录</strong></h4><p>在home目录新建共享目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir /home/share</span><br></pre></td></tr></table></figure>
+
+<p>赋予目录权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod 777 /home/share</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加samba服务器用户"><a href="#添加samba服务器用户" class="headerlink" title="添加samba服务器用户"></a>添加samba服务器用户</h4><p>首先创建一个普通用户</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">adduser sun</span><br><span class="line">passwd sun</span><br></pre></td></tr></table></figure>
+
+<p>将该用户添加到samba服务列表中</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">smbpasswd –a sun</span><br><span class="line">------------------------</span><br><span class="line">New SMB password:</span><br><span class="line">Retype new SMB password:</span><br><span class="line">Added user fenxiang.</span><br><span class="line">------------------------</span><br><span class="line">出现Added user *表示添加成功</span><br></pre></td></tr></table></figure>
+
+<h4 id="修改Samba配置文件"><a href="#修改Samba配置文件" class="headerlink" title="修改Samba配置文件"></a>修改Samba配置文件</h4><p>首先备份Samba配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp /etc/samba/smb.conf /etc/samba/smb.conf.bak</span><br></pre></td></tr></table></figure>
+
+<p>打开配置文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /etc/samba/smb.conf</span><br><span class="line"></span><br><span class="line">做如下修改：</span><br><span class="line">security = user</span><br><span class="line"><span class="comment">#这里是设置samba的共享级别，share表示共享级访问，服务器不对客户机进行身份认证，user表示用户级访问，被访问的samba服务器要对客户机进行身份验证</span></span><br></pre></td></tr></table></figure>
+
+<p>在配置文件最后添加以下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[share]</span><br><span class="line">comment = my share</span><br><span class="line"><span class="comment">#对该共享资源的说明</span></span><br><span class="line">path = /home/share</span><br><span class="line"><span class="comment">#共享资源的路径</span></span><br><span class="line">valid user = sun</span><br><span class="line"><span class="comment">#设置允许访问共享的用户或组的列表</span></span><br><span class="line">writable = yes</span><br><span class="line"><span class="comment">#指定共享的路径是否可写</span></span><br><span class="line">browseable = yes</span><br><span class="line"><span class="comment">#是否可以浏览共享目录</span></span><br><span class="line">create mode = 0777</span><br><span class="line"><span class="comment">#指定客户机在共享目录中创建文件的默认权限</span></span><br><span class="line">directory mode = 0777</span><br><span class="line"><span class="comment">#指定客户机共享目录中创建文件目录的默认权限</span></span><br></pre></td></tr></table></figure>
+
+<p>保存退出</p>
+<h4 id="启动samba服务"><a href="#启动samba服务" class="headerlink" title="启动samba服务"></a><strong>启动samba服务</strong></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#开启服务</span></span><br><span class="line">systemctl start smb </span><br><span class="line">systemctl start nmb</span><br><span class="line"><span class="comment">#将服务加入到开机启动中</span></span><br><span class="line">systemctl <span class="built_in">enable</span> smb</span><br><span class="line">systemctl <span class="built_in">enable</span> nmb</span><br></pre></td></tr></table></figure>
+
+<h4 id="Windows访问"><a href="#Windows访问" class="headerlink" title="Windows访问"></a><strong>Windows访问</strong></h4><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/bf19f399/1.png" alt></p>
+]]></content>
+      <categories>
+        <category>运维技术</category>
+        <category>服务部署</category>
+      </categories>
+      <tags>
+        <tag>Samba</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>openssl版本升级</title>
     <url>/articles/41a25a14.html</url>
     <content><![CDATA[<p><strong>OpenSSL</strong>是一个<a href="https://baike.baidu.com/item/开放源代码" rel="noopener" target="_blank">开放源代码</a>的<a href="https://baike.baidu.com/item/软件" rel="noopener" target="_blank">软件</a><a href="https://baike.baidu.com/item/库" rel="noopener" target="_blank">库</a>包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。</p>
