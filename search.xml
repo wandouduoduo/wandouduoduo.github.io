@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>详解glusterfs模式调换</title>
+      <link href="/articles/895840ae.html"/>
+      <url>/articles/895840ae.html</url>
+      
+        <content type="html"><![CDATA[<p><code>glusterfs</code>集群存储有七种模式，在搭建集群时选择的模式，可能在使用过一段时间后发现当前的模式不是最优的方案，换种模式可能会更好。那么怎么在保证数据安全的情况下，对<code>glusterfs</code>集群更改模式，以最优适配我们的使用，最大化资源利用呢？本文就这一痛点详细说明。</p><a id="more"></a><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p><strong>glusterfs集群</strong></p><p>搭建好的glusterfs集群，这里不再赘述。如有疑问，请参考<a href="https://wandouduoduo.github.io/articles/afd78e52.html">CentOS7安装GlusterFS集群教程</a></p><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/895840ae/1.png" alt></p><p><strong>模式更改</strong></p><p>从复制模式改为扩展模式。搭建是可能是出于数据安全考虑，采用复制模式，但我们是作为日志存储来使用的，那么大的磁盘空间就是首要考虑的，所以采用扩展模式更好些。</p><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/895840ae/2.png" alt></p><h2 id="教程步骤"><a href="#教程步骤" class="headerlink" title="教程步骤"></a>教程步骤</h2><h3 id="移除brick"><a href="#移除brick" class="headerlink" title="移除brick"></a>移除brick</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">语法：</span><br><span class="line">gluster volume remove-brick 卷名 brick所在的IP：brick所在的地址</span><br><span class="line"></span><br><span class="line">gluster volume remove-brick gsfs gs02:/opt/gluster/data gs03:/opt/gluster/data commit</span><br><span class="line"></span><br><span class="line">Removing brick(s) can result <span class="keyword">in</span> data loss. Do you want to Continue? (y/n) y</span><br><span class="line">volume remove-brick commit: failed: Removing bricks from replicate configuration is not allowed without reducing replica count explicitly.</span><br></pre></td></tr></table></figure><p>根据上面命令语法执行，但是失败了，根据提示需要先减少replica的数量</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gluster volume remove-brick gsfs replica 1 gs02:/opt/gluster/data gs03:/opt/gluster/data force</span><br><span class="line"></span><br><span class="line">Removing brick(s) can result <span class="keyword">in</span> data loss. Do you want to Continue? (y/n) y</span><br><span class="line">volume remove-brick commit force: success</span><br></pre></td></tr></table></figure><p>执行上面的命令将复本数从3降到1。</p><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/895840ae/3.png" alt></p><h3 id="GlusterFS磁盘操作"><a href="#GlusterFS磁盘操作" class="headerlink" title="GlusterFS磁盘操作"></a>GlusterFS磁盘操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 停止磁盘</span></span><br><span class="line">gluster volume stop gsfs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除磁盘</span></span><br><span class="line">gluster volume delete gsfs</span><br></pre></td></tr></table></figure><p>为什么要删除呢？删除了是否会影响数据安全行呢？</p><p>答案是：GlusterFS在选择模式创建的磁盘是虚拟磁盘，删除虚拟磁盘，实际磁盘上的数据并不会有影响。安全性和可靠性是没有问题的，数据全部存在实际磁盘上。而要删除的必要性是因为更改模式时，还要创建虚拟磁盘，如果不删除，就会报磁盘存在而创建不成功。</p><h3 id="更改扩展模式"><a href="#更改扩展模式" class="headerlink" title="更改扩展模式"></a>更改扩展模式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gluster volume create gsfs gs01:/opt/gluster/data gs02:/opt/gluster/data gs03:/opt/gluster/data force</span><br><span class="line"></span><br><span class="line">volume create: gsfs: success: please start the volume to access data</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/895840ae/4.png" alt></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 磁盘启动</span><br><span class="line">gluster volume start gsfs</span><br><span class="line"># 重新挂载</span><br><span class="line">mount -t glusterfs gs01:gsfs /mnt</span><br><span class="line"># 查看</span><br><span class="line">df -h</span><br><span class="line"># 检查挂载盘</span><br><span class="line">ls -lrt /mnt/</span><br></pre></td></tr></table></figure><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/895840ae/E:%5CBlog%5Csunhexo%5Csource_posts%5C%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2%5C5.png" alt></p><p>模式已经更改为扩展模式了。</p><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/895840ae/6.png" alt></p><p>可以看到挂载后的磁盘包含了原复制模式下的3份文件，而且都是相同的。这是因为实际文件是存在磁盘上，而集群的虚拟磁盘把他们汇总了。只需要把其他两个节点上数据删除，就只保留一份文件了。以后的文件会平衡分配到集群节点，也可以执行磁盘平衡命令手动平衡。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gluster volume models lay-outstart</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>根据上面教程，复制模式就变为了扩展模式。这两种模式日常用的最多。其他的模式，大家可以根据上面思路，自行测试。要摘除节点需要先移除brick，要移除brick需先减少复制文本的份数。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GlusterFS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Centos7文件共享服务Samba的部署</title>
       <link href="/articles/bf19f399.html"/>
       <url>/articles/bf19f399.html</url>
