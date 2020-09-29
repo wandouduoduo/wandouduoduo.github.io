@@ -270,7 +270,7 @@ sidebar:
 # ---------------------------------------------------------------
 
 # Automatically scroll page to section which is under <!-- more --> mark.
-scroll_to_more: true
+scroll_to_more: false
 
 # Automatically saving scroll position on each post/page in cookies.
 save_scroll: false
@@ -639,7 +639,7 @@ baidu_site_verification: wbqyth06a2
 #baidu_site_verification: dGZSCiVN1E
 
 # CNZZ count
-cnzz_siteid: true
+cnzz_siteid: false
 
 # Application Insights
 # See: https://azure.microsoft.com/en-us/services/application-insights

@@ -16,9 +16,9 @@ time.sleep(2)
 
 # 输入账号--通过html的id属性定位输入位置--改为你的账号
 user_login = driver.find_element_by_id('user_login')
-user_login.send_keys("wandouduoduo@163.com")
+user_login.send_keys("xxxxxxxxxxxx")
 # 输入密码--通过html的id属性定位输入位置--改为你的密码
-driver.find_element_by_id('user_password').send_keys("sx379654946")
+driver.find_element_by_id('user_password').send_keys("xxxxxxxxxxxxxxxxx")
 # 点击登录按钮--通过xpath确定点击位置
 driver.find_element_by_xpath('/html/body/div[2]/div[2]/div[1]/div/div[2]/div/form[1]/div[2]/div/div/div[4]/input').click()
 
