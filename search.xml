@@ -3164,6 +3164,18 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 
 <h3 id="管理界面"><a href="#管理界面" class="headerlink" title="管理界面"></a>管理界面</h3><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/decac6ef/162533_61adb798_1097803.png" alt="img"></p>
 <p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/decac6ef/162557_07c99033_1097803.png" alt="img"></p>
+<h2 id="自定义路由配置"><a href="#自定义路由配置" class="headerlink" title="自定义路由配置"></a>自定义路由配置</h2><p>通常openvpn部署好以后，客户端连接VPN后会被配置一些路由，其客户端的路由会被修改为所有的流量都通过VPN来传输。但有时候，我们需要客户端的某些IP走VPN或者本地网关。这里有两种方法进行openvpn的路由配置</p>
+<h3 id="第一种方法：-客户端进行配置"><a href="#第一种方法：-客户端进行配置" class="headerlink" title="第一种方法： 客户端进行配置"></a>第一种方法： 客户端进行配置</h3><p>在配置文件下增加如下内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route-nopull <span class="comment"># 客户端连接openvpn后 不从服务端获取路由</span></span><br><span class="line">max-routes 1000 <span class="comment"># 设置路由的最大条数，默认是100，这里可以根据需求修改</span></span><br><span class="line">route 192.168.0.0 255.255.255.0 net_gateway <span class="comment"># 使192.168.0.0/24网段，不走vpn网关</span></span><br><span class="line">route 192.168.1.0 255.255.255.0 vpn_gateway <span class="comment"># 使192.168.1.0/24网段，走vpn网关</span></span><br></pre></td></tr></table></figure>
+
+<p>注意： 如果配置中有 <code>redirect-gateway def1</code> 则需要先移除</p>
+<p>添加<code>vpn_gateway</code>参数使部分IP访问走OpenVPN出去。<code>net_gateway</code>和 <code>vpn_gateway</code> 相反, 他表示在默认全部走OpenVPN ,强行指定部分 IP 访问不通过 OpenVPN 出去。</p>
+<h3 id="第二种方法：-在服务端进行配置"><a href="#第二种方法：-在服务端进行配置" class="headerlink" title="第二种方法： 在服务端进行配置"></a>第二种方法： 在服务端进行配置</h3><p>服务端和客户端的配置略有不同</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">push <span class="string">"route 192.168.0.0 255.255.255.0 net_gateway"</span> <span class="comment"># 将引号中的路由推送到客户端</span></span><br><span class="line">push <span class="string">"route 192.168.1.0 255.255.255.0 vpn_gateway"</span> <span class="comment"># 将引号中的路由推送到客户端</span></span><br></pre></td></tr></table></figure>
+
+<p>注意： 如果配置中有 <code>redirect-gateway</code> 则需要先移除</p>
+<p>配置完成后，需要重启openvpn服务。</p>
+<p>两种方法选取其一即可。</p>
 ]]></content>
       <categories>
         <category>运维技术</category>

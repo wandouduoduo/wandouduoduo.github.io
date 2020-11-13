@@ -460,10 +460,10 @@
     
       &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;在使用 logstash 编写多个配置文件，写入到 elasticsearch 时，会出现数据写入混乱的问题，举例来说：&lt;/p&gt;
 &lt;p&gt;多个配置文件中规则如下：&lt;/p&gt;
-&lt;!--�722--&gt;
+&lt;!--�724--&gt;
 
 &lt;p&gt;然而当 logstash 服务运行起来的时候并不是这样的，可能出现如下想象：&lt;/p&gt;
-&lt;!--�723--&gt;
+&lt;!--�725--&gt;
 
 &lt;p&gt;&lt;strong&gt;究其原因，是因为 logstash 运行起来的时候，会将所有的配置文件合并执行。因此，每个 input 的数据都必须有一个唯一的标识，在 filter 和 output 时，通过这个唯一标识来实现过滤或者存储到不同的索引。&lt;/strong&gt;&lt;/p&gt;
     
