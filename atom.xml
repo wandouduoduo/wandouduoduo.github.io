@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wandouduoduo.github.io/"/>
-  <updated>2020-11-20T06:22:28.563Z</updated>
+  <updated>2020-11-20T06:25:37.531Z</updated>
   <id>https://wandouduoduo.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://wandouduoduo.github.io/articles/faec86f1.html"/>
     <id>https://wandouduoduo.github.io/articles/faec86f1.html</id>
     <published>2020-11-20T06:03:18.000Z</published>
-    <updated>2020-11-20T06:22:28.563Z</updated>
+    <updated>2020-11-20T06:25:37.531Z</updated>
     
     <content type="html"><![CDATA[<div id="vip-container"><p>Linux在日常用find mtime命令来查找近几天的文件，或者日志文件只需要保留7天，7天前的需要查找处理删掉。那么mtime参数有带符号(+号，-号)和不带符号之分。你真的能够清楚辨别区分吗？不见得吆，本文详解这个时间点，让你轻松辨别。</p><a id="more"></a><h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p><code>-mtime n</code></p><h3 id="带-符号"><a href="#带-符号" class="headerlink" title="带+符号"></a>带+符号</h3><p>这里的n，如果n为带有+号的值，意思为查找n天前所有的文件。比如n=+1且当前是24号9点，那么查找22号9点以前的数据，不包括22号9点到23号9点这段时间。</p><h3 id="带-符号-1"><a href="#带-符号-1" class="headerlink" title="带-符号"></a>带-符号</h3><p>如果是负号（n=-1）则为查找一天内的文件，比如当前时间24号9点，那么查找23点9点到24点9点时间段的数据，如果是（n=-2）则代表查找两天内的所有数据，比如当前时间24号9点，那么查找22点9点到24点9点时间段的数据。</p><h3 id="不带符号"><a href="#不带符号" class="headerlink" title="不带符号"></a>不带符号</h3><p>如果不带有符号，那么则查找指定前n天中这一天的数据。比如（n=1）且当前时间24号9点，那么查找22点9点到23点9点这个时间段的数据。</p><h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/faec86f1/1.jpg" alt></p><p><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/articles/faec86f1/2.png" alt></p><p>find . -mtime +0 -type f -name “log*” | xargs rm -f  #删除24小时以前log格式的文件     </p><p>#按文件更改时间来查找文件，-n指n天以内，+n指n天以前。</p></div><script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script><script>var isMobile = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);if (!isMobile) {    var btw = new BTWPlugin();    btw.init({        "id": "vip-container",        "blogId": "19128-1605840642106-221",        "name": "豌豆多多笔记",        "qrcode": "https://wandouduoduo.github.io/about/index/gongzhonghao.jpg",        "keyword": "豌豆多多"    });}</script>]]></content>
     
