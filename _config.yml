@@ -3,11 +3,11 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 豌豆多多
+title: 运维随笔
 subtitle: SRE & Devops & Architect
-description: 沪漂资深运维架构师的呕心笔记
-keywords: 豌豆多多,运维,wandouduoduo,架构,工程师,技术,笔记
-author: WanDouDuoDuo
+description: 资深运维架构师豌豆多多的呕心笔记
+keywords: 运维随笔,运维,yunwei,豌豆多多,wandouduoduo,运维笔记,IT运维,运维社区,运维论坛,运维管理,运维服务,自动化运维,运维工具,DevOps,运维工程师,Linux运维,Shell脚本,数据库,高效运维,微服务,互联网运维,mysql,lnmp,lamp,k8s,docker,云计算,python,linux
+author: 豌豆多多
 language: zh-CN
 timezone: Asia/Shanghai
 
@@ -141,19 +141,19 @@ nofollow:
     - 'wandouduoduo.netlify.com'
 
 #readmore
-# plugins:
-#   readmore:
-#     blogId: 19128-1593691079092-122
-#     name: 豌豆多多笔记
-#     qrcode: https://wandouduoduo.gitee.io/about/index/gongzhonghao.jpg
-#     keyword: vip
+plugins:
+  readmore:
+    blogId: 19128-1606361858239-837
+    name: 运维随笔
+    qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
+    keyword: yunwei
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
 - type: git
   repo: 
-    github: https://github.com/wandouduoduo/wandouduoduo.github.io.git
-    gitee: https://gitee.com/wandouduoduo/wandouduoduo.git
+    github: git@github.com:wandouduoduo/wandouduoduo.github.io.git
+    gitee: git@gitee.com:wandouduoduo/wandouduoduo.git
   branch: master
 - type: baidu_url_submitter

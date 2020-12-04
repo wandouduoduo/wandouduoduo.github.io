@@ -142,7 +142,7 @@ menu:
   tags: /tags/ || tags
   archives: /archives/ || archive
   about: /about/ || user
-  tools: /tools/ || heartbeat
+  # tools: /tools/ || heartbeat
   # testtools: /testtools/ || sitemap
   #commonweal: /404/ || heartbeat
 
@@ -208,8 +208,9 @@ links_layout: inline
 links:
   菜鸟教程: https://www.runoob.com/   
   自强学堂: https://code.ziqiangxuetang.com/
+  运维生存时间: http://www.ttlsa.com/
   朱双印博客: http://www.zsythink.net/
-  运维饼铛: https://pincheng.xyz/
+  运维饼铛: http://bingdang.github.io/
 
 # Sidebar Avatar
 avatar:

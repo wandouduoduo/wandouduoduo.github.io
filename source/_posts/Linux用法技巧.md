@@ -101,6 +101,8 @@ Top用于查看Linux系统下进程信息，有时候需要选择显示那些列
 
 输入大写P，则结果按CPU占用降序排序。输入大写M，结果按内存占用降序排序。（注：大写P可以在capslock状态输入p，或者按Shift+p）
 
+
+
 ### no space left on device的解决方法(iNode满导致)
 
 今天在腾讯云的服务器被攻击后，apache启动报错，查找原因发现是磁盘空间不够no space left on device，
@@ -130,3 +132,56 @@ find /home -type f -size 0 -exec rm {} \;
 ```
 
 ![img](Linux用法技巧/4.png)
+
+### 递归目录
+
+```bash
+#! /bin/bash
+
+function read_dir(){
+    for file in `ls $1`
+    do
+        if [ -d $1"/"$file ]  #注意此处之间一定要加上空格，否则会报错
+        then
+            read_dir $1"/"$file
+        else
+            echo $1"/"$file
+        fi
+    done
+}
+
+#测试目录 test
+read_dir test
+```
+
+### 超时控制
+
+```bash
+#! /bin/bash
+set -x
+
+timeout()
+{
+        waitfor=3
+        command=$*
+        $command &
+        commandpid=$!
+
+        sleep $waitfor ; kill -9 $commandpid  > /dev/null 2>&1 &
+
+        watchdog=$!
+        sleeppid=$PPID
+        wait $commandpid > /dev/null 2>&1
+
+        kill $sleeppid > /dev/null 2>&1
+}
+
+#测试的动作函数
+test123()
+{
+        sleep 20
+}
+
+timeout test123
+```
+

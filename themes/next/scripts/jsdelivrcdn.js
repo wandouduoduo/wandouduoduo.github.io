@@ -45,7 +45,7 @@ hexo.extend.filter.register('after_post_render', function(data){
 	      //开始是/，以gif/png等结尾
         if(/^\/.*\.(gif|png|jpg|bmp|jpeg)$/i.test(src)) {
 		      // console.log("测试img链接通过 "+src);
-          $(this).attr('src', "https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io" + src);
+          $(this).attr('src', "https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@master" + src);
           // console.log("替换img链接为 " + "https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io" + src);
         }else{
 		     console.info&&console.info("注意，这个img标签，data-src没有通过测试");  
