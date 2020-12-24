@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>非root的普通用户使用tmux方法教程</title>
+    <url>/articles/4dd98c85.html</url>
+    <content><![CDATA[<div id="vip-container"><p><code>Tmux</code>是一款终端复用的神器，实现了会话与终端窗后的分离。用过的同学都欲罢不能，但是使用它时必须root用户，如果是普通用户就会出现<code>can&#39;t create socket</code>错误不能使用，那么本教程就教你用普通用户使用tmux这个神器。</p>
+<a id="more"></a>
+
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h2><h3 id="root权限"><a href="#root权限" class="headerlink" title="root权限"></a>root权限</h3><p>若有root权限，tmux 安装十分简单，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install tmux      <span class="comment">#ubuntu</span></span><br><span class="line">yum install tmux -y  <span class="comment">#centos</span></span><br></pre></td></tr></table></figure>
+
+<p>然后即可使用</p>
+<h3 id="普通用户"><a href="#普通用户" class="headerlink" title="普通用户"></a>普通用户</h3><p>若你没有root权限，则就需要下载源码安装了。由于Tmux的安装依赖libevent以及ncurses，这两个库要先安装。</p>
+<p>安装目录限定为：<code>/home/username/.local</code></p>
+<p><strong>安装libevent</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/libevent/libevent/releases/download/release-2.0.22-stable/libevent-2.0.22-stable.tar.gz</span><br><span class="line">tar -xzvf libevent-2.0.22-stable.tar.gz</span><br><span class="line"><span class="built_in">cd</span> libevent-2.0.22-stable</span><br><span class="line">./configure --prefix=<span class="variable">$HOME</span>/.<span class="built_in">local</span> --<span class="built_in">disable</span>-shared</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装ncurses</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz</span><br><span class="line">tar -xzvf ncurses-6.0.tar.gz</span><br><span class="line"><span class="built_in">cd</span> ncurses-6.0</span><br><span class="line">./configure --prefix=<span class="variable">$HOME</span>/.<span class="built_in">local</span></span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+
+<p><strong>安装tmux</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/tmux/tmux/releases/download/2.8/tmux-2.8.tar.gz</span><br><span class="line">tar -xzvf tmux-2.8.tar.gz</span><br><span class="line"><span class="built_in">cd</span> tmux-2.8</span><br><span class="line">./configure CFLAGS=<span class="string">"-I<span class="variable">$HOME</span>/.local/include"</span> LDFLAGS=<span class="string">"-L<span class="variable">$HOME</span>/.local/lib"</span> </span><br><span class="line">make</span><br><span class="line">cp tmux ~/.<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure>
+
+<p><strong>添加环境变量</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.bashrc</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:~/.<span class="built_in">local</span>/bin      <span class="comment">#将该行添加到.bashrc 中</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/wandouduoduo/.tmux.git</span><br><span class="line">ln -s -f .tmux/.tmux.conf</span><br><span class="line">cp .tmux/.tmux.conf.local .</span><br></pre></td></tr></table></figure>
+
+<p>祝你好运，享受并使用它吧！！</p>
+</div>
+
+			<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+			<script>
+			var isMobile = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
+			if (!isMobile) {
+			    var btw = new BTWPlugin();
+			    btw.init({
+			        "id": "vip-container",
+			        "blogId": "19128-1606361858239-837",
+			        "name": "运维随笔",
+			        "qrcode": "https://wandouduoduo.github.io/about/index/gongzhonghao.jpg",
+			        "keyword": "yunwei"
+			    });
+			}
+			</script>
+		]]></content>
+      <categories>
+        <category>运维技术</category>
+        <category>命令详解</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos7时间自动同步</title>
     <url>/articles/6bab7f2f.html</url>
     <content><![CDATA[<div id="vip-container"><p>运维的工作高可用高并发，负载均衡，可靠稳定等等要求，很多系统都是集群模式并采用分布式部署。但是有时系统时间不同步，集群服务器之间时间不同，就会造成一些困扰或服务根本就启动不起来。所以时间自动同步，是很有必要的。</p>
@@ -10440,50 +10492,21 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
 <p>第4行的作用是使用<strong>prefix r</strong>重新加载配置文件，并输出提示，否则需要关闭会话后配置文件才能生效，也可手动加载配置文件，在tmux终端输入”<strong>prefix :”</strong>进入命令模式，用<strong>source-file</strong>命令加载配置文件。</p>
 <p><strong>注意，将多个命令写在一起作为命令序列时，命令之间要用空格和分号分隔。</strong></p>
 <h3 id="会话管理"><a href="#会话管理" class="headerlink" title="会话管理"></a>会话管理</h3><p><strong>常用命令</strong></p>
-<p><strong>tmux new</strong>　　创建默认名称的会话（在tmux命令模式使用<strong>new</strong>命令可实现同样的功能，其他命令同理，后文不再列出tmux终端命令）</p>
-<p><strong>tmux new -s mysession</strong>　　创建名为mysession的会话</p>
-<p><strong>tmux ls</strong>　　显示会话列表</p>
-<p><strong>tmux a</strong>　　连接上一个会话</p>
-<p><strong>tmux a -t mysession</strong>　　连接指定会话</p>
-<p><strong>tmux rename -t s1 s2</strong>　　重命名会话s1为s2</p>
-<p><strong>tmux kill-session</strong>　　关闭上次打开的会话</p>
-<p><strong>tmux kill-session -t s1</strong>　　关闭会话s1</p>
-<p><strong>tmux kill-session -a -t s1</strong>　　关闭除s1外的所有会话</p>
-<p><strong>tmux kill-server</strong>　　关闭所有会话</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tmux new　　<span class="comment">#创建默认名称的会话（在tmux命令模式使用**new**命令可实现同样的功能，其他命令同理，后文不再列出tmux终端命令）</span></span><br><span class="line">tmux new -s mysession　　<span class="comment">#创建名为mysession的会话</span></span><br><span class="line">tmux ls　　<span class="comment">#显示会话列表</span></span><br><span class="line">tmux a 　　<span class="comment">#连接上一个会话</span></span><br><span class="line">tmux a -t mysession　　<span class="comment">#连接指定会话</span></span><br><span class="line">tmux rename -t s1 s2　 <span class="comment">#重命名会话s1为s2</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session　　  <span class="comment">#关闭上次打开的会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -t s1　　<span class="comment">#关闭会话s1</span></span><br><span class="line">tmux <span class="built_in">kill</span>-session -a -t s1　　<span class="comment">#关闭除s1外的所有会话</span></span><br><span class="line">tmux <span class="built_in">kill</span>-server　　<span class="comment">#关闭所有会话</span></span><br></pre></td></tr></table></figure>
+
 <p><strong>常用快捷键</strong></p>
-<p><strong>prefix s</strong>　　列出会话，可进行切换</p>
-<p><strong>prefix $</strong>　　重命名会话</p>
-<p><strong>prefix d</strong>　　分离当前会话</p>
-<p><strong>prefix</strong> <strong>D</strong>　　分离指定会话</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">prefix s　　<span class="comment">#列出会话，可进行切换</span></span><br><span class="line">prefix $　　<span class="comment">#重命名会话</span></span><br><span class="line">prefix d　　<span class="comment">#分离当前会话</span></span><br><span class="line">prefix D　　<span class="comment">#分离指定会话</span></span><br></pre></td></tr></table></figure>
+
 <p>　　</p>
-<h3 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h3><p><strong>prefix c</strong>　　创建一个新窗口</p>
-<p><strong>prefix ,</strong>　　重命名当前窗口</p>
-<p><strong>prefix w</strong>　　列出所有窗口，可进行切换</p>
-<p><strong>prefix n</strong>　　进入下一个窗口</p>
-<p><strong>prefix p</strong>　　进入上一个窗口</p>
-<p><strong>prefix l</strong>　　进入之前操作的窗口</p>
-<p><strong>prefix 0~9</strong>　　选择编号0~9对应的窗口</p>
-<p><strong>prefix .</strong>　　修改当前窗口索引编号</p>
-<p><strong>prefix ‘</strong>　　切换至指定编号（可大于9）的窗口</p>
-<p><strong>prefix f</strong>　　根据显示的内容搜索窗格</p>
-<p><strong>prefix &amp;</strong>　　关闭当前窗口</p>
+<h3 id="窗口管理"><a href="#窗口管理" class="headerlink" title="窗口管理"></a>窗口管理</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">prefix c　　<span class="comment">#创建一个新窗口</span></span><br><span class="line">prefix ,　　<span class="comment">#重命名当前窗口</span></span><br><span class="line">prefix w　　<span class="comment">#列出所有窗口，可进行切换</span></span><br><span class="line">prefix n　　<span class="comment">#进入下一个窗口</span></span><br><span class="line">prefix p　　<span class="comment">#进入上一个窗口</span></span><br><span class="line">prefix l　　<span class="comment">#进入之前操作的窗口</span></span><br><span class="line">prefix 0~9　<span class="comment">#选择编号0~9对应的窗口</span></span><br><span class="line">prefix .　　<span class="comment">#修改当前窗口索引编号</span></span><br><span class="line">prefix <span class="string">'　　#切换至指定编号（可大于9）的窗口</span></span><br><span class="line"><span class="string">prefix f　　#根据显示的内容搜索窗格</span></span><br><span class="line"><span class="string">prefix &amp;　　#关闭当前窗口</span></span><br></pre></td></tr></table></figure>
+
 <p>　</p>
-<h3 id="窗格管理"><a href="#窗格管理" class="headerlink" title="窗格管理"></a><strong>窗格管理</strong></h3><p><strong>prefix %</strong>　　水平方向创建窗格</p>
-<p><strong>prefix “</strong>　　垂直方向创建窗格</p>
-<p><strong>prefix Up|Down|Left|Right</strong>　　根据箭头方向切换窗格</p>
-<p><strong>prefix q</strong>　　显示窗格编号</p>
-<p><strong>prefix o</strong>　　顺时针切换窗格</p>
-<p><strong>prefix }</strong>　　与下一个窗格交换位置</p>
-<p><strong>prefix {</strong>　　与上一个窗格交换位置</p>
-<p><strong>prefix x</strong>　　关闭当前窗格</p>
-<p><strong>prefix space(空格键)</strong>　　重新排列当前窗口下的所有窗格</p>
-<p><strong>prefix !</strong>　　将当前窗格置于新窗口</p>
-<p><strong>prefix Ctrl+o</strong>　　逆时针旋转当前窗口的窗格</p>
-<p><strong>prefix t</strong>　　在当前窗格显示时间</p>
-<p><strong>prefix z</strong>　　放大当前窗格(再次按下将还原)</p>
-<p><strong>prefix i</strong>　　显示当前窗格信息</p>
-<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a><strong>其他命令</strong></h3><p><strong>tmux list-key</strong>　　列出所有绑定的键，等同于<strong>prefix ?</strong></p>
-<p><strong>tmux list-command</strong>　　列出所有命令</p>
+<h3 id="窗格管理"><a href="#窗格管理" class="headerlink" title="窗格管理"></a><strong>窗格管理</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">prefix %　　<span class="comment">#水平方向创建窗格</span></span><br><span class="line">prefix <span class="string">"　　#垂直方向创建窗格</span></span><br><span class="line"><span class="string">prefix Up|Down|Left|Right　　#根据箭头方向切换窗格</span></span><br><span class="line"><span class="string">prefix q　　#显示窗格编号</span></span><br><span class="line"><span class="string">prefix o　　#顺时针切换窗格</span></span><br><span class="line"><span class="string">prefix &#125;　　#与下一个窗格交换位置</span></span><br><span class="line"><span class="string">prefix &#123;　　#与上一个窗格交换位置</span></span><br><span class="line"><span class="string">prefix x　　#关闭当前窗格</span></span><br><span class="line"><span class="string">prefix space(空格键)　　#重新排列当前窗口下的所有窗格</span></span><br><span class="line"><span class="string">prefix !　　#将当前窗格置于新窗口</span></span><br><span class="line"><span class="string">prefix Ctrl+o　　#逆时针旋转当前窗口的窗格</span></span><br><span class="line"><span class="string">prefix t　　#在当前窗格显示时间</span></span><br><span class="line"><span class="string">prefix z　　#放大当前窗格(再次按下将还原)</span></span><br><span class="line"><span class="string">prefix i　　显示当前窗格信息</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a><strong>其他命令</strong></h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tmux list-key　　<span class="comment">#列出所有绑定的键，等同于prefix ?</span></span><br><span class="line">tmux list-command　　<span class="comment">#列出所有命令</span></span><br></pre></td></tr></table></figure>
+
 <p>　　</p>
 <p>以上为tmux的常见操作，基本可以满足大部分的工作需求，至于更高端的操作待日后再整理。</p>
 </div>
