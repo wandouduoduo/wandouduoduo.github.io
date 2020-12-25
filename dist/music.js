@@ -23,7 +23,7 @@ const ap = new APlayer({
       },
       {
         name: '用力活着',
-        artist: '公孙文',
+        artist: '张茜',
         url: 'http://music.163.com/song/media/outer/url?id=1490914127.mp3',
         cover: 'http://p4.music.126.net/Dr4KJ_0uK0GZcKa_HQsBOQ==/109951165406186188.jpg?param=300x300',
       }
