@@ -17,10 +17,10 @@
 
 <h4 id="从节点"><a href="#从节点" class="headerlink" title="从节点"></a>从节点</h4><p>剩下2台作为从节点，组件有：sentry-worker、sentry-web和memcached。从节点可以随负载变化动态扩容</p>
 <h3 id="修改主节点配置"><a href="#修改主节点配置" class="headerlink" title="修改主节点配置"></a>修改主节点配置</h3><p>修改主节点配置文件docker-compose.yml，如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &apos;3.4&apos;</span><br><span class="line"></span><br><span class="line">x-defaults: &amp;defaults</span><br><span class="line">  restart: unless-stopped</span><br><span class="line">  build:</span><br><span class="line">    context: .</span><br><span class="line">  depends_on:</span><br><span class="line">    - redis</span><br><span class="line">    - postgres</span><br><span class="line">    - memcached</span><br><span class="line">    - smtp</span><br><span class="line">  env_file: .env</span><br><span class="line">  environment:</span><br><span class="line">    SENTRY_MEMCACHED_HOST: memcached</span><br><span class="line">    SENTRY_REDIS_HOST: redis</span><br><span class="line">    SENTRY_POSTGRES_HOST: postgres</span><br><span class="line">    SENTRY_EMAIL_HOST: smtp</span><br><span class="line">  volumes:</span><br><span class="line">    - sentry-data:/var/lib/sentry/files</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  smtp:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: tianon/exim4</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:25:25&apos;</span><br><span class="line"></span><br><span class="line">  memcached:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: memcached:1.5-alpine</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:11211:11211&apos;</span><br><span class="line"></span><br><span class="line">  redis:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: redis:3.2-alpine</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:6379:6379&apos;</span><br><span class="line"></span><br><span class="line">  postgres:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: postgres:9.5</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:5432:5432&apos;</span><br><span class="line">    volumes:</span><br><span class="line">      - sentry-postgres:/var/lib/postgresql/data</span><br><span class="line"></span><br><span class="line">  web:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;9000:9000&apos;</span><br><span class="line">  cron:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    command: run cron</span><br><span class="line"></span><br><span class="line">  worker:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    command: run worker</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    sentry-data:</span><br><span class="line">      external: true</span><br><span class="line">    sentry-postgres:</span><br><span class="line">      external: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &apos;3.4&apos;</span><br><span class="line"></span><br><span class="line">x-defaults: &amp;defaults</span><br><span class="line">  restart: unless-stopped</span><br><span class="line">  build:</span><br><span class="line">    context: .</span><br><span class="line">  depends_on:</span><br><span class="line">    - redis</span><br><span class="line">    - postgres</span><br><span class="line">    - memcached</span><br><span class="line">    - smtp</span><br><span class="line">  env_file: .env</span><br><span class="line">  environment:</span><br><span class="line">    SENTRY_MEMCACHED_HOST: memcached</span><br><span class="line">    SENTRY_REDIS_HOST: redis</span><br><span class="line">    SENTRY_POSTGRES_HOST: postgres</span><br><span class="line">    SENTRY_DB_PASSWORD: postgres</span><br><span class="line">    SENTRY_EMAIL_HOST: smtp</span><br><span class="line">  volumes:</span><br><span class="line">    - sentry-data:/var/lib/sentry/files</span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  smtp:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: tianon/exim4</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:25:25&apos;</span><br><span class="line"></span><br><span class="line">  memcached:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: memcached:1.5-alpine</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:11211:11211&apos;</span><br><span class="line"></span><br><span class="line">  redis:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: redis:3.2-alpine</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:6379:6379&apos;</span><br><span class="line"></span><br><span class="line">  postgres:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: postgres:9.5</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;192.168.1.100:5432:5432&apos;</span><br><span class="line">    volumes:</span><br><span class="line">      - sentry-postgres:/var/lib/postgresql/data</span><br><span class="line"></span><br><span class="line">  web:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;9000:9000&apos;</span><br><span class="line">  cron:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    command: run cron</span><br><span class="line"></span><br><span class="line">  worker:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    command: run worker</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">volumes:</span><br><span class="line">    sentry-data:</span><br><span class="line">      external: true</span><br><span class="line">    sentry-postgres:</span><br><span class="line">      external: true</span><br></pre></td></tr></table></figure>
 
 <h3 id="修改从节点配置"><a href="#修改从节点配置" class="headerlink" title="修改从节点配置"></a>修改从节点配置</h3><p>修改从节点配置文件docker-compose.yml，配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &apos;3.4&apos;</span><br><span class="line"></span><br><span class="line">x-defaults: &amp;defaults</span><br><span class="line">  restart: unless-stopped</span><br><span class="line">  build:</span><br><span class="line">    context: .</span><br><span class="line">  env_file: .env</span><br><span class="line">  environment:</span><br><span class="line">    SENTRY_MEMCACHED_HOST: memcached</span><br><span class="line">    SENTRY_REDIS_HOST: 192.168.1.100</span><br><span class="line">    SENTRY_POSTGRES_HOST: 192.168.1.100</span><br><span class="line">    SENTRY_EMAIL_HOST: 192.168.1.100</span><br><span class="line">  volumes:</span><br><span class="line">    - sentry-data:/var/lib/sentry/files</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;9000:9000&apos;</span><br><span class="line">  memcached:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: memcached:1.5-alpine</span><br><span class="line">  worker:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    command: run worker -c 3</span><br><span class="line">volumes:</span><br><span class="line">    sentry-data:</span><br><span class="line">      external: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">version: &apos;3.4&apos;</span><br><span class="line"></span><br><span class="line">x-defaults: &amp;defaults</span><br><span class="line">  restart: unless-stopped</span><br><span class="line">  build:</span><br><span class="line">    context: .</span><br><span class="line">  env_file: .env</span><br><span class="line">  environment:</span><br><span class="line">    SENTRY_MEMCACHED_HOST: memcached</span><br><span class="line">    SENTRY_REDIS_HOST: 192.168.1.100</span><br><span class="line">    SENTRY_POSTGRES_HOST: 192.168.1.100</span><br><span class="line">    SENTRY_DB_PASSWORD: postgres</span><br><span class="line">    SENTRY_EMAIL_HOST: 192.168.1.100</span><br><span class="line">  volumes:</span><br><span class="line">    - sentry-data:/var/lib/sentry/files</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">services:</span><br><span class="line">  web:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    ports:</span><br><span class="line">      - &apos;9000:9000&apos;</span><br><span class="line">  memcached:</span><br><span class="line">    restart: unless-stopped</span><br><span class="line">    image: memcached:1.5-alpine</span><br><span class="line">  worker:</span><br><span class="line">    &lt;&lt;: *defaults</span><br><span class="line">    command: run worker -c 3</span><br><span class="line">volumes:</span><br><span class="line">    sentry-data:</span><br><span class="line">      external: true</span><br></pre></td></tr></table></figure>
 
 <h3 id="统一存储"><a href="#统一存储" class="headerlink" title="统一存储"></a>统一存储</h3><p>集群分布式部署需要一个统一的存储服务，用于sourcemap等文件的存储。采用minio，部署在主节点。</p>
 <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p /opt/minio/&#123;data,config&#125;</span><br><span class="line"></span><br><span class="line">docker run -p 6000:9000 --name minio \</span><br><span class="line">    -d --restart=always \</span><br><span class="line">    -e <span class="string">"MINIO_ACCESS_KEY=wandouduoduo"</span> \</span><br><span class="line">    -e <span class="string">"MINIO_SECRET_KEY=wdddxxxx"</span> \</span><br><span class="line">    -v /opt/minio/data:/data \</span><br><span class="line">    -v /opt/minio/config:/root/.minio \</span><br><span class="line">    minio/minio server /data</span><br></pre></td></tr></table></figure>
@@ -40,6 +40,7 @@
 
 <p><em>注意：以上配置需要根据服务器和流量的情况调整，以最大化利用机器资源。前端上传sourcemap文件较多时，worker耗费cpu资源会比较厉害</em></p>
 <h3 id="访问"><a href="#访问" class="headerlink" title="访问"></a>访问</h3><p>然后负载均衡到所有节点的9000端口，访问即可，到这里集群搭建完成。</p>
+<p><em>注意：这里做负载均衡时调用策略要用ip  hash方式。如用轮训方式，web页面输入密码，会轮训到下个节点登录不了。</em></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>sentry集群方案已全部搭建完成，当然该集群还可以优化，例如redis独立集群等等。</p>
 </div>
 
@@ -9518,8 +9519,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>服务部署</category>
       </categories>
       <tags>
-        <tag>Openldap</tag>
         <tag>Cmdb</tag>
+        <tag>Openldap</tag>
       </tags>
   </entry>
   <entry>
@@ -16608,8 +16609,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
         <tag>Cmdb</tag>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -20225,6 +20226,68 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
       </tags>
   </entry>
   <entry>
+    <title>神级的Go开源项目</title>
+    <url>/articles/b45f8ddd.html</url>
+    <content><![CDATA[<div id="vip-container"><h2 id="Golang-go"><a href="#Golang-go" class="headerlink" title="Golang/go"></a>Golang/go</h2><p>介绍：<br>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。go本身，也是用go语言实现的，包括他的编译器。与C++相比，Go并不包括如枚举、异常处理、继承、泛型、断言、虚函数等功能，但增加了 切片(Slice) 型、并发、管道、垃圾回收、接口（Interface）等特性的语言级支持。Go 2.0版本将支持泛型，对于断言的存在，则持负面态度，同时也为自己不提供类型继承来辩护。</p>
+<p>star数：53789<br>地址：<br><a href="https://github.com/golang/go" rel="noopener" target="_blank">https://github.com/golang/go</a></p>
+<a id="more"></a>
+
+<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>介绍：<br>Docker项目在2014年9月份就拿到了C轮4000万美元融资，版本迭代速度超快，目前从GitHub看到已有78个版本，而它仅仅是再2013年初才正式开始的一个项目而已。目前，国内Docker技术推广也进行的如火如荼，比如 Docker中文社区，CSDN也建立了 Docker专区。CSDN CODE也将在近期与Docker中文社区合作，推出Docker技术文章翻译活动，届时也请大家多多关注，及时关注与参与。Docker团队之所以喜欢用Go语言，主要是Go具有强大的标准库、全开发环境、跨平台构建的能力。  </p>
+<p>star数：52339<br>地址：<br><a href="https://github.com/moby/moby" rel="noopener" target="_blank">https://github.com/moby/moby</a>（Docker的新马甲）</p>
+<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>介绍：<br>Kubernetes是Google开源的一个容器编排引擎，它支持自动化部署、大规模可伸缩、应用容器化管理。在生产环境中部署一个应用程序时，通常要部署该应用的多个实例以便对应用请求进行负载均衡。在Kubernetes中，我们可以创建多个容器，每个容器里面运行一个应用实例，然后通过内置的负载均衡策略，实现对这一组应用实例的管理、发现、访问，而这些细节都不需要运维人员去进行复杂的手工配置和处理。  </p>
+<p>star数：48830<br>地址：<br><a href="https://github.com/kubernetes/kubernetes" rel="noopener" target="_blank">https://github.com/kubernetes/kubernetes</a></p>
+<h2 id="Lantern"><a href="#Lantern" class="headerlink" title="Lantern"></a>Lantern</h2><p>介绍：<br>蓝灯，翻墙利器。  </p>
+<p>star数：40492<br>地址：<br><a href="https://github.com/getlantern/lantern" rel="noopener" target="_blank">https://github.com/getlantern/lantern</a></p>
+<h2 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h2><p>介绍：<br>etcd是由CoreOS开发并维护键值存储系统，它使用Go语言编写，并通过Raft一致性算法处理日志复制以保证强一致性。目前，Google的容器集群管理系统Kubernetes、开源PaaS平台Cloud Foundry和CoreOS的Fleet都广泛使用了etcd。Fleet则是一个分布式的初始化系统。它们之所以选择使用Go语言，则是因为Go语言对跨平台的良好支持，以及其背后的强大社区。  </p>
+<p>star数：23187<br>地址：<br><a href="https://github.com/etcd-io/etcd" rel="noopener" target="_blank">https://github.com/etcd-io/etcd</a></p>
+<h2 id="InfluxDB"><a href="#InfluxDB" class="headerlink" title="InfluxDB"></a>InfluxDB</h2><p>介绍：<br>一个Go语音编写的开源分布式的时序、事件和指标数据库，无需外部依赖。其设计目标是实现分布式和水平伸缩扩展。  </p>
+<p>star数：15681<br>地址：<br><a href="https://github.com/influxdata/influxdb" rel="noopener" target="_blank">https://github.com/influxdata/influxdb</a></p>
+<h2 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h2><p>介绍：<br>一款极速的静态页面生成器，让你可以很快的搭建个人网站，提供了多套主题可供使用，并且可以自己定制，和NodeJS的Hexo是一样的。  </p>
+<p>star数：33044<br>地址：<br><a href="https://github.com/gohugoio/hugo" rel="noopener" target="_blank">https://github.com/gohugoio/hugo</a></p>
+<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>介绍：<br>一款开源监控度量的看板系统，可以接Graphite,Elasticsearch,InfluxDB等数据源，定制化很高。  </p>
+<p>star数：27027<br>地址：<br><a href="https://github.com/grafana/grafana" rel="noopener" target="_blank">https://github.com/grafana/grafana</a></p>
+<h2 id="Codis"><a href="#Codis" class="headerlink" title="Codis"></a>Codis</h2><p>介绍：<br>Codis是一个分布式Redis解决方案,其实就是一个数据库代理，让你在使用Redis集群的时候，就像使用单机版的Redis是一样的，对开发者透明。  </p>
+<p>star数：8840<br>地址：<br><a href="https://github.com/CodisLabs/codis" rel="noopener" target="_blank">https://github.com/CodisLabs/codis</a></p>
+<h2 id="Gin-amp-Beego"><a href="#Gin-amp-Beego" class="headerlink" title="Gin &amp; Beego"></a>Gin &amp; Beego</h2><p>介绍：<br>两个快速开发Go应用的http框架，很好用很简洁，笔者亲测。  </p>
+<p>star数：分别为24692和19086<br>地址：<br>分别为<a href="https://github.com/gin-gonic/gin" rel="noopener" target="_blank">https://github.com/gin-gonic/gin</a>和<a href="https://github.com/astaxie/beego" rel="noopener" target="_blank">https://github.com/astaxie/beego</a></p>
+<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><p>介绍：<br>Prometheus是一个开源监控系统，它前身是SoundCloud的警告工具包。从2012年开始，许多公司和组织开始使用Prometheus。该项目的开发人员和用户社区非常活跃，越来越多的开发人员和用户参与到该项目中。目前它是一个独立的开源项目，且不依赖与任何公司。为了强调这点和明确该项目治理结构，Prometheus在2016年继Kurberntes之后，加入了Cloud Native Computing Foundation。  </p>
+<p>star数：22325<br>地址：<br><a href="https://github.com/prometheus/prometheus" rel="noopener" target="_blank">https://github.com/prometheus/prometheus</a></p>
+<h2 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h2><p>介绍：<br>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其他分布式服务注册与发现的方案，Consul的方案更“一站式”，内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（比如ZooKeeper等）。  </p>
+<p>star数：15040<br>地址：<br><a href="ttps://github.com/hashicorp/consul" rel="noopener" target="_blank">https://github.com/hashicorp/consul</a></p>
+<h2 id="Nsq"><a href="#Nsq" class="headerlink" title="Nsq"></a>Nsq</h2><p>介绍：<br>NSQ是Go语言编写的，开源的分布式消息队列中间件，其设计的目的是用来大规模地处理每天数以十亿计级别的消息。NSQ 具有分布式和去中心化拓扑结构，该结构具有无单点故障、故障容错、高可用性以及能够保证消息的可靠传递的特征，是一个成熟的、已在大规模生成环境下应用的产品。  </p>
+<p>star数：14559<br>地址：<br><a href="https://github.com/nsqio/nsq" rel="noopener" target="_blank">https://github.com/nsqio/nsq</a></p>
+<h2 id="Awesome-go"><a href="#Awesome-go" class="headerlink" title="Awesome-go"></a>Awesome-go</h2><p>介绍：<br>这不是一个go项目，他是一个学习go的资料网站，属于著名的awesome系列，里面关于go的资源非常详细。  </p>
+<p>star数：40465<br>地址：<br><a href="https://github.com/avelino/awesome-go" rel="noopener" target="_blank">https://github.com/avelino/awesome-go</a></p>
+<h2 id="Open-falcon"><a href="#Open-falcon" class="headerlink" title="Open-falcon"></a>Open-falcon</h2><p>介绍：<br>越来越fashion的监控系统，小米开源。  </p>
+<p>star数：4267<br>地址：<br><a href="https://github.com/open-falcon/falcon-plus" rel="noopener" target="_blank">https://github.com/open-falcon/falcon-plus</a></p>
+<h2 id="Tidb"><a href="#Tidb" class="headerlink" title="Tidb"></a>Tidb</h2><p>介绍：<br>TiDB 是一个分布式 NewSQL 数据库。它支持水平弹性扩展、ACID 事务、标准 SQL、MySQL 语法和 MySQL 协议，具有数据强一致的高可用特性，是一个不仅适合 OLTP 场景还适合 OLAP 场景的混合数据库。    </p>
+<p>star数：17508<br>地址：<br><a href="https://github.com/pingcap/tidb" rel="noopener" target="_blank">https://github.com/pingcap/tidb</a></p>
+</div>
+
+			<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+			<script>
+			var isMobile = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
+			if (!isMobile) {
+			    var btw = new BTWPlugin();
+			    btw.init({
+			        "id": "vip-container",
+			        "blogId": "19128-1606361858239-837",
+			        "name": "运维随笔",
+			        "qrcode": "https://wandouduoduo.github.io/about/index/gongzhonghao.jpg",
+			        "keyword": "yunwei"
+			    });
+			}
+			</script>
+		]]></content>
+      <categories>
+        <category>编程积累</category>
+        <category>Go</category>
+      </categories>
+      <tags>
+        <tag>Go</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>超详细的hexo+github page搭建.md</title>
     <url>/articles/d2a49991.html</url>
     <content><![CDATA[<div id="vip-container"><h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>在 Windows 环境下安装 Node.js 非常简单，仅须到<a href="https://nodejs.org/en/download/" rel="noopener" target="_blank">官网下载</a>安装文件并执行即可完成安装，其中LTS是长期支持版，Current为最新版，但最新版一般都在开发阶段，还不稳定。建议选择LTS版本</p>
@@ -20404,68 +20467,6 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
       <tags>
         <tag>Git</tag>
         <tag>Hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>神级的Go开源项目</title>
-    <url>/articles/b45f8ddd.html</url>
-    <content><![CDATA[<div id="vip-container"><h2 id="Golang-go"><a href="#Golang-go" class="headerlink" title="Golang/go"></a>Golang/go</h2><p>介绍：<br>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。go本身，也是用go语言实现的，包括他的编译器。与C++相比，Go并不包括如枚举、异常处理、继承、泛型、断言、虚函数等功能，但增加了 切片(Slice) 型、并发、管道、垃圾回收、接口（Interface）等特性的语言级支持。Go 2.0版本将支持泛型，对于断言的存在，则持负面态度，同时也为自己不提供类型继承来辩护。</p>
-<p>star数：53789<br>地址：<br><a href="https://github.com/golang/go" rel="noopener" target="_blank">https://github.com/golang/go</a></p>
-<a id="more"></a>
-
-<h2 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h2><p>介绍：<br>Docker项目在2014年9月份就拿到了C轮4000万美元融资，版本迭代速度超快，目前从GitHub看到已有78个版本，而它仅仅是再2013年初才正式开始的一个项目而已。目前，国内Docker技术推广也进行的如火如荼，比如 Docker中文社区，CSDN也建立了 Docker专区。CSDN CODE也将在近期与Docker中文社区合作，推出Docker技术文章翻译活动，届时也请大家多多关注，及时关注与参与。Docker团队之所以喜欢用Go语言，主要是Go具有强大的标准库、全开发环境、跨平台构建的能力。  </p>
-<p>star数：52339<br>地址：<br><a href="https://github.com/moby/moby" rel="noopener" target="_blank">https://github.com/moby/moby</a>（Docker的新马甲）</p>
-<h2 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h2><p>介绍：<br>Kubernetes是Google开源的一个容器编排引擎，它支持自动化部署、大规模可伸缩、应用容器化管理。在生产环境中部署一个应用程序时，通常要部署该应用的多个实例以便对应用请求进行负载均衡。在Kubernetes中，我们可以创建多个容器，每个容器里面运行一个应用实例，然后通过内置的负载均衡策略，实现对这一组应用实例的管理、发现、访问，而这些细节都不需要运维人员去进行复杂的手工配置和处理。  </p>
-<p>star数：48830<br>地址：<br><a href="https://github.com/kubernetes/kubernetes" rel="noopener" target="_blank">https://github.com/kubernetes/kubernetes</a></p>
-<h2 id="Lantern"><a href="#Lantern" class="headerlink" title="Lantern"></a>Lantern</h2><p>介绍：<br>蓝灯，翻墙利器。  </p>
-<p>star数：40492<br>地址：<br><a href="https://github.com/getlantern/lantern" rel="noopener" target="_blank">https://github.com/getlantern/lantern</a></p>
-<h2 id="Etcd"><a href="#Etcd" class="headerlink" title="Etcd"></a>Etcd</h2><p>介绍：<br>etcd是由CoreOS开发并维护键值存储系统，它使用Go语言编写，并通过Raft一致性算法处理日志复制以保证强一致性。目前，Google的容器集群管理系统Kubernetes、开源PaaS平台Cloud Foundry和CoreOS的Fleet都广泛使用了etcd。Fleet则是一个分布式的初始化系统。它们之所以选择使用Go语言，则是因为Go语言对跨平台的良好支持，以及其背后的强大社区。  </p>
-<p>star数：23187<br>地址：<br><a href="https://github.com/etcd-io/etcd" rel="noopener" target="_blank">https://github.com/etcd-io/etcd</a></p>
-<h2 id="InfluxDB"><a href="#InfluxDB" class="headerlink" title="InfluxDB"></a>InfluxDB</h2><p>介绍：<br>一个Go语音编写的开源分布式的时序、事件和指标数据库，无需外部依赖。其设计目标是实现分布式和水平伸缩扩展。  </p>
-<p>star数：15681<br>地址：<br><a href="https://github.com/influxdata/influxdb" rel="noopener" target="_blank">https://github.com/influxdata/influxdb</a></p>
-<h2 id="Hugo"><a href="#Hugo" class="headerlink" title="Hugo"></a>Hugo</h2><p>介绍：<br>一款极速的静态页面生成器，让你可以很快的搭建个人网站，提供了多套主题可供使用，并且可以自己定制，和NodeJS的Hexo是一样的。  </p>
-<p>star数：33044<br>地址：<br><a href="https://github.com/gohugoio/hugo" rel="noopener" target="_blank">https://github.com/gohugoio/hugo</a></p>
-<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><p>介绍：<br>一款开源监控度量的看板系统，可以接Graphite,Elasticsearch,InfluxDB等数据源，定制化很高。  </p>
-<p>star数：27027<br>地址：<br><a href="https://github.com/grafana/grafana" rel="noopener" target="_blank">https://github.com/grafana/grafana</a></p>
-<h2 id="Codis"><a href="#Codis" class="headerlink" title="Codis"></a>Codis</h2><p>介绍：<br>Codis是一个分布式Redis解决方案,其实就是一个数据库代理，让你在使用Redis集群的时候，就像使用单机版的Redis是一样的，对开发者透明。  </p>
-<p>star数：8840<br>地址：<br><a href="https://github.com/CodisLabs/codis" rel="noopener" target="_blank">https://github.com/CodisLabs/codis</a></p>
-<h2 id="Gin-amp-Beego"><a href="#Gin-amp-Beego" class="headerlink" title="Gin &amp; Beego"></a>Gin &amp; Beego</h2><p>介绍：<br>两个快速开发Go应用的http框架，很好用很简洁，笔者亲测。  </p>
-<p>star数：分别为24692和19086<br>地址：<br>分别为<a href="https://github.com/gin-gonic/gin" rel="noopener" target="_blank">https://github.com/gin-gonic/gin</a>和<a href="https://github.com/astaxie/beego" rel="noopener" target="_blank">https://github.com/astaxie/beego</a></p>
-<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><p>介绍：<br>Prometheus是一个开源监控系统，它前身是SoundCloud的警告工具包。从2012年开始，许多公司和组织开始使用Prometheus。该项目的开发人员和用户社区非常活跃，越来越多的开发人员和用户参与到该项目中。目前它是一个独立的开源项目，且不依赖与任何公司。为了强调这点和明确该项目治理结构，Prometheus在2016年继Kurberntes之后，加入了Cloud Native Computing Foundation。  </p>
-<p>star数：22325<br>地址：<br><a href="https://github.com/prometheus/prometheus" rel="noopener" target="_blank">https://github.com/prometheus/prometheus</a></p>
-<h2 id="Consul"><a href="#Consul" class="headerlink" title="Consul"></a>Consul</h2><p>介绍：<br>Consul 是 HashiCorp 公司推出的开源工具，用于实现分布式系统的服务发现与配置。与其他分布式服务注册与发现的方案，Consul的方案更“一站式”，内置了服务注册与发现框架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（比如ZooKeeper等）。  </p>
-<p>star数：15040<br>地址：<br><a href="ttps://github.com/hashicorp/consul" rel="noopener" target="_blank">https://github.com/hashicorp/consul</a></p>
-<h2 id="Nsq"><a href="#Nsq" class="headerlink" title="Nsq"></a>Nsq</h2><p>介绍：<br>NSQ是Go语言编写的，开源的分布式消息队列中间件，其设计的目的是用来大规模地处理每天数以十亿计级别的消息。NSQ 具有分布式和去中心化拓扑结构，该结构具有无单点故障、故障容错、高可用性以及能够保证消息的可靠传递的特征，是一个成熟的、已在大规模生成环境下应用的产品。  </p>
-<p>star数：14559<br>地址：<br><a href="https://github.com/nsqio/nsq" rel="noopener" target="_blank">https://github.com/nsqio/nsq</a></p>
-<h2 id="Awesome-go"><a href="#Awesome-go" class="headerlink" title="Awesome-go"></a>Awesome-go</h2><p>介绍：<br>这不是一个go项目，他是一个学习go的资料网站，属于著名的awesome系列，里面关于go的资源非常详细。  </p>
-<p>star数：40465<br>地址：<br><a href="https://github.com/avelino/awesome-go" rel="noopener" target="_blank">https://github.com/avelino/awesome-go</a></p>
-<h2 id="Open-falcon"><a href="#Open-falcon" class="headerlink" title="Open-falcon"></a>Open-falcon</h2><p>介绍：<br>越来越fashion的监控系统，小米开源。  </p>
-<p>star数：4267<br>地址：<br><a href="https://github.com/open-falcon/falcon-plus" rel="noopener" target="_blank">https://github.com/open-falcon/falcon-plus</a></p>
-<h2 id="Tidb"><a href="#Tidb" class="headerlink" title="Tidb"></a>Tidb</h2><p>介绍：<br>TiDB 是一个分布式 NewSQL 数据库。它支持水平弹性扩展、ACID 事务、标准 SQL、MySQL 语法和 MySQL 协议，具有数据强一致的高可用特性，是一个不仅适合 OLTP 场景还适合 OLAP 场景的混合数据库。    </p>
-<p>star数：17508<br>地址：<br><a href="https://github.com/pingcap/tidb" rel="noopener" target="_blank">https://github.com/pingcap/tidb</a></p>
-</div>
-
-			<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
-			<script>
-			var isMobile = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
-			if (!isMobile) {
-			    var btw = new BTWPlugin();
-			    btw.init({
-			        "id": "vip-container",
-			        "blogId": "19128-1606361858239-837",
-			        "name": "运维随笔",
-			        "qrcode": "https://wandouduoduo.github.io/about/index/gongzhonghao.jpg",
-			        "keyword": "yunwei"
-			    });
-			}
-			</script>
-		]]></content>
-      <categories>
-        <category>编程积累</category>
-        <category>Go</category>
-      </categories>
-      <tags>
-        <tag>Go</tag>
       </tags>
   </entry>
 </search>
