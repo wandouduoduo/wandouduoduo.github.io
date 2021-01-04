@@ -142,7 +142,7 @@ menu:
   tags: /tags/ || tags
   archives: /archives/ || archive
   about: /about/ || user
-  # tools: /tools/ || heartbeat
+  tools: /tools/ || heartbeat
   # testtools: /testtools/ || sitemap
   #commonweal: /404/ || heartbeat
 
@@ -210,6 +210,7 @@ links:
   自强学堂: https://code.ziqiangxuetang.com/
   运维生存时间: http://www.ttlsa.com/
   朱双印博客: http://www.zsythink.net/
+  靳闯博客: https://me.jinchuang.org/
   运维饼铛: http://bingdang.github.io/
 
 # Sidebar Avatar
@@ -217,7 +218,7 @@ avatar:
   # in theme directory(source/images): /images/avatar.gif
   # in site  directory(source/uploads): /uploads/avatar.gif
   # You can also use other linking images.
-  url: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/me.jpg
+  url: /images/yunwei.png
   # If true, the avatar would be dispalyed in circle.
   rounded: false
   # The value of opacity should be choose from 0 to 1 to set the opacity of the avatar.
@@ -414,8 +415,8 @@ font:
   # Global font settings used for all elements in <body>.
   global:
     external: true
-    family: Lato
-    size:
+    #family: Lato
+    #size:
 
   # Font settings for Headlines (H1, H2, H3, H4, H5, H6).
   # Fallback to `global` font settings.
@@ -634,7 +635,7 @@ google_site_verification: 27nKwb_oPifd-peB2Juh7eiKE-ZIpIcPp7ug9xPLKh4
 # Baidu Webmaster tools verification setting
 # See: https://ziyuan.baidu.com/site
 #github
-baidu_site_verification: wbqyth06a2
+baidu_site_verification: 2U3NKVcqUGdR2dZr
 
 #gitee
 #baidu_site_verification: dGZSCiVN1E

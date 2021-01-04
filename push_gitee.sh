@@ -4,7 +4,7 @@ echo -e "Push wandouduoduo.gitee.io To Baidu"
 cd $PUBLIC_WWW/public/
 cp baidu_urls.txt urls.txt
 sed -i 's/github/gitee/g' urls.txt
-curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=https://wandouduoduo.gitee.io&token=FjBwPH1cgYDxPvCn"
+curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=https://wandouduoduo.gitee.io&token=2U3NKVcqUGdR2dZr"
 if [[ $? == 0 ]]
 then
     echo "Success! Push Finish!!"

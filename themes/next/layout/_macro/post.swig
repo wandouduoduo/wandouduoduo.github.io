@@ -132,7 +132,7 @@
 
                 {% set cat_length = post.categories.length %}
                 {% if cat_length > 1 and loop.index !== cat_length %}
-                  {{ __('symbol.comma') }}
+                  {{ __('>') }}
                 {% endif %}
               {% endfor %}
             </span>
@@ -325,7 +325,7 @@
           {% endif %}
         {% endif %}
         <!-- 更多下 -->
-        {% include 'google_more_adsense.swig' %} 
+        {# {% include 'google_more_adsense.swig' %} #}
       {% else %}
         <!-- 标题下 -->
         {# {% include 'google_pages_adsense.swig' %} #}

@@ -54,6 +54,6 @@
   {% endif %}
 
   <!-- 提交下面 -->
-  {% include 'google_comments_adsense.swig' %}
+  {#{% include 'google_comments_adsense.swig' %}#}
   
 {% endif %}
