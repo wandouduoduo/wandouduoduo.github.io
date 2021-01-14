@@ -28,7 +28,7 @@
 <li>不确定声音问题时可以抓包查看是否有持续的UDP包收到或者发送。</li>
 </ol>
 <h2 id="经历历程"><a href="#经历历程" class="headerlink" title="经历历程"></a>经历历程</h2><ul>
-<li>最初是想UA 经过 opensips转发 REGISTER 后直接在fs保存穿透后的地址，UA连上Opensips之后将自己的地址经过转发传给FS1存储，这样是不是FS1可以直接通过contact找到坐席了呢？<code>三者在同一个局域网是可以的</code>，但是如果op和fs在外网，这是UA链接op就会涉及到NAT打洞的相关问题，即使FS保存了UA打洞后的ip和端口，由于NAT的限制，该端口可能只能UA和OP能够使用，FS是不能够使用的（但是不同的NAT环境可能又可以，但是我们不能指望用户的环境是最优环境）。<br><img src="http://www.younian.me/upload/2020/3/image-44650c62dfb8456f95b153fbfbf3ef22.png" alt="image.png"></li>
+<li>最初是想UA 经过 opensips转发 REGISTER 后直接在fs保存穿透后的地址，UA连上Opensips之后将自己的地址经过转发传给FS1存储，这样是不是FS1可以直接通过contact找到坐席了呢？<code>三者在同一个局域网是可以的</code>，但是如果op和fs在外网，这是UA链接op就会涉及到NAT打洞的相关问题，即使FS保存了UA打洞后的ip和端口，由于NAT的限制，该端口可能只能UA和OP能够使用，FS是不能够使用的（但是不同的NAT环境可能又可以，但是我们不能指望用户的环境是最优环境）。<br><img src="https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@master/articles/ec271ad5/2.png" alt="image.png"></li>
 </ul>
 <p>这里有一定的联想：<code>是否有一种可以通过一种keepalive的机制随时监控多台fs的状态，UA发送SIP时通过某个接口实时获取可用的一台FS主机IP，实现客户端级别的高可用。这里后面想了想：首先如果一台fs宕机则一半的客户端需要重新登录，其次比如INVITE失败不能自动重试其他机器。</code></p>
 <ul>
@@ -16954,8 +16954,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Cmdb</tag>
         <tag>Docker</tag>
+        <tag>Cmdb</tag>
       </tags>
   </entry>
   <entry>
