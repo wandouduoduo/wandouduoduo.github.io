@@ -107,6 +107,16 @@ spring.datasource.username = root
 spring.datasource.password = 123456
 #apollo.eureka.server.enabled=true
 #apollo.eureka.client.enabled=true
+
+# 设置各个环境meta
+vim /usr/local/apollo-portal/config/apollo-env.properties
+
+格式：${env}.meta=http://${config-service-url:port}
+例如：
+dev.meta=http://1.1.1.1:8080
+fat.meta=http://apollo.fat.xxx.com
+uat.meta=http://apollo.uat.xxx.com
+pro.meta=http://apollo.xxx.com
 ```
 
 ### 启动apollo服务

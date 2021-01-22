@@ -230,6 +230,8 @@ docker-compose up -d --scale worker=4
 
 *注意：以上配置需要根据服务器和流量的情况调整，以最大化利用机器资源。前端上传sourcemap文件较多时，worker耗费cpu资源会比较厉害*
 
+
+
 ### 访问
 
 然后负载均衡到所有节点的9000端口，访问即可，到这里集群搭建完成。
@@ -238,6 +240,38 @@ docker-compose up -d --scale worker=4
 
 
 
+## 优化
+
+### redis拆分
+
+上报时的并发太大，可以考虑将redis单独拆分出来。拆分出来redis，自行搭建集群。
+
+sentry的配置更改如下：
+
+连接外部redis集群环境配置需添加下面几项
+
+```
+    SENTRY_REDIS_HOST: xx.xx.xx.xx
+    SENTRY_REDIS_PASSWORD: xxxxxxxxxxxx
+    SENTRY_REDIS_PORT: xxx
+```
+
+主节点docker-compose.yaml配置
+
+![](详解docker-compose安装sentry集群解决方案-二/3.png)
+
+从节点docker-compose.yml配置
+
+![](详解docker-compose安装sentry集群解决方案-二/4.png)
+
+### 添加清理定时任务
+
+```bash
+docker exec -i onpremise-912_worker_1 sentry cleanup --days 60 && docker exec -i -u postgres onpremise-912_postgres_1 vacuumdb -U postgres -d postgres -v -f --analyze
+```
+
+
+
 ## 总结
 
-sentry集群方案已全部搭建完成，当然该集群还可以优化，例如redis独立集群等等。
+sentry集群方案已全部搭建完成，当然该集群还可以横向扩展等等优化。
