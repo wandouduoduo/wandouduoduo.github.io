@@ -109,5 +109,3 @@ Linux、windows、macos等
 
 #### 公众号![](https://wandouduoduo.github.io/about/index/gongzhonghao.jpg)
 
-#### 头条号![](https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/about/index/toutiaohao.jpeg)
-

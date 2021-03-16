@@ -159,3 +159,12 @@ token:      eyJhbGciOiJSUzI1NiIsImtpZCI6IlNEa2dTVGZhM09xd0MyNWtqaGFoZEc5R0NuYnVs
 Dashboard 概况画面如下
 
 ![](kubernetes1-18安装Dashboard/3.png)
+
+如果Token忘记了，可以用下面命令直接找出Token
+
+```
+kubectl -n kube-system describe $(kubectl -n kube-system get secret -n kube-system -o name | grep namespace) | grep token
+```
+
+![](kubernetes1-18安装Dashboard/4.png)
+

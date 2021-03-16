@@ -107,16 +107,6 @@ spring.datasource.username = root
 spring.datasource.password = 123456
 #apollo.eureka.server.enabled=true
 #apollo.eureka.client.enabled=true
-
-# 设置各个环境meta
-vim /usr/local/apollo-portal/config/apollo-env.properties
-
-格式：${env}.meta=http://${config-service-url:port}
-例如：
-dev.meta=http://1.1.1.1:8080
-fat.meta=http://apollo.fat.xxx.com
-uat.meta=http://apollo.uat.xxx.com
-pro.meta=http://apollo.xxx.com
 ```
 
 ### 启动apollo服务
@@ -128,3 +118,26 @@ configservice -->   adminservice  -->  portal
 一切顺利的话: 通过访问  http://部署服务器地址:端口/8070,  就能看到配置登录页
 
 ![](详解统一配置中心平台之Apollo服务搭建/1.png)
+
+
+
+## 优化
+
+### 设置环境meta信息
+```
+vim /usr/local/apollo-portal/config/apollo-env.properties
+
+格式：${env}.meta=http://${config-service-url:port}
+例如：
+dev.meta=http://1.1.1.1:8080
+fat.meta=http://apollo.fat.xxx.com
+uat.meta=http://apollo.uat.xxx.com
+pro.meta=http://apollo.xxx.com
+
+# 默认环境为dev，configservice的默认端口为8080
+# 如果本机的8080端口被占用，那configservice就需要更改端口，apollo-env.properties中的meta信息配置也要配置对应端口，同时需要改数据库，默认数据库euraka的端口为8080,例如改为8081，数据库操作如下：
+use apolloconfigdb;
+select * from  serverconfig;
+update serverconfig SET Value='http://localhost:8081/eureka/' WHERE Id=1;
+```
+
