@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>nginx之location匹配优先级及顺序</title>
+    <url>/articles/292b349b.html</url>
+    <content><![CDATA[<div id="vip-container"><p>nginx的使用范围和影响越来越广，很多大厂都在使用，但有些工作多年的同学可能都搞不清楚nginx中location的匹配优先级和匹配顺序是怎样的。今天又有同事不清楚，写配置时总是达不到业务需求，问到我这边帮他搞定了。那么本文就给大家详细聊聊这个问题。<del>_</del></p>
+<a id="more"></a>
+
+<h2 id="干货"><a href="#干货" class="headerlink" title="干货"></a>干货</h2><p>nginx的安装和搭建这里就不再赘述了。无论你是直接命令包库yum或apt-get安装还是下载源码包编译安装等等，看你喜好。</p>
+<p>nginx是通过server块中location的配置用来匹配不同url访问：</p>
+<p>location配置匹配方式主要包括三种：<strong>精准匹配</strong>、<strong>普通匹配</strong>和<strong>正则匹配</strong></p>
+<p><strong>定义</strong></p>
+<p>location = expression   精准匹配<br>location expression      普通匹配<br>location ^~ expression 普通匹配<br>location ~ regex 正则匹配（区分大小写）<br>location ~* regex 正则匹配（不区分大小写）</p>
+<p><strong>要求</strong></p>
+<p>精准匹配要求uri与表达式（expression）完全匹配。<br>普通匹配要求uri与表达式满足前缀匹配。<br>正则匹配要求uri与正则表达式匹配。</p>
+<p><strong>匹配优先级和顺序规则</strong></p>
+<p><strong>精准匹配（=）</strong>  &gt;  <strong>普通匹配（^~）</strong>  &gt;  <strong>正则匹配（<del>或</del>*）</strong> &gt;  <strong>普通匹配（直接目录）</strong></p>
+<p>1、首先精准匹配，如能匹配，则进行转发。如未能匹配成功，则进行普通匹配（^<del>）。<br>2、nginx将uri和所有^</del>类型的普通匹配规则进行匹配。如有多条规则均命中，则选择最长匹配。匹配成功后，进行转发。否则，则进行正则匹配。<br>3、正则匹配与顺序有关，按编写顺序进行匹配，一旦匹配成功，则转发请求并停止匹配。匹配不成功，则进行普通匹配（location expression ）<br>4、进行普通匹配（location expression），匹配成功则转发，不成功则返回错误码。</p>
+</div>
+
+			<script src="https://my.openwrite.cn/js/readmore.js" type="text/javascript"></script>
+			<script>
+			var isMobile = navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i);
+			if (!isMobile) {
+			    var btw = new BTWPlugin();
+			    btw.init({
+			        "id": "vip-container",
+			        "blogId": "19128-1606361858239-837",
+			        "name": "运维随笔",
+			        "qrcode": "https://wandouduoduo.github.io/about/index/gongzhonghao.jpg",
+			        "keyword": "yunwei"
+			    });
+			}
+			</script>
+		]]></content>
+      <categories>
+        <category>Web服务</category>
+        <category>Nginx</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>glusterfs集群横向扩容缩容</title>
     <url>/articles/9e838829.html</url>
     <content><![CDATA[<div id="vip-container"><p>glusterfs集群的搭建和使用这里就不再赘述了，可以看以前的教程文档。本文主要聊的是随着服务使用量的增加，那么存储集群势必要扩充空间。服务器迁移，需要先扩容后缩容等等。所以本文的主旨是聊glusterfs集群的横向优化：扩容和缩容。</p>
@@ -18165,8 +18206,8 @@ LVS的调度方法分为两种，一种是静态方法，一种是动态方法�
         <category>容器技术</category>
       </categories>
       <tags>
-        <tag>Cmdb</tag>
         <tag>Docker</tag>
+        <tag>Cmdb</tag>
       </tags>
   </entry>
   <entry>
