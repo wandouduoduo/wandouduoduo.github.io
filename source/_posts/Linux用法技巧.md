@@ -185,3 +185,11 @@ test123()
 timeout test123
 ```
 
+### python查找list中含特定字符的元素
+
+```
+lst = ["123a", "456b", "789c"]
+lst = list(filter(lambda x: x.find("a") >= 0, lst))
+print(lst)
+```
+

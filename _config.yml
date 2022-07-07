@@ -113,8 +113,8 @@ live2d:
   tagMode: false
   debug: false
   model:
-    use: https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/live2dw/assets/shizuku.model.json
-    #use: live2d-widget-model-shizuku
+    #use: https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@v1.0/live2dw/assets/shizuku.model.json
+    use: live2d-widget-model-shizuku
   display:
     position: right
     width: 150

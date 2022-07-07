@@ -45,8 +45,10 @@ cache:
 # For example, you put your favicons into `hexo-site/source/images` directory.
 # Then need to rename & redefine them on any other names, otherwise icons from Next will rewrite your custom icons in Hexo.
 favicon:
-  small: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/next-favicon-16.png
-  medium: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/next-favicon-32.png
+  #small: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/next-favicon-16.png
+  #medium: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/next-favicon-32.png
+  small: /images/next-favicon-16.png
+  medium: /images/next-favicon-32.png
   #apple_touch_icon: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/apple-touch-icon-next.png
   #safari_pinned_tab: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/logo.svg
   #android_manifest: /images/manifest.json
@@ -333,8 +335,10 @@ codeblock:
 reward:
   enable: true
   comment: 原创技术分享，您的支持将鼓励我继续创作
-  wechatpay: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/wechatpay.png
-  alipay: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/alipay.jpg
+  #wechatpay: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/wechatpay.png
+  #alipay: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/alipay.jpg
+  wechatpay: /images/wechatpay.png
+  alipay: /images/alipay.jpg
   #bitcoin: /images/bitcoin.jpg
 
 # Related popular posts

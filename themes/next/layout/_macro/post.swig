@@ -325,7 +325,7 @@
           {% endif %}
         {% endif %}
         <!-- 更多下 -->
-        {# {% include 'google_more_adsense.swig' %} #}
+        {% include 'google_more_adsense.swig' %}
       {% else %}
         <!-- 标题下 -->
         {# {% include 'google_pages_adsense.swig' %} #}
