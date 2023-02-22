@@ -244,6 +244,34 @@ done
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address 192.168.92.201
 ```
 
+```
+kubeadm  init参数详解：
+
+      --apiserver-advertise-address string   设置 apiserver 绑定的 IP.
+      --apiserver-bind-port int32            设置apiserver 监听的端口. (默认 6443)
+      --apiserver-cert-extra-sans strings    api证书中指定额外的Subject Alternative Names (SANs) 可以是IP 也可以是DNS名称。 证书是和SAN绑定的。
+      --cert-dir string                      证书存放的目录 (默认 "/etc/kubernetes/pki")
+      --certificate-key string                kubeadm-cert secret 中 用于加密 control-plane 证书的key
+      --config string                         kubeadm 配置文件的路径.
+      --cri-socket string                    CRI socket 文件路径，如果为空 kubeadm 将自动发现相关的socket文件; 只有当机器中存在多个 CRI  socket 或者 存在非标准 CRI socket 时才指定.
+      --dry-run                              测试，并不真正执行;输出运行后的结果.
+      --feature-gates string                 指定启用哪些额外的feature 使用 key=value 对的形式。
+  	  --help  -h                             帮助文档
+      --ignore-preflight-errors strings       忽略前置检查错误，被忽略的错误将被显示为警告. 例子: 'IsPrivilegedUser,Swap'. Value 'all' ignores errors from all checks.
+      --image-repository string              选择拉取 control plane images 的镜像repo (default "k8s.gcr.io")
+      --kubernetes-version string            选择K8S版本. (default "stable-1")
+      --node-name string                     指定node的名称，默认使用 node 的 hostname.
+      --pod-network-cidr string              指定 pod 的网络， control plane 会自动将 网络发布到其他节点的node，让其上启动的容器使用此网络
+      --service-cidr string                  指定service 的IP 范围. (default "10.96.0.0/12")
+      --service-dns-domain string            指定 service 的 dns 后缀, e.g. "myorg.internal". (default "cluster.local")
+      --skip-certificate-key-print            不打印 control-plane 用于加密证书的key.
+      --skip-phases strings                  跳过指定的阶段（phase）
+      --skip-token-print                     不打印 kubeadm init 生成的 default bootstrap token 
+      --token string                         指定 node 和control plane 之间，简历双向认证的token ，格式为 [a-z0-9]{6}\.[a-z0-9]{16} - e.g. abcdef.0123456789abcdef
+      --token-ttl duration                   token 自动删除的时间间隔。 (e.g. 1s, 2m, 3h). 如果设置为 '0', token 永不过期 (default 24h0m0s)
+      --upload-certs                         上传 control-plane 证书到 kubeadm-certs Secret.
+```
+
 日志如下
 
 ```bash

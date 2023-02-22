@@ -437,6 +437,11 @@ vi /etc/exports
 systemctl start rpcbind
 systemctl start nfs
 netstat -anptu | grep rpcbind
+
+#验证
+showmount -e 127.0.0.1
+Export list for 127.0.0.1:
+/data/k8s *
 ```
 
 
@@ -544,7 +549,7 @@ kubectl apply -f https://github.com/kubesphere/ks-installer/releases/download/v3
 ### 查看安装日志
 
 ```bash
-kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l app=ks-install -o jsonpath='{.items[0].metadata.name}') -f
+kubectl logs -n kubesphere-system $(kubectl get pod -n kubesphere-system -l 'app in (ks-install, ks-installer)' -o jsonpath='{.items[0].metadata.name}') -f
 ```
 
 ### 查看所有pod
@@ -580,3 +585,18 @@ kubectl get pods -A
 **Ingress与Service关系图**
 
 ![](手把手搭建k8s集群和kubesphere/7.png)
+
+**nfs异常排查**
+
+```
+kubectl get sc
+kubectl get pvc -n kubesphere-system
+kubectl logs nfs-client-provisioner-69459bbf5b-wqstl
+```
+
+![](手把手搭建k8s集群和kubesphere/8.png)
+
+添加- --feature-gates=RemoveSelfLink=false
+
+![](手把手搭建k8s集群和kubesphere/9.png)
+
