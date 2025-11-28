@@ -270,3 +270,30 @@ Hello World!
   [http://uwsgi-docs.readthedocs.io/en/latest/Options.html#vacuum](https://link.jianshu.com?t=http://uwsgi-docs.readthedocs.io/en/latest/Options.html#vacuum)
 - Nginx+uWSGI
   [https://my.oschina.net/guol/blog/121418](https://link.jianshu.com?t=https://my.oschina.net/guol/blog/121418)
+
+例子
+
+```ini
+[uwsgi]
+#http=0.0.0.0:8888
+chdir=/home/dubboTestTool/
+pythonpath=/usr/bin/python3
+py-autoreload = 1
+module=start
+callable=app
+master=true
+processes=1
+threads=10
+disable-logging=true
+buffer-size=65536
+harakiri=60
+vacuum=True
+socket=127.0.0.1:8888
+stats=%(chdir)/uwsgi/uwsgi.status
+pidfile=%(chdir)/uwsgi/uwsgi.pid
+daemonize=%(chdir)/uwsgi/uwsgi.log
+logformat-strftime=true
+log-date=%%Y-%%m-%%d %%H:%%M:%%S
+log-format=[%(ftime)] pid: %(pid) %(addr) => host: %(host)%(uri)(%(method)) in %(secs)s %(status) total-size: %(size) bytes
+```
+

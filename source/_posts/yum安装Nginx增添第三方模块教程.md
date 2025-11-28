@@ -31,7 +31,7 @@ nginx作为世界上使用最广的web服务，因其可以自由添加不同功
 nginx -V
 ```
 
-![](yum安装Nginx增添第三方模块教程/1.png)
+![](yum安装Nginx增添第三方模块教程\1.png)
 
 
 
@@ -82,7 +82,7 @@ yum -y install openssl openssl-devel gperftools
 make 
 ```
 
- ![](yum安装Nginx增添第三方模块教程/3.png)
+ ![](yum安装Nginx增添第三方模块教程\3.png)
 
 **注意：**make完成后不要继续输入“make install”，以免现在的nginx出现问题 
 以上完成后，会在objs目录下生成一个nginx文件，先验证： 
@@ -110,7 +110,7 @@ nginx -s reload
 nginx -V
 ```
 
-![](yum安装Nginx增添第三方模块教程/2.png)
+![](yum安装Nginx增添第三方模块教程\2.png)
 
 
 

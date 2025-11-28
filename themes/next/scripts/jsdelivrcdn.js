@@ -37,14 +37,15 @@ hexo.extend.filter.register('after_post_render', function(data){
         //不同内容里面的图片链接并不是一样的，有的是src，有的是data-src。
         // For windows style path, we replace '\' to '/'.
         var src = ($(this).attr('src')).replace('\\', '/');
-	      // console.log("找到的img链接 "+src);
+	      //console.log("找到的img链接 "+src);
 
 	      //src去除前后空格
 	      src = src.replace(/(^\s*)|(\s*$)/g, "");
+        src = src.replace(/\.htm\//g, '/');
 	  
 	      //开始是/，以gif/png等结尾
         if(/^\/.*\.(gif|png|jpg|bmp|jpeg)$/i.test(src)) {
-		      // console.log("测试img链接通过 "+src);
+		      //console.log("测试img链接通过 "+src);
           $(this).attr('src', "https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io@master" + src);
           // console.log("替换img链接为 " + "https://cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io" + src);
         }else{

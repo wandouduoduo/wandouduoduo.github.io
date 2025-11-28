@@ -1,2 +1,2 @@
 # wandouduoduo.github.io
-WanDouDuoDuo's  Hexo  Blog
+WanDouDuoDuo's Hexo Blog

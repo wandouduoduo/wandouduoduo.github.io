@@ -193,3 +193,45 @@ lst = list(filter(lambda x: x.find("a") >= 0, lst))
 print(lst)
 ```
 
+### 常用命令
+
+**查看当前机器的并发连接数**
+
+```bash
+netstat -an | awk '/^tcp/ {++S[$NF]}  END {for (a in S) print a,S[a]} '
+```
+
+**netstat –an|grep CLOSE_WAIT –c 查询等待关闭连接数，详细指令如下**
+
+```bash
+  netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+```
+
+**查看每个IP跟服务器建立的链接数**
+
+```bash
+netstat -nat|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn
+```
+
+**查看每个IP跟服务器正在通信的链接数（ESTABLISHED / CLOSE_WAIT）**
+
+```bash
+netstat -nat|grep ESTABLISHED|awk '{print$5}'|awk -F : '{print$1}'|sort|uniq -c|sort -rn
+```
+
+**状态说明**
+
+```
+ESTABLISHED 表示正在通信
+TIME_WAIT 表示主动关闭
+CLOSE_WAIT 表示被动关闭
+
+SYN_RECV        //一个连接请求已经到达，等待确认
+ESTABLISHED     //正常数据传输状态/当前并发连接数
+FIN_WAIT2       //另一边已同意释放
+ITMED_WAIT          //等待所有分组死掉
+CLOSING         //两边同时尝试关闭
+TIME_WAIT       //另一边已初始化一个释放
+LAST_ACK        //等待所有分组死掉
+```
+
