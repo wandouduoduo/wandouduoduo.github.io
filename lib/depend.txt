@@ -1,0 +1,8 @@
+# 依赖font-awesome      作用：图标和字体
+下载http://www.fontawesome.com.cn/download/font-awesome-4.7.0.zip后，解压并重命名为font-awesome
+
+# 依赖canvas_nest      作用：鼠标周围的折线波纹
+git clone https://github.com/theme-next/theme-next-canvas-nest    themes/next/source/lib/canvas-nest
+
+# 依赖pace    作用：顶部的进度条
+git clone https://github.com/theme-next/theme-next-pace   themes/next/source/lib/pace
