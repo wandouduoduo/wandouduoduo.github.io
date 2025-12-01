@@ -3366,9 +3366,9 @@
       
         <tags>
             
-            <tag> Openldap </tag>
-            
             <tag> Cmdb </tag>
+            
+            <tag> Openldap </tag>
             
         </tags>
       
@@ -4974,9 +4974,9 @@
       
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> Cmdb </tag>
+            
+            <tag> Docker </tag>
             
         </tags>
       
