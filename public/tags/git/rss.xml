@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on 豌豆多多</title><link>/tags/git/</link><description>Recent content in Git on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 30 Jun 2020 18:09:38 +0800</lastBuildDate><atom:link href="/tags/git/rss.xml" rel="self" type="application/rss+xml"/><item><title>Centos7安装gitlab详细教程</title><link>/post/centos7%E5%AE%89%E8%A3%85gitlab%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</link><pubDate>Tue, 30 Jun 2020 18:09:38 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85gitlab%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>博客中有docker直接启动gitlab服务，这里再补充下直接裸机部署gitlab服务的教程。&lt;/p></description></item><item><title>git拉取项目下单个目录</title><link>/post/git%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%B8%8B%E5%8D%95%E4%B8%AA%E7%9B%AE%E5%BD%95/</link><pubDate>Thu, 24 Oct 2019 22:13:58 +0800</pubDate><guid>/post/git%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%B8%8B%E5%8D%95%E4%B8%AA%E7%9B%AE%E5%BD%95/</guid><description>有时git库里的东西比较多，我们只希望像SVN一样，只拉取git库的一个目录。 例如：基础代码仓库infra-code_ops有很多基础代码，</description></item><item><title>gitlab安装配置手册(Docker版)</title><link>/post/gitlab%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C-docker%E7%89%88/</link><pubDate>Wed, 24 Jul 2019 14:32:39 +0800</pubDate><guid>/post/gitlab%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C-docker%E7%89%88/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>使用Docker容器来快速安装配置和使用的gitlab&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hub.docker.com/r/twang2218/gitlab-ce-zh/" title="gitlab官网镜像" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+gitlab官网镜像
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>python操作gitlab API接口</title><link>/post/python%E6%93%8D%E4%BD%9Cgitlab-api%E6%8E%A5%E5%8F%A3/</link><pubDate>Mon, 10 Jun 2019 17:09:34 +0800</pubDate><guid>/post/python%E6%93%8D%E4%BD%9Cgitlab-api%E6%8E%A5%E5%8F%A3/</guid><description>&lt;p>使用 &lt;code>python-gitlab&lt;/code> 模块来调用gitlab的API来管理和操作gitlab。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="http://python-gitlab.readthedocs.io/en/stable/" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>Git命令汇总</title><link>/post/git%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</link><pubDate>Mon, 10 Jun 2019 16:25:42 +0800</pubDate><guid>/post/git%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对常用的git命令进行汇总和注释，在使用时如需查询可更高效的查询到。&lt;/p></description></item><item><title>超详细的hexo+github page搭建.md</title><link>/post/%E8%B6%85%E8%AF%A6%E7%BB%86%E7%9A%84hexo+gitpage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Mon, 27 May 2019 14:05:01 +0800</pubDate><guid>/post/%E8%B6%85%E8%AF%A6%E7%BB%86%E7%9A%84hexo+gitpage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装nodejs">安装node.js
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85nodejs">&lt;/a>
+&lt;/h2>&lt;p>在 Windows 环境下安装 Node.js 非常简单，仅须到
+&lt;a href="https://nodejs.org/en/download/" title="官网下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官网下载
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>安装文件并执行即可完成安装，其中LTS是长期支持版，Current为最新版，但最新版一般都在开发阶段，还不稳定。建议选择LTS版本&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="nodejs.png" alt="" />&lt;/p>
+&lt;p>像我的是Windows 64位LTS，直接下载后执行，无脑下一步就行了，不需要配置环境变量。&lt;/p></description></item></channel></rss>

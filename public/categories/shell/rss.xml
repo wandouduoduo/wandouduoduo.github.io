@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Shell on 豌豆多多</title><link>/categories/shell/</link><description>Recent content in Shell on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 13 Jul 2020 16:41:47 +0800</lastBuildDate><atom:link href="/categories/shell/rss.xml" rel="self" type="application/rss+xml"/><item><title>探究login和non-login shell的区别</title><link>/post/%E6%8E%A2%E7%A9%B6login%E5%92%8Cnon-login-shell%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Mon, 13 Jul 2020 16:41:47 +0800</pubDate><guid>/post/%E6%8E%A2%E7%A9%B6login%E5%92%8Cnon-login-shell%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h3 id="login-shell">login shell
+&lt;a class="header-anchor" href="#login-shell">&lt;/a>
+&lt;/h3>&lt;p>取得bash时需要完整的登入流程的，就称为login shell。举例来说，你要由tty1~tty6登入，需要输入用户的账号和密码，此时取得的bash就称为『login shell』啰；&lt;/p>
+&lt;h3 id="non-login-shell">non-login shell
+&lt;a class="header-anchor" href="#non-login-shell">&lt;/a>
+&lt;/h3>&lt;p>取得bash接口的方法不需要重复登入的举动。&lt;/p>
+&lt;p>举例来说：&lt;/p>
+&lt;p>(1)你以Xwindow登入Linux后，再以X的图形化接口启动终端机，此时那个终端接口并没有需要再次的输入账号和密码，那个bash的环境就称为non-login shell了。&lt;/p>
+&lt;p>(2)你在原本的bash环境下再次下达bash这个命令，同样的也没有输入账号密码，那第二个bash (子程序)也是non-login shell 。&lt;/p></description></item><item><title>shell中的多进程并发</title><link>/post/shell%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E5%8F%91/</link><pubDate>Tue, 10 Dec 2019 16:23:40 +0800</pubDate><guid>/post/shell%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>日常工作中编写shell脚本处理事务，很多时候需要一次性处理很多，需要用到循环，但是循环体内还是线性的，还是要一个个处理，这样并不会节省很多时间，只是节省了人工一次次输入的繁琐。但是对于提高处理能力，没有实质性的提高。这就需要考虑并发。但Shell中并没有真正意义的多线程，要实现多线程可以启动多个后端进程，最大程度利用cpu性能。即：多进程并发，本篇教程由浅入深详细介绍了shell中的多进程并发。&lt;/p></description></item><item><title>shell替换和截取字符串详解</title><link>/post/shell%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 17:30:17 +0800</pubDate><guid>/post/shell%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了shell中替换和截取字符串等其他的妙用。&lt;/p></description></item></channel></rss>

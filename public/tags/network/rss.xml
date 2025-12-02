@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Network on 豌豆多多</title><link>/tags/network/</link><description>Recent content in Network on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 30 Oct 2019 10:43:48 +0800</lastBuildDate><atom:link href="/tags/network/rss.xml" rel="self" type="application/rss+xml"/><item><title>ssh端口转发：ssh隧道</title><link>/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/</link><pubDate>Wed, 30 Oct 2019 10:43:48 +0800</pubDate><guid>/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>&amp;ldquo;ssh端口转发&amp;quot;还有一个更加形象的名字，叫做&amp;quot;ssh隧道&amp;rdquo;，当然，只是纯粹的通过&amp;quot;ssh隧道&amp;quot;这几个字去理解它可能不太容易，我们来描述一些实际的场景，在这些场景中我们可能会遇到一些问题，而这些问题可以通过&amp;quot;ssh隧道&amp;quot;解决，通过这样的方式，我们反而更加容易理解&amp;quot;ssh隧道&amp;quot;是什么以及它的作用。&lt;/p>
+&lt;p>假如我们现在有两个台主机，主机A与主机B，主机A上安装有mysql客户端，主机B上安装有mysql服务端，现在，主机A中的mysql客户端需要与主机B中的mysql服务端进行通讯，则需要从mysql的客户端连接到mysql服务端。如下图所示&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="ssh端口转发：ssh隧道" />&lt;/p>
+&lt;p>然而我们知道，mysql在传输数据时是进行明文传输的，如果主机A与主机B只能通过公网进行通讯，那么暴露在公网的mysql通讯是非常不安全的，所以，我们需要借助一些手段，提高访问mysql服务时的安全性，比如，我们可以使用SSL证书为数据加密，或者使用stunnel加密隧道，我们还可以使用VPN，当然，这些方法都不是这篇文章所要描述的重点，我们此处要总结的是&amp;quot;ssh隧道&amp;quot;这种方法，我们可以利用ssh，搭建出一条&amp;quot;通道&amp;quot;，然后将mysq的客户端与服务端通过这条&amp;quot;ssh通道&amp;quot;连接起来，如下图所示&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="ssh端口转发：ssh隧道" />&lt;/p>
+&lt;p>mysql的客户端与服务端的连接方式从原来直连的方式变成了如上图所示的连接方式，它们之间并不直接进行通讯，而是借助ssh隧道将通讯数据转发，虽然仍然跨越了公网，但是由于ssh本身的安全特性，所以别人无法看到明文传输的数据，数据依靠ssh隧道实现了加密的效果，达到了保护数据安全的作用，提升了mysql的客户端与服务端通讯的安全性。&lt;/p></description></item><item><title>SSH隧道与端口转发及内网穿透</title><link>/post/ssh%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%8F%8A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link><pubDate>Tue, 29 Oct 2019 19:30:24 +0800</pubDate><guid>/post/ssh%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%8F%8A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid><description>&lt;h2 id="ssh隧道与端口转发及内网穿透">SSH隧道与端口转发及内网穿透
+&lt;a class="header-anchor" href="#ssh%e9%9a%a7%e9%81%93%e4%b8%8e%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91%e5%8f%8a%e5%86%85%e7%bd%91%e7%a9%bf%e9%80%8f">&lt;/a>
+&lt;/h2>&lt;p>大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。&lt;/p>
+&lt;p>&lt;strong>SSH/plink命令的基本资料：&lt;/strong>&lt;/p>
+&lt;p>首先，认识下这三个非常强大的命令：&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -D listen_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;p>相关参数的解释：&lt;/p>
+&lt;p>-f Fork into background after authentication.
+后台认证用户/密码，通常和-N连用，不用登录到远程主机。&lt;/p>
+&lt;p>-L port:host:hostport
+将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p>
+&lt;p>-R port:host:hostport
+将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p>
+&lt;p>-D port
+指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.&lt;/p>
+&lt;p>-C Enable compression.
+压缩数据传输。&lt;/p>
+&lt;p>-N Do not execute a shell or command.
+不执行脚本或命令，通常与-f连用。&lt;/p>
+&lt;p>-g Allow remote hosts to connect to forwarded ports.
+在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。&lt;/p></description></item><item><title>Nat回环(Lan-->Lan端口映射原理)</title><link>/post/nat%E5%9B%9E%E7%8E%AF-lan-lan%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86/</link><pubDate>Fri, 25 Oct 2019 18:46:58 +0800</pubDate><guid>/post/nat%E5%9B%9E%E7%8E%AF-lan-lan%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86/</guid><description>&lt;p>局域网内网有服务器对外发布，基于对服务器的保护，内网用户需通过域名或者公网ip来访问内网服务器。&lt;/p>
+&lt;p>如下图所示：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="img" />&lt;/p>
+&lt;h2 id="名词解释">名词解释
+&lt;a class="header-anchor" href="#%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a">&lt;/a>
+&lt;/h2>&lt;p>DNAT：转换目标ip地址。&lt;/p>
+&lt;p>SNAT： 转换源ip地址。&lt;/p></description></item><item><title>网络传输中的表和包的流经过程</title><link>/post/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E8%A1%A8%E5%92%8C%E5%8C%85%E7%9A%84%E6%B5%81%E7%BB%8F%E8%BF%87%E7%A8%8B/</link><pubDate>Mon, 15 Jul 2019 17:21:17 +0800</pubDate><guid>/post/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E8%A1%A8%E5%92%8C%E5%8C%85%E7%9A%84%E6%B5%81%E7%BB%8F%E8%BF%87%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了网络传输过程中3张表：MAC地址表，ARP缓存表和路由表。并且也介绍了数据包在网络传输中从源到目的主机的过程。&lt;/p></description></item><item><title>ssh认证原理</title><link>/post/ssh%E8%AE%A4%E8%AF%81%E5%8E%9F%E7%90%86/</link><pubDate>Mon, 15 Jul 2019 15:40:26 +0800</pubDate><guid>/post/ssh%E8%AE%A4%E8%AF%81%E5%8E%9F%E7%90%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通常，通过ssh登录远程服务器时，使用&lt;strong>密码认证&lt;/strong>，分别输入用户名和密码，两者满足一定规则就可以登录。但是密码认证有以下的缺点：&lt;/p>
+&lt;ul>
+&lt;li>用户无法设置空密码（即使系统允许空密码，也会十分危险）&lt;/li>
+&lt;li>密码容易被人偷窥或猜到&lt;/li>
+&lt;li>服务器上的一个帐户若要给多人使用，则必须让所有使用者都知道密码，导致密码容易泄露，而且修改密码时必须通知所有人&lt;/li>
+&lt;/ul>
+&lt;p>而使用&lt;strong>公钥认证&lt;/strong>则可以解决上述问题。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>公钥认证允许使用空密码，省去每次登录都需要输入密码的麻烦&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>多个使用者可以通过各自的密钥登录到系统上的同一个用户&lt;/p>
+&lt;/li>
+&lt;/ul></description></item></channel></rss>

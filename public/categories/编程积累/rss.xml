@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程积累 on 豌豆多多</title><link>/categories/%E7%BC%96%E7%A8%8B%E7%A7%AF%E7%B4%AF/</link><description>Recent content in 编程积累 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 09 Dec 2020 10:56:41 +0800</lastBuildDate><atom:link href="/categories/%E7%BC%96%E7%A8%8B%E7%A7%AF%E7%B4%AF/rss.xml" rel="self" type="application/rss+xml"/><item><title>造数据神器python开源库Faker</title><link>/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/</link><pubDate>Wed, 09 Dec 2020 10:56:41 +0800</pubDate><guid>/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/</guid><description>&lt;p>互联网中软件开发和测试过程中，有时候需要一些测试数据。针对这种需求，我们通常的做法是使用现有的系统数据或者手动随意制造一些数据。但是由于现在的互联网飞速发展，业务系统越来越复杂，数据也越来越多样。如再手动去制造数据，不仅需要花费大量精力，还容易出错，而且制造的数据很假。本文推荐造数据神器python开源库Faker，此Faker不是lol天才选手大魔王Faker，但是也是一样给力。&lt;/p></description></item><item><title>探究login和non-login shell的区别</title><link>/post/%E6%8E%A2%E7%A9%B6login%E5%92%8Cnon-login-shell%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Mon, 13 Jul 2020 16:41:47 +0800</pubDate><guid>/post/%E6%8E%A2%E7%A9%B6login%E5%92%8Cnon-login-shell%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h3 id="login-shell">login shell
+&lt;a class="header-anchor" href="#login-shell">&lt;/a>
+&lt;/h3>&lt;p>取得bash时需要完整的登入流程的，就称为login shell。举例来说，你要由tty1~tty6登入，需要输入用户的账号和密码，此时取得的bash就称为『login shell』啰；&lt;/p>
+&lt;h3 id="non-login-shell">non-login shell
+&lt;a class="header-anchor" href="#non-login-shell">&lt;/a>
+&lt;/h3>&lt;p>取得bash接口的方法不需要重复登入的举动。&lt;/p>
+&lt;p>举例来说：&lt;/p>
+&lt;p>(1)你以Xwindow登入Linux后，再以X的图形化接口启动终端机，此时那个终端接口并没有需要再次的输入账号和密码，那个bash的环境就称为non-login shell了。&lt;/p>
+&lt;p>(2)你在原本的bash环境下再次下达bash这个命令，同样的也没有输入账号密码，那第二个bash (子程序)也是non-login shell 。&lt;/p></description></item><item><title>shell中的多进程并发</title><link>/post/shell%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E5%8F%91/</link><pubDate>Tue, 10 Dec 2019 16:23:40 +0800</pubDate><guid>/post/shell%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>日常工作中编写shell脚本处理事务，很多时候需要一次性处理很多，需要用到循环，但是循环体内还是线性的，还是要一个个处理，这样并不会节省很多时间，只是节省了人工一次次输入的繁琐。但是对于提高处理能力，没有实质性的提高。这就需要考虑并发。但Shell中并没有真正意义的多线程，要实现多线程可以启动多个后端进程，最大程度利用cpu性能。即：多进程并发，本篇教程由浅入深详细介绍了shell中的多进程并发。&lt;/p></description></item><item><title>Python多进程和多线程效率最优选</title><link>/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E6%9C%80%E4%BC%98%E9%80%89/</link><pubDate>Fri, 29 Nov 2019 16:51:15 +0800</pubDate><guid>/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E6%9C%80%E4%BC%98%E9%80%89/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过实例实验，比较用多线程和多进程耗时情况，并进行总结归纳，选择效率最高的方法。&lt;/p></description></item><item><title>Multiprocessing基础</title><link>/post/multiprocessing%E5%9F%BA%E7%A1%80/</link><pubDate>Fri, 29 Nov 2019 15:40:05 +0800</pubDate><guid>/post/multiprocessing%E5%9F%BA%E7%A1%80/</guid><description>&lt;p>multiprocessing是Python的标准模块，它既可以用来编写多进程，也可以用来编写多线程。如果是多线程的话，用multiprocessing.dummy即可，用法与multiprocessing基本相同，这里主要介绍多进程的用法，欢迎纠错。&lt;/p>
+&lt;h2 id="multiprocessing介绍">Multiprocessing介绍
+&lt;a class="header-anchor" href="#multiprocessing%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h4 id="为什么要使用python多进程">为什么要使用python&lt;strong>多进程&lt;/strong>？
+&lt;a class="header-anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e4%bd%bf%e7%94%a8python%e5%a4%9a%e8%bf%9b%e7%a8%8b">&lt;/a>
+&lt;/h4>&lt;p>因为python使用全局解释器锁(GIL)，他会将进程中的线程序列化，也就是多核cpu实际上并不能达到并行提高速度的目的，而使用多进程则是不受限的，所以实际应用中都是推荐多进程的。
+如果每个子进程执行需要消耗的时间非常短（执行+1操作等），这不必使用多进程，因为进程的启动关闭也会耗费资源。
+当然使用多进程往往是用来处理CPU密集型（科学计算）的需求，如果是IO密集型（文件读取，爬虫等）则可以使用多线程去处理。&lt;/p></description></item><item><title>Python之多进程详解</title><link>/post/python%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Fri, 29 Nov 2019 15:34:06 +0800</pubDate><guid>/post/python%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Python中的multiprocess提供了Process类，实现进程相关的功能。但是它基于fork机制，因此不被windows平台支持。想要在windows中运行，必须使用 if &lt;strong>name&lt;/strong> == ‘&lt;strong>main&lt;/strong>: 的方式)。并且多进程就是开启多个进程，每个进程之间是不会互相通信互相干扰的，适用于密集计算。&lt;/p></description></item><item><title>Python之多线程详解</title><link>/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Fri, 29 Nov 2019 15:28:51 +0800</pubDate><guid>/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务，多线程就是在一个进程中的多个线程，如果使用多线程默认开启一个主线程，按照程序需求自动开启多个线程(也可以自己定义线程数)。&lt;/p></description></item><item><title>Python之进程线程协程</title><link>/post/python%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link><pubDate>Mon, 29 Jul 2019 09:37:25 +0800</pubDate><guid>/post/python%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid><description>Socket Server模块 SocketServer内部使用 IO多路复用 以及 “多线程” 和 “多进程” ，从而实现并发处理多个客户端请求的Socket服务端</description></item><item><title>shell替换和截取字符串详解</title><link>/post/shell%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 17:30:17 +0800</pubDate><guid>/post/shell%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了shell中替换和截取字符串等其他的妙用。&lt;/p></description></item><item><title>windows批处理用法之FOR</title><link>/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/</link><pubDate>Thu, 27 Jun 2019 13:56:07 +0800</pubDate><guid>/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/</guid><description>&lt;h2 id="大纲">&lt;strong>大纲&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%a4%a7%e7%ba%b2">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>一 前言
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>二 for语句的基本用法
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>三 for /f （delims、tokens、skip、eol、userbackq、变量延迟）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>四 for /r （递归遍历）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>五 for /d （遍历目录）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>六 for /l （计数循环）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Django ORM模型详解</title><link>/post/django-orm%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 12 Jun 2019 15:52:34 +0800</pubDate><guid>/post/django-orm%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Django框架后面对数据库的ORM操作已经帮我们做了，我们只需要在创建model时，按照框架定义创建即可。但定义的几种ORM操作有哪些区别和怎么去操作呢？本篇详细说明。&lt;/p></description></item><item><title>python操作gitlab API接口</title><link>/post/python%E6%93%8D%E4%BD%9Cgitlab-api%E6%8E%A5%E5%8F%A3/</link><pubDate>Mon, 10 Jun 2019 17:09:34 +0800</pubDate><guid>/post/python%E6%93%8D%E4%BD%9Cgitlab-api%E6%8E%A5%E5%8F%A3/</guid><description>&lt;p>使用 &lt;code>python-gitlab&lt;/code> 模块来调用gitlab的API来管理和操作gitlab。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="http://python-gitlab.readthedocs.io/en/stable/" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>神级的Go开源项目</title><link>/post/%E7%A5%9E%E7%BA%A7%E7%9A%84go%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 27 May 2019 14:05:01 +0800</pubDate><guid>/post/%E7%A5%9E%E7%BA%A7%E7%9A%84go%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</guid><description>Golang/go 介绍： Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。go本身，也是用go语言实</description></item></channel></rss>

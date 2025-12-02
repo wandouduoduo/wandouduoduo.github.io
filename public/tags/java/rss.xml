@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Java on 豌豆多多</title><link>/tags/java/</link><description>Recent content in Java on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 11 Dec 2020 15:46:02 +0800</lastBuildDate><atom:link href="/tags/java/rss.xml" rel="self" type="application/rss+xml"/><item><title>漫谈微服务RPC架构</title><link>/post/%E6%BC%AB%E8%B0%88%E5%BE%AE%E6%9C%8D%E5%8A%A1rpc%E6%9E%B6%E6%9E%84/</link><pubDate>Fri, 11 Dec 2020 15:46:02 +0800</pubDate><guid>/post/%E6%BC%AB%E8%B0%88%E5%BE%AE%E6%9C%8D%E5%8A%A1rpc%E6%9E%B6%E6%9E%84/</guid><description>&lt;p>通读了前面两篇内容，我们了解到微服务离不开RPC，知道了RPC架构的原理，那么开源RPC架构有哪些，你知道多少呢？本文就针对&lt;code>开源RPC框架&lt;/code>的种类进行漫谈。&lt;/p></description></item><item><title>详解为什么微服务架构绕不开RPC&lt;二></title><link>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%BA%8C/</link><pubDate>Thu, 10 Dec 2020 15:50:17 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%BA%8C/</guid><description>&lt;p>读了上篇文章充分了解了传统架构的痛点和微服务架构的好处。本篇文章进入主题详解RPC的原理和架构。&lt;/p></description></item><item><title>详解为什么微服务架构绕不开RPC&lt;一></title><link>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%B8%80/</link><pubDate>Thu, 10 Dec 2020 15:26:17 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%B8%80/</guid><description>&lt;p>科技改变生活，搞互联网的绕不开BAT、TMD等大厂，那么搞微服务架构就绕不开RPC。知其然知其所以然才行，是什么原因绕不开呢？想要知道这个问题，先要搞清楚为什么要搞微服务呢？本文就来详细和你聊聊。&lt;/p></description></item><item><title>Java定时器设定详解</title><link>/post/java%E5%AE%9A%E6%97%B6%E5%99%A8%E8%AE%BE%E5%AE%9A%E8%AF%A6%E8%A7%A3/</link><pubDate>Mon, 29 Jul 2019 09:29:39 +0800</pubDate><guid>/post/java%E5%AE%9A%E6%97%B6%E5%99%A8%E8%AE%BE%E5%AE%9A%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>本文通过实例详细介绍了Java定时和linux通用的crontab之间的差异。&lt;/p></description></item><item><title>微服务架构系列思考&lt;三></title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%89/</link><pubDate>Wed, 17 Jul 2019 22:03:49 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%89/</guid><description>&lt;h2 id="问题起源">问题起源
+&lt;a class="header-anchor" href="#%e9%97%ae%e9%a2%98%e8%b5%b7%e6%ba%90">&lt;/a>
+&lt;/h2>&lt;p>Spring Cloud微服务架构体系中，Eureka是一个至关重要的组件，它扮演着微服务注册中心的角色，所有的服务注册与服务发现，都是依赖Eureka的。&lt;/p>
+&lt;p>之前不少初学Spring Cloud的朋友在落地公司的生产环境部署时，经常会有一个疑问：Eureka Server到底要部署几台机器？&lt;/p>
+&lt;p>我们的系统那么多服务，到底会对Eureka Server产生多大的访问压力？Eureka Server能不能抗住一个大型系统的访问压力？&lt;/p>
+&lt;p>你现在心里一定很多疑问，别着急，咱们这就去探索一下，Eureka作为微服务注册中心的核心原理。下面这些问题，大伙儿先看看，有个大概的印象。&lt;/p>
+&lt;p>带着这些问题，来看后面的内容，效果更佳。&lt;/p>
+&lt;p>● Eureka注册中心使用什么样的方式来储存各个服务注册时发送过来的机器地址和端口号？&lt;/p>
+&lt;p>● 各个服务找Eureka Server拉取注册表的时候，是什么样的频率？&lt;/p>
+&lt;p>● 各个服务是如何拉取注册表的？&lt;/p>
+&lt;p>● 对于一个有几百个服务，部署上千台机器的大型分布式系统来说，这套系统会对Eureka Server造成多大的访问压力？&lt;/p>
+&lt;p>● Eureka Server从技术层面是如何抗住日千万级访问量的？&lt;/p></description></item><item><title>微服务架构系列思考&lt;二></title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%BA%8C/</link><pubDate>Wed, 17 Jul 2019 21:43:53 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%BA%8C/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>相信不少朋友都在自己公司使用Spring Cloud框架来构建微服务架构，毕竟现在这是非常火的一门技术。&lt;/p>
+&lt;p>如果只是用户量很少的传统IT系统，使用Spring Cloud可能还暴露不出什么问题。&lt;/p>
+&lt;p>如果是较多用户量，高峰每秒高达上万并发请求的互联网公司的系统，使用Spring Cloud技术就有一些问题需要注意了。&lt;/p></description></item><item><title>微服务架构系列思考&lt;一></title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%80-/</link><pubDate>Wed, 17 Jul 2019 21:08:42 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%80-/</guid><description>&lt;h2 id="概述">概述
+&lt;a class="header-anchor" href="#%e6%a6%82%e8%bf%b0">&lt;/a>
+&lt;/h2>&lt;p>毫无疑问，Spring Cloud是目前微服务架构领域的翘楚，无数的书籍博客都在讲解这个技术。不过大多数讲解还停留在对Spring Cloud功能使用的层面，其底层的很多原理，很多人可能并不知晓。因此本文将通过大量的手绘图，给大家谈谈Spring Cloud微服务架构的底层原理。&lt;/p>
+&lt;p>实际上，Spring Cloud是一个全家桶式的技术栈，包含了很多组件。本文先从其最核心的几个组件入手，来剖析一下其底层的工作原理。也就是Eureka、Ribbon、Feign、Hystrix、Zuul这几个组件。&lt;/p></description></item><item><title>阿里Java神级诊断工具arthas</title><link>/post/%E9%98%BF%E9%87%8Cjava%E7%A5%9E%E7%BA%A7%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7arthas/</link><pubDate>Thu, 30 May 2019 16:56:21 +0800</pubDate><guid>/post/%E9%98%BF%E9%87%8Cjava%E7%A5%9E%E7%BA%A7%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7arthas/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>在阿里巴巴内部，有很多自研工具供开发者使用，其中有一款工具，是几乎每个Java开发都使用过的工具，那就是&lt;strong>Arthas&lt;/strong>，这是一款&lt;strong>Java诊断工具&lt;/strong>，是一款牛逼&lt;strong>带闪电的工具&lt;/strong>。该工具已于2018年9月份开源。&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/alibaba/arthas" title="GitHub 地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+GitHub 地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://alibaba.github.io/arthas/" title="用户文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+用户文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>在日常开发中，你是否遇到过以下问题：&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？&lt;/li>
+&lt;li>我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？&lt;/li>
+&lt;li>遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？&lt;/li>
+&lt;li>线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！&lt;/li>
+&lt;li>是否有一个全局视角来查看系统的运行状况？&lt;/li>
+&lt;li>有什么办法可以监控到JVM的实时运行状态？&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>以上问题，通通可以通过Arthas来进行问题诊断！！！是不是很好很强大。&lt;/p></description></item></channel></rss>

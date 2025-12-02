@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>监控技术 on 豌豆多多</title><link>/categories/%E7%9B%91%E6%8E%A7%E6%8A%80%E6%9C%AF/</link><description>Recent content in 监控技术 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 18 Nov 2020 14:57:48 +0800</lastBuildDate><atom:link href="/categories/%E7%9B%91%E6%8E%A7%E6%8A%80%E6%9C%AF/rss.xml" rel="self" type="application/rss+xml"/><item><title>Docker安装zabbix5.0LTS教程和优化</title><link>/post/docker%E5%AE%89%E8%A3%85zabbix5-0lts%E6%95%99%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96/</link><pubDate>Wed, 18 Nov 2020 14:57:48 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85zabbix5-0lts%E6%95%99%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96/</guid><description>&lt;p>在操作系统上直接部署安装zabbix太麻烦了，最近在搞k8s，正好研究下用docker容器来安装zabbix5.0LTS长期支持版。&lt;/p></description></item><item><title>用cat3.0集群构建实时监控系统</title><link>/post/%E7%94%A8cat3-0%E9%9B%86%E7%BE%A4%E6%9E%84%E5%BB%BA%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</link><pubDate>Thu, 27 Aug 2020 17:47:21 +0800</pubDate><guid>/post/%E7%94%A8cat3-0%E9%9B%86%E7%BE%A4%E6%9E%84%E5%BB%BA%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</guid><description>&lt;p>在日常工作中常常遇到很多问题，出现问题不可怕，可怕的是不知道问题出在哪里。当出现问题时，我们如无头苍蝇，无所适从，不知所措。这是因为我们的眼睛还不够犀利，没有洞察本质。常常会有疑问：服务的依赖关系是怎样的？当前线上各个服务的实时状态又是如何呢？访问卡顿是在哪个环节导致的呢？如何快速定位问题，并快速排除，恢复服务呢？如何去擦亮我们的眼睛，让服务可靠性达到5个9甚至6个9，7个9呢？&lt;/p>
+&lt;p>面对这些问题，我们找到了大众点评的Cat，有了Cat这些问题都可以迎刃而解！接下来我们将介绍Cat的简单使用。&lt;/p></description></item><item><title>单台centos7服务器Docker部署sentry服务</title><link>/post/%E5%8D%95%E5%8F%B0centos7%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E9%83%A8%E7%BD%B2sentry%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 06 Aug 2020 11:45:38 +0800</pubDate><guid>/post/%E5%8D%95%E5%8F%B0centos7%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E9%83%A8%E7%BD%B2sentry%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>&lt;code>Sentry&lt;/code> 是一个实时事件的日志聚合平台。它专门监测错误并提取所有有用信息用于分析，不再麻烦地依赖用户反馈来定位问题。它是一款基于 &lt;code>Django&lt;/code>实现的错误日志收集和聚合的平台，它是 &lt;code>Python&lt;/code> 实现的，但是其日志监控功能却不局限于&lt;code>python&lt;/code>，对诸如 &lt;code>Node.js&lt;/code>, &lt;code>php&lt;/code>,&lt;code>ruby&lt;/code>, &lt;code>C#&lt;/code>,&lt;code>java&lt;/code> 等语言的项目都可以做到无缝集成，甚至可以用来对&lt;code>iOS&lt;/code>, &lt;code>Android&lt;/code> 移动客户端以及 &lt;code>Web&lt;/code>前端异常进行跟踪。我们可以在程序中捕获异常，并发送到 &lt;code>Sentry&lt;/code>服务端进行聚合统计、展示和报警。sentry官方推荐docker方式安装，使用到了docker-compose。本文就详细教你如果搭建部署sentry服务。&lt;/p></description></item><item><title>Zabbix Server增加微信告警</title><link>/post/zabbix-server%E5%A2%9E%E5%8A%A0%E5%BE%AE%E4%BF%A1%E5%91%8A%E8%AD%A6/</link><pubDate>Tue, 29 Oct 2019 17:06:37 +0800</pubDate><guid>/post/zabbix-server%E5%A2%9E%E5%8A%A0%E5%BE%AE%E4%BF%A1%E5%91%8A%E8%AD%A6/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>微信现在是我们手机中必不可少的软件，通过它可以和朋友亲人聊天视频等。作为运维，让监控系统通过微信报警，及时提醒我们，保证线上服务稳定运行，这是SRE的职责所在。通过本教程学习，让zabbix server增加微信报警媒介。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># cat /etc/redhat-release &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CentOS Linux release 7.7.1908 &lt;span style="color:#f92672">(&lt;/span>Core&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># python -V&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Python 2.7.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># zabbix_server -V&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zabbix_server &lt;span style="color:#f92672">(&lt;/span>Zabbix&lt;span style="color:#f92672">)&lt;/span> 4.0.13
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Revision 4e383bb6c5 &lt;span style="color:#ae81ff">2&lt;/span> October 2019, compilation time: Oct &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> 08:45:35
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copyright &lt;span style="color:#f92672">(&lt;/span>C&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> Zabbix SIA
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>License GPLv2+: GNU GPL version &lt;span style="color:#ae81ff">2&lt;/span> or later &amp;lt;http://gnu.org/licenses/gpl.html&amp;gt;.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This is free software: you are free to change and redistribute it according to
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>the license. There is NO WARRANTY, to the extent permitted by law.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This product includes software developed by the OpenSSL Project
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> use in the OpenSSL Toolkit &lt;span style="color:#f92672">(&lt;/span>http://www.openssl.org/&lt;span style="color:#f92672">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Compiled with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># zabbix_agentd -V&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zabbix_agentd &lt;span style="color:#f92672">(&lt;/span>daemon&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Zabbix&lt;span style="color:#f92672">)&lt;/span> 4.0.9
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Revision 97a69d5d5a &lt;span style="color:#ae81ff">5&lt;/span> June 2019, compilation time: Jun &lt;span style="color:#ae81ff">7&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> 08:45:50
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copyright &lt;span style="color:#f92672">(&lt;/span>C&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> Zabbix SIA
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>License GPLv2+: GNU GPL version &lt;span style="color:#ae81ff">2&lt;/span> or later &amp;lt;http://gnu.org/licenses/gpl.html&amp;gt;.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This is free software: you are free to change and redistribute it according to
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>the license. There is NO WARRANTY, to the extent permitted by law.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This product includes software developed by the OpenSSL Project
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> use in the OpenSSL Toolkit &lt;span style="color:#f92672">(&lt;/span>http://www.openssl.org/&lt;span style="color:#f92672">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Compiled with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>zabbix使用LDAP认证并批量导入用户</title><link>/post/zabbix%E4%BD%BF%E7%94%A8ldap%E8%AE%A4%E8%AF%81%E5%B9%B6%E6%89%B9%E9%87%8F%E5%AF%BC%E5%85%A5%E7%94%A8%E6%88%B7/</link><pubDate>Tue, 29 Oct 2019 13:57:07 +0800</pubDate><guid>/post/zabbix%E4%BD%BF%E7%94%A8ldap%E8%AE%A4%E8%AF%81%E5%B9%B6%E6%89%B9%E9%87%8F%E5%AF%BC%E5%85%A5%E7%94%A8%E6%88%B7/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>公司用openldap搭了一套ldap认证系统，用于统一内部各个系统的账户，避免每次添加或删除用户还得一个个登陆上去操作，使账户密码统一，能减轻很多工作和保证安全性，今天是想把ldap与zabbix进行结合。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>centos7.x&lt;/p>
+&lt;p>zabbix4.0.x&lt;/p></description></item><item><title>zabbix教程之自动注册</title><link>/post/zabbix%E6%95%99%E7%A8%8B%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C/</link><pubDate>Fri, 25 Oct 2019 10:25:23 +0800</pubDate><guid>/post/zabbix%E6%95%99%E7%A8%8B%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对于监控服务器越来越多的情况，如果还单独一个一个添加，那效率也太低，因此就要实现批量添加监控服务器的操作，Zabbix提供两种批量自动监控的方式：&lt;/p>
+&lt;p>&lt;strong>自动发现：由服务端主动发起，Zabbix Server开启发现进程，定时扫描局域网中IP服务器、设备。&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>自动注册：由客户端主动发起，客户端必须安装并启动Agentd，否则无法被自动注册添加至主机列表。对于使用SNMP的就要采用自动发现了。&lt;/strong>&lt;/p>
+&lt;p>本篇教程就是自动注册，让客户端自动向Server去注册。&lt;/p></description></item><item><title>Zabbix在Ubuntu 14.04上apt-get安装</title><link>/post/zabbix%E5%9C%A8ubuntu-14-04%E4%B8%8Aapt-get%E5%AE%89%E8%A3%85/</link><pubDate>Thu, 24 Oct 2019 22:25:16 +0800</pubDate><guid>/post/zabbix%E5%9C%A8ubuntu-14-04%E4%B8%8Aapt-get%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="安装">安装
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85">&lt;/a>
+&lt;/h2>&lt;p>安装Apache、Mysql、Php、zabbix&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt-get update
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install apache2 mysql-server libapache2-mod-php5 php5-gd php5-mysql php5-common zabbix-server-mysql zabbix-frontend-php
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>centos7 yum安装zabbix4.0长期稳定版及优化</title><link>/post/centos7-yum%E5%AE%89%E8%A3%85zabbix4-0%E9%95%BF%E6%9C%9F%E7%A8%B3%E5%AE%9A%E7%89%88%E5%8F%8A%E4%BC%98%E5%8C%96/</link><pubDate>Thu, 24 Oct 2019 12:33:35 +0800</pubDate><guid>/post/centos7-yum%E5%AE%89%E8%A3%85zabbix4-0%E9%95%BF%E6%9C%9F%E7%A8%B3%E5%AE%9A%E7%89%88%E5%8F%8A%E4%BC%98%E5%8C%96/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>zabbix监控系统是目前企业常用的监控系统之一。具有快速上手，监控简单明了等特点。通过本文教程快速安装zabbix4.0 LST监控系统，为企业搭建监控系统，保驾护航。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>centos7.x&lt;/p>
+&lt;p>zabbix4.0.x LST&lt;/p>
+&lt;h2 id="参考文档和下载地址">参考文档和下载地址
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3%e5%92%8c%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://www.zabbix.com/documentation/4.0/zh/manual" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="http://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/" title="下载地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+下载地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>使用Prometheus+Grafana监控JVM</title><link>/post/%E4%BD%BF%E7%94%A8prometheus-grafana%E7%9B%91%E6%8E%A7jvm/</link><pubDate>Wed, 24 Jul 2019 17:56:09 +0800</pubDate><guid>/post/%E4%BD%BF%E7%94%A8prometheus-grafana%E7%9B%91%E6%8E%A7jvm/</guid><description>&lt;h2 id="摘要">摘要
+&lt;a class="header-anchor" href="#%e6%91%98%e8%a6%81">&lt;/a>
+&lt;/h2>&lt;p>工具：&lt;/p>
+&lt;ul>
+&lt;li>Docker，本文大量使用了Docker来启动各个应用。&lt;/li>
+&lt;li>
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，负责抓取/存储指标信息，并提供查询功能。&lt;/li>
+&lt;li>
+&lt;a href="https://grafana.com/" title="Grafana" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Grafana
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，负责数据可视化。&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/prometheus/jmx_exporter" title="JMX exporter" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+JMX exporter
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，提供JMX中和JVM相关的metrics。&lt;/li>
+&lt;li>Tomcat，用来模拟一个Java应用。&lt;/li>
+&lt;/ul>
+&lt;p>步骤：&lt;/p>
+&lt;ol>
+&lt;li>利用
+&lt;a href="https://github.com/prometheus/jmx_exporter" title="JMX exporter" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+JMX exporter
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，在Java进程内启动一个小型的Http server&lt;/li>
+&lt;li>配置
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>抓取那个Http server提供的metrics。&lt;/li>
+&lt;li>配置
+&lt;a href="https://grafana.com/" title="Grafana" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Grafana
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>连接
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，配置Dashboard。&lt;/li>
+&lt;/ol></description></item><item><title>Prometheus基本原理和使用</title><link>/post/prometheus%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 17 Jul 2019 19:21:08 +0800</pubDate><guid>/post/prometheus%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB)。Prometheus使用Go语言开发，是Google BorgMon监控系统的开源版本。&lt;/p>
+&lt;p>2016年由Google发起Linux基金会旗下的原生云基金会(Cloud Native Computing Foundation), 将Prometheus纳入其下第二大开源项目。Prometheus目前在开源社区相当活跃。&lt;/p>
+&lt;p>Prometheus和Heapster(Heapster是K8S的一个子项目，用于获取集群的性能数据。)相比功能更完善、更全面。Prometheus性能也足够支撑上万台规模的集群。&lt;/p></description></item><item><title>openfalcon的基本原理和使用</title><link>/post/openfalcon%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 17 Jul 2019 17:07:16 +0800</pubDate><guid>/post/openfalcon%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本篇文章介绍下openfalcon的基本原理和使用，粒度相对较粗，主要目的是使大家迅速掌握open-falcon的数据模型、功能模块、运作流程和使用方法。&lt;/p></description></item><item><title>zabbix-proxy安装部署</title><link>/post/zabbix-proxy%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link><pubDate>Mon, 17 Jun 2019 10:44:36 +0800</pubDate><guid>/post/zabbix-proxy%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>随着互联网公司的不断发展和业务的不断拓展，只用zabbix-server单节点作为数据收集已越来越吃力，不能满足需求，这是扩展zabbix监控系统势在必行，zabbix-proxy代理就可以帮到你，能够有效的分担server压力。本文详细介绍了zabbix-proxy的安装部署过程，因互联网公司线上业务稳定性是最重要的，监控系统更是如此，所有监控系统搭建时版本建议用长期支持版。&lt;/p></description></item><item><title>zabbix3.0.x在lnmp全编译安装</title><link>/post/zabbix3-0-x%E5%9C%A8lnmp%E5%85%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link><pubDate>Mon, 17 Jun 2019 09:39:40 +0800</pubDate><guid>/post/zabbix3-0-x%E5%9C%A8lnmp%E5%85%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视功能的企业级的开源解决方案。因其监控方式多样，上手容易在互联网行业备受欢迎。那么本文就详细介绍编译安装zabbix长期支持版本(LST).&lt;/p></description></item><item><title>zabbix api调用步骤</title><link>/post/zabbix-api%E8%B0%83%E7%94%A8%E6%AD%A5%E9%AA%A4/</link><pubDate>Fri, 14 Jun 2019 16:33:33 +0800</pubDate><guid>/post/zabbix-api%E8%B0%83%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>明确调用zabbix api的步骤，便于利用zabbix进行二次开发。&lt;/p>
+&lt;h2 id="步骤">步骤
+&lt;a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4">&lt;/a>
+&lt;/h2>&lt;p>简单来说，zabbix api调用分4步：获取userid–&amp;gt;获取hostid–&amp;gt;获取itemid–&amp;gt;根据时间节点获取数据，流程如下:&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>详解zabbix的监控方式</title><link>/post/%E8%AF%A6%E8%A7%A3zabbix%E7%9A%84%E7%9B%91%E6%8E%A7%E6%96%B9%E5%BC%8F/</link><pubDate>Wed, 05 Jun 2019 09:30:02 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3zabbix%E7%9A%84%E7%9B%91%E6%8E%A7%E6%96%B9%E5%BC%8F/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>zabbix支持的主要监控方式：&lt;/p>
+&lt;p>​ zabbix主要Agent，Trapper，SNMP，JMX，IPMI这几种监控方式，本文章主要通过监控理论和实际操作测试等方式来简单介绍这几种方式的监控原理和优缺点等 。下面对几种监控方式的监控原理进行介绍：&lt;/p></description></item><item><title>分布式开源监控系统open-falcon安装使用笔记</title><link>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BC%80%E6%BA%90%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9Fopen-falcon%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link><pubDate>Wed, 29 May 2019 18:22:45 +0800</pubDate><guid>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BC%80%E6%BA%90%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9Fopen-falcon%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid><description>&lt;h2 id="官方介绍">官方介绍
+&lt;a class="header-anchor" href="#%e5%ae%98%e6%96%b9%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>监控系统是整个运维环节，乃至整个产品生命周期中最重要的一环，事前及时预警发现故障，事后提供翔实的数据用于追查定位问题。监控系统作为一个成熟的运维产品，业界有很多开源的实现可供选择。当公司刚刚起步，业务规模较小，运维团队也刚刚建立的初期，选择一款开源的监控系统，是一个省时省力，效率最高的方案。之后，随着业务规模的持续快速增长，监控的对象也越来越多，越来越复杂，监控系统的使用对象也从最初少数的几个SRE，扩大为更多的DEVS，SRE。这时候，监控系统的容量和用户的“使用效率”成了最为突出的问题。&lt;/p>
+&lt;p>​ 监控系统业界有很多杰出的开源监控系统。我们在早期，一直在用zabbix，不过随着业务的快速发展，以及互联网公司特有的一些需求，现有的开源的监控系统在性能、扩展性、和用户的使用效率方面，已经无法支撑了。&lt;/p>
+&lt;p>​ 因此，我们在过去的一年里，从互联网公司的一些需求出发，从各位SRE、SA、DEVS的使用经验和反馈出发，结合业界的一些大的互联网公司做监控，用监控的一些思考出发，设计开发了小米的监控系统：Open-Falcon。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>数据库 on 豌豆多多</title><link>/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</link><description>Recent content in 数据库 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 23 Jun 2021 14:26:18 +0800</lastBuildDate><atom:link href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/rss.xml" rel="self" type="application/rss+xml"/><item><title>生产mysql数据库集群优化&lt;二>--proxysql安装及优化</title><link>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%BA%8C-%E5%AE%89%E8%A3%85proxysql/</link><pubDate>Wed, 23 Jun 2021 14:26:18 +0800</pubDate><guid>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%BA%8C-%E5%AE%89%E8%A3%85proxysql/</guid><description>&lt;p>前面文章对数据库中间层进行了选型，那么要怎么安装，怎么验证，怎么优化，又有哪些坑可以避免呢？本文就详细介绍下。&lt;/p></description></item><item><title>生产mysql数据库集群优化&lt;一>--选型proxysql</title><link>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%B8%80-%E9%80%89%E5%9E%8Bproxysql/</link><pubDate>Thu, 10 Jun 2021 18:26:36 +0800</pubDate><guid>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%B8%80-%E9%80%89%E5%9E%8Bproxysql/</guid><description>&lt;p>现在微服务几乎成为所有公司的标配，那么业务项目和数据存储的松耦合就成为基本配置，而mysql数据库在互联网公司中应用很广，几乎所有的项目都会有连它的需求。但是如果业务请求量很大，那么最先想到也是最常用的是数据库的读写分离。通常是由dba把数据库分为读写库，对数据进行更新，写入时连接读写库。查询数据时，连接读库。这样可以大大减轻写库的压力。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>但是这样是由业务根据需求来区分连哪个数据库，但有些开发说我想只配置一个数据库，运维你根据请求类型来区分定义是连接只读库还是读写库。而且业务对时效性也不是很严格。那要怎么做呢？如下图：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="" />&lt;/p>
+&lt;p>我们就需要增加数据库的代理层，由代理层根据定义的规则来自动区分是连接读写库还是只读库。本文就是聊聊数据库的代理层&amp;ndash;ProxySQL。&lt;/p></description></item><item><title>glusterfs集群横向扩容缩容</title><link>/post/glusterfs%E9%9B%86%E7%BE%A4%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</link><pubDate>Wed, 26 May 2021 11:14:28 +0800</pubDate><guid>/post/glusterfs%E9%9B%86%E7%BE%A4%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</guid><description>&lt;p>glusterfs集群的搭建和使用这里就不再赘述了，可以看以前的教程文档。本文主要聊的是随着服务使用量的增加，那么存储集群势必要扩充空间。服务器迁移，需要先扩容后缩容等等。所以本文的主旨是聊glusterfs集群的横向优化：扩容和缩容。&lt;/p></description></item><item><title>详解sql和nosql如何选型</title><link>/post/%E8%AF%A6%E8%A7%A3sql%E5%92%8Cnosql%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B/</link><pubDate>Fri, 29 Jan 2021 18:57:09 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3sql%E5%92%8Cnosql%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B/</guid><description>&lt;h2 id="前言">&lt;strong>前言&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>你是否在为系统的数据库来一波大流量就几乎打满CPU，日常CPU居高不下烦恼？你是否在各种NoSql间纠结不定，到底该选用那种最好？今天的你就是昨天的我，这也是写这篇文章的初衷。&lt;/p>
+&lt;p>这篇文章是我好几个月来一直想写的一篇文章，也是一直想学习的一个内容，作为互联网从业人员，我们要知道关系型数据库（MySql、Oracle）无法满足我们对存储的所有要求，因此对底层存储的选型，对每种存储引擎的理解非常重要。同时也由于过去一段时间的工作经历，对这块有了一些更多的思考，想通过自己的总结把这块写出来分享给大家。&lt;/p></description></item><item><title>阿里Canal实时同步MySQL数据到ES等其他存储的开源神器</title><link>/post/%E9%98%BF%E9%87%8Ccanal%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es%E7%AD%89%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E7%9A%84%E5%BC%80%E6%BA%90%E7%A5%9E%E5%99%A8/</link><pubDate>Wed, 02 Dec 2020 18:11:09 +0800</pubDate><guid>/post/%E9%98%BF%E9%87%8Ccanal%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es%E7%AD%89%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E7%9A%84%E5%BC%80%E6%BA%90%E7%A5%9E%E5%99%A8/</guid><description>&lt;p>我们在做网站的搜索功能时需要用到检索数据，而从数据库中来查找效率是很低，而且不现实的。通常对检索支持比较好的就是&lt;code>Elasticsearch&lt;/code>或&lt;code>HBase&lt;/code>等存储，但是前期的数据都存在mysql数据库中，那么怎么一直实时数据同步到es中，而又不影响现有业务。阿里开源神器&lt;code>canal&lt;/code>可以解决这个问题，它可以把MySQL中的数据实时同步到&lt;code>Elasticsearch&lt;/code>、&lt;code>HBase&lt;/code>等数据存储中。&lt;/p></description></item><item><title>详解glusterfs模式调换</title><link>/post/%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2/</link><pubDate>Mon, 28 Sep 2020 15:11:41 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2/</guid><description>&lt;p>&lt;code>glusterfs&lt;/code>集群存储有七种模式，在搭建集群时选择的模式，可能在使用过一段时间后发现当前的模式不是最优的方案，换种模式可能会更好。那么怎么在保证数据安全的情况下，对&lt;code>glusterfs&lt;/code>集群更改模式，以最优适配我们的使用，最大化资源利用呢？本文就这一痛点详细说明。&lt;/p></description></item><item><title>CentOS7安装GlusterFS集群教程</title><link>/post/centos7%E5%AE%89%E8%A3%85glusterfs%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B/</link><pubDate>Thu, 16 Apr 2020 19:12:47 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85glusterfs%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文教程，帮助你搭建glusterfs集群共享存储。&lt;/p>
+&lt;h2 id="环境说明">环境说明
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;p>3台机器安装 GlusterFS 组成一个集群&lt;/p>
+&lt;p>服务器
+10.6.0.140
+10.6.0.192
+10.6.0.196&lt;/p>
+&lt;p>客户端：
+10.6.0.94 node-94&lt;/p></description></item><item><title>glusterfs常用命令</title><link>/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 26 Nov 2019 16:03:27 +0800</pubDate><guid>/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>glusterfs作为分布式存储，优点和安装这里就不再赘述了，看博客中教程。本文主要是介绍glusterfs常用命令和案例。&lt;/p></description></item><item><title>GlusterFS分布式存储集群之使用</title><link>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/</link><pubDate>Tue, 05 Nov 2019 11:56:15 +0800</pubDate><guid>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="glusterfs逻辑卷创建与使用">Glusterfs逻辑卷创建与使用
+&lt;a class="header-anchor" href="#glusterfs%e9%80%bb%e8%be%91%e5%8d%b7%e5%88%9b%e5%bb%ba%e4%b8%8e%e4%bd%bf%e7%94%a8">&lt;/a>
+&lt;/h1>&lt;p>volume是brick的组合，并且大部分glusterfs文件系统的操作都在volume上。&lt;/p>
+&lt;p>glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合形成多种扩展卷（得益于glusterfs的模块化堆栈架构设计）。&lt;/p>
+&lt;p>以下主要展示各类型逻辑卷的功能性，未对性能做测试验证。&lt;/p></description></item><item><title>GlusterFS分布式存储集群之部署</title><link>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 05 Nov 2019 11:37:42 +0800</pubDate><guid>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/</guid><description>&lt;h1 id="glusterfs框架">Glusterfs框架
+&lt;a class="header-anchor" href="#glusterfs%e6%a1%86%e6%9e%b6">&lt;/a>
+&lt;/h1>&lt;p>Glusterfs（Gluster file system）是开源的，具有强大横向扩展能力的（scale-out）,分布式的，可将来自多个服务器的存储资源通过tcp/ip或infiniBand RDMA 网络整合到一个统一的全局命名空间中的文件系统。&lt;/p>
+&lt;h2 id="框架">框架
+&lt;a class="header-anchor" href="#%e6%a1%86%e6%9e%b6">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p>
+&lt;ol>
+&lt;li>GlusterFS主要由存储服务器（Brick Server）、客户端以及 NFS/Samba 存储网关组成；&lt;/li>
+&lt;li>架构中无元数据服务器组件，无对于提升整个系统的性单点故障和性能瓶颈问题，可提高系统扩展性、性能、可靠性和稳定性；&lt;/li>
+&lt;li>GlusterFS支持 TCP/IP 和 InfiniBand RDMA 高速网络互联；&lt;/li>
+&lt;li>客户端可通过原生 GlusterFS 协议访问数据，其他没有运行 GlusterFS 客户端的终端可通过 NFS/CIFS 标准协议通过存储网关访问数据（存储网关提供弹性卷管理和访问代理功能）；&lt;/li>
+&lt;li>存储服务器主要提供基本的数据存储功能，客户端弥补了没有元数据服务器的问题，承担了更多的功能，包括数据卷管理、I/O 调度、文件定位、数据缓存等功能，利用 FUSE（File system in User Space）模块将 GlusterFS 挂载到本地文件系统之上，实现 POSIX 兼容的方式来访问系统数据。&lt;/li>
+&lt;/ol>
+&lt;h2 id="常见术语">常见术语
+&lt;a class="header-anchor" href="#%e5%b8%b8%e8%a7%81%e6%9c%af%e8%af%ad">&lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>Brick：GlusterFS中最基本的存储单元，表示为受信存储池（trusted storage pool）中输出的目录，供客户端挂载用，可以通过主机名与目录名来标识，如&amp;rsquo;SERVER:EXPORT&amp;rsquo;；&lt;/li>
+&lt;li>Volume：卷，逻辑上由N个brick组成；&lt;/li>
+&lt;li>FUSE：Unix-like OS上的可动态加载的模块，允许用户不用修改内核即可创建自己的文件系统；&lt;/li>
+&lt;li>Glusterd：Gluster management daemon，在trusted storage pool中所有的服务器上运行；&lt;/li>
+&lt;li>Volfile：Glusterfs进程的配置文件，通常是位于/var/lib/glusterd/vols/目录下的{volname}文件；&lt;/li>
+&lt;li>Self-heal：用于后台运行检测复本卷中文件与目录的不一致性并解决这些不一致；&lt;/li>
+&lt;li>Split-brain：脑裂；&lt;/li>
+&lt;li>GFID：GlusterFS卷中的每个文件或目录都有一个唯一的128位的数据相关联，用于模拟inode；&lt;/li>
+&lt;li>Namespace：每个Gluster卷都导出单个ns作为POSIX的挂载点。&lt;/li>
+&lt;/ol>
+&lt;h2 id="数据访问流程">数据访问流程
+&lt;a class="header-anchor" href="#%e6%95%b0%e6%8d%ae%e8%ae%bf%e9%97%ae%e6%b5%81%e7%a8%8b">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="img" />&lt;/p>
+&lt;ol>
+&lt;li>在客户端,用户通过 glusterfs的mount point读写数据；&lt;/li>
+&lt;li>用户的这个操作被递交给本地 Linux 系统的VFS 来处理；&lt;/li>
+&lt;li>VFS 将数据递交给 FUSE 内核文件系统（在启动 glusterfs 客户端以前,需要向系统注册一个实际的文件系统 FUSE），该文件系统与 ext3 在同一个层次， ext3 是对实际的磁盘进行处理，而 fuse 文件系统则是将数据通过 /dev/fuse 这个设备文件递交给了glusterfs client 端，可以将 fuse 文件系统理解为一个代理；&lt;/li>
+&lt;li>数据被 fuse 递交给 Glusterfs client 后， client 对数据进行一些指定的处理（即按 client 配置文件来进行的一系列处理）；&lt;/li>
+&lt;li>在 glusterfs client 的处理末端,通过网络将数据递交给 Glusterfs Server, 并且将数据写入到服务器所控制的存储设备上。&lt;/li>
+&lt;/ol></description></item><item><title>分布式存储的优劣对比</title><link>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/</link><pubDate>Mon, 04 Nov 2019 12:20:43 +0800</pubDate><guid>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文通过对比当前主流的几种分布式存储方案（Ceph,TFS,FastDFS,MogileFS,MooseFS,GlusterFS等），让你知道他们的优缺点，便于你根据使用场景选择合适的方案。&lt;/p>
+&lt;h2 id="系统整体对比">系统整体对比
+&lt;a class="header-anchor" href="#%e7%b3%bb%e7%bb%9f%e6%95%b4%e4%bd%93%e5%af%b9%e6%af%94">&lt;/a>
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>对比说明/文件系统&lt;/th>
+&lt;th>TFS&lt;/th>
+&lt;th>FastDFS&lt;/th>
+&lt;th>MogileFS&lt;/th>
+&lt;th>MooseFS&lt;/th>
+&lt;th>GlusterFS&lt;/th>
+&lt;th>Ceph&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>开发语言&lt;/td>
+&lt;td>C++&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>Perl&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>C++&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>开源协议&lt;/td>
+&lt;td>GPL V2&lt;/td>
+&lt;td>GPL V3&lt;/td>
+&lt;td>GPL&lt;/td>
+&lt;td>GPL V3&lt;/td>
+&lt;td>GPL V3&lt;/td>
+&lt;td>LGPL&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>数据存储方式&lt;/td>
+&lt;td>块&lt;/td>
+&lt;td>文件/Trunk&lt;/td>
+&lt;td>文件&lt;/td>
+&lt;td>块&lt;/td>
+&lt;td>文件/块&lt;/td>
+&lt;td>对象/文件/块&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>集群节点通信协议&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;td>HTTP&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;td>私有协议（TCP）/ RDAM(远程直接访问内存)&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>专用元数据存储点&lt;/td>
+&lt;td>占用NS&lt;/td>
+&lt;td>无&lt;/td>
+&lt;td>占用DB&lt;/td>
+&lt;td>占用MFS&lt;/td>
+&lt;td>无&lt;/td>
+&lt;td>占用MDS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>在线扩容&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>冗余备份&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>单点故障&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>不存在&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>不存在&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>跨集群同步&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>部分支持&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>不适用&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>易用性&lt;/td>
+&lt;td>安装复杂，官方文档少&lt;/td>
+&lt;td>安装简单，社区相对活跃&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>安装简单，官方文档多&lt;/td>
+&lt;td>安装简单，官方文档专业化&lt;/td>
+&lt;td>安装简单，官方文档专业化&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>适用场景&lt;/td>
+&lt;td>跨集群的小文件&lt;/td>
+&lt;td>单集群的中小文件&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>单集群的大中文件&lt;/td>
+&lt;td>跨集群云存储&lt;/td>
+&lt;td>单集群的大中小文件&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>开源协议说明&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>GPL:不允许修改后和衍生的代码做为闭源的商业软件发布和销售，修改后该软件产品必须也采用GPL协议；
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>GPL V2：修改文本的整体就必须按照GPL流通，不仅该修改文本的源码必须向社 会公开，而且对于这种修改文本的流通不准许附加修改者自己作出的限制;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>GPL V3：要求用户公布修改的源代码，还要求公布相关硬件;LGPL：更宽松的GPL
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>centos7下使用yum源安装mysql5.7</title><link>/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/</link><pubDate>Tue, 17 Sep 2019 17:21:05 +0800</pubDate><guid>/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>现在centos上默认是没有yum源的，yum安装的是 MariaDB。本文详细介绍了centos7下使用yum源安装mysql5.7。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>系统：centos7&lt;/p></description></item><item><title>Redis-cluster集群[四]:redis-cluster集群配置</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E5%9B%9B-redis-cluster%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/</link><pubDate>Tue, 30 Jul 2019 18:01:08 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E5%9B%9B-redis-cluster%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="redis分片">Redis分片：
+&lt;a class="header-anchor" href="#redis%e5%88%86%e7%89%87">&lt;/a>
+&lt;/h2>&lt;p>为什么要分片：随着Redis存储的数据越来越庞大，会导致Redis的性能越来越差！&lt;/p>
+&lt;p>目前分片的方法：&lt;/p>
+&lt;p>1,客户端分片&lt;/p>
+&lt;p>在应用层面分片，程序里指定什么数据存放在那个Redis 优势：比较灵活 缺点：加个节点扩容就很费劲&lt;/p>
+&lt;p>2, 代理Proxy分片 第三方的Twemproxy 使用代理的缺点，你代理什么性能，那么你整个Redis的性能就是什么样的！&lt;/p>
+&lt;p>3, redis cluster&lt;/p>
+&lt;p>4, codis （豌豆荚）开源&lt;/p></description></item><item><title>Redis-cluster集群[三]:redis主从复制</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%89-redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</link><pubDate>Tue, 30 Jul 2019 17:54:51 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%89-redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</guid><description>&lt;h2 id="redis主从复制原理">Redis主从复制原理：
+&lt;a class="header-anchor" href="#redis%e4%b8%bb%e4%bb%8e%e5%a4%8d%e5%88%b6%e5%8e%9f%e7%90%86">&lt;/a>
+&lt;/h2>&lt;p>通过把这个RDB文件或AOF文件传给slave服务器，slave服务器重新加载RDB文件，来实现复制的功能！&lt;/p>
+&lt;p>复制的话：主服务器可以有多个从服务器！！！ 不仅这样从服务器还可以有从服务器，可以做成星状的结构！&lt;/p>
+&lt;p>复制的话也不会阻塞进程，同样fork一个子进程来做！&lt;/p>
+&lt;p>复制的原理：&lt;/p>
+&lt;p>当建立一个从服务器后，从服务器会想主服务器发送一个SYNC的命令，主服务器接收到SYNC命令之后会执行BGSAVE&lt;/p>
+&lt;p>然后保存到RDB文件，然后发送到从服务器！收到RDB文件然后就载入到内存！&lt;/p>
+&lt;p>最早不支持增量，到2.8之后就支持增量了！&lt;/p></description></item><item><title>Redis-cluster集群[二]:redis持久化</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%BA%8C-redis%E6%8C%81%E4%B9%85%E5%8C%96/</link><pubDate>Tue, 30 Jul 2019 15:14:21 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%BA%8C-redis%E6%8C%81%E4%B9%85%E5%8C%96/</guid><description>&lt;h2 id="redis持久化原理">Redis持久化原理：
+&lt;a class="header-anchor" href="#redis%e6%8c%81%e4%b9%85%e5%8c%96%e5%8e%9f%e7%90%86">&lt;/a>
+&lt;/h2>&lt;p>Redis支持两种持久化：&lt;strong>RDB&lt;/strong>和&lt;strong>AOF&lt;/strong>模式&lt;/p></description></item><item><title>Redis-cluster集群[一]:redis安装及redis数据类型</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%80-redis%E5%AE%89%E8%A3%85%E5%8F%8Aredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Tue, 30 Jul 2019 14:25:29 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%80-redis%E5%AE%89%E8%A3%85%E5%8F%8Aredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;h2 id="redis介绍">Redis介绍：
+&lt;a class="header-anchor" href="#redis%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h3 id="介绍">&lt;strong>介绍&lt;/strong>
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h3>&lt;p>redis 是一个开源的、使用C语言编写的、支持网络交互的、可以基于内存也可以持久化的Key-Value数据库。&lt;/p>
+&lt;p>redis的源码非常简单，只要有时间看看谭浩强的C语言，在去看redis的源码能看懂50-60%。&lt;/p>
+&lt;p>redis目前最大的集群应该是新浪的应该。&lt;/p>
+&lt;p>redis目前是vmvaer来支持的，很多的开源软件都需要某些组织来支持的。如果一个开源软件没有金钱来支持的话很难走的持久&lt;/p>
+&lt;h3 id="redis和memcache对比">&lt;strong>Redis和Memcache对比&lt;/strong>
+&lt;a class="header-anchor" href="#redis%e5%92%8cmemcache%e5%af%b9%e6%af%94">&lt;/a>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>持久化：以电商举例，session用memcache来做的，购物车用redis来做的，当你退出的时候会提示你购物车里的物品会在你退出后继续保存。相对来说memcache存储更单一化！&lt;/p>
+&lt;p>主从复制：redis的主从复制类似mysql的主从复制但是原理是不同的！&lt;/p>
+&lt;p>虚拟内存：说白了就是把内存里一些不用的东西放在硬盘上，最好不要用，降低效率，现在内存来说比较便宜。&lt;/p></description></item><item><title>MongodDB[三]:基本操作</title><link>/post/mongoddb-%E4%B8%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 16 Jul 2019 17:36:39 +0800</pubDate><guid>/post/mongoddb-%E4%B8%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文介绍MongoDB的基本操作，包括文档的创建、删除、和更新。&lt;/p></description></item><item><title>MongoDB[二]:逻辑与物理存储结构</title><link>/post/mongodb-%E4%BA%8C-%E9%80%BB%E8%BE%91%E4%B8%8E%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</link><pubDate>Mon, 15 Jul 2019 18:11:59 +0800</pubDate><guid>/post/mongodb-%E4%BA%8C-%E9%80%BB%E8%BE%91%E4%B8%8E%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对MongoDB中操作逻辑和存储结构进行详细介绍。&lt;/p></description></item><item><title>MongoDB[一]:初识</title><link>/post/mongodb-%E4%B8%80-%E5%88%9D%E8%AF%86/</link><pubDate>Mon, 15 Jul 2019 17:49:45 +0800</pubDate><guid>/post/mongodb-%E4%B8%80-%E5%88%9D%E8%AF%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文对Nosql进行介绍，并且引申出mongodb，进而对mango安装过程进行记录。&lt;/p></description></item><item><title>PostgreSQL基本命令</title><link>/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 27 Jun 2019 14:37:33 +0800</pubDate><guid>/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文介绍了Postgresql数据库的常用用法，方便你正确的用库。&lt;/p></description></item><item><title>redis安全机制设置</title><link>/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/</link><pubDate>Thu, 27 Jun 2019 09:31:03 +0800</pubDate><guid>/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>redis作为一个高速数据库，在互联网上广泛使用，但是在生产环境必须有对应的安全机制来进行保护。那么怎么保护呢？&lt;/p></description></item><item><title>mysql之yum安装</title><link>/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/</link><pubDate>Mon, 24 Jun 2019 18:01:25 +0800</pubDate><guid>/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在CentOS7中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB，本文yum一键安装mysql数据库。&lt;/p></description></item><item><title>Redis系列之数据类型和操作</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 21 Jun 2019 09:46:11 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Redis是一种支持Key-Value等多种数据结构的存储系统。可用于缓存，事件发布或订阅，高速队列等场景。该数据库使用ANSI C语言编写，支持网络，提供字符串，哈希，列表，队列，集合结构直接存取，基于内存，可持久化。本文介绍Redis的数据类型和相关操作。&lt;/p></description></item><item><title>Redis系列之安装</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E5%AE%89%E8%A3%85/</link><pubDate>Fri, 21 Jun 2019 09:16:41 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>redis作为nosql家族中非常热门的一员，也是被大型互联网公司所青睐，无论你是开发、测试或者运维，学习掌握它总会为你的职业生涯增色添彩。本文介绍Redis的安装及配置详解。&lt;/p></description></item><item><title>Redis系列之介绍</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%8B%E7%BB%8D/</link><pubDate>Thu, 20 Jun 2019 19:14:47 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%8B%E7%BB%8D/</guid><description>&lt;h2 id="redis简介">redis简介
+&lt;a class="header-anchor" href="#redis%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>redis是Nosql数据库中使用较为广泛的非关系型内存数据库。redis内部是一个key-value存储系统。它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型，类似于Java中的map）。Redis基于内存运行并支持持久化的NoSQL数据库，是当前最热门的NoSql数据库之一，也被人们称为数据结构服务器。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Flask on 豌豆多多</title><link>/tags/flask/</link><description>Recent content in Flask on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 03 Jun 2019 14:42:05 +0800</lastBuildDate><atom:link href="/tags/flask/rss.xml" rel="self" type="application/rss+xml"/><item><title>nginx+uwsgi+flask搭建web服务</title><link>/post/nginx-uwsgi-flask%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1/</link><pubDate>Mon, 03 Jun 2019 14:42:05 +0800</pubDate><guid>/post/nginx-uwsgi-flask%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h1 id="1目的">1，目的
+&lt;a class="header-anchor" href="#1%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h1>&lt;p>在生产环境下，可以通过Nginx+uwsgi+Flask部署Web服务，从而达到高并发高稳定性的要求。
+如果要部署多个APP，可以采用单个Nginx，多个uwsgi+Flask的方式来实现，如下图所示。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p></description></item></channel></rss>

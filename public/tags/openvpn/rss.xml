@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Openvpn on 豌豆多多</title><link>/tags/openvpn/</link><description>Recent content in Openvpn on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Feb 2020 10:07:14 +0800</lastBuildDate><atom:link href="/tags/openvpn/rss.xml" rel="self" type="application/rss+xml"/><item><title>Centos7搭建神器openvpn</title><link>/post/centos7%E6%90%AD%E5%BB%BA%E7%A5%9E%E5%99%A8openvpn/</link><pubDate>Wed, 12 Feb 2020 10:07:14 +0800</pubDate><guid>/post/centos7%E6%90%AD%E5%BB%BA%E7%A5%9E%E5%99%A8openvpn/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>OpenVPN是一个开源的应用程序，它允许您通过公共互联网创建一个安全的专用网络。OpenVPN实现一个虚拟专用网（VPN）来创建一个安全连接。OpenVPN使用OpenSSL库提供加密，它提供了几种身份验证机制，如基于证书的、预共享密钥和用户名/密码身份验证。本文详细介绍了OpenVPN搭建过程，并利用pam_sqlite3插件实现用户认证；通过openvpn_web进行用户管理与日志系统。&lt;/p>
+&lt;h2 id="环境">&lt;strong>环境&lt;/strong>
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>服务端：CentOS7.x&lt;/p>
+&lt;p>客户端：Windows10&lt;/p></description></item></channel></rss>

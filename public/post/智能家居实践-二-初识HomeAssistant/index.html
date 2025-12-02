@@ -1,0 +1,275 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="智能家居实践(二):初识HomeAssistant"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Ai"><meta property="og:type" content="article"><meta property="og:title" content="智能家居实践(二):初识HomeAssistant"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2019-07-15 14:53:03 +0800 CST"><meta property="article:modified_time" content="2019-07-15 14:53:03 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant","permalink":"/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/","title":"智能家居实践(二):初识HomeAssistant","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>智能家居实践(二):初识HomeAssistant - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#目的>目的</a><ul><li><a href=#开启-samba><strong>开启 Samba</strong></a></li><li><a href=#configurationyaml><strong>Configuration.yaml</strong></a></li></ul></li><li><a href=#举些例子>举些例子：</a><ul><li><a href=#homeassistant-文档httpshome-assistantiodocsconfigurationbasic><strong>homeassistant</strong> <a href=https://home-assistant.io/docs/configuration/basic/>文档</a></a></li><li><a href=#automation-文档httpshome-assistantiocomponentsautomation><strong>automation</strong> <a href=https://home-assistant.io/components/automation/>文档</a></a></li><li><a href=#notify-文档httpshome-assistantiocomponentsnotify><strong>notify</strong> <a href=https://home-assistant.io/components/notify/>文档</a></a></li><li><a href=#ifttt-文档httpshome-assistantiocomponentsifttt><strong>IFTTT</strong> <a href=https://home-assistant.io/components/ifttt/>文档</a></a></li></ul></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="智能家居实践(二):初识HomeAssistant"><meta itemprop=description content="目的
+
+这一篇我们要开始学习使用 HomeAssistant 了。在此之前，为了更方便地写代码，我们还需要做一些准备工作。"></span><header class=post-header><h1 class=post-title itemprop="name headline">智能家居实践(二):初识HomeAssistant</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-07-15 14:53:03 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-07-15 14:53:03 +0800 CST">2019-07-15</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%99%BA%E8%83%BD%E5%B7%A5%E7%A8%8B itemprop=url rel=index><span itemprop=name>智能工程</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>2825</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>6分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>这一篇我们要开始学习使用 HomeAssistant 了。在此之前，为了更方便地写代码，我们还需要做一些准备工作。</p><h3 id=开启-samba><strong>开启 Samba</strong>
+<a class=header-anchor href=#%e5%bc%80%e5%90%af-samba></a></h3><p>还记得上一节中我们使用的 FTP 软件吗？你可以在 <code>/home/pi/hassbian-scripts</code> 这个目录下找到一些已经预装好的脚本，如果没有，可以以 pi 的身份 clone 这个
+<a href=https://github.com/home-assistant/hassbian-scripts.git title=repo rel="noopener external nofollow noreferrer" target=_blank class=exturl>repo
+<i class="fa fa-external-link-alt"></i></a> :</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>git clone https://github.com/home-assistant/hassbian-scripts.git 
+</span></span></code></pre></div><p>然后运行</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo ./hassbian-scripts/install_samba.sh  
+</span></span></code></pre></div><p>大概5分钟左右的安装时间。安装完你可以看到下面的界面：</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt=img>然后在 Finder 的共享下面看到树莓派开放的服务器了。这样的好处是，你可以像访问本地的文件一样访问树莓派上的文件了。</p><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt=img></p><p>然后就可以用 Sublime Text 打开这个目录开始编辑了：</p><p><img src=/imgs/img-lazy-loading.gif data-src=3.png alt=img></p><h3 id=configurationyaml><strong>Configuration.yaml</strong>
+<a class=header-anchor href=#configurationyaml></a></h3><p>集成的所有服务可以在
+<a href=https://home-assistant.io/components/#search/system title=Components rel="noopener external nofollow noreferrer" target=_blank class=exturl>Components
+<i class="fa fa-external-link-alt"></i></a> 页面搜索。</p><p><img src=/imgs/img-lazy-loading.gif data-src=4.png alt=img></p><p>接下去我们的所有工作都是在 <code>Configuration.yaml</code> 这个文件里完成。 HomeAssistant 的配置文件是 Yaml 写的，每个字段都表示一个服务，比如 <code>homeassistant:</code>,<code>introduction</code>,<code>http</code>,<code>sun</code>,<code>sensor</code> &mldr;. 等都是 HomeAssistant 内建好的服务。一般来说，你需要什么服务就添加什么服务，重启 HA 即可在控制页面看到新添加的服务了。</p><p>凡是改动了 Configuration.yaml 配置文件，都需要重启 HomeAssistant 服务才能生效。你可以使用命令重启，</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo systemctl restart home-assistant.service
+</span></span></code></pre></div><p>也可以在管理界面重启</p><p><img src=/imgs/img-lazy-loading.gif data-src=5.png alt=img></p><h2 id=举些例子>举些例子：
+<a class=header-anchor href=#%e4%b8%be%e4%ba%9b%e4%be%8b%e5%ad%90></a></h2><h3 id=homeassistant-文档httpshome-assistantiodocsconfigurationbasic><strong>homeassistant</strong>
+<a href=https://home-assistant.io/docs/configuration/basic/ title=文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>文档
+<i class="fa fa-external-link-alt"></i></a>
+<a class=header-anchor href=#homeassistant-%e6%96%87%e6%a1%a3httpshome-assistantiodocsconfigurationbasic></a></h3><p>这个服务下面提供一些全局的信息配置。<code>latitude</code> 和 <code>longitude</code> 字段填入自己所在位置的经纬度，方便一些需要用到经纬度的服务准确获取信息，比如 <code>sunrise</code> 服务就可以准确获取你当前位置的日出日落时间；<code>unit_system</code> 使用英制单位还是公制单位；<code>time_zone</code> 你的时区&mldr;.</p><h3 id=automation-文档httpshome-assistantiocomponentsautomation><strong>automation</strong>
+<a href=https://home-assistant.io/components/automation/ title=文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>文档
+<i class="fa fa-external-link-alt"></i></a>
+<a class=header-anchor href=#automation-%e6%96%87%e6%a1%a3httpshome-assistantiocomponentsautomation></a></h3><p>这是一个内置的自动机，类似 IFTTT，都是当满足条件时触发操作，但 automation 的操作空间比 IFTTT 大的多，他不仅可以设置多个条件，还有触发一系列操作。</p><p>automation 由三部分组成：</p><p><code>trigger</code> &ndash; <em>When Paulus arrives home</em></p><p><code>condition</code> &ndash; <em>and it is after sunset:</em></p><p><code>action</code> &ndash; <em>Turn the lights in the living room on</em></p><p>举个我使用的例子：</p><ul><li>HomeAssistant 服务启动时候用 IFTTT 给我推送一条推送：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>automation 1</span>:  
+</span></span><span style=display:flex><span>  <span style=color:#f92672>alias</span>: <span style=color:#e6db74>&#39;Startup Notification&#39;</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>trigger</span>:
+</span></span><span style=display:flex><span>    - <span style=color:#f92672>platform</span>: <span style=color:#ae81ff>event</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>event_type</span>: <span style=color:#ae81ff>homeassistant_start</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>action</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>service</span>: <span style=color:#ae81ff>ifttt.trigger</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>data</span>: {<span style=color:#e6db74>&#34;event&#34;</span>:<span style=color:#e6db74>&#34;homeassistant_start&#34;</span>, <span style=color:#e6db74>&#34;value1&#34;</span>:<span style=color:#e6db74>&#34;Home Assistant 已启动&#34;</span>}
+</span></span></code></pre></div><p>其中 trigger 的 platform 字段必须制定一个值，
+<a href=https://home-assistant.io/docs/configuration/events/ title=event(事件总线) rel="noopener external nofollow noreferrer" target=_blank class=exturl>event(事件总线)
+<i class="fa fa-external-link-alt"></i></a> 是 HA 内建的一个 platform ，任何服务都可以获取和监听系统事件总线的事件，比如 <code>HOMEASSISTANT_START</code> , <code>HOMEASSISTANT_STOP</code> , <code>SERVICE_REGISTERED</code> &mldr;. 我在上面的 automation 里监听了 HA 启动的事件，没有 <code>condition</code> ,直接触发 <code>action</code>，<code>action</code> 的 <code>service</code> 也必须指定一个服务。</p><h3 id=notify-文档httpshome-assistantiocomponentsnotify><strong>notify</strong>
+<a href=https://home-assistant.io/components/notify/ title=文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>文档
+<i class="fa fa-external-link-alt"></i></a>
+<a class=header-anchor href=#notify-%e6%96%87%e6%a1%a3httpshome-assistantiocomponentsnotify></a></h3><p>这就是 HA 的推送服务了，基本你能想到的和你想不到的 platform 都已经集成进来了，具体请看文档。比如我用的是 <code>pushbullet</code>。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>notify</span>:  
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>name</span>: <span style=color:#ae81ff>notify</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>platform</span>: <span style=color:#ae81ff>pushbullet</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>api_key</span>: <span style=color:#ae81ff>xxxxx</span>
+</span></span></code></pre></div><p>一旦配置了这个服务，就可以在其他服务里调用它了。比如在我们之前提到的 automation 里面就可以使用：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>automation 3</span>:  
+</span></span><span style=display:flex><span>- <span style=color:#f92672>alias</span>: <span style=color:#ae81ff>Send message at lunch time</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>trigger</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>platform</span>: <span style=color:#ae81ff>time</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>hours</span>: <span style=color:#ae81ff>12</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>minutes</span>: <span style=color:#ae81ff>15</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>seconds</span>: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>  <span style=color:#f92672>action</span>:
+</span></span><span style=display:flex><span>    <span style=color:#f92672>service</span>: <span style=color:#ae81ff>notify.notify</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>data</span>:
+</span></span><span style=display:flex><span>      <span style=color:#f92672>message</span>: <span style=color:#e6db74>&#39;该吃午饭了&#39;</span>
+</span></span><span style=display:flex><span>      <span style=color:#f92672>title</span>: <span style=color:#e6db74>&#39;为了健康，请规律饮食！&#39;</span>
+</span></span></code></pre></div><p>注意我这里的 action 就用了 notify.notify 来找到你在其他地方配置的这个 notify 服务。</p><h3 id=ifttt-文档httpshome-assistantiocomponentsifttt><strong>IFTTT</strong>
+<a href=https://home-assistant.io/components/ifttt/ title=文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>文档
+<i class="fa fa-external-link-alt"></i></a>
+<a class=header-anchor href=#ifttt-%e6%96%87%e6%a1%a3httpshome-assistantiocomponentsifttt></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span><span style=color:#f92672>ifttt</span>:  
+</span></span><span style=display:flex><span>  <span style=color:#f92672>key</span>: <span style=color:#ae81ff>xxxxx-x-xxxxxxxxxxxxx</span>
+</span></span></code></pre></div><p>IFTTT 的配置很简单，就只要配一个 key 就行，key 需要在
+<a href=https://ifttt.com/maker_webhooks title="Maker Channel" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Maker Channel
+<i class="fa fa-external-link-alt"></i></a> 里生成。接下来我们来看看如果配合 IFTTT 使用 HomeAssistant。</p><p>首先新建一个 Applet， this 选择 <code>Maker Webhooks</code>,选择 <code>Receive a web request</code>，然后给事件取一个名字。</p><p><img src=/imgs/img-lazy-loading.gif data-src=6.png alt=img></p><p>之后在 HomeAssistant 里面就可以通过这个名字触发这条 IFTTT 了。在此之前，我们先把下面的 that 步骤完成，为了直观地看到测试效果，我们选择 <code>Notifications</code> - <code>Send a notification from IFTTT app</code></p><p><img src=/imgs/img-lazy-loading.gif data-src=7.png alt=img></p><p>这里有很多 Ingredient 占位符， EventName 就是之前我们给事件声明的名字，Value1,Value2,Value3 我们可以在 HA 里面自己传过去，OccurredAt 就是发生的时间。</p><p>创建完成这条 Applet 之后，我们就可以开始用 HA 来触发了。触发的方式就太多了。</p><p>1.最简单的，在我们的管理界面：</p><p><img src=/imgs/img-lazy-loading.gif data-src=8.png alt=img></p><p><code>event</code> 字段后面就跟我们之前填写的事件的名称，后面的 Value1,2,3 对应之前 IFTTT 里的参数。然后点击 <code>CALL SERVICE</code> ，不出意外就可以在几秒钟之后看到 IFTTT 给你推送了一条消息。</p><p>2.其次我们还可以在 automation 里的 action 中触发</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-yaml data-lang=yaml><span style=display:flex><span>  <span style=color:#f92672>action</span>:
+</span></span><span style=display:flex><span>  - <span style=color:#f92672>service</span>: <span style=color:#ae81ff>ifttt.trigger</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>data</span>: {<span style=color:#e6db74>&#34;event&#34;</span>:<span style=color:#e6db74>&#34;HA_Start&#34;</span>, <span style=color:#e6db74>&#34;value1&#34;</span>:<span style=color:#e6db74>&#34;Home Assistant 已启动&#34;</span>}
+</span></span></code></pre></div><p>3.
+<a href=https://home-assistant.io/developers/rest_api/ title="RESTful API" rel="noopener external nofollow noreferrer" target=_blank class=exturl>RESTful API
+<i class="fa fa-external-link-alt"></i></a> 这真的是个强大功能。这意味着我们可以像调用普通 API 一样调用 HomeAssistant 的所有服务。由于太过强大，我另起一节介绍。</p><p><strong>4. RESTful API</strong>
+<a href=https://home-assistant.io/developers/rest_api/ title=文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>文档
+<i class="fa fa-external-link-alt"></i></a></p><p>和普通的 RESTful API 一样， HA 的 RESTful API 也是返回的 JSON 格式，另外，如果你配置了
+<a href=https://home-assistant.io/components/http/ title=HTTP rel="noopener external nofollow noreferrer" target=_blank class=exturl>HTTP
+<i class="fa fa-external-link-alt"></i></a> 这个服务并设置了密码（这个密码就是你登录控制面板的密码，推荐这么做），那么你只需要在调用 API 的时候传入密码参数即可。</p><p>具体 API 请大家看文档，我仅介绍比较常用的以做示范。</p><p><code>GET /api/services</code> &ndash; 获取当前可用的所有服务</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-json data-lang=json><span style=display:flex><span>[
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;domain&#34;</span>: <span style=color:#e6db74>&#34;ifttt&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;services&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;trigger&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {}
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;domain&#34;</span>: <span style=color:#e6db74>&#34;switch&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;services&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;toggle&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Toggles a switch state&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;entity_id&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name(s) of entities to toggle&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;switch.living_room&#34;</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;turn_off&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Turn a switch off&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;entity_id&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name(s) of entities to turn off&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;switch.living_room&#34;</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;turn_on&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Turn a switch on&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;entity_id&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name(s) of entities to turn on&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;switch.living_room&#34;</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>  {
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;domain&#34;</span>: <span style=color:#e6db74>&#34;light&#34;</span>,
+</span></span><span style=display:flex><span>    <span style=color:#f92672>&#34;services&#34;</span>: {
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;toggle&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Toggles a light&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;entity_id&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name(s) of entities to toggle&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;light.kitchen&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;transition&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Duration in seconds it takes to get to next state&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#ae81ff>60</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;turn_off&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Turn a light off&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;entity_id&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name(s) of entities to turn off&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;light.kitchen&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;flash&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;If the light should flash&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;values&#34;</span>: [
+</span></span><span style=display:flex><span>              <span style=color:#e6db74>&#34;short&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#e6db74>&#34;long&#34;</span>
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;transition&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Duration in seconds it takes to get to next state&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#ae81ff>60</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      },
+</span></span><span style=display:flex><span>      <span style=color:#f92672>&#34;turn_on&#34;</span>: {
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Turn a light on&#34;</span>,
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&#34;fields&#34;</span>: {
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;brightness&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Number between 0..255 indicating brightness&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#ae81ff>120</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;color_name&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;A human readable color name&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;red&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;color_temp&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Color temperature for the light in mireds (154-500)&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;250&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;effect&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Light effect&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;values&#34;</span>: [
+</span></span><span style=display:flex><span>              <span style=color:#e6db74>&#34;colorloop&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#e6db74>&#34;random&#34;</span>
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;entity_id&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name(s) of entities to turn on&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;light.kitchen&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;flash&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;If the light should flash&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;values&#34;</span>: [
+</span></span><span style=display:flex><span>              <span style=color:#e6db74>&#34;short&#34;</span>,
+</span></span><span style=display:flex><span>              <span style=color:#e6db74>&#34;long&#34;</span>
+</span></span><span style=display:flex><span>            ]
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;profile&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Name of a light profile to use&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;relax&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;rgb_color&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Color for the light in RGB-format&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;[255, 100, 100]&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;transition&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Duration in seconds it takes to get to next state&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#ae81ff>60</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;white_value&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Number between 0..255 indicating level of white&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;250&#34;</span>
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>          <span style=color:#f92672>&#34;xy_color&#34;</span>: {
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;description&#34;</span>: <span style=color:#e6db74>&#34;Color for the light in XY-format&#34;</span>,
+</span></span><span style=display:flex><span>            <span style=color:#f92672>&#34;example&#34;</span>: <span style=color:#e6db74>&#34;[0.52, 0.43]&#34;</span>
+</span></span><span style=display:flex><span>          }
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>]
+</span></span></code></pre></div><p>你实际的 JSON 内容一定比我上面的要多，因为我删了一些不常用，留下精华做示范。可以看到最外面是个数组，每个元素都是一项服务，我留下了 <code>ifttt</code>,<code>switch</code>,<code>light</code>，之所以会出现三个服务，就是因为你在 Configuration.yaml 里面添加了这三个服务。根据上面返回的信息，我们可以写出调用 IFTTT 服务的 API 如下：</p><p>API: <code>http://YOUR_IP_ADDRESS:8123/api/services/ifttt/trigger?api_password=YOUR_PASSWORD</code> (YOUR_IP_ADDRESS 可以是局域网IP，也可以是域名)</p><p>Method: <code>POST</code></p><p>Content-Type: <code>application/json</code></p><p>Params: <code>{"event": "homeassistant_start", "value1": "来自的 RESTful API 的推送"}</code></p><p>这里推荐一个 Mac 上我常用的测试 API 的工具 ——
+<a href=http://mmattozzi.github.io/cocoa-rest-client/ title="Cocoa Rest Client" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Cocoa Rest Client
+<i class="fa fa-external-link-alt"></i>
+</a>.</p><p><img src=/imgs/img-lazy-loading.gif data-src=9.png alt=img></p><p>显示 <code>HTTP 200 No Error</code> 说明没有问题，接下来的几秒内你就会收到一条推送了。现在，你是不是和我一样觉得神奇之余还有一丝成就感。</p><p>更进一步，你看到我上面还有 &rsquo;light&rsquo; 和 &lsquo;switch&rsquo; 这两个服务，这些是因为我配置了硬件相关的服务后出现的，这也就意味着你可以用 API 来控制你的电视，空调，灯泡灯一切电器。</p><p>例如通过 API 开启空气净化器：</p><p><img src=/imgs/img-lazy-loading.gif data-src=10.png alt=img></p><p>通过 API 开启 Yeelight智能灯泡并切换到指定颜色和亮度：</p><p><img src=/imgs/img-lazy-loading.gif data-src=11.png alt=img></p><p>比如我还写了一个 Shell 脚本每天早晨8点自动运行，通过 API 获取
+<a href=http://aqicn.org/api/ title="World Air Quality Index" rel="noopener external nofollow noreferrer" target=_blank class=exturl>World Air Quality Index
+<i class="fa fa-external-link-alt"></i></a> 的空气质量数据，如果 PM2.5大于50就通过 API 让床头灯颜色显示红色，否则显示绿色，这样我早上醒来一看床头灯的颜色就知道今天要不要带口罩了。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#!/bin/bash
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#75715e># get AQI </span>
+</span></span><span style=display:flex><span>MY_VAR<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>curl https://api.waqi.info/feed/shanghai/?token<span style=color:#f92672>=</span>xxxxxxxx | jq <span style=color:#e6db74>&#34;{aqi: .data.aqi, pm25: .data.iaqi.pm25.v, pm10: .data.iaqi.pm10.v}&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>  
+</span></span><span style=display:flex><span>echo $MY_VAR
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pm25<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#66d9ef>$(</span>echo $MY_VAR | jq <span style=color:#e6db74>&#34;.pm25&#34;</span><span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>  
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[[</span> $pm25 -gt <span style=color:#ae81ff>50</span> <span style=color:#f92672>]]</span>; <span style=color:#66d9ef>then</span>  
+</span></span><span style=display:flex><span>    echo <span style=color:#e6db74>&#34;PM2.5 大于50&#34;</span>
+</span></span><span style=display:flex><span>    curl -X POST -H <span style=color:#e6db74>&#39;x-ha-access: xxxxx&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>     -H <span style=color:#e6db74>&#39;Content-Type: application/json&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>     -d <span style=color:#e6db74>&#39;{&#34;color_name&#34;:&#34;red&#34;,&#34;brightness&#34;:&#34;190&#34;}&#39;</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>     http://IP_ADDRESS:8123/api/services/light/turn_on?api_password<span style=color:#f92672>=</span>PASSWORD <span style=color:#ae81ff>\ </span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span></code></pre></div><p>想到平时一直接触的 API 竟然可以用来控制你的电器，是不是又一次感觉不可思议。这一切，都归功于 HomeAssistant 这个成熟的开源社区，再次表达敬佩和感谢之情。</p><p>其实当 IFTTT 的 Maker Webhooks 作为 that 部分的时候，也可以充当调用 API 的发起方（Make a web request）。比如我的一条 IFTTT 是：当我到家的的时候自动开启所有电器。这里面 Maker Webhooks 作为了 that 部分就可以发起一个 HTTP Request 了。</p><p><img src=/imgs/img-lazy-loading.gif data-src=12.png alt=img></p><p>至此，通过 API 实现了 IFTTT 和 HA 全部打通，两者既可以作为主动发起方，也可以作为被动执行方，简言之，你可以让 HA 触发一条 IFTTT，IFTTT 再触发硬件，也可以 IFTTT 触发 HA 的 automation，automation 再触发其他操作&mldr;.. 总之已经可以结合出无数多的可能性，限制你的只有你的想象力。</p><p>好啦，下一篇文章，我们要开始接入硬件了，要知道我前面铺垫了这么久，最终要实现的功能还是用 Amazon Echo 和 Siri 控制所有家电啊。</p></div><footer class=post-footer><div class=post-tags><a href=/tags/ai>Ai</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%B8%89-%E6%8E%A5%E5%85%A5%E7%A1%AC%E4%BB%B6/ rel=next title=智能家居实践(三):接入硬件><i class="fa fa-chevron-left"></i> 智能家居实践(三):接入硬件</a></div><div class="post-nav-prev post-nav-item"><a href=/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%B8%80-%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%85%8D%E7%BD%AE/ rel=prev title=智能家居实践(一):树莓派的配置>智能家居实践(一):树莓派的配置
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

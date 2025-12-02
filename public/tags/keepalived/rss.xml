@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Keepalived on 豌豆多多</title><link>/tags/keepalived/</link><description>Recent content in Keepalived on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 02 Nov 2019 21:42:25 +0800</lastBuildDate><atom:link href="/tags/keepalived/rss.xml" rel="self" type="application/rss+xml"/><item><title>基于Keepalived+Haproxy搭建四层负载均衡器</title><link>/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link><pubDate>Sat, 02 Nov 2019 21:42:25 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>​ Haproxy是稳定、高性能、高可用性的负载均衡解决方案，支持HTTP及TCP代理后端服务器池，因支持强大灵活的7层acl规则，广泛作为HTTP反向代理。本文则详细介绍如何利用它的四层交换与Keepalived实现一个负载均衡器，适用于Socket、ICE、Mail、Mysql、私有通讯等任意TCP服务。系统架构图如下：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="0.027865917857136546.png" alt="点击在新窗口中浏览此图片" />&lt;/p></description></item><item><title>haproxy+keepalived实现Web服务器负载均衡</title><link>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link><pubDate>Sat, 02 Nov 2019 10:17:03 +0800</pubDate><guid>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid><description>&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>操作系统&lt;/strong>：CentOS 6.X 64位&lt;/p>
+&lt;p>&lt;strong>Web服务器&lt;/strong>：192.168.21.127、192.168.21.128&lt;/p>
+&lt;p>&lt;strong>站点&lt;/strong>：bbs.osyunwei.com和sns.osyunwei.com部署在两台Web服务器上&lt;/p>
+&lt;h2 id="实现目的">&lt;strong>实现目的&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>增加两台服务器（主主模式），通过HAProxy+Keepalived实现Web服务器负载均衡&lt;/p>
+&lt;h2 id="架构规划">&lt;strong>架构规划&lt;/strong>
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e8%a7%84%e5%88%92">&lt;/a>
+&lt;/h2>&lt;p>HAProxy服务器：192.168.21.129、192.168.21.130&lt;/p>
+&lt;p>虚拟服务器（VIP）：192.168.21.253、192.168.21.254&lt;/p>
+&lt;h2 id="验证说明">&lt;strong>验证说明&lt;/strong>
+&lt;a class="header-anchor" href="#%e9%aa%8c%e8%af%81%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>VIP：192.168.21.253指向192.168.21.129；VIP：192.168.21.254指向192.168.21.130；&lt;/li>
+&lt;li>当192.168.21.129宕机时，VIP：192.168.21.253漂移到192.168.21.130上；&lt;/li>
+&lt;li>当192.168.21.130宕机时，VIP：192.168.21.254漂移到192.168.21.129上；&lt;/li>
+&lt;/ol>
+&lt;p>这样的主主模式好处是，两台服务器在提供服务的同时，又互为对方的备份服务器。&lt;/p></description></item><item><title>haproxy+keepalived实现高可用负载均衡</title><link>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link><pubDate>Sat, 02 Nov 2019 09:53:34 +0800</pubDate><guid>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在运维的日常工作中和很多服务打交道，为了保证各个服务健康稳定运行，高可用和高负载是在一个服务搭建好后，必须要考虑的问题。本文介绍了一种常用的高可用和负载均衡的解决方案：KA+HA(haproxy+keepalived)&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>haproxy keepalived 主：192.168.1.192
+haproxy keepalived 备：192.168.1.193
+vip：192.168.1.200
+web：192.168.1.187:80&lt;/p>
+&lt;p>​ 192.168.1.187:8000&lt;/p>
+&lt;h2 id="架构图">架构图
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e5%9b%be">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="0.115069789831175.png" alt="img" />&lt;/p></description></item></channel></rss>

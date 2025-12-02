@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Centos on 豌豆多多</title><link>/tags/centos/</link><description>Recent content in Centos on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 02 Jul 2020 14:09:58 +0800</lastBuildDate><atom:link href="/tags/centos/rss.xml" rel="self" type="application/rss+xml"/><item><title>CentOS7安装指定版本Docker-ce</title><link>/post/centos7%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%ACdocker-ce/</link><pubDate>Thu, 02 Jul 2020 14:09:58 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%ACdocker-ce/</guid><description>&lt;h2 id="docker版本说明">&lt;strong>Docker版本说明&lt;/strong>
+&lt;a class="header-anchor" href="#docker%e7%89%88%e6%9c%ac%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;p>Docker-CE指Docker社区版，由社区维护和提供技术支持，为免费版本，适合个人开发人员和小团队使用。&lt;/p>
+&lt;p>Docker-EE指Docker企业版，为收费版本，由售后团队和技术团队提供技术支持，专为企业开发和IT团队而设计。&lt;/p>
+&lt;p>相比Docker-EE，增加一些额外功能，更重要的是提供了更安全的保障。&lt;/p>
+&lt;p>此外，Docker的发布版本分为Stable版和Edge版，区别在于前者是按季度发布的稳定版(发布慢)，后者是按月发布的边缘版(发布快)。&lt;/p>
+&lt;p>通常情况下，Docker-CE足以满足我们的需求。&lt;/p></description></item></channel></rss>

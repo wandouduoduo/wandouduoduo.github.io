@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Stackstorm on 豌豆多多</title><link>/tags/stackstorm/</link><description>Recent content in Stackstorm on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Jun 2019 17:52:24 +0800</lastBuildDate><atom:link href="/tags/stackstorm/rss.xml" rel="self" type="application/rss+xml"/><item><title>Stackstorm之一键安装</title><link>/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/</link><pubDate>Wed, 12 Jun 2019 17:52:24 +0800</pubDate><guid>/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="安装">安装
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85">&lt;/a>
+&lt;/h2>&lt;p>StackStorm作为RPM和Debs分发用于RedHat / CentOS和Ubuntu Linux系统，以及Docker镜像。您可以使用脚本在单个系统上自动安装和配置所有组件，也可以按照操作系统的手动说明进行操作。&lt;/p>
+&lt;p>以下是选项概述：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>**一键安装：**运行我们的安装脚本，在单个系统上进行所有组件的固定安装。这是我们推荐的入门方式。有关详细信息，请参阅下面的“
+&lt;a href="https://docs.stackstorm.com/install/index.html#ref-one-line-install" title="快速安装" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+快速安装
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**手动安装：**有定制需求吗？也许您的服务器无法访问Internet？或者只是不喜欢使用脚本安装？阅读适用于您的操作系统的手册安装说明（
+&lt;a href="https://docs.stackstorm.com/install/deb.html" title="Ubuntu 14 " rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Ubuntu 14
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://docs.stackstorm.com/install/rhel6.html" title="/ " rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+/
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://docs.stackstorm.com/install/deb.html" title="16" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+16
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，
+&lt;a href="https://docs.stackstorm.com/install/rhel6.html" title="RHEL / CentOS 6" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+RHEL / CentOS 6
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，
+&lt;a href="https://docs.stackstorm.com/install/rhel7.html" title="RHEL / CentOS 7" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+RHEL / CentOS 7
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>），并根据您的需要进行调整。以下是为StackStorm repos设置内部镜像的一些
+&lt;a href="https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/" title="其他指导" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+其他指导
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**Ansible Playbooks：**如果您是Ansible用户，请查看这些
+&lt;a href="https://docs.stackstorm.com/install/ansible.html" title="Ansible Playbooks" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Ansible Playbooks
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>以安装StackStorm。非常适合StackStorm的可重复，一致，幂等安装。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>高可用性将&lt;/strong>业务关键自动化任务委托给像StackStorm这样的系统会对该系统产生更高的要求。StackStorm可以在HA模式下运行以确保满足这些需求。
+&lt;a href="https://docs.stackstorm.com/install/k8s_ha.html" title="Kubernetes中的StackStorm HA集群 - BETA将" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Kubernetes中的StackStorm HA集群 - BETA将
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>整个复杂的基础架构自动化为可重现的蓝图。&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>Stackstorm的介绍与入门</title><link>/post/stackstorm%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%85%A5%E9%97%A8/</link><pubDate>Wed, 12 Jun 2019 17:25:00 +0800</pubDate><guid>/post/stackstorm%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%85%A5%E9%97%A8/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>一句话概况：stackstorm是一个事件驱动的自动化引擎。&lt;/strong>&lt;/p>
+&lt;p>官方解释：StackStorm是一个功能强大的开源自动化平台，可将所有应用程序，服务和工作流程连接起来。 它具有可扩展性，灵活性, 设计中包含了对DevOps和ChatOps的热爱。它可以将您现有的基础架构和应用程序环境联系在一起，以便您可以更轻松地自动化操作该环境。它特别专注于针对事件采取行动。&lt;/p>
+&lt;p>主要用途：&lt;/p>
+&lt;ul>
+&lt;li>便利的故障排除 - 触发由Nagios，Sensu，New Relic和其他监控系统捕获的系统故障，在物理节点、OpenStack或Amazon实例和应用程序组件上运行一系列诊断检查，并将结果发布到共享通信环境中，如HipChat或JIRA。&lt;/li>
+&lt;li>自动修复 - 识别和验证OpenStack计算节点上的硬件故障，正确排空实例并向管理员发送关于潜在停机时间的电子邮件，但如果出现任何问题 - 冻结工作流程并呼叫PagerDuty唤醒人员。&lt;/li>
+&lt;li>持续部署 - 与Jenkins一起构建和测试，配置新的AWS群集，基于NewRelic的应用程序性能数据，打开负载均衡器的一些流量，以及前滚或回滚。&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考文档">参考文档
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://stackstorm.com/" title="官网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item></channel></rss>

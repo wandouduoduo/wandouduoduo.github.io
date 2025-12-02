@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on 豌豆多多</title><link>/categories/jenkins/</link><description>Recent content in Jenkins on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 01 Jul 2020 19:26:55 +0800</lastBuildDate><atom:link href="/categories/jenkins/rss.xml" rel="self" type="application/rss+xml"/><item><title>jenkins配置jdk、git、maven等工具</title><link>/post/jenkins%E9%85%8D%E7%BD%AEjdkgitmaven%E7%AD%89%E5%B7%A5%E5%85%B7/</link><pubDate>Wed, 01 Jul 2020 19:26:55 +0800</pubDate><guid>/post/jenkins%E9%85%8D%E7%BD%AEjdkgitmaven%E7%AD%89%E5%B7%A5%E5%85%B7/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍jenkins配置各种打包工具。&lt;/p></description></item><item><title>玩转Jenkins Pipeline</title><link>/post/%E7%8E%A9%E8%BD%ACjenkins-pipeline/</link><pubDate>Thu, 06 Jun 2019 17:04:29 +0800</pubDate><guid>/post/%E7%8E%A9%E8%BD%ACjenkins-pipeline/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>Pipeline，简而言之，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排与可视化。&lt;/p>
+&lt;p>Pipeline是Jenkins2.X的最核心的特性，帮助Jenkins实现从CI到CD与DevOps的转变。Pipeline是一组插件，让Jenkins可以实现持续交付管道的落地和实施。&lt;/p>
+&lt;p>持续交付管道（CD Pipeline）是将软件从版本控制阶段到交付给用户或客户的完整过程的自动化表现。软件的每一次更改（提交到源代码管理系统）都要经过一个复杂的过程才能被发布。&lt;/p>
+&lt;p>Pipeline提供了一组可扩展的工具，通过Pipeline Domain Specific Language（DSL）syntax可以达到Pipeline as Code（Jenkinsfile存储在项目的源代码库）的目的。&lt;/p></description></item></channel></rss>

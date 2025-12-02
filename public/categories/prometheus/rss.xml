@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Prometheus on 豌豆多多</title><link>/categories/prometheus/</link><description>Recent content in Prometheus on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 24 Jul 2019 17:56:09 +0800</lastBuildDate><atom:link href="/categories/prometheus/rss.xml" rel="self" type="application/rss+xml"/><item><title>使用Prometheus+Grafana监控JVM</title><link>/post/%E4%BD%BF%E7%94%A8prometheus-grafana%E7%9B%91%E6%8E%A7jvm/</link><pubDate>Wed, 24 Jul 2019 17:56:09 +0800</pubDate><guid>/post/%E4%BD%BF%E7%94%A8prometheus-grafana%E7%9B%91%E6%8E%A7jvm/</guid><description>&lt;h2 id="摘要">摘要
+&lt;a class="header-anchor" href="#%e6%91%98%e8%a6%81">&lt;/a>
+&lt;/h2>&lt;p>工具：&lt;/p>
+&lt;ul>
+&lt;li>Docker，本文大量使用了Docker来启动各个应用。&lt;/li>
+&lt;li>
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，负责抓取/存储指标信息，并提供查询功能。&lt;/li>
+&lt;li>
+&lt;a href="https://grafana.com/" title="Grafana" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Grafana
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，负责数据可视化。&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/prometheus/jmx_exporter" title="JMX exporter" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+JMX exporter
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，提供JMX中和JVM相关的metrics。&lt;/li>
+&lt;li>Tomcat，用来模拟一个Java应用。&lt;/li>
+&lt;/ul>
+&lt;p>步骤：&lt;/p>
+&lt;ol>
+&lt;li>利用
+&lt;a href="https://github.com/prometheus/jmx_exporter" title="JMX exporter" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+JMX exporter
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，在Java进程内启动一个小型的Http server&lt;/li>
+&lt;li>配置
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>抓取那个Http server提供的metrics。&lt;/li>
+&lt;li>配置
+&lt;a href="https://grafana.com/" title="Grafana" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Grafana
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>连接
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，配置Dashboard。&lt;/li>
+&lt;/ol></description></item><item><title>Prometheus基本原理和使用</title><link>/post/prometheus%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 17 Jul 2019 19:21:08 +0800</pubDate><guid>/post/prometheus%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB)。Prometheus使用Go语言开发，是Google BorgMon监控系统的开源版本。&lt;/p>
+&lt;p>2016年由Google发起Linux基金会旗下的原生云基金会(Cloud Native Computing Foundation), 将Prometheus纳入其下第二大开源项目。Prometheus目前在开源社区相当活跃。&lt;/p>
+&lt;p>Prometheus和Heapster(Heapster是K8S的一个子项目，用于获取集群的性能数据。)相比功能更完善、更全面。Prometheus性能也足够支撑上万台规模的集群。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Openldap on 豌豆多多</title><link>/tags/openldap/</link><description>Recent content in Openldap on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 03 Sep 2019 15:17:12 +0800</lastBuildDate><atom:link href="/tags/openldap/rss.xml" rel="self" type="application/rss+xml"/><item><title>docker构建自己的openldap自助密码服务</title><link>/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/</link><pubDate>Tue, 03 Sep 2019 15:17:12 +0800</pubDate><guid>/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。&lt;/p>
+&lt;p>在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。&lt;/p>
+&lt;h2 id="教程">教程
+&lt;a class="header-anchor" href="#%e6%95%99%e7%a8%8b">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://github.com/wandouduoduo/docker-ssp" title="参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>cmdbuild接入openldap方法</title><link>/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/</link><pubDate>Fri, 30 Aug 2019 18:19:54 +0800</pubDate><guid>/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>cmdbuid接入openldap用户权限，便于用户统一管理。&lt;/p></description></item><item><title>Docker版快速安装OpenLDAP</title><link>/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/</link><pubDate>Wed, 28 Aug 2019 14:58:44 +0800</pubDate><guid>/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。&lt;/p></description></item><item><title>OpenLDAP启用MemberOf</title><link>/post/openldap%E5%90%AF%E7%94%A8memberof/</link><pubDate>Wed, 28 Aug 2019 14:35:09 +0800</pubDate><guid>/post/openldap%E5%90%AF%E7%94%A8memberof/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>默认情况下OpenLDAP的用户组属性是Posixgroup，Posixgroup用户组和用户没有实际的对应关系。如果需要把Posixgroup和user关联起来则需要将用户添加到对应的组中。 通过如上配置可以满足大部分业务场景，但是如果需要通过用户组来查找用户的话，Posixgroup用户组属性，是无法满足要求的。此时需要使用OpenLDAP的groupOfUniqueNames用户组属性。本篇文章Fayson主要介绍如何为OpenLDAP启用MemberOf。&lt;/p></description></item><item><title>Centos7上配置最新版openldap服务多主模式(镜像模式)</title><link>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/</link><pubDate>Wed, 28 Aug 2019 13:54:54 +0800</pubDate><guid>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在实际产线运维环境下，使用最多的就是镜像模式，当然多IDC机房的情况下也会结合使用其他模式，例如主从模式。&lt;/p>
+&lt;p>镜像模式只允许2个主节点，如果超过2个节点其他节点只会同步获取前面2个节点的配置（这个是博客文档里面看到的，没有验证）&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">主机名称&lt;/th>
+&lt;th style="text-align:center">地址&lt;/th>
+&lt;th style="text-align:center">版本&lt;/th>
+&lt;th style="text-align:center">角色&lt;/th>
+&lt;th style="text-align:center">备注&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.11&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap, httpd, phpldapadmin&lt;/td>
+&lt;td style="text-align:center">主节点&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-2&lt;/td>
+&lt;td style="text-align:center">10.116.72.12&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap, httpd, phpldapadmin&lt;/td>
+&lt;td style="text-align:center">主节点&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">systerm-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.15&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap client&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>前提条件，为了方便配置防火墙以及禁用selinux
+配置示例:dc=example,dc=com&lt;/p></description></item><item><title>Centos7上配置最新版openldap服务主从架构</title><link>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/</link><pubDate>Wed, 28 Aug 2019 13:44:44 +0800</pubDate><guid>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在实际产线运维环境下，可能包含多个IDC机房，每个机房的主机都需要通过OpenLDAP体系管理运维账户登录。这种情况下可以配置OpenLDAP的主从架构实现(当然同一个机房也可以配置主从架构，客户端配置ldap uri指定多个地址)。主openldap节点称为“provider”可读可写，从openldap节点称为“consumer”只读。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">主机名称&lt;/th>
+&lt;th style="text-align:center">地址&lt;/th>
+&lt;th style="text-align:center">版本&lt;/th>
+&lt;th style="text-align:center">角色&lt;/th>
+&lt;th style="text-align:center">备注&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.11&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap, httpd, phpldapadmin&lt;/td>
+&lt;td style="text-align:center">主节点&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-2&lt;/td>
+&lt;td style="text-align:center">10.116.72.12&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap&lt;/td>
+&lt;td style="text-align:center">从节点，可以配置多从的&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">systerm-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.15&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap client&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>前提条件，为了方便配置防火墙以及禁用selinux
+配置示例:dc=example,dc=com&lt;/p></description></item><item><title>Centos7上单节点安装配置最新版openldap服务</title><link>/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/</link><pubDate>Wed, 28 Aug 2019 11:31:13 +0800</pubDate><guid>/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了在centos7上安装最新版openldap的过程和常见场景。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>操作系统：centos7.6&lt;/p>
+&lt;p>软件版本：openldap-2.4.44&lt;/p>
+&lt;p>配置示例: dc=example,dc=com&lt;/p></description></item><item><title>基于OpenLDAP_MirrorMode的OpenLDAP高可用</title><link>/post/%E5%9F%BA%E4%BA%8Eopenldap-mirrormode%E7%9A%84openldap%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Mon, 19 Aug 2019 12:06:31 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Eopenldap-mirrormode%E7%9A%84openldap%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>LDAP是一款轻量级目录访问协议（Lightweight Directory Access Protocol，简称LDAP），属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。目录服务是一种特殊的数据库系统，对于数据的读取、浏览、搜索有很好的效果。同时做为用户中心，数据库的高可用显得尤为重要。在客户生产环境中使用的是客户的负载均衡设备，基于思杰的硬件负载均衡设备，后端配置的是OpenLDAP_MirrorMode,相当于Mysql的双主模式，后面某一台服务器出现问题，负载均衡会将后端的服务器剔除，另一台仍能提供服务，如下图所示
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="1" />&lt;/p></description></item><item><title>LDAP部署和第三方服务接入</title><link>/post/ldap%E9%83%A8%E7%BD%B2%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%85%A5/</link><pubDate>Thu, 25 Jul 2019 16:17:53 +0800</pubDate><guid>/post/ldap%E9%83%A8%E7%BD%B2%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%85%A5/</guid><description>&lt;h1 id="ldap部署">LDAP部署
+&lt;a class="header-anchor" href="#ldap%e9%83%a8%e7%bd%b2">&lt;/a>
+&lt;/h1>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>可以通过以下三句话快速的认识一下LDAP：&lt;/p>
+&lt;ol>
+&lt;li>LDAP：Lightweight Directory Access Protocol，轻量目录访问协议。&lt;/li>
+&lt;li>LDAP服务是一个为只读（查询、浏览、搜索）访问而优化的非关系型数据库，呈树状结构组织数据。&lt;/li>
+&lt;li>LDAP主要用做用户信息查询（如邮箱、电话等）或对各种服务访问做后台认证以及用户数据权限管控。&lt;/li>
+&lt;/ol>
+&lt;h3 id="名词解释">名词解释
+&lt;a class="header-anchor" href="#%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a">&lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>DC：domain component一般为公司名，例如：dc=163,dc=com&lt;/li>
+&lt;li>OU：organization unit为组织单元，最多可以有四级，每级最长32个字符，可以为中文&lt;/li>
+&lt;li>CN：common name为用户名或者服务器名，最长可以到80个字符，可以为中文&lt;/li>
+&lt;li>DN：distinguished name为一条LDAP记录项的名字，有唯一性，例如：dc:&amp;ldquo;cn=admin,ou=developer,dc=163,dc=com&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;h3 id="图形示例">图形示例
+&lt;a class="header-anchor" href="#%e5%9b%be%e5%bd%a2%e7%a4%ba%e4%be%8b">&lt;/a>
+&lt;/h3>&lt;p>上边来了一堆的名词解释，看的云里雾里，还不是很明白，怎么跟自己的组织架构对应起来呢？看看下边的图是不是清晰明了&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p></description></item></channel></rss>

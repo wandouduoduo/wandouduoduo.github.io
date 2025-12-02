@@ -1,0 +1,270 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="造数据神器python开源库Faker"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Python"><meta property="og:type" content="article"><meta property="og:title" content="造数据神器python开源库Faker"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2020-12-09 10:56:41 +0800 CST"><meta property="article:modified_time" content="2020-12-09 10:56:41 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker","permalink":"/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/","title":"造数据神器python开源库Faker","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>造数据神器python开源库Faker - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#场景>场景</a></li><li><a href=#介绍>介绍</a></li><li><a href=#安装>安装</a></li><li><a href=#基本用法>基本用法</a></li><li><a href=#常用方法>常用方法</a></li><li><a href=#总结>总结</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="造数据神器python开源库Faker"><meta itemprop=description content="互联网中软件开发和测试过程中，有时候需要一些测试数据。针对这种需求，我们通常的做法是使用现有的系统数据或者手动随意制造一些数据。但是由于现在的互联网飞速发展，业务系统越来越复杂，数据也越来越多样。如再手动去制造数据，不仅需要花费大量精力，还容易出错，而且制造的数据很假。本文推荐造数据神器python开源库Faker，此Faker不是lol天才选手大魔王Faker，但是也是一样给力。"></span><header class=post-header><h1 class=post-title itemprop="name headline">造数据神器python开源库Faker</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2020-12-09 10:56:41 +0800 CST" itemprop="dateCreated datePublished" datetime="2020-12-09 10:56:41 +0800 CST">2020-12-09</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/python itemprop=url rel=index><span itemprop=name>编程积累/Python</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>3766</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>8分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>互联网中软件开发和测试过程中，有时候需要一些测试数据。针对这种需求，我们通常的做法是使用现有的系统数据或者手动随意制造一些数据。但是由于现在的互联网飞速发展，业务系统越来越复杂，数据也越来越多样。如再手动去制造数据，不仅需要花费大量精力，还容易出错，而且制造的数据很假。本文推荐造数据神器python开源库Faker，此Faker不是lol天才选手大魔王Faker，但是也是一样给力。</p><h2 id=场景>场景
+<a class=header-anchor href=#%e5%9c%ba%e6%99%af></a></h2><p>假如需要一批用户的三要素(例如：姓名、手机号和身份证)、或需要一批银行卡数据、一批地址通讯录等等。一般情况下，为了偷懒快捷也好，我们制造的测试数据可能是类似此类:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>测试, 1300000 000123456
+</span></span><span style=display:flex><span>张三, 1310000 000123456
+</span></span><span style=display:flex><span>李四, 1320000 000234567
+</span></span><span style=display:flex><span>王五, 1330000 000345678
+</span></span></code></pre></div><p>在测试过程中数据包括了大量的“测试xx”等等字眼，通常都是随手在键盘上一顿乱敲制造的毫无意义的假数据。
+但是你看这些数据。不仅需要自己手动敲哪怕是胡乱随机敲的，而且数据还假的不能再假。既浪费时间和人力，数据的价值也不高。手工制造的数据还无法保障真的能够和业务场景中的数据一致，例如uuid、MD5、SHA等加密类数据等。为了帮助解决这个普遍场景的问题，提供一种解决方案或思路，Python的造数据利器：Faker库可以帮到你。</p><h2 id=介绍>介绍
+<a class=header-anchor href=#%e4%bb%8b%e7%bb%8d></a></h2><p>Faker是一个Python的一个开源库。主要用途：制造伪数据。使用Faker库，无需再手写随机来生成数据，只需调用Faker库的方法即可完成数据的生成。</p><h2 id=安装>安装
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85></a></h2><p>使用 pip 方式安装</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>pip install Faker
+</span></span></code></pre></div><p>或者去Faker的
+<a href="https://link.zhihu.com/?target=https%3A//pypi.org/project/Faker/" title=PyPI页面 rel="noopener external nofollow noreferrer" target=_blank class=exturl>PyPI页面
+<i class="fa fa-external-link-alt"></i>
+</a>下载Wheel或者Source文件进行安装：</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt></p><h2 id=基本用法>基本用法
+<a class=header-anchor href=#%e5%9f%ba%e6%9c%ac%e7%94%a8%e6%b3%95></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> faker <span style=color:#f92672>import</span> Faker
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>fake <span style=color:#f92672>=</span> Faker()
+</span></span><span style=display:flex><span>name <span style=color:#f92672>=</span> fake<span style=color:#f92672>.</span>name()
+</span></span><span style=display:flex><span>address <span style=color:#f92672>=</span> fake<span style=color:#f92672>.</span>address()
+</span></span><span style=display:flex><span>print(name)
+</span></span><span style=display:flex><span>print(address)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 输出信息</span>
+</span></span><span style=display:flex><span>Ashley Love
+</span></span><span style=display:flex><span><span style=color:#ae81ff>074</span> Lee Village Suite <span style=color:#ae81ff>464</span>
+</span></span><span style=display:flex><span>Dawnborough, RI <span style=color:#ae81ff>44234</span>
+</span></span></code></pre></div><p><strong>1.</strong> 导入Faker这个类。</p><p><strong>2.</strong> 实例化，保存到变量fake中。</p><p><strong>3.</strong> 调用name()方法随机生成一个名字。</p><p><strong>4.</strong> 调用address()方法随机生成地址信息。</p><p>默认是英文数据，如果需要造其他语言的数据，可以使用 locale参数，例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>from</span> faker <span style=color:#f92672>import</span> Faker
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>fake <span style=color:#f92672>=</span> Faker(locale<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;zh_CN&#39;</span>)
+</span></span><span style=display:flex><span>name <span style=color:#f92672>=</span> fake<span style=color:#f92672>.</span>name()
+</span></span><span style=display:flex><span>address <span style=color:#f92672>=</span> fake<span style=color:#f92672>.</span>address()
+</span></span><span style=display:flex><span>print(name)
+</span></span><span style=display:flex><span>print(address)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 输出信息</span>
+</span></span><span style=display:flex><span>张艳
+</span></span><span style=display:flex><span>海南省上海市朝阳邱路y座 <span style=color:#ae81ff>175208</span>
+</span></span></code></pre></div><p>其他语种或地区的数据，我们可以传入相应的地区值：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ar_EG - Arabic <span style=color:#f92672>(</span>Egypt<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>ar_PS - Arabic <span style=color:#f92672>(</span>Palestine<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>ar_SA - Arabic <span style=color:#f92672>(</span>Saudi Arabia<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>bg_BG - Bulgarian
+</span></span><span style=display:flex><span>bs_BA - Bosnian
+</span></span><span style=display:flex><span>cs_CZ - Czech
+</span></span><span style=display:flex><span>de_DE - German
+</span></span><span style=display:flex><span>dk_DK - Danish
+</span></span><span style=display:flex><span>el_GR - Greek
+</span></span><span style=display:flex><span>en_AU - English <span style=color:#f92672>(</span>Australia<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>en_CA - English <span style=color:#f92672>(</span>Canada<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>en_GB - English <span style=color:#f92672>(</span>Great Britain<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>en_NZ - English <span style=color:#f92672>(</span>New Zealand<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>en_US - English <span style=color:#f92672>(</span>United States<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>es_ES - Spanish <span style=color:#f92672>(</span>Spain<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>es_MX - Spanish <span style=color:#f92672>(</span>Mexico<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>et_EE - Estonian
+</span></span><span style=display:flex><span>fa_IR - Persian <span style=color:#f92672>(</span>Iran<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>fi_FI - Finnish
+</span></span><span style=display:flex><span>fr_FR - French
+</span></span><span style=display:flex><span>hi_IN - Hindi
+</span></span><span style=display:flex><span>hr_HR - Croatian
+</span></span><span style=display:flex><span>hu_HU - Hungarian
+</span></span><span style=display:flex><span>hy_AM - Armenian
+</span></span><span style=display:flex><span>it_IT - Italian
+</span></span><span style=display:flex><span>ja_JP - Japanese
+</span></span><span style=display:flex><span>ka_GE - Georgian <span style=color:#f92672>(</span>Georgia<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>ko_KR - Korean
+</span></span><span style=display:flex><span>lt_LT - Lithuanian
+</span></span><span style=display:flex><span>lv_LV - Latvian
+</span></span><span style=display:flex><span>ne_NP - Nepali
+</span></span><span style=display:flex><span>nl_NL - Dutch <span style=color:#f92672>(</span>Netherlands<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>no_NO - Norwegian
+</span></span><span style=display:flex><span>pl_PL - Polish
+</span></span><span style=display:flex><span>pt_BR - Portuguese <span style=color:#f92672>(</span>Brazil<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>pt_PT - Portuguese <span style=color:#f92672>(</span>Portugal<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>ro_RO - Romanian
+</span></span><span style=display:flex><span>ru_RU - Russian
+</span></span><span style=display:flex><span>sl_SI - Slovene
+</span></span><span style=display:flex><span>sv_SE - Swedish
+</span></span><span style=display:flex><span>tr_TR - Turkish
+</span></span><span style=display:flex><span>uk_UA - Ukrainian
+</span></span><span style=display:flex><span>zh_CN - Chinese <span style=color:#f92672>(</span>China Mainland<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>zh_TW - Chinese <span style=color:#f92672>(</span>China Taiwan<span style=color:#f92672>)</span>
+</span></span></code></pre></div><h2 id=常用方法>常用方法
+<a class=header-anchor href=#%e5%b8%b8%e7%94%a8%e6%96%b9%e6%b3%95></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#地理信息类</span>
+</span></span><span style=display:flex><span>fake.city_suffix<span style=color:#f92672>()</span>：市，县
+</span></span><span style=display:flex><span>fake.country<span style=color:#f92672>()</span>：国家
+</span></span><span style=display:flex><span>fake.country_code<span style=color:#f92672>()</span>：国家编码
+</span></span><span style=display:flex><span>fake.district<span style=color:#f92672>()</span>：区
+</span></span><span style=display:flex><span>fake.geo_coordinate<span style=color:#f92672>()</span>：地理坐标
+</span></span><span style=display:flex><span>fake.latitude<span style=color:#f92672>()</span>：地理坐标<span style=color:#f92672>(</span>纬度<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>fake.longitude<span style=color:#f92672>()</span>：地理坐标<span style=color:#f92672>(</span>经度<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>fake.postcode<span style=color:#f92672>()</span>：邮编
+</span></span><span style=display:flex><span>fake.province<span style=color:#f92672>()</span>：省份
+</span></span><span style=display:flex><span>fake.address<span style=color:#f92672>()</span>：详细地址
+</span></span><span style=display:flex><span>fake.street_address<span style=color:#f92672>()</span>：街道地址
+</span></span><span style=display:flex><span>fake.street_name<span style=color:#f92672>()</span>：街道名
+</span></span><span style=display:flex><span>fake.street_suffix<span style=color:#f92672>()</span>：街、路
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#基础信息类</span>
+</span></span><span style=display:flex><span>ssn<span style=color:#f92672>()</span>：生成身份证号
+</span></span><span style=display:flex><span>bs<span style=color:#f92672>()</span>：随机公司服务名
+</span></span><span style=display:flex><span>company<span style=color:#f92672>()</span>：随机公司名（长）
+</span></span><span style=display:flex><span>company_prefix<span style=color:#f92672>()</span>：随机公司名（短）
+</span></span><span style=display:flex><span>company_suffix<span style=color:#f92672>()</span>：公司性质
+</span></span><span style=display:flex><span>credit_card_expire<span style=color:#f92672>()</span>：随机信用卡到期日
+</span></span><span style=display:flex><span>credit_card_full<span style=color:#f92672>()</span>：生成完整信用卡信息
+</span></span><span style=display:flex><span>credit_card_number<span style=color:#f92672>()</span>：信用卡号
+</span></span><span style=display:flex><span>credit_card_provider<span style=color:#f92672>()</span>：信用卡类型
+</span></span><span style=display:flex><span>credit_card_security_code<span style=color:#f92672>()</span>：信用卡安全码
+</span></span><span style=display:flex><span>job<span style=color:#f92672>()</span>：随机职位
+</span></span><span style=display:flex><span>first_name_female<span style=color:#f92672>()</span>：女性名
+</span></span><span style=display:flex><span>first_name_male<span style=color:#f92672>()</span>：男性名
+</span></span><span style=display:flex><span>last_name_female<span style=color:#f92672>()</span>：女姓
+</span></span><span style=display:flex><span>last_name_male<span style=color:#f92672>()</span>：男姓
+</span></span><span style=display:flex><span>name<span style=color:#f92672>()</span>：随机生成全名
+</span></span><span style=display:flex><span>name_female<span style=color:#f92672>()</span>：男性全名
+</span></span><span style=display:flex><span>name_male<span style=color:#f92672>()</span>：女性全名
+</span></span><span style=display:flex><span>phone_number<span style=color:#f92672>()</span>：随机生成手机号
+</span></span><span style=display:flex><span>phonenumber_prefix<span style=color:#f92672>()</span>：随机生成手机号段
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#计算机基础、Internet信息类</span>
+</span></span><span style=display:flex><span>ascii_company_email<span style=color:#f92672>()</span>：随机ASCII公司邮箱名
+</span></span><span style=display:flex><span>ascii_email<span style=color:#f92672>()</span>：随机ASCII邮箱：
+</span></span><span style=display:flex><span>company_email<span style=color:#f92672>()</span>：
+</span></span><span style=display:flex><span>email<span style=color:#f92672>()</span>：
+</span></span><span style=display:flex><span>safe_email<span style=color:#f92672>()</span>：安全邮箱
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#网络基础信息类</span>
+</span></span><span style=display:flex><span>domain_name<span style=color:#f92672>()</span>：生成域名
+</span></span><span style=display:flex><span>domain_word<span style=color:#f92672>()</span>：域词<span style=color:#f92672>(</span>即，不包含后缀<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>ipv4<span style=color:#f92672>()</span>：随机IP4地址
+</span></span><span style=display:flex><span>ipv6<span style=color:#f92672>()</span>：随机IP6地址
+</span></span><span style=display:flex><span>mac_address<span style=color:#f92672>()</span>：随机MAC地址
+</span></span><span style=display:flex><span>tld<span style=color:#f92672>()</span>：网址域名后缀<span style=color:#f92672>(</span>.com,.net.cn,等等，不包括.<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>uri<span style=color:#f92672>()</span>：随机URI地址
+</span></span><span style=display:flex><span>uri_extension<span style=color:#f92672>()</span>：网址文件后缀
+</span></span><span style=display:flex><span>uri_page<span style=color:#f92672>()</span>：网址文件（不包含后缀）
+</span></span><span style=display:flex><span>uri_path<span style=color:#f92672>()</span>：网址文件路径（不包含文件名）
+</span></span><span style=display:flex><span>url<span style=color:#f92672>()</span>：随机URL地址
+</span></span><span style=display:flex><span>user_name<span style=color:#f92672>()</span>：随机用户名
+</span></span><span style=display:flex><span>image_url<span style=color:#f92672>()</span>：随机URL地址
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#浏览器信息类</span>
+</span></span><span style=display:flex><span>chrome<span style=color:#f92672>()</span>：随机生成Chrome的浏览器user_agent信息
+</span></span><span style=display:flex><span>firefox<span style=color:#f92672>()</span>：随机生成FireFox的浏览器user_agent信息
+</span></span><span style=display:flex><span>internet_explorer<span style=color:#f92672>()</span>：随机生成IE的浏览器user_agent信息
+</span></span><span style=display:flex><span>opera<span style=color:#f92672>()</span>：随机生成Opera的浏览器user_agent信息
+</span></span><span style=display:flex><span>safari<span style=color:#f92672>()</span>：随机生成Safari的浏览器user_agent信息
+</span></span><span style=display:flex><span>linux_platform_token<span style=color:#f92672>()</span>：随机Linux信息
+</span></span><span style=display:flex><span>user_agent<span style=color:#f92672>()</span>：随机user_agent信息
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#数字类</span>
+</span></span><span style=display:flex><span>numerify<span style=color:#f92672>()</span>：三位随机数字
+</span></span><span style=display:flex><span>random_digit<span style=color:#f92672>()</span>：0~9随机数
+</span></span><span style=display:flex><span>random_digit_not_null<span style=color:#f92672>()</span>：1~9的随机数
+</span></span><span style=display:flex><span>random_int<span style=color:#f92672>()</span>：随机数字，默认0~9999，可以通过设置min,max来设置
+</span></span><span style=display:flex><span>random_number<span style=color:#f92672>()</span>：随机数字，参数digits设置生成的数字位数
+</span></span><span style=display:flex><span>pyfloat<span style=color:#f92672>()</span>：
+</span></span><span style=display:flex><span>left_digits<span style=color:#f92672>=</span><span style=color:#ae81ff>5</span> <span style=color:#75715e>#生成的整数位数, right_digits=2 #生成的小数位数, positive=True #是否只有正数</span>
+</span></span><span style=display:flex><span>pyint<span style=color:#f92672>()</span>：随机Int数字（参考random_int<span style=color:#f92672>()</span>参数）
+</span></span><span style=display:flex><span>pydecimal<span style=color:#f92672>()</span>：随机Decimal数字（参考pyfloat参数）
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#文本、加密类</span>
+</span></span><span style=display:flex><span>pystr<span style=color:#f92672>()</span>：随机字符串
+</span></span><span style=display:flex><span>random_element<span style=color:#f92672>()</span>：随机字母
+</span></span><span style=display:flex><span>random_letter<span style=color:#f92672>()</span>：随机字母
+</span></span><span style=display:flex><span>paragraph<span style=color:#f92672>()</span>：随机生成一个段落
+</span></span><span style=display:flex><span>paragraphs<span style=color:#f92672>()</span>：随机生成多个段落
+</span></span><span style=display:flex><span>sentence<span style=color:#f92672>()</span>：随机生成一句话
+</span></span><span style=display:flex><span>sentences<span style=color:#f92672>()</span>：随机生成多句话，与段落类似
+</span></span><span style=display:flex><span>text<span style=color:#f92672>()</span>：随机生成一篇文章
+</span></span><span style=display:flex><span>word<span style=color:#f92672>()</span>：随机生成词语
+</span></span><span style=display:flex><span>words<span style=color:#f92672>()</span>：随机生成多个词语，用法与段落，句子，类似
+</span></span><span style=display:flex><span>binary<span style=color:#f92672>()</span>：随机生成二进制编码
+</span></span><span style=display:flex><span>boolean<span style=color:#f92672>()</span>：True/False
+</span></span><span style=display:flex><span>language_code<span style=color:#f92672>()</span>：随机生成两位语言编码
+</span></span><span style=display:flex><span>locale<span style=color:#f92672>()</span>：随机生成语言/国际 信息
+</span></span><span style=display:flex><span>md5<span style=color:#f92672>()</span>：随机生成MD5
+</span></span><span style=display:flex><span>null_boolean<span style=color:#f92672>()</span>：NULL/True/False
+</span></span><span style=display:flex><span>password<span style=color:#f92672>()</span>：随机生成密码,可选参数：length：密码长度；special_chars：是否能使用特殊字符；digits：是否包含数字；upper_case：是否包含大写字母；lower_case：是否包含小写字母
+</span></span><span style=display:flex><span>sha1<span style=color:#f92672>()</span>：随机SHA1
+</span></span><span style=display:flex><span>sha256<span style=color:#f92672>()</span>：随机SHA256
+</span></span><span style=display:flex><span>uuid4<span style=color:#f92672>()</span>：随机UUID
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#时间信息类</span>
+</span></span><span style=display:flex><span>date<span style=color:#f92672>()</span>：随机日期
+</span></span><span style=display:flex><span>date_between<span style=color:#f92672>()</span>：随机生成指定范围内日期，参数：start_date，end_date
+</span></span><span style=display:flex><span>date_between_dates<span style=color:#f92672>()</span>：随机生成指定范围内日期，用法同上
+</span></span><span style=display:flex><span>date_object<span style=color:#f92672>()</span>：随机生产从1970-1-1到指定日期的随机日期。
+</span></span><span style=display:flex><span>date_time<span style=color:#f92672>()</span>：随机生成指定时间（1970年1月1日至今）
+</span></span><span style=display:flex><span>date_time_ad<span style=color:#f92672>()</span>：生成公元1年到现在的随机时间
+</span></span><span style=display:flex><span>date_time_between<span style=color:#f92672>()</span>：用法同dates
+</span></span><span style=display:flex><span>future_date<span style=color:#f92672>()</span>：未来日期
+</span></span><span style=display:flex><span>future_datetime<span style=color:#f92672>()</span>：未来时间
+</span></span><span style=display:flex><span>month<span style=color:#f92672>()</span>：随机月份
+</span></span><span style=display:flex><span>month_name<span style=color:#f92672>()</span>：随机月份（英文）
+</span></span><span style=display:flex><span>past_date<span style=color:#f92672>()</span>：随机生成已经过去的日期
+</span></span><span style=display:flex><span>past_datetime<span style=color:#f92672>()</span>：随机生成已经过去的时间
+</span></span><span style=display:flex><span>time<span style=color:#f92672>()</span>：随机24小时时间
+</span></span><span style=display:flex><span>timedelta<span style=color:#f92672>()</span>：随机获取时间差
+</span></span><span style=display:flex><span>time_object<span style=color:#f92672>()</span>：随机24小时时间，time对象
+</span></span><span style=display:flex><span>time_series<span style=color:#f92672>()</span>：随机TimeSeries对象
+</span></span><span style=display:flex><span>timezone<span style=color:#f92672>()</span>：随机时区
+</span></span><span style=display:flex><span>unix_time<span style=color:#f92672>()</span>：随机Unix时间
+</span></span><span style=display:flex><span>year<span style=color:#f92672>()</span>：随机年份
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#python 相关方法</span>
+</span></span><span style=display:flex><span>profile<span style=color:#f92672>()</span>：随机生成档案信息
+</span></span><span style=display:flex><span>simple_profile<span style=color:#f92672>()</span>：随机生成简单档案信息
+</span></span><span style=display:flex><span>pyiterable<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>pylist<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>pyset<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>pystruct<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>pytuple<span style=color:#f92672>()</span>
+</span></span><span style=display:flex><span>pydict<span style=color:#f92672>()</span>
+</span></span></code></pre></div><p>可以用dir(fake)方法，来查看Faker库可以制造哪些数据。目前Faker支持近300种数据，还支持自行扩展。而我们只需要创造fake对象后调用不同的方法即可。</p><h2 id=总结>总结
+<a class=header-anchor href=#%e6%80%bb%e7%bb%93></a></h2><p>通过上面的了解，Faker真的是造数据的神器，值得你去好好学习下，让它真正成为你手动的利器。</p></div><footer class=post-footer><div class=post-tags><a href=/tags/python>Python</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%B8%80/ rel=next title="详解为什么微服务架构绕不开RPC<一>"><i class="fa fa-chevron-left"></i> 详解为什么微服务架构绕不开RPC&lt;一></a></div><div class="post-nav-prev post-nav-item"><a href=/post/%E5%8F%8C%E5%8D%81%E4%B8%80%E8%AE%A2%E5%8D%95%E5%B3%B0%E5%80%BC58-3%E4%B8%87%E4%B8%AA-%E7%A7%92%E9%94%80%E9%87%8F%E5%8D%83%E4%BA%BF-%E5%88%B0%E5%BA%95%E6%98%AF%E8%B0%81%E6%8A%97%E4%B8%8B%E4%BA%86%E6%89%80%E6%9C%89/ rel=prev title=双十一订单峰值58.3万个/秒销量千亿,到底是谁抗下了所有>双十一订单峰值58.3万个/秒销量千亿,到底是谁抗下了所有
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

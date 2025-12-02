@@ -1,0 +1,377 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="架构师,运维,yunwei,豌豆,wandou,笔记,note,自动化,工具,DevOps,工程师,Linux,Shell,数据库,互联网,k8s,docker,云计算,python,程序员,虚拟化"><meta property="og:type" content="website"><meta property="og:title" content="豌豆多多"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta name=google-site-verification content="27nKwb_oPifd-peB2Juh7eiKE-ZIpIcPp7ug9xPLKh4"><meta name=baidu-site-verification content="2U3NKVcqUGdR2dZr"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":true,"isPage":false,"path":"/","permalink":"/","title":"豌豆多多","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class="hvr-icon-pulse menu-item-active" rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner index posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Python之多线程详解"><meta itemprop=description content="目的
+
+线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务，多线程就是在一个进程中的多个线程，如果使用多线程默认开启一个主线程，按照程序需求自动开启多个线程(也可以自己定义线程数)。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/ itemprop=url class=post-title-link>Python之多线程详解</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-29 15:28:51 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-29 15:28:51 +0800 CST">2019-11-29</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/python itemprop=url rel=index><span itemprop=name>编程积累/Python</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务，多线程就是在一个进程中的多个线程，如果使用多线程默认开启一个主线程，按照程序需求自动开启多个线程(也可以自己定义线程数)。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="glusterfs常用命令"><meta itemprop=description content="目的
+
+glusterfs作为分布式存储，优点和安装这里就不再赘述了，看博客中教程。本文主要是介绍glusterfs常用命令和案例。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/ itemprop=url class=post-title-link>glusterfs常用命令</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-26 16:03:27 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-26 16:03:27 +0800 CST">2019-11-26</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 itemprop=url rel=index><span itemprop=name>数据库</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>glusterfs作为分布式存储，优点和安装这里就不再赘述了，看博客中教程。本文主要是介绍glusterfs常用命令和案例。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="GlusterFS分布式存储集群之使用"><meta itemprop=description content="Glusterfs逻辑卷创建与使用
+
+volume是brick的组合，并且大部分glusterfs文件系统的操作都在volume上。
+glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合形成多种扩展卷（得益于glusterfs的模块化堆栈架构设计）。
+以下主要展示各类型逻辑卷的功能性，未对性能做测试验证。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/ itemprop=url class=post-title-link>GlusterFS分布式存储集群之使用</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-05 11:56:15 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-05 11:56:15 +0800 CST">2019-11-05</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 itemprop=url rel=index><span itemprop=name>数据库</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=glusterfs逻辑卷创建与使用>Glusterfs逻辑卷创建与使用
+<a class=header-anchor href=#glusterfs%e9%80%bb%e8%be%91%e5%8d%b7%e5%88%9b%e5%bb%ba%e4%b8%8e%e4%bd%bf%e7%94%a8></a></h1><p>volume是brick的组合，并且大部分glusterfs文件系统的操作都在volume上。</p><p>glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合形成多种扩展卷（得益于glusterfs的模块化堆栈架构设计）。</p><p>以下主要展示各类型逻辑卷的功能性，未对性能做测试验证。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="GlusterFS分布式存储集群之部署"><meta itemprop=description content="Glusterfs框架
+
+Glusterfs（Gluster file system）是开源的，具有强大横向扩展能力的（scale-out）,分布式的，可将来自多个服务器的存储资源通过tcp/ip或infiniBand RDMA 网络整合到一个统一的全局命名空间中的文件系统。
+框架
+
+
+
+GlusterFS主要由存储服务器（Brick Server）、客户端以及 NFS/Samba 存储网关组成；
+架构中无元数据服务器组件，无对于提升整个系统的性单点故障和性能瓶颈问题，可提高系统扩展性、性能、可靠性和稳定性；
+GlusterFS支持 TCP/IP 和 InfiniBand RDMA 高速网络互联；
+客户端可通过原生 GlusterFS 协议访问数据，其他没有运行 GlusterFS 客户端的终端可通过 NFS/CIFS 标准协议通过存储网关访问数据（存储网关提供弹性卷管理和访问代理功能）；
+存储服务器主要提供基本的数据存储功能，客户端弥补了没有元数据服务器的问题，承担了更多的功能，包括数据卷管理、I/O 调度、文件定位、数据缓存等功能，利用 FUSE（File system in User Space）模块将 GlusterFS 挂载到本地文件系统之上，实现 POSIX 兼容的方式来访问系统数据。
+
+常见术语
+
+
+Brick：GlusterFS中最基本的存储单元，表示为受信存储池（trusted storage pool）中输出的目录，供客户端挂载用，可以通过主机名与目录名来标识，如&rsquo;SERVER:EXPORT&rsquo;；
+Volume：卷，逻辑上由N个brick组成；
+FUSE：Unix-like OS上的可动态加载的模块，允许用户不用修改内核即可创建自己的文件系统；
+Glusterd：Gluster management daemon，在trusted storage pool中所有的服务器上运行；
+Volfile：Glusterfs进程的配置文件，通常是位于/var/lib/glusterd/vols/目录下的{volname}文件；
+Self-heal：用于后台运行检测复本卷中文件与目录的不一致性并解决这些不一致；
+Split-brain：脑裂；
+GFID：GlusterFS卷中的每个文件或目录都有一个唯一的128位的数据相关联，用于模拟inode；
+Namespace：每个Gluster卷都导出单个ns作为POSIX的挂载点。
+
+数据访问流程
+
+
+
+在客户端,用户通过 glusterfs的mount point读写数据；
+用户的这个操作被递交给本地 Linux 系统的VFS 来处理；
+VFS 将数据递交给 FUSE 内核文件系统（在启动 glusterfs 客户端以前,需要向系统注册一个实际的文件系统 FUSE），该文件系统与 ext3 在同一个层次， ext3 是对实际的磁盘进行处理，而 fuse 文件系统则是将数据通过 /dev/fuse 这个设备文件递交给了glusterfs client 端，可以将 fuse 文件系统理解为一个代理；
+数据被 fuse 递交给 Glusterfs client 后， client 对数据进行一些指定的处理（即按 client 配置文件来进行的一系列处理）；
+在 glusterfs client 的处理末端,通过网络将数据递交给 Glusterfs Server, 并且将数据写入到服务器所控制的存储设备上。
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/ itemprop=url class=post-title-link>GlusterFS分布式存储集群之部署</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-05 11:37:42 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-05 11:37:42 +0800 CST">2019-11-05</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 itemprop=url rel=index><span itemprop=name>数据库</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=glusterfs框架>Glusterfs框架
+<a class=header-anchor href=#glusterfs%e6%a1%86%e6%9e%b6></a></h1><p>Glusterfs（Gluster file system）是开源的，具有强大横向扩展能力的（scale-out）,分布式的，可将来自多个服务器的存储资源通过tcp/ip或infiniBand RDMA 网络整合到一个统一的全局命名空间中的文件系统。</p><h2 id=框架>框架
+<a class=header-anchor href=#%e6%a1%86%e6%9e%b6></a></h2><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt=img></p><ol><li>GlusterFS主要由存储服务器（Brick Server）、客户端以及 NFS/Samba 存储网关组成；</li><li>架构中无元数据服务器组件，无对于提升整个系统的性单点故障和性能瓶颈问题，可提高系统扩展性、性能、可靠性和稳定性；</li><li>GlusterFS支持 TCP/IP 和 InfiniBand RDMA 高速网络互联；</li><li>客户端可通过原生 GlusterFS 协议访问数据，其他没有运行 GlusterFS 客户端的终端可通过 NFS/CIFS 标准协议通过存储网关访问数据（存储网关提供弹性卷管理和访问代理功能）；</li><li>存储服务器主要提供基本的数据存储功能，客户端弥补了没有元数据服务器的问题，承担了更多的功能，包括数据卷管理、I/O 调度、文件定位、数据缓存等功能，利用 FUSE（File system in User Space）模块将 GlusterFS 挂载到本地文件系统之上，实现 POSIX 兼容的方式来访问系统数据。</li></ol><h2 id=常见术语>常见术语
+<a class=header-anchor href=#%e5%b8%b8%e8%a7%81%e6%9c%af%e8%af%ad></a></h2><ol><li>Brick：GlusterFS中最基本的存储单元，表示为受信存储池（trusted storage pool）中输出的目录，供客户端挂载用，可以通过主机名与目录名来标识，如&rsquo;SERVER:EXPORT&rsquo;；</li><li>Volume：卷，逻辑上由N个brick组成；</li><li>FUSE：Unix-like OS上的可动态加载的模块，允许用户不用修改内核即可创建自己的文件系统；</li><li>Glusterd：Gluster management daemon，在trusted storage pool中所有的服务器上运行；</li><li>Volfile：Glusterfs进程的配置文件，通常是位于/var/lib/glusterd/vols/目录下的{volname}文件；</li><li>Self-heal：用于后台运行检测复本卷中文件与目录的不一致性并解决这些不一致；</li><li>Split-brain：脑裂；</li><li>GFID：GlusterFS卷中的每个文件或目录都有一个唯一的128位的数据相关联，用于模拟inode；</li><li>Namespace：每个Gluster卷都导出单个ns作为POSIX的挂载点。</li></ol><h2 id=数据访问流程>数据访问流程
+<a class=header-anchor href=#%e6%95%b0%e6%8d%ae%e8%ae%bf%e9%97%ae%e6%b5%81%e7%a8%8b></a></h2><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt=img></p><ol><li>在客户端,用户通过 glusterfs的mount point读写数据；</li><li>用户的这个操作被递交给本地 Linux 系统的VFS 来处理；</li><li>VFS 将数据递交给 FUSE 内核文件系统（在启动 glusterfs 客户端以前,需要向系统注册一个实际的文件系统 FUSE），该文件系统与 ext3 在同一个层次， ext3 是对实际的磁盘进行处理，而 fuse 文件系统则是将数据通过 /dev/fuse 这个设备文件递交给了glusterfs client 端，可以将 fuse 文件系统理解为一个代理；</li><li>数据被 fuse 递交给 Glusterfs client 后， client 对数据进行一些指定的处理（即按 client 配置文件来进行的一系列处理）；</li><li>在 glusterfs client 的处理末端,通过网络将数据递交给 Glusterfs Server, 并且将数据写入到服务器所控制的存储设备上。</li></ol></div><footer class=post-footer><div class=post-button><a class=btn href=/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="分布式存储的优劣对比"><meta itemprop=description content="目的
+
+本文通过对比当前主流的几种分布式存储方案（Ceph,TFS,FastDFS,MogileFS,MooseFS,GlusterFS等），让你知道他们的优缺点，便于你根据使用场景选择合适的方案。
+系统整体对比
+
+
+
+
+对比说明/文件系统
+TFS
+FastDFS
+MogileFS
+MooseFS
+GlusterFS
+Ceph
+
+
+
+
+开发语言
+C++
+C
+Perl
+C
+C
+C++
+
+
+开源协议
+GPL V2
+GPL V3
+GPL
+GPL V3
+GPL V3
+LGPL
+
+
+数据存储方式
+块
+文件/Trunk
+文件
+块
+文件/块
+对象/文件/块
+
+
+集群节点通信协议
+私有协议（TCP）
+私有协议（TCP）
+HTTP
+私有协议（TCP）
+私有协议（TCP）/ RDAM(远程直接访问内存)
+私有协议（TCP）
+
+
+专用元数据存储点
+占用NS
+无
+占用DB
+占用MFS
+无
+占用MDS
+
+
+在线扩容
+支持
+支持
+支持
+支持
+支持
+支持
+
+
+冗余备份
+支持
+支持
+-
+支持
+支持
+支持
+
+
+单点故障
+存在
+不存在
+存在
+存在
+不存在
+存在
+
+
+跨集群同步
+支持
+部分支持
+-
+-
+支持
+不适用
+
+
+易用性
+安装复杂，官方文档少
+安装简单，社区相对活跃
+-
+安装简单，官方文档多
+安装简单，官方文档专业化
+安装简单，官方文档专业化
+
+
+适用场景
+跨集群的小文件
+单集群的中小文件
+-
+单集群的大中文件
+跨集群云存储
+单集群的大中小文件
+
+
+
+开源协议说明
+GPL:不允许修改后和衍生的代码做为闭源的商业软件发布和销售，修改后该软件产品必须也采用GPL协议；
+GPL V2：修改文本的整体就必须按照GPL流通，不仅该修改文本的源码必须向社 会公开，而且对于这种修改文本的流通不准许附加修改者自己作出的限制;
+GPL V3：要求用户公布修改的源代码，还要求公布相关硬件;LGPL：更宽松的GPL
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/ itemprop=url class=post-title-link>分布式存储的优劣对比</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-04 12:20:43 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-04 12:20:43 +0800 CST">2019-11-04</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%95%B0%E6%8D%AE%E5%BA%93 itemprop=url rel=index><span itemprop=name>数据库</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>本文通过对比当前主流的几种分布式存储方案（Ceph,TFS,FastDFS,MogileFS,MooseFS,GlusterFS等），让你知道他们的优缺点，便于你根据使用场景选择合适的方案。</p><h2 id=系统整体对比>系统整体对比
+<a class=header-anchor href=#%e7%b3%bb%e7%bb%9f%e6%95%b4%e4%bd%93%e5%af%b9%e6%af%94></a></h2><table><thead><tr><th>对比说明/文件系统</th><th>TFS</th><th>FastDFS</th><th>MogileFS</th><th>MooseFS</th><th>GlusterFS</th><th>Ceph</th></tr></thead><tbody><tr><td>开发语言</td><td>C++</td><td>C</td><td>Perl</td><td>C</td><td>C</td><td>C++</td></tr><tr><td>开源协议</td><td>GPL V2</td><td>GPL V3</td><td>GPL</td><td>GPL V3</td><td>GPL V3</td><td>LGPL</td></tr><tr><td>数据存储方式</td><td>块</td><td>文件/Trunk</td><td>文件</td><td>块</td><td>文件/块</td><td>对象/文件/块</td></tr><tr><td>集群节点通信协议</td><td>私有协议（TCP）</td><td>私有协议（TCP）</td><td>HTTP</td><td>私有协议（TCP）</td><td>私有协议（TCP）/ RDAM(远程直接访问内存)</td><td>私有协议（TCP）</td></tr><tr><td>专用元数据存储点</td><td>占用NS</td><td>无</td><td>占用DB</td><td>占用MFS</td><td>无</td><td>占用MDS</td></tr><tr><td>在线扩容</td><td>支持</td><td>支持</td><td>支持</td><td>支持</td><td>支持</td><td>支持</td></tr><tr><td>冗余备份</td><td>支持</td><td>支持</td><td>-</td><td>支持</td><td>支持</td><td>支持</td></tr><tr><td>单点故障</td><td>存在</td><td>不存在</td><td>存在</td><td>存在</td><td>不存在</td><td>存在</td></tr><tr><td>跨集群同步</td><td>支持</td><td>部分支持</td><td>-</td><td>-</td><td>支持</td><td>不适用</td></tr><tr><td>易用性</td><td>安装复杂，官方文档少</td><td>安装简单，社区相对活跃</td><td>-</td><td>安装简单，官方文档多</td><td>安装简单，官方文档专业化</td><td>安装简单，官方文档专业化</td></tr><tr><td>适用场景</td><td>跨集群的小文件</td><td>单集群的中小文件</td><td>-</td><td>单集群的大中文件</td><td>跨集群云存储</td><td>单集群的大中小文件</td></tr></tbody></table><p>开源协议说明</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>GPL:不允许修改后和衍生的代码做为闭源的商业软件发布和销售，修改后该软件产品必须也采用GPL协议；
+</span></span><span style=display:flex><span>GPL V2：修改文本的整体就必须按照GPL流通，不仅该修改文本的源码必须向社 会公开，而且对于这种修改文本的流通不准许附加修改者自己作出的限制;
+</span></span><span style=display:flex><span>GPL V3：要求用户公布修改的源代码，还要求公布相关硬件;LGPL：更宽松的GPL
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="基于Keepalived+Haproxy搭建四层负载均衡器"><meta itemprop=description content="前言
+
+​        Haproxy是稳定、高性能、高可用性的负载均衡解决方案，支持HTTP及TCP代理后端服务器池，因支持强大灵活的7层acl规则，广泛作为HTTP反向代理。本文则详细介绍如何利用它的四层交换与Keepalived实现一个负载均衡器，适用于Socket、ICE、Mail、Mysql、私有通讯等任意TCP服务。系统架构图如下：
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/ itemprop=url class=post-title-link>基于Keepalived+Haproxy搭建四层负载均衡器</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-02 21:42:25 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-02 21:42:25 +0800 CST">2019-11-02</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=前言>前言
+<a class=header-anchor href=#%e5%89%8d%e8%a8%80></a></h2><p>​ Haproxy是稳定、高性能、高可用性的负载均衡解决方案，支持HTTP及TCP代理后端服务器池，因支持强大灵活的7层acl规则，广泛作为HTTP反向代理。本文则详细介绍如何利用它的四层交换与Keepalived实现一个负载均衡器，适用于Socket、ICE、Mail、Mysql、私有通讯等任意TCP服务。系统架构图如下：</p><p><img src=/imgs/img-lazy-loading.gif data-src=0.027865917857136546.png alt=点击在新窗口中浏览此图片></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/centos7%E5%AE%89%E8%A3%85redis%E6%95%99%E7%A8%8B/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="centos7安装redis教程"><meta itemprop=description content="安装
+
+#通过wget方式直接在linux上下载Redis
+wget http://download.redis.io/releases/redis-4.0.9.tar.gz
+
+#解压下载的redis-2.6.17.tar.gz 文件
+tar xzf redis-4.0.9.tar.gz
+
+#进入解压后的文件夹
+cd  redis-4.0.9
+
+#编译安装
+make
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/centos7%E5%AE%89%E8%A3%85redis%E6%95%99%E7%A8%8B/ itemprop=url class=post-title-link>centos7安装redis教程</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-02 10:54:48 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-02 10:54:48 +0800 CST">2019-11-02</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/centos7%E5%AE%89%E8%A3%85redis%E6%95%99%E7%A8%8B/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=安装><strong>安装</strong>
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#通过wget方式直接在linux上下载Redis</span>
+</span></span><span style=display:flex><span>wget http://download.redis.io/releases/redis-4.0.9.tar.gz
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#解压下载的redis-2.6.17.tar.gz 文件</span>
+</span></span><span style=display:flex><span>tar xzf redis-4.0.9.tar.gz
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#进入解压后的文件夹</span>
+</span></span><span style=display:flex><span>cd  redis-4.0.9
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#编译安装</span>
+</span></span><span style=display:flex><span>make
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/centos7%E5%AE%89%E8%A3%85redis%E6%95%99%E7%A8%8B/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="haproxy+keepalived实现Web服务器负载均衡"><meta itemprop=description content="环境
+
+操作系统：CentOS 6.X 64位
+Web服务器：192.168.21.127、192.168.21.128
+站点：bbs.osyunwei.com和sns.osyunwei.com部署在两台Web服务器上
+实现目的
+
+增加两台服务器（主主模式），通过HAProxy+Keepalived实现Web服务器负载均衡
+架构规划
+
+HAProxy服务器：192.168.21.129、192.168.21.130
+虚拟服务器（VIP）：192.168.21.253、192.168.21.254
+验证说明
+
+
+VIP：192.168.21.253指向192.168.21.129；VIP：192.168.21.254指向192.168.21.130；
+当192.168.21.129宕机时，VIP：192.168.21.253漂移到192.168.21.130上；
+当192.168.21.130宕机时，VIP：192.168.21.254漂移到192.168.21.129上；
+
+这样的主主模式好处是，两台服务器在提供服务的同时，又互为对方的备份服务器。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/ itemprop=url class=post-title-link>haproxy+keepalived实现Web服务器负载均衡</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-02 10:17:03 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-02 10:17:03 +0800 CST">2019-11-02</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=环境>环境
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83></a></h2><p><strong>操作系统</strong>：CentOS 6.X 64位</p><p><strong>Web服务器</strong>：192.168.21.127、192.168.21.128</p><p><strong>站点</strong>：bbs.osyunwei.com和sns.osyunwei.com部署在两台Web服务器上</p><h2 id=实现目的><strong>实现目的</strong>
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e7%9b%ae%e7%9a%84></a></h2><p>增加两台服务器（主主模式），通过HAProxy+Keepalived实现Web服务器负载均衡</p><h2 id=架构规划><strong>架构规划</strong>
+<a class=header-anchor href=#%e6%9e%b6%e6%9e%84%e8%a7%84%e5%88%92></a></h2><p>HAProxy服务器：192.168.21.129、192.168.21.130</p><p>虚拟服务器（VIP）：192.168.21.253、192.168.21.254</p><h2 id=验证说明><strong>验证说明</strong>
+<a class=header-anchor href=#%e9%aa%8c%e8%af%81%e8%af%b4%e6%98%8e></a></h2><ol><li>VIP：192.168.21.253指向192.168.21.129；VIP：192.168.21.254指向192.168.21.130；</li><li>当192.168.21.129宕机时，VIP：192.168.21.253漂移到192.168.21.130上；</li><li>当192.168.21.130宕机时，VIP：192.168.21.254漂移到192.168.21.129上；</li></ol><p>这样的主主模式好处是，两台服务器在提供服务的同时，又互为对方的备份服务器。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="haproxy+keepalived实现高可用负载均衡"><meta itemprop=description content="目的
+
+在运维的日常工作中和很多服务打交道，为了保证各个服务健康稳定运行，高可用和高负载是在一个服务搭建好后，必须要考虑的问题。本文介绍了一种常用的高可用和负载均衡的解决方案：KA+HA(haproxy+keepalived)
+环境
+
+haproxy keepalived  主：192.168.1.192
+haproxy keepalived  备：192.168.1.193
+vip：192.168.1.200
+web：192.168.1.187:80
+​            192.168.1.187:8000
+架构图
+
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/ itemprop=url class=post-title-link>haproxy+keepalived实现高可用负载均衡</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-11-02 09:53:34 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-11-02 09:53:34 +0800 CST">2019-11-02</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>在运维的日常工作中和很多服务打交道，为了保证各个服务健康稳定运行，高可用和高负载是在一个服务搭建好后，必须要考虑的问题。本文介绍了一种常用的高可用和负载均衡的解决方案：KA+HA(haproxy+keepalived)</p><h2 id=环境>环境
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83></a></h2><p>haproxy keepalived 主：192.168.1.192
+haproxy keepalived 备：192.168.1.193
+vip：192.168.1.200
+web：192.168.1.187:80</p><p>​ 192.168.1.187:8000</p><h2 id=架构图>架构图
+<a class=header-anchor href=#%e6%9e%b6%e6%9e%84%e5%9b%be></a></h2><p><img src=/imgs/img-lazy-loading.gif data-src=0.115069789831175.png alt=img></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="ssh端口转发：ssh隧道"><meta itemprop=description content="目的
+
+&ldquo;ssh端口转发&#34;还有一个更加形象的名字，叫做&#34;ssh隧道&rdquo;，当然，只是纯粹的通过&#34;ssh隧道&#34;这几个字去理解它可能不太容易，我们来描述一些实际的场景，在这些场景中我们可能会遇到一些问题，而这些问题可以通过&#34;ssh隧道&#34;解决，通过这样的方式，我们反而更加容易理解&#34;ssh隧道&#34;是什么以及它的作用。
+假如我们现在有两个台主机，主机A与主机B，主机A上安装有mysql客户端，主机B上安装有mysql服务端，现在，主机A中的mysql客户端需要与主机B中的mysql服务端进行通讯，则需要从mysql的客户端连接到mysql服务端。如下图所示
+
+然而我们知道，mysql在传输数据时是进行明文传输的，如果主机A与主机B只能通过公网进行通讯，那么暴露在公网的mysql通讯是非常不安全的，所以，我们需要借助一些手段，提高访问mysql服务时的安全性，比如，我们可以使用SSL证书为数据加密，或者使用stunnel加密隧道，我们还可以使用VPN，当然，这些方法都不是这篇文章所要描述的重点，我们此处要总结的是&#34;ssh隧道&#34;这种方法，我们可以利用ssh，搭建出一条&#34;通道&#34;，然后将mysq的客户端与服务端通过这条&#34;ssh通道&#34;连接起来，如下图所示
+
+mysql的客户端与服务端的连接方式从原来直连的方式变成了如上图所示的连接方式，它们之间并不直接进行通讯，而是借助ssh隧道将通讯数据转发，虽然仍然跨越了公网，但是由于ssh本身的安全特性，所以别人无法看到明文传输的数据，数据依靠ssh隧道实现了加密的效果，达到了保护数据安全的作用，提升了mysql的客户端与服务端通讯的安全性。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/ itemprop=url class=post-title-link>ssh端口转发：ssh隧道</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-10-30 10:43:48 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-10-30 10:43:48 +0800 CST">2019-10-30</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF itemprop=url rel=index><span itemprop=name>网络技术</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>&ldquo;ssh端口转发"还有一个更加形象的名字，叫做"ssh隧道&rdquo;，当然，只是纯粹的通过"ssh隧道"这几个字去理解它可能不太容易，我们来描述一些实际的场景，在这些场景中我们可能会遇到一些问题，而这些问题可以通过"ssh隧道"解决，通过这样的方式，我们反而更加容易理解"ssh隧道"是什么以及它的作用。</p><p>假如我们现在有两个台主机，主机A与主机B，主机A上安装有mysql客户端，主机B上安装有mysql服务端，现在，主机A中的mysql客户端需要与主机B中的mysql服务端进行通讯，则需要从mysql的客户端连接到mysql服务端。如下图所示</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt=ssh端口转发：ssh隧道></p><p>然而我们知道，mysql在传输数据时是进行明文传输的，如果主机A与主机B只能通过公网进行通讯，那么暴露在公网的mysql通讯是非常不安全的，所以，我们需要借助一些手段，提高访问mysql服务时的安全性，比如，我们可以使用SSL证书为数据加密，或者使用stunnel加密隧道，我们还可以使用VPN，当然，这些方法都不是这篇文章所要描述的重点，我们此处要总结的是"ssh隧道"这种方法，我们可以利用ssh，搭建出一条"通道"，然后将mysq的客户端与服务端通过这条"ssh通道"连接起来，如下图所示</p><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt=ssh端口转发：ssh隧道></p><p>mysql的客户端与服务端的连接方式从原来直连的方式变成了如上图所示的连接方式，它们之间并不直接进行通讯，而是借助ssh隧道将通讯数据转发，虽然仍然跨越了公网，但是由于ssh本身的安全特性，所以别人无法看到明文传输的数据，数据依靠ssh隧道实现了加密的效果，达到了保护数据安全的作用，提升了mysql的客户端与服务端通讯的安全性。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><nav class=pagination><a class="extend prev" rel=prev href=/page/10/><i class="fa fa-angle-left"></i></a>
+<a class=page-number href=/page/7/>7</a>
+<a class=page-number href=/page/8/>8</a>
+<a class=page-number href=/page/9/>9</a>
+<a class=page-number href=/page/10/>10</a>
+<span class="page-number current">11</span>
+<a class=page-number href=/page/12/>12</a>
+<a class=page-number href=/page/13/>13</a>
+<a class=page-number href=/page/14/>14</a>
+<a class=page-number href=/page/15/>15</a>
+<a class="extend next" rel=next href=/page/12/><i class="fa fa-angle-right"></i></a></nav></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

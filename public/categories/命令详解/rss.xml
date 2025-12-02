@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>命令详解 on 豌豆多多</title><link>/categories/%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link><description>Recent content in 命令详解 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 24 Dec 2020 15:00:29 +0800</lastBuildDate><atom:link href="/categories/%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/rss.xml" rel="self" type="application/rss+xml"/><item><title>非root的普通用户使用tmux方法教程</title><link>/post/%E9%9D%9Eroot%E7%9A%84%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8tmux%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B/</link><pubDate>Thu, 24 Dec 2020 15:00:29 +0800</pubDate><guid>/post/%E9%9D%9Eroot%E7%9A%84%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8tmux%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B/</guid><description>&lt;p>&lt;code>Tmux&lt;/code>是一款终端复用的神器，实现了会话与终端窗后的分离。用过的同学都欲罢不能，但是使用它时必须root用户，如果是普通用户就会出现&lt;code>can't create socket&lt;/code>错误不能使用，那么本教程就教你用普通用户使用tmux这个神器。&lt;/p></description></item><item><title>git拉取项目下单个目录</title><link>/post/git%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%B8%8B%E5%8D%95%E4%B8%AA%E7%9B%AE%E5%BD%95/</link><pubDate>Thu, 24 Oct 2019 22:13:58 +0800</pubDate><guid>/post/git%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%B8%8B%E5%8D%95%E4%B8%AA%E7%9B%AE%E5%BD%95/</guid><description>有时git库里的东西比较多，我们只希望像SVN一样，只拉取git库的一个目录。 例如：基础代码仓库infra-code_ops有很多基础代码，</description></item><item><title>Java定时器设定详解</title><link>/post/java%E5%AE%9A%E6%97%B6%E5%99%A8%E8%AE%BE%E5%AE%9A%E8%AF%A6%E8%A7%A3/</link><pubDate>Mon, 29 Jul 2019 09:29:39 +0800</pubDate><guid>/post/java%E5%AE%9A%E6%97%B6%E5%99%A8%E8%AE%BE%E5%AE%9A%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>本文通过实例详细介绍了Java定时和linux通用的crontab之间的差异。&lt;/p></description></item><item><title>lsof文件句柄工具</title><link>/post/lsof%E6%96%87%E4%BB%B6%E5%8F%A5%E6%9F%84%E5%B7%A5%E5%85%B7/</link><pubDate>Mon, 29 Jul 2019 09:25:02 +0800</pubDate><guid>/post/lsof%E6%96%87%E4%BB%B6%E5%8F%A5%E6%9F%84%E5%B7%A5%E5%85%B7/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>在linux环境下，一切皆文件，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件，如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，文件描述符提供了大量关于这个应用程序本身的信息。&lt;/p>
+&lt;h2 id="参数">参数：
+&lt;a class="header-anchor" href="#%e5%8f%82%e6%95%b0">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span> -a 列出被打开的文件的进程列表
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-c&amp;lt;进程名&amp;gt; 列出指定进程所打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-g 列出GID号进程详情
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-d&amp;lt;文件号&amp;gt; 列出占用该文件号的进程
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+d&amp;lt;目录&amp;gt; 列出目录下被打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+D&amp;lt;目录&amp;gt; 递归列出目录下被打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-n&amp;lt;目录&amp;gt; 列出使用NFS的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-i&amp;lt;条件&amp;gt; 列出符合条件的进程。（4、6、协议、:端口、 @ip ）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-p&amp;lt;进程号&amp;gt; 列出指定进程号所打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-u 列出UID号进程详情
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>tmux参考手册</title><link>/post/tmux%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/</link><pubDate>Mon, 29 Jul 2019 09:21:26 +0800</pubDate><guid>/post/tmux%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/</guid><description>&lt;h2 id="tmux是什么">tmux是什么
+&lt;a class="header-anchor" href="#tmux%e6%98%af%e4%bb%80%e4%b9%88">&lt;/a>
+&lt;/h2>&lt;p>tmux（terminal multiplexer）是Linux上的终端复用神器，可从一个屏幕上管理多个终端（准确说是伪终端）。使用该工具，用户可以连接或断开会话，而保持终端在后台运行。类似的工具还有screen，个人对这二者的使用感受是，用过tmux就再也不想用screen了。&lt;/p>
+&lt;h2 id="tmux基本结构">tmux基本结构
+&lt;a class="header-anchor" href="#tmux%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84">&lt;/a>
+&lt;/h2>&lt;p>tmux的结构包括&lt;strong>会话&lt;/strong>(session)、&lt;strong>窗口&lt;/strong>(window)、&lt;strong>窗格&lt;/strong>(pane)三部分，会话实质是伪终端的集合，每个窗格表示一个伪终端，多个窗格展现在一个屏幕上，这一屏幕就叫窗口。基本结构及状态信息如下图所示：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>Git命令汇总</title><link>/post/git%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</link><pubDate>Mon, 10 Jun 2019 16:25:42 +0800</pubDate><guid>/post/git%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对常用的git命令进行汇总和注释，在使用时如需查询可更高效的查询到。&lt;/p></description></item><item><title>Dig命令详解</title><link>/post/dig%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 06 Jun 2019 11:06:25 +0800</pubDate><guid>/post/dig%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="简介">&lt;strong>简介：&lt;/strong>
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Dig是一个在类Unix命令行模式下查询DNS包括NS记录，A记录，MX记录等相关信息的工具。由于一直缺失
+Dig man page文档，本文就权当一个dig使用向导吧。Dig的源码是ISC BIND大包的一部分，但是大多编译和安装Bind的文档都不把它包括在内，但是在linux系统下，它通常是某个包的一部分，在Gentoo下是bind-tools，在Redhat/Fedora下是 bind-utils，或者在Debian下是 dnsutils。 &lt;br>
+如果你要查找Bind的配置相关的信息，请详读
+&lt;a href="http://www.madboa.com/geek/soho-bind/" title="参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>。&lt;/p>
+&lt;p>看懂默认输出：最简单最常见的查询是查询一台主机，但是默认情况下，Dig的输出信息很详细。你可能不需要所有的输出，但是它确实值得知道。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Confd on 豌豆多多</title><link>/tags/confd/</link><description>Recent content in Confd on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 26 Jun 2019 10:43:45 +0800</lastBuildDate><atom:link href="/tags/confd/rss.xml" rel="self" type="application/rss+xml"/><item><title>confd模板语法详解</title><link>/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 26 Jun 2019 10:43:45 +0800</pubDate><guid>/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了confd模板的语法和结构。并且在结尾给出示例演示，帮助你充分理解好消化。&lt;/p></description></item><item><title>confd配置管理工具详解</title><link>/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 26 Jun 2019 09:44:20 +0800</pubDate><guid>/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="概述">概述
+&lt;a class="header-anchor" href="#%e6%a6%82%e8%bf%b0">&lt;/a>
+&lt;/h2>&lt;p>当系统变的复杂，配置项越来越多，一方面配置管理变得繁琐，另一方面配置修改后需要重新上线同样十分痛苦。这时候，需要有一套集中化配置管理系统，一方面提供统一的配置管理，另一方面提供配置变更的自动下发，及时生效。提到统一配置管理系统，大家应该比较熟悉，常见的：zookeeper、etcd、consul、git等等。上述的集中配置中心使用的时候，部署图大致是这样的：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>server端只需要调用config-server对应客户端获取配置，和监听配置变更就可以了。总体来说没有太大难度。&lt;/p>
+&lt;p>接下来要说一下confd，它提供了一种新的集成思路。confd的存在有点类似于快递员，买了东西不需要自己到店去取货了，confd这个快递员会把货取过来，然后送到家里，并且通知你货已经送到了。加入confd之后的架构大致是这样的：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="" />&lt;/p></description></item></channel></rss>

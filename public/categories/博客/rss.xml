@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>博客 on 豌豆多多</title><link>/categories/%E5%8D%9A%E5%AE%A2/</link><description>Recent content in 博客 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Aug 2020 18:12:32 +0800</lastBuildDate><atom:link href="/categories/%E5%8D%9A%E5%AE%A2/rss.xml" rel="self" type="application/rss+xml"/><item><title>hexo酷炫特效教程&lt;二></title><link>/post/hexo%E9%85%B7%E7%82%AB%E7%89%B9%E6%95%88%E6%95%99%E7%A8%8B-%E4%BA%8C/</link><pubDate>Wed, 12 Aug 2020 18:12:32 +0800</pubDate><guid>/post/hexo%E9%85%B7%E7%82%AB%E7%89%B9%E6%95%88%E6%95%99%E7%A8%8B-%E4%BA%8C/</guid><description>&lt;p>按照
+&lt;a href="https://wandouduoduo.github.io/articles/1071f0bc.html" title="&amp;lt;code&amp;gt;这篇教程&amp;lt;/code&amp;gt;" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+&lt;code>这篇教程&lt;/code>
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>一步步操作下来的话，相信你的博客已经有了不错的改观和多种炫酷的特效。这里再教大家配置几种特效。教程中用到的所有特效都可以在我的博客中找到，如果感兴趣可以到
+&lt;a href="wandouduoduo.github.io" title="博客首页" >
+博客首页
+&lt;/a>中看下动态效果。&lt;/p></description></item><item><title>Hexo增加APlayer播放音乐</title><link>/post/hexo%E5%A2%9E%E5%8A%A0aplayer%E6%92%AD%E6%94%BE%E9%9F%B3%E4%B9%90/</link><pubDate>Wed, 15 Jan 2020 17:38:10 +0800</pubDate><guid>/post/hexo%E5%A2%9E%E5%8A%A0aplayer%E6%92%AD%E6%94%BE%E9%9F%B3%E4%B9%90/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>hexo搭建完静态博客后，有同学只看技术文档比较枯燥，会犯困。那么如果有音乐播放的功能，就可以一遍阅读文章，一边欣赏音乐了，岂不是一件很愉快的事。那么下面就以本站点为例，分享怎么在自己的hexo网站增加音乐播放功能。&lt;/p></description></item><item><title>Hexo博客导流到微信公众号</title><link>/post/hexo%E5%8D%9A%E5%AE%A2%E5%AF%BC%E6%B5%81%E5%88%B0%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/</link><pubDate>Wed, 25 Dec 2019 14:05:19 +0800</pubDate><guid>/post/hexo%E5%8D%9A%E5%AE%A2%E5%AF%BC%E6%B5%81%E5%88%B0%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>随着互联网的高速发展，我们身边的一切都发生了翻天覆地的变化，互联网真真正正改变了我们的生活方式。足不出户买东西，点点手机叫外卖，一部手机走天下等等。古有文人墨客怀才不遇，积愤难平。但现在互联网放大了每个人的能力，知识变现，粉丝导流，人气带货等等已很常见。这时很多技术博主或站长，就想技术文档笔记积累的人气导流到微信公众号。本文就是讲解Hexo博客导流到微信公众号的流程。一句话概括：就是Hexo 整合 OpenWrite 平台的 readmore 插件,实现博客的每一篇文章自动增加阅读更多效果,关注公众号后方可解锁全站文章,从而实现博客流量导流到微信公众号粉丝目的。&lt;/p>
+&lt;p>有些同学，会有如下疑问：&lt;/p>
+&lt;ul>
+&lt;li>为什么要讲Hexo博客，而不是其他如简书，博客园等？&lt;/li>
+&lt;li>导流后效果是怎样的呢？&lt;/li>
+&lt;li>配置会不会很麻烦呢？&lt;/li>
+&lt;li>需要用到哪些工具呢？&lt;/li>
+&lt;li>具体流程是怎样的呢？&lt;/li>
+&lt;/ul>
+&lt;p>针对这些问题，下面就一一解答。&lt;/p></description></item><item><title>hexo最新next主题炫酷特效教程</title><link>/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/</link><pubDate>Wed, 29 May 2019 01:26:12 +0800</pubDate><guid>/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/</guid><description>&lt;p>有很多next主题的网站都配置了很多特效，网站看起来很是炫酷。人都是视觉动物，让你的网站或博客酷炫、与众不同，是提高网站逼格和吸引人气的必备技能。那么这些特效都是是怎么配置的呢？接下来我会讲一讲如何配置next6.x或7.x最新版本实现一些炫酷的效果。先看下我博客网站的效果吧：wandouduoduo.github.io&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hexo.io/zh-cn/" title="Hexo官网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Hexo官网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://hexo.io/themes/" title="Theme选择" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Theme选择
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/theme-next/hexo-theme-next" title="NexT主题" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+NexT主题
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>mac和windows等多台机器上协同写hexo博客的实现</title><link>/post/mac%E5%92%8Cwindows%E7%AD%89%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E4%B8%8A%E5%8D%8F%E5%90%8C%E5%86%99hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%9E%E7%8E%B0/</link><pubDate>Wed, 29 May 2019 00:44:16 +0800</pubDate><guid>/post/mac%E5%92%8Cwindows%E7%AD%89%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E4%B8%8A%E5%8D%8F%E5%90%8C%E5%86%99hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>在公司上的mac机器上部署了hexo博客，家里的电脑是windows机，想在家和公司都可以写博客，要怎么实现呢？&lt;/p></description></item><item><title>超详细的hexo+github page搭建.md</title><link>/post/%E8%B6%85%E8%AF%A6%E7%BB%86%E7%9A%84hexo+gitpage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Mon, 27 May 2019 14:05:01 +0800</pubDate><guid>/post/%E8%B6%85%E8%AF%A6%E7%BB%86%E7%9A%84hexo+gitpage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装nodejs">安装node.js
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85nodejs">&lt;/a>
+&lt;/h2>&lt;p>在 Windows 环境下安装 Node.js 非常简单，仅须到
+&lt;a href="https://nodejs.org/en/download/" title="官网下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官网下载
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>安装文件并执行即可完成安装，其中LTS是长期支持版，Current为最新版，但最新版一般都在开发阶段，还不稳定。建议选择LTS版本&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="nodejs.png" alt="" />&lt;/p>
+&lt;p>像我的是Windows 64位LTS，直接下载后执行，无脑下一步就行了，不需要配置环境变量。&lt;/p></description></item></channel></rss>

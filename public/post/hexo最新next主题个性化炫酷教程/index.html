@@ -1,0 +1,534 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="hexo最新next主题炫酷特效教程"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Hexo"><meta property="og:type" content="article"><meta property="og:title" content="hexo最新next主题炫酷特效教程"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2019-05-29 01:26:12 +0800 CST"><meta property="article:modified_time" content="2019-05-29 01:26:12 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B","permalink":"/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/","title":"hexo最新next主题炫酷特效教程","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>hexo最新next主题炫酷特效教程 - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#参考>参考</a></li><li><a href=#在右上角或者左上角实现fork-me-on-github>在右上角或者左上角实现fork me on github</a><ul><li><a href=#效果图如下图所示>效果图如下图所示：</a></li><li><a href=#具体实现方法>具体实现方法</a></li></ul></li><li><a href=#添加rss>添加RSS</a><ul><li><a href=#实现效果图>实现效果图</a></li><li><a href=#具体实现方法-1>具体实现方法</a></li></ul></li><li><a href=#添加动态背景>添加动态背景</a><ul><li><a href=#实现效果图-1>实现效果图</a></li><li><a href=#具体实现方法-2>具体实现方法</a></li></ul></li><li><a href=#修改文章内链接文本样式>修改文章内链接文本样式</a><ul><li><a href=#实现效果图-2>实现效果图</a></li><li><a href=#具体实现方法-3>具体实现方法</a></li></ul></li><li><a href=#修改底部标签样式>修改底部标签样式</a><ul><li><a href=#实现效果图-3>实现效果图</a></li><li><a href=#具体实现方法-4>具体实现方法</a></li></ul></li><li><a href=#在文章末尾添加文章结束标记>在文章末尾添加“文章结束”标记</a><ul><li><a href=#实现效果图-4>实现效果图</a></li><li><a href=#具体实现方法-5>具体实现方法</a></li></ul></li><li><a href=#修改作者头像并旋转>修改作者头像并旋转：</a><ul><li><a href=#实现效果图-5>实现效果图：</a></li><li><a href=#具体实现方法-6>具体实现方法</a></li></ul></li><li><a href=#修改代码块自定义样式>修改``代码块自定义样式</a><ul><li><a href=#具体实现方法-7>具体实现方法</a></li></ul></li><li><a href=#侧边栏社交小图标设置>侧边栏社交小图标设置</a><ul><li><a href=#实现效果图-6>实现效果图</a></li><li><a href=#具体实现方法-8>具体实现方法</a></li></ul></li><li><a href=#主页文章添加阴影效果>主页文章添加阴影效果</a><ul><li><a href=#实现效果图-7>实现效果图</a></li><li><a href=#具体实现方法-9>具体实现方法</a></li></ul></li><li><a href=#在网站底部加上访问量>在网站底部加上访问量</a><ul><li><a href=#实现效果图-8>实现效果图</a></li><li><a href=#具体实现方法-10>具体实现方法</a></li></ul></li><li><a href=#网站底部字数统计>网站底部字数统计</a><ul><li><a href=#具体方法实现>具体方法实现</a></li></ul></li><li><a href=#设置网站的图标favicon>设置网站的图标Favicon</a><ul><li><a href=#实现效果图-9>实现效果图</a></li><li><a href=#具体方法实现-1>具体方法实现</a></li></ul></li><li><a href=#实现文章统计功能>实现文章统计功能</a><ul><li><a href=#具体实现方法-11>具体实现方法</a></li></ul></li><li><a href=#添加顶部加载条>添加顶部加载条</a><ul><li><a href=#具体实现方法-12>具体实现方法</a></li></ul></li><li><a href=#在文章底部增加版权信息>在文章底部增加版权信息</a><ul><li><a href=#实现效果图-10>实现效果图</a></li></ul></li><li><a href=#隐藏网页底部powered-by-hexo--强力驱动>隐藏网页底部powered By Hexo / 强力驱动</a></li><li><a href=#修改字体大小>修改字体大小</a></li><li><a href=#添加打赏>添加打赏</a></li><li><a href=#点击爆炸效果>点击爆炸效果</a><ul><li><a href=#效果图><strong>效果图</strong></a></li><li><a href=#实现方法><strong>实现方法</strong></a></li></ul></li><li><a href=#添加侧栏推荐阅读>添加侧栏推荐阅读</a><ul><li><a href=#效果图-1>效果图</a></li><li><a href=#实现方式>实现方式</a></li></ul></li><li><a href=#添加站内搜索>添加站内搜索</a></li><li><a href=#添加评论系统gitalk>添加评论系统gitalk</a><ul><li><a href=#效果图-2>效果图</a></li><li><a href=#实现方式-1>实现方式</a></li></ul></li><li><a href=#修改文章链接>修改文章链接</a></li><li><a href=#寻找图床>寻找图床</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="hexo最新next主题炫酷特效教程"><meta itemprop=description content="有很多next主题的网站都配置了很多特效，网站看起来很是炫酷。人都是视觉动物，让你的网站或博客酷炫、与众不同，是提高网站逼格和吸引人气的必备技能。那么这些特效都是是怎么配置的呢？接下来我会讲一讲如何配置next6.x或7.x最新版本实现一些炫酷的效果。先看下我博客网站的效果吧：wandouduoduo.github.io
+参考
+
+
+
+    Hexo官网
+    
+    
+    
+
+
+
+    Theme选择
+    
+    
+    
+
+
+
+    NexT主题
+    
+    
+    
+"></span><header class=post-header><h1 class=post-title itemprop="name headline">hexo最新next主题炫酷特效教程</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-05-29 01:26:12 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-05-29 01:26:12 +0800 CST">2019-05-29</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%8D%9A%E5%AE%A2 itemprop=url rel=index><span itemprop=name>网站平台/博客</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>5760</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>12分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><p>有很多next主题的网站都配置了很多特效，网站看起来很是炫酷。人都是视觉动物，让你的网站或博客酷炫、与众不同，是提高网站逼格和吸引人气的必备技能。那么这些特效都是是怎么配置的呢？接下来我会讲一讲如何配置next6.x或7.x最新版本实现一些炫酷的效果。先看下我博客网站的效果吧：wandouduoduo.github.io</p><h2 id=参考>参考
+<a class=header-anchor href=#%e5%8f%82%e8%80%83></a></h2><p><a href=https://hexo.io/zh-cn/ title=Hexo官网 rel="noopener external nofollow noreferrer" target=_blank class=exturl>Hexo官网
+<i class="fa fa-external-link-alt"></i></a></p><p><a href=https://hexo.io/themes/ title=Theme选择 rel="noopener external nofollow noreferrer" target=_blank class=exturl>Theme选择
+<i class="fa fa-external-link-alt"></i></a></p><p><a href=https://github.com/theme-next/hexo-theme-next title=NexT主题 rel="noopener external nofollow noreferrer" target=_blank class=exturl>NexT主题
+<i class="fa fa-external-link-alt"></i></a></p><h2 id=在右上角或者左上角实现fork-me-on-github>在右上角或者左上角实现fork me on github
+<a class=header-anchor href=#%e5%9c%a8%e5%8f%b3%e4%b8%8a%e8%a7%92%e6%88%96%e8%80%85%e5%b7%a6%e4%b8%8a%e8%a7%92%e5%ae%9e%e7%8e%b0fork-me-on-github></a></h2><h3 id=效果图如下图所示>效果图如下图所示：
+<a class=header-anchor href=#%e6%95%88%e6%9e%9c%e5%9b%be%e5%a6%82%e4%b8%8b%e5%9b%be%e6%89%80%e7%a4%ba></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt=img></p><h3 id=具体实现方法>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95></a></h3><p>在
+<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fgithub.com%2Fblog%2F273-github-ribbons" title="GitHub Ribbons" rel="noopener external nofollow noreferrer" target=_blank class=exturl>GitHub Ribbons
+<i class="fa fa-external-link-alt"></i>
+</a>或
+<a href="https://links.jianshu.com/go?to=http%3A%2F%2Ftholman.com%2Fgithub-corners%2F" title="GitHub Corners" rel="noopener external nofollow noreferrer" target=_blank class=exturl>GitHub Corners
+<i class="fa fa-external-link-alt"></i>
+</a>选择一款你喜欢的挂饰，拷贝方框内的代码</p><p><img src=/imgs/img-lazy-loading.gif data-src=3.png alt></p><p>将刚刚复制的挂饰代码，添加到<code>Blog/themes/next/layout/_layout.swig</code>文件中，添加位置如下图所示(放在<code>&lt;div class="headband">&lt;/div></code>下方)：</p><p><img src=/imgs/img-lazy-loading.gif data-src=4.png alt></p><h2 id=添加rss>添加RSS
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0rss></a></h2><h3 id=实现效果图>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=5.png alt=img></p><h3 id=具体实现方法-1>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-1></a></h3><p>切换到<strong>Blog</strong>文件夹（hexo init的文件夹）下,并安装插件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>cd [Blog]
+</span></span><span style=display:flex><span>npm install --save hexo-generator-feed
+</span></span></code></pre></div><p>安装成功之后，编辑<code>Blog/_config.yml</code>文件，在文件末尾添加</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Extensions
+</span></span><span style=display:flex><span>## Plugins: http://hexo.io/plugins/
+</span></span><span style=display:flex><span>plugins: hexo-generate-feed
+</span></span></code></pre></div><p>配置主题<code>_config.yml</code>文件，<code>command+f</code>搜索<code>rss</code>，在后面加上<code>/atom.xml</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Set rss to false to disable feed link.
+</span></span><span style=display:flex><span># Leave rss as empty to use site&#39;s feed link.
+</span></span><span style=display:flex><span># Set rss to specific value if you have burned your feed already.
+</span></span><span style=display:flex><span>rss: /atom.xml //注意：有一个空格
+</span></span></code></pre></div><h2 id=添加动态背景>添加动态背景
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0%e5%8a%a8%e6%80%81%e8%83%8c%e6%99%af></a></h2><h3 id=实现效果图-1>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-1></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=7.png alt></p><h3 id=具体实现方法-2>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-2></a></h3><p>主题配置文件中找到<strong>canvas_nest</strong>，设置成<strong>ture</strong>就OK啦。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Canvas-nest
+</span></span><span style=display:flex><span>canvas_nest: ture
+</span></span></code></pre></div><h2 id=修改文章内链接文本样式>修改文章内链接文本样式
+<a class=header-anchor href=#%e4%bf%ae%e6%94%b9%e6%96%87%e7%ab%a0%e5%86%85%e9%93%be%e6%8e%a5%e6%96%87%e6%9c%ac%e6%a0%b7%e5%bc%8f></a></h2><h3 id=实现效果图-2>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-2></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=6.png alt></p><h3 id=具体实现方法-3>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-3></a></h3><p>修改文件 <code>themes\next\source\css\_common\components\post\post.styl</code>，在末尾添加如下css样式，：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>// 文章内链接文本样式
+</span></span><span style=display:flex><span>.post-body p a{
+</span></span><span style=display:flex><span>  color: #0593d3; //原始链接颜色
+</span></span><span style=display:flex><span>  border-bottom: none;
+</span></span><span style=display:flex><span>  border-bottom: 1px solid #0593d3; //底部分割线颜色
+</span></span><span style=display:flex><span>  &amp;:hover {
+</span></span><span style=display:flex><span>    color: #fc6423; //鼠标经过颜色
+</span></span><span style=display:flex><span>    border-bottom: none;
+</span></span><span style=display:flex><span>    border-bottom: 1px solid #fc6423; //底部分割线颜色
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>其中选择<code>.post-body</code> 是为了不影响标题，选择 <code>p</code> 是为了不影响首页“阅读全文”的显示样式,颜色可以自己定义。</p><hr><h2 id=修改底部标签样式>修改底部标签样式
+<a class=header-anchor href=#%e4%bf%ae%e6%94%b9%e5%ba%95%e9%83%a8%e6%a0%87%e7%ad%be%e6%a0%b7%e5%bc%8f></a></h2><h3 id=实现效果图-3>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-3></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=8.png alt></p><h3 id=具体实现方法-4>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-4></a></h3><p>修改<code>Blog\themes\next\layout\_macro\post.swig</code>中文件，<code>command+f</code>搜索<code>rel="tag">#</code>，将<code>#</code>替换成<code>&lt;i class="fa fa-tag">&lt;/i></code>。输入以下命令，查看效果：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>hexo clean
+</span></span><span style=display:flex><span>hexo s
+</span></span></code></pre></div><h2 id=在文章末尾添加文章结束标记>在文章末尾添加“文章结束”标记
+<a class=header-anchor href=#%e5%9c%a8%e6%96%87%e7%ab%a0%e6%9c%ab%e5%b0%be%e6%b7%bb%e5%8a%a0%e6%96%87%e7%ab%a0%e7%bb%93%e6%9d%9f%e6%a0%87%e8%ae%b0></a></h2><h3 id=实现效果图-4>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-4></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=9.png alt></p><h3 id=具体实现方法-5>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-5></a></h3><p>在路径<code>Blog\themes\next\layout\_macro</code>文件夹中新建<code>passage-end-tag.swig</code>文件,并填写内容如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>&lt;div&gt;
+</span></span><span style=display:flex><span>    {% if not is_index %}
+</span></span><span style=display:flex><span>        &lt;div style=&#34;text-align:center;color: #ccc;font-size:14px;&#34;&gt;-------------本文结束&lt;i class=&#34;fa fa-paw&#34;&gt;&lt;/i&gt;感谢您的阅读-------------&lt;/div&gt;
+</span></span><span style=display:flex><span>    {% endif %}
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span></code></pre></div><p>打开<code>Blog\themes\next\layout\_macro\post.swig</code>，在<code>post-body</code>之后，<code>post-footer</code>之前（<strong>post-footer之前两个DIV</strong>），添加以下代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>&lt;div&gt;
+</span></span><span style=display:flex><span>  {% if not is_index %}
+</span></span><span style=display:flex><span>    {% include &#39;passage-end-tag.swig&#39; %}
+</span></span><span style=display:flex><span>  {% endif %}
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span></code></pre></div><p>添加位置，如下图所示：</p><p><img src=/imgs/img-lazy-loading.gif data-src=10.png alt></p><p>然后打开主题配置文件<code>_config.yml</code>,在末尾添加：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># 文章末尾添加“本文结束”标记
+</span></span><span style=display:flex><span>passage_end_tag:
+</span></span><span style=display:flex><span>  enabled: true
+</span></span></code></pre></div><h2 id=修改作者头像并旋转>修改作者头像并旋转：
+<a class=header-anchor href=#%e4%bf%ae%e6%94%b9%e4%bd%9c%e8%80%85%e5%a4%b4%e5%83%8f%e5%b9%b6%e6%97%8b%e8%bd%ac></a></h2><h3 id=实现效果图-5>实现效果图：
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-5></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt=img></p><h3 id=具体实现方法-6>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-6></a></h3><p>在<code>Blog/_config.yml</code>中添加头像链接地址</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>//添加头像地址
+</span></span><span style=display:flex><span>avatar: [ http://....]
+</span></span></code></pre></div><p>打开<code>\themes\next\source\css\_common\components\sidebar\sidebar-author.styl</code>，在里面添加如下代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>.site-author-image {
+</span></span><span style=display:flex><span>  display: block;
+</span></span><span style=display:flex><span>  margin: 0 auto;
+</span></span><span style=display:flex><span>  padding: $site-author-image-padding;
+</span></span><span style=display:flex><span>  max-width: $site-author-image-width;
+</span></span><span style=display:flex><span>  height: $site-author-image-height;
+</span></span><span style=display:flex><span>  border: $site-author-image-border-width solid $site-author-image-border-color;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  /* 头像圆形 */
+</span></span><span style=display:flex><span>  border-radius: 80px;
+</span></span><span style=display:flex><span>  -webkit-border-radius: 80px;
+</span></span><span style=display:flex><span>  -moz-border-radius: 80px;
+</span></span><span style=display:flex><span>  box-shadow: inset 0 -1px 0 #333sf;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  /* 设置循环动画 [animation: (play)动画名称 (2s)动画播放时长单位秒或微秒 (ase-out)动画播放的速度曲线为以低速结束 
+</span></span><span style=display:flex><span>    (1s)等待1秒然后开始动画 (1)动画播放次数(infinite为循环播放) ]*/
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  /* 鼠标经过头像旋转360度 */
+</span></span><span style=display:flex><span>  -webkit-transition: -webkit-transform 1.0s ease-out;
+</span></span><span style=display:flex><span>  -moz-transition: -moz-transform 1.0s ease-out;
+</span></span><span style=display:flex><span>  transition: transform 1.0s ease-out;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>img:hover {
+</span></span><span style=display:flex><span>  /* 鼠标经过停止头像旋转 
+</span></span><span style=display:flex><span>  -webkit-animation-play-state:paused;
+</span></span><span style=display:flex><span>  animation-play-state:paused;*/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  /* 鼠标经过头像旋转360度 */
+</span></span><span style=display:flex><span>  -webkit-transform: rotateZ(360deg);
+</span></span><span style=display:flex><span>  -moz-transform: rotateZ(360deg);
+</span></span><span style=display:flex><span>  transform: rotateZ(360deg);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>/* Z 轴旋转动画 */
+</span></span><span style=display:flex><span>@-webkit-keyframes play {
+</span></span><span style=display:flex><span>  0% {
+</span></span><span style=display:flex><span>    -webkit-transform: rotateZ(0deg);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  100% {
+</span></span><span style=display:flex><span>    -webkit-transform: rotateZ(-360deg);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>@-moz-keyframes play {
+</span></span><span style=display:flex><span>  0% {
+</span></span><span style=display:flex><span>    -moz-transform: rotateZ(0deg);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  100% {
+</span></span><span style=display:flex><span>    -moz-transform: rotateZ(-360deg);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>@keyframes play {
+</span></span><span style=display:flex><span>  0% {
+</span></span><span style=display:flex><span>    transform: rotateZ(0deg);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  100% {
+</span></span><span style=display:flex><span>    transform: rotateZ(-360deg);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=修改代码块自定义样式>修改``代码块自定义样式
+<a class=header-anchor href=#%e4%bf%ae%e6%94%b9%e4%bb%a3%e7%a0%81%e5%9d%97%e8%87%aa%e5%ae%9a%e4%b9%89%e6%a0%b7%e5%bc%8f></a></h2><h3 id=具体实现方法-7>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-7></a></h3><p>打开<code>Blog\themes\next\source\css\_custom\custom.styl</code>，添加以下代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>// Custom styles.
+</span></span><span style=display:flex><span>code {
+</span></span><span style=display:flex><span>    color: #ff7600;
+</span></span><span style=display:flex><span>    background: #fbf7f8;
+</span></span><span style=display:flex><span>    margin: 2px;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>// 大代码块的自定义样式
+</span></span><span style=display:flex><span>.highlight, pre {
+</span></span><span style=display:flex><span>    margin: 5px 0;
+</span></span><span style=display:flex><span>    padding: 5px;
+</span></span><span style=display:flex><span>    border-radius: 3px;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.highlight, code, pre {
+</span></span><span style=display:flex><span>    border: 1px solid #d6d6d6;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><h2 id=侧边栏社交小图标设置>侧边栏社交小图标设置
+<a class=header-anchor href=#%e4%be%a7%e8%be%b9%e6%a0%8f%e7%a4%be%e4%ba%a4%e5%b0%8f%e5%9b%be%e6%a0%87%e8%ae%be%e7%bd%ae></a></h2><h3 id=实现效果图-6>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-6></a></h3><p>图标可以去
+<a href="https://fontawesome.com/icons?from=io" title="Font Awesome Icon" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Font Awesome Icon
+<i class="fa fa-external-link-alt"></i>
+</a>网站去找，找到后复制名字到相应的位置即可。</p><p><img src=/imgs/img-lazy-loading.gif data-src=11.png alt></p><h3 id=具体实现方法-8>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-8></a></h3><p>打开主题配置文件<code>_config.yml</code>，<code>command+f</code>搜索<code>Social</code>，将你有的社交账号前面的<code>#</code>号去掉。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>#social:
+</span></span><span style=display:flex><span>  GitHub: https://github.com/wandouduoduo || github
+</span></span><span style=display:flex><span>  E-mail: mailto:wandouduoduo@163.com || envelope
+</span></span><span style=display:flex><span>  Gitee: https://gitee.com/ || heartbeat
+</span></span><span style=display:flex><span>  微博: https://weibo.com/u/1989032071/home?wvr=5 || weibo
+</span></span><span style=display:flex><span>  #E-Mail: mailto:yourname@gmail.com || envelope
+</span></span><span style=display:flex><span>  #Google: https://plus.google.com/yourname || google
+</span></span><span style=display:flex><span>  #Twitter: https://twitter.com/yourname || twitter
+</span></span><span style=display:flex><span>  #FB Page: https://www.facebook.com/yourname || facebook
+</span></span><span style=display:flex><span>  #VK Group: https://vk.com/yourname || vk
+</span></span><span style=display:flex><span>  #StackOverflow: https://stackoverflow.com/yourname || stack-overflow
+</span></span><span style=display:flex><span>  #YouTube: https://youtube.com/yourname || youtube
+</span></span><span style=display:flex><span>  #Instagram: https://instagram.com/yourname || instagram
+</span></span><span style=display:flex><span>  #Skype: skype:yourname?call|chat || skype
+</span></span></code></pre></div><h2 id=主页文章添加阴影效果>主页文章添加阴影效果
+<a class=header-anchor href=#%e4%b8%bb%e9%a1%b5%e6%96%87%e7%ab%a0%e6%b7%bb%e5%8a%a0%e9%98%b4%e5%bd%b1%e6%95%88%e6%9e%9c></a></h2><h3 id=实现效果图-7>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-7></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=12.png alt=img></p><h3 id=具体实现方法-9>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-9></a></h3><p>打开<code>\themes\next\source\css\_custom\custom.styl</code>,向里面加入：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>// 主页文章添加阴影效果
+</span></span><span style=display:flex><span> .post {
+</span></span><span style=display:flex><span>   margin-top: 60px;
+</span></span><span style=display:flex><span>   margin-bottom: 60px;
+</span></span><span style=display:flex><span>   padding: 25px;
+</span></span><span style=display:flex><span>   -webkit-box-shadow: 0 0 5px rgba(202, 203, 203, .5);
+</span></span><span style=display:flex><span>   -moz-box-shadow: 0 0 5px rgba(202, 203, 204, .5);
+</span></span><span style=display:flex><span>  }
+</span></span></code></pre></div><hr><h2 id=在网站底部加上访问量>在网站底部加上访问量
+<a class=header-anchor href=#%e5%9c%a8%e7%bd%91%e7%ab%99%e5%ba%95%e9%83%a8%e5%8a%a0%e4%b8%8a%e8%ae%bf%e9%97%ae%e9%87%8f></a></h2><h3 id=实现效果图-8>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-8></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=13.png alt=img></p><h3 id=具体实现方法-10>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-10></a></h3><p>6.x后集成了busuanzi模块统计，只需要打开<code>\themes\next\_config</code>文件编辑如下即可</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>busuanzi_count:
+</span></span><span style=display:flex><span>enable: true
+</span></span><span style=display:flex><span>total_visitors: true
+</span></span><span style=display:flex><span>total_visitors_icon: user
+</span></span><span style=display:flex><span>total_views: true
+</span></span><span style=display:flex><span>total_views_icon: eye
+</span></span><span style=display:flex><span>post_views: true
+</span></span><span style=display:flex><span>post_views_icon: eye
+</span></span></code></pre></div><h2 id=网站底部字数统计>网站底部字数统计
+<a class=header-anchor href=#%e7%bd%91%e7%ab%99%e5%ba%95%e9%83%a8%e5%ad%97%e6%95%b0%e7%bb%9f%e8%ae%a1></a></h2><h3 id=具体方法实现>具体方法实现
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e6%96%b9%e6%b3%95%e5%ae%9e%e7%8e%b0></a></h3><p>切换到根目录下，然后运行如下代码</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ npm install hexo-wordcount --save
+</span></span></code></pre></div><p>然后在<code>/themes/next/layout/_partials/footer.swig</code>文件尾部添加加上：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>&lt;div class=&#34;theme-info&#34;&gt;
+</span></span><span style=display:flex><span>  &lt;div class=&#34;powered-by&#34;&gt;&lt;/div&gt;
+</span></span><span style=display:flex><span>  &lt;span class=&#34;post-count&#34;&gt;博客全站共{{ totalcount(site) }}字&lt;/span&gt;
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span></code></pre></div><h2 id=设置网站的图标favicon>设置网站的图标Favicon
+<a class=header-anchor href=#%e8%ae%be%e7%bd%ae%e7%bd%91%e7%ab%99%e7%9a%84%e5%9b%be%e6%a0%87favicon></a></h2><h3 id=实现效果图-9>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-9></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=14.png alt=img></p><h3 id=具体方法实现-1>具体方法实现
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e6%96%b9%e6%b3%95%e5%ae%9e%e7%8e%b0-1></a></h3><p>在图标网站找一张你喜欢的图标（大：32x32 小：16x16），图标网站：
+<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fwww.easyicon.net%2F" title=easyicon rel="noopener external nofollow noreferrer" target=_blank class=exturl>easyicon
+<i class="fa fa-external-link-alt"></i>
+</a>或者
+<a href="https://links.jianshu.com/go?to=http%3A%2F%2Fwww.iconfont.cn%2F" title=阿里巴巴矢量图标库 rel="noopener external nofollow noreferrer" target=_blank class=exturl>阿里巴巴矢量图标库
+<i class="fa fa-external-link-alt"></i>
+</a>。将下载下来的小图和中图放在<code>Blog/themes/next/source/images</code>，将默认的两张图片替换掉。修改主题配置文件，如果你自定义了图片名字，需要做修改：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>favicon:
+</span></span><span style=display:flex><span>  small: /images/favicon-16x16-next.png  //16X16小图
+</span></span><span style=display:flex><span>  medium: /images/favicon-32x32-next.png  //32X32大图
+</span></span><span style=display:flex><span>  apple_touch_icon: /images/apple-touch-icon-next.png 
+</span></span></code></pre></div><h2 id=实现文章统计功能>实现文章统计功能
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%96%87%e7%ab%a0%e7%bb%9f%e8%ae%a1%e5%8a%9f%e8%83%bd></a></h2><h3 id=具体实现方法-11>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-11></a></h3><p>在根目录下安装 <code>hexo-wordcount</code>,运行：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$ npm install hexo-wordcount --save
+</span></span></code></pre></div><p>然后在主题的配置文件中，配置如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>symbols_count_time:
+</span></span><span style=display:flex><span>  separated_meta: true
+</span></span><span style=display:flex><span>  item_text_post: true
+</span></span><span style=display:flex><span>  item_text_total: true
+</span></span><span style=display:flex><span>  awl: 4
+</span></span><span style=display:flex><span>  wpm: 275
+</span></span></code></pre></div><h2 id=添加顶部加载条>添加顶部加载条
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0%e9%a1%b6%e9%83%a8%e5%8a%a0%e8%bd%bd%e6%9d%a1></a></h2><h3 id=具体实现方法-12>具体实现方法
+<a class=header-anchor href=#%e5%85%b7%e4%bd%93%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95-12></a></h3><p>编辑主题配置文件，<code>command+F</code>搜索<code>pace</code>，将其值改为<code>ture</code>就可以了，选择一款你喜欢的样式。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Progress bar in the top during page loading.
+</span></span><span style=display:flex><span>pace: ture
+</span></span><span style=display:flex><span># Themes list:
+</span></span><span style=display:flex><span>#pace-theme-big-counter
+</span></span><span style=display:flex><span>#pace-theme-bounce
+</span></span><span style=display:flex><span>#pace-theme-barber-shop
+</span></span><span style=display:flex><span>#pace-theme-center-atom
+</span></span><span style=display:flex><span>#pace-theme-center-circle
+</span></span><span style=display:flex><span>#pace-theme-center-radar
+</span></span><span style=display:flex><span>#pace-theme-center-simple
+</span></span><span style=display:flex><span>#pace-theme-corner-indicator
+</span></span><span style=display:flex><span>#pace-theme-fill-left
+</span></span><span style=display:flex><span>#pace-theme-flash
+</span></span><span style=display:flex><span>#pace-theme-loading-bar
+</span></span><span style=display:flex><span>#pace-theme-mac-osx
+</span></span><span style=display:flex><span>#pace-theme-minimal
+</span></span><span style=display:flex><span># For example
+</span></span><span style=display:flex><span># pace_theme: pace-theme-center-simple
+</span></span><span style=display:flex><span>pace_theme: pace-theme-minimal
+</span></span></code></pre></div><h2 id=在文章底部增加版权信息>在文章底部增加版权信息
+<a class=header-anchor href=#%e5%9c%a8%e6%96%87%e7%ab%a0%e5%ba%95%e9%83%a8%e5%a2%9e%e5%8a%a0%e7%89%88%e6%9d%83%e4%bf%a1%e6%81%af></a></h2><h3 id=实现效果图-10>实现效果图
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%95%88%e6%9e%9c%e5%9b%be-10></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=15.png alt=img></p><p>在目录<code>Blog/themes/next/layout/_macro/</code>，添加文件 <code>my-copyright.swig</code>，内容如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>{% if page.copyright %}
+</span></span><span style=display:flex><span>&lt;div class=&#34;my_post_copyright&#34;&gt;
+</span></span><span style=display:flex><span>  &lt;script src=&#34;//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  &lt;!-- JS库 sweetalert 可修改路径 --&gt;
+</span></span><span style=display:flex><span>  &lt;script src=&#34;https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>  &lt;script src=&#34;https://unpkg.com/sweetalert/dist/sweetalert.min.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;本文标题:&lt;/span&gt;&lt;a href=&#34;{{ url_for(page.path) }}&#34;&gt;{{ page.title }}&lt;/a&gt;&lt;/p&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;文章作者:&lt;/span&gt;&lt;a href=&#34;/&#34; title=&#34;访问 {{ theme.author }} 的个人博客&#34;&gt;{{ theme.author }}&lt;/a&gt;&lt;/p&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;发布时间:&lt;/span&gt;{{ page.date.format(&#34;YYYY年MM月DD日 - HH:MM&#34;) }}&lt;/p&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;最后更新:&lt;/span&gt;{{ page.updated.format(&#34;YYYY年MM月DD日 - HH:MM&#34;) }}&lt;/p&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;原始链接:&lt;/span&gt;&lt;a href=&#34;{{ url_for(page.path) }}&#34; title=&#34;{{ page.title }}&#34;&gt;{{ page.permalink }}&lt;/a&gt;
+</span></span><span style=display:flex><span>    &lt;span class=&#34;copy-path&#34;  title=&#34;点击复制文章链接&#34;&gt;&lt;i class=&#34;fa fa-clipboard&#34; data-clipboard-text=&#34;{{ page.permalink }}&#34;  aria-label=&#34;复制成功！&#34;&gt;&lt;/i&gt;&lt;/span&gt;
+</span></span><span style=display:flex><span>  &lt;/p&gt;
+</span></span><span style=display:flex><span>  &lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class=&#34;fa fa-creative-commons&#34;&gt;&lt;/i&gt; &lt;a rel=&#34;license&#34; href=&#34;https://creativecommons.org/licenses/by-nc-nd/4.0/&#34; target=&#34;_blank&#34; title=&#34;Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)&#34;&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a&gt; 转载请保留原文链接及作者。&lt;/p&gt;  
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span><span style=display:flex><span>&lt;script&gt; 
+</span></span><span style=display:flex><span>    var clipboard = new Clipboard(&#39;.fa-clipboard&#39;);
+</span></span><span style=display:flex><span>    $(&#34;.fa-clipboard&#34;).click(function(){
+</span></span><span style=display:flex><span>      clipboard.on(&#39;success&#39;, function(){
+</span></span><span style=display:flex><span>        swal({   
+</span></span><span style=display:flex><span>          title: &#34;&#34;,   
+</span></span><span style=display:flex><span>          text: &#39;复制成功&#39;,
+</span></span><span style=display:flex><span>          icon: &#34;success&#34;, 
+</span></span><span style=display:flex><span>          showConfirmButton: true
+</span></span><span style=display:flex><span>          });
+</span></span><span style=display:flex><span>    });
+</span></span><span style=display:flex><span>    });  
+</span></span><span style=display:flex><span>&lt;/script&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span></code></pre></div><p>在目录<code>Blog/themes/next/source/css/_common/components/post/</code>下添加文件<code>my-post-copyright.styl</code>，添加以下代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>.my_post_copyright {
+</span></span><span style=display:flex><span>  width: 85%;
+</span></span><span style=display:flex><span>  max-width: 45em;
+</span></span><span style=display:flex><span>  margin: 2.8em auto 0;
+</span></span><span style=display:flex><span>  padding: 0.5em 1.0em;
+</span></span><span style=display:flex><span>  border: 1px solid #d3d3d3;
+</span></span><span style=display:flex><span>  font-size: 0.93rem;
+</span></span><span style=display:flex><span>  line-height: 1.6em;
+</span></span><span style=display:flex><span>  word-break: break-all;
+</span></span><span style=display:flex><span>  background: rgba(255,255,255,0.4);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright p{margin:0;}
+</span></span><span style=display:flex><span>.my_post_copyright span {
+</span></span><span style=display:flex><span>  display: inline-block;
+</span></span><span style=display:flex><span>  width: 5.2em;
+</span></span><span style=display:flex><span>  color: #b5b5b5;
+</span></span><span style=display:flex><span>  font-weight: bold;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright .raw {
+</span></span><span style=display:flex><span>  margin-left: 1em;
+</span></span><span style=display:flex><span>  width: 5em;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright a {
+</span></span><span style=display:flex><span>  color: #808080;
+</span></span><span style=display:flex><span>  border-bottom:0;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright a:hover {
+</span></span><span style=display:flex><span>  color: #a3d2a3;
+</span></span><span style=display:flex><span>  text-decoration: underline;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright:hover .fa-clipboard {
+</span></span><span style=display:flex><span>  color: #000;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright .post-url:hover {
+</span></span><span style=display:flex><span>  font-weight: normal;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright .copy-path {
+</span></span><span style=display:flex><span>  margin-left: 1em;
+</span></span><span style=display:flex><span>  width: 1em;
+</span></span><span style=display:flex><span>  +mobile(){display:none;}
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>.my_post_copyright .copy-path:hover {
+</span></span><span style=display:flex><span>  color: #808080;
+</span></span><span style=display:flex><span>  cursor: pointer;
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>修改<code>next/layout/_macro/post.swig</code>，在代码</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>&lt;div&gt;
+</span></span><span style=display:flex><span>      {% if not is_index %}
+</span></span><span style=display:flex><span>        {% include &#39;wechat-subscriber.swig&#39; %}
+</span></span><span style=display:flex><span>      {% endif %}
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span></code></pre></div><p>之前添加增加如下代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>&lt;div&gt;
+</span></span><span style=display:flex><span>      {% if not is_index %}
+</span></span><span style=display:flex><span>        {% include &#39;my-copyright.swig&#39; %}
+</span></span><span style=display:flex><span>      {% endif %}
+</span></span><span style=display:flex><span>&lt;/div&gt;
+</span></span></code></pre></div><p>修改<code>next/source/css/_common/components/post/post.styl</code>文件，在最后一行增加代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>@import &#34;my-post-copyright&#34;
+</span></span></code></pre></div><p>保存重新生成即可。
+如果要在该博文下面增加版权信息的显示，需要在 Markdown 中增加copyright: true的设置，类似：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>---
+</span></span><span style=display:flex><span>title: Hexo-NexT主题配置
+</span></span><span style=display:flex><span>date: 2018-01-20 20:41:08
+</span></span><span style=display:flex><span>categories: Hexo
+</span></span><span style=display:flex><span>tags:
+</span></span><span style=display:flex><span>- Hexo
+</span></span><span style=display:flex><span>- NexT
+</span></span><span style=display:flex><span>top: 100
+</span></span><span style=display:flex><span>copyright: ture
+</span></span><span style=display:flex><span>---
+</span></span></code></pre></div><p>配置根目录下的<code>_config.yml</code>文件，配置为：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># URL
+</span></span><span style=display:flex><span>## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+</span></span><span style=display:flex><span>url: https://wenmobo.github.io/  //你的网站地址
+</span></span><span style=display:flex><span>root: /
+</span></span><span style=display:flex><span>permalink: :year/:month/:day/:title/
+</span></span><span style=display:flex><span>permalink_defaults:
+</span></span></code></pre></div><h2 id=隐藏网页底部powered-by-hexo--强力驱动>隐藏网页底部powered By Hexo / 强力驱动
+<a class=header-anchor href=#%e9%9a%90%e8%97%8f%e7%bd%91%e9%a1%b5%e5%ba%95%e9%83%a8powered-by-hexo--%e5%bc%ba%e5%8a%9b%e9%a9%b1%e5%8a%a8></a></h2><p>打开<code>Blog/themes/next/layout/_partials/footer.swig</code>，注释掉相应代码。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>//用下面的符号注释，注释代码用下面括号括起来
+</span></span><span style=display:flex><span>&lt;!-- --&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;!--
+</span></span><span style=display:flex><span>&lt;span class=&#34;post-meta-divider&#34;&gt;|&lt;/span&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{% if theme.footer.powered %}
+</span></span><span style=display:flex><span>  &lt;div class=&#34;powered-by&#34;&gt;{#
+</span></span><span style=display:flex><span>  #}{{ __(&#39;footer.powered&#39;, &#39;&lt;a class=&#34;theme-link&#34; target=&#34;_blank&#34; href=&#34;https://hexo.io&#34;&gt;Hexo&lt;/a&gt;&#39;) }}{#
+</span></span><span style=display:flex><span>#}&lt;/div&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{% if theme.footer.powered and theme.footer.theme.enable %}
+</span></span><span style=display:flex><span>  &lt;span class=&#34;post-meta-divider&#34;&gt;|&lt;/span&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{% if theme.footer.theme.enable %}
+</span></span><span style=display:flex><span>  &lt;div class=&#34;theme-info&#34;&gt;{#
+</span></span><span style=display:flex><span>  #}{{ __(&#39;footer.theme&#39;) }} &amp;mdash; {#
+</span></span><span style=display:flex><span>  #}&lt;a class=&#34;theme-link&#34; target=&#34;_blank&#34; href=&#34;https://github.com/iissnan/hexo-theme-next&#34;&gt;{#
+</span></span><span style=display:flex><span>    #}NexT.{{ theme.scheme }}{#
+</span></span><span style=display:flex><span>  #}&lt;/a&gt;{% if theme.footer.theme.version %} v{{ theme.version }}{% endif %}{#
+</span></span><span style=display:flex><span>#}&lt;/div&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>{% if theme.footer.custom_text %}
+</span></span><span style=display:flex><span>  &lt;div class=&#34;footer-custom&#34;&gt;{#
+</span></span><span style=display:flex><span>  #}{{ theme.footer.custom_text }}{#
+</span></span><span style=display:flex><span>#}&lt;/div&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span><span style=display:flex><span>--&gt;
+</span></span></code></pre></div><h2 id=修改字体大小>修改字体大小
+<a class=header-anchor href=#%e4%bf%ae%e6%94%b9%e5%ad%97%e4%bd%93%e5%a4%a7%e5%b0%8f></a></h2><p>打开<code>\themes\next\source\css\ _variables\base.styl</code>文件，将<code>$font-size-base</code>改成<code>16px</code>，如下所示：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>$font-size-base            =16px
+</span></span></code></pre></div><h2 id=添加打赏>添加打赏
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0%e6%89%93%e8%b5%8f></a></h2><p>打开themes/next/_config.yml中配置如下</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>reward:
+</span></span><span style=display:flex><span>  enable: true
+</span></span><span style=display:flex><span>  comment: 原创技术分享，您的支持将鼓励我继续创作
+</span></span><span style=display:flex><span>  wechatpay: /images/wechatpay.png
+</span></span><span style=display:flex><span>  alipay: /images/alipay.jpg
+</span></span><span style=display:flex><span>  \#bitcoin: /images/bitcoin.jpg
+</span></span></code></pre></div><p>修改文件<code>next/source/css/_common/components/post/post-reward.styl</code>，然后注释如下即可</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>/*
+</span></span><span style=display:flex><span>#QR &gt; div:hover p {
+</span></span><span style=display:flex><span>  animation: roll 0.1s infinite linear;
+</span></span><span style=display:flex><span>  -webkit-animation: roll 0.1s infinite linear;
+</span></span><span style=display:flex><span>  -moz-animation: roll 0.1s infinite linear;
+</span></span><span style=display:flex><span>}*/
+</span></span></code></pre></div><h2 id=点击爆炸效果>点击爆炸效果
+<a class=header-anchor href=#%e7%82%b9%e5%87%bb%e7%88%86%e7%82%b8%e6%95%88%e6%9e%9c></a></h2><h3 id=效果图><strong>效果图</strong>
+<a class=header-anchor href=#%e6%95%88%e6%9e%9c%e5%9b%be></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=16.png alt=img></p><h3 id=实现方法><strong>实现方法</strong>
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%96%b9%e6%b3%95></a></h3><p><code>themes/next/source/js/src</code>里面建一个叫fireworks.js的文件，代码如下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>&#34;use strict&#34;;function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color=&#34;#F00&#34;,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:&#34;easeOutExpo&#34;,update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:&#34;linear&#34;,duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:&#34;easeOutExpo&#34;,update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(&#34;.fireworks&#34;);if(canvasEl){var ctx=canvasEl.getContext(&#34;2d&#34;),numberOfParticules=30,pointerX=0,pointerY=0,tap=&#34;mousedown&#34;,colors=[&#34;#FF1461&#34;,&#34;#18FF92&#34;,&#34;#5A87FF&#34;,&#34;#FBF38C&#34;],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+&#34;px&#34;,canvasEl.style.height=window.innerHeight+&#34;px&#34;,canvasEl.getContext(&#34;2d&#34;).scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){&#34;sidebar&#34;!==e.target.id&amp;&amp;&#34;toggle-sidebar&#34;!==e.target.id&amp;&amp;&#34;A&#34;!==e.target.nodeName&amp;&amp;&#34;IMG&#34;!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener(&#34;resize&#34;,setCanvasSize,!1)}&#34;use strict&#34;;function updateCoords(e){pointerX=(e.clientX||e.touches[0].clientX)-canvasEl.getBoundingClientRect().left,pointerY=e.clientY||e.touches[0].clientY-canvasEl.getBoundingClientRect().top}function setParticuleDirection(e){var t=anime.random(0,360)*Math.PI/180,a=anime.random(50,180),n=[-1,1][anime.random(0,1)]*a;return{x:e.x+n*Math.cos(t),y:e.y+n*Math.sin(t)}}function createParticule(e,t){var a={};return a.x=e,a.y=t,a.color=colors[anime.random(0,colors.length-1)],a.radius=anime.random(16,32),a.endPos=setParticuleDirection(a),a.draw=function(){ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.fillStyle=a.color,ctx.fill()},a}function createCircle(e,t){var a={};return a.x=e,a.y=t,a.color=&#34;#F00&#34;,a.radius=0.1,a.alpha=0.5,a.lineWidth=6,a.draw=function(){ctx.globalAlpha=a.alpha,ctx.beginPath(),ctx.arc(a.x,a.y,a.radius,0,2*Math.PI,!0),ctx.lineWidth=a.lineWidth,ctx.strokeStyle=a.color,ctx.stroke(),ctx.globalAlpha=1},a}function renderParticule(e){for(var t=0;t&lt;e.animatables.length;t++){e.animatables[t].target.draw()}}function animateParticules(e,t){for(var a=createCircle(e,t),n=[],i=0;i&lt;numberOfParticules;i++){n.push(createParticule(e,t))}anime.timeline().add({targets:n,x:function(e){return e.endPos.x},y:function(e){return e.endPos.y},radius:0.1,duration:anime.random(1200,1800),easing:&#34;easeOutExpo&#34;,update:renderParticule}).add({targets:a,radius:anime.random(80,160),lineWidth:0,alpha:{value:0,easing:&#34;linear&#34;,duration:anime.random(600,800)},duration:anime.random(1200,1800),easing:&#34;easeOutExpo&#34;,update:renderParticule,offset:0})}function debounce(e,t){var a;return function(){var n=this,i=arguments;clearTimeout(a),a=setTimeout(function(){e.apply(n,i)},t)}}var canvasEl=document.querySelector(&#34;.fireworks&#34;);if(canvasEl){var ctx=canvasEl.getContext(&#34;2d&#34;),numberOfParticules=30,pointerX=0,pointerY=0,tap=&#34;mousedown&#34;,colors=[&#34;#FF1461&#34;,&#34;#18FF92&#34;,&#34;#5A87FF&#34;,&#34;#FBF38C&#34;],setCanvasSize=debounce(function(){canvasEl.width=2*window.innerWidth,canvasEl.height=2*window.innerHeight,canvasEl.style.width=window.innerWidth+&#34;px&#34;,canvasEl.style.height=window.innerHeight+&#34;px&#34;,canvasEl.getContext(&#34;2d&#34;).scale(2,2)},500),render=anime({duration:1/0,update:function(){ctx.clearRect(0,0,canvasEl.width,canvasEl.height)}});document.addEventListener(tap,function(e){&#34;sidebar&#34;!==e.target.id&amp;&amp;&#34;toggle-sidebar&#34;!==e.target.id&amp;&amp;&#34;A&#34;!==e.target.nodeName&amp;&amp;&#34;IMG&#34;!==e.target.nodeName&amp;&amp;(render.play(),updateCoords(e),animateParticules(pointerX,pointerY))},!1),setCanvasSize(),window.addEventListener(&#34;resize&#34;,setCanvasSize,!1)};
+</span></span></code></pre></div><p>打开<code>themes/next/layout/_layout.swig</code>,在<code>&lt;/body></code>上面写下如下代码：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>{% if theme.fireworks %}
+</span></span><span style=display:flex><span>   &lt;canvas class=&#34;fireworks&#34; style=&#34;position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;&#34; &gt;&lt;/canvas&gt; 
+</span></span><span style=display:flex><span>   &lt;script type=&#34;text/javascript&#34; src=&#34;//cdn.bootcss.com/animejs/2.2.0/anime.min.js&#34;&gt;&lt;/script&gt; 
+</span></span><span style=display:flex><span>   &lt;script type=&#34;text/javascript&#34; src=&#34;/js/src/fireworks.js&#34;&gt;&lt;/script&gt;
+</span></span><span style=display:flex><span>{% endif %}
+</span></span></code></pre></div><p>打开主题配置文件，在里面最后写下：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Fireworks
+</span></span><span style=display:flex><span>fireworks: true
+</span></span></code></pre></div><h2 id=添加侧栏推荐阅读>添加侧栏推荐阅读
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0%e4%be%a7%e6%a0%8f%e6%8e%a8%e8%8d%90%e9%98%85%e8%af%bb></a></h2><h3 id=效果图-1>效果图
+<a class=header-anchor href=#%e6%95%88%e6%9e%9c%e5%9b%be-1></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=17.png alt></p><h3 id=实现方式>实现方式
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%96%b9%e5%bc%8f></a></h3><p>编辑主题配置文件，如下配置即可：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Blog rolls
+</span></span><span style=display:flex><span>links_icon: link
+</span></span><span style=display:flex><span>links_title: 推荐阅读
+</span></span><span style=display:flex><span>#links_layout: block
+</span></span><span style=display:flex><span>links_layout: inline
+</span></span><span style=display:flex><span>links:
+</span></span><span style=display:flex><span>  菜鸟教程: https://xxxxx
+</span></span><span style=display:flex><span>  自强学堂: https://xxxxx
+</span></span></code></pre></div><h2 id=添加站内搜索>添加站内搜索
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0%e7%ab%99%e5%86%85%e6%90%9c%e7%b4%a2></a></h2><p>安装 hexo-generator-search</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>npm install hexo-generator-search --save
+</span></span></code></pre></div><p>安装 hexo-generator-searchdb</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>npm install hexo-generator-searchdb --save
+</span></span></code></pre></div><p>编辑主题配置文件，设置<code>Local search</code>enable为<code>ture</code></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># Local search
+</span></span><span style=display:flex><span># Dependencies: https://github.com/flashlab/hexo-generator-search
+</span></span><span style=display:flex><span>local_search:
+</span></span><span style=display:flex><span>  enable: ture
+</span></span><span style=display:flex><span>  # if auto, trigger search by changing input
+</span></span><span style=display:flex><span>  # if manual, trigger search by pressing enter key or search button
+</span></span><span style=display:flex><span>  trigger: auto
+</span></span><span style=display:flex><span>  # show top n results per article, show all results by setting to -1
+</span></span><span style=display:flex><span>  top_n_per_article: 1
+</span></span></code></pre></div><h2 id=添加评论系统gitalk>添加评论系统gitalk
+<a class=header-anchor href=#%e6%b7%bb%e5%8a%a0%e8%af%84%e8%ae%ba%e7%b3%bb%e7%bb%9fgitalk></a></h2><h3 id=效果图-2>效果图
+<a class=header-anchor href=#%e6%95%88%e6%9e%9c%e5%9b%be-2></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=18.png alt></p><h3 id=实现方式-1>实现方式
+<a class=header-anchor href=#%e5%ae%9e%e7%8e%b0%e6%96%b9%e5%bc%8f-1></a></h3><p>在github中注册注册新应用，链接：https://github.com/settings/applications/new</p><p><img src=/imgs/img-lazy-loading.gif data-src=19.png alt></p><p>参数说明：
+Application name： # 应用名称，随意
+Homepage URL： # 网站URL，如<code>https://wandouduoduo.github.io</code>
+Application description # 描述，随意
+Authorization callback URL：# 网站URL，<code>https://wandouduoduo.github.io</code></p><p>点击注册后，页面跳转如下，其中<code>Client ID</code>和<code>Client Secret</code>在后面的配置中需要用到，到时复制粘贴即可：</p><p><img src=/imgs/img-lazy-loading.gif data-src=20.png alt></p><p>在主题配置文件<code>next/_config.yml</code>中添加如下内容</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>gitalk:
+</span></span><span style=display:flex><span>  enable: true
+</span></span><span style=display:flex><span>  githubID: github帐号  <span style=color:#75715e># 例：asdfv1929   </span>
+</span></span><span style=display:flex><span>  repo: 仓库名称   <span style=color:#75715e># 例：asdfv1929.github.io</span>
+</span></span><span style=display:flex><span>  ClientID: Client ID
+</span></span><span style=display:flex><span>  ClientSecret: Client Secret
+</span></span><span style=display:flex><span>  adminUser: github帐号 <span style=color:#75715e>#指定可初始化评论账户</span>
+</span></span><span style=display:flex><span>  distractionFreeMode: true
+</span></span></code></pre></div><h2 id=修改文章链接>修改文章链接
+<a class=header-anchor href=#%e4%bf%ae%e6%94%b9%e6%96%87%e7%ab%a0%e9%93%be%e6%8e%a5></a></h2><p>Hexo 默认的文章链接形式为 <code>domain/year/month/day/postname</code> ，当我们把文章源文件名改掉之后，链接也会改变，很不友好，并且四级目录，不利于 SEO。</p><p>因此，使用 <code>hexo-abbrlink</code> 插件，生成文章的永久链接，后期无论怎么修改也不会改变该链接。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>npm install hexo-abbrlink --save
+</span></span></code></pre></div><p>在站点配置文件 <code>_config.yml</code> 中修改：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>permalink: post/:abbrlink.html
+</span></span><span style=display:flex><span>abbrlink: 
+</span></span><span style=display:flex><span>  alg: crc32 <span style=color:#75715e># 算法：crc16(default) and crc32</span>
+</span></span><span style=display:flex><span>  rep: hex   <span style=color:#75715e># 进制：dec(default) and hex</span>
+</span></span></code></pre></div><p>可选择模式有：</p><ul><li>crc16 & hex</li><li>crc16 & dec</li><li>crc32 & hex</li><li>crc32 & dec</li></ul><h2 id=寻找图床>寻找图床
+<a class=header-anchor href=#%e5%af%bb%e6%89%be%e5%9b%be%e5%ba%8a></a></h2><p>当向文章中添加图片时，如果图片来源于网络，那么还比较好办，直接引用那个链接即可，不过也有问题，那就是如果那个链接挂了那么你的图片也就无法显示。另外如果你的图片来源于本地，那么更麻烦了。一种做法是使用第三方服务器，比如七牛，当需要插入图片时，先把图片上传到七牛的服务器然后再使用，我觉得很麻烦。这里选择另外一种方法。</p><p>首先修改 <code>_config.yml</code> (在站点目录下) 中 <code>post_asset_folder</code> 字段：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># post_asset_folder: false
+</span></span><span style=display:flex><span>post_asset_folder: true
+</span></span></code></pre></div><p>当设置该字段为 <code>true</code> 时，在建立文件时，Hexo 会自动建立一个与文章同名的文件夹，你就可以把与该文章相关的所有资源都放到那个文件夹，这么一来，你就可以很方便的使用资源。例如，文章 <code>post</code> 需要插入图片 <code>test.png</code> 时，就可以使用 <code>[图片上传失败...(image-773548-1546505826136)]</code> 。</p><p>问题是这样在本地显示没有问题，但是发布之后就无法显示，使用 <code>hexo-asset-image</code> 插件来解决。</p><p>在博客根目录右击打开 <code>git bash</code> ，执行以下命令：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>npm install https://github.com/CodeFalling/hexo-asset-image --save
+</span></span></code></pre></div><p>重新生成之后就可以在你自己的网页上正常显示了。</p><blockquote><p>注意：对于因为 SEO 优化，使用 <code>abbrlink</code> 插件修改过文章链接的朋友而言，这种方法还需要进一步修改一下。由于原来的 <code>permalink: :year/:month/:day/:title/</code> 变成了 <code>permalink: post/:abbrlink.html</code> 。打开博客根目录下 <code>node_modules\hexo-asset-image\index.js</code> ，增加一行命令，如下所示：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>  var config = hexo.config;
+</span></span><span style=display:flex><span>  if(config.post_asset_folder){
+</span></span><span style=display:flex><span>    var link = data.permalink;
+</span></span><span style=display:flex><span>    link = link.replace(&#39;.html&#39;, &#39;/&#39;);    //新增加，针对修改后的 permalink
+</span></span><span style=display:flex><span>  var beginPos = getPosition(link, &#39;/&#39;, 3) + 1;
+</span></span></code></pre></div><p>之后就可以正常显示了，仅供参考。对于修改成其他链接形式的朋友也有一定的参考意义。</p></blockquote></div><footer class=post-footer><div class=post-tags><a href=/tags/hexo>Hexo</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BC%80%E6%BA%90%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9Fopen-falcon%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/ rel=next title=分布式开源监控系统open-falcon安装使用笔记><i class="fa fa-chevron-left"></i> 分布式开源监控系统open-falcon安装使用笔记</a></div><div class="post-nav-prev post-nav-item"><a href=/post/mac%E5%92%8Cwindows%E7%AD%89%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E4%B8%8A%E5%8D%8F%E5%90%8C%E5%86%99hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%9E%E7%8E%B0/ rel=prev title=mac和windows等多台机器上协同写hexo博客的实现>mac和windows等多台机器上协同写hexo博客的实现
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

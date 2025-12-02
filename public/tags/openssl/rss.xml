@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Openssl on 豌豆多多</title><link>/tags/openssl/</link><description>Recent content in Openssl on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 14 Sep 2020 10:58:59 +0800</lastBuildDate><atom:link href="/tags/openssl/rss.xml" rel="self" type="application/rss+xml"/><item><title>openssl版本升级</title><link>/post/openssl%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</link><pubDate>Mon, 14 Sep 2020 10:58:59 +0800</pubDate><guid>/post/openssl%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</guid><description>&lt;p>&lt;strong>OpenSSL&lt;/strong>是一个
+&lt;a href="https://baike.baidu.com/item/%e5%bc%80%e6%94%be%e6%ba%90%e4%bb%a3%e7%a0%81" title="开放源代码" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+开放源代码
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>的
+&lt;a href="https://baike.baidu.com/item/%e8%bd%af%e4%bb%b6" title="软件" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+软件
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://baike.baidu.com/item/%e5%ba%93" title="库" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+库
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。&lt;/p></description></item></channel></rss>

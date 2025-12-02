@@ -1,0 +1,417 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="Stackstorm之一键安装"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Stackstorm"><meta property="og:type" content="article"><meta property="og:title" content="Stackstorm之一键安装"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2019-06-12 17:52:24 +0800 CST"><meta property="article:modified_time" content="2019-06-12 17:52:24 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85","permalink":"/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/","title":"Stackstorm之一键安装","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>Stackstorm之一键安装 - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#安装>安装</a></li><li><a href=#参考文档>参考文档</a></li><li><a href=#系统要求>系统要求</a></li><li><a href=#安装-1>安装</a><ul><li><a href=#系统环境>系统环境</a></li><li><a href=#调整selinux策略>调整SELinux策略</a></li><li><a href=#安装依赖项>安装依赖项</a></li><li><a href=#设置存储库>设置存储库</a></li><li><a href=#安装stackstorm组件>安装StackStorm组件</a></li><li><a href=#设置数据存储区加密>设置数据存储区加密</a></li><li><a href=#设置mistral数据库>设置Mistral数据库</a></li><li><a href=#配置ssh和sudo>配置SSH和SUDO</a></li><li><a href=#启动服务>启动服务</a></li><li><a href=#校验>校验</a></li></ul></li><li><a href=#配置验证>配置验证</a></li><li><a href=#安装webui并设置ssl终止>安装WebUI并设置SSL终止</a></li><li><a href=#设置chatops>设置ChatOps</a></li><li><a href=#安全注意事项>安全注意事项</a></li><li><a href=#升级到extreme-workflow-composer>升级到Extreme Workflow Composer</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Stackstorm之一键安装"><meta itemprop=description content="安装
+
+StackStorm作为RPM和Debs分发用于RedHat / CentOS和Ubuntu Linux系统，以及Docker镜像。您可以使用脚本在单个系统上自动安装和配置所有组件，也可以按照操作系统的手动说明进行操作。
+以下是选项概述：
+
+
+**一键安装：**运行我们的安装脚本，在单个系统上进行所有组件的固定安装。这是我们推荐的入门方式。有关详细信息，请参阅下面的“ 
+
+    快速安装
+    
+    
+    
+
+
+
+**手动安装：**有定制需求吗？也许您的服务器无法访问Internet？或者只是不喜欢使用脚本安装？阅读适用于您的操作系统的手册安装说明（
+
+    Ubuntu 14 
+    
+    
+    
+
+
+    / 
+    
+    
+    
+
+
+    16
+    
+    
+    
+，
+
+    RHEL / CentOS 6
+    
+    
+    
+，
+
+    RHEL / CentOS 7
+    
+    
+    
+），并根据您的需要进行调整。以下是为StackStorm repos设置内部镜像的一些
+
+    其他指导
+    
+    
+    
+。
+
+
+**Ansible Playbooks：**如果您是Ansible用户，请查看这些
+
+    Ansible Playbooks
+    
+    
+    
+以安装StackStorm。非常适合StackStorm的可重复，一致，幂等安装。
+
+
+高可用性将业务关键自动化任务委托给像StackStorm这样的系统会对该系统产生更高的要求。StackStorm可以在HA模式下运行以确保满足这些需求。 
+
+    Kubernetes中的StackStorm HA集群 - BETA将
+    
+    
+    
+整个复杂的基础架构自动化为可重现的蓝图。
+
+"></span><header class=post-header><h1 class=post-title itemprop="name headline">Stackstorm之一键安装</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-12 17:52:24 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-12 17:52:24 +0800 CST">2019-06-12</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E8%87%AA%E5%8A%A8%E5%8C%96 itemprop=url rel=index><span itemprop=name>自动化</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>5079</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>11分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=安装>安装
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85></a></h2><p>StackStorm作为RPM和Debs分发用于RedHat / CentOS和Ubuntu Linux系统，以及Docker镜像。您可以使用脚本在单个系统上自动安装和配置所有组件，也可以按照操作系统的手动说明进行操作。</p><p>以下是选项概述：</p><ul><li><p>**一键安装：**运行我们的安装脚本，在单个系统上进行所有组件的固定安装。这是我们推荐的入门方式。有关详细信息，请参阅下面的“
+<a href=https://docs.stackstorm.com/install/index.html#ref-one-line-install title=快速安装 rel="noopener external nofollow noreferrer" target=_blank class=exturl>快速安装
+<i class="fa fa-external-link-alt"></i></a></p></li><li><p>**手动安装：**有定制需求吗？也许您的服务器无法访问Internet？或者只是不喜欢使用脚本安装？阅读适用于您的操作系统的手册安装说明（
+<a href=https://docs.stackstorm.com/install/deb.html title="Ubuntu 14 " rel="noopener external nofollow noreferrer" target=_blank class=exturl>Ubuntu 14
+<i class="fa fa-external-link-alt"></i></a>
+<a href=https://docs.stackstorm.com/install/rhel6.html title="/ " rel="noopener external nofollow noreferrer" target=_blank class=exturl>/
+<i class="fa fa-external-link-alt"></i></a>
+<a href=https://docs.stackstorm.com/install/deb.html title=16 rel="noopener external nofollow noreferrer" target=_blank class=exturl>16
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://docs.stackstorm.com/install/rhel6.html title="RHEL / CentOS 6" rel="noopener external nofollow noreferrer" target=_blank class=exturl>RHEL / CentOS 6
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://docs.stackstorm.com/install/rhel7.html title="RHEL / CentOS 7" rel="noopener external nofollow noreferrer" target=_blank class=exturl>RHEL / CentOS 7
+<i class="fa fa-external-link-alt"></i>
+</a>），并根据您的需要进行调整。以下是为StackStorm repos设置内部镜像的一些
+<a href=https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/ title=其他指导 rel="noopener external nofollow noreferrer" target=_blank class=exturl>其他指导
+<i class="fa fa-external-link-alt"></i>
+</a>。</p></li><li><p>**Ansible Playbooks：**如果您是Ansible用户，请查看这些
+<a href=https://docs.stackstorm.com/install/ansible.html title="Ansible Playbooks" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Ansible Playbooks
+<i class="fa fa-external-link-alt"></i>
+</a>以安装StackStorm。非常适合StackStorm的可重复，一致，幂等安装。</p></li><li><p><strong>高可用性将</strong>业务关键自动化任务委托给像StackStorm这样的系统会对该系统产生更高的要求。StackStorm可以在HA模式下运行以确保满足这些需求。
+<a href=https://docs.stackstorm.com/install/k8s_ha.html title="Kubernetes中的StackStorm HA集群 - BETA将" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Kubernetes中的StackStorm HA集群 - BETA将
+<i class="fa fa-external-link-alt"></i>
+</a>整个复杂的基础架构自动化为可重现的蓝图。</p></li></ul><h2 id=参考文档>参考文档
+<a class=header-anchor href=#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3></a></h2><p><a href=https://docs.stackstorm.com/overview.html title=官方文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>官方文档
+<i class="fa fa-external-link-alt"></i></a></p><h2 id=系统要求>系统要求
+<a class=header-anchor href=#%e7%b3%bb%e7%bb%9f%e8%a6%81%e6%b1%82></a></h2><p>StackStorm需要Ubuntu，RHEL或CentOS Linux。并且仅支持64位架构。</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt></p><p>这是测试和部署StackStorm的建议最小大小：</p><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt></p><h2 id=安装-1>安装
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85-1></a></h2><h3 id=系统环境>系统环境
+<a class=header-anchor href=#%e7%b3%bb%e7%bb%9f%e7%8e%af%e5%a2%83></a></h3><p>RHEL 7 / CentOS 7</p><h3 id=调整selinux策略>调整SELinux策略
+<a class=header-anchor href=#%e8%b0%83%e6%95%b4selinux%e7%ad%96%e7%95%a5></a></h3><p>如果您的系统在执行模式下具有SELinux，请按照这些说明调整SELinux策略。这是成功安装所必需的。如果您对这些政策不满意，可能需要根据您的安全措施进行调整</p><ul><li>首先检查SELinux是否处于执行模式：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>getenforce
+</span></span></code></pre></div><ul><li>如果上一个命令返回“Enforcing”，则运行以下命令：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># SELINUX management tools, not available for some minimal installations</span>
+</span></span><span style=display:flex><span>sudo yum install -y policycoreutils-python
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Allow network access for nginx</span>
+</span></span><span style=display:flex><span>sudo setsebool -P httpd_can_network_connect <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Allow RabbitMQ to use port &#39;25672&#39;, otherwise it will fail to start</span>
+</span></span><span style=display:flex><span>sudo semanage port --list | grep -q <span style=color:#ae81ff>25672</span> <span style=color:#f92672>||</span> sudo semanage port -a -t amqp_port_t -p tcp <span style=color:#ae81ff>25672</span>
+</span></span></code></pre></div><h3 id=安装依赖项>安装依赖项
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85%e4%be%9d%e8%b5%96%e9%a1%b9></a></h3><p><strong>提示：目前支持的MongoDB版本是3.4。这是安装程序脚本安装的版本。MongoDB 3.6及更新版目前不支持StackStorm。将在StackStorm的未来版本中添加对4.0的支持</strong></p><p>安装MongoDB，RabbitMQ和PostgreSQL：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Add key and repo for the latest stable MongoDB (3.4)</span>
+</span></span><span style=display:flex><span>sudo rpm --import https://www.mongodb.org/static/pgp/server-3.4.asc
+</span></span><span style=display:flex><span>sudo sh -c <span style=color:#e6db74>&#34;cat &lt;&lt;EOT &gt; /etc/yum.repos.d/mongodb-org-3.4.repo
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[mongodb-org-3.4]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>name=MongoDB Repository
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>baseurl=https://repo.mongodb.org/yum/redhat/7/mongodb-org/3.4/x86_64/
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgcheck=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>enabled=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOT&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo yum -y install crudini
+</span></span><span style=display:flex><span>sudo yum -y install mongodb-org
+</span></span><span style=display:flex><span>sudo yum -y install rabbitmq-server
+</span></span><span style=display:flex><span>sudo systemctl start mongod rabbitmq-server
+</span></span><span style=display:flex><span>sudo systemctl enable mongod rabbitmq-server
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install and configure postgres</span>
+</span></span><span style=display:flex><span>sudo yum -y install postgresql-server postgresql-contrib postgresql-devel
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Initialize PostgreSQL</span>
+</span></span><span style=display:flex><span>sudo postgresql-setup initdb
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Make localhost connections to use an MD5-encrypted password for authentication</span>
+</span></span><span style=display:flex><span>sudo sed -i <span style=color:#e6db74>&#34;s/\(host.*all.*all.*127.0.0.1\/32.*\)ident/\1md5/&#34;</span> /var/lib/pgsql/data/pg_hba.conf
+</span></span><span style=display:flex><span>sudo sed -i <span style=color:#e6db74>&#34;s/\(host.*all.*all.*::1\/128.*\)ident/\1md5/&#34;</span> /var/lib/pgsql/data/pg_hba.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Start PostgreSQL service</span>
+</span></span><span style=display:flex><span>sudo systemctl start postgresql
+</span></span><span style=display:flex><span>sudo systemctl enable postgresql
+</span></span></code></pre></div><h3 id=设置存储库>设置存储库
+<a class=header-anchor href=#%e8%ae%be%e7%bd%ae%e5%ad%98%e5%82%a8%e5%ba%93></a></h3><p>以下脚本将检测您的平台和体系结构，并设置相应的StackStorm存储库。它还将添加用于包签名的GPG密钥。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>curl -s https://packagecloud.io/install/repositories/StackStorm/stable/script.rpm.sh | sudo bash
+</span></span></code></pre></div><h3 id=安装stackstorm组件>安装StackStorm组件
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85stackstorm%e7%bb%84%e4%bb%b6></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo yum install -y st2 st2mistral
+</span></span></code></pre></div><p>如果您没有在同一系统上运行RabbitMQ，MongoDB或PostgreSQL，或者更改了默认值，请调整以下设置：</p><ul><li><p>RabbitMQ连接<code>/etc/st2/st2.conf</code>和<code>/etc/mistral/mistral.conf</code></p></li><li><p>MongoDB在 <code>/etc/st2/st2.conf</code></p></li><li><p>PostgreSQL在 <code>/etc/mistral/mistral.conf</code></p></li></ul><h3 id=设置数据存储区加密>设置数据存储区加密
+<a class=header-anchor href=#%e8%ae%be%e7%bd%ae%e6%95%b0%e6%8d%ae%e5%ad%98%e5%82%a8%e5%8c%ba%e5%8a%a0%e5%af%86></a></h3><p>在
+<a href=https://docs.stackstorm.com/datastore.html title=key-value存储 rel="noopener external nofollow noreferrer" target=_blank class=exturl>key-value存储
+<i class="fa fa-external-link-alt"></i>
+</a>，允许用户存储加密的值（秘密）。这些是使用对称加密（AES256）存储的。要生成加密密钥，请运行以下命令：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>DATASTORE_ENCRYPTION_KEYS_DIRECTORY<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;/etc/st2/keys&#34;</span>
+</span></span><span style=display:flex><span>DATASTORE_ENCRYPTION_KEY_PATH<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEYS_DIRECTORY<span style=color:#e6db74>}</span><span style=color:#e6db74>/datastore_key.json&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo mkdir -p <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEYS_DIRECTORY<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>sudo st2-generate-symmetric-crypto-key --key-path <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEY_PATH<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Make sure only st2 user can read the file</span>
+</span></span><span style=display:flex><span>sudo chgrp st2 <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEYS_DIRECTORY<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>sudo chmod o-r <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEYS_DIRECTORY<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>sudo chgrp st2 <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEY_PATH<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>sudo chmod o-r <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEY_PATH<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># set path to the key file in the config</span>
+</span></span><span style=display:flex><span>sudo crudini --set /etc/st2/st2.conf keyvalue encryption_key_path <span style=color:#e6db74>${</span>DATASTORE_ENCRYPTION_KEY_PATH<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo st2ctl restart-component st2api
+</span></span></code></pre></div><h3 id=设置mistral数据库>设置Mistral数据库
+<a class=header-anchor href=#%e8%ae%be%e7%bd%aemistral%e6%95%b0%e6%8d%ae%e5%ba%93></a></h3><p>运行以下命令以设置Mistral PostgreSQL数据库</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Create Mistral DB in PostgreSQL</span>
+</span></span><span style=display:flex><span>cat <span style=color:#e6db74>&lt;&lt; EHD | sudo -u postgres psql
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>CREATE ROLE mistral WITH CREATEDB LOGIN ENCRYPTED PASSWORD &#39;StackStorm&#39;;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>CREATE DATABASE mistral OWNER mistral;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EHD</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Setup Mistral DB tables, etc.</span>
+</span></span><span style=display:flex><span>/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf upgrade head
+</span></span><span style=display:flex><span><span style=color:#75715e># Register mistral actions</span>
+</span></span><span style=display:flex><span>/opt/stackstorm/mistral/bin/mistral-db-manage --config-file /etc/mistral/mistral.conf populate | grep -v -e openstack -e keystone -e ironicclient
+</span></span></code></pre></div><h3 id=配置ssh和sudo>配置SSH和SUDO
+<a class=header-anchor href=#%e9%85%8d%e7%bd%aessh%e5%92%8csudo></a></h3><p>要运行本地和远程shell操作，StackStorm使用特殊系统用户（默认情况下<code>stanley</code>）。对于远程Linux操作，使用SSH。我们建议在所有远程主机上配置基于公钥的SSH访问。我们还建议配置对localhost的SSH访问以运行示例和测试。</p><ul><li>创建StackStorm系统用户，启用无密码sudo，并设置对“localhost”的ssh访问，以便可以在本地测试基于SSH的操作。您需要提升权限才能执行此操作：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Create an SSH system user (default `stanley` user may already exist)</span>
+</span></span><span style=display:flex><span>sudo useradd stanley
+</span></span><span style=display:flex><span>sudo mkdir -p /home/stanley/.ssh
+</span></span><span style=display:flex><span>sudo chmod <span style=color:#ae81ff>0700</span> /home/stanley/.ssh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Generate ssh keys</span>
+</span></span><span style=display:flex><span>sudo ssh-keygen -f /home/stanley/.ssh/stanley_rsa -P <span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Authorize key-based access</span>
+</span></span><span style=display:flex><span>sudo sh -c <span style=color:#e6db74>&#39;cat /home/stanley/.ssh/stanley_rsa.pub &gt;&gt; /home/stanley/.ssh/authorized_keys&#39;</span>
+</span></span><span style=display:flex><span>sudo chown -R stanley:stanley /home/stanley/.ssh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Enable passwordless sudo</span>
+</span></span><span style=display:flex><span>sudo sh -c <span style=color:#e6db74>&#39;echo &#34;stanley    ALL=(ALL)       NOPASSWD: SETENV: ALL&#34; &gt;&gt; /etc/sudoers.d/st2&#39;</span>
+</span></span><span style=display:flex><span>sudo chmod <span style=color:#ae81ff>0440</span> /etc/sudoers.d/st2
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Make sure `Defaults requiretty` is disabled in `/etc/sudoers`</span>
+</span></span><span style=display:flex><span>sudo sed -i -r <span style=color:#e6db74>&#34;s/^Defaults\s+\+?requiretty/# Defaults +requiretty/g&#34;</span> /etc/sudoers
+</span></span></code></pre></div><ul><li><p>在远程主机上配置SSH访问并启用无密码sudo，StackStorm将通过SSH运行远程操作。使用上一步中生成的公钥，按照
+<a href=https://docs.stackstorm.com/install/config/config.html#config-configure-ssh title=配置SSH中 rel="noopener external nofollow noreferrer" target=_blank class=exturl>配置SSH中
+<i class="fa fa-external-link-alt"></i>
+</a>的说明进行
+<a href=https://docs.stackstorm.com/install/config/config.html#config-configure-ssh title=操作 rel="noopener external nofollow noreferrer" target=_blank class=exturl>操作
+<i class="fa fa-external-link-alt"></i>
+</a>。要控制Windows框，请为
+<a href=https://docs.stackstorm.com/install/config/winrm_runners.html title=Windows运行程序 rel="noopener external nofollow noreferrer" target=_blank class=exturl>Windows运行程序
+<i class="fa fa-external-link-alt"></i>
+</a>配置访问权限 。</p></li><li><p>如果您使用的是其他用户或SSH密钥的路径，则需要在以下位置更改此部分<code>/etc/st2/st2.conf</code>：</p></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>system_user<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>user <span style=color:#f92672>=</span> stanley
+</span></span><span style=display:flex><span>ssh_key_file <span style=color:#f92672>=</span> /home/stanley/.ssh/stanley_rsa
+</span></span></code></pre></div><h3 id=启动服务>启动服务
+<a class=header-anchor href=#%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1></a></h3><ul><li>启动服务：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo st2ctl start
+</span></span></code></pre></div><ul><li>注册传感器，规则和操作：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo st2ctl reload
+</span></span></code></pre></div><h3 id=校验>校验
+<a class=header-anchor href=#%e6%a0%a1%e9%aa%8c></a></h3><p>以下命令将测试StackStorm安装。他们都应该成功完成：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>st2 --version
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>st2 -h
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># List the actions from a &#39;core&#39; pack</span>
+</span></span><span style=display:flex><span>st2 action list --pack<span style=color:#f92672>=</span>core
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Run a local shell command</span>
+</span></span><span style=display:flex><span>st2 run core.local -- date -R
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># See the execution results</span>
+</span></span><span style=display:flex><span>st2 execution list
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Fire a remote comand via SSH (Requires passwordless SSH)</span>
+</span></span><span style=display:flex><span>st2 run core.remote hosts<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;localhost&#39;</span> -- uname -a
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install a pack</span>
+</span></span><span style=display:flex><span>st2 pack install st2
+</span></span></code></pre></div><p>使用supervisor脚本管理StackStorm服务：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo st2ctl start|stop|status|restart|restart-component|reload|clean
+</span></span></code></pre></div><p>以愉快地使用StackStorm了。</p><p>但没有Web UI就没有乐趣，没有SSL或身份验证就没有安全感，没有ChatOps就没有乐趣，没有Extreme Workflow Composer就没钱了。继续阅读！</p><h2 id=配置验证>配置验证
+<a class=header-anchor href=#%e9%85%8d%e7%bd%ae%e9%aa%8c%e8%af%81></a></h2><p>为简单起见，参考部署使用基于文件的身份验证提供程序。请参阅
+<a href=https://docs.stackstorm.com/authentication.html title=身份验证 rel="noopener external nofollow noreferrer" target=_blank class=exturl>身份验证
+<i class="fa fa-external-link-alt"></i>
+</a>以配置和使用PAM或LDAP身份验证后端。</p><p>要使用基于文件的提供程序设置身份验证：</p><ul><li>使用密码创建用户：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Install htpasswd utility if you don&#39;t have it</span>
+</span></span><span style=display:flex><span>sudo yum -y install httpd-tools
+</span></span><span style=display:flex><span><span style=color:#75715e># Create a user record in a password file.</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#39;Ch@ngeMe&#39;</span> | sudo htpasswd -i /etc/st2/htpasswd st2admin
+</span></span></code></pre></div><ul><li>启用并配置身份验证<code>/etc/st2/st2.conf</code>：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>auth<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ...</span>
+</span></span><span style=display:flex><span>enable <span style=color:#f92672>=</span> True
+</span></span><span style=display:flex><span>backend <span style=color:#f92672>=</span> flat_file
+</span></span><span style=display:flex><span>backend_kwargs <span style=color:#f92672>=</span> <span style=color:#f92672>{</span><span style=color:#e6db74>&#34;file_path&#34;</span>: <span style=color:#e6db74>&#34;/etc/st2/htpasswd&#34;</span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># ...</span>
+</span></span></code></pre></div><ul><li>重启st2api服务：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo st2ctl restart-component st2api
+</span></span></code></pre></div><ul><li>验证，并检查它是否有效：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Login - you will be prompted for password (default &#39;Ch@ngeMe&#39;)</span>
+</span></span><span style=display:flex><span>st2 login st2admin
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Check that it works</span>
+</span></span><span style=display:flex><span>st2 action list
+</span></span></code></pre></div><h2 id=安装webui并设置ssl终止>安装WebUI并设置SSL终止
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85webui%e5%b9%b6%e8%ae%be%e7%bd%aessl%e7%bb%88%e6%ad%a2></a></h2><p><a href=http://nginx.org/ title=NGINX rel="noopener external nofollow noreferrer" target=_blank class=exturl>NGINX
+<i class="fa fa-external-link-alt"></i>
+</a>用于提供WebUI静态文件，将HTTP重定向到HTTPS，提供SSL终止，以及反向代理st2auth和st2api API端点。要进行设置：安装 <code>st2web</code>和<code>nginx</code>包，生成证书或放置现有证书<code>/etc/ssl/st2</code>，并使用StackStorm提供的
+<a href=https://github.com/StackStorm/st2/tree/master/conf/nginx/st2.conf title=站点配置文件st2.conf rel="noopener external nofollow noreferrer" target=_blank class=exturl>站点配置文件st2.conf
+<i class="fa fa-external-link-alt"></i>
+</a>配置nginx</p><p>StackStorm依赖于Nginx版本> = 1.7.5。RHEL在软件包存储库中有一个旧版本，因此您需要添加官方Nginx存储库：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Add key and repo for the latest stable nginx</span>
+</span></span><span style=display:flex><span>sudo rpm --import http://nginx.org/keys/nginx_signing.key
+</span></span><span style=display:flex><span>sudo sh -c <span style=color:#e6db74>&#34;cat &lt;&lt;EOT &gt; /etc/yum.repos.d/nginx.repo
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>[nginx]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>name=nginx repo
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>baseurl=http://nginx.org/packages/rhel/\\\$releasever/x86_64/
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>gpgcheck=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>enabled=1
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>EOT&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Ensure that EPEL repo is not used for nginx</span>
+</span></span><span style=display:flex><span>sudo sed -i <span style=color:#e6db74>&#39;s/^\(enabled=1\)$/exclude=nginx\n\1/g&#39;</span> /etc/yum.repos.d/epel.repo
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install nginx</span>
+</span></span><span style=display:flex><span>sudo yum install -y nginx
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Install st2web</span>
+</span></span><span style=display:flex><span>sudo yum install -y st2web
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Generate a self-signed certificate or place your existing certificate under /etc/ssl/st2</span>
+</span></span><span style=display:flex><span>sudo mkdir -p /etc/ssl/st2
+</span></span><span style=display:flex><span>sudo openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/st2/st2.key -out /etc/ssl/st2/st2.crt <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>-days <span style=color:#ae81ff>365</span> -nodes -subj <span style=color:#e6db74>&#34;/C=US/ST=California/L=Palo Alto/O=StackStorm/OU=Information \
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>Technology/CN=</span><span style=color:#66d9ef>$(</span>hostname<span style=color:#66d9ef>)</span><span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Copy and enable the supplied nginx config file</span>
+</span></span><span style=display:flex><span>sudo cp /usr/share/doc/st2/conf/nginx/st2.conf /etc/nginx/conf.d/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Disable default_server configuration in existing /etc/nginx/nginx.conf</span>
+</span></span><span style=display:flex><span>sudo sed -i <span style=color:#e6db74>&#39;s/default_server//g&#39;</span> /etc/nginx/nginx.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo systemctl restart nginx
+</span></span><span style=display:flex><span>sudo systemctl enable nginx
+</span></span></code></pre></div><p>如果修改nginx配置中的ports或url路径，请在st2web配置中进行相应的更改<code>/opt/stackstorm/static/webui/config.js</code></p><p>使用浏览器连接<code>https://${ST2_HOSTNAME}</code>并登录WebUI</p><p>如果您无法连接到Web浏览器，则可能需要更改默认防火墙设置。您可以使用以下命令执行此操作：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>firewall-cmd --zone<span style=color:#f92672>=</span>public --add-service<span style=color:#f92672>=</span>http --add-service<span style=color:#f92672>=</span>https
+</span></span><span style=display:flex><span>firewall-cmd --zone<span style=color:#f92672>=</span>public --permanent --add-service<span style=color:#f92672>=</span>http --add-service<span style=color:#f92672>=</span>https
+</span></span></code></pre></div><p>这将允许入站HTTP（端口80）和HTTPS（端口443）流量，并使这些更改在重新启动后继续存在。</p><p>如果您尝试从框外访问API并且已根据这些说明配置了nginx，请使用<code>https://${EXTERNAL_IP}/api/v1/${REST_ENDPOINT}</code>。</p><p>例如：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>curl -X GET -H  <span style=color:#e6db74>&#39;Connection: keep-alive&#39;</span> -H  <span style=color:#e6db74>&#39;User-Agent: manual/curl&#39;</span> -H  <span style=color:#e6db74>&#39;Accept-Encoding: gzip, deflate&#39;</span> -H  <span style=color:#e6db74>&#39;Accept: */*&#39;</span> -H  <span style=color:#e6db74>&#39;X-Auth-Token: &lt;YOUR_TOKEN&gt;&#39;</span> https://1.2.3.4/api/v1/actions
+</span></span></code></pre></div><p>同样，您可以使用连接到auth REST端点<code>https://${EXTERNAL_IP}/auth/v1/${AUTH_ENDPOINT}</code>。</p><p>您可以通过向<code>--debug</code>CLI命令添加适当资源的选项来查看资源的实际REST端点。</p><p>例如，要查看获取操作的端点，请调用：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>st2 --debug action list
+</span></span></code></pre></div><h2 id=设置chatops>设置ChatOps
+<a class=header-anchor href=#%e8%ae%be%e7%bd%aechatops></a></h2><p>如果您已经运行了Hubot实例，则可以安装
+<a href=https://github.com/StackStorm/hubot-stackstorm title=hubot-stackstorm插件 rel="noopener external nofollow noreferrer" target=_blank class=exturl>hubot-stackstorm插件
+<i class="fa fa-external-link-alt"></i>
+</a>并配置StackStorm环境变量，如下所述。否则，启用
+<a href=https://docs.stackstorm.com/chatops/index.html title="StackStorm ChatOps" rel="noopener external nofollow noreferrer" target=_blank class=exturl>StackStorm ChatOps
+<i class="fa fa-external-link-alt"></i>
+</a>的最简单方法 是使用
+<a href=https://github.com/stackstorm/st2chatops/ title=st2chatops rel="noopener external nofollow noreferrer" target=_blank class=exturl>st2chatops
+<i class="fa fa-external-link-alt"></i>
+</a>包。</p><ul><li>验证<code>chatops</code>是否已安装该包，并启用了通知规则：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Ensure chatops pack is in place</span>
+</span></span><span style=display:flex><span>ls /opt/stackstorm/packs/chatops
+</span></span><span style=display:flex><span><span style=color:#75715e># Create notification rule if not yet enabled</span>
+</span></span><span style=display:flex><span>st2 rule get chatops.notify <span style=color:#f92672>||</span> st2 rule create /opt/stackstorm/packs/chatops/rules/notify_hubot.yaml
+</span></span></code></pre></div><ul><li>添加
+<a href=https://nodejs.org/en/download/package-manager/ title="NodeJS v10存储库" rel="noopener external nofollow noreferrer" target=_blank class=exturl>NodeJS v10存储库
+<i class="fa fa-external-link-alt"></i>
+</a>：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+</span></span></code></pre></div><ul><li>安装<code>st2chatops</code>包：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo yum install -y st2chatops
+</span></span></code></pre></div><ul><li><p>查看并编辑<code>/opt/stackstorm/chatops/st2chatops.env</code>配置文件，将其指向StackStorm安装和您正在使用的聊天服务。您至少应该生成
+<a href=https://docs.stackstorm.com/authentication.html#authentication-apikeys title=API密钥 rel="noopener external nofollow noreferrer" target=_blank class=exturl>API密钥
+<i class="fa fa-external-link-alt"></i>
+</a>并设置<code>ST2_API_KEY</code>变量。默认情况下<code>st2api</code>，<code>st2auth</code>预计它们位于同一主机上。如果不是这种情况，请更新<code>ST2_API</code>和<code>ST2_AUTH_URL</code>变量或只是指向正确的主机 <code>ST2_HOSTNAME</code>。</p><p>示例配置使用Slack。要进行此设置，请转到Slack Web管理界面，创建一个Bot，然后将身份验证令牌复制到<code>HUBOT_SLACK_TOKEN</code>。</p><p>如果您使用的是其他聊天服务，请在以下部分中设置相应的环境变量 ：
+<a href=https://github.com/slackhq/hubot-slack title=Slack rel="noopener external nofollow noreferrer" target=_blank class=exturl>Slack
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://github.com/hipchat/hubot-hipchat title=HipChat rel="noopener external nofollow noreferrer" target=_blank class=exturl>HipChat
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://github.com/flowdock/hubot-flowdock title=Flowdock rel="noopener external nofollow noreferrer" target=_blank class=exturl>Flowdock
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://github.com/nandub/hubot-irc title=IRC rel="noopener external nofollow noreferrer" target=_blank class=exturl>IRC
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://github.com/loafoe/hubot-matteruser title=Mattermost rel="noopener external nofollow noreferrer" target=_blank class=exturl>Mattermost
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://github.com/RocketChat/hubot-rocketchat title=RocketChat rel="noopener external nofollow noreferrer" target=_blank class=exturl>RocketChat
+<i class="fa fa-external-link-alt"></i>
+</a>，
+<a href=https://github.com/markstory/hubot-xmpp title=XMPP rel="noopener external nofollow noreferrer" target=_blank class=exturl>XMPP
+<i class="fa fa-external-link-alt"></i>
+</a>。<code>Chat service adapter settings``st2chatops.env</code></p></li><li><p>启动服务：</p></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo systemctl start st2chatops
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Start st2chatops on boot</span>
+</span></span><span style=display:flex><span>sudo systemctl enable st2chatops
+</span></span></code></pre></div><ul><li>重新加载st2包以确保<code>chatops.notify</code>注册规则：</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>sudo st2ctl reload --register-all
+</span></span></code></pre></div><p>开始聊天吧！！！</p><h2 id=安全注意事项>安全注意事项
+<a class=header-anchor href=#%e5%ae%89%e5%85%a8%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9></a></h2><p>默认情况下，安装MongoDB，RabbitMQ和PostgreSQL时，它们会禁用身份验证或使用默认静态密码。因此，在安装这些服务之后，您应该配置它们并使用强大的随机生成的密码启用身份验证。</p><p>**注意：**如果您使用StackStorm安装脚本，则会自动完成此操作。</p><p>为这些服务配置授权和密码超出了本文档的范围。有关更多信息，请参阅以下链接</p><ul><li>MongoDB的-
+<a href=https://docs.mongodb.com/manual/tutorial/enable-authentication/ title=https://docs.mongodb.com/manual/tutorial/enable-authentication/ rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://docs.mongodb.com/manual/tutorial/enable-authentication/
+<i class="fa fa-external-link-alt"></i>
+</a>，https://docs.mongodb.com/manual/core/authorization/</li><li>RabbitMQ -
+<a href=https://www.rabbitmq.com/authentication.html title=https://www.rabbitmq.com/authentication.html rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://www.rabbitmq.com/authentication.html
+<i class="fa fa-external-link-alt"></i></a></li><li>PostgreSQL -
+<a href=https://www.postgresql.org/docs/9.4/static/auth-methods.html title=https://www.postgresql.org/docs/9.4/static/auth-methods.html rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://www.postgresql.org/docs/9.4/static/auth-methods.html
+<i class="fa fa-external-link-alt"></i></a></li></ul><p>为这些组件启用身份验证后，还需要更新StackStorm服务以使用新设置。</p><p>这意味着编辑以下配置选项：</p><ol><li>StackStorm - <code>/etc/st2/st2.conf</code></li></ol><blockquote><ul><li><p><code>database.username</code> - MongoDB数据库用户名。</p></li><li><p><code>database.password</code> - MongoDB数据库密码。</p></li><li><p><code>messaging.url</code>- RabbitMQ传输网址（<code>amqp://&lt;username>:&lt;password>@&lt;hostname>:5672</code>）</p></li></ul></blockquote><p>2，mistral - <code>/etc/mistral/mistral.conf</code></p><blockquote><ul><li><code>database.connection</code>- PostgreSQL数据库连接字符串（<code>postgresql+psycopg2://&lt;username>:&lt;password>@&lt;hostname>/mistral</code>）</li><li><code>transport_url</code>- RabbitMQ传输网址（<code>rabbit://&lt;username>:&lt;password>@&lt;hostname>:5672</code>）</li></ul></blockquote><p>此外，强烈建议您遵循以下最佳实践来运行网络服务：</p><ul><li>确保服务之间的通信已加密。为MongoDB，RabbitMQ和PostgreSQL启用SSL / TLS。</li><li>将服务配置为仅侦听localhost，并在需要时侦听内部IP地址。通常不需要StackStorm（MongoDB，RabbitMQ，PostgreSQL）使用的大多数服务在公共IP地址上可用。</li><li>配置防火墙并设置白名单。防火墙应仅允许那些需要访问这些服务的用户和系统进行访问。API和auth服务通常需要您的用户可访问，但其他相关服务（如MongoDB，RabbitMQ和PostgreSQL）则不需要。这些不应该由用户直接访问，并且只允许StackStorm组件与它们通信。</li><li>在可能的情况下，您还应该使用其他基于网络的隔离和安全功能，例如DMZ。</li></ul><p>上述步骤对于StackStorm组件在多个服务器上运行的分布式生产部署尤为重要。</p><h2 id=升级到extreme-workflow-composer>升级到Extreme Workflow Composer
+<a class=header-anchor href=#%e5%8d%87%e7%ba%a7%e5%88%b0extreme-workflow-composer></a></h2><p>Extreme Workflow Composer将Workflow Designer（用于创建/编辑工作流的图形工具），RBAC和LDAP添加到StackStorm。它作为一组附加软件包部署在StackStorm之上。您将需要一个有效的Extreme Workflow Composer订阅和一个许可证密钥来访问Extreme Workflow Composer存储库。</p><p>要了解有关Extreme Workflow Composer的更多信息，请求报价或获取评估许可证，请访问
+<a href=https://stackstorm.com/features/#ewc/ title=stackstorm.com/product rel="noopener external nofollow noreferrer" target=_blank class=exturl>stackstorm.com/product
+<i class="fa fa-external-link-alt"></i>
+</a>。</p><p>要安装Extreme Workflow Composer，请<code>${EWC_LICENSE_KEY}</code>在下面的命令中使用您在注册或购买时收到的密钥进行替换，然后运行以下命令：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#75715e># Set up Extreme Workflow Composer repository access</span>
+</span></span><span style=display:flex><span>curl -s https://<span style=color:#e6db74>${</span>EWC_LICENSE_KEY<span style=color:#e6db74>}</span>:@packagecloud.io/install/repositories/StackStorm/enterprise/script.rpm.sh | sudo bash
+</span></span><span style=display:flex><span><span style=color:#75715e># Install Extreme Workflow Composer</span>
+</span></span><span style=display:flex><span>sudo yum install -y bwc-enterprise
+</span></span><span style=display:flex><span>sudo st2ctl restart
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/stackstorm>Stackstorm</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/%E5%9F%BA%E4%BA%8Edocker%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8xxl-job%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/ rel=next title=基于Docker的高可用集群xxl-job分布式任务调度><i class="fa fa-chevron-left"></i> 基于Docker的高可用集群xxl-job分布式任务调度</a></div><div class="post-nav-prev post-nav-item"><a href=/post/stackstorm%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%85%A5%E9%97%A8/ rel=prev title=Stackstorm的介绍与入门>Stackstorm的介绍与入门
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

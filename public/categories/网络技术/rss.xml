@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>网络技术 on 豌豆多多</title><link>/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/</link><description>Recent content in 网络技术 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 02 Jul 2021 11:24:31 +0800</lastBuildDate><atom:link href="/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF/rss.xml" rel="self" type="application/rss+xml"/><item><title>详解TcpDump神器</title><link>/post/%E8%AF%A6%E8%A7%A3tcpdump%E7%A5%9E%E5%99%A8/</link><pubDate>Fri, 02 Jul 2021 11:24:31 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3tcpdump%E7%A5%9E%E5%99%A8/</guid><description>&lt;p>今天要给大家介绍的一个类Unix下的一个网络数据采集分析工具 &amp;ndash; Tcpdump，也就是我们常说的抓包工具。与它功能类似的工具有 wireshark。不同的是wireshark有图形化界面，而tcpdump 则只有命令行。&lt;/p>
+&lt;p>作为一个运维，经常和服务器打交道，但服务器追求性能很少安装图形界面，因此直接跳过wireshark，直接给大家介绍这个tcpdump神器。&lt;/p>
+&lt;p>这篇文章借助于很多帮助文档，终于把tcpdump的用法全部研究了个遍。毫不夸张的说，应该可以算是中文里把 tcpdump 讲得最清楚明白，并且最全的文章了。所以&lt;strong>本文值得你收藏分享，就怕你错过了，就再也找不到像这样把 tcpdump 讲得直白而且特全的文章了&lt;/strong>。&lt;/p></description></item><item><title>服务器要怎样屏蔽国外所有IP</title><link>/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A6%81%E6%80%8E%E6%A0%B7%E5%B1%8F%E8%94%BD%E5%9B%BD%E5%A4%96%E6%89%80%E6%9C%89ip/</link><pubDate>Mon, 10 Aug 2020 14:19:37 +0800</pubDate><guid>/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A6%81%E6%80%8E%E6%A0%B7%E5%B1%8F%E8%94%BD%E5%9B%BD%E5%A4%96%E6%89%80%E6%9C%89ip/</guid><description>&lt;p>网站的客户和受众人群都是国内的，不想让国外访问；或者站长监测到国外肉鸡一直有扫描或攻击。这时就需要对对境外IP进行进行过滤和屏蔽；对IP进行过滤屏蔽只有两种方法：&lt;code>加白&lt;/code>和&lt;code>加黑&lt;/code>; &lt;code>加白&lt;/code>就是把允许访问的添加入白名单中，没在白名单中的都进行屏蔽过滤，不允许访问；&lt;code>加黑&lt;/code>就是把不允许访问的加入到黑名单中，没在黑名单中的完全放开，都可以进行访问。那么两种方法怎么选择呢？并且要怎样去屏蔽呢？&lt;/p></description></item><item><title>ssh端口转发：ssh隧道</title><link>/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/</link><pubDate>Wed, 30 Oct 2019 10:43:48 +0800</pubDate><guid>/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>&amp;ldquo;ssh端口转发&amp;quot;还有一个更加形象的名字，叫做&amp;quot;ssh隧道&amp;rdquo;，当然，只是纯粹的通过&amp;quot;ssh隧道&amp;quot;这几个字去理解它可能不太容易，我们来描述一些实际的场景，在这些场景中我们可能会遇到一些问题，而这些问题可以通过&amp;quot;ssh隧道&amp;quot;解决，通过这样的方式，我们反而更加容易理解&amp;quot;ssh隧道&amp;quot;是什么以及它的作用。&lt;/p>
+&lt;p>假如我们现在有两个台主机，主机A与主机B，主机A上安装有mysql客户端，主机B上安装有mysql服务端，现在，主机A中的mysql客户端需要与主机B中的mysql服务端进行通讯，则需要从mysql的客户端连接到mysql服务端。如下图所示&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="ssh端口转发：ssh隧道" />&lt;/p>
+&lt;p>然而我们知道，mysql在传输数据时是进行明文传输的，如果主机A与主机B只能通过公网进行通讯，那么暴露在公网的mysql通讯是非常不安全的，所以，我们需要借助一些手段，提高访问mysql服务时的安全性，比如，我们可以使用SSL证书为数据加密，或者使用stunnel加密隧道，我们还可以使用VPN，当然，这些方法都不是这篇文章所要描述的重点，我们此处要总结的是&amp;quot;ssh隧道&amp;quot;这种方法，我们可以利用ssh，搭建出一条&amp;quot;通道&amp;quot;，然后将mysq的客户端与服务端通过这条&amp;quot;ssh通道&amp;quot;连接起来，如下图所示&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="ssh端口转发：ssh隧道" />&lt;/p>
+&lt;p>mysql的客户端与服务端的连接方式从原来直连的方式变成了如上图所示的连接方式，它们之间并不直接进行通讯，而是借助ssh隧道将通讯数据转发，虽然仍然跨越了公网，但是由于ssh本身的安全特性，所以别人无法看到明文传输的数据，数据依靠ssh隧道实现了加密的效果，达到了保护数据安全的作用，提升了mysql的客户端与服务端通讯的安全性。&lt;/p></description></item><item><title>SSH隧道与端口转发及内网穿透</title><link>/post/ssh%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%8F%8A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link><pubDate>Tue, 29 Oct 2019 19:30:24 +0800</pubDate><guid>/post/ssh%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%8F%8A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid><description>&lt;h2 id="ssh隧道与端口转发及内网穿透">SSH隧道与端口转发及内网穿透
+&lt;a class="header-anchor" href="#ssh%e9%9a%a7%e9%81%93%e4%b8%8e%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91%e5%8f%8a%e5%86%85%e7%bd%91%e7%a9%bf%e9%80%8f">&lt;/a>
+&lt;/h2>&lt;p>大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。&lt;/p>
+&lt;p>&lt;strong>SSH/plink命令的基本资料：&lt;/strong>&lt;/p>
+&lt;p>首先，认识下这三个非常强大的命令：&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -D listen_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;p>相关参数的解释：&lt;/p>
+&lt;p>-f Fork into background after authentication.
+后台认证用户/密码，通常和-N连用，不用登录到远程主机。&lt;/p>
+&lt;p>-L port:host:hostport
+将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p>
+&lt;p>-R port:host:hostport
+将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p>
+&lt;p>-D port
+指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.&lt;/p>
+&lt;p>-C Enable compression.
+压缩数据传输。&lt;/p>
+&lt;p>-N Do not execute a shell or command.
+不执行脚本或命令，通常与-f连用。&lt;/p>
+&lt;p>-g Allow remote hosts to connect to forwarded ports.
+在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。&lt;/p></description></item><item><title>Nat回环(Lan-->Lan端口映射原理)</title><link>/post/nat%E5%9B%9E%E7%8E%AF-lan-lan%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86/</link><pubDate>Fri, 25 Oct 2019 18:46:58 +0800</pubDate><guid>/post/nat%E5%9B%9E%E7%8E%AF-lan-lan%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86/</guid><description>&lt;p>局域网内网有服务器对外发布，基于对服务器的保护，内网用户需通过域名或者公网ip来访问内网服务器。&lt;/p>
+&lt;p>如下图所示：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="img" />&lt;/p>
+&lt;h2 id="名词解释">名词解释
+&lt;a class="header-anchor" href="#%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a">&lt;/a>
+&lt;/h2>&lt;p>DNAT：转换目标ip地址。&lt;/p>
+&lt;p>SNAT： 转换源ip地址。&lt;/p></description></item><item><title>网络传输中的表和包的流经过程</title><link>/post/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E8%A1%A8%E5%92%8C%E5%8C%85%E7%9A%84%E6%B5%81%E7%BB%8F%E8%BF%87%E7%A8%8B/</link><pubDate>Mon, 15 Jul 2019 17:21:17 +0800</pubDate><guid>/post/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E8%A1%A8%E5%92%8C%E5%8C%85%E7%9A%84%E6%B5%81%E7%BB%8F%E8%BF%87%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了网络传输过程中3张表：MAC地址表，ARP缓存表和路由表。并且也介绍了数据包在网络传输中从源到目的主机的过程。&lt;/p></description></item><item><title>Http认证</title><link>/post/http%E8%AE%A4%E8%AF%81/</link><pubDate>Mon, 15 Jul 2019 17:10:35 +0800</pubDate><guid>/post/http%E8%AE%A4%E8%AF%81/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详解介绍了http的认证。认证分为：单向认证和双向认证。&lt;/p></description></item><item><title>ssh认证原理</title><link>/post/ssh%E8%AE%A4%E8%AF%81%E5%8E%9F%E7%90%86/</link><pubDate>Mon, 15 Jul 2019 15:40:26 +0800</pubDate><guid>/post/ssh%E8%AE%A4%E8%AF%81%E5%8E%9F%E7%90%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通常，通过ssh登录远程服务器时，使用&lt;strong>密码认证&lt;/strong>，分别输入用户名和密码，两者满足一定规则就可以登录。但是密码认证有以下的缺点：&lt;/p>
+&lt;ul>
+&lt;li>用户无法设置空密码（即使系统允许空密码，也会十分危险）&lt;/li>
+&lt;li>密码容易被人偷窥或猜到&lt;/li>
+&lt;li>服务器上的一个帐户若要给多人使用，则必须让所有使用者都知道密码，导致密码容易泄露，而且修改密码时必须通知所有人&lt;/li>
+&lt;/ul>
+&lt;p>而使用&lt;strong>公钥认证&lt;/strong>则可以解决上述问题。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>公钥认证允许使用空密码，省去每次登录都需要输入密码的麻烦&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>多个使用者可以通过各自的密钥登录到系统上的同一个用户&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>iptables使用详解</title><link>/post/iptables%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</link><pubDate>Mon, 15 Jul 2019 15:28:26 +0800</pubDate><guid>/post/iptables%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>防 火墙，其实说白了讲，就是用于实现Linux下访问控制的功能的，它分为硬件的或者软件的防火墙两种。无论是在哪个网络中，防火墙工作的地方一定是在网络 的边缘。而我们的任务就是需要去定义到底防火墙如何工作，这就是防火墙的策略规则。制定策略规则以达到让它对出入网络的IP、数据进行检测。&lt;/p>
+&lt;p>目前市面上比较常见的有3、4层的防火墙，叫网络层的防火墙，还有7层的防火墙，其实是代理层的网关。&lt;/p>
+&lt;p>对于TCP/IP的七层模型来讲，我们知道第三层是网络层，三层的防火墙会在这层对源地址和目标地址进行检测。但是对于七层的防火墙，不管你源端口或者目标端口，源地址或者目标地址是什么，都将对你所有的东西进行检查。 所以，对于设计原理来讲，七层防火墙更加安全，但是这却带来了效率更低。所以市面上通常的防火墙方案，都是两者结合的。而又由于我们都需要从防火墙所控制 的这个口来访问，所以防火墙的工作效率就成了用户能够访问数据多少的一个最重要的控制，配置的不好甚至有可能成为流量的瓶颈。&lt;/p></description></item><item><title>DNS解析过程详解</title><link>/post/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 15:28:24 +0800</pubDate><guid>/post/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了dns的解析过程，以及对解析过程中所涉及的名词进行说明。&lt;/p></description></item><item><title>http协议详解</title><link>/post/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 15:22:05 +0800</pubDate><guid>/post/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。&lt;/p></description></item><item><title>iptables原理详解</title><link>/post/iptables%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 14:56:13 +0800</pubDate><guid>/post/iptables%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="iptables简介">&lt;strong>iptables简介&lt;/strong>
+&lt;a class="header-anchor" href="#iptables%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案。它工作在网络层，针对TCP/IP数据包实施过滤和限制，是典型的包过滤防火墙；它也可以实现网络地址转换（NAT）等功能。&lt;/p></description></item><item><title>DNS中的七大资源记录详解</title><link>/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 11:12:45 +0800</pubDate><guid>/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="概要">概要
+&lt;a class="header-anchor" href="#%e6%a6%82%e8%a6%81">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>域名系统&lt;/strong>（
+&lt;a href="https://baike.baidu.com/item/%e8%8b%b1%e6%96%87" title="英文" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+英文
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>：&lt;strong>D&lt;/strong>omain &lt;strong>N&lt;/strong>ame &lt;strong>S&lt;/strong>ystem，
+&lt;a href="https://baike.baidu.com/item/%e7%bc%a9%e5%86%99" title="缩写" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+缩写
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>：&lt;strong>DNS&lt;/strong>）是
+&lt;a href="https://baike.baidu.com/item/%e4%ba%92%e8%81%94%e7%bd%91" title="互联网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+互联网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>的一项服务。它作为将
+&lt;a href="https://baike.baidu.com/item/%e5%9f%9f%e5%90%8d" title="域名" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+域名
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>和
+&lt;a href="https://baike.baidu.com/item/IP%e5%9c%b0%e5%9d%80" title="IP地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+IP地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>相互
+&lt;a href="https://baike.baidu.com/item/%e6%98%a0%e5%b0%84" title="映射" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+映射
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>的一个
+&lt;a href="https://baike.baidu.com/item/%e5%88%86%e5%b8%83%e5%bc%8f%e6%95%b0%e6%8d%ae%e5%ba%93" title="分布式数据库" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+分布式数据库
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，能够使人更方便地访问
+&lt;a href="https://baike.baidu.com/item/%e4%ba%92%e8%81%94%e7%bd%91" title="互联网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+互联网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>。DNS使用
+&lt;a href="https://baike.baidu.com/item/TCP" title="TCP" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+TCP
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>和
+&lt;a href="https://baike.baidu.com/item/UDP" title="UDP" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+UDP
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://baike.baidu.com/item/%e7%ab%af%e5%8f%a3" title="端口" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+端口
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>53[1]。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="" />&lt;/p>
+&lt;p>DNS分为正向查找区域和反向查找区域，然后在分为，主要，辅助，存根区域，在这些区域里，又存在着很多的记录，今天，就让我们来看看这些记录。&lt;/p></description></item><item><title>IaaS、PaaS、SaaS的区别</title><link>/post/iaaspaassaas%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Wed, 19 Jun 2019 15:40:07 +0800</pubDate><guid>/post/iaaspaassaas%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>你一定听说过云计算中的三个“高大上”的你一定听说过云计算中的三个“高大上”的概念：IaaS、PaaS和SaaS，这几个术语并不好理解。**不过，如果你是个吃货，还喜欢披萨，这个问题就好解决了!**好吧，其实你根本不是一个吃货，之所以自我标榜为吃货，其实是为了收获赞叹式的夸奖，“吃货还这么瘦，好羡慕啊!”或者，总得给站长身材的微丰找个像样的理由。本文通过通俗简单的例子，让你完全理解云计算这三大术语的区别。&lt;/p></description></item></channel></rss>

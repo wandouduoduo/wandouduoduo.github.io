@@ -1,0 +1,394 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="详解lvs安装部署"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Lvs"><meta property="og:type" content="article"><meta property="og:title" content="详解lvs安装部署"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2020-06-11 16:44:46 +0800 CST"><meta property="article:modified_time" content="2020-06-11 16:44:46 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2","permalink":"/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/","title":"详解lvs安装部署","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>详解lvs安装部署 - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#目的>目的</a></li><li><a href=#环境>环境</a></li><li><a href=#优劣势分析>优劣势分析</a><ul><li><a href=#lvs><strong>LVS</strong></a></li><li><a href=#nginx><strong>Nginx</strong></a></li><li><a href=#haproxy><strong>HAProxy</strong></a></li></ul></li><li><a href=#部署>部署</a><ul><li><a href=#准备>准备</a></li><li><a href=#源码安装><strong>源码安装</strong></a></li><li><a href=#配置>配置</a></li></ul></li><li><a href=#ipvsadm命令>ipvsadm命令</a></li><li><a href=#排错>排错</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="详解lvs安装部署"><meta itemprop=description content="目的
+
+负载均衡器分为硬件和软件。硬件如F5等，但是像F5这些设备费用高昂，不是每个公司都有财力用的。而软件业界用的最多的就是lvs，haproxy和nginx，而负载能力最强的就是lvs。本文详细介绍了lvs的安装部署。
+
+在实际应用中，在 Web 服务器集群之前总会有一台负载均衡服务器，负载均衡设备的任务就是作为 Web 服务器流量的入口，挑选最合适的一台 Web 服务器，将客户端的请求转发给它处理，实现客户端到真实服务端的透明转发。
+最近几年很火的「云计算」以及分布式架构，本质上也是将后端服务器作为计算资源、存储资源，由某台管理服务器封装成一个服务对外提供，客户端不需要关心真正提供服务的是哪台机器，在它看来，就好像它面对的是一台拥有近乎无限能力的服务器，而本质上，真正提供服务的，是后端的集群。"></span><header class=post-header><h1 class=post-title itemprop="name headline">详解lvs安装部署</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2020-06-11 16:44:46 +0800 CST" itemprop="dateCreated datePublished" datetime="2020-06-11 16:44:46 +0800 CST">2020-06-11</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>6486</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>13分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>负载均衡器分为硬件和软件。硬件如F5等，但是像F5这些设备费用高昂，不是每个公司都有财力用的。而软件业界用的最多的就是lvs，haproxy和nginx，而负载能力最强的就是lvs。本文详细介绍了lvs的安装部署。</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.jpeg alt=img></p><p>在实际应用中，在 Web 服务器集群之前总会有一台负载均衡服务器，负载均衡设备的任务就是作为 Web 服务器流量的入口，挑选最合适的一台 Web 服务器，将客户端的请求转发给它处理，实现客户端到真实服务端的透明转发。</p><p>最近几年很火的「云计算」以及分布式架构，本质上也是将后端服务器作为计算资源、存储资源，由某台管理服务器封装成一个服务对外提供，客户端不需要关心真正提供服务的是哪台机器，在它看来，就好像它面对的是一台拥有近乎无限能力的服务器，而本质上，真正提供服务的，是后端的集群。</p><h2 id=环境>环境
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83></a></h2><p>环境如下:centos6.5
+Lvs主调度器：192.168.65.128 vip:192.168.65.200
+真实服务器：192.168.65.150 vip:192.168.65.200
+真实服务器：192.168.65.151 vip:192.168.65.200
+特别注意的是:虚拟地址由keepalived提供</p><h2 id=优劣势分析>优劣势分析
+<a class=header-anchor href=#%e4%bc%98%e5%8a%a3%e5%8a%bf%e5%88%86%e6%9e%90></a></h2><p>LVS、Nginx、HAProxy 是目前使用最广泛的三种软件负载均衡软件。</p><p>一般对负载均衡的使用是随着网站规模的提升根据不同的阶段来使用不同的技术。具体的应用需求还得具体分析，如果是中小型的 Web 应用，比如日 PV 小于1000万，用 Nginx 就完全可以了；如果机器不少，可以用 DNS 轮询，LVS 所耗费的机器还是比较多的；大型网站或重要的服务，且服务器比较多时，可以考虑用 LVS。</p><p>目前关于网站架构一般比较合理流行的架构方案：Web 前端采用 Nginx/HAProxy+Keepalived 作负载均衡器；后端采用 MySQ L数据库一主多从和读写分离，采用 LVS+Keepalived 的架构。</p><h3 id=lvs><strong>LVS</strong>
+<a class=header-anchor href=#lvs></a></h3><p>LVS 是 Linux Virtual Server 的简称，也就是 Linux 虚拟服务器。现在 LVS 已经是 Linux 标准内核的一部分，从 Linux2.4 内核以后，已经完全内置了 LVS 的各个功能模块，无需给内核打任何补丁，可以直接使用 LVS 提供的各种功能。</p><p>LVS 自从1998年开始，发展到现在已经是一个比较成熟的技术项目了。</p><p><strong>LVS 的体系结构</strong></p><p><img src=/imgs/img-lazy-loading.gif data-src=2.jpeg alt=img></p><p>LVS 架设的服务器集群系统有三个部分组成：</p><ol><li>最前端的负载均衡层，用 Load Balancer 表示</li><li>中间的服务器集群层，用 Server Array 表示</li><li>最底端的数据共享存储层，用 Shared Storage 表示</li></ol><p><strong>LVS 负载均衡机制</strong></p><p>LVS 是四层负载均衡，也就是说建立在 OSI 模型的第四层——传输层之上，传输层上有我们熟悉的 TCP/UDP，LVS 支持 TCP/UDP 的负载均衡。因为 LVS 是四层负载均衡，因此它相对于其它高层负载均衡的解决办法，比如 DNS 域名轮流解析、应用层负载的调度、客户端的调度等，它的效率是非常高的。</p><p>所谓四层负载均衡 ，也就是主要通过报文中的目标地址和端口。七层负载均衡 ，也称为“内容交换”，也就是主要通过报文中的真正有意义的应用层内容。</p><p><img src=/imgs/img-lazy-loading.gif data-src=3.jpeg alt=img></p><p>LVS 的转发主要通过修改 IP 地址（NAT 模式，分为源地址修改 SNAT 和目标地址修改 DNAT）、修改目标 MAC（DR 模式）来实现。</p><p><strong>NAT 模式：网络地址转换</strong></p><p>NAT（Network Address Translation）是一种外网和内网地址映射的技术。</p><p>NAT 模式下，网络数据报的进出都要经过 LVS 的处理。LVS 需要作为 RS（真实服务器）的网关。</p><p>当包到达 LVS 时，LVS 做目标地址转换（DNAT），将目标 IP 改为 RS 的 IP。RS 接收到包以后，仿佛是客户端直接发给它的一样。RS 处理完，返回响应时，源 IP 是 RS IP，目标 IP 是客户端的 IP。这时 RS 的包通过网关（LVS）中转，LVS 会做源地址转换（SNAT），将包的源地址改为 VIP，这样，这个包对客户端看起来就仿佛是 LVS 直接返回给它的。</p><p><img src=/imgs/img-lazy-loading.gif data-src=4.jpeg alt=img></p><p><strong>DR 模式：直接路由</strong></p><p>DR 模式下需要 LVS 和 RS 集群绑定同一个 VIP（RS 通过将 VIP 绑定在 loopback 实现），但与 NAT 的不同点在于：请求由 LVS 接受，由真实提供服务的服务器（RealServer，RS）直接返回给用户，返回的时候不经过 LVS。</p><p>详细来看，一个请求过来时，LVS 只需要将网络帧的 MAC 地址修改为某一台 RS 的 MAC，该包就会被转发到相应的 RS 处理，注意此时的源 IP 和目标 IP 都没变，LVS 只是做了一下移花接木。RS 收到 LVS 转发来的包时，链路层发现 MAC 是自己的，到上面的网络层，发现 IP 也是自己的，于是这个包被合法地接受，RS 感知不到前面有 LVS 的存在。而当 RS 返回响应时，只要直接向源 IP（即用户的 IP）返回即可，不再经过 LVS。</p><p><img src=/imgs/img-lazy-loading.gif data-src=5.jpeg alt=img></p><p>DR 负载均衡模式数据分发过程中不修改 IP 地址，只修改 mac 地址，由于实际处理请求的真实物理 IP 地址和数据请求目的 IP 地址一致，所以不需要通过负载均衡服务器进行地址转换，可将响应数据包直接返回给用户浏览器，避免负载均衡服务器网卡带宽成为瓶颈。因此，DR 模式具有较好的性能，也是目前大型网站使用最广泛的一种负载均衡手段。</p><p><strong>LVS 的优点</strong></p><ul><li>抗负载能力强、是工作在传输层上仅作分发之用，没有流量的产生，这个特点也决定了它在负载均衡软件里的性能最强的，对内存和 cpu 资源消耗比较低。</li><li>配置性比较低，这是一个缺点也是一个优点，因为没有可太多配置的东西，所以并不需要太多接触，大大减少了人为出错的几率。</li><li>工作稳定，因为其本身抗负载能力很强，自身有完整的双机热备方案，如 LVS+Keepalived。</li><li>无流量，LVS 只分发请求，而流量并不从它本身出去，这点保证了均衡器 IO 的性能不会受到大流量的影响。</li><li>应用范围比较广，因为 LVS 工作在传输层，所以它几乎可以对所有应用做负载均衡，包括 http、数据库、在线聊天室等等。</li></ul><p><strong>LVS 的缺点</strong></p><ul><li>软件本身不支持正则表达式处理，不能做动静分离；而现在许多网站在这方面都有较强的需求，这个是 Nginx、HAProxy+Keepalived 的优势所在。</li><li>如果是网站应用比较庞大的话，LVS/DR+Keepalived 实施起来就比较复杂了，相对而言，Nginx/HAProxy+Keepalived就简单多了。</li></ul><h3 id=nginx><strong>Nginx</strong>
+<a class=header-anchor href=#nginx></a></h3><p>Nginx 是一个强大的 Web 服务器软件，用于处理高并发的 HTTP 请求和作为反向代理服务器做负载均衡。具有高性能、轻量级、内存消耗少，强大的负载均衡能力等优势。</p><p><img src=/imgs/img-lazy-loading.gif data-src=6.jpeg alt=img></p><p><strong>Nignx 的架构设计</strong></p><p>相对于传统基于进程或线程的模型（Apache就采用这种模型）在处理并发连接时会为每一个连接建立一个单独的进程或线程，且在网络或者输入/输出操作时阻塞。这将导致内存和 CPU 的大量消耗，因为新起一个单独的进程或线程需要准备新的运行时环境，包括堆和栈内存的分配，以及新的执行上下文，当然，这些也会导致多余的 CPU 开销。最终，会由于过多的上下文切换而导致服务器性能变差。</p><p>反过来，Nginx 的架构设计是采用模块化的、基于事件驱动、异步、单线程且非阻塞。</p><p>Nginx 大量使用多路复用和事件通知，Nginx 启动以后，会在系统中以 daemon 的方式在后台运行，其中包括一个 master 进程，n(n>=1) 个 worker 进程。所有的进程都是单线程（即只有一个主线程）的，且进程间通信主要使用共享内存的方式。</p><p>其中，master 进程用于接收来自外界的信号，并给 worker 进程发送信号，同时监控 worker 进程的工作状态。worker 进程则是外部请求真正的处理者，每个 worker 请求相互独立且平等的竞争来自客户端的请求。请求只能在一个 worker 进程中被处理，且一个 worker 进程只有一个主线程，所以同时只能处理一个请求。（原理同 Netty 很像）</p><p><img src=/imgs/img-lazy-loading.gif data-src=7.jpeg alt=img></p><p><strong>Nginx 负载均衡</strong></p><p>Nginx 负载均衡主要是对七层网络通信模型中的第七层应用层上的 http、https 进行支持。</p><p>Nginx 是以反向代理的方式进行负载均衡的。反向代理（Reverse Proxy）方式是指以代理服务器来接受 Internet 上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给 Internet 上请求连接的客户端，此时代理服务器对外就表现为一个服务器。</p><p>Nginx 实现负载均衡的分配策略有很多，Nginx 的 upstream 目前支持以下几种方式：</p><ul><li>轮询（默认）：每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器 down 掉，能自动剔除。</li><li>weight：指定轮询几率，weight 和访问比率成正比，用于后端服务器性能不均的情况。</li><li>ip_hash：每个请求按访问 ip 的 hash 结果分配，这样每个访客固定访问一个后端服务器，可以解决 session 的问题。</li><li>fair（第三方）：按后端服务器的响应时间来分配请求，响应时间短的优先分配。</li><li>url_hash（第三方）：按访问 url 的 hash 结果来分配请求，使每个 url 定向到同一个后端服务器，后端服务器为缓存时比较有效。</li></ul><p><strong>Nginx 的优点</strong></p><ul><li>跨平台：Nginx 可以在大多数 Unix like OS编译运行，而且也有 Windows 的移植版本</li><li>配置异常简单：非常容易上手。配置风格跟程序开发一样，神一般的配置</li><li>非阻塞、高并发连接：官方测试能够支撑5万并发连接，在实际生产环境中跑到2～3万并发连接数</li><li>事件驱动：通信机制采用 epoll 模型，支持更大的并发连接</li><li>Master/Worker 结构：一个 master 进程，生成一个或多个 worker 进程</li><li>内存消耗小：处理大并发的请求内存消耗非常小。在3万并发连接下，开启的10个 Nginx 进程才消耗150M 内存（15M*10=150M）</li><li>内置的健康检查功能：如果 Nginx 代理的后端的某台 Web 服务器宕机了，不会影响前端访问</li><li>节省带宽：支持 GZIP 压缩，可以添加浏览器本地缓存的 Header 头</li><li>稳定性高：用于反向代理，宕机的概率微乎其微</li></ul><p><strong>Nginx 的缺点</strong></p><ul><li>Nginx 仅能支 持http、https 和 Email 协议，这样就在适用范围上面小些，这个是它的缺点</li><li>对后端服务器的健康检查，只支持通过端口来检测，不支持通过 ur l来检测。不支持 Session 的直接保持，但能通过 ip_hash 来解决</li></ul><h3 id=haproxy><strong>HAProxy</strong>
+<a class=header-anchor href=#haproxy></a></h3><p>HAProxy 的优点能够补充 Nginx 的一些缺点，比如支持 Session 的保持，Cookie 的引导；同时支持通过获取指定的 url 来检测后端服务器的状态。</p><p>HAProxy 跟 LVS 类似，本身就只是一款负载均衡软件；单纯从效率上来讲 HAProxy 会比 Nginx 有更出色的负载均衡速度，在并发处理上也是优于 Nginx 的。</p><p>HAProxy 支持 TCP 协议的负载均衡转发，可以对 MySQL 读进行负载均衡，对后端的 MySQL 节点进行检测和负载均衡，大家可以用 LVS+Keepalived 对 MySQL 主从做负载均衡。</p><p>HAProxy 负载均衡策略非常多：Round-robin（轮循）、Weight-round-robin（带权轮循）、source（原地址保持）、RI（请求URL）、rdp-cookie（根据cookie）。</p><h2 id=部署>部署
+<a class=header-anchor href=#%e9%83%a8%e7%bd%b2></a></h2><h3 id=准备>准备
+<a class=header-anchor href=#%e5%87%86%e5%a4%87></a></h3><p>修改系统内核文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>vim /etc/sysctl.conf 修改默认值0为1，开启内核路由转发模式
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>net.ipv4.ip_forward = 1
+</span></span></code></pre></div><h3 id=源码安装><strong>源码安装</strong>
+<a class=header-anchor href=#%e6%ba%90%e7%a0%81%e5%ae%89%e8%a3%85></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>yum install ipvsadm*
+</span></span><span style=display:flex><span>wget http://www.linuxvirtualserver.org/software/kernel-2.6/ipvsadm-1.26.tar.gz
+</span></span><span style=display:flex><span>tar -zxvf ipvsadm-1.26.tar.gz
+</span></span><span style=display:flex><span>make <span style=color:#f92672>&amp;&amp;</span> make install
+</span></span></code></pre></div><h3 id=配置>配置
+<a class=header-anchor href=#%e9%85%8d%e7%bd%ae></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e>#添加虚拟IP地址，wrr表示给予权重的轮询。rr表示轮询</span>
+</span></span><span style=display:flex><span>ipvsadm -A -t 192.168.65.200:80 -s wrr
+</span></span><span style=display:flex><span><span style=color:#75715e>#制定后台和轮询的IP地址分别是150和151这两台机器 -g表示路由模式，-w表示权重</span>
+</span></span><span style=display:flex><span>ipvsadm -a -t 192.168.65.200:80 -r 192.168.65.150:80 -g -w <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>ipvsadm -a -t 192.168.65.200:80 -r 192.168.65.151:80 -g -w <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>service ipvsadm save
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#编辑lvs的配置文件</span>
+</span></span><span style=display:flex><span>vim /etc/sysconfig/ipvsadm
+</span></span><span style=display:flex><span>-A -t 192.168.65.200:80 -s wrr
+</span></span><span style=display:flex><span>-a -t 192.168.65.200:80 -r 192.168.65.150:80 -g -w <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>-a -t 192.168.65.200:80 -r 192.168.65.151:80 -g -w <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#开机启动脚本 </span>
+</span></span><span style=display:flex><span>vim/etc/init.d/ipvsadm
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span> <span style=color:#75715e>#!/bin/bash</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Startup script handle the initialisation of LVS</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># chkconfig: - 28 72</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># description: Initialise the Linux Virtual Server</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># config: /etc/sysconfig/ipvsadm</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>### BEGIN INIT INFO</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Provides: ipvsadm</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Required-Start: $local_fs $network $named</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Required-Stop: $local_fs $remote_fs $network</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Short-Description: Initialise the Linux Virtual Server</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Description: The Linux Virtual Server is a highly scalable and highly</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   available server built on a cluster of real servers, with the load</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#   balancer running on Linux.</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>### END INIT INFO</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Source function library</span>
+</span></span><span style=display:flex><span>. /etc/rc.d/init.d/functions
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>IPVSADM<span style=color:#f92672>=</span>ipvsadm
+</span></span><span style=display:flex><span>IPVSADMRESTORE<span style=color:#f92672>=</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span>-restore
+</span></span><span style=display:flex><span>IPVSADMSAVE<span style=color:#f92672>=</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span>-save
+</span></span><span style=display:flex><span><span style=color:#75715e># Saved IPVS data</span>
+</span></span><span style=display:flex><span>IPVSADM_DATA<span style=color:#f92672>=</span>/etc/sysconfig/$IPVSADM
+</span></span><span style=display:flex><span><span style=color:#75715e># Configuration</span>
+</span></span><span style=display:flex><span>IPVSADM_CONFIG<span style=color:#f92672>=</span>/etc/sysconfig/<span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span>-config
+</span></span><span style=display:flex><span>IPVS<span style=color:#f92672>=</span>ip_vs
+</span></span><span style=display:flex><span>PROC_IPVS<span style=color:#f92672>=</span>/proc/net/$IPVS
+</span></span><span style=display:flex><span>VAR_SUBSYS_IPVSADM<span style=color:#f92672>=</span>/var/lock/subsys/$IPVSADM
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -x /sbin/$IPVSADM <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>    echo -n $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: /sbin/</span>$IPVSADM<span style=color:#e6db74> does not exist.&#34;</span>; warning; echo
+</span></span><span style=display:flex><span>    exit <span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Old or new modutils</span>
+</span></span><span style=display:flex><span>/sbin/modprobe --version 2&gt;&amp;<span style=color:#ae81ff>1</span> | grep -q module-init-tools <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    <span style=color:#f92672>&amp;&amp;</span> NEW_MODUTILS<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>    <span style=color:#f92672>||</span> NEW_MODUTILS<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Default IPVSADM configuration:</span>
+</span></span><span style=display:flex><span>IPVS_MODULES_UNLOAD<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;yes&#34;</span>
+</span></span><span style=display:flex><span>IPVS_SAVE_ON_STOP<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;no&#34;</span>
+</span></span><span style=display:flex><span>IPVS_SAVE_ON_RESTART<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;no&#34;</span>
+</span></span><span style=display:flex><span>IPVS_STATUS_NUMERIC<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;yes&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Load IPVSADM configuration.</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span> -f <span style=color:#e6db74>&#34;</span>$IPVSADM_CONFIG<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> . <span style=color:#e6db74>&#34;</span>$IPVSADM_CONFIG<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>rmmod_r<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Unload module with all referring modules.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># At first all referring modules will be unloaded, then the module itself.</span>
+</span></span><span style=display:flex><span>    local mod<span style=color:#f92672>=</span>$1
+</span></span><span style=display:flex><span>    local ret<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>    local ref<span style=color:#f92672>=</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Get referring modules.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># New modutils have another output format.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> $NEW_MODUTILS <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>]</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>        <span style=color:#f92672>&amp;&amp;</span> ref<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>lsmod | awk <span style=color:#e6db74>&#34;/^</span><span style=color:#e6db74>${</span>mod<span style=color:#e6db74>}</span><span style=color:#e6db74>[[:space:]]/ { print \$4; }&#34;</span> | tr <span style=color:#e6db74>&#39;,&#39;</span> <span style=color:#e6db74>&#39; &#39;</span><span style=color:#66d9ef>)</span> <span style=color:#ae81ff>\
+</span></span></span><span style=display:flex><span><span style=color:#ae81ff></span>        <span style=color:#f92672>||</span> ref<span style=color:#f92672>=</span><span style=color:#66d9ef>$(</span>lsmod | grep ^<span style=color:#e6db74>${</span>mod<span style=color:#e6db74>}</span> | cut -d <span style=color:#e6db74>&#34;[&#34;</span> -s -f <span style=color:#ae81ff>2</span> | cut -d <span style=color:#e6db74>&#34;]&#34;</span> -s -f 1<span style=color:#66d9ef>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># recursive call for all referring modules</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>for</span> i in $ref; <span style=color:#66d9ef>do</span>
+</span></span><span style=display:flex><span>        rmmod_r $i
+</span></span><span style=display:flex><span>        let ret<span style=color:#f92672>+=</span>$?;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>done</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Unload module.</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># The extra test is for 2.6: The module might have autocleaned,</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># after all referring modules are unloaded.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> grep -q <span style=color:#e6db74>&#34;^</span><span style=color:#e6db74>${</span>mod<span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span> /proc/modules ; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        modprobe -r $mod &gt; /dev/null 2&gt;&amp;<span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>        res<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        <span style=color:#f92672>[</span> $res -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span> <span style=color:#f92672>||</span> echo -n <span style=color:#e6db74>&#34; </span>$mod<span style=color:#e6db74>&#34;</span>
+</span></span><span style=display:flex><span>        let ret<span style=color:#f92672>+=</span>$res;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> $ret
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>start<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Do not start if there is no config file.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> ! -f <span style=color:#e6db74>&#34;</span>$IPVSADM_DATA<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>6</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># check if ipvs module load is deactivated</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> grep -qIsE <span style=color:#e6db74>&#34;^install[[:space:]]+</span><span style=color:#e6db74>${</span>IPVS<span style=color:#e6db74>}</span><span style=color:#e6db74>[[:space:]]+/bin/(true|false)&#34;</span> /etc/modprobe.conf /etc/modprobe.d/* ; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        echo $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: </span><span style=color:#e6db74>${</span>IPVS<span style=color:#e6db74>}</span><span style=color:#e6db74> is disabled.&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>150</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># If we don&#39;t clear these first, we might be adding to pre-existing rules.</span>
+</span></span><span style=display:flex><span>    action $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: Clearing the current IPVS table:&#34;</span> $IPVSADM -C
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    echo -n $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: Applying IPVS configuration: &#34;</span>
+</span></span><span style=display:flex><span>    $IPVSADMRESTORE &lt; <span style=color:#e6db74>${</span>IPVSADM_DATA<span style=color:#e6db74>}</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> $? -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>;<span style=color:#66d9ef>then</span> success; echo; <span style=color:#66d9ef>else</span> failure; echo; <span style=color:#66d9ef>return</span> 1;<span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    touch $VAR_SUBSYS_IPVSADM
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>stop<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Do not stop if ipvs module is not loaded.</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> ! -e <span style=color:#e6db74>&#34;</span>$PROC_IPVS<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    action $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: Clearing the current IPVS table:&#34;</span> $IPVSADM -C
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    ret<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;x</span>$IPVS_MODULES_UNLOAD<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;xyes&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        action $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: Unloading modules:&#34;</span> rmmod_r $IPVS
+</span></span><span style=display:flex><span>        <span style=color:#f92672>[</span> $? -ne <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> ret<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    rm -f $VAR_SUBSYS_IPVSADM
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> $ret
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>status<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Do not print status if lockfile is missing and ipvs modules are not</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># loaded.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -f <span style=color:#e6db74>&#34;</span>$VAR_SUBSYS_IPVSADM<span style=color:#e6db74>&#34;</span> -a ! -e <span style=color:#e6db74>&#34;</span>$PROC_IPVS<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>; <span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        echo $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: IPVS is not running.&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Do show status if ipvs module is not loaded.</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> ! -e <span style=color:#e6db74>&#34;</span>$PROC_IPVS<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span>;<span style=color:#66d9ef>then</span>
+</span></span><span style=display:flex><span>        echo $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: IPVS module is not loaded.&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    NUM<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;x</span>$IPVS_STATUS_NUMERIC<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;xyes&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> NUM<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;-n&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    $IPVSADM -L $NUM <span style=color:#f92672>&amp;&amp;</span> echo
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>save<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Check if module is loaded</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> ! -e <span style=color:#e6db74>&#34;</span>$PROC_IPVS<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    echo -n $<span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>IPVSADM<span style=color:#e6db74>}</span><span style=color:#e6db74>: Saving IPVS table to </span><span style=color:#e6db74>${</span>IPVSADM_DATA<span style=color:#e6db74>}</span><span style=color:#e6db74>: &#34;</span>
+</span></span><span style=display:flex><span>    $IPVSADMSAVE -n &gt; <span style=color:#e6db74>${</span>IPVSADM_DATA<span style=color:#e6db74>}</span> 2&gt;/dev/null
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span> $? -eq <span style=color:#ae81ff>0</span> <span style=color:#f92672>]</span>;<span style=color:#66d9ef>then</span> success; echo; <span style=color:#66d9ef>else</span> failure; echo; <span style=color:#66d9ef>return</span> 1;<span style=color:#66d9ef>fi</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>restart<span style=color:#f92672>()</span> <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;x</span>$IPVS_SAVE_ON_RESTART<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;xyes&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> save
+</span></span><span style=display:flex><span>    stop
+</span></span><span style=display:flex><span>    start
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># See how we were called.</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>case</span> <span style=color:#e6db74>&#34;</span>$1<span style=color:#e6db74>&#34;</span> in
+</span></span><span style=display:flex><span>    start<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>[</span> -f <span style=color:#e6db74>&#34;</span>$VAR_SUBSYS_IPVSADM<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> exit <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># If we have no configuration, save the current one</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>[</span> -f <span style=color:#e6db74>${</span>IPVSADM_DATA<span style=color:#e6db74>}</span> <span style=color:#f92672>]</span> <span style=color:#f92672>||</span> save
+</span></span><span style=display:flex><span>        start
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        ;;
+</span></span><span style=display:flex><span>    stop<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>[</span> <span style=color:#e6db74>&#34;x</span>$IPVS_SAVE_ON_STOP<span style=color:#e6db74>&#34;</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;xyes&#34;</span> <span style=color:#f92672>]</span> <span style=color:#f92672>&amp;&amp;</span> save
+</span></span><span style=display:flex><span>        stop
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        ;;
+</span></span><span style=display:flex><span>    restart|force-reload<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        restart
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        ;;
+</span></span><span style=display:flex><span>    reload<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Start will flush everything, so it counts as a reload</span>
+</span></span><span style=display:flex><span>        start
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        ;;
+</span></span><span style=display:flex><span>    status<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        status
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        ;;
+</span></span><span style=display:flex><span>    save<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        save
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span>$?
+</span></span><span style=display:flex><span>        ;;
+</span></span><span style=display:flex><span>    *<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>        echo <span style=color:#e6db74>&#34;Usage: </span>$0<span style=color:#e6db74> {start|stop|restart|force-reload|reload|status|save}&#34;</span>
+</span></span><span style=display:flex><span>        RETVAL<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>esac</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>exit $RETVA
+</span></span></code></pre></div><p><strong>配置real server服务器</strong></p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>service iptables stop
+</span></span><span style=display:flex><span>iptables -F
+</span></span><span style=display:flex><span>vim /etc/sysctl.conf 在文件的末尾添加如下内容
+</span></span><span style=display:flex><span>net.ipv4.conf.lo.arp_ignore = 1
+</span></span><span style=display:flex><span>net.ipv4.conf.all.arp_ignore = 1
+</span></span><span style=display:flex><span>net.ipv4.conf.lo.arp_announce = 2
+</span></span><span style=display:flex><span>net.ipv4.conf.all.arp_announce = 2
+</span></span><span style=display:flex><span>立即生效配置，禁止arp相应的请求
+</span></span><span style=display:flex><span>sysctl -p
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>设置虚拟网卡，添加如下内容
+</span></span><span style=display:flex><span>vim /etc/sysconfig/network-scripts/ifcfg-lo:0
+</span></span><span style=display:flex><span>DEVICE=lo:0
+</span></span><span style=display:flex><span>BOOTPROTO=static
+</span></span><span style=display:flex><span>IPADDR=192.168.65.200
+</span></span><span style=display:flex><span>NETMASK=255.255.255.255
+</span></span><span style=display:flex><span>ONBOOT=yes
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>添加路由: route add -host 192.168.65.200 dev lo:0
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>在lvs调度器查看
+</span></span><span style=display:flex><span>ipvsadm -Ln
+</span></span></code></pre></div><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt></p><p>查看你当前ipvsadm的轮询时间，为了使实验有比较好的效果，设置时间为1秒，可以查看转换效果
+查看当前的的轮询时间
+ipvsadm -L –timeout
+设置时间为1秒
+ipvsadm –set 1 1 1</p><p>在浏览器查看并且过一秒刷新页面地址变化则说明lvs轮询成功
+<img src=/imgs/img-lazy-loading.gif data-src=2.png alt></p><p>刷新页面之后。可以目前的当前链接的后端服务器轮询</p><p>ipvsadm -Lcn</p><p><img src=/imgs/img-lazy-loading.gif data-src=3.png alt></p><h2 id=ipvsadm命令>ipvsadm命令
+<a class=header-anchor href=#ipvsadm%e5%91%bd%e4%bb%a4></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ipvsadm是LVS在应用层的管理命令，我们可以通过这个命令去管理LVS的配置。在笔者使用的fedora14系统中，已经集成了LVS相关模块，但是ipvsadm命令仍然需要使用yum单独安装。
+</span></span><span style=display:flex><span> 
+</span></span><span style=display:flex><span>参数：
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-A --add-service      在内核的虚拟服务器表中添加一条新的虚拟服务器记录。也就是增加一台新的虚拟服务器。 
+</span></span><span style=display:flex><span>-E --edit-service     编辑内核虚拟服务器表中的一条虚拟服务器记录。 
+</span></span><span style=display:flex><span>-D --delete-service   删除内核虚拟服务器表中的一条虚拟服务器记录。 
+</span></span><span style=display:flex><span>-C --clear           清除内核虚拟服务器表中的所有记录。 
+</span></span><span style=display:flex><span>-R --restore         恢复虚拟服务器规则 
+</span></span><span style=display:flex><span>-S --save            保存虚拟服务器规则，输出为-R 选项可读的格式 
+</span></span><span style=display:flex><span>-a --add-server      在内核虚拟服务器表的一条记录里添加一条新的真实服务器记录。也就是在一个虚拟服务器中增加一台新的真实服务器 
+</span></span><span style=display:flex><span>-e --edit-server     编辑一条虚拟服务器记录中的某条真实服务器记录 
+</span></span><span style=display:flex><span>-d --delete-server   删除一条虚拟服务器记录中的某条真实服务器记录 
+</span></span><span style=display:flex><span>-L|-l --list         显示内核虚拟服务器表 
+</span></span><span style=display:flex><span>-Z --zero            虚拟服务表计数器清零（清空当前的连接数量等） 
+</span></span><span style=display:flex><span>--set tcp tcpfin udp 设置连接超时值 
+</span></span><span style=display:flex><span>--start-daemon       启动同步守护进程。他后面可以是master 或backup，用来说明LVS Router 是aster 或是backup。在这个功能上也可以采用keepalived 的VRRP 功能。 
+</span></span><span style=display:flex><span>--stop-daemon        停止同步守护进程 
+</span></span><span style=display:flex><span>-h --help            显示帮助信息 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>其他的选项: 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-t --tcp-service service-address     说明虚拟服务器提供的是tcp 的服务<span style=color:#f92672>[</span>vip:port<span style=color:#f92672>]</span> or <span style=color:#f92672>[</span>real-server-ip:port<span style=color:#f92672>]</span> 
+</span></span><span style=display:flex><span>-u --udp-service service-address     说明虚拟服务器提供的是udp 的服务<span style=color:#f92672>[</span>vip:port<span style=color:#f92672>]</span> or <span style=color:#f92672>[</span>real-server-ip:port<span style=color:#f92672>]</span> 
+</span></span><span style=display:flex><span>-f --fwmark-service fwmark           说明是经过iptables 标记过的服务类型。 
+</span></span><span style=display:flex><span>-s --scheduler scheduler             使用的调度算法，有这样几个选项rr|wrr|lc|wlc|lblc|lblcr|dh|sh|sed|nq,默认的调度算法是： wlc. 
+</span></span><span style=display:flex><span>-p --persistent <span style=color:#f92672>[</span>timeout<span style=color:#f92672>]</span>            持久稳固的服务。这个选项的意思是来自同一个客户的多次请求，将被同一台真实的服务器处理。timeout 的默认值为300 秒。 
+</span></span><span style=display:flex><span>-M --netmask                         指定客户地址的子网掩码
+</span></span><span style=display:flex><span>-r --real-server server-address      真实的服务器<span style=color:#f92672>[</span>Real-Server:port<span style=color:#f92672>]</span> 
+</span></span><span style=display:flex><span>-g --gatewaying                      指定LVS 的工作模式为直接路由模式（也是LVS 默认的模式） 
+</span></span><span style=display:flex><span>-i --ipip                            指定LVS 的工作模式为隧道模式 
+</span></span><span style=display:flex><span>-m --masquerading                    指定LVS 的工作模式为NAT 模式 
+</span></span><span style=display:flex><span>-w --weight weight                   真实服务器的权值 
+</span></span><span style=display:flex><span>--mcast-interface interface          指定组播的同步接口 
+</span></span><span style=display:flex><span>-c --connection                      显示LVS目前的连接 如：ipvsadm -L -c 
+</span></span><span style=display:flex><span>   --timeout                         显示tcp tcpfin udp 的timeout 值 如：ipvsadm -L --timeout 
+</span></span><span style=display:flex><span>   --daemon                          显示同步守护进程状态 
+</span></span><span style=display:flex><span>   --stats                           显示统计信息 
+</span></span><span style=display:flex><span>   --rate                            显示速率信息 
+</span></span><span style=display:flex><span>   --sort                            对虚拟服务器和真实服务器排序输出 
+</span></span><span style=display:flex><span>   --numeric -n                      输出IP 地址和端口的数字形式 
+</span></span><span style=display:flex><span>-6：                                 如果fwmark用的是ipv6地址需要指定此选项。  
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>例1：
+</span></span><span style=display:flex><span>ipvsadm -A -t 192.168.10.10:80 -s rr -p <span style=color:#ae81ff>600</span> 	<span style=color:#75715e>#添加地址为192.168.10.10:80的虚拟服务，指定调度算法为轮转</span>
+</span></span><span style=display:flex><span>ipvsadm -a -t 192.168.10.10:80 -r 192.168.10.1:80 -g 	<span style=color:#75715e>#添加真实服务器，指定传输模式为DR</span>
+</span></span><span style=display:flex><span>ipvsadm -a -t 192.168.10.10:80 -r 192.168.10.2:80 -m 	<span style=color:#75715e>#添加真实服务器，指定传输模式为NAT</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#以下表示在内核的虚拟服务器列表中又添加了一条192.168.60.188的虚拟服务器，此虚拟服务器的服务端口为21，即FTP服务。使用的调度策略为wlc，即加权最少链接算法。</span>
+</span></span><span style=display:flex><span>ipvsadm -A -t 192.168.10.188:21 -s wlc 	
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#规则导出导入</span>
+</span></span><span style=display:flex><span>ipvsadm-save &gt; ipvs.txt  <span style=color:#f92672>(</span>其中ipvs.txt保存的是你的配置<span style=color:#f92672>)</span> 
+</span></span><span style=display:flex><span>ipvsadm-restore &lt; ipvs.txt  <span style=color:#f92672>(</span>将配置导入<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#规则恢复</span>
+</span></span><span style=display:flex><span>ipvsadm -R &lt; /root/xxx.rule
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#查看规则</span>
+</span></span><span style=display:flex><span>ipvsadm -Ln 
+</span></span><span style=display:flex><span>TCP  192.168.11.100:80 wrr
+</span></span><span style=display:flex><span>  -&gt; 192.168.11.12:80             Route   <span style=color:#ae81ff>3</span>      <span style=color:#ae81ff>0</span>          <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>  -&gt; 192.168.11.13:80             Route   <span style=color:#ae81ff>3</span>      <span style=color:#ae81ff>0</span>          <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ipvsadm -d -t 192.168.11.100:80 -r 192.168.11.12:80   <span style=color:#75715e>#删除一条真实服务器记录</span>
+</span></span></code></pre></div><h2 id=排错>排错
+<a class=header-anchor href=#%e6%8e%92%e9%94%99></a></h2><p>报错：collect2: ld returned 1 exit status
+make: * [ipvsadm] Error 1
+yum install install kernel-headers popt-static</p><p>报错：unexpected argument 192.168.65.130:80
+使用上面ipvsad的脚本，添加/etc/sysconfig/ipvsadm
+里面的规则，重启ipvsadm服务</p><p>报错：
+eloading ipvsadm configuration (via systemctl): Failed to issue method call: Job type reload is not applicable for unit ipvsadm.service.
+解决办法
+添加：/sys/fs/cgroup/systemd/system.slice/ipvsadm.service</p></div><footer class=post-footer><div class=post-tags><a href=/tags/lvs>Lvs</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/%E5%AE%9E%E8%B7%B5lvs%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F/ rel=next title=lvs的三次实践><i class="fa fa-chevron-left"></i> lvs的三次实践</a></div><div class="post-nav-prev post-nav-item"><a href=/post/%E8%AF%A6%E8%A7%A3%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8lvs/ rel=prev title=详解负载均衡器lvs>详解负载均衡器lvs
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

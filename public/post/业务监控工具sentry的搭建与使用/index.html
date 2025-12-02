@@ -1,0 +1,288 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="业务监控工具Sentry的搭建与使用"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Sentry"><meta property="og:type" content="article"><meta property="og:title" content="业务监控工具Sentry的搭建与使用"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2019-06-03 14:22:04 +0800 CST"><meta property="article:modified_time" content="2019-06-03 14:22:04 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8","permalink":"/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/","title":"业务监控工具Sentry的搭建与使用","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>业务监控工具Sentry的搭建与使用 - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><ul><li><a href=#官方网址>官方网址</a></li><li><a href=#sentry-简介>Sentry 简介</a></li><li><a href=#环境依赖>环境依赖</a></li><li><a href=#安装教程>安装教程</a></li><li><a href=#配置-sentry>配置 Sentry</a></li><li><a href=#运行-sentry>运行 Sentry</a></li><li><a href=#项目中配置-sentry>项目中配置 Sentry</a></li><li><a href=#遇到的坑>遇到的坑</a></li><li><a href=#参考链接>参考链接：</a></li></ul></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="业务监控工具Sentry的搭建与使用"><meta itemprop=description content="官方网址
+
+参考
+
+    Django Sentry 官网
+    
+    
+    
+
+Sentry 简介
+
+Sentry 是一个开源的实时错误报告工具，支持 web 前后端、移动应用以及游戏，支持 Python、OC、Java、Go、Node、Django、RoR 等主流编程语言和框架 ，还提供了 GitHub、Slack、Trello 等常见开发工具的集成。
+Sentry 服务支持多用户、多团队、多应用管理，每个应用都对应一个 PROJECT_ID，以及用于身份认证的 PUBLIC_KEY 和 SECRET_KEY。由此组成一个这样的 DSN：
+{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PATH}{PROJECT_ID}
+PROTOCOL 通常会是 http 或者 https，HOST 为 Sentry 服务的主机名和端口，PATH 通常为空。"></span><header class=post-header><h1 class=post-title itemprop="name headline">业务监控工具Sentry的搭建与使用</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-03 14:22:04 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-03 14:22:04 +0800 CST">2019-06-03</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>1931</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>4分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h3 id=官方网址>官方网址
+<a class=header-anchor href=#%e5%ae%98%e6%96%b9%e7%bd%91%e5%9d%80></a></h3><p>参考
+<a href=https://sentry.io/welcome/ title="Django Sentry 官网" rel="noopener external nofollow noreferrer" target=_blank class=exturl>Django Sentry 官网
+<i class="fa fa-external-link-alt"></i></a></p><h3 id=sentry-简介>Sentry 简介
+<a class=header-anchor href=#sentry-%e7%ae%80%e4%bb%8b></a></h3><p>Sentry 是一个开源的实时错误报告工具，支持 web 前后端、移动应用以及游戏，支持 Python、OC、Java、Go、Node、Django、RoR 等主流编程语言和框架 ，还提供了 GitHub、Slack、Trello 等常见开发工具的集成。
+Sentry 服务支持多用户、多团队、多应用管理，每个应用都对应一个 PROJECT_ID，以及用于身份认证的 PUBLIC_KEY 和 SECRET_KEY。由此组成一个这样的 DSN：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PATH}{PROJECT_ID}
+</span></span></code></pre></div><p>PROTOCOL 通常会是 http 或者 https，HOST 为 Sentry 服务的主机名和端口，PATH 通常为空。</p><h3 id=环境依赖>环境依赖
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83%e4%be%9d%e8%b5%96></a></h3><ol><li>Redis 搭建 / RabbitMQ 的搭建</li><li>MySQL / PostgreSQL</li><li>Python 虚拟环境</li></ol><h3 id=安装教程>安装教程
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85%e6%95%99%e7%a8%8b></a></h3><ul><li>Redis 的安装
+参考文档：
+<a href=https://linux.cn/article-6719-1.html title=https://linux.cn/article-6719-1.html rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://linux.cn/article-6719-1.html
+<i class="fa fa-external-link-alt"></i></a>
+<a href=http://www.jianshu.com/p/aec247ffbe51 title=http://www.jianshu.com/p/aec247ffbe51 rel="noopener external nofollow noreferrer" target=_blank class=exturl>http://www.jianshu.com/p/aec247ffbe51
+<i class="fa fa-external-link-alt"></i></a></li><li>MySQL 的安装<ul><li>略</li></ul></li><li>Python 虚拟环境的安装
+因为 Sentry 依赖的 Python 库比较多，为了避免对系统环境的污染，与现有的Python有冲突，建议还是将 Sentry 安装在虚拟环境中。</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>A. Python 库文件： python-setuptools, python-dev, build-essential, python-pip
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>B. 安装虚拟环境： pip install virtualenv
+</span></span><span style=display:flex><span>     安装完成后，可以直接 virtualenv xxx 即可在当前目录下生成一个虚拟环境xxx目录，进入到目录中，source bin/activate 即可激活当前虚拟环境。
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>C. 选择安装 virtualenvwrapper： pip install virtualenvwrapper
+</span></span><span style=display:flex><span>     安装完成后，建立个虚拟环境安装存储的目录，建议是 $HOME/.virtualenv 目录，配置下 .bashrc 文件，文件末尾添加：
+</span></span><span style=display:flex><span>     export WORKON_HOME=$HOME/.virtualenvs
+</span></span><span style=display:flex><span>     source /usr/local/bin/virtualenvwrapper.sh
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>source .bashrc后，运行 mkvirtualenv xxx 即可建立虚拟环境。退出运行 deactivate。这样，就不需要再进入到虚拟环境目录运行 source xxx/activate，直接在终端输入 workon xxx 即可。
+</span></span></code></pre></div><ul><li>Sentry
+在虚拟环境下，直接运行 <code>pip install sentry</code> 即可。</li></ul><p>这样，安装基本上就结束了。接下来需要配置下 sentry。</p><h3 id=配置-sentry>配置 Sentry
+<a class=header-anchor href=#%e9%85%8d%e7%bd%ae-sentry></a></h3><p>运行 <code>sentry init</code>, 会在 $HOME 下生成 <code>.sentry</code> 目录。进入 .sentry 后，需要修改数据库配置(当然，你也可以不改，直接使用 PostgreSQL)：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>DATABASES = {
+</span></span><span style=display:flex><span>    &#39;default&#39;: {
+</span></span><span style=display:flex><span>        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;, # 这里换成了 MySQL，默认是 pq
+</span></span><span style=display:flex><span>        &#39;NAME&#39;: &#39;xxx&#39;,
+</span></span><span style=display:flex><span>        &#39;USER&#39;: &#39;xxx&#39;,
+</span></span><span style=display:flex><span>        &#39;PASSWORD&#39;: &#39;xxx&#39;,
+</span></span><span style=display:flex><span>        &#39;HOST&#39;: &#39;xxx&#39;,
+</span></span><span style=display:flex><span>        &#39;PORT&#39;: &#39;xxx&#39;,
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>端口和队列等可以自行指定。这里，我指定的是15000。下面是一个配置参考：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span># This file is just Python, with a touch of Django which means
+</span></span><span style=display:flex><span># you can inherit and tweak settings to your hearts content.
+</span></span><span style=display:flex><span>from sentry.conf.server import *
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>import os.path
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>CONF_ROOT = os.path.dirname(__file__)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>DATABASES = {
+</span></span><span style=display:flex><span>    &#39;default&#39;: {
+</span></span><span style=display:flex><span>        &#39;ENGINE&#39;: &#39;django.db.backends.mysql&#39;,
+</span></span><span style=display:flex><span>        &#39;NAME&#39;: &#39;django_sentry&#39;,
+</span></span><span style=display:flex><span>        &#39;USER&#39;: &#39;root&#39;,
+</span></span><span style=display:flex><span>        &#39;PASSWORD&#39;: &#39;password&#39;,
+</span></span><span style=display:flex><span>        &#39;HOST&#39;: &#39;localhost&#39;,
+</span></span><span style=display:flex><span>        &#39;PORT&#39;: &#39;3306&#39;,
+</span></span><span style=display:flex><span>        &#39;AUTOCOMMIT&#39;: True,
+</span></span><span style=display:flex><span>        &#39;ATOMIC_REQUESTS&#39;: False,
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># You should not change this setting after your database has been created
+</span></span><span style=display:flex><span># unless you have altered all schemas first
+</span></span><span style=display:flex><span>SENTRY_USE_BIG_INTS = True
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># If you&#39;re expecting any kind of real traffic on Sentry, we highly recommend
+</span></span><span style=display:flex><span># configuring the CACHES and Redis settings
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#########
+</span></span><span style=display:flex><span># General #
+</span></span><span style=display:flex><span>#########
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Instruct Sentry that this install intends to be run by a single organization
+</span></span><span style=display:flex><span># and thus various UI optimizations should be enabled.
+</span></span><span style=display:flex><span>SENTRY_SINGLE_ORGANIZATION = True
+</span></span><span style=display:flex><span>DEBUG = False
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#######
+</span></span><span style=display:flex><span># Cache #
+</span></span><span style=display:flex><span>#######
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Sentry currently utilizes two separate mechanisms. While CACHES is not a
+</span></span><span style=display:flex><span># requirement, it will optimize several high throughput patterns.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># If you wish to use memcached, install the dependencies and adjust the config
+</span></span><span style=display:flex><span># as shown:
+</span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span>#   pip install python-memcached
+</span></span><span style=display:flex><span>#
+</span></span><span style=display:flex><span># CACHES = {
+</span></span><span style=display:flex><span>#     &#39;default&#39;: {
+</span></span><span style=display:flex><span>#         &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;,
+</span></span><span style=display:flex><span>#         &#39;LOCATION&#39;: [&#39;127.0.0.1:11211&#39;],
+</span></span><span style=display:flex><span>#     }
+</span></span><span style=display:flex><span># }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># A primary cache is required for things such as processing events
+</span></span><span style=display:flex><span>SENTRY_CACHE = &#39;sentry.cache.redis.RedisCache&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#######
+</span></span><span style=display:flex><span># Queue #
+</span></span><span style=display:flex><span>#######
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># See https://docs.sentry.io/on-premise/server/queue/ for more
+</span></span><span style=display:flex><span># information on configuring your queue broker and workers. Sentry relies
+</span></span><span style=display:flex><span># on a Python framework called Celery to manage queues.
+</span></span><span style=display:flex><span>CELERY_ALWAYS_EAGER = False
+</span></span><span style=display:flex><span>BROKER_URL = &#39;redis://127.0.0.1:6379&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>############
+</span></span><span style=display:flex><span># Rate Limits #
+</span></span><span style=display:flex><span>############
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Rate limits apply to notification handlers and are enforced per-project
+</span></span><span style=display:flex><span># automatically.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_RATELIMITER = &#39;sentry.ratelimits.redis.RedisRateLimiter&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>##############
+</span></span><span style=display:flex><span># Update Buffers #
+</span></span><span style=display:flex><span>##############
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Buffers (combined with queueing) act as an intermediate layer between the
+</span></span><span style=display:flex><span># database and the storage API. They will greatly improve efficiency on large
+</span></span><span style=display:flex><span># numbers of the same events being sent to the API in a short amount of time.
+</span></span><span style=display:flex><span># (read: if you send any kind of real data to Sentry, you should enable buffers)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_BUFFER = &#39;sentry.buffer.redis.RedisBuffer&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>########
+</span></span><span style=display:flex><span># Quotas #
+</span></span><span style=display:flex><span>########
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Quotas allow you to rate limit individual projects or the Sentry install as
+</span></span><span style=display:flex><span># a whole.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_QUOTAS = &#39;sentry.quotas.redis.RedisQuota&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>######
+</span></span><span style=display:flex><span># TSDB #
+</span></span><span style=display:flex><span>######
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># The TSDB is used for building charts as well as making things like per-rate
+</span></span><span style=display:flex><span># alerts possible.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_TSDB = &#39;sentry.tsdb.redis.RedisTSDB&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>#########
+</span></span><span style=display:flex><span># Digests #
+</span></span><span style=display:flex><span>#########
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># The digest backend powers notification summaries.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_DIGESTS = &#39;sentry.digests.backends.redis.RedisBackend&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>############
+</span></span><span style=display:flex><span># File storage #
+</span></span><span style=display:flex><span>############
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># Any Django storage backend is compatible with Sentry. For more solutions see
+</span></span><span style=display:flex><span># the django-storages package: https://django-storages.readthedocs.org/en/latest/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_FILESTORE = &#39;django.core.files.storage.FileSystemStorage&#39;
+</span></span><span style=display:flex><span>SENTRY_FILESTORE_OPTIONS = {
+</span></span><span style=display:flex><span>    &#39;location&#39;: &#39;/tmp/sentry-files&#39;,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>###########
+</span></span><span style=display:flex><span># Web Server #
+</span></span><span style=display:flex><span>###########
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># If you&#39;re using a reverse SSL proxy, you should enable the X-Forwarded-Proto
+</span></span><span style=display:flex><span># header and uncomment the following settings
+</span></span><span style=display:flex><span># SECURE_PROXY_SSL_HEADER = (&#39;HTTP_X_FORWARDED_PROTO&#39;, &#39;https&#39;)
+</span></span><span style=display:flex><span># SESSION_COOKIE_SECURE = True
+</span></span><span style=display:flex><span># CSRF_COOKIE_SECURE = True
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span># If you&#39;re not hosting at the root of your web server,
+</span></span><span style=display:flex><span># you need to uncomment and set it to the path where Sentry is hosted.
+</span></span><span style=display:flex><span># FORCE_SCRIPT_NAME = &#39;/sentry&#39;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>SENTRY_WEB_HOST = &#39;0.0.0.0&#39;
+</span></span><span style=display:flex><span>SENTRY_WEB_PORT = 5000
+</span></span><span style=display:flex><span>SENTRY_WEB_OPTIONS = {
+</span></span><span style=display:flex><span>    # &#39;workers&#39;: 3,  # the number of web workers
+</span></span><span style=display:flex><span>    # &#39;protocol&#39;: &#39;uwsgi&#39;,  # Enable uwsgi protocol instead of http
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>LANGUAGES = (
+</span></span><span style=display:flex><span>    (&#39;en&#39;, gettext_noop(&#39;English&#39;)),
+</span></span><span style=display:flex><span>    (&#39;zh-cn&#39;, gettext_noop(&#39;Simplified Chinese&#39;)),
+</span></span><span style=display:flex><span>    # (&#39;zh-cn&#39;, gettext_noop(&#39;Traditional Chinese&#39;)),
+</span></span><span style=display:flex><span>)
+</span></span></code></pre></div><h3 id=运行-sentry>运行 Sentry
+<a class=header-anchor href=#%e8%bf%90%e8%a1%8c-sentry></a></h3><ol><li>初始化:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>sentry upgrade
+</span></span></code></pre></div><p>注意，这里可能会出现错误，可以参考下面遇到的坑。初始化的时候，需要设置一个 superuser 角色，直接按提示操作即可。</p><ol><li>启动 web 进程:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>sentry run web
+</span></span></code></pre></div><ol><li>启动 worker 进程:</li></ol><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>sentry run worker
+</span></span></code></pre></div><ol><li>这时候，通过 IP:PORT 的形式访问下，填写刚才填写的用户名和密码即可登录。登录后，我们创建一个 project。我这里设置的是 Odeon_Dev，接下来选择项目，我选择的是 Django。这个时候，会弹出一个在项目中配置的教程。我们按照提示操作即可。</li></ol><p>测试环境的地址：</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>http://localhost:5000/sentry/odeon_dev/
+</span></span></code></pre></div><h3 id=项目中配置-sentry>项目中配置 Sentry
+<a class=header-anchor href=#%e9%a1%b9%e7%9b%ae%e4%b8%ad%e9%85%8d%e7%bd%ae-sentry></a></h3><p>按照上面的操作，Sentry 服务就可以 run 起来了。接下来需要在 Odeon 的项目中配置下 Sentry 环境即可。这里，我们需要引入一个新包: raven。我安装的 是 raven 6.1.0</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>安装：
+</span></span><span style=display:flex><span>  A. 可以直接下载 raven 包，将其导入到环境中;
+</span></span><span style=display:flex><span>  B. 直接指令安装: build/env/bin/pip install raven==6.1.0
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>项目配置：
+</span></span><span style=display:flex><span>  直接将 sentry 创建 project 时返回的信息放入 settings 文件中即可
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    import os
+</span></span><span style=display:flex><span>    import raven
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    RAVEN_CONFIG = {
+</span></span><span style=display:flex><span>        &#39;dsn&#39;: &#39;http://fxxx:xxx@localhost:xxx/2&#39;,
+</span></span><span style=display:flex><span>        &#39;release&#39;: raven.fetch_git_sha(os.path.dirname(os.pardir)),
+</span></span><span style=display:flex><span>    }
+</span></span></code></pre></div><p>至此，整个 Sentry 的搭建和项目中需要的配置就完全 OK 了。
+当然，也可以更完善一下，比如：</p><ol><li>利用 Nginx 反向代理使用域名访问服务；</li><li>利用 supervisor 来起 Sentry 服务等。</li></ol><p>接下来，就是按需使用了。</p><h3 id=遇到的坑>遇到的坑
+<a class=header-anchor href=#%e9%81%87%e5%88%b0%e7%9a%84%e5%9d%91></a></h3><ol><li>sentry默认使用 PostgreSQL。我用的是 mysql。运行 sentry upgrade 的时候，发现运行到 db migration 的时候抛了异常，查阅发现是 db engine 使用的是MyISAM，不支持 transaction 导致的。这里需要注意下，我将 engine 指定为 InnoDB后，执行 migration 的时候错误消失。</li><li>页面打开后，提示 worker 没有正常运行。发现没有启动 worker。我们手动启动下 worker，启动时，需要在系统中将 C_FORCE_ROOT 设置为 true。详细点击：
+<a href=https://stackoverflow.com/questions/20346851/running-celery-as-root title=参考链接 rel="noopener external nofollow noreferrer" target=_blank class=exturl>参考链接
+<i class="fa fa-external-link-alt"></i></a></li></ol><h3 id=参考链接>参考链接：
+<a class=header-anchor href=#%e5%8f%82%e8%80%83%e9%93%be%e6%8e%a5></a></h3><ul><li><a href=https://yunsonbai.top/2016/05/30/django-sentry/ title=https://yunsonbai.top/2016/05/30/django-sentry/ rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://yunsonbai.top/2016/05/30/django-sentry/
+<i class="fa fa-external-link-alt"></i></a></li><li><a href=https://tech.liuchao.me/2015/06/monitor-service-error-logs-by-using-sentry/ title=https://tech.liuchao.me/2015/06/monitor-service-error-logs-by-using-sentry/ rel="noopener external nofollow noreferrer" target=_blank class=exturl>https://tech.liuchao.me/2015/06/monitor-service-error-logs-by-using-sentry/
+<i class="fa fa-external-link-alt"></i></a></li></ul></div><footer class=post-footer><div class=post-tags><a href=/tags/sentry>Sentry</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/nginx-uwsgi-flask%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1/ rel=next title=nginx+uwsgi+flask搭建web服务><i class="fa fa-chevron-left"></i> nginx+uwsgi+flask搭建web服务</a></div><div class="post-nav-prev post-nav-item"><a href=/post/%E9%98%BF%E9%87%8Cjava%E7%A5%9E%E7%BA%A7%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7arthas/ rel=prev title=阿里Java神级诊断工具arthas>阿里Java神级诊断工具arthas
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

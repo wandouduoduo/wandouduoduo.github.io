@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>日志管理 on 豌豆多多</title><link>/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/</link><description>Recent content in 日志管理 on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 08 Jul 2020 11:08:41 +0800</lastBuildDate><atom:link href="/categories/%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86/rss.xml" rel="self" type="application/rss+xml"/><item><title>ELK之logstash多个配置文件及模板的使用</title><link>/post/elk%E4%B9%8Blogstash%E5%A4%9A%E4%B8%AA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 08 Jul 2020 11:08:41 +0800</pubDate><guid>/post/elk%E4%B9%8Blogstash%E5%A4%9A%E4%B8%AA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>在使用 logstash 编写多个配置文件，写入到 elasticsearch 时，会出现数据写入混乱的问题，举例来说：&lt;/p>
+&lt;p>多个配置文件中规则如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>A -&amp;gt; es-logstash-A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B -&amp;gt; es-logstash-B
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#A 写入到 es-logstash-A 索引中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#B 写入到 es-logstash-B 索引中&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然而当 logstash 服务运行起来的时候并不是这样的，可能出现如下想象：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>A-&amp;gt; es-logstash-A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B-&amp;gt; es-logstash-A
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>究其原因，是因为 logstash 运行起来的时候，会将所有的配置文件合并执行。因此，每个 input 的数据都必须有一个唯一的标识，在 filter 和 output 时，通过这个唯一标识来实现过滤或者存储到不同的索引。&lt;/strong>&lt;/p></description></item><item><title>Elasticsearch分片副本机制</title><link>/post/elasticsearch%E5%88%86%E7%89%87%E5%89%AF%E6%9C%AC%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 23 Dec 2019 14:46:15 +0800</pubDate><guid>/post/elasticsearch%E5%88%86%E7%89%87%E5%89%AF%E6%9C%AC%E6%9C%BA%E5%88%B6/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>日常运维工作中，保证系统服务的稳定是第一优先级的。做好高可用方案是关键。在用Elasticsearch作为存储的服务中，保证Elasticsearch数据的高可用，数据的安全性和一致性至关重要。本文就针对这一问题详细介绍了Elasticsearch的分片和副本机制。&lt;/p></description></item><item><title>ELK日志系统最新版本详细教程</title><link>/post/elk%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 10 Jun 2019 17:41:46 +0800</pubDate><guid>/post/elk%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>为什么要做日志分析平台？&lt;/p>
+&lt;p>随着业务量的增长，每天业务服务器将会产生上亿条的日志，单个日志文件达几个GB，这时我们发现用Linux自带工具，cat grep awk 分析越来越力不从心了，而且除了服务器日志，还有程序报错日志，分布在不同的服务器，查阅繁琐。&lt;/p>
+&lt;p>&lt;strong>待解决的痛点:&lt;/strong>&lt;/p>
+&lt;p>1、大量不同种类的日志成为了运维人员的负担，不方便管理;&lt;/p>
+&lt;p>2、单个日志文件巨大，无法使用常用的文本工具分析，检索困难;&lt;/p>
+&lt;p>3、日志分布在多台不同的服务器上，业务一旦出现故障，需要一台台查看日志。&lt;/p>
+&lt;p>为了解决以上困扰: 接下来我们要一步步构建这个日志分析平台，架构图如下:&lt;/p></description></item></channel></rss>

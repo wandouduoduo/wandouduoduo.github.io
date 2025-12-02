@@ -1,0 +1,761 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="Centos7上单节点安装配置最新版openldap服务"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Openldap"><meta property="og:type" content="article"><meta property="og:title" content="Centos7上单节点安装配置最新版openldap服务"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2019-08-28 11:31:13 +0800 CST"><meta property="article:modified_time" content="2019-08-28 11:31:13 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1","permalink":"/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/","title":"Centos7上单节点安装配置最新版openldap服务","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>Centos7上单节点安装配置最新版openldap服务 - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#目的>目的</a></li><li><a href=#环境>环境</a></li><li><a href=#准备工作>准备工作</a></li><li><a href=#openldap服务端配置>OpenLDAP服务端配置</a></li><li><a href=#安装ldap组件并启动服务>安装LDAP组件并启动服务</a></li><li><a href=#配置openldap服务>配置OpenLDAP服务</a></li><li><a href=#ldap客户端配置>ldap客户端配置</a></li><li><a href=#配置ldap使用公钥publickey远程ssh登录客户主机>配置LDAP使用公钥(publicKey)远程ssh登录客户主机</a><ul><li><a href=#openldap服务端配置-1>openldap服务端配置</a></li><li><a href=#客户主机配置>客户主机配置</a></li><li><a href=#登录验证>登录验证</a></li></ul></li><li><a href=#配置ldap账户可以登录的主机列表>配置LDAP账户可以登录的主机列表</a><ul><li><a href=#需要通过ldap远程登录的客户机配置>需要通过Ldap远程登录的客户机配置</a></li><li><a href=#ldap账户配置>LDAP账户配置</a></li></ul></li><li><a href=#配置ldap-sudo权限管理>配置LDAP sudo权限管理</a><ul><li><a href=#服务配置>服务配置</a></li><li><a href=#权限配置>权限配置</a></li><li><a href=#将上面的demo800001账户配置为sudo权限>将上面的demo（800001）账户配置为sudo权限</a></li><li><a href=#客户端增加如下配置>客户端增加如下配置</a></li></ul></li><li><a href=#基于web的openldap管理工具phpldapadmin>基于web的OpenLDAP管理工具phpldapadmin</a><ul><li><a href=#安装配置phpldapadmin>安装配置phpldapadmin</a></li><li><a href=#使用phpldapadmin>使用phpldapadmin</a></li><li><a href=#为phpldapadmin添加suorole配置模版>为phpldapadmin添加suorole配置模版</a></li></ul></li><li><a href=#windows下的一个openldap管理工具-ldapadmin>windows下的一个OpenLDAP管理工具 LdapAdmin</a><ul><li><a href=#创建连接到openldap服务>创建连接到openldap服务</a></li><li><a href=#配置一个运维组ops然后将用户800001加入到ops组>配置一个运维组ops，然后将用户800001加入到ops组</a></li></ul></li><li><a href=#开启memberof>开启memberOf</a></li><li><a href=#禁止匿名访问><strong>禁止匿名访问</strong></a></li><li><a href=#设置acl>设置ACL</a></li><li><a href=#创建管理用户>创建管理用户</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Centos7上单节点安装配置最新版openldap服务"><meta itemprop=description content="目的
+
+本文详细介绍了在centos7上安装最新版openldap的过程和常见场景。
+环境
+
+操作系统：centos7.6
+软件版本：openldap-2.4.44
+配置示例:   dc=example,dc=com"></span><header class=post-header><h1 class=post-title itemprop="name headline">Centos7上单节点安装配置最新版openldap服务</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-08-28 11:31:13 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-08-28 11:31:13 +0800 CST">2019-08-28</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>3962</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>8分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>本文详细介绍了在centos7上安装最新版openldap的过程和常见场景。</p><h2 id=环境>环境
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83></a></h2><p>操作系统：centos7.6</p><p>软件版本：openldap-2.4.44</p><p>配置示例: dc=example,dc=com</p><h2 id=准备工作>准备工作
+<a class=header-anchor href=#%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c></a></h2><p>为了方便配置防火墙以及禁用selinux，或者关闭防火墙。</p><p>查看防火墙状态</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>firewall-cmd --state
+</span></span></code></pre></div><p>停止firewall</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>systemctl stop firewalld.service
+</span></span></code></pre></div><p>禁止firewall开机启动</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>systemctl disable firewalld.service 
+</span></span></code></pre></div><p>关闭selinux</p><p>进入到/etc/selinux/config文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/selinux/config
+</span></span><span style=display:flex><span>将SELINUX<span style=color:#f92672>=</span>enforcing改为SELINUX<span style=color:#f92672>=</span>disabled
+</span></span></code></pre></div><h2 id=openldap服务端配置>OpenLDAP服务端配置
+<a class=header-anchor href=#openldap%e6%9c%8d%e5%8a%a1%e7%ab%af%e9%85%8d%e7%bd%ae></a></h2><p>创建一个配置目录，将相关配置文件放在这个目录下面</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>openldap
+</span></span><span style=display:flex><span>├── base.ldif
+</span></span><span style=display:flex><span>├── config.ldif
+</span></span><span style=display:flex><span>├── demo.ldif
+</span></span><span style=display:flex><span>├── loglevel.ldif
+</span></span><span style=display:flex><span>├── schema
+</span></span><span style=display:flex><span>│   ├── sudo.ldif
+</span></span><span style=display:flex><span>│   └── sudo.schema
+</span></span><span style=display:flex><span>├── sudo_ops_role.ldif
+</span></span><span style=display:flex><span>└── SUODers.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cd openldap
+</span></span></code></pre></div><h2 id=安装ldap组件并启动服务>安装LDAP组件并启动服务
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85ldap%e7%bb%84%e4%bb%b6%e5%b9%b6%e5%90%af%e5%8a%a8%e6%9c%8d%e5%8a%a1></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># yum安装</span>
+</span></span><span style=display:flex><span>yum -y install openldap  openldap-clients openldap-servers 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 建立Ldap数据库</span>
+</span></span><span style=display:flex><span>cp /usr/share/openldap-servers/DB_CONFIG.example /var/lib/ldap/DB_CONFIG
+</span></span><span style=display:flex><span>chown ldap:ldap /var/lib/ldap/*
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 启动和开机自启</span>
+</span></span><span style=display:flex><span>systemctl start slapd.service
+</span></span><span style=display:flex><span>systemctl enable slapd.service
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 验证</span>
+</span></span><span style=display:flex><span>netstat -antup | grep -i <span style=color:#ae81ff>389</span>
+</span></span><span style=display:flex><span>tcp     <span style=color:#ae81ff>0</span>    <span style=color:#ae81ff>0</span> 0.0.0.0:389      0.0.0.0:*   LISTEN      16349/slapd     
+</span></span><span style=display:flex><span>tcp6    <span style=color:#ae81ff>0</span>    <span style=color:#ae81ff>0</span> :::389           :::*        LISTEN      16349/slapd 
+</span></span></code></pre></div><h2 id=配置openldap服务>配置OpenLDAP服务
+<a class=header-anchor href=#%e9%85%8d%e7%bd%aeopenldap%e6%9c%8d%e5%8a%a1></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 生成Ldap root密码</span>
+</span></span><span style=display:flex><span>~<span style=color:#f92672>]</span><span style=color:#75715e># slappasswd</span>
+</span></span><span style=display:flex><span>New password: openldap
+</span></span><span style=display:flex><span>Re-enter new password: openldap 
+</span></span><span style=display:flex><span><span style=color:#f92672>{</span>SSHA<span style=color:#f92672>}</span>npo7WhvpY+s4+p584zAnoduStQzeTxHE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 添加需要的schemas [可以根据需要添加更多]</span>
+</span></span><span style=display:flex><span>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+</span></span><span style=display:flex><span>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif 
+</span></span><span style=display:flex><span>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 配置openLDAP服务</span>
+</span></span><span style=display:flex><span>vim config.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcDatabase<span style=color:#f92672>={</span>1<span style=color:#f92672>}</span>monitor,cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>replace: olcAccess
+</span></span><span style=display:flex><span>olcAccess: <span style=color:#f92672>{</span>0<span style=color:#f92672>}</span>to * by dn.base<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;gidNumber=0+uidNumber=0,cn=peercred,cn=external, cn=auth&#34;</span> read by dn.base<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> read by * none
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcDatabase<span style=color:#f92672>={</span>2<span style=color:#f92672>}</span>hdb,cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>replace: olcSuffix
+</span></span><span style=display:flex><span>olcSuffix: dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcDatabase<span style=color:#f92672>={</span>2<span style=color:#f92672>}</span>hdb,cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>replace: olcRootDN
+</span></span><span style=display:flex><span>olcRootDN: cn<span style=color:#f92672>=</span>Manager,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcDatabase<span style=color:#f92672>={</span>2<span style=color:#f92672>}</span>hdb,cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>replace: olcRootPW
+</span></span><span style=display:flex><span>olcRootPW: <span style=color:#f92672>{</span>SSHA<span style=color:#f92672>}</span>npo7WhvpY+s4+p584zAnoduStQzeTxHE
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcDatabase<span style=color:#f92672>={</span>2<span style=color:#f92672>}</span>hdb,cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>add: olcAccess
+</span></span><span style=display:flex><span>olcAccess: <span style=color:#f92672>{</span>0<span style=color:#f92672>}</span>to attrs<span style=color:#f92672>=</span>userPassword,shadowLastChange by dn<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> write by anonymous auth by self write by * none
+</span></span><span style=display:flex><span>olcAccess: <span style=color:#f92672>{</span>1<span style=color:#f92672>}</span>to dn.base<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;&#34;</span> by * read
+</span></span><span style=display:flex><span>olcAccess: <span style=color:#f92672>{</span>2<span style=color:#f92672>}</span>to * by dn<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> write by * read
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 发送配置到LDAP服务</span>
+</span></span><span style=display:flex><span>ldapmodify -Y EXTERNAL  -H ldapi:/// -f config.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 域example.com配置</span>
+</span></span><span style=display:flex><span>vi base.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>o: example com
+</span></span><span style=display:flex><span>dc: example
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: dcObject
+</span></span><span style=display:flex><span>objectClass: organization
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>=</span>Manager,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: organizationalRole
+</span></span><span style=display:flex><span>cn: Manager
+</span></span><span style=display:flex><span>description: LDAP Manager
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: ou<span style=color:#f92672>=</span>People,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: organizationalUnit
+</span></span><span style=display:flex><span>ou: People
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: ou<span style=color:#f92672>=</span>Group,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: organizationalUnit
+</span></span><span style=display:flex><span>ou: Group
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 发送配置到LDAP服务</span>
+</span></span><span style=display:flex><span>ldapadd -x -W -D <span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> -f base.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 配置ldap log</span>
+</span></span><span style=display:flex><span>vim loglevel.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>replace: olcLogLevel
+</span></span><span style=display:flex><span>olcLogLevel: stats
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 发送配置到LDAP服务</span>
+</span></span><span style=display:flex><span>ldapmodify -Y EXTERNAL -H ldapi:/// -f loglevel.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#34;local4.*  /var/log/slapd/slapd.log&#34;</span> &gt;&gt; /etc/rsyslog.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>vi /etc/logrotate.d/slapd
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>/var/log/openldap.log <span style=color:#f92672>{</span>
+</span></span><span style=display:flex><span>    rotate <span style=color:#ae81ff>14</span>
+</span></span><span style=display:flex><span>    size 10M
+</span></span><span style=display:flex><span>    missingok
+</span></span><span style=display:flex><span>    compress
+</span></span><span style=display:flex><span>    copytruncate
+</span></span><span style=display:flex><span><span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>systemctl restart rsyslog
+</span></span><span style=display:flex><span><span style=color:#75715e># 如果有需要还可以配置日志轮转</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 创建一个测试用户</span>
+</span></span><span style=display:flex><span>vi demo.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: uid<span style=color:#f92672>=</span>800001,ou<span style=color:#f92672>=</span>People,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: account
+</span></span><span style=display:flex><span>objectClass: posixAccount
+</span></span><span style=display:flex><span>objectClass: shadowAccount
+</span></span><span style=display:flex><span>cn: demo
+</span></span><span style=display:flex><span>uid: <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>uidNumber: <span style=color:#ae81ff>3000</span>
+</span></span><span style=display:flex><span>gidNumber: <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>homeDirectory: /home/ldapusers
+</span></span><span style=display:flex><span>loginShell: /bin/bash
+</span></span><span style=display:flex><span>gecos: Demo <span style=color:#f92672>[</span>Demo user <span style=color:#f92672>(</span>at<span style=color:#f92672>)</span> example<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>userPassword: <span style=color:#f92672>{</span>crypt<span style=color:#f92672>}</span>x
+</span></span><span style=display:flex><span>shadowLastChange: <span style=color:#ae81ff>17058</span>
+</span></span><span style=display:flex><span>shadowMin: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>shadowMax: <span style=color:#ae81ff>99999</span>
+</span></span><span style=display:flex><span>shadowWarning: <span style=color:#ae81ff>7</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>=</span>ops,ou<span style=color:#f92672>=</span>Group,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: posixGroup
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>cn: ops
+</span></span><span style=display:flex><span>gidNumber: <span style=color:#ae81ff>80001</span>
+</span></span><span style=display:flex><span>memberUid: <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 创建</span>
+</span></span><span style=display:flex><span>ldapadd -x -W -D <span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> -f demo.ldif
+</span></span><span style=display:flex><span><span style=color:#75715e># 改密</span>
+</span></span><span style=display:flex><span>ldappasswd -s <span style=color:#e6db74>&#39;passwd@123&#39;</span> -W -D <span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> -x <span style=color:#e6db74>&#34;uid=800001,ou=People,dc=example,dc=com&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 验证搜索</span>
+</span></span><span style=display:flex><span>ldapsearch -x uid<span style=color:#f92672>=</span><span style=color:#ae81ff>800001</span> -b dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>//删除使用如下命令，暂不删除，因后续实验需用到测试用户
+</span></span><span style=display:flex><span>ldapdelete -W -D <span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> -x <span style=color:#e6db74>&#34;uid=800001,ou=People,dc=example,dc=com&#34;</span>
+</span></span></code></pre></div><h2 id=ldap客户端配置>ldap客户端配置
+<a class=header-anchor href=#ldap%e5%ae%a2%e6%88%b7%e7%ab%af%e9%85%8d%e7%bd%ae></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 安装组件</span>
+</span></span><span style=display:flex><span>yum install -y openldap-clients nss-pam-ldapd
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 添加client服务器到LDAP服务,注意IP</span>
+</span></span><span style=display:flex><span>authconfig --enableldap --enableldapauth --ldapserver<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;localhost&#34;</span> --ldapbasedn<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;dc=example,dc=com&#34;</span> --update
+</span></span><span style=display:flex><span><span style=color:#75715e># 这个指令修改了/etc/nsswitch.conf 以及/etc/openldap/ldap.conf文件</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 启动ldap客户端服务</span>
+</span></span><span style=display:flex><span>systemctl restart  nslcd
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 验证</span>
+</span></span><span style=display:flex><span>getent passwd <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>800001:3000:100:Demo <span style=color:#f92672>[</span>Demo user <span style=color:#f92672>(</span>at<span style=color:#f92672>)</span> example<span style=color:#f92672>]</span>:/home/demo:/bin/bash
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 远程ssh登录验证</span>
+</span></span><span style=display:flex><span>ssh 800001@10.116.72.15
+</span></span><span style=display:flex><span>800001@10.116.72.15<span style=color:#960050;background-color:#1e0010>&#39;</span>s password: demopassword
+</span></span><span style=display:flex><span>-bash-4.2$ id <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>uid<span style=color:#f92672>=</span>3000<span style=color:#f92672>(</span>800001<span style=color:#f92672>)</span> gid<span style=color:#f92672>=</span>100<span style=color:#f92672>(</span>users<span style=color:#f92672>)</span> groups<span style=color:#f92672>=</span>100<span style=color:#f92672>(</span>users<span style=color:#f92672>)</span>,80001<span style=color:#f92672>(</span>ops<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>-bash-4.2$ 
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 这里可以看到没有配置自动生成账户的家目录，在实际的运维过程中，也不会去生成家目录（不然一堆的账户加目录），而是让运维账户统一一个家目录，并且设置为只读。</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 不过如果有需要配置配置家目录自动生成，需要修改pam模块</span>
+</span></span></code></pre></div><h2 id=配置ldap使用公钥publickey远程ssh登录客户主机>配置LDAP使用公钥(publicKey)远程ssh登录客户主机
+<a class=header-anchor href=#%e9%85%8d%e7%bd%aeldap%e4%bd%bf%e7%94%a8%e5%85%ac%e9%92%a5publickey%e8%bf%9c%e7%a8%8bssh%e7%99%bb%e5%bd%95%e5%ae%a2%e6%88%b7%e4%b8%bb%e6%9c%ba></a></h2><h3 id=openldap服务端配置-1>openldap服务端配置
+<a class=header-anchor href=#openldap%e6%9c%8d%e5%8a%a1%e7%ab%af%e9%85%8d%e7%bd%ae-1></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 安装openssh-ldap</span>
+</span></span><span style=display:flex><span>yum install openssh-ldap
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 查看</span>
+</span></span><span style=display:flex><span>rpm -aql |grep openssh-ldap
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1/HOWTO.ldap-keys
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1/ldap.conf
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-openldap.ldif
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-openldap.schema
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-sun.ldif
+</span></span><span style=display:flex><span>/usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-sun.schema
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 配置添加相关schema</span>
+</span></span><span style=display:flex><span>cp /usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-openldap.ldif /etc/openldap/schema/
+</span></span><span style=display:flex><span>cp /usr/share/doc/openssh-ldap-7.4p1/openssh-lpk-openldap.schema /etc/openldap/schema/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 添加</span>
+</span></span><span style=display:flex><span>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/openssh-lpk-openldap.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 账户添加objectClass: ldapPublicKey 并添加属性sshPublicKey</span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 具体修改流程，可以使用下面安装的ldapadmin或者phpldapadmin进行配置</span>
+</span></span><span style=display:flex><span>objectClass: ldapPublicKey
+</span></span><span style=display:flex><span>sshPublicKey:  值是具体的publickey
+</span></span></code></pre></div><h3 id=客户主机配置>客户主机配置
+<a class=header-anchor href=#%e5%ae%a2%e6%88%b7%e4%b8%bb%e6%9c%ba%e9%85%8d%e7%bd%ae></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 安装</span>
+</span></span><span style=display:flex><span>yum install openssh-ldap
+</span></span><span style=display:flex><span>cp /usr/share/doc/openssh-ldap-7.4p1/ldap.conf /etc/ssh/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 如果使用TLS 配置TLS,这里不使用</span>
+</span></span><span style=display:flex><span>vim /etc/ssh/ldap.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>ssl no
+</span></span><span style=display:flex><span>uri ldap://10.116.72.11/
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>vim /etc/ssh/sshd_config
+</span></span><span style=display:flex><span><span style=color:#75715e># 脚本将从LDAP获取密钥并将其提供给SSH服务器</span>
+</span></span><span style=display:flex><span>AuthorizedKeysCommand /usr/libexec/openssh/ssh-ldap-wrapper
+</span></span><span style=display:flex><span>AuthorizedKeysCommandUser nobody
+</span></span><span style=display:flex><span>PubkeyAuthentication yes
+</span></span></code></pre></div><h3 id=登录验证>登录验证
+<a class=header-anchor href=#%e7%99%bb%e5%bd%95%e9%aa%8c%e8%af%81></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ssh -i ~/.ssh/id_rsa 800001@10.116.72.15
+</span></span><span style=display:flex><span>Last login: Thu Jul  <span style=color:#ae81ff>4</span> 16:15:30 <span style=color:#ae81ff>2019</span> from 10.116.71.200
+</span></span><span style=display:flex><span>Could not chdir to home directory /home/demo: No such file or directory
+</span></span><span style=display:flex><span>-bash-4.2$ 
+</span></span></code></pre></div><h2 id=配置ldap账户可以登录的主机列表>配置LDAP账户可以登录的主机列表
+<a class=header-anchor href=#%e9%85%8d%e7%bd%aeldap%e8%b4%a6%e6%88%b7%e5%8f%af%e4%bb%a5%e7%99%bb%e5%bd%95%e7%9a%84%e4%b8%bb%e6%9c%ba%e5%88%97%e8%a1%a8></a></h2><p>测试使用的远程ssh服务器是10.116.72.15，我们验证如下</p><ol><li><p>添加账户主机列表（host属性）不包含116.116.72.15 测试是否可以正常登录</p></li><li><p>添加账户主机列表（host属性）包含116.116.72.15 测试是否可以正常登录</p></li></ol><h3 id=需要通过ldap远程登录的客户机配置>需要通过Ldap远程登录的客户机配置
+<a class=header-anchor href=#%e9%9c%80%e8%a6%81%e9%80%9a%e8%bf%87ldap%e8%bf%9c%e7%a8%8b%e7%99%bb%e5%bd%95%e7%9a%84%e5%ae%a2%e6%88%b7%e6%9c%ba%e9%85%8d%e7%bd%ae></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>vi /etc/nsswitch.conf
+</span></span><span style=display:flex><span><span style=color:#75715e># 添加如下过滤配置，包含本机主机名称。表示过滤匹配包括本机IP或者允许任意IP地址的账户授权信息</span>
+</span></span><span style=display:flex><span>filter passwd <span style=color:#f92672>(</span>|<span style=color:#f92672>(</span>host<span style=color:#f92672>=</span>10.116.72.15<span style=color:#f92672>)(</span>host<span style=color:#f92672>=</span><span style=color:#ae81ff>\*</span><span style=color:#f92672>))(</span>host<span style=color:#f92672>=</span>ALL<span style=color:#f92672>)</span>
+</span></span></code></pre></div><p>备注：如果远程主机是centos6，配置稍有不同</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>vi /etc/pam_ldap.conf
+</span></span><span style=display:flex><span>pam_filter |<span style=color:#f92672>(</span>host<span style=color:#f92672>=</span>10.116.72.16<span style=color:#f92672>)(</span>host<span style=color:#f92672>=</span><span style=color:#ae81ff>\*</span><span style=color:#f92672>)(</span>host<span style=color:#f92672>=</span>ALL<span style=color:#f92672>)</span>
+</span></span></code></pre></div><h3 id=ldap账户配置>LDAP账户配置
+<a class=header-anchor href=#ldap%e8%b4%a6%e6%88%b7%e9%85%8d%e7%bd%ae></a></h3><p>ldap命令或者ldapadmin管理工具为账户添加属性host，这个属性可以添加多次。</p><ul><li>第一次配置不包含测试主机10.116.72.15</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ldapsearch -x uid<span style=color:#f92672>=</span><span style=color:#ae81ff>800001</span> -b <span style=color:#e6db74>&#39;ou=People,dc=example,dc=com&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: uid<span style=color:#f92672>=</span>800001,ou<span style=color:#f92672>=</span>People,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: account
+</span></span><span style=display:flex><span>objectClass: posixAccount
+</span></span><span style=display:flex><span>objectClass: shadowAccount
+</span></span><span style=display:flex><span>cn: demo
+</span></span><span style=display:flex><span>uid: <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>uidNumber: <span style=color:#ae81ff>3000</span>
+</span></span><span style=display:flex><span>gidNumber: <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>homeDirectory: /home/demo
+</span></span><span style=display:flex><span>loginShell: /bin/bash
+</span></span><span style=display:flex><span>gecos: Demo <span style=color:#f92672>[</span>Admin <span style=color:#f92672>(</span>at<span style=color:#f92672>)</span> eju<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>shadowMin: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>shadowMax: <span style=color:#ae81ff>99999</span>
+</span></span><span style=display:flex><span>shadowWarning: <span style=color:#ae81ff>7</span>
+</span></span><span style=display:flex><span>host: 10.116.72.12
+</span></span><span style=display:flex><span>host: 10.116.72.16
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>测试登录
+</span></span><span style=display:flex><span><span style=color:#75715e># ssh 800001@10.116.72.15</span>
+</span></span><span style=display:flex><span>800001@10.116.72.15<span style=color:#960050;background-color:#1e0010>&#39;</span>s password: 
+</span></span><span style=display:flex><span>Permission denied, please try again.
+</span></span></code></pre></div><ul><li>第二次配置包含测试主机10.116.72.15</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ldapsearch -x uid<span style=color:#f92672>=</span><span style=color:#ae81ff>800001</span> -b <span style=color:#e6db74>&#39;ou=People,dc=example,dc=com&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: uid<span style=color:#f92672>=</span>800001,ou<span style=color:#f92672>=</span>People,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: account
+</span></span><span style=display:flex><span>objectClass: posixAccount
+</span></span><span style=display:flex><span>objectClass: shadowAccount
+</span></span><span style=display:flex><span>cn: demo
+</span></span><span style=display:flex><span>uid: <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>uidNumber: <span style=color:#ae81ff>3000</span>
+</span></span><span style=display:flex><span>gidNumber: <span style=color:#ae81ff>100</span>
+</span></span><span style=display:flex><span>homeDirectory: /home/demo
+</span></span><span style=display:flex><span>loginShell: /bin/bash
+</span></span><span style=display:flex><span>gecos: Demo <span style=color:#f92672>[</span>Admin <span style=color:#f92672>(</span>at<span style=color:#f92672>)</span> eju<span style=color:#f92672>]</span>
+</span></span><span style=display:flex><span>shadowMin: <span style=color:#ae81ff>0</span>
+</span></span><span style=display:flex><span>shadowMax: <span style=color:#ae81ff>99999</span>
+</span></span><span style=display:flex><span>shadowWarning: <span style=color:#ae81ff>7</span>
+</span></span><span style=display:flex><span>host: 10.116.72.12
+</span></span><span style=display:flex><span>host: 10.116.72.15
+</span></span><span style=display:flex><span>host: 10.116.72.16
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>测试登录
+</span></span><span style=display:flex><span><span style=color:#75715e># ssh 800001@10.116.72.15</span>
+</span></span><span style=display:flex><span>800001@10.116.72.15<span style=color:#960050;background-color:#1e0010>&#39;</span>s password: 
+</span></span><span style=display:flex><span>Last login: Thu Jul  <span style=color:#ae81ff>4</span> 16:15:30 <span style=color:#ae81ff>2019</span> from 10.116.71.200
+</span></span><span style=display:flex><span>Could not chdir to home directory /home/demo: No such file or directory
+</span></span><span style=display:flex><span>-bash-4.2$ 
+</span></span></code></pre></div><p>以上，测试通过。</p><h2 id=配置ldap-sudo权限管理>配置LDAP sudo权限管理
+<a class=header-anchor href=#%e9%85%8d%e7%bd%aeldap-sudo%e6%9d%83%e9%99%90%e7%ae%a1%e7%90%86></a></h2><h3 id=服务配置>服务配置
+<a class=header-anchor href=#%e6%9c%8d%e5%8a%a1%e9%85%8d%e7%bd%ae></a></h3><p>CentOS7.6下安装的OpenLDAP是2.4.44 ,schema目录下并没有sudo.ldif以及sudo.schema文件，需要单独处理。 sudo是默认安装的，sudo相关目录下有sudo.schema模板文件schema.OpenLDAP</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>find / -name schema.OpenLDAP -exec cp <span style=color:#f92672>{}</span> /etc/openldap/schema/sudo.schema <span style=color:#ae81ff>\;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 生成sudo.ldif</span>
+</span></span><span style=display:flex><span>echo <span style=color:#e6db74>&#39;include     /etc/openldap/schema/sudo.schema&#39;</span> &gt; /tmp/sudo.conf
+</span></span><span style=display:flex><span>mkdir /tmp/sudo
+</span></span><span style=display:flex><span>slaptest -f /tmp/sudo.conf -F /tmp/sudo
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>vim /tmp/sudo/cn<span style=color:#f92672>=</span>config/cn<span style=color:#f92672>=</span>schema/cn<span style=color:#f92672>={</span>0<span style=color:#f92672>}</span>sudo.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>替换（前3行）
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>={</span>0<span style=color:#f92672>}</span>sudo
+</span></span><span style=display:flex><span>objectClass: olcSchemaConfig
+</span></span><span style=display:flex><span>cn: <span style=color:#f92672>{</span>0<span style=color:#f92672>}</span>sudo
+</span></span><span style=display:flex><span>为
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>=</span>sudo,cn<span style=color:#f92672>=</span>schema,cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>objectClass: olcSchemaConfig
+</span></span><span style=display:flex><span>cn: sudo
+</span></span><span style=display:flex><span>删除<span style=color:#f92672>(</span>最后7行<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>structuralObjectClass: olcSchemaConfig
+</span></span><span style=display:flex><span>entryUUID: ec3b659a-31a9-1039-90ae-87c69280e4a2
+</span></span><span style=display:flex><span>creatorsName: cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>createTimestamp: 20190703064542Z
+</span></span><span style=display:flex><span>entryCSN: 20190703064542.945991Z#000000#000#000000
+</span></span><span style=display:flex><span>modifiersName: cn<span style=color:#f92672>=</span>config
+</span></span><span style=display:flex><span>modifyTimestamp: 20190703064542Z
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cp /tmp/sudo/cn<span style=color:#f92672>=</span>config/cn<span style=color:#f92672>=</span>schema/cn<span style=color:#f92672>={</span>0<span style=color:#f92672>}</span>sudo.ldif /etc/openldap/schema/sudo.ldif
+</span></span><span style=display:flex><span>ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/sudo.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>rm -f /tmp/sudo.conf /tmp/sudo
+</span></span></code></pre></div><h3 id=权限配置>权限配置
+<a class=header-anchor href=#%e6%9d%83%e9%99%90%e9%85%8d%e7%bd%ae></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>vim SUODers.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: ou<span style=color:#f92672>=</span>SUDOers,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>ou: SUDOers
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: organizationalUnit
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>=</span>defaults,ou<span style=color:#f92672>=</span>SUDOers,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: sudoRole
+</span></span><span style=display:flex><span>cn: defaults
+</span></span><span style=display:flex><span>sudoOption: requiretty
+</span></span><span style=display:flex><span>sudoOption: !visiblepw
+</span></span><span style=display:flex><span>sudoOption: always_set_home
+</span></span><span style=display:flex><span>sudoOption: env_reset
+</span></span><span style=display:flex><span>sudoOption: env_keep <span style=color:#f92672>=</span>  <span style=color:#e6db74>&#34;COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR LS_COLORS&#34;</span>
+</span></span><span style=display:flex><span>sudoOption: env_keep <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#34;MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE&#34;</span>
+</span></span><span style=display:flex><span>sudoOption: env_keep <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#34;LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES&#34;</span>
+</span></span><span style=display:flex><span>sudoOption: env_keep <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#34;LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE&#34;</span>
+</span></span><span style=display:flex><span>sudoOption: env_keep <span style=color:#f92672>+=</span> <span style=color:#e6db74>&#34;LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY&#34;</span>
+</span></span><span style=display:flex><span>sudoOption: secure_path <span style=color:#f92672>=</span> /sbin:/bin:/usr/sbin:/usr/bin
+</span></span><span style=display:flex><span>sudoOption: logfile <span style=color:#f92672>=</span> /var/log/sudo
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 添加</span>
+</span></span><span style=display:flex><span>ldapadd -x -W -D <span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> -f SUODers.ldif
+</span></span></code></pre></div><h3 id=将上面的demo800001账户配置为sudo权限>将上面的demo（800001）账户配置为sudo权限
+<a class=header-anchor href=#%e5%b0%86%e4%b8%8a%e9%9d%a2%e7%9a%84demo800001%e8%b4%a6%e6%88%b7%e9%85%8d%e7%bd%ae%e4%b8%basudo%e6%9d%83%e9%99%90></a></h3><p>这里配置一个运维sudo role，名称为sudo_ops_role，简单配置为sudo 到root所有权限，并将800001加入该role</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>vim sudo_ops_role.ldif
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn<span style=color:#f92672>=</span>sudo_ops_role,ou<span style=color:#f92672>=</span>SUDOers,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>objectClass: sudoRole
+</span></span><span style=display:flex><span>cn: sudo_ops_role
+</span></span><span style=display:flex><span>sudoOption: !authenticate
+</span></span><span style=display:flex><span>sudoRunAsUser: root
+</span></span><span style=display:flex><span>sudoCommand: ALL
+</span></span><span style=display:flex><span>sudoHost: ALL
+</span></span><span style=display:flex><span>sudoUser: <span style=color:#ae81ff>800001</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 添加</span>
+</span></span><span style=display:flex><span>ldapadd -x -W -D <span style=color:#e6db74>&#34;cn=Manager,dc=example,dc=com&#34;</span> -f sudo_ops_role.ldif
+</span></span></code></pre></div><h3 id=客户端增加如下配置>客户端增加如下配置
+<a class=header-anchor href=#%e5%ae%a2%e6%88%b7%e7%ab%af%e5%a2%9e%e5%8a%a0%e5%a6%82%e4%b8%8b%e9%85%8d%e7%bd%ae></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>vim /etc/nsswitch.conf
+</span></span><span style=display:flex><span><span style=color:#75715e># 追加内存</span>
+</span></span><span style=display:flex><span>sudoers:    files ldap
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>mv /etc/sudo-ldap.conf<span style=color:#f92672>{</span>,.bak<span style=color:#f92672>}</span>
+</span></span><span style=display:flex><span>vi /etc/sudo-ldap.conf
+</span></span><span style=display:flex><span>uri ldap://10.116.72.11/ 
+</span></span><span style=display:flex><span>base dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span><span style=display:flex><span>sudoers_base ou<span style=color:#f92672>=</span>SUDOers,dc<span style=color:#f92672>=</span>example,dc<span style=color:#f92672>=</span>com
+</span></span></code></pre></div><p>测试</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># ssh 800001@10.116.72.15</span>
+</span></span><span style=display:flex><span>800001@10.116.72.15<span style=color:#960050;background-color:#1e0010>&#39;</span>s password: 
+</span></span><span style=display:flex><span>Could not chdir to home directory /home/ldapusers: No such file or directory
+</span></span><span style=display:flex><span>-bash-4.2$ sudo su -
+</span></span><span style=display:flex><span>Last login: Wed Jul  <span style=color:#ae81ff>3</span> 15:09:21 CST <span style=color:#ae81ff>2019</span> from 10.116.71.200 on pts/0
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@systerm-shylf-1 ~<span style=color:#f92672>]</span><span style=color:#75715e># </span>
+</span></span></code></pre></div><h2 id=基于web的openldap管理工具phpldapadmin>基于web的OpenLDAP管理工具phpldapadmin
+<a class=header-anchor href=#%e5%9f%ba%e4%ba%8eweb%e7%9a%84openldap%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7phpldapadmin></a></h2><p>实例在openldap安装，实际使用中可以部署在其他服务器上通过网络访问。前端还可以配置一个nginx去代理实现高可用</p><h3 id=安装配置phpldapadmin>安装配置phpldapadmin
+<a class=header-anchor href=#%e5%ae%89%e8%a3%85%e9%85%8d%e7%bd%aephpldapadmin></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># 安装组件</span>
+</span></span><span style=display:flex><span>yum -y install epel-release
+</span></span><span style=display:flex><span>yum -y install httpd phpldapadmin
+</span></span><span style=display:flex><span><span style=color:#75715e># yum安装后的项目文件位置/usr/share/phpldapadmin/htdocs，配置文件位置/etc/phpldapadmin/config.php</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># phpldapadmin修改</span>
+</span></span><span style=display:flex><span>vim /etc/phpldapadmin/config.php
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 注释掉</span>
+</span></span><span style=display:flex><span>//$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;login&#39;</span>,<span style=color:#e6db74>&#39;attr&#39;</span>,<span style=color:#e6db74>&#39;uid&#39;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span><span style=color:#75715e># 或者修改为</span>
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;login&#39;</span>,<span style=color:#e6db74>&#39;attr&#39;</span>,<span style=color:#e6db74>&#39;dn&#39;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>$servers-&gt;newServer<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;ldap_pla&#39;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;server&#39;</span>,<span style=color:#e6db74>&#39;name&#39;</span>,<span style=color:#e6db74>&#39;LDAP Server&#39;</span><span style=color:#f92672>)</span>; 
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;server&#39;</span>,<span style=color:#e6db74>&#39;host&#39;</span>,<span style=color:#e6db74>&#39;127.0.0.1&#39;</span><span style=color:#f92672>)</span>; //根据需要修改为实际地址,这个部署到openldap本机直接保留127.0.0.1
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;server&#39;</span>,<span style=color:#e6db74>&#39;port&#39;</span>,389<span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;server&#39;</span>,<span style=color:#e6db74>&#39;base&#39;</span>,array<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;dc=example,dc=com&#39;</span><span style=color:#f92672>))</span>;   //
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;login&#39;</span>,<span style=color:#e6db74>&#39;auth_type&#39;</span>,<span style=color:#e6db74>&#39;cookie&#39;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;login&#39;</span>,<span style=color:#e6db74>&#39;bind_id&#39;</span>,<span style=color:#e6db74>&#39;cn=Manager,dc=example,dc=com&#39;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;login&#39;</span>,<span style=color:#e6db74>&#39;bind_pass&#39;</span>,<span style=color:#e6db74>&#39;&#39;</span><span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>$servers-&gt;setValue<span style=color:#f92672>(</span><span style=color:#e6db74>&#39;server&#39;</span>,<span style=color:#e6db74>&#39;tls&#39;</span>,false<span style=color:#f92672>)</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># httpd修改</span>
+</span></span><span style=display:flex><span>vim /etc/httpd/conf.d/phpldapadmin.conf
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Alias /phpldapadmin /usr/share/phpldapadmin/htdocs
+</span></span><span style=display:flex><span>Alias /ldapadmin /usr/share/phpldapadmin/htdocs
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>&lt;Directory /usr/share/phpldapadmin/htdocs&gt;
+</span></span><span style=display:flex><span>  &lt;IfModule mod_authz_core.c&gt;
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Apache 2.4</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Require local</span>
+</span></span><span style=display:flex><span>    Require all granted
+</span></span><span style=display:flex><span>  &lt;/IfModule&gt;
+</span></span><span style=display:flex><span>  &lt;IfModule !mod_authz_core.c&gt;
+</span></span><span style=display:flex><span>    <span style=color:#75715e># Apache 2.2</span>
+</span></span><span style=display:flex><span>    Order Deny,Allow
+</span></span><span style=display:flex><span>    Deny from all
+</span></span><span style=display:flex><span>    Allow from 127.0.0.1
+</span></span><span style=display:flex><span>    Allow from ::1
+</span></span><span style=display:flex><span>    <span style=color:#75715e># 根据需要配置许可</span>
+</span></span><span style=display:flex><span>    Allow from 10.116
+</span></span><span style=display:flex><span>  &lt;/IfModule&gt;
+</span></span><span style=display:flex><span>&lt;/Directory&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># 启动httpd服务</span>
+</span></span><span style=display:flex><span>systemctl restart httpd
+</span></span></code></pre></div><h3 id=使用phpldapadmin>使用phpldapadmin
+<a class=header-anchor href=#%e4%bd%bf%e7%94%a8phpldapadmin></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt></p><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt></p><p>备注，如果报错如下</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>Forbidden 
+</span></span><span style=display:flex><span>You don<span style=color:#960050;background-color:#1e0010>&#39;</span>t have permission to access /ldapadmin/ on this server.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>可以尝试修改httpd.conf
+</span></span><span style=display:flex><span>vi /etc/httpd/conf/http.conf
+</span></span><span style=display:flex><span>修改
+</span></span><span style=display:flex><span>&lt;Directory /&gt;
+</span></span><span style=display:flex><span>    AllowOverride none
+</span></span><span style=display:flex><span>    Require all denied
+</span></span><span style=display:flex><span>&lt;/Directory&gt;
+</span></span><span style=display:flex><span>为
+</span></span><span style=display:flex><span>&lt;Directory /&gt; 
+</span></span><span style=display:flex><span>Options Indexes FollowSymLinks 
+</span></span><span style=display:flex><span>AllowOverride None 
+</span></span><span style=display:flex><span>&lt;/Directory&gt;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>systemctl restart httpd
+</span></span></code></pre></div><h3 id=为phpldapadmin添加suorole配置模版>为phpldapadmin添加suorole配置模版
+<a class=header-anchor href=#%e4%b8%baphpldapadmin%e6%b7%bb%e5%8a%a0suorole%e9%85%8d%e7%bd%ae%e6%a8%a1%e7%89%88></a></h3><p>从
+<a href=http://phpldapadmin.sourceforge.net/wiki/index.php/TemplatesContributed:Sudo title=官网地址 rel="noopener external nofollow noreferrer" target=_blank class=exturl>官网地址
+<i class="fa fa-external-link-alt"></i></a> 可以获取到sudoRole模板，可以在这个基础上进行修改</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ll /usr/share/phpldapadmin/templates
+</span></span><span style=display:flex><span><span style=color:#75715e># ll /usr/share/phpldapadmin/templates</span>
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>2</span> root root <span style=color:#ae81ff>4096</span> Jul  <span style=color:#ae81ff>4</span> 15:32 creation
+</span></span><span style=display:flex><span>drwxr-xr-x <span style=color:#ae81ff>2</span> root root   <span style=color:#ae81ff>69</span> Jul  <span style=color:#ae81ff>4</span> 15:31 modification
+</span></span><span style=display:flex><span>-rw-r--r-- <span style=color:#ae81ff>1</span> root root <span style=color:#ae81ff>2089</span> Oct  <span style=color:#ae81ff>1</span>  <span style=color:#ae81ff>2012</span> template.dtd
+</span></span></code></pre></div><p>vim /usr/share/phpldapadmin/templates/creation/sudo.xml 注意根据需要进行修改，我的sudo ou名称是SUDOers</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!DOCTYPE template SYSTEM &#34;template.dtd&#34;&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;template&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;title&gt;</span>Sudo Policy<span style=color:#f92672>&lt;/title&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;regexp&gt;</span>^ou=SUDOers,dc=.*<span style=color:#f92672>&lt;/regexp&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;icon&gt;</span>images/door.png<span style=color:#f92672>&lt;/icon&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;description&gt;</span>New Sudo Policy<span style=color:#f92672>&lt;/description&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;askcontainer&gt;</span>1<span style=color:#f92672>&lt;/askcontainer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;rdn&gt;</span>cn<span style=color:#f92672>&lt;/rdn&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;visible&gt;</span>1<span style=color:#f92672>&lt;/visible&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;objectClasses&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;objectClass</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoRole&#34;</span><span style=color:#f92672>&gt;&lt;/objectClass&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/objectClasses&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attributes&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;cn&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Policy Name<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>1<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoOption&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Option<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>2<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoRunAsUser&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Run As User<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>3<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoCommand&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Command<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>4<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoUser&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Users<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;option&gt;</span>=php.MultiList(/,(objectClass=posixAccount),uid,%uid%
+</span></span><span style=display:flex><span>(%cn%),sudoUser)<span style=color:#f92672>&lt;/option&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>5<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoHost&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Hosts<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;array&gt;</span>10<span style=color:#f92672>&lt;/array&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>6<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;description&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;type&gt;</span>textarea<span style=color:#f92672>&lt;/type&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Description<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>7<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attributes&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/template&gt;</span>
+</span></span></code></pre></div><p>vim /usr/share/phpldapadmin/templates/modification/sudo.xml</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-xml data-lang=xml><span style=display:flex><span><span style=color:#75715e>&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34; standalone=&#34;no&#34;?&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#75715e>&lt;!DOCTYPE template SYSTEM &#34;template.dtd&#34;&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;template&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;title&gt;</span>Sudo Policy<span style=color:#f92672>&lt;/title&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;regexp&gt;</span>^cn=.*,ou=SUDOers,dc=.*<span style=color:#f92672>&lt;/regexp&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;icon&gt;</span>images/door.png<span style=color:#f92672>&lt;/icon&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;description&gt;</span>Sudo Policy<span style=color:#f92672>&lt;/description&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;askcontainer&gt;</span>1<span style=color:#f92672>&lt;/askcontainer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;rdn&gt;</span>cn<span style=color:#f92672>&lt;/rdn&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;visible&gt;</span>1<span style=color:#f92672>&lt;/visible&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;objectClasses&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;objectClass</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoRole&#34;</span><span style=color:#f92672>&gt;&lt;/objectClass&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/objectClasses&gt;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attributes&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;cn&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Policy Name<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>1<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoOption&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Option<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>2<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoRunAsUser&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Run As User<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>3<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoCommand&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Command<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>4<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoUser&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Users<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>5<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;sudoHost&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Sudo Hosts<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>&lt;!-- &lt;array&gt;10&lt;/array&gt; --&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>6<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;spacer&gt;</span>1<span style=color:#f92672>&lt;/spacer&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;attribute</span> <span style=color:#a6e22e>id=</span><span style=color:#e6db74>&#34;description&#34;</span><span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;type&gt;</span>textarea<span style=color:#f92672>&lt;/type&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;display&gt;</span>Description<span style=color:#f92672>&lt;/display&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;order&gt;</span>7<span style=color:#f92672>&lt;/order&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;page&gt;</span>1<span style=color:#f92672>&lt;/page&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;cols&gt;</span>200<span style=color:#f92672>&lt;/cols&gt;</span>
+</span></span><span style=display:flex><span>        <span style=color:#f92672>&lt;rows&gt;</span>10<span style=color:#f92672>&lt;/rows&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attribute&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/attributes&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&lt;/template&gt;</span>
+</span></span></code></pre></div><p>重启httpd服务</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>systemctl restart httpd
+</span></span></code></pre></div><p>浏览器查看(ou=SUODers,dc=example,dc=com 创建一条子目录 sudoRole)</p><p><img src=/imgs/img-lazy-loading.gif data-src=3.png alt></p><h2 id=windows下的一个openldap管理工具-ldapadmin>windows下的一个OpenLDAP管理工具 LdapAdmin
+<a class=header-anchor href=#windows%e4%b8%8b%e7%9a%84%e4%b8%80%e4%b8%aaopenldap%e7%ae%a1%e7%90%86%e5%b7%a5%e5%85%b7-ldapadmin></a></h2><p>下载地址
+<a href=http://www.ldapadmin.org/download/ldapadmin.html title=LdapAdmin rel="noopener external nofollow noreferrer" target=_blank class=exturl>LdapAdmin
+<i class="fa fa-external-link-alt"></i>
+</a>, 当前最新版本是
+<a href=https://sourceforge.net/projects/ldapadmin/files/ldapadmin/1.8.3/LdapAdminExe-w64-1.8.3.zip/download title=1.8.3 rel="noopener external nofollow noreferrer" target=_blank class=exturl>1.8.3
+<i class="fa fa-external-link-alt"></i>
+</a>。 下载后直接解压就是一个exe文件。</p><h3 id=创建连接到openldap服务>创建连接到openldap服务
+<a class=header-anchor href=#%e5%88%9b%e5%bb%ba%e8%bf%9e%e6%8e%a5%e5%88%b0openldap%e6%9c%8d%e5%8a%a1></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=4.png alt></p><h3 id=配置一个运维组ops然后将用户800001加入到ops组>配置一个运维组ops，然后将用户800001加入到ops组
+<a class=header-anchor href=#%e9%85%8d%e7%bd%ae%e4%b8%80%e4%b8%aa%e8%bf%90%e7%bb%b4%e7%bb%84ops%e7%84%b6%e5%90%8e%e5%b0%86%e7%94%a8%e6%88%b7800001%e5%8a%a0%e5%85%a5%e5%88%b0ops%e7%bb%84></a></h3><p><img src=/imgs/img-lazy-loading.gif data-src=5.png alt></p><h2 id=开启memberof>开启memberOf
+<a class=header-anchor href=#%e5%bc%80%e5%90%afmemberof></a></h2><p>默认情况下openldap的用户组属性是Posixgroup，Posixgroup用户组属性和用户没有实际的对应关系。如果要对应起来的话，就需要单独把用户设置到Posixgroup中</p><p>开启memberOf之后可以配置groupOfUniqueNames用户组属性，可以根据用户组过滤用户，这个过滤是唯一的</p><p>开启memberof，并让新增用户支持memberof</p><p>创建 memberof_config.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: cn=module{0},cn=config
+</span></span><span style=display:flex><span>cn: modulle{0}
+</span></span><span style=display:flex><span>objectClass: olcModuleList
+</span></span><span style=display:flex><span>objectclass: top
+</span></span><span style=display:flex><span>olcModuleload: memberof.la
+</span></span><span style=display:flex><span>olcModulePath: /usr/lib64/openldap
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcOverlay={0}memberof,olcDatabase={2}hdb,cn=config
+</span></span><span style=display:flex><span>objectClass: olcConfig
+</span></span><span style=display:flex><span>objectClass: olcMemberOf
+</span></span><span style=display:flex><span>objectClass: olcOverlayConfig
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>olcOverlay: memberof
+</span></span><span style=display:flex><span>olcMemberOfDangling: ignore
+</span></span><span style=display:flex><span>olcMemberOfRefInt: TRUE
+</span></span><span style=display:flex><span>olcMemberOfGroupOC: groupOfNames
+</span></span><span style=display:flex><span>olcMemberOfMemberAD: member
+</span></span><span style=display:flex><span>olcMemberOfMemberOfAD: memberOf
+</span></span></code></pre></div><p>创建 refint1.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: cn=module{0},cn=config
+</span></span><span style=display:flex><span>add: olcmoduleload
+</span></span><span style=display:flex><span>olcmoduleload: refint
+</span></span></code></pre></div><p>创建 refint2.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: olcOverlay=refint,olcDatabase={2}hdb,cn=config
+</span></span><span style=display:flex><span>objectClass: olcConfig
+</span></span><span style=display:flex><span>objectClass: olcOverlayConfig
+</span></span><span style=display:flex><span>objectClass: olcRefintConfig
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>olcOverlay: refint
+</span></span><span style=display:flex><span>olcRefintAttribute: memberof member manager owner
+</span></span></code></pre></div><p>导入配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>ldapadd -Q -Y EXTERNAL -H ldapi:/// -f memberof_config.ldif
+</span></span><span style=display:flex><span>ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f refint1.ldif
+</span></span><span style=display:flex><span>ldapadd -Q -Y EXTERNAL -H ldapi:/// -f refint2.ldif
+</span></span><span style=display:flex><span><span style=color:#75715e># 导入refint2时如果有报错，把最后一句改为：olcRefintAttribute: memberof uniqueMember  manager owner</span>
+</span></span></code></pre></div><p>验证一下配置，这个命令可以列出所有配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-bash data-lang=bash><span style=display:flex><span>slapcat -b cn<span style=color:#f92672>=</span>config
+</span></span></code></pre></div><h2 id=禁止匿名访问><strong>禁止匿名访问</strong>
+<a class=header-anchor href=#%e7%a6%81%e6%ad%a2%e5%8c%bf%e5%90%8d%e8%ae%bf%e9%97%ae></a></h2><p>默认情况下匿名用户可以获取所有用户信息，甚至是密码字段，虽然密码字段是经过加密的那也很危险</p><p>创建disable_anon.ldif文件</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: cn=config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>add: olcDisallows
+</span></span><span style=display:flex><span>olcDisallows: bind_anon
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn=config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>add: olcRequires
+</span></span><span style=display:flex><span>olcRequires: authc
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: olcDatabase={-1}frontend,cn=config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>add: olcRequires
+</span></span><span style=display:flex><span>olcRequires: authc
+</span></span></code></pre></div><p>导入配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>ldapadd -Q -Y EXTERNAL -H ldapi:/// -f disable_anon.ldif 
+</span></span></code></pre></div><h2 id=设置acl>设置ACL
+<a class=header-anchor href=#%e8%ae%be%e7%bd%aeacl></a></h2><p>拒绝所有用户查看用户信息，并且添加有ldap管理账号</p><p>创建acl.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: olcDatabase={2}hdb,cn=config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>replace: olcAccess
+</span></span><span style=display:flex><span>olcAccess: to attrs=userPassword
+</span></span><span style=display:flex><span>  by anonymous auth
+</span></span><span style=display:flex><span>  by dn.base=&#34;cn=ldapadmin,ou=manage,dc=taovip,dc=com&#34; write
+</span></span><span style=display:flex><span>  by * none
+</span></span><span style=display:flex><span>olcAccess: to *
+</span></span><span style=display:flex><span>  by anonymous auth
+</span></span><span style=display:flex><span>  by dn.base=&#34;cn=ldapadmin,ou=manage,dc=taovip,dc=com&#34; write
+</span></span><span style=display:flex><span>  by dn.base=&#34;cn=ldapread,ou=manage,dc=taovip,dc=com&#34; read
+</span></span><span style=display:flex><span>  by * none
+</span></span></code></pre></div><p>导入配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f acl.ldif 
+</span></span></code></pre></div><p>删除ACL</p><p>创建文件del_acl.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: olcDatabase={2}hdb,cn=config
+</span></span><span style=display:flex><span>changetype: modify
+</span></span><span style=display:flex><span>delete: olcAccess
+</span></span><span style=display:flex><span>olcAccess: {0}
+</span></span></code></pre></div><p>导入配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>ldapmodify -Q -Y EXTERNAL -H ldapi:/// -f acl.ldif 
+</span></span></code></pre></div><h2 id=创建管理用户>创建管理用户
+<a class=header-anchor href=#%e5%88%9b%e5%bb%ba%e7%ae%a1%e7%90%86%e7%94%a8%e6%88%b7></a></h2><p>创建add_ou.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>dn: ou=manage,dc=example,dc=com
+</span></span><span style=display:flex><span>ou: manage
+</span></span><span style=display:flex><span>description: Directory Manage
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: organizationalUnit
+</span></span></code></pre></div><p>创建add_manage_user.ldif</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>n: cn=ldapadmin,ou=manage,dc=example,dc=com
+</span></span><span style=display:flex><span>cn: ldapadmin
+</span></span><span style=display:flex><span>sn: ldapadmin
+</span></span><span style=display:flex><span>uid: ldapadmin
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: shadowAccount
+</span></span><span style=display:flex><span>objectClass: inetOrgPerson
+</span></span><span style=display:flex><span>objectClass: organizationalPerson
+</span></span><span style=display:flex><span>objectClass: person
+</span></span><span style=display:flex><span>userPassword: {SSHA}4eDZHnxvfOOoAgSM6tDLDueCIUB9sRuDHVpVJ
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>dn: cn=ldapread,ou=manage,dc=example,dc=com
+</span></span><span style=display:flex><span>cn: ldapread
+</span></span><span style=display:flex><span>sn: ldapread
+</span></span><span style=display:flex><span>uid: ldapread
+</span></span><span style=display:flex><span>objectClass: top
+</span></span><span style=display:flex><span>objectClass: shadowAccount
+</span></span><span style=display:flex><span>objectClass: inetOrgPerson
+</span></span><span style=display:flex><span>objectClass: organizationalPerson
+</span></span><span style=display:flex><span>objectClass: person
+</span></span><span style=display:flex><span>userPassword: {SSHA}4eDZHnxvfOOoAgSM6tDLDueCIUB9sRuDHVpVJ
+</span></span></code></pre></div><p>导入配置</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>ldapadd -x -D cn=root,dc=example,dc=com -W -f add_ou.ldif
+</span></span><span style=display:flex><span>ldapadd -x -D cn=root,dc=example,dc=com -W -f add_manage_user.ldif
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/openldap>Openldap</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/ rel=next title=Centos7上配置最新版openldap服务主从架构><i class="fa fa-chevron-left"></i> Centos7上配置最新版openldap服务主从架构</a></div><div class="post-nav-prev post-nav-item"><a href=/post/%E5%9F%BA%E4%BA%8Eopenldap-mirrormode%E7%9A%84openldap%E9%AB%98%E5%8F%AF%E7%94%A8/ rel=prev title=基于OpenLDAP_MirrorMode的OpenLDAP高可用>基于OpenLDAP_MirrorMode的OpenLDAP高可用
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GlusterFS on 豌豆多多</title><link>/tags/glusterfs/</link><description>Recent content in GlusterFS on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 26 May 2021 11:14:28 +0800</lastBuildDate><atom:link href="/tags/glusterfs/rss.xml" rel="self" type="application/rss+xml"/><item><title>glusterfs集群横向扩容缩容</title><link>/post/glusterfs%E9%9B%86%E7%BE%A4%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</link><pubDate>Wed, 26 May 2021 11:14:28 +0800</pubDate><guid>/post/glusterfs%E9%9B%86%E7%BE%A4%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</guid><description>&lt;p>glusterfs集群的搭建和使用这里就不再赘述了，可以看以前的教程文档。本文主要聊的是随着服务使用量的增加，那么存储集群势必要扩充空间。服务器迁移，需要先扩容后缩容等等。所以本文的主旨是聊glusterfs集群的横向优化：扩容和缩容。&lt;/p></description></item><item><title>详解glusterfs模式调换</title><link>/post/%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2/</link><pubDate>Mon, 28 Sep 2020 15:11:41 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2/</guid><description>&lt;p>&lt;code>glusterfs&lt;/code>集群存储有七种模式，在搭建集群时选择的模式，可能在使用过一段时间后发现当前的模式不是最优的方案，换种模式可能会更好。那么怎么在保证数据安全的情况下，对&lt;code>glusterfs&lt;/code>集群更改模式，以最优适配我们的使用，最大化资源利用呢？本文就这一痛点详细说明。&lt;/p></description></item><item><title>CentOS7安装GlusterFS集群教程</title><link>/post/centos7%E5%AE%89%E8%A3%85glusterfs%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B/</link><pubDate>Thu, 16 Apr 2020 19:12:47 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85glusterfs%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文教程，帮助你搭建glusterfs集群共享存储。&lt;/p>
+&lt;h2 id="环境说明">环境说明
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;p>3台机器安装 GlusterFS 组成一个集群&lt;/p>
+&lt;p>服务器
+10.6.0.140
+10.6.0.192
+10.6.0.196&lt;/p>
+&lt;p>客户端：
+10.6.0.94 node-94&lt;/p></description></item><item><title>glusterfs常用命令</title><link>/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 26 Nov 2019 16:03:27 +0800</pubDate><guid>/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>glusterfs作为分布式存储，优点和安装这里就不再赘述了，看博客中教程。本文主要是介绍glusterfs常用命令和案例。&lt;/p></description></item><item><title>GlusterFS分布式存储集群之使用</title><link>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/</link><pubDate>Tue, 05 Nov 2019 11:56:15 +0800</pubDate><guid>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="glusterfs逻辑卷创建与使用">Glusterfs逻辑卷创建与使用
+&lt;a class="header-anchor" href="#glusterfs%e9%80%bb%e8%be%91%e5%8d%b7%e5%88%9b%e5%bb%ba%e4%b8%8e%e4%bd%bf%e7%94%a8">&lt;/a>
+&lt;/h1>&lt;p>volume是brick的组合，并且大部分glusterfs文件系统的操作都在volume上。&lt;/p>
+&lt;p>glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合形成多种扩展卷（得益于glusterfs的模块化堆栈架构设计）。&lt;/p>
+&lt;p>以下主要展示各类型逻辑卷的功能性，未对性能做测试验证。&lt;/p></description></item><item><title>GlusterFS分布式存储集群之部署</title><link>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 05 Nov 2019 11:37:42 +0800</pubDate><guid>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/</guid><description>&lt;h1 id="glusterfs框架">Glusterfs框架
+&lt;a class="header-anchor" href="#glusterfs%e6%a1%86%e6%9e%b6">&lt;/a>
+&lt;/h1>&lt;p>Glusterfs（Gluster file system）是开源的，具有强大横向扩展能力的（scale-out）,分布式的，可将来自多个服务器的存储资源通过tcp/ip或infiniBand RDMA 网络整合到一个统一的全局命名空间中的文件系统。&lt;/p>
+&lt;h2 id="框架">框架
+&lt;a class="header-anchor" href="#%e6%a1%86%e6%9e%b6">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p>
+&lt;ol>
+&lt;li>GlusterFS主要由存储服务器（Brick Server）、客户端以及 NFS/Samba 存储网关组成；&lt;/li>
+&lt;li>架构中无元数据服务器组件，无对于提升整个系统的性单点故障和性能瓶颈问题，可提高系统扩展性、性能、可靠性和稳定性；&lt;/li>
+&lt;li>GlusterFS支持 TCP/IP 和 InfiniBand RDMA 高速网络互联；&lt;/li>
+&lt;li>客户端可通过原生 GlusterFS 协议访问数据，其他没有运行 GlusterFS 客户端的终端可通过 NFS/CIFS 标准协议通过存储网关访问数据（存储网关提供弹性卷管理和访问代理功能）；&lt;/li>
+&lt;li>存储服务器主要提供基本的数据存储功能，客户端弥补了没有元数据服务器的问题，承担了更多的功能，包括数据卷管理、I/O 调度、文件定位、数据缓存等功能，利用 FUSE（File system in User Space）模块将 GlusterFS 挂载到本地文件系统之上，实现 POSIX 兼容的方式来访问系统数据。&lt;/li>
+&lt;/ol>
+&lt;h2 id="常见术语">常见术语
+&lt;a class="header-anchor" href="#%e5%b8%b8%e8%a7%81%e6%9c%af%e8%af%ad">&lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>Brick：GlusterFS中最基本的存储单元，表示为受信存储池（trusted storage pool）中输出的目录，供客户端挂载用，可以通过主机名与目录名来标识，如&amp;rsquo;SERVER:EXPORT&amp;rsquo;；&lt;/li>
+&lt;li>Volume：卷，逻辑上由N个brick组成；&lt;/li>
+&lt;li>FUSE：Unix-like OS上的可动态加载的模块，允许用户不用修改内核即可创建自己的文件系统；&lt;/li>
+&lt;li>Glusterd：Gluster management daemon，在trusted storage pool中所有的服务器上运行；&lt;/li>
+&lt;li>Volfile：Glusterfs进程的配置文件，通常是位于/var/lib/glusterd/vols/目录下的{volname}文件；&lt;/li>
+&lt;li>Self-heal：用于后台运行检测复本卷中文件与目录的不一致性并解决这些不一致；&lt;/li>
+&lt;li>Split-brain：脑裂；&lt;/li>
+&lt;li>GFID：GlusterFS卷中的每个文件或目录都有一个唯一的128位的数据相关联，用于模拟inode；&lt;/li>
+&lt;li>Namespace：每个Gluster卷都导出单个ns作为POSIX的挂载点。&lt;/li>
+&lt;/ol>
+&lt;h2 id="数据访问流程">数据访问流程
+&lt;a class="header-anchor" href="#%e6%95%b0%e6%8d%ae%e8%ae%bf%e9%97%ae%e6%b5%81%e7%a8%8b">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="img" />&lt;/p>
+&lt;ol>
+&lt;li>在客户端,用户通过 glusterfs的mount point读写数据；&lt;/li>
+&lt;li>用户的这个操作被递交给本地 Linux 系统的VFS 来处理；&lt;/li>
+&lt;li>VFS 将数据递交给 FUSE 内核文件系统（在启动 glusterfs 客户端以前,需要向系统注册一个实际的文件系统 FUSE），该文件系统与 ext3 在同一个层次， ext3 是对实际的磁盘进行处理，而 fuse 文件系统则是将数据通过 /dev/fuse 这个设备文件递交给了glusterfs client 端，可以将 fuse 文件系统理解为一个代理；&lt;/li>
+&lt;li>数据被 fuse 递交给 Glusterfs client 后， client 对数据进行一些指定的处理（即按 client 配置文件来进行的一系列处理）；&lt;/li>
+&lt;li>在 glusterfs client 的处理末端,通过网络将数据递交给 Glusterfs Server, 并且将数据写入到服务器所控制的存储设备上。&lt;/li>
+&lt;/ol></description></item></channel></rss>

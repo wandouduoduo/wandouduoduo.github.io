@@ -1,0 +1,254 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="详解linux中文件的三种time"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="Linux"><meta property="og:type" content="article"><meta property="og:title" content="详解linux中文件的三种time"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="豌豆多多"><meta property="article:published_time" content="2019-06-05 18:53:41 +0800 CST"><meta property="article:modified_time" content="2019-06-05 18:53:41 +0800 CST"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":true,"path":"%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime","permalink":"/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/","title":"详解linux中文件的三种time","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>详解linux中文件的三种time - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><a href=#目的>目的</a></li><li><a href=#含义>含义</a></li><li><a href=#查看>查看</a></li><li><a href=#测试>测试</a><ul><li><a href=#31-准备工作>3.1 准备工作</a></li><li><a href=#32-读取文件>3.2 读取文件</a></li><li><a href=#33-修改文件>3.3 修改文件</a></li><li><a href=#34-修改文件所有者>3.4 修改文件所有者</a></li></ul></li><li><a href=#说说relatime>说说relatime</a></li><li><a href=#常用命令对三个time的修改情况>常用命令对三个time的修改情况</a></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="详解linux中文件的三种time"><meta itemprop=description content="目的
+
+linux下文件有3个时间的，分别是atime,mtime,ctime。有些博友对这3个时间还是比较迷茫和困惑的，我整理了下，写下来希望对博友们有所帮助。"></span><header class=post-header><h1 class=post-title itemprop="name headline">详解linux中文件的三种time</h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-05 18:53:41 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-05 18:53:41 +0800 CST">2019-06-05</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/linux itemprop=url rel=index><span itemprop=name>操作系统/Linux</span></a></span></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="far fa-file-word"></i></span>
+<span class=post-meta-item-text>字数：</span>
+<span>1763</span></span>
+<span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="far fa-clock"></i></span>
+<span class=post-meta-item-text>阅读：&ap;</span>
+<span>4分钟</span></span>
+<span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="far fa-eye"></i></span>
+<span class=post-meta-item-text>浏览：</span>
+<span id=busuanzi_value_page_pv data-path=/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/><i class="fa fa-sync fa-spin"></i></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>linux下文件有3个时间的，分别是atime,mtime,ctime。有些博友对这3个时间还是比较迷茫和困惑的，我整理了下，写下来希望对博友们有所帮助。</p><h2 id=含义>含义
+<a class=header-anchor href=#%e5%90%ab%e4%b9%89></a></h2><table><thead><tr><th>简名</th><th>全名</th><th>中文名</th><th>含义</th></tr></thead><tbody><tr><td>atime</td><td>access time</td><td>访问时间</td><td>文件中的数据库最后被访问的时间</td></tr><tr><td>mtime</td><td>modify time</td><td>修改时间</td><td>文件内容被修改的最后时间</td></tr><tr><td>ctime</td><td>change time</td><td>变化时间</td><td>文件的元数据发生变化。比如权限，所有者等</td></tr></tbody></table><h2 id=查看>查看
+<a class=header-anchor href=#%e6%9f%a5%e7%9c%8b></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># pwd</span>
+</span></span><span style=display:flex><span>/app/time
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># ll</span>
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>-rw-------. <span style=color:#ae81ff>1</span> root root <span style=color:#ae81ff>1933</span> Nov <span style=color:#ae81ff>11</span> 08:14 anaconda-ks.cfg
+</span></span><span style=display:flex><span>-rw-r--r--. <span style=color:#ae81ff>1</span> root root   <span style=color:#ae81ff>59</span> Nov <span style=color:#ae81ff>11</span> 08:15 issue
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># stat issue </span>
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: <span style=color:#ae81ff>59</span>            Blocks: <span style=color:#ae81ff>8</span>          IO Block: <span style=color:#ae81ff>4096</span>   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: <span style=color:#ae81ff>261123</span>      Links: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>Access: <span style=color:#f92672>(</span>0644/-rw-r--r--<span style=color:#f92672>)</span>  Uid: <span style=color:#f92672>(</span>    0/    root<span style=color:#f92672>)</span>   Gid: <span style=color:#f92672>(</span>    0/    root<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># ls -l                               #默认的ls -l显示的是mtime     </span>
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>-rw-------. <span style=color:#ae81ff>1</span> root      root <span style=color:#ae81ff>1933</span> Nov <span style=color:#ae81ff>11</span> 08:14 anaconda-ks.cfg
+</span></span><span style=display:flex><span>-rw-r--r--. <span style=color:#ae81ff>1</span> zhaojiedi root   <span style=color:#ae81ff>71</span> Nov <span style=color:#ae81ff>11</span> 09:05 issue
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># ls -l --time=atime                             #列出文件的atime</span>
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>-rw-------. <span style=color:#ae81ff>1</span> root      root <span style=color:#ae81ff>1933</span> Nov <span style=color:#ae81ff>11</span> 08:14 anaconda-ks.cfg
+</span></span><span style=display:flex><span>-rw-r--r--. <span style=color:#ae81ff>1</span> zhaojiedi root   <span style=color:#ae81ff>71</span> Nov <span style=color:#ae81ff>11</span> 09:12 issue
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># ls -l --time=ctime　　　　　　　　　　　　　　　 #列出ctime</span>
+</span></span><span style=display:flex><span>total <span style=color:#ae81ff>8</span>
+</span></span><span style=display:flex><span>-rw-------. <span style=color:#ae81ff>1</span> root      root <span style=color:#ae81ff>1933</span> Nov <span style=color:#ae81ff>11</span> 08:14 anaconda-ks.cfg
+</span></span><span style=display:flex><span>-rw-r--r--. <span style=color:#ae81ff>1</span> zhaojiedi root   <span style=color:#ae81ff>71</span> Nov <span style=color:#ae81ff>11</span> 09:03 issue
+</span></span></code></pre></div><h2 id=测试>测试
+<a class=header-anchor href=#%e6%b5%8b%e8%af%95></a></h2><h3 id=31-准备工作>3.1 准备工作
+<a class=header-anchor href=#31-%e5%87%86%e5%a4%87%e5%b7%a5%e4%bd%9c></a></h3><p>测试前，我们需要先关闭文件系统的relatime特性。这个随后在说，具体操作如下。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># mount -o remount,strictatime /app  # 重新挂载我们的/app，并修改文件系统工作在严格atime上，也就是不启用了默认的relatime支持。</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># mount |grep /app                   #查看我们的修改</span>
+</span></span><span style=display:flex><span>/dev/sda5 on /app type ext4 <span style=color:#f92672>(</span>rw,seclabel,data<span style=color:#f92672>=</span>ordered<span style=color:#f92672>)</span>
+</span></span></code></pre></div><h3 id=32-读取文件>3.2 读取文件
+<a class=header-anchor href=#32-%e8%af%bb%e5%8f%96%e6%96%87%e4%bb%b6></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@centos7 time]# stat issue                             #先获取3个时间
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: 59            Blocks: 8          IO Block: 4096   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: 261123      Links: 1
+</span></span><span style=display:flex><span>Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span><span style=display:flex><span>[root@centos7 time]# cat issue                             #读取下
+</span></span><span style=display:flex><span>\S
+</span></span><span style=display:flex><span>Kernel \r on an \m
+</span></span><span style=display:flex><span>tty:   \l
+</span></span><span style=display:flex><span>hostname:   \n
+</span></span><span style=display:flex><span>time:    \t
+</span></span><span style=display:flex><span>[root@centos7 time]# stat issue 　　　　　　　　　　　　　　　#再次查看3个时间
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: 59            Blocks: 8          IO Block: 4096   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: 261123      Links: 1
+</span></span><span style=display:flex><span>Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 08:57:40.858948780 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 08:15:05.650986739 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span></code></pre></div><p>通过上面的分析，我们可以看出来，在使用cat读取文件后，文件的atime发生了改变。其他的没有改变。</p><h3 id=33-修改文件>3.3 修改文件
+<a class=header-anchor href=#33-%e4%bf%ae%e6%94%b9%e6%96%87%e4%bb%b6></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>[root@centos7 time]# stat issue                           #先获取下3个time
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: 65            Blocks: 8          IO Block: 4096   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: 261123      Links: 1
+</span></span><span style=display:flex><span>Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 09:03:49.080931626 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 09:04:16.881930331 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 09:04:16.881930331 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span><span style=display:flex><span>[root@centos7 time]# echo &#34;hello&#34; &gt;&gt; issue                #修改文件
+</span></span><span style=display:flex><span>[root@centos7 time]# stat issue 　　　　　　　　　　　　　　  #再次查看三个time
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: 71            Blocks: 8          IO Block: 4096   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: 261123      Links: 1
+</span></span><span style=display:flex><span>Access: (0644/-rw-r--r--)  Uid: (    0/    root)   Gid: (    0/    root)
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 09:03:49.080931626 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 09:05:07.775927960 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 09:05:07.775927960 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span></code></pre></div><p>通过上面的实验，我们可以看出来，写文件操作不会导致atime(访问时间）的修改，但是mtime和ctime会发生修改。mtime修改了我们可以理解的，毕竟我们修改了文件的，</p><p>那为何ctime也修改了呢， 仔细可以发现我们文件的大小发生了变化，也就是元数据发生了变化，所以ctime也是要变化的。</p><h3 id=34-修改文件所有者>3.4 修改文件所有者
+<a class=header-anchor href=#34-%e4%bf%ae%e6%94%b9%e6%96%87%e4%bb%b6%e6%89%80%e6%9c%89%e8%80%85></a></h3><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># stat issue                                          #先查看下3个time </span>
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: <span style=color:#ae81ff>71</span>            Blocks: <span style=color:#ae81ff>8</span>          IO Block: <span style=color:#ae81ff>4096</span>   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: <span style=color:#ae81ff>261123</span>      Links: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>Access: <span style=color:#f92672>(</span>0644/-rw-r--r--<span style=color:#f92672>)</span>  Uid: <span style=color:#f92672>(</span>    0/    root<span style=color:#f92672>)</span>   Gid: <span style=color:#f92672>(</span>    0/    root<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 09:03:49.080931626 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 09:05:07.775927960 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 09:05:07.775927960 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># chown zhaojiedi issue                              #修改权限</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>[</span>root@centos7 time<span style=color:#f92672>]</span><span style=color:#75715e># stat issue 　　　　　　　　　　　　　　　　　　　　　　　 #再次查看3个时间</span>
+</span></span><span style=display:flex><span>  File: ‘issue’
+</span></span><span style=display:flex><span>  Size: <span style=color:#ae81ff>71</span>            Blocks: <span style=color:#ae81ff>8</span>          IO Block: <span style=color:#ae81ff>4096</span>   regular file
+</span></span><span style=display:flex><span>Device: 805h/2053d    Inode: <span style=color:#ae81ff>261123</span>      Links: <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>Access: <span style=color:#f92672>(</span>0644/-rw-r--r--<span style=color:#f92672>)</span>  Uid: <span style=color:#f92672>(</span> 1000/zhaojiedi<span style=color:#f92672>)</span>   Gid: <span style=color:#f92672>(</span>    0/    root<span style=color:#f92672>)</span>
+</span></span><span style=display:flex><span>Context: unconfined_u:object_r:etc_runtime_t:s0
+</span></span><span style=display:flex><span>Access: 2017-11-11 09:03:49.080931626 +0800
+</span></span><span style=display:flex><span>Modify: 2017-11-11 09:05:07.775927960 +0800
+</span></span><span style=display:flex><span>Change: 2017-11-11 09:12:42.076906795 +0800
+</span></span><span style=display:flex><span> Birth: -
+</span></span></code></pre></div><p>通过上面的实验，我们可以看出来，修改了权限后，文件ctime发生了变化。</p><h2 id=说说relatime>说说relatime
+<a class=header-anchor href=#%e8%af%b4%e8%af%b4relatime></a></h2><p>常用命令对三个time的修改情况我们上面的测试，可以看出来，每次访问文件都会更新atime,这是很耗时的，尤其在web服务器上，大量用户只是访问html页面，完全没有必要修改atime。</p><p>从kernel2.6.29开始，文件系统默认集成了一个relatime的属性。</p><p>那么啥时候更新atime呢？ 有2种情况会更新atime,第一种是mtime比atime新，第二种是上次访问是1天前的了。</p><h2 id=常用命令对三个time的修改情况>常用命令对三个time的修改情况
+<a class=header-anchor href=#%e5%b8%b8%e7%94%a8%e5%91%bd%e4%bb%a4%e5%af%b9%e4%b8%89%e4%b8%aatime%e7%9a%84%e4%bf%ae%e6%94%b9%e6%83%85%e5%86%b5></a></h2><p>上面我们做了3个测试，我们也对atime,mtime,ctime有了一定的了解。网上有人已经做了好多测试如下表。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-shell data-lang=shell><span style=display:flex><span>+-------------------------------------------------+
+</span></span><span style=display:flex><span>   |               |  timestamps marked <span style=color:#66d9ef>for</span> update   |
+</span></span><span style=display:flex><span>   |    syscall    |---------------------------------|
+</span></span><span style=display:flex><span>   |               |       file        | parent dir  |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>2<span style=color:#f92672>]</span>chdir      |                   |             |
+</span></span><span style=display:flex><span>   |---------------| -                 | -           |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>3<span style=color:#f92672>]</span>fchdir     |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>4<span style=color:#f92672>]</span>chmod      |                   |             |
+</span></span><span style=display:flex><span>   |---------------| ctime             | -           |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>5<span style=color:#f92672>]</span>fchmod     |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>6<span style=color:#f92672>]</span>chown      |                   |             |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>7<span style=color:#f92672>]</span>fchown     | ctime             | -           |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>8<span style=color:#f92672>]</span>lchown     |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>9<span style=color:#f92672>]</span>close      | -                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>10<span style=color:#f92672>]</span>creat     | atime,ctime,mtime | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>11<span style=color:#f92672>]</span>execve    | atime             | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>12<span style=color:#f92672>]</span>fcntl     | -                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>13<span style=color:#f92672>]</span>ftruncate |                   |             |
+</span></span><span style=display:flex><span>   |---------------| ctime,mtime       | -           |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>14<span style=color:#f92672>]</span>truncate  |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>15<span style=color:#f92672>]</span>fstat     |                   |             |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>16<span style=color:#f92672>]</span>stat      | -                 | -           |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>17<span style=color:#f92672>]</span>lstat     |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>18<span style=color:#f92672>]</span>fsync     |                   |             |
+</span></span><span style=display:flex><span>   |---------------| -                 | -           |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>19<span style=color:#f92672>]</span>fdatasync |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>20<span style=color:#f92672>]</span>link      | ctime             | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>21<span style=color:#f92672>]</span>lseek     | -                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>22<span style=color:#f92672>]</span>mknod     | atime,ctime,mtime | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>23<span style=color:#f92672>]</span>mkdir     | atime,ctime,mtime | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>24<span style=color:#f92672>]</span>mmap      | *                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>25<span style=color:#f92672>]</span>munmap    | -                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>26<span style=color:#f92672>]</span>msync     | *                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>27<span style=color:#f92672>]</span>open      | *                 | *           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>28<span style=color:#f92672>]</span>pread     |                   |             |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>29<span style=color:#f92672>]</span>read      | atime             | -           |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>30<span style=color:#f92672>]</span>readv     |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>31<span style=color:#f92672>]</span>pwrite    |                   |             |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>32<span style=color:#f92672>]</span>write     | ctime,mtime       | -           |
+</span></span><span style=display:flex><span>   |---------------|                   |             |
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>33<span style=color:#f92672>]</span>writev    |                   |             |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>34<span style=color:#f92672>]</span>rename    | implementation    | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>35<span style=color:#f92672>]</span>rmdir     | -                 | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>36<span style=color:#f92672>]</span>readlink  | *                 | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>37<span style=color:#f92672>]</span>readdir   | atime             | -           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | readahead     | ?                 | ?           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>38<span style=color:#f92672>]</span>symlink   | *                 | *           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | sendfile      | ?                 | ?           |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>39<span style=color:#f92672>]</span>unlink    | -                 | ctime,mtime |
+</span></span><span style=display:flex><span>   |---------------+-------------------+-------------|
+</span></span><span style=display:flex><span>   | <span style=color:#f92672>[</span>40<span style=color:#f92672>]</span>utime     | ctime             | -           |
+</span></span><span style=display:flex><span>   +-------------------------------------------------+ 
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-tags><a href=/tags/linux>Linux</a></div><div class=addthis_inline_share_toolbox style=text-align:center></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/alipay.jpg alt="豌豆多多 - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechatpay.png alt="豌豆多多 - 微信">
+<span>微信</span></div></div></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i></span>
+<span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i></span>
+<span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/dig%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/ rel=next title=Dig命令详解><i class="fa fa-chevron-left"></i> Dig命令详解</a></div><div class="post-nav-prev post-nav-item"><a href=/post/proxy-pass%E5%90%8E%E5%8A%A0%E4%B8%8D%E5%8A%A0%E6%96%9C%E6%9D%A0%E7%9A%84%E5%8C%BA%E5%88%AB/ rel=prev title=proxy_pass后加不加斜杠的区别>proxy_pass后加不加斜杠的区别
+<i class="fa fa-chevron-right"></i></a></div></div></footer></article></div><div id=comments class=post-comments><div class=comment-head><div class=comment-headline><i class="fas fa-comments fa-fw"></i>
+<span>评论交流</span></div><div class=comment-switch><span class=first-comment>Giscus</span>
+<span class=switch-btn></span>
+<span class=second-comment>Waline</span></div></div><div class=comment-wrap><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=giscus-container></div></div><div><div class=comment-loading><i class="fa fa-sync fa-spin"></i></div><div class=waline-container></div></div></div></div></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

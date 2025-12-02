@@ -1,0 +1,243 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="Posts"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="架构师,运维,yunwei,豌豆,wandou,笔记,note,自动化,工具,DevOps,工程师,Linux,Shell,数据库,互联网,k8s,docker,云计算,python,程序员,虚拟化"><meta property="og:type" content="website"><meta property="og:title" content="Posts"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/post/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":false,"isPage":false,"path":"post","permalink":"/post/","title":"Posts","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>post - 豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner index posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/nginx%E4%B8%ADhttps%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Chttp%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="nginx中https的配置和http强制跳转"><meta itemprop=description content="背景
+
+随着现在网络互联网的告诉发展，给人们带来的很多便利，但也出现了很多隐患。作为站长，网站的安全至关重要。怎么做才安全呢？建议把http改为https，因为增加了证书认证，相对来说就会安全很多，并且对用户的体验也比较好，谁也不想访问个网站，在地址栏中显示不安全或直接显示不安全等。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/nginx%E4%B8%ADhttps%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Chttp%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/ itemprop=url class=post-title-link>nginx中https的配置和http强制跳转</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-09-20 19:11:13 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-09-20 19:11:13 +0800 CST">2019-09-20</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/nginx itemprop=url rel=index><span itemprop=name>Web服务/Nginx</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/nginx%E4%B8%ADhttps%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Chttp%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=背景>背景
+<a class=header-anchor href=#%e8%83%8c%e6%99%af></a></h2><p>随着现在网络互联网的告诉发展，给人们带来的很多便利，但也出现了很多隐患。作为站长，网站的安全至关重要。怎么做才安全呢？建议把http改为https，因为增加了证书认证，相对来说就会安全很多，并且对用户的体验也比较好，谁也不想访问个网站，在地址栏中显示不安全或直接显示不安全等。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/nginx%E4%B8%ADhttps%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Chttp%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/nginx%E5%8D%87%E7%BA%A7%E6%88%96%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="nginx升级或重新加载模块"><meta itemprop=description content="目的
+
+在日常运维工作中，有几个场景：
+1，nginx  web服务升级 。
+2，https证书配置后，发现nginx编译没有加入ssl模块。
+3，nginx配置后，有nginx: [emerg] the &#34;xxx&#34; parameter requires 等等报错。
+这些都需要重新编译nginx程序，并把需要的模块加载进去，但是对于不熟悉nginx的人，又头疼和担心，需要重新编译，会不会对原来有啥影响等等。本文就是针对这些场景给出解决方案。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/nginx%E5%8D%87%E7%BA%A7%E6%88%96%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97/ itemprop=url class=post-title-link>nginx升级或重新加载模块</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-09-20 18:34:08 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-09-20 18:34:08 +0800 CST">2019-09-20</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/nginx itemprop=url rel=index><span itemprop=name>Web服务/Nginx</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/nginx%E5%8D%87%E7%BA%A7%E6%88%96%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>在日常运维工作中，有几个场景：</p><p>1，nginx web服务升级 。</p><p>2，https证书配置后，发现nginx编译没有加入ssl模块。</p><p>3，nginx配置后，有<code>nginx: [emerg] the "xxx" parameter requires </code>等等报错。</p><p>这些都需要重新编译nginx程序，并把需要的模块加载进去，但是对于不熟悉nginx的人，又头疼和担心，需要重新编译，会不会对原来有啥影响等等。本文就是针对这些场景给出解决方案。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/nginx%E5%8D%87%E7%BA%A7%E6%88%96%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="centos7下使用yum源安装mysql5.7"><meta itemprop=description content="目的
+
+现在centos上默认是没有yum源的，yum安装的是 MariaDB。本文详细介绍了centos7下使用yum源安装mysql5.7。
+环境
+
+系统：centos7"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/ itemprop=url class=post-title-link>centos7下使用yum源安装mysql5.7</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-09-17 17:21:05 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-09-17 17:21:05 +0800 CST">2019-09-17</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/mysql itemprop=url rel=index><span itemprop=name>数据库/SQL/Mysql</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>现在centos上默认是没有yum源的，yum安装的是 MariaDB。本文详细介绍了centos7下使用yum源安装mysql5.7。</p><h2 id=环境>环境
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83></a></h2><p>系统：centos7</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="docker安装redmine服务"><meta itemprop=description content="目的
+
+快速搭建redmine服务，以便能够对项目和工作流进行管控。
+参考文档
+
+
+
+    官方文档
+    
+    
+    
+或者
+
+    docker官方
+    
+    
+    
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/ itemprop=url class=post-title-link>docker安装redmine服务</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-09-05 13:38:52 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-09-05 13:38:52 +0800 CST">2019-09-05</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF itemprop=url rel=index><span itemprop=name>容器技术</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>快速搭建redmine服务，以便能够对项目和工作流进行管控。</p><h2 id=参考文档>参考文档
+<a class=header-anchor href=#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3></a></h2><p><a href=https://hub.docker.com/_/redmine title=官方文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>官方文档
+<i class="fa fa-external-link-alt"></i>
+</a>或者
+<a href=https://docs.docker.com/samples/library/redmine/ title=docker官方 rel="noopener external nofollow noreferrer" target=_blank class=exturl>docker官方
+<i class="fa fa-external-link-alt"></i></a></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="docker构建自己的openldap自助密码服务"><meta itemprop=description content="背景
+
+OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。
+在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。
+教程
+
+
+
+    参考文档
+    
+    
+    
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/ itemprop=url class=post-title-link>docker构建自己的openldap自助密码服务</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-09-03 15:17:12 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-09-03 15:17:12 +0800 CST">2019-09-03</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF itemprop=url rel=index><span itemprop=name>容器技术</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=背景>背景
+<a class=header-anchor href=#%e8%83%8c%e6%99%af></a></h2><p>OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。</p><p>在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。</p><h2 id=教程>教程
+<a class=header-anchor href=#%e6%95%99%e7%a8%8b></a></h2><p><a href=https://github.com/wandouduoduo/docker-ssp title=参考文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>参考文档
+<i class="fa fa-external-link-alt"></i></a></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="confluence6.3.1升级最新版本6.15.8"><meta itemprop=description content="背景
+
+收到公司总部安全部门扫描测试，查出公司内部confluence的版本太低，存在安全漏洞。给出的解决方案是升级到最新版本，最新版本已经把该漏洞修复。本文就详细介绍下confluence的升级过程。
+参考
+
+
+
+    官方文档
+    
+    
+    
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/ itemprop=url class=post-title-link>confluence6.3.1升级最新版本6.15.8</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-09-02 12:00:40 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-09-02 12:00:40 +0800 CST">2019-09-02</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=背景>背景
+<a class=header-anchor href=#%e8%83%8c%e6%99%af></a></h2><p>收到公司总部安全部门扫描测试，查出公司内部confluence的版本太低，存在安全漏洞。给出的解决方案是升级到最新版本，最新版本已经把该漏洞修复。本文就详细介绍下confluence的升级过程。</p><h2 id=参考>参考
+<a class=header-anchor href=#%e5%8f%82%e8%80%83></a></h2><p><a href=https://www.cwiki.us/display/CONFLUENCEWIKI/Upgrading+Confluence title=官方文档 rel="noopener external nofollow noreferrer" target=_blank class=exturl>官方文档
+<i class="fa fa-external-link-alt"></i></a></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="cmdbuild接入openldap方法"><meta itemprop=description content="目的
+
+cmdbuid接入openldap用户权限，便于用户统一管理。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/ itemprop=url class=post-title-link>cmdbuild接入openldap方法</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-08-30 18:19:54 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-08-30 18:19:54 +0800 CST">2019-08-30</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>cmdbuid接入openldap用户权限，便于用户统一管理。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Docker版快速安装OpenLDAP"><meta itemprop=description content="目的
+
+互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/ itemprop=url class=post-title-link>Docker版快速安装OpenLDAP</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-08-28 14:58:44 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-08-28 14:58:44 +0800 CST">2019-08-28</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E5%AE%B9%E5%99%A8%E6%8A%80%E6%9C%AF itemprop=url rel=index><span itemprop=name>容器技术</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/openldap%E5%90%AF%E7%94%A8memberof/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="OpenLDAP启用MemberOf"><meta itemprop=description content="目的
+
+默认情况下OpenLDAP的用户组属性是Posixgroup，Posixgroup用户组和用户没有实际的对应关系。如果需要把Posixgroup和user关联起来则需要将用户添加到对应的组中。 通过如上配置可以满足大部分业务场景，但是如果需要通过用户组来查找用户的话，Posixgroup用户组属性，是无法满足要求的。此时需要使用OpenLDAP的groupOfUniqueNames用户组属性。本篇文章Fayson主要介绍如何为OpenLDAP启用MemberOf。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/openldap%E5%90%AF%E7%94%A8memberof/ itemprop=url class=post-title-link>OpenLDAP启用MemberOf</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-08-28 14:35:09 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-08-28 14:35:09 +0800 CST">2019-08-28</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/openldap%E5%90%AF%E7%94%A8memberof/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>默认情况下OpenLDAP的用户组属性是Posixgroup，Posixgroup用户组和用户没有实际的对应关系。如果需要把Posixgroup和user关联起来则需要将用户添加到对应的组中。 通过如上配置可以满足大部分业务场景，但是如果需要通过用户组来查找用户的话，Posixgroup用户组属性，是无法满足要求的。此时需要使用OpenLDAP的groupOfUniqueNames用户组属性。本篇文章Fayson主要介绍如何为OpenLDAP启用MemberOf。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/openldap%E5%90%AF%E7%94%A8memberof/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="Centos7上配置最新版openldap服务多主模式(镜像模式)"><meta itemprop=description content="目的
+
+在实际产线运维环境下，使用最多的就是镜像模式，当然多IDC机房的情况下也会结合使用其他模式，例如主从模式。
+镜像模式只允许2个主节点，如果超过2个节点其他节点只会同步获取前面2个节点的配置（这个是博客文档里面看到的，没有验证）
+环境
+
+
+
+
+主机名称
+地址
+版本
+角色
+备注
+
+
+
+
+sysldap-shylf-1
+10.116.72.11
+CentOS7.6 min
+openLdap, httpd, phpldapadmin
+主节点
+
+
+sysldap-shylf-2
+10.116.72.12
+CentOS7.6 min
+openLdap, httpd, phpldapadmin
+主节点
+
+
+systerm-shylf-1
+10.116.72.15
+CentOS7.6 min
+openLdap client
+
+
+
+
+前提条件，为了方便配置防火墙以及禁用selinux
+配置示例:dc=example,dc=com"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/ itemprop=url class=post-title-link>Centos7上配置最新版openldap服务多主模式(镜像模式)</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-08-28 13:54:54 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-08-28 13:54:54 +0800 CST">2019-08-28</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>在实际产线运维环境下，使用最多的就是镜像模式，当然多IDC机房的情况下也会结合使用其他模式，例如主从模式。</p><p>镜像模式只允许2个主节点，如果超过2个节点其他节点只会同步获取前面2个节点的配置（这个是博客文档里面看到的，没有验证）</p><h2 id=环境>环境
+<a class=header-anchor href=#%e7%8e%af%e5%a2%83></a></h2><table><thead><tr><th style=text-align:center>主机名称</th><th style=text-align:center>地址</th><th style=text-align:center>版本</th><th style=text-align:center>角色</th><th style=text-align:center>备注</th></tr></thead><tbody><tr><td style=text-align:center>sysldap-shylf-1</td><td style=text-align:center>10.116.72.11</td><td style=text-align:center>CentOS7.6 min</td><td style=text-align:center>openLdap, httpd, phpldapadmin</td><td style=text-align:center>主节点</td></tr><tr><td style=text-align:center>sysldap-shylf-2</td><td style=text-align:center>10.116.72.12</td><td style=text-align:center>CentOS7.6 min</td><td style=text-align:center>openLdap, httpd, phpldapadmin</td><td style=text-align:center>主节点</td></tr><tr><td style=text-align:center>systerm-shylf-1</td><td style=text-align:center>10.116.72.15</td><td style=text-align:center>CentOS7.6 min</td><td style=text-align:center>openLdap client</td><td style=text-align:center></td></tr></tbody></table><p>前提条件，为了方便配置防火墙以及禁用selinux
+配置示例:dc=example,dc=com</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><nav class=pagination><a class="extend prev" rel=prev href=/post/page/12/><i class="fa fa-angle-left"></i></a>
+<a class=page-number href=/post/page/9/>9</a>
+<a class=page-number href=/post/page/10/>10</a>
+<a class=page-number href=/post/page/11/>11</a>
+<a class=page-number href=/post/page/12/>12</a>
+<span class="page-number current">13</span>
+<a class=page-number href=/post/page/14/>14</a>
+<a class=page-number href=/post/page/15/>15</a>
+<a class=page-number href=/post/page/16/>16</a>
+<a class=page-number href=/post/page/17/>17</a>
+<a class="extend next" rel=next href=/post/page/14/><i class="fa fa-angle-right"></i></a></nav></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>

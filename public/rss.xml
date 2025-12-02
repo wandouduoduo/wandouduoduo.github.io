@@ -1,0 +1,1382 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>豌豆多多</title><link>/</link><description>Recent content on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 19 May 2023 11:03:36 +0800</lastBuildDate><atom:link href="/rss.xml" rel="self" type="application/rss+xml"/><item><title>sentry版本升级教程</title><link>/post/sentry%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%95%99%E7%A8%8B/</link><pubDate>Fri, 19 May 2023 11:03:36 +0800</pubDate><guid>/post/sentry%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7%E6%95%99%E7%A8%8B/</guid><description>&lt;p>因sentry从9.1.2后开始改版，并加入了很多中间组件，整个集群系统变得更加复杂，由原来的不到10个组件容器一下增加到30个左右的容器组件。组件增加，整个架构体系全面调整，系统也更复杂，搭建和维护排查难度成指数级增加。sentry官方一直鼓励升级到最新版本。升级到最新版的优点是可以使用很多最新功能，而且官方对于性能和稳定性也做了相应优化。如果你想升级，下面这篇教程可以帮到你少走弯路。&lt;/p></description></item><item><title>yum安装Nginx增添第三方模块教程</title><link>/post/yum%E5%AE%89%E8%A3%85nginx%E5%A2%9E%E6%B7%BB%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E6%95%99%E7%A8%8B/</link><pubDate>Thu, 16 Mar 2023 11:37:19 +0800</pubDate><guid>/post/yum%E5%AE%89%E8%A3%85nginx%E5%A2%9E%E6%B7%BB%E7%AC%AC%E4%B8%89%E6%96%B9%E6%A8%A1%E5%9D%97%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>nginx作为世界上使用最广的web服务，因其可以自由添加不同功能模块来对业务的支持，几乎所有的互联网大厂都在使用。现在有个业务场景需要nginx支持ipv6，但是nginx是用yum直接安装的，那要怎样去增添对第三方模块的支持，而且对原有yum安装的nginx平滑过渡几乎无感呢？本文以nginx增添ipv6模块为例，详细给大家介绍一下yum安装nginx后增添第三方模块的过程步骤，按步操作，其他模块大同小异。&lt;/p></description></item><item><title>三大主流负载均衡器LVS、Nginx、HAproxy详解</title><link>/post/%E4%B8%89%E5%A4%A7%E4%B8%BB%E6%B5%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8lvsnginxhaproxy%E8%AF%A6%E8%A7%A3/</link><pubDate>Mon, 27 Feb 2023 15:57:40 +0800</pubDate><guid>/post/%E4%B8%89%E5%A4%A7%E4%B8%BB%E6%B5%81%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8lvsnginxhaproxy%E8%AF%A6%E8%A7%A3/</guid><description>&lt;p>本文对三大主流负载均衡器LVS、Nginx、HAproxy进行对比和详解，以及适合的场景，技术选型等等&lt;/p></description></item><item><title>企业微服务分布式注册中心原理</title><link>/post/%E4%BC%81%E4%B8%9A%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%8E%9F%E7%90%86/</link><pubDate>Wed, 22 Feb 2023 15:39:05 +0800</pubDate><guid>/post/%E4%BC%81%E4%B8%9A%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%8E%9F%E7%90%86/</guid><description>&lt;p>随着互联网的发展，对应用服务的要求也在发生着变化。有原来的大而臃肿的单个大型应用服务解耦拆分成由很多微服务共同调用来实现其功能。单个大型应用它自身集合了所有的功能，如有单个模块有问题就需要整个应用重新打包上线和测试，影响大耗时费力。而分布式微服务调用每个服务只负责单一功能模块，更新模块功能只需更新对应功能模块的微服务即可。但分布式微服务相互之间要怎么远程调用呢？就需要用到&lt;strong>注册中心&lt;/strong>。目前所有互联网公司都采用分布式微服务方式，所以注册中心都是必须且必要的。&lt;/p></description></item><item><title>详解nfs文件共享存储服务</title><link>/post/%E8%AF%A6%E8%A7%A3nfs%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Mon, 20 Feb 2023 15:39:22 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3nfs%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="nfs介绍">NFS介绍
+&lt;a class="header-anchor" href="#nfs%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>NFS(Network File System) 即网络文件系统，它允许网络中服务器之间通过TCP/IP网络共享资源，NFS的一个最大优点是可以节省本地存储空间，一台NFS服务器和若干台客户机。&lt;/p></description></item><item><title>k8s详解Service和Ingress</title><link>/post/k8s%E8%AF%A6%E8%A7%A3service%E5%92%8Cingress/</link><pubDate>Tue, 26 Jul 2022 11:18:20 +0800</pubDate><guid>/post/k8s%E8%AF%A6%E8%A7%A3service%E5%92%8Cingress/</guid><description>&lt;h1 id="service-的概念">Service 的概念
+&lt;a class="header-anchor" href="#service-%e7%9a%84%e6%a6%82%e5%bf%b5">&lt;/a>
+&lt;/h1>&lt;p>Kubernetes Service定义了这样一种抽象：一个Pod的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组Pod能够被Service访问到，通常是通过Label Selector&lt;/p>
+&lt;p>通俗的讲：SVC负责检测Pod的状态信息，不会因pod的改动IP地址改变（因为关注的是标签），导致Nginx负载均衡影响&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>Service能够提供负载均衡的能力，但是在使用上有以下限制：&lt;/p>
+&lt;ul>
+&lt;li>默认只提供 4 层负载均衡能力（IP+端口），而没有 7 层功能（主机名和域名），但有时我们可能需要更多的匹配规则来转发请求，这点上 4 层负载均衡是不支持的&lt;/li>
+&lt;li>后续可以通过Ingress方案，添加7层的能力&lt;/li>
+&lt;/ul></description></item><item><title>堡垒机jumpserver如何添加和管理windows资产</title><link>/post/%E5%A0%A1%E5%9E%92%E6%9C%BAjumpserver%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%92%8C%E7%AE%A1%E7%90%86windows%E8%B5%84%E4%BA%A7/</link><pubDate>Thu, 07 Jul 2022 17:19:00 +0800</pubDate><guid>/post/%E5%A0%A1%E5%9E%92%E6%9C%BAjumpserver%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0%E5%92%8C%E7%AE%A1%E7%90%86windows%E8%B5%84%E4%BA%A7/</guid><description>&lt;p>我们在运维架构建设中，资产管理是核心环节。所有环节都需要围绕这个核心来做，包括但不限于资产监控，资产授权，资产规划和部署应用，资源费用核算，资产盘点，资产回收等等。&lt;/p>
+&lt;p>而jumpserver作为一款安全级别在5A的开源堡垒机，受到了所有互联网大厂的青睐和日常使用。我们这些运维、开发或架构的技术型日常工作都是在类unix环境，通常是linux环境，和服务器打交道，用命令或编写脚本来高效的维护和操作处理。所以默认堡垒机对linux的支持是必须的也是常规的，堡垒机对linux资产管理参考官网文档，这里就不再赘述了。但有时我们的业务需要在windows server上来操作，但官方文档也没有详细说明。本文重点介绍堡垒机jumpserver要如何去管理windows server。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="" />&lt;/p></description></item><item><title>python项目+uwsgi+nginx+supervisor部署配置详解</title><link>/post/python%E9%A1%B9%E7%9B%AE-uwsgi-nginx-supervisor%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</link><pubDate>Tue, 15 Mar 2022 17:18:04 +0800</pubDate><guid>/post/python%E9%A1%B9%E7%9B%AE-uwsgi-nginx-supervisor%E9%83%A8%E7%BD%B2%E9%85%8D%E7%BD%AE%E8%AF%A6%E8%A7%A3/</guid><description>&lt;p>本文详细介绍了python项目（flask或django等）在部署到linux服务器上后，uwsgi常用配置和nginxd对应通信配置，以及supervisor常用配置详解。本篇为高级篇，至于怎么安装请参考博客中其他文档，谢谢。&lt;/p></description></item><item><title>Linux系统中信号篇</title><link>/post/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BF%A1%E5%8F%B7%E7%AF%87/</link><pubDate>Fri, 21 Jan 2022 18:48:45 +0800</pubDate><guid>/post/linux%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BF%A1%E5%8F%B7%E7%AF%87/</guid><description>&lt;p>Linux 的命令行里面有用来停止正在运行的进程的所有所需工具。这里将为您讲述细节。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="" />&lt;/p>
+&lt;p>&lt;strong>想像一下&lt;/strong>：你打开了一个程序（可能来自于你的桌面菜单或者命令行），然后开始使用这个程序，没想到程序会锁死、停止运行、或者意外死机。你尝试再次运行该程序，但是它反馈说原来的进程没有完全关闭。&lt;/p>
+&lt;p>&lt;strong>你该怎么办&lt;/strong>？你要结束进程。但该如何做？不管你信与不信，最好的解决方法大都在命令行里。值得庆幸的是， Linux 有供用户杀死错误的进程的每个必要的工具，然而，你在执行杀死进程的命令之前，你首先需要知道进程是什么。该如何处理这一类的任务。一旦你能够掌握这种工具，它实际是十分简单的……&lt;/p>
+&lt;p>我来概述的步骤是每个 Linux 发行版都能用的，不论是桌面版还是服务器版。我将限定只使用命令行，请打开你的终端开始输入命令吧。&lt;/p></description></item><item><title>Linux禁止普通用户su至root的解决方法</title><link>/post/linux%E7%A6%81%E6%AD%A2%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7su%E8%87%B3root%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link><pubDate>Tue, 31 Aug 2021 17:38:53 +0800</pubDate><guid>/post/linux%E7%A6%81%E6%AD%A2%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7su%E8%87%B3root%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid><description>&lt;p>很多朋友不清楚linux如何禁止普通用户su到root，这里需要修改两个配置文件，具体详细配置大家通过本文了解下吧&lt;/p></description></item><item><title>Linux文件系统卸载小技巧解决大问题</title><link>/post/linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BD%E5%B0%8F%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E5%A4%A7%E9%97%AE%E9%A2%98/</link><pubDate>Mon, 12 Jul 2021 15:27:57 +0800</pubDate><guid>/post/linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%8D%B8%E8%BD%BD%E5%B0%8F%E6%8A%80%E5%B7%A7%E8%A7%A3%E5%86%B3%E5%A4%A7%E9%97%AE%E9%A2%98/</guid><description>&lt;p>现在系统功能越来越丰富，那么响应的开发资源需要的越来越多，文件存储也越来越必要。无论是你用nfs、glusterfs等等，都需要在linux服务器中设置挂载点并执行挂载后才可使用，但如果fs文件系统有调整，那么可能就需要卸载umount,重新挂载，但是你真的可以顺顺利利的卸载吗？不见得，因为可能有应用在占用该磁盘或者系统在fstab中写入了磁盘自动挂载，本文就详细给你介绍个小技巧，帮你解决该烦恼。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="1626075503955" />&lt;/p></description></item><item><title>详解TcpDump神器</title><link>/post/%E8%AF%A6%E8%A7%A3tcpdump%E7%A5%9E%E5%99%A8/</link><pubDate>Fri, 02 Jul 2021 11:24:31 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3tcpdump%E7%A5%9E%E5%99%A8/</guid><description>&lt;p>今天要给大家介绍的一个类Unix下的一个网络数据采集分析工具 &amp;ndash; Tcpdump，也就是我们常说的抓包工具。与它功能类似的工具有 wireshark。不同的是wireshark有图形化界面，而tcpdump 则只有命令行。&lt;/p>
+&lt;p>作为一个运维，经常和服务器打交道，但服务器追求性能很少安装图形界面，因此直接跳过wireshark，直接给大家介绍这个tcpdump神器。&lt;/p>
+&lt;p>这篇文章借助于很多帮助文档，终于把tcpdump的用法全部研究了个遍。毫不夸张的说，应该可以算是中文里把 tcpdump 讲得最清楚明白，并且最全的文章了。所以&lt;strong>本文值得你收藏分享，就怕你错过了，就再也找不到像这样把 tcpdump 讲得直白而且特全的文章了&lt;/strong>。&lt;/p></description></item><item><title>生产mysql数据库集群优化&lt;二>--proxysql安装及优化</title><link>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%BA%8C-%E5%AE%89%E8%A3%85proxysql/</link><pubDate>Wed, 23 Jun 2021 14:26:18 +0800</pubDate><guid>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%BA%8C-%E5%AE%89%E8%A3%85proxysql/</guid><description>&lt;p>前面文章对数据库中间层进行了选型，那么要怎么安装，怎么验证，怎么优化，又有哪些坑可以避免呢？本文就详细介绍下。&lt;/p></description></item><item><title>生产mysql数据库集群优化&lt;一>--选型proxysql</title><link>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%B8%80-%E9%80%89%E5%9E%8Bproxysql/</link><pubDate>Thu, 10 Jun 2021 18:26:36 +0800</pubDate><guid>/post/%E7%94%9F%E4%BA%A7mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E9%9B%86%E7%BE%A4%E4%BC%98%E5%8C%96-%E4%B8%80-%E9%80%89%E5%9E%8Bproxysql/</guid><description>&lt;p>现在微服务几乎成为所有公司的标配，那么业务项目和数据存储的松耦合就成为基本配置，而mysql数据库在互联网公司中应用很广，几乎所有的项目都会有连它的需求。但是如果业务请求量很大，那么最先想到也是最常用的是数据库的读写分离。通常是由dba把数据库分为读写库，对数据进行更新，写入时连接读写库。查询数据时，连接读库。这样可以大大减轻写库的压力。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>但是这样是由业务根据需求来区分连哪个数据库，但有些开发说我想只配置一个数据库，运维你根据请求类型来区分定义是连接只读库还是读写库。而且业务对时效性也不是很严格。那要怎么做呢？如下图：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="" />&lt;/p>
+&lt;p>我们就需要增加数据库的代理层，由代理层根据定义的规则来自动区分是连接读写库还是只读库。本文就是聊聊数据库的代理层&amp;ndash;ProxySQL。&lt;/p></description></item><item><title>nginx配置用户名密码来控制访问请求</title><link>/post/nginx%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%E6%9D%A5%E6%8E%A7%E5%88%B6%E8%AE%BF%E9%97%AE%E8%AF%B7%E6%B1%82/</link><pubDate>Tue, 08 Jun 2021 11:06:56 +0800</pubDate><guid>/post/nginx%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%E6%9D%A5%E6%8E%A7%E5%88%B6%E8%AE%BF%E9%97%AE%E8%AF%B7%E6%B1%82/</guid><description>&lt;p>今天接了个需求：要把一些资源文件从外网提供给客户下载。处于安全和简单快捷考虑，分享一个快速实现并安全性很强的方案：nginx配置账号密码来控制，并且密码还是加密的，再增加白名单配置。此方案简单快捷和安全。&lt;/p></description></item><item><title>nginx之location匹配优先级及顺序</title><link>/post/nginx%E4%B9%8Blocation%E5%8C%B9%E9%85%8D%E4%BC%98%E5%85%88%E7%BA%A7%E5%8F%8A%E9%A1%BA%E5%BA%8F/</link><pubDate>Fri, 04 Jun 2021 17:12:43 +0800</pubDate><guid>/post/nginx%E4%B9%8Blocation%E5%8C%B9%E9%85%8D%E4%BC%98%E5%85%88%E7%BA%A7%E5%8F%8A%E9%A1%BA%E5%BA%8F/</guid><description>&lt;p>nginx的使用范围和影响越来越广，很多大厂都在使用，但有些工作多年的同学可能都搞不清楚nginx中location的匹配优先级和匹配顺序是怎样的。今天又有同事不清楚，写配置时总是达不到业务需求，问到我这边帮他搞定了。那么本文就给大家详细聊聊这个问题。&lt;/p></description></item><item><title>glusterfs集群横向扩容缩容</title><link>/post/glusterfs%E9%9B%86%E7%BE%A4%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</link><pubDate>Wed, 26 May 2021 11:14:28 +0800</pubDate><guid>/post/glusterfs%E9%9B%86%E7%BE%A4%E6%A8%AA%E5%90%91%E6%89%A9%E5%AE%B9%E7%BC%A9%E5%AE%B9/</guid><description>&lt;p>glusterfs集群的搭建和使用这里就不再赘述了，可以看以前的教程文档。本文主要聊的是随着服务使用量的增加，那么存储集群势必要扩充空间。服务器迁移，需要先扩容后缩容等等。所以本文的主旨是聊glusterfs集群的横向优化：扩容和缩容。&lt;/p></description></item><item><title>kafka之扩容和缩容</title><link>/post/kafka%E4%B9%8B%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/</link><pubDate>Wed, 19 May 2021 14:17:37 +0800</pubDate><guid>/post/kafka%E4%B9%8B%E6%89%A9%E5%AE%B9%E5%92%8C%E7%BC%A9%E5%AE%B9/</guid><description>&lt;p>本文讨论Kafka的扩缩容以及故障后如何“补齐”分区。实质上先扩容再缩容也是迁移的操作。&lt;/p></description></item><item><title>lvs负载均衡实战</title><link>/post/lvs%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 19 Apr 2021 14:23:22 +0800</pubDate><guid>/post/lvs%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E6%88%98/</guid><description>&lt;p>通过本文掌握什么是负载均衡及负载均衡的作用和意义；了解lvs负载均衡的三种模式；了解lvs-DR负载均衡部署方法；掌握nginx实现负载均衡的方法；掌握lvs+nginx负载均衡拓扑结构。&lt;/p></description></item><item><title>k8s网络flannel和calico网络模式对比</title><link>/post/k8s%E7%BD%91%E7%BB%9Cflannel%E5%92%8Ccalico%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/</link><pubDate>Mon, 12 Apr 2021 11:40:08 +0800</pubDate><guid>/post/k8s%E7%BD%91%E7%BB%9Cflannel%E5%92%8Ccalico%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/</guid><description>&lt;p>Kubernetes跨主机容器之间的通信组件，目前主流的是flannel和calico，本文对两个组件进行简单介绍和对比。&lt;/p></description></item><item><title>Docker快速安装jumperserver</title><link>/post/docker%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85jumperserver/</link><pubDate>Fri, 09 Apr 2021 11:57:50 +0800</pubDate><guid>/post/docker%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85jumperserver/</guid><description>&lt;p>Jumpserver堡垒机的作用和好处这里就不再赘述，本文教你快速用docker容器安装jumperserver，让你快速体验。本教程是在单机上操作，处于以后扩展的需求，强烈建议在多台服务器上搭建。&lt;/p></description></item><item><title>企业微服务分布式注册中心选型</title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E9%80%89%E5%9E%8B/</link><pubDate>Mon, 29 Mar 2021 14:04:50 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B9%8B%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E9%80%89%E5%9E%8B/</guid><description>&lt;p>服务注册中心本质上是为了解耦服务提供者和服务消费者。对于任何一个微服务，原则上都应存在或者支持多个提供者，这是由微服务的分布式属性决定的。更进一步，为了支持弹性扩缩容特性，一个微服务的提供者的数量和分布往往是动态变化的，也是无法预先确定的。因此，原本在单体应用阶段常用的静态LB机制就不再适用了，需要引入额外的组件来管理微服务提供者的注册与发现，而这个组件就是服务注册中心。&lt;/p></description></item><item><title>手把手搭建k8s集群和kubesphere</title><link>/post/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E5%92%8Ckubesphere/</link><pubDate>Wed, 17 Mar 2021 16:45:52 +0800</pubDate><guid>/post/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E5%92%8Ckubesphere/</guid><description>&lt;p>本文将从零开始在干净的机器上安装 &lt;code>Docker、Kubernetes (使用 kubeadm)、Calico、NFS StorageClass等&lt;/code>，通过手把手的教程演示如何搭建一个 &lt;code>Kubernetes集群&lt;/code>，并在 K8s集群之上安装开源的&lt;code>KubeSphere&lt;/code> 容器平台可视化运营集群环境。&lt;/p></description></item><item><title>带你彻底了解lstio是什么东东</title><link>/post/%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E4%BA%86%E8%A7%A3lstio%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C/</link><pubDate>Tue, 02 Mar 2021 10:16:35 +0800</pubDate><guid>/post/%E5%B8%A6%E4%BD%A0%E5%BD%BB%E5%BA%95%E4%BA%86%E8%A7%A3lstio%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C/</guid><description>&lt;p>如果你保持学习新技术的触角来持续拓展技术储备的广度的话，很可能在不同的地方听说过&lt;code>Istio&lt;/code>，可能还知道它和Service Mesh有着牵扯。本文可作为了解&lt;code>Istio&lt;/code>的入门介绍，介绍什么是&lt;code>Istio&lt;/code>，&lt;code>Istio&lt;/code>为什么最近这么火，以及&lt;code>Istio&lt;/code>解决了哪些问题，能给我们带来什么好处。&lt;/p></description></item><item><title>详解sql和nosql如何选型</title><link>/post/%E8%AF%A6%E8%A7%A3sql%E5%92%8Cnosql%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B/</link><pubDate>Fri, 29 Jan 2021 18:57:09 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3sql%E5%92%8Cnosql%E5%A6%82%E4%BD%95%E9%80%89%E5%9E%8B/</guid><description>&lt;h2 id="前言">&lt;strong>前言&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>你是否在为系统的数据库来一波大流量就几乎打满CPU，日常CPU居高不下烦恼？你是否在各种NoSql间纠结不定，到底该选用那种最好？今天的你就是昨天的我，这也是写这篇文章的初衷。&lt;/p>
+&lt;p>这篇文章是我好几个月来一直想写的一篇文章，也是一直想学习的一个内容，作为互联网从业人员，我们要知道关系型数据库（MySql、Oracle）无法满足我们对存储的所有要求，因此对底层存储的选型，对每种存储引擎的理解非常重要。同时也由于过去一段时间的工作经历，对这块有了一些更多的思考，想通过自己的总结把这块写出来分享给大家。&lt;/p></description></item><item><title>Opensips+RTPEngine+FreeSwitch实现FS高可用</title><link>/post/opensips-rtpengine-freeswitch%E5%AE%9E%E7%8E%B0fs%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Thu, 14 Jan 2021 11:26:59 +0800</pubDate><guid>/post/opensips-rtpengine-freeswitch%E5%AE%9E%E7%8E%B0fs%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="image.png" />&lt;/p></description></item><item><title>做好运维真的不容易</title><link>/post/%E5%81%9A%E5%A5%BD%E8%BF%90%E7%BB%B4%E7%9C%9F%E7%9A%84%E4%B8%8D%E5%AE%B9%E6%98%93/</link><pubDate>Thu, 31 Dec 2020 17:09:04 +0800</pubDate><guid>/post/%E5%81%9A%E5%A5%BD%E8%BF%90%E7%BB%B4%E7%9C%9F%E7%9A%84%E4%B8%8D%E5%AE%B9%E6%98%93/</guid><description>&lt;p>以前和一个项目经理沟通时，提到能否提前半天将变更申请提交过来，而这位项目经理很不理解的看着我问：“你们运维不就是在生产环境部署个程序嘛，这么简单的工作还需要提前半天？而且你们不懂程序，也评审不出什么吧？”。运维这么多年来，听到对运维工作抱有这种认识和看法的人很多。它侧面反映了企业中其他团队团队对运维的认识往往局限于一些简单操作性的工作。例如：应用服务故障时重启、应用配置变更、增删改查数据或者所有软硬件使用问题等等。运维真的是这样吗？&lt;/p></description></item><item><title>详解docker-compose安装sentry集群解决方案&lt;二></title><link>/post/%E8%AF%A6%E8%A7%A3docker-compose%E5%AE%89%E8%A3%85sentry%E9%9B%86%E7%BE%A4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E4%BA%8C/</link><pubDate>Tue, 29 Dec 2020 17:32:11 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3docker-compose%E5%AE%89%E8%A3%85sentry%E9%9B%86%E7%BE%A4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-%E4%BA%8C/</guid><description>&lt;p>接上篇文章，上篇文章详细介绍了架构和单节点的搭建、配置和优化。本篇详细介绍集群方案。特别提醒没看上篇文章的请返回先看，本篇集群是在上篇文章的基础上配置的，并且上篇文章中的简单步骤，本篇不再说明，直接跳过。详解docker-compose安装sentry集群篇现在开始。&lt;/p></description></item><item><title>详解docker-compose安装sentry集群解决方案&lt;一></title><link>/post/%E8%AF%A6%E8%A7%A3docker-compose%E5%AE%89%E8%A3%85sentry%E9%9B%86%E7%BE%A4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</link><pubDate>Tue, 29 Dec 2020 11:57:00 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3docker-compose%E5%AE%89%E8%A3%85sentry%E9%9B%86%E7%BE%A4%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</guid><description>&lt;p>&lt;code>Sentry&lt;/code>是一个开源的实时错误报告和日志聚合工具平台。它专门监测错误并提取所有有用信息用于分析，不再麻烦地依赖用户反馈来定位问题。支持 web 前后端、移动应用以及游戏，支持 Python、OC、Java、Go、Node.js、Django、RoR 等主流编程语言和框架 ，还提供了 GitHub、Slack、Trello 等常见开发工具的集成。因sentry版本、安装方式和smtp要求的不同，新版本sentry不支持集群方案，本篇文章旨在用于sentry9.1.2版本+支持ssl/tls加密的smtp服务的单节点安装指南和集群解决方案。&lt;/p></description></item><item><title>CentOS7安装字体</title><link>/post/centos7%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/</link><pubDate>Tue, 29 Dec 2020 10:57:34 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85%E5%AD%97%E4%BD%93/</guid><description>&lt;p>Linux字体确实是个问题。场景一：验证码已成为了用户认证的标配，动态变动可以有效防止注入，提高用户认证的安全。场景二：开发的系统中依赖系统的字体，如报表系统中发现中文乱码或中文字体重叠的情况等问题，这些都是linux字体惹的祸。本文以安装中文字体为例帮你解决字体这一小问题。&lt;/p></description></item><item><title>非root的普通用户使用tmux方法教程</title><link>/post/%E9%9D%9Eroot%E7%9A%84%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8tmux%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B/</link><pubDate>Thu, 24 Dec 2020 15:00:29 +0800</pubDate><guid>/post/%E9%9D%9Eroot%E7%9A%84%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8tmux%E6%96%B9%E6%B3%95%E6%95%99%E7%A8%8B/</guid><description>&lt;p>&lt;code>Tmux&lt;/code>是一款终端复用的神器，实现了会话与终端窗后的分离。用过的同学都欲罢不能，但是使用它时必须root用户，如果是普通用户就会出现&lt;code>can't create socket&lt;/code>错误不能使用，那么本教程就教你用普通用户使用tmux这个神器。&lt;/p></description></item><item><title>centos7时间自动同步</title><link>/post/centos7%E6%97%B6%E9%97%B4%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5/</link><pubDate>Tue, 22 Dec 2020 15:50:28 +0800</pubDate><guid>/post/centos7%E6%97%B6%E9%97%B4%E8%87%AA%E5%8A%A8%E5%90%8C%E6%AD%A5/</guid><description>&lt;p>运维的工作高可用高并发，负载均衡，可靠稳定等等要求，很多系统都是集群模式并采用分布式部署。但是有时系统时间不同步，集群服务器之间时间不同，就会造成一些困扰或服务根本就启动不起来。所以时间自动同步，是很有必要的。&lt;/p></description></item><item><title>Zimbra邮件服务器证书部署教程</title><link>/post/zimbra%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 21 Dec 2020 13:50:05 +0800</pubDate><guid>/post/zimbra%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6%E9%83%A8%E7%BD%B2%E6%95%99%E7%A8%8B/</guid><description>&lt;p>zimbra邮件服务搭建完成后，为了安全和用户体验，通常用域名解析和证书配置。本文详细介绍zimbra服务的证书配置，当然证书过期替换也是一样的操作方法。&lt;/p></description></item><item><title>漫谈微服务RPC架构</title><link>/post/%E6%BC%AB%E8%B0%88%E5%BE%AE%E6%9C%8D%E5%8A%A1rpc%E6%9E%B6%E6%9E%84/</link><pubDate>Fri, 11 Dec 2020 15:46:02 +0800</pubDate><guid>/post/%E6%BC%AB%E8%B0%88%E5%BE%AE%E6%9C%8D%E5%8A%A1rpc%E6%9E%B6%E6%9E%84/</guid><description>&lt;p>通读了前面两篇内容，我们了解到微服务离不开RPC，知道了RPC架构的原理，那么开源RPC架构有哪些，你知道多少呢？本文就针对&lt;code>开源RPC框架&lt;/code>的种类进行漫谈。&lt;/p></description></item><item><title>详解为什么微服务架构绕不开RPC&lt;二></title><link>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%BA%8C/</link><pubDate>Thu, 10 Dec 2020 15:50:17 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%BA%8C/</guid><description>&lt;p>读了上篇文章充分了解了传统架构的痛点和微服务架构的好处。本篇文章进入主题详解RPC的原理和架构。&lt;/p></description></item><item><title>详解为什么微服务架构绕不开RPC&lt;一></title><link>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%B8%80/</link><pubDate>Thu, 10 Dec 2020 15:26:17 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%BB%95%E4%B8%8D%E5%BC%80rpc-%E4%B8%80/</guid><description>&lt;p>科技改变生活，搞互联网的绕不开BAT、TMD等大厂，那么搞微服务架构就绕不开RPC。知其然知其所以然才行，是什么原因绕不开呢？想要知道这个问题，先要搞清楚为什么要搞微服务呢？本文就来详细和你聊聊。&lt;/p></description></item><item><title>造数据神器python开源库Faker</title><link>/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/</link><pubDate>Wed, 09 Dec 2020 10:56:41 +0800</pubDate><guid>/post/%E9%80%A0%E6%95%B0%E6%8D%AE%E7%A5%9E%E5%99%A8python%E5%BC%80%E6%BA%90%E5%BA%93faker/</guid><description>&lt;p>互联网中软件开发和测试过程中，有时候需要一些测试数据。针对这种需求，我们通常的做法是使用现有的系统数据或者手动随意制造一些数据。但是由于现在的互联网飞速发展，业务系统越来越复杂，数据也越来越多样。如再手动去制造数据，不仅需要花费大量精力，还容易出错，而且制造的数据很假。本文推荐造数据神器python开源库Faker，此Faker不是lol天才选手大魔王Faker，但是也是一样给力。&lt;/p></description></item><item><title>双十一订单峰值58.3万个/秒销量千亿,到底是谁抗下了所有</title><link>/post/%E5%8F%8C%E5%8D%81%E4%B8%80%E8%AE%A2%E5%8D%95%E5%B3%B0%E5%80%BC58-3%E4%B8%87%E4%B8%AA-%E7%A7%92%E9%94%80%E9%87%8F%E5%8D%83%E4%BA%BF-%E5%88%B0%E5%BA%95%E6%98%AF%E8%B0%81%E6%8A%97%E4%B8%8B%E4%BA%86%E6%89%80%E6%9C%89/</link><pubDate>Fri, 04 Dec 2020 11:29:15 +0800</pubDate><guid>/post/%E5%8F%8C%E5%8D%81%E4%B8%80%E8%AE%A2%E5%8D%95%E5%B3%B0%E5%80%BC58-3%E4%B8%87%E4%B8%AA-%E7%A7%92%E9%94%80%E9%87%8F%E5%8D%83%E4%BA%BF-%E5%88%B0%E5%BA%95%E6%98%AF%E8%B0%81%E6%8A%97%E4%B8%8B%E4%BA%86%E6%89%80%E6%9C%89/</guid><description>&lt;p>本文以淘宝作为例详细介绍了网站从一百个并发到千万级并发情况下服务端的架构的演进，同时也列举出每个演进阶段会遇到的相关技术，让大家对架构的演进有一个整体的认知，文章最后汇总了一些架构设计的原则。&lt;/p></description></item><item><title>Nginx优化之gzip压缩提升网站速度</title><link>/post/nginx%E4%BC%98%E5%8C%96%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E6%8F%90%E5%8D%87%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</link><pubDate>Thu, 03 Dec 2020 11:28:18 +0800</pubDate><guid>/post/nginx%E4%BC%98%E5%8C%96%E4%B9%8Bgzip%E5%8E%8B%E7%BC%A9%E6%8F%90%E5%8D%87%E7%BD%91%E7%AB%99%E9%80%9F%E5%BA%A6/</guid><description>&lt;p>nginx作为web服务被广泛应用在网站中。怎么提高网站的响应速度，除了cdn加速外，合理的配置，也可达到提速目的。本文为达这一目的，配置中添加了gzip压缩配置。&lt;/p></description></item><item><title>阿里Canal实时同步MySQL数据到ES等其他存储的开源神器</title><link>/post/%E9%98%BF%E9%87%8Ccanal%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es%E7%AD%89%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E7%9A%84%E5%BC%80%E6%BA%90%E7%A5%9E%E5%99%A8/</link><pubDate>Wed, 02 Dec 2020 18:11:09 +0800</pubDate><guid>/post/%E9%98%BF%E9%87%8Ccanal%E5%AE%9E%E6%97%B6%E5%90%8C%E6%AD%A5mysql%E6%95%B0%E6%8D%AE%E5%88%B0es%E7%AD%89%E5%85%B6%E4%BB%96%E5%AD%98%E5%82%A8%E7%9A%84%E5%BC%80%E6%BA%90%E7%A5%9E%E5%99%A8/</guid><description>&lt;p>我们在做网站的搜索功能时需要用到检索数据，而从数据库中来查找效率是很低，而且不现实的。通常对检索支持比较好的就是&lt;code>Elasticsearch&lt;/code>或&lt;code>HBase&lt;/code>等存储，但是前期的数据都存在mysql数据库中，那么怎么一直实时数据同步到es中，而又不影响现有业务。阿里开源神器&lt;code>canal&lt;/code>可以解决这个问题，它可以把MySQL中的数据实时同步到&lt;code>Elasticsearch&lt;/code>、&lt;code>HBase&lt;/code>等数据存储中。&lt;/p></description></item><item><title>Linux并行解压缩命令pigz</title><link>/post/linux%E5%B9%B6%E8%A1%8C%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4pigz/</link><pubDate>Tue, 24 Nov 2020 18:02:08 +0800</pubDate><guid>/post/linux%E5%B9%B6%E8%A1%8C%E8%A7%A3%E5%8E%8B%E7%BC%A9%E5%91%BD%E4%BB%A4pigz/</guid><description>&lt;p>Linux一切皆文件。解压缩文件是日常操作。一般都是用gzip来解压缩的，但是gzip是串行的。那就会造成解压缩速度比较慢。为了提高效率，那有没有可以并行解压缩的呢？这就是给大家推荐的&lt;code>pigz&lt;/code>命令。&lt;/p></description></item><item><title>辨别mtime参数带不带符号的用法</title><link>/post/%E8%BE%A8%E5%88%ABmtime%E5%8F%82%E6%95%B0%E5%B8%A6%E4%B8%8D%E5%B8%A6%E7%AC%A6%E5%8F%B7%E7%9A%84%E7%94%A8%E6%B3%95/</link><pubDate>Fri, 20 Nov 2020 14:03:18 +0800</pubDate><guid>/post/%E8%BE%A8%E5%88%ABmtime%E5%8F%82%E6%95%B0%E5%B8%A6%E4%B8%8D%E5%B8%A6%E7%AC%A6%E5%8F%B7%E7%9A%84%E7%94%A8%E6%B3%95/</guid><description>&lt;p>Linux在日常用find mtime命令来查找近几天的文件，或者日志文件只需要保留7天，7天前的需要查找处理删掉。那么mtime参数有带符号(+号，-号)和不带符号之分。你真的能够清楚辨别区分吗？不见得吆，本文详解这个时间点，让你轻松辨别。&lt;/p></description></item><item><title>Docker安装zabbix5.0LTS教程和优化</title><link>/post/docker%E5%AE%89%E8%A3%85zabbix5-0lts%E6%95%99%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96/</link><pubDate>Wed, 18 Nov 2020 14:57:48 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85zabbix5-0lts%E6%95%99%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96/</guid><description>&lt;p>在操作系统上直接部署安装zabbix太麻烦了，最近在搞k8s，正好研究下用docker容器来安装zabbix5.0LTS长期支持版。&lt;/p></description></item><item><title>详解glusterfs模式调换</title><link>/post/%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2/</link><pubDate>Mon, 28 Sep 2020 15:11:41 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3glusterfs%E6%A8%A1%E5%BC%8F%E8%B0%83%E6%8D%A2/</guid><description>&lt;p>&lt;code>glusterfs&lt;/code>集群存储有七种模式，在搭建集群时选择的模式，可能在使用过一段时间后发现当前的模式不是最优的方案，换种模式可能会更好。那么怎么在保证数据安全的情况下，对&lt;code>glusterfs&lt;/code>集群更改模式，以最优适配我们的使用，最大化资源利用呢？本文就这一痛点详细说明。&lt;/p></description></item><item><title>Centos7文件共享服务Samba的部署</title><link>/post/centos7%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1samba%E7%9A%84%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 15 Sep 2020 19:15:38 +0800</pubDate><guid>/post/centos7%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E6%9C%8D%E5%8A%A1samba%E7%9A%84%E9%83%A8%E7%BD%B2/</guid><description>&lt;p>搭建Samba服务器是为了实现Linux共享目录之后，在Windows可以直接访问该共享目录。&lt;/p></description></item><item><title>openssl版本升级</title><link>/post/openssl%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</link><pubDate>Mon, 14 Sep 2020 10:58:59 +0800</pubDate><guid>/post/openssl%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</guid><description>&lt;p>&lt;strong>OpenSSL&lt;/strong>是一个
+&lt;a href="https://baike.baidu.com/item/%e5%bc%80%e6%94%be%e6%ba%90%e4%bb%a3%e7%a0%81" title="开放源代码" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+开放源代码
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>的
+&lt;a href="https://baike.baidu.com/item/%e8%bd%af%e4%bb%b6" title="软件" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+软件
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://baike.baidu.com/item/%e5%ba%93" title="库" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+库
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>包，应用程序可以使用这个包来进行安全通信，避免窃听，同时确认另一端连接者的身份。这个包广泛被应用在互联网的网页服务器上。&lt;/p></description></item><item><title>用cat3.0集群构建实时监控系统</title><link>/post/%E7%94%A8cat3-0%E9%9B%86%E7%BE%A4%E6%9E%84%E5%BB%BA%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</link><pubDate>Thu, 27 Aug 2020 17:47:21 +0800</pubDate><guid>/post/%E7%94%A8cat3-0%E9%9B%86%E7%BE%A4%E6%9E%84%E5%BB%BA%E5%AE%9E%E6%97%B6%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F/</guid><description>&lt;p>在日常工作中常常遇到很多问题，出现问题不可怕，可怕的是不知道问题出在哪里。当出现问题时，我们如无头苍蝇，无所适从，不知所措。这是因为我们的眼睛还不够犀利，没有洞察本质。常常会有疑问：服务的依赖关系是怎样的？当前线上各个服务的实时状态又是如何呢？访问卡顿是在哪个环节导致的呢？如何快速定位问题，并快速排除，恢复服务呢？如何去擦亮我们的眼睛，让服务可靠性达到5个9甚至6个9，7个9呢？&lt;/p>
+&lt;p>面对这些问题，我们找到了大众点评的Cat，有了Cat这些问题都可以迎刃而解！接下来我们将介绍Cat的简单使用。&lt;/p></description></item><item><title>CentOS7配置kdump内存转储</title><link>/post/centos7%E9%85%8D%E7%BD%AEkdump%E5%86%85%E5%AD%98%E8%BD%AC%E5%82%A8/</link><pubDate>Mon, 24 Aug 2020 20:05:58 +0800</pubDate><guid>/post/centos7%E9%85%8D%E7%BD%AEkdump%E5%86%85%E5%AD%98%E8%BD%AC%E5%82%A8/</guid><description>&lt;p>kdump是一种基于kexec的内核崩溃转储技术。kdump需要两个内核，分别是生产内核和捕获内核，生产内核是捕获内核服务的对象，且保留了内存的一部分给捕获内核启动使用。当系统崩溃时，kdump使用kexec启动捕获内核，以相应的ramdisk一起组建一个微环境，用以对生产内核下的内存进行收集和转存。&lt;/p></description></item><item><title>如何从内存中恢复Nginx配置</title><link>/post/%E5%A6%82%E4%BD%95%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%81%A2%E5%A4%8Dnginx%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 17 Aug 2020 11:43:22 +0800</pubDate><guid>/post/%E5%A6%82%E4%BD%95%E4%BB%8E%E5%86%85%E5%AD%98%E4%B8%AD%E6%81%A2%E5%A4%8Dnginx%E9%85%8D%E7%BD%AE/</guid><description>&lt;p>nginx作为现在最好用web服务软件而被广泛使用。我们日常进行配置管理很是方便。但天有不测风云，如果在Nginx配置信息出现问题，在没有备份的情况下，如何利用Nginx进程的虚拟内存恢复配置信息呢，本文就详细真的这个问题进行处理。&lt;/p></description></item><item><title>hexo酷炫特效教程&lt;二></title><link>/post/hexo%E9%85%B7%E7%82%AB%E7%89%B9%E6%95%88%E6%95%99%E7%A8%8B-%E4%BA%8C/</link><pubDate>Wed, 12 Aug 2020 18:12:32 +0800</pubDate><guid>/post/hexo%E9%85%B7%E7%82%AB%E7%89%B9%E6%95%88%E6%95%99%E7%A8%8B-%E4%BA%8C/</guid><description>&lt;p>按照
+&lt;a href="https://wandouduoduo.github.io/articles/1071f0bc.html" title="&amp;lt;code&amp;gt;这篇教程&amp;lt;/code&amp;gt;" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+&lt;code>这篇教程&lt;/code>
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>一步步操作下来的话，相信你的博客已经有了不错的改观和多种炫酷的特效。这里再教大家配置几种特效。教程中用到的所有特效都可以在我的博客中找到，如果感兴趣可以到
+&lt;a href="wandouduoduo.github.io" title="博客首页" >
+博客首页
+&lt;/a>中看下动态效果。&lt;/p></description></item><item><title>服务器要怎样屏蔽国外所有IP</title><link>/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A6%81%E6%80%8E%E6%A0%B7%E5%B1%8F%E8%94%BD%E5%9B%BD%E5%A4%96%E6%89%80%E6%9C%89ip/</link><pubDate>Mon, 10 Aug 2020 14:19:37 +0800</pubDate><guid>/post/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A6%81%E6%80%8E%E6%A0%B7%E5%B1%8F%E8%94%BD%E5%9B%BD%E5%A4%96%E6%89%80%E6%9C%89ip/</guid><description>&lt;p>网站的客户和受众人群都是国内的，不想让国外访问；或者站长监测到国外肉鸡一直有扫描或攻击。这时就需要对对境外IP进行进行过滤和屏蔽；对IP进行过滤屏蔽只有两种方法：&lt;code>加白&lt;/code>和&lt;code>加黑&lt;/code>; &lt;code>加白&lt;/code>就是把允许访问的添加入白名单中，没在白名单中的都进行屏蔽过滤，不允许访问；&lt;code>加黑&lt;/code>就是把不允许访问的加入到黑名单中，没在黑名单中的完全放开，都可以进行访问。那么两种方法怎么选择呢？并且要怎样去屏蔽呢？&lt;/p></description></item><item><title>单台centos7服务器Docker部署sentry服务</title><link>/post/%E5%8D%95%E5%8F%B0centos7%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E9%83%A8%E7%BD%B2sentry%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 06 Aug 2020 11:45:38 +0800</pubDate><guid>/post/%E5%8D%95%E5%8F%B0centos7%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E9%83%A8%E7%BD%B2sentry%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>&lt;code>Sentry&lt;/code> 是一个实时事件的日志聚合平台。它专门监测错误并提取所有有用信息用于分析，不再麻烦地依赖用户反馈来定位问题。它是一款基于 &lt;code>Django&lt;/code>实现的错误日志收集和聚合的平台，它是 &lt;code>Python&lt;/code> 实现的，但是其日志监控功能却不局限于&lt;code>python&lt;/code>，对诸如 &lt;code>Node.js&lt;/code>, &lt;code>php&lt;/code>,&lt;code>ruby&lt;/code>, &lt;code>C#&lt;/code>,&lt;code>java&lt;/code> 等语言的项目都可以做到无缝集成，甚至可以用来对&lt;code>iOS&lt;/code>, &lt;code>Android&lt;/code> 移动客户端以及 &lt;code>Web&lt;/code>前端异常进行跟踪。我们可以在程序中捕获异常，并发送到 &lt;code>Sentry&lt;/code>服务端进行聚合统计、展示和报警。sentry官方推荐docker方式安装，使用到了docker-compose。本文就详细教你如果搭建部署sentry服务。&lt;/p></description></item><item><title>vim粘贴技巧</title><link>/post/vim%E7%B2%98%E8%B4%B4%E6%8A%80%E5%B7%A7/</link><pubDate>Tue, 28 Jul 2020 18:20:44 +0800</pubDate><guid>/post/vim%E7%B2%98%E8%B4%B4%E6%8A%80%E5%B7%A7/</guid><description>&lt;h2 id="问题">问题
+&lt;a class="header-anchor" href="#%e9%97%ae%e9%a2%98">&lt;/a>
+&lt;/h2>&lt;p>vi(vim)作为所有linux发行版本中默认的文本编辑工具，因其功能强大和适用而广受欢迎。用法这里就不再赘述，本文是介绍了vim粘贴代码时的一个技巧。&lt;/p></description></item><item><title>Linux性能监控神级工具</title><link>/post/linux%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E7%A5%9E%E7%BA%A7%E5%B7%A5%E5%85%B7/</link><pubDate>Wed, 22 Jul 2020 19:23:08 +0800</pubDate><guid>/post/linux%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7%E7%A5%9E%E7%BA%A7%E5%B7%A5%E5%85%B7/</guid><description>&lt;p>本文中罗列了一系列使用最频繁的性能监控工具，并对介绍到的每一个工具提供了相应的简介链接，大致将其划分为两类，基于命令行的和提供图形化接口的。&lt;/p></description></item><item><title>centos7.x添加开机启动</title><link>/post/centos7-x%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</link><pubDate>Wed, 22 Jul 2020 15:36:34 +0800</pubDate><guid>/post/centos7-x%E6%B7%BB%E5%8A%A0%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>搭建环境、部署服务这是运维工作中很常见的工作，也是比较频繁的。那么如果搭建环境或部署服务的这台服务器因为各种突发原因（如停电，磁盘异常进行替换或资源扩容等等）重启了。这个服务很重要的，但是服务器重启后肯定服务没有自己启动，而又在一年前部署的，这时就需要我们去查当初的部署文档，手动启动服务。那么有没有方法让服务器启动时自动启动服务呢？本文就介绍这个添加开机启动。&lt;/p></description></item><item><title>Linux中tmp目录清理机制</title><link>/post/linux%E4%B8%ADtmp%E7%9B%AE%E5%BD%95%E6%B8%85%E7%90%86%E6%9C%BA%E5%88%B6/</link><pubDate>Wed, 22 Jul 2020 14:44:35 +0800</pubDate><guid>/post/linux%E4%B8%ADtmp%E7%9B%AE%E5%BD%95%E6%B8%85%E7%90%86%E6%9C%BA%E5%88%B6/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>在Linux系统中/tmp目录中的文件会被定期删除，但是多长时间被删除呢？又是如何删除的呢？按照什么规则呢？今天就来剖析tmp目录的清理机制。&lt;/p></description></item><item><title>Linux中swap分区详解</title><link>/post/linux%E4%B8%ADswap%E5%88%86%E5%8C%BA%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 22 Jul 2020 14:08:21 +0800</pubDate><guid>/post/linux%E4%B8%ADswap%E5%88%86%E5%8C%BA%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>在Linux下，swap的作用类似Windows系统下的“虚拟内存”。当物理内存不足时，拿出部分硬盘空间当SWAP分区（虚拟成内存）使用，从而解决内存容量不足的情况。&lt;/p>
+&lt;p>swap意思是交换，顾名思义，当某进程向OS请求内存发现不足时，OS会把内存中暂时不用的数据交换出去，放在swap分区中，这个过程称为SWAP OUT。当某进程又需要这些数据且OS发现还有空闲物理内存时，又会把swap分区中的数据交换回物理内存中，这个过程称为SWAP IN。&lt;/p>
+&lt;p>当然，swap大小是有上限的，一旦swap使用完，操作系统会触发OOM-Killer机制，把消耗内存最多的进程kill掉以释放内存。&lt;/p></description></item><item><title>inotify+rsync实现百万级数据同步</title><link>/post/inotify-rsync%E5%AE%9E%E7%8E%B0%E7%99%BE%E4%B8%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</link><pubDate>Thu, 16 Jul 2020 21:05:11 +0800</pubDate><guid>/post/inotify-rsync%E5%AE%9E%E7%8E%B0%E7%99%BE%E4%B8%87%E7%BA%A7%E6%95%B0%E6%8D%AE%E5%90%8C%E6%AD%A5/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>我们日常都是用scp或rsync来同步目录和文件。但它们之间的区别是：rsync 是**分块校验+传输，**scp &lt;strong>是整个文件传输。&lt;strong>rsync 比 scp 有优势的地方在于单个大文件的一小部分存在改动时，只需传输&lt;/strong>改动部分&lt;/strong>，无需重新传输整个文件。如果传输一个新的文件，理论上 rsync 没有优势。另外，rsync 不是加密传输，而 scp 是加密传输。使用时可以按需选择。用inotify+rsync做实时同步，来解决分布式集群文件一致性的问题。并且能够实时监控事件，当有监控事件发生时，执行相应操作。但如文件越来越多(例如：百万级数量html,jpg等小文件)，同步就会越来越慢，根本做不到实时。网上的调优方法都尝试过，问题依旧。经过一翻细致研究和测试，终于找到问题点并解决。本篇文章做下记录。&lt;/p></description></item><item><title>探究login和non-login shell的区别</title><link>/post/%E6%8E%A2%E7%A9%B6login%E5%92%8Cnon-login-shell%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Mon, 13 Jul 2020 16:41:47 +0800</pubDate><guid>/post/%E6%8E%A2%E7%A9%B6login%E5%92%8Cnon-login-shell%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h3 id="login-shell">login shell
+&lt;a class="header-anchor" href="#login-shell">&lt;/a>
+&lt;/h3>&lt;p>取得bash时需要完整的登入流程的，就称为login shell。举例来说，你要由tty1~tty6登入，需要输入用户的账号和密码，此时取得的bash就称为『login shell』啰；&lt;/p>
+&lt;h3 id="non-login-shell">non-login shell
+&lt;a class="header-anchor" href="#non-login-shell">&lt;/a>
+&lt;/h3>&lt;p>取得bash接口的方法不需要重复登入的举动。&lt;/p>
+&lt;p>举例来说：&lt;/p>
+&lt;p>(1)你以Xwindow登入Linux后，再以X的图形化接口启动终端机，此时那个终端接口并没有需要再次的输入账号和密码，那个bash的环境就称为non-login shell了。&lt;/p>
+&lt;p>(2)你在原本的bash环境下再次下达bash这个命令，同样的也没有输入账号密码，那第二个bash (子程序)也是non-login shell 。&lt;/p></description></item><item><title>ansible实例</title><link>/post/ansible%E5%AE%9E%E4%BE%8B/</link><pubDate>Mon, 13 Jul 2020 16:19:23 +0800</pubDate><guid>/post/ansible%E5%AE%9E%E4%BE%8B/</guid><description>&lt;h2 id="目录">目录
+&lt;a class="header-anchor" href="#%e7%9b%ae%e5%bd%95">&lt;/a>
+&lt;/h2>&lt;p>实例一：执行curl命令发送post请求&lt;/p>
+&lt;p>实例二：直接发送post请求&lt;/p></description></item><item><title>selenium自动化测试实战</title><link>/post/selenium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/</link><pubDate>Mon, 13 Jul 2020 14:46:40 +0800</pubDate><guid>/post/selenium%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E6%88%98/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>Selenium 是自动化测试工具。它支持各种浏览器，包括 Chrome，Safari，Firefox 等主流界面式浏览器，如果你在这些浏览器里面安装一个 Selenium 的插件，那么便可以方便地实现Web界面的测试。
+Selenium 2，又名 WebDriver，它的主要新功能是集成了 Selenium 1.0 以及 WebDriver（WebDriver 曾经是 Selenium 的竞争对手）。也就是说 Selenium 2 是 Selenium 和 WebDriver 两个项目的合并，即 Selenium 2 兼容 Selenium，它既支持 Selenium API 也支持 WebDriver API。&lt;/p>
+&lt;h2 id="参考文档">参考文档
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="http://selenium-python-zh.readthedocs.io/en/latest/index.html" title="中文参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+中文参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="http://selenium-python.readthedocs.io/index.html" title="英文参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+英文参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>ELK之logstash多个配置文件及模板的使用</title><link>/post/elk%E4%B9%8Blogstash%E5%A4%9A%E4%B8%AA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 08 Jul 2020 11:08:41 +0800</pubDate><guid>/post/elk%E4%B9%8Blogstash%E5%A4%9A%E4%B8%AA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8F%8A%E6%A8%A1%E6%9D%BF%E7%9A%84%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>在使用 logstash 编写多个配置文件，写入到 elasticsearch 时，会出现数据写入混乱的问题，举例来说：&lt;/p>
+&lt;p>多个配置文件中规则如下：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>A -&amp;gt; es-logstash-A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B -&amp;gt; es-logstash-B
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#A 写入到 es-logstash-A 索引中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#B 写入到 es-logstash-B 索引中&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>然而当 logstash 服务运行起来的时候并不是这样的，可能出现如下想象：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>A-&amp;gt; es-logstash-A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>B-&amp;gt; es-logstash-A
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>究其原因，是因为 logstash 运行起来的时候，会将所有的配置文件合并执行。因此，每个 input 的数据都必须有一个唯一的标识，在 filter 和 output 时，通过这个唯一标识来实现过滤或者存储到不同的索引。&lt;/strong>&lt;/p></description></item><item><title>k8s之详解Ingress并实战</title><link>/post/k8s%E4%B9%8B%E8%AF%A6%E8%A7%A3ingress%E5%B9%B6%E5%AE%9E%E6%88%98/</link><pubDate>Tue, 07 Jul 2020 17:39:06 +0800</pubDate><guid>/post/k8s%E4%B9%8B%E8%AF%A6%E8%A7%A3ingress%E5%B9%B6%E5%AE%9E%E6%88%98/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文对k8s中Ingress反向代理进行详细剖析，详细介绍了原理，并通过实际例子来详细说明。&lt;/p></description></item><item><title>容器版Jenkins连接K8s</title><link>/post/%E5%AE%B9%E5%99%A8%E7%89%88jenkins%E8%BF%9E%E6%8E%A5k8s/</link><pubDate>Thu, 02 Jul 2020 17:08:51 +0800</pubDate><guid>/post/%E5%AE%B9%E5%99%A8%E7%89%88jenkins%E8%BF%9E%E6%8E%A5k8s/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详解介绍了容器版jenkins连接k8s的配置和使用详情。特别注意：必须用谷歌浏览器，而且非容器版jenkins是无法安装kubernetes插件的，所以无法连接k8s。
+&lt;a href="https://wandouduoduo.github.io/articles/87f87b20.html" title="搭建k8s集群教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+搭建k8s集群教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>操作系统版本: Ubuntu 18.04 TLS&lt;/p>
+&lt;p>软件版本: Jenkins 2.121.2&lt;/p></description></item><item><title>k8s版jenkins带maven、jdk、git各种工具用master/slave模式实现CI/CD</title><link>/post/k8s%E7%89%88jenkins%E5%B8%A6mavenjdkgit%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7%E7%94%A8master-slave%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0ci-cd/</link><pubDate>Thu, 02 Jul 2020 14:56:01 +0800</pubDate><guid>/post/k8s%E7%89%88jenkins%E5%B8%A6mavenjdkgit%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7%E7%94%A8master-slave%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0ci-cd/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文在k8s集群中把各种工具（jdk，git, maven等）集成到jenkins，用master/slave模式实现CI/CD。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>k8s集群
+&lt;a href="https://wandouduoduo.github.io/articles/87f87b20.html" title="参考教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>Hubor镜像服务
+&lt;a href="https://wandouduoduo.github.io/articles/b9ccc582.html" title="参考教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>nfs/Ceph持久存储
+&lt;a href="https://wandouduoduo.github.io/articles/3acab424.html" title="参考教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://wandouduoduo.github.io/articles/12aa61a7.html" title="K8s中Jenkins实践教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+K8s中Jenkins实践教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>CentOS7安装指定版本Docker-ce</title><link>/post/centos7%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%ACdocker-ce/</link><pubDate>Thu, 02 Jul 2020 14:09:58 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%ACdocker-ce/</guid><description>&lt;h2 id="docker版本说明">&lt;strong>Docker版本说明&lt;/strong>
+&lt;a class="header-anchor" href="#docker%e7%89%88%e6%9c%ac%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;p>Docker-CE指Docker社区版，由社区维护和提供技术支持，为免费版本，适合个人开发人员和小团队使用。&lt;/p>
+&lt;p>Docker-EE指Docker企业版，为收费版本，由售后团队和技术团队提供技术支持，专为企业开发和IT团队而设计。&lt;/p>
+&lt;p>相比Docker-EE，增加一些额外功能，更重要的是提供了更安全的保障。&lt;/p>
+&lt;p>此外，Docker的发布版本分为Stable版和Edge版，区别在于前者是按季度发布的稳定版(发布慢)，后者是按月发布的边缘版(发布快)。&lt;/p>
+&lt;p>通常情况下，Docker-CE足以满足我们的需求。&lt;/p></description></item><item><title>jenkins配置jdk、git、maven等工具</title><link>/post/jenkins%E9%85%8D%E7%BD%AEjdkgitmaven%E7%AD%89%E5%B7%A5%E5%85%B7/</link><pubDate>Wed, 01 Jul 2020 19:26:55 +0800</pubDate><guid>/post/jenkins%E9%85%8D%E7%BD%AEjdkgitmaven%E7%AD%89%E5%B7%A5%E5%85%B7/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍jenkins配置各种打包工具。&lt;/p></description></item><item><title>Centos7安装gitlab详细教程</title><link>/post/centos7%E5%AE%89%E8%A3%85gitlab%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</link><pubDate>Tue, 30 Jun 2020 18:09:38 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85gitlab%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>博客中有docker直接启动gitlab服务，这里再补充下直接裸机部署gitlab服务的教程。&lt;/p></description></item><item><title>k8s之jenkins动态创建slave</title><link>/post/k8s%E4%B9%8Bjenkins%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BAslave/</link><pubDate>Tue, 30 Jun 2020 15:42:05 +0800</pubDate><guid>/post/k8s%E4%B9%8Bjenkins%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BAslave/</guid><description>&lt;h2 id="简述">简述
+&lt;a class="header-anchor" href="#%e7%ae%80%e8%bf%b0">&lt;/a>
+&lt;/h2>&lt;p>持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点，比如：&lt;/p>
+&lt;ul>
+&lt;li>主 Master 发生单点故障时，整个流程都不可用了&lt;/li>
+&lt;li>每个 Slave 的配置环境不一样，来完成不同语言的编译打包等操作，但是这些差异化的配置导致管理起来非常不方便，维护起来也是比较费劲&lt;/li>
+&lt;li>资源分配不均衡，有的 Slave 要运行的 job 出现排队等待，而有的 Slave 处于空闲状态&lt;/li>
+&lt;li>资源有浪费，每台 Slave 可能是物理机或者虚拟机，当 Slave 处于空闲状态时，也不会完全释放掉资源。&lt;/li>
+&lt;/ul>
+&lt;p>正因为上面的这些种种痛点，我们渴望一种更高效更可靠的方式来完成这个 CI/CD 流程，而 Docker 虚拟化容器技术能很好的解决这个痛点，又特别是在 Kubernetes 集群环境下面能够更好来解决上面的问题，下图是基于 Kubernetes 搭建 Jenkins 集群的简单示意图：
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>从图上可以看到 Jenkins Master 和 Jenkins Slave 以 Pod 形式运行在 Kubernetes 集群的 Node 上，Master 运行在其中一个节点，并且将其配置数据存储到一个 Volume 上去，Slave 运行在各个节点上，并且它不是一直处于运行状态，它会按照需求动态的创建并自动删除。&lt;/p>
+&lt;p>这种方式的工作流程大致为：当 Jenkins Master 接受到 Build 请求时，会根据配置的 Label 动态创建一个运行在 Pod 中的 Jenkins Slave 并注册到 Master 上，当运行完 Job 后，这个 Slave 会被注销并且这个 Pod 也会自动删除，恢复到最初状态。&lt;/p>
+&lt;p>使用jenkins动态slave的优势：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>服务高可用&lt;/strong>，当 Jenkins Master 出现故障时，Kubernetes 会自动创建一个新的 Jenkins Master 容器，并且将 Volume 分配给新创建的容器，保证数据不丢失，从而达到集群服务高可用。&lt;/li>
+&lt;li>&lt;strong>动态伸缩&lt;/strong>，合理使用资源，每次运行 Job 时，会自动创建一个 Jenkins Slave，Job 完成后，Slave 自动注销并删除容器，资源自动释放，而且 Kubernetes 会根据每个资源的使用情况，动态分配 Slave 到空闲的节点上创建，降低出现因某节点资源利用率高，还排队等待在该节点的情况。&lt;/li>
+&lt;li>&lt;strong>扩展性好&lt;/strong>，当 Kubernetes 集群的资源严重不足而导致 Job 排队等待时，可以很容易的添加一个 Kubernetes Node 到集群中，从而实现扩展。&lt;/li>
+&lt;/ul></description></item><item><title>k8s之存储服务</title><link>/post/k8s%E4%B9%8B%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Tue, 30 Jun 2020 12:19:41 +0800</pubDate><guid>/post/k8s%E4%B9%8B%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了kubernentes的存储，使用NFS进行演示，让你充分了解和使用pv和pvc，可以举一反三的使用持久化存储。&lt;/p></description></item><item><title>详解nexus私服仓库</title><link>/post/%E8%AF%A6%E8%A7%A3nexus%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/</link><pubDate>Sun, 28 Jun 2020 18:43:34 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3nexus%E7%A7%81%E6%9C%8D%E4%BB%93%E5%BA%93/</guid><description>&lt;h3 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h3>&lt;p>Nexus 是Maven仓库管理器，如果你使用Maven，你可以从Maven中央仓库 下载所需要的构件（artifact），但这通常不是一个好的做法，你应该在本地架设一个Maven仓库服务器，在代理远程仓库的同时维护本地仓库，以节省带宽和时间，Nexus就可以满足这样的需要。此外，他还提供了强大的仓库管理功能，构件搜索功能，它基于REST，友好的UI是一个extjs的REST客户端，它占用较少的内存，基于简单文件系统而非数据库。这些优点使其日趋成为最流行的Maven仓库管理器。&lt;/p></description></item><item><title>K8S之CI/CD自动化</title><link>/post/k8s%E4%B9%8Bci-cd%E8%87%AA%E5%8A%A8%E5%8C%96/</link><pubDate>Sun, 28 Jun 2020 17:27:59 +0800</pubDate><guid>/post/k8s%E4%B9%8Bci-cd%E8%87%AA%E5%8A%A8%E5%8C%96/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>CICD 是 持续集成（Continuous Integration）和持续部署（Continuous Deployment）简称。指在开发过程中自动执行一系列脚本来减低开发引入 bug 的概率，在新代码从开发再到部署的过程中，尽量减少人工的介入。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>K8S之镜像管理服务</title><link>/post/k8s%E4%B9%8B%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/</link><pubDate>Sun, 28 Jun 2020 15:41:52 +0800</pubDate><guid>/post/k8s%E4%B9%8B%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Harbor是构建企业级私有docker镜像的仓库的开源解决方案，它是Docker Registry的更高级封装，它除了提供友好的Web UI界面，角色和用户权限管理，用户操作审计等功能外，它还整合了K8s的插件(Add-ons)仓库，即Helm通过chart方式下载，管理，安装K8s插件，而chartmuseum可以提供存储chart数据的仓库【注:helm就相当于k8s的yum】。另外它还整合了两个开源的安全组件，一个是Notary，另一个是Clair，Notary类似于私有CA中心，而Clair则是容器安全扫描工具，它通过各大厂商提供的CVE漏洞库来获取最新漏洞信息，并扫描用户上传的容器是否存在已知的漏洞信息，这两个安全功能对于企业级私有仓库来说是非常具有意义的。&lt;/p></description></item><item><title>Centos7.x安装opensips并实现通话成功</title><link>/post/centos7-x%E5%AE%89%E8%A3%85opensips%E5%B9%B6%E5%AE%9E%E7%8E%B0%E9%80%9A%E8%AF%9D%E6%88%90%E5%8A%9F/</link><pubDate>Tue, 23 Jun 2020 10:51:42 +0800</pubDate><guid>/post/centos7-x%E5%AE%89%E8%A3%85opensips%E5%B9%B6%E5%AE%9E%E7%8E%B0%E9%80%9A%E8%AF%9D%E6%88%90%E5%8A%9F/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>先是使用&lt;code>opensips&lt;/code>官方的&lt;code>docker&lt;/code>尝试，好不容易装好了，软电话（&lt;code>sipphone&lt;/code>）上注册不成功，主要是我&lt;code>docker&lt;/code>又是装在&lt;code>VirtualBox&lt;/code>的虚拟机里的，网络结构致使调试困难，直接新开一个虚拟机，很顺利的就安装成功并且实现局域网终端之间通话。&lt;/p></description></item><item><title>kubernetes1.18安装Dashboard</title><link>/post/kubernetes1-18%E5%AE%89%E8%A3%85dashboard/</link><pubDate>Mon, 22 Jun 2020 12:06:34 +0800</pubDate><guid>/post/kubernetes1-18%E5%AE%89%E8%A3%85dashboard/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>k8s的集群搭建已经完成，那么页面怎么管理呢？本文详细介绍k8s-dashboard页面管理。&lt;/p></description></item><item><title>centos7使用kubeadm安装kubernetes集群</title><link>/post/centos7%E4%BD%BF%E7%94%A8kubeadm%E5%AE%89%E8%A3%85kubernetes%E9%9B%86%E7%BE%A4/</link><pubDate>Mon, 22 Jun 2020 10:25:57 +0800</pubDate><guid>/post/centos7%E4%BD%BF%E7%94%A8kubeadm%E5%AE%89%E8%A3%85kubernetes%E9%9B%86%E7%BE%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Kubernetes是Google 2014年创建管理的，是Google 10多年大规模容器管理技术Borg的开源版本。它是容器集群管理系统，是一个开源的平台，可以实现容器集群的自动化部署、自动扩缩容、维护等功能。本文详细介绍了集群的搭建。&lt;/p></description></item><item><title>如何让es保留固定天数的数据</title><link>/post/%E5%A6%82%E4%BD%95%E8%AE%A9es%E4%BF%9D%E7%95%99%E5%9B%BA%E5%AE%9A%E5%A4%A9%E6%95%B0%E7%9A%84%E6%95%B0%E6%8D%AE/</link><pubDate>Wed, 17 Jun 2020 10:45:07 +0800</pubDate><guid>/post/%E5%A6%82%E4%BD%95%E8%AE%A9es%E4%BF%9D%E7%95%99%E5%9B%BA%E5%AE%9A%E5%A4%A9%E6%95%B0%E7%9A%84%E6%95%B0%E6%8D%AE/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>elk为常见的日志分析平台，在很多公司都用使用，但是日志数据是一个不断海量增加的东西，如果没有太大的存储来存储这些日志历史数据，就会需要删除时间过长的历史数据，以保证数据量可控。&lt;/p></description></item><item><title>lvs的三次实践</title><link>/post/%E5%AE%9E%E8%B7%B5lvs%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 11 Jun 2020 19:31:15 +0800</pubDate><guid>/post/%E5%AE%9E%E8%B7%B5lvs%E7%9A%84%E4%B8%89%E7%A7%8D%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了lvs的三次实践。&lt;/p></description></item><item><title>详解lvs安装部署</title><link>/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link><pubDate>Thu, 11 Jun 2020 16:44:46 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3lvs%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>负载均衡器分为硬件和软件。硬件如F5等，但是像F5这些设备费用高昂，不是每个公司都有财力用的。而软件业界用的最多的就是lvs，haproxy和nginx，而负载能力最强的就是lvs。本文详细介绍了lvs的安装部署。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpeg" alt="img" />&lt;/p>
+&lt;p>在实际应用中，在 Web 服务器集群之前总会有一台负载均衡服务器，负载均衡设备的任务就是作为 Web 服务器流量的入口，挑选最合适的一台 Web 服务器，将客户端的请求转发给它处理，实现客户端到真实服务端的透明转发。&lt;/p>
+&lt;p>最近几年很火的「云计算」以及分布式架构，本质上也是将后端服务器作为计算资源、存储资源，由某台管理服务器封装成一个服务对外提供，客户端不需要关心真正提供服务的是哪台机器，在它看来，就好像它面对的是一台拥有近乎无限能力的服务器，而本质上，真正提供服务的，是后端的集群。&lt;/p></description></item><item><title>详解负载均衡器lvs</title><link>/post/%E8%AF%A6%E8%A7%A3%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8lvs/</link><pubDate>Thu, 11 Jun 2020 11:59:11 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8lvs/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;pre>&lt;code>LVS（Linux Virtual Server）即Linux虚拟服务器，是由章文嵩博士主导的开源负载均衡项目，目前LVS已经被集成到Linux内核模块中。该项目在Linux内核中实现了基于IP的数据请求负载均衡调度方案，其体系结构如图1所示，终端互联网用户从外部访问公司的外部负载均衡服务器，终端用户的Web请求会发送给LVS调度器，调度器根据自己预设的算法决定将该请求发送给后端的某台Web服务器，比如，轮询算法可以将外部的请求平均分发给后端的所有服务器，终端用户访问LVS调度器虽然会被转发到后端真实的服务器，但如果真实服务器连接的是相同的存储，提供的服务也是相同的服务，最终用户不管是访问哪台真实服务器，得到的服务内容都是一样的，整个集群对用户而言都是透明的。最后根据LVS工作模式的不同，真实服务器会选择不同的方式将用户需要的数据发送到终端用户，LVS工作模式分为NAT模式、TUN模式、以及DR模式。
+&lt;/code>&lt;/pre>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>本文详细讲解了lvs的三种模式和十种算法。让你有个清晰的认识。&lt;/p></description></item><item><title>分布式定时任务调度系统Saturn安装部署</title><link>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9Fsaturn%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link><pubDate>Wed, 10 Jun 2020 19:18:15 +0800</pubDate><guid>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%E7%B3%BB%E7%BB%9Fsaturn%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Saturn (定时任务调度系统)是唯品会自主研发的分布式的定时任务的调度平台，目标是取代传统的Linux Cron/Spring Batch Job/Quartz的方式，做到全域统一配置，统一监控，任务高可用以及分片。目前该平台己平稳运行1年，承载着唯品会核心系统的全部定时任务的调度，监控，配置，经受住了生产环境的各种考验。 开源版本系唯品会生产使用的saturn核心，去除了唯品会的认证，监控，告警系统等依赖，可独立部署安装使用。&lt;/p></description></item><item><title>详解统一配置中心平台：Apollo服务搭建</title><link>/post/%E8%AF%A6%E8%A7%A3%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%B9%B3%E5%8F%B0%E4%B9%8Bapollo%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</link><pubDate>Tue, 19 May 2020 15:06:21 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%B9%B3%E5%8F%B0%E4%B9%8Bapollo%E6%9C%8D%E5%8A%A1%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Apollo（阿波罗）是携程框架部门研发的分布式配置中心，能够集中化管理应用不同环境、不同集群的配置，配置修改后能够实时推送到应用端，并且具备规范的权限、流程治理等特性，适用于微服务配置管理场景。本文就详细讲解了Apollo这一统一配置中心的搭建过程。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://github.com/ctripcorp/apollo" title="官方地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/ctripcorp/apollo/wiki/Apollo%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E4%BB%8B%E7%BB%8D" title="官方详细文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方详细文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/ctripcorp/apollo/wiki/Quick-Start" title="快速部署文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+快速部署文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/ctripcorp/apollo/wiki/%e5%88%86%e5%b8%83%e5%bc%8f%e9%83%a8%e7%bd%b2%e6%8c%87%e5%8d%97" title="生产分布式部署指南" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+生产分布式部署指南
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>详解统一配置中心平台：服务选型</title><link>/post/%E8%AF%A6%E8%A7%A3%E6%90%BA%E7%A8%8Bapollo%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%B9%B3%E5%8F%B0-%E4%B8%80/</link><pubDate>Mon, 11 May 2020 14:39:16 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3%E6%90%BA%E7%A8%8Bapollo%E7%BB%9F%E4%B8%80%E9%85%8D%E7%BD%AE%E4%B8%AD%E5%BF%83%E5%B9%B3%E5%8F%B0-%E4%B8%80/</guid><description>&lt;h2 id="为什么需配置中心">为什么需配置中心
+&lt;a class="header-anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e9%9c%80%e9%85%8d%e7%bd%ae%e4%b8%ad%e5%bf%83">&lt;/a>
+&lt;/h2>&lt;h3 id="配置实时生效">配置实时生效
+&lt;a class="header-anchor" href="#%e9%85%8d%e7%bd%ae%e5%ae%9e%e6%97%b6%e7%94%9f%e6%95%88">&lt;/a>
+&lt;/h3>&lt;p>传统的静态配置方式要想修改某个配置只能修改之后重新发布应用。如要实现动态性，可以选择使用数据库，通过定时轮询访问数据库来感知配置的变化。但是轮询频率低，感知配置变化的延时就长，轮询频率高，感知配置变化的延时就短，但又比较损耗性能，所以需要在实时性和性能之间做折中。而配置中心专门针对这个业务场景，兼顾实时性和一致性来管理动态配置。&lt;/p>
+&lt;h3 id="配置管理流程">配置管理流程
+&lt;a class="header-anchor" href="#%e9%85%8d%e7%bd%ae%e7%ae%a1%e7%90%86%e6%b5%81%e7%a8%8b">&lt;/a>
+&lt;/h3>&lt;p>配置的权限管控、灰度发布、版本管理、格式检验和安全配置等一系列的配置管理相关的特性也是配置中心不可获取的一部分。&lt;/p>
+&lt;h3 id="运维需求">运维需求
+&lt;a class="header-anchor" href="#%e8%bf%90%e7%bb%b4%e9%9c%80%e6%b1%82">&lt;/a>
+&lt;/h3>&lt;p>随着程序功能的日益复杂，程序的配置日益增多：各种功能的开关、参数的配置、服务器的地址等等。对程序配置的期望值也越来越高：配置修改后实时生效，分环境、分集群管理配置，代码安全、审核机制等等。在这样的大环境下，传统的通过配置文件、数据库等方式已经越来越无法满足开发人员对配置管理的需求。所以，配置中心应运而生。&lt;/p>
+&lt;h2 id="开源配置中心比较">开源配置中心比较
+&lt;a class="header-anchor" href="#%e5%bc%80%e6%ba%90%e9%85%8d%e7%bd%ae%e4%b8%ad%e5%bf%83%e6%af%94%e8%be%83">&lt;/a>
+&lt;/h2>&lt;p>目前市面上用的比较多的配置中心有：（按开源时间排序）&lt;/p>
+&lt;h3 id="disconf">Disconf
+&lt;a class="header-anchor" href="#disconf">&lt;/a>
+&lt;/h3>&lt;p>2014年7月百度开源的配置管理中心，同样具备配置的管理能力，不过目前已经不维护了，最近的一次提交是两年前了。&lt;/p>
+&lt;h3 id="spring-cloud-config">Spring Cloud Config
+&lt;a class="header-anchor" href="#spring-cloud-config">&lt;/a>
+&lt;/h3>&lt;p>2014年9月开源，Spring Cloud 生态组件，可以和Spring Cloud体系无缝整合。&lt;/p>
+&lt;h3 id="apollo">Apollo
+&lt;a class="header-anchor" href="#apollo">&lt;/a>
+&lt;/h3>&lt;p>2016年5月，携程开源的配置管理中心，具备规范的权限、流程治理等特性。&lt;/p>
+&lt;h3 id="nacos">Nacos
+&lt;a class="header-anchor" href="#nacos">&lt;/a>
+&lt;/h3>&lt;p>2018年6月，阿里开源的配置中心，也可以做DNS和RPC的服务发现。&lt;/p>
+&lt;h2 id="参考文档">参考文档
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://springcloud.cc/spring-cloud-config.html" title="Spring Cloud Config" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Spring Cloud Config
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/ctripcorp/apollo" title="Apollo" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Apollo
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://nacos.io/" title="Nacos" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Nacos
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>CentOS7安装GlusterFS集群教程</title><link>/post/centos7%E5%AE%89%E8%A3%85glusterfs%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B/</link><pubDate>Thu, 16 Apr 2020 19:12:47 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85glusterfs%E9%9B%86%E7%BE%A4%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文教程，帮助你搭建glusterfs集群共享存储。&lt;/p>
+&lt;h2 id="环境说明">环境说明
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;p>3台机器安装 GlusterFS 组成一个集群&lt;/p>
+&lt;p>服务器
+10.6.0.140
+10.6.0.192
+10.6.0.196&lt;/p>
+&lt;p>客户端：
+10.6.0.94 node-94&lt;/p></description></item><item><title>Centos7搭建神器openvpn</title><link>/post/centos7%E6%90%AD%E5%BB%BA%E7%A5%9E%E5%99%A8openvpn/</link><pubDate>Wed, 12 Feb 2020 10:07:14 +0800</pubDate><guid>/post/centos7%E6%90%AD%E5%BB%BA%E7%A5%9E%E5%99%A8openvpn/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>OpenVPN是一个开源的应用程序，它允许您通过公共互联网创建一个安全的专用网络。OpenVPN实现一个虚拟专用网（VPN）来创建一个安全连接。OpenVPN使用OpenSSL库提供加密，它提供了几种身份验证机制，如基于证书的、预共享密钥和用户名/密码身份验证。本文详细介绍了OpenVPN搭建过程，并利用pam_sqlite3插件实现用户认证；通过openvpn_web进行用户管理与日志系统。&lt;/p>
+&lt;h2 id="环境">&lt;strong>环境&lt;/strong>
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>服务端：CentOS7.x&lt;/p>
+&lt;p>客户端：Windows10&lt;/p></description></item><item><title>Hexo增加APlayer播放音乐</title><link>/post/hexo%E5%A2%9E%E5%8A%A0aplayer%E6%92%AD%E6%94%BE%E9%9F%B3%E4%B9%90/</link><pubDate>Wed, 15 Jan 2020 17:38:10 +0800</pubDate><guid>/post/hexo%E5%A2%9E%E5%8A%A0aplayer%E6%92%AD%E6%94%BE%E9%9F%B3%E4%B9%90/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>hexo搭建完静态博客后，有同学只看技术文档比较枯燥，会犯困。那么如果有音乐播放的功能，就可以一遍阅读文章，一边欣赏音乐了，岂不是一件很愉快的事。那么下面就以本站点为例，分享怎么在自己的hexo网站增加音乐播放功能。&lt;/p></description></item><item><title>Centos7安装Nginx整合Lua</title><link>/post/centos7%E5%AE%89%E8%A3%85nginx%E6%95%B4%E5%90%88lua/</link><pubDate>Fri, 10 Jan 2020 14:26:36 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85nginx%E6%95%B4%E5%90%88lua/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>Lua 是一种轻量小巧的脚本语言，用标准C语言编写并以源代码形式开放， 其设计目的是为了嵌入应用程序中，从而为应用程序提供灵活的扩展和定制功能。现在通常把lua迁入nginx中，根据lua脚本规则，强化nginx的能力。本文介绍在centos7中安装nginx整合lua。&lt;/p></description></item><item><title>使用ELRepo第三方源为CentOS 6/7/8升级最新内核版本</title><link>/post/%E4%BD%BF%E7%94%A8elrepo%E7%AC%AC%E4%B8%89%E6%96%B9%E6%BA%90%E4%B8%BAcentos-6-7-8%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC/</link><pubDate>Fri, 27 Dec 2019 22:57:47 +0800</pubDate><guid>/post/%E4%BD%BF%E7%94%A8elrepo%E7%AC%AC%E4%B8%89%E6%96%B9%E6%BA%90%E4%B8%BAcentos-6-7-8%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E5%86%85%E6%A0%B8%E7%89%88%E6%9C%AC/</guid><description>&lt;h1 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h1>&lt;p>Linux实质上上特指内核的，不过我们现在通常所说的是Linux是各个公司在内核的基础上进行优化和封装了很多组件，并加入了软件包管理工具等发行版，如：ubuntu，redhat, centos等等。linux内核一直有在维护并随着技术和硬件的不断更新也加入了很多功能，所以如果要研究新的技术，用到新内核的功能，可能旧的内核不能满足需求。这时候就需要升级内核，但升级内核属于高危操作，早期还会总是出问题，后来如CentOS或RHEL类的Linux发行版需要升级Linux内核的话可以使用
+&lt;a href="http://elrepo.org/" title="ELRepo" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ELRepo
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>第三方源来很方便进行升级。但是也可能受限于系统本身的低版本会造成升级失败，所以就详细描述了内核的升级过程。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="" />&lt;/p></description></item><item><title>运维职责和分类划分</title><link>/post/%E8%BF%90%E7%BB%B4%E8%81%8C%E8%B4%A3%E5%92%8C%E5%88%86%E7%B1%BB%E5%88%92%E5%88%86/</link><pubDate>Fri, 27 Dec 2019 22:38:46 +0800</pubDate><guid>/post/%E8%BF%90%E7%BB%B4%E8%81%8C%E8%B4%A3%E5%92%8C%E5%88%86%E7%B1%BB%E5%88%92%E5%88%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>有同学看到标题就会说5年以上的技术大咖都傻傻分不清楚，那能成的上大咖？这还真是的，有朋友在BAT等互联网大厂里工作多年，是做技术开发的，在业务上技术很牛的，但是有次聊天时问到这个问题，傻傻分不清楚运维具体是干什么的？有哪些分类？这很正常，孔子曰：术业有专攻，如是而已。还有一些新人小白想要进入这个行业，但是很懵懂，在刚刚接触，心里就打退堂鼓了，害怕自己学不会搞不定弄不懂。那这里就为大家揭开这一职业的朦胧面纱。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="" />&lt;/p></description></item><item><title>Hexo博客导流到微信公众号</title><link>/post/hexo%E5%8D%9A%E5%AE%A2%E5%AF%BC%E6%B5%81%E5%88%B0%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/</link><pubDate>Wed, 25 Dec 2019 14:05:19 +0800</pubDate><guid>/post/hexo%E5%8D%9A%E5%AE%A2%E5%AF%BC%E6%B5%81%E5%88%B0%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%8F%B7/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>随着互联网的高速发展，我们身边的一切都发生了翻天覆地的变化，互联网真真正正改变了我们的生活方式。足不出户买东西，点点手机叫外卖，一部手机走天下等等。古有文人墨客怀才不遇，积愤难平。但现在互联网放大了每个人的能力，知识变现，粉丝导流，人气带货等等已很常见。这时很多技术博主或站长，就想技术文档笔记积累的人气导流到微信公众号。本文就是讲解Hexo博客导流到微信公众号的流程。一句话概括：就是Hexo 整合 OpenWrite 平台的 readmore 插件,实现博客的每一篇文章自动增加阅读更多效果,关注公众号后方可解锁全站文章,从而实现博客流量导流到微信公众号粉丝目的。&lt;/p>
+&lt;p>有些同学，会有如下疑问：&lt;/p>
+&lt;ul>
+&lt;li>为什么要讲Hexo博客，而不是其他如简书，博客园等？&lt;/li>
+&lt;li>导流后效果是怎样的呢？&lt;/li>
+&lt;li>配置会不会很麻烦呢？&lt;/li>
+&lt;li>需要用到哪些工具呢？&lt;/li>
+&lt;li>具体流程是怎样的呢？&lt;/li>
+&lt;/ul>
+&lt;p>针对这些问题，下面就一一解答。&lt;/p></description></item><item><title>Elasticsearch分片副本机制</title><link>/post/elasticsearch%E5%88%86%E7%89%87%E5%89%AF%E6%9C%AC%E6%9C%BA%E5%88%B6/</link><pubDate>Mon, 23 Dec 2019 14:46:15 +0800</pubDate><guid>/post/elasticsearch%E5%88%86%E7%89%87%E5%89%AF%E6%9C%AC%E6%9C%BA%E5%88%B6/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>日常运维工作中，保证系统服务的稳定是第一优先级的。做好高可用方案是关键。在用Elasticsearch作为存储的服务中，保证Elasticsearch数据的高可用，数据的安全性和一致性至关重要。本文就针对这一问题详细介绍了Elasticsearch的分片和副本机制。&lt;/p></description></item><item><title>Nginx之正反代理详解</title><link>/post/nginx%E4%B9%8B%E6%AD%A3%E5%8F%8D%E4%BB%A3%E7%90%86%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 19 Dec 2019 19:14:45 +0800</pubDate><guid>/post/nginx%E4%B9%8B%E6%AD%A3%E5%8F%8D%E4%BB%A3%E7%90%86%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>在日常运维工作中，常常会用到反向代理，为了更安全同时为了负载均衡，分担压力。&lt;/p>
+&lt;p>那么，有小伙伴就会有疑问：&lt;/p>
+&lt;ul>
+&lt;li>什么是反向代理？&lt;/li>
+&lt;li>负载均衡又是怎么实现的？&lt;/li>
+&lt;li>有反向代理那有正向代理吗？&lt;/li>
+&lt;li>正向代理的应用场景是怎样的？&lt;/li>
+&lt;li>反向代理和正向代理怎么配置实现呢？&lt;/li>
+&lt;/ul>
+&lt;p>带着这些疑问，就给大家详细解释下nginx的正反向代理。&lt;/p></description></item><item><title>zookeeper集群脑裂探讨</title><link>/post/zookeeper%E9%9B%86%E7%BE%A4%E8%84%91%E8%A3%82%E6%8E%A2%E8%AE%A8/</link><pubDate>Thu, 19 Dec 2019 16:57:10 +0800</pubDate><guid>/post/zookeeper%E9%9B%86%E7%BE%A4%E8%84%91%E8%A3%82%E6%8E%A2%E8%AE%A8/</guid><description>&lt;h2 id="什么是脑裂">什么是脑裂
+&lt;a class="header-anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af%e8%84%91%e8%a3%82">&lt;/a>
+&lt;/h2>&lt;p>脑裂(split-brain)就是“大脑分裂”，也就是本来一个“大脑”被拆分了两个或多个“大脑”，我们都知道，如果一个人有多个大脑，并且相互独立的话，那么会导致人体“手舞足蹈”，“不听使唤”。&lt;/p>
+&lt;p>脑裂通常会出现在集群环境中，比如ElasticSearch、Zookeeper集群，而这些集群环境有一个统一的特点，就是它们有一个大脑，比如ElasticSearch集群中有Master节点，Zookeeper集群中有Leader节点。&lt;/p>
+&lt;p>本篇文章着重来给大家讲一下Zookeeper中的脑裂问题，以及是如果解决脑裂问题的。&lt;/p></description></item><item><title>Tomcat最强优化</title><link>/post/tomcat%E6%9C%80%E5%BC%BA%E4%BC%98%E5%8C%96/</link><pubDate>Thu, 19 Dec 2019 14:54:38 +0800</pubDate><guid>/post/tomcat%E6%9C%80%E5%BC%BA%E4%BC%98%E5%8C%96/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文不在于给出最佳配置，而是带领开发者，能够从实际情况出发，通过不断的调节tomcat和jvm参数，去发现吞吐量，平均响应时间和错误率等信息的变化，同时根据服务器的cpu和内存等信息，结合接口的业务逻辑，最好是测试使用率最高，并发最大，或者是最重要的接口(比如下单支付接口)，设置最优的tomcat和jvm配置参数。通过Tomcat性能优化可以提高网站的并发能力。Tomcat服务器在JavaEE项目中使用率非常高，所以在生产环境对Tomcat的优化也变得非常重要了。&lt;/p></description></item><item><title>Tomcat高并发和安全配置</title><link>/post/tomcat%E9%AB%98%E5%B9%B6%E5%8F%91%E5%92%8C%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/</link><pubDate>Thu, 19 Dec 2019 11:43:17 +0800</pubDate><guid>/post/tomcat%E9%AB%98%E5%B9%B6%E5%8F%91%E5%92%8C%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>现在Tomcat容器在企业中的应用还占据很高比例，如何对Tomcat优化配置，让其实现高并发的同时，安全也能兼顾呢。本篇就详细介绍Tomcat高并发和安全配置。&lt;/p></description></item><item><title>Tomcat优化之APR模式</title><link>/post/tomcat%E4%BC%98%E5%8C%96%E4%B9%8Bapr%E6%A8%A1%E5%BC%8F/</link><pubDate>Wed, 18 Dec 2019 17:22:37 +0800</pubDate><guid>/post/tomcat%E4%BC%98%E5%8C%96%E4%B9%8Bapr%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h2 id="apr模式介绍">APR模式介绍
+&lt;a class="header-anchor" href="#apr%e6%a8%a1%e5%bc%8f%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>Tomcat可以使用APR来提供超强的可伸缩性和性能，更好地集成本地服务器技术。APR(Apache Portable Runtime)是一个高可移植库，它是Apache HTTP Server2.x的核心。&lt;/p>
+&lt;p>APR有很多用途，包括访问高级IO功能(例如sendfile,epoll和OpenSSL)，OS级别功能(随机数生成，系统状态等等)，本地进程管理(共享内存，NT管道和UNIXsockets)。这些功能可以使Tomcat作为一个通常的前台WEB服务器，能更好地和其它本地web技术集成，总体上让Java更有效率作为一个高性能web服务器平台而不是简单作为后台容器。&lt;/p>
+&lt;p>在产品环境中，特别是直接使用Tomcat做WEB服务器的时候，应该使用Tomcat Native来提高其性能。就是如何 在Tomcat中使用JNI的方式来读取文件以及进行网络传输。这个东西可以大大提升Tomcat对静态文件的处理性能，同时如果你使用了HTTPS方式 传输的话，也可以提升SSL的处理性能。&lt;/p></description></item><item><title>shell中的多进程并发</title><link>/post/shell%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E5%8F%91/</link><pubDate>Tue, 10 Dec 2019 16:23:40 +0800</pubDate><guid>/post/shell%E4%B8%AD%E7%9A%84%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%B9%B6%E5%8F%91/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>日常工作中编写shell脚本处理事务，很多时候需要一次性处理很多，需要用到循环，但是循环体内还是线性的，还是要一个个处理，这样并不会节省很多时间，只是节省了人工一次次输入的繁琐。但是对于提高处理能力，没有实质性的提高。这就需要考虑并发。但Shell中并没有真正意义的多线程，要实现多线程可以启动多个后端进程，最大程度利用cpu性能。即：多进程并发，本篇教程由浅入深详细介绍了shell中的多进程并发。&lt;/p></description></item><item><title>Python多进程和多线程效率最优选</title><link>/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E6%9C%80%E4%BC%98%E9%80%89/</link><pubDate>Fri, 29 Nov 2019 16:51:15 +0800</pubDate><guid>/post/python%E5%A4%9A%E8%BF%9B%E7%A8%8B%E5%92%8C%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%95%88%E7%8E%87%E6%9C%80%E4%BC%98%E9%80%89/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过实例实验，比较用多线程和多进程耗时情况，并进行总结归纳，选择效率最高的方法。&lt;/p></description></item><item><title>Multiprocessing基础</title><link>/post/multiprocessing%E5%9F%BA%E7%A1%80/</link><pubDate>Fri, 29 Nov 2019 15:40:05 +0800</pubDate><guid>/post/multiprocessing%E5%9F%BA%E7%A1%80/</guid><description>&lt;p>multiprocessing是Python的标准模块，它既可以用来编写多进程，也可以用来编写多线程。如果是多线程的话，用multiprocessing.dummy即可，用法与multiprocessing基本相同，这里主要介绍多进程的用法，欢迎纠错。&lt;/p>
+&lt;h2 id="multiprocessing介绍">Multiprocessing介绍
+&lt;a class="header-anchor" href="#multiprocessing%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h4 id="为什么要使用python多进程">为什么要使用python&lt;strong>多进程&lt;/strong>？
+&lt;a class="header-anchor" href="#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%a6%81%e4%bd%bf%e7%94%a8python%e5%a4%9a%e8%bf%9b%e7%a8%8b">&lt;/a>
+&lt;/h4>&lt;p>因为python使用全局解释器锁(GIL)，他会将进程中的线程序列化，也就是多核cpu实际上并不能达到并行提高速度的目的，而使用多进程则是不受限的，所以实际应用中都是推荐多进程的。
+如果每个子进程执行需要消耗的时间非常短（执行+1操作等），这不必使用多进程，因为进程的启动关闭也会耗费资源。
+当然使用多进程往往是用来处理CPU密集型（科学计算）的需求，如果是IO密集型（文件读取，爬虫等）则可以使用多线程去处理。&lt;/p></description></item><item><title>Python之多进程详解</title><link>/post/python%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Fri, 29 Nov 2019 15:34:06 +0800</pubDate><guid>/post/python%E4%B9%8B%E5%A4%9A%E8%BF%9B%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Python中的multiprocess提供了Process类，实现进程相关的功能。但是它基于fork机制，因此不被windows平台支持。想要在windows中运行，必须使用 if &lt;strong>name&lt;/strong> == ‘&lt;strong>main&lt;/strong>: 的方式)。并且多进程就是开启多个进程，每个进程之间是不会互相通信互相干扰的，适用于密集计算。&lt;/p></description></item><item><title>Python之多线程详解</title><link>/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Fri, 29 Nov 2019 15:28:51 +0800</pubDate><guid>/post/python%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>线程是操作系统能够进行运算调度的最小单位。它被包含在进程之中，是进程中的实际运作单位。一条线程指的是进程中一个单一顺序的控制流，一个进程中可以并发多个线程，每条线程并行执行不同的任务，多线程就是在一个进程中的多个线程，如果使用多线程默认开启一个主线程，按照程序需求自动开启多个线程(也可以自己定义线程数)。&lt;/p></description></item><item><title>glusterfs常用命令</title><link>/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link><pubDate>Tue, 26 Nov 2019 16:03:27 +0800</pubDate><guid>/post/glusterfs%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>glusterfs作为分布式存储，优点和安装这里就不再赘述了，看博客中教程。本文主要是介绍glusterfs常用命令和案例。&lt;/p></description></item><item><title>GlusterFS分布式存储集群之使用</title><link>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/</link><pubDate>Tue, 05 Nov 2019 11:56:15 +0800</pubDate><guid>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="glusterfs逻辑卷创建与使用">Glusterfs逻辑卷创建与使用
+&lt;a class="header-anchor" href="#glusterfs%e9%80%bb%e8%be%91%e5%8d%b7%e5%88%9b%e5%bb%ba%e4%b8%8e%e4%bd%bf%e7%94%a8">&lt;/a>
+&lt;/h1>&lt;p>volume是brick的组合，并且大部分glusterfs文件系统的操作都在volume上。&lt;/p>
+&lt;p>glusterfs支持4种基本卷，并可以根据需求对4种基本卷进行组合形成多种扩展卷（得益于glusterfs的模块化堆栈架构设计）。&lt;/p>
+&lt;p>以下主要展示各类型逻辑卷的功能性，未对性能做测试验证。&lt;/p></description></item><item><title>GlusterFS分布式存储集群之部署</title><link>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/</link><pubDate>Tue, 05 Nov 2019 11:37:42 +0800</pubDate><guid>/post/glusterfs%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E9%9B%86%E7%BE%A4%E4%B9%8B%E9%83%A8%E7%BD%B2/</guid><description>&lt;h1 id="glusterfs框架">Glusterfs框架
+&lt;a class="header-anchor" href="#glusterfs%e6%a1%86%e6%9e%b6">&lt;/a>
+&lt;/h1>&lt;p>Glusterfs（Gluster file system）是开源的，具有强大横向扩展能力的（scale-out）,分布式的，可将来自多个服务器的存储资源通过tcp/ip或infiniBand RDMA 网络整合到一个统一的全局命名空间中的文件系统。&lt;/p>
+&lt;h2 id="框架">框架
+&lt;a class="header-anchor" href="#%e6%a1%86%e6%9e%b6">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p>
+&lt;ol>
+&lt;li>GlusterFS主要由存储服务器（Brick Server）、客户端以及 NFS/Samba 存储网关组成；&lt;/li>
+&lt;li>架构中无元数据服务器组件，无对于提升整个系统的性单点故障和性能瓶颈问题，可提高系统扩展性、性能、可靠性和稳定性；&lt;/li>
+&lt;li>GlusterFS支持 TCP/IP 和 InfiniBand RDMA 高速网络互联；&lt;/li>
+&lt;li>客户端可通过原生 GlusterFS 协议访问数据，其他没有运行 GlusterFS 客户端的终端可通过 NFS/CIFS 标准协议通过存储网关访问数据（存储网关提供弹性卷管理和访问代理功能）；&lt;/li>
+&lt;li>存储服务器主要提供基本的数据存储功能，客户端弥补了没有元数据服务器的问题，承担了更多的功能，包括数据卷管理、I/O 调度、文件定位、数据缓存等功能，利用 FUSE（File system in User Space）模块将 GlusterFS 挂载到本地文件系统之上，实现 POSIX 兼容的方式来访问系统数据。&lt;/li>
+&lt;/ol>
+&lt;h2 id="常见术语">常见术语
+&lt;a class="header-anchor" href="#%e5%b8%b8%e8%a7%81%e6%9c%af%e8%af%ad">&lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>Brick：GlusterFS中最基本的存储单元，表示为受信存储池（trusted storage pool）中输出的目录，供客户端挂载用，可以通过主机名与目录名来标识，如&amp;rsquo;SERVER:EXPORT&amp;rsquo;；&lt;/li>
+&lt;li>Volume：卷，逻辑上由N个brick组成；&lt;/li>
+&lt;li>FUSE：Unix-like OS上的可动态加载的模块，允许用户不用修改内核即可创建自己的文件系统；&lt;/li>
+&lt;li>Glusterd：Gluster management daemon，在trusted storage pool中所有的服务器上运行；&lt;/li>
+&lt;li>Volfile：Glusterfs进程的配置文件，通常是位于/var/lib/glusterd/vols/目录下的{volname}文件；&lt;/li>
+&lt;li>Self-heal：用于后台运行检测复本卷中文件与目录的不一致性并解决这些不一致；&lt;/li>
+&lt;li>Split-brain：脑裂；&lt;/li>
+&lt;li>GFID：GlusterFS卷中的每个文件或目录都有一个唯一的128位的数据相关联，用于模拟inode；&lt;/li>
+&lt;li>Namespace：每个Gluster卷都导出单个ns作为POSIX的挂载点。&lt;/li>
+&lt;/ol>
+&lt;h2 id="数据访问流程">数据访问流程
+&lt;a class="header-anchor" href="#%e6%95%b0%e6%8d%ae%e8%ae%bf%e9%97%ae%e6%b5%81%e7%a8%8b">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="img" />&lt;/p>
+&lt;ol>
+&lt;li>在客户端,用户通过 glusterfs的mount point读写数据；&lt;/li>
+&lt;li>用户的这个操作被递交给本地 Linux 系统的VFS 来处理；&lt;/li>
+&lt;li>VFS 将数据递交给 FUSE 内核文件系统（在启动 glusterfs 客户端以前,需要向系统注册一个实际的文件系统 FUSE），该文件系统与 ext3 在同一个层次， ext3 是对实际的磁盘进行处理，而 fuse 文件系统则是将数据通过 /dev/fuse 这个设备文件递交给了glusterfs client 端，可以将 fuse 文件系统理解为一个代理；&lt;/li>
+&lt;li>数据被 fuse 递交给 Glusterfs client 后， client 对数据进行一些指定的处理（即按 client 配置文件来进行的一系列处理）；&lt;/li>
+&lt;li>在 glusterfs client 的处理末端,通过网络将数据递交给 Glusterfs Server, 并且将数据写入到服务器所控制的存储设备上。&lt;/li>
+&lt;/ol></description></item><item><title>分布式存储的优劣对比</title><link>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/</link><pubDate>Mon, 04 Nov 2019 12:20:43 +0800</pubDate><guid>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%AD%98%E5%82%A8%E7%9A%84%E4%BC%98%E5%8A%A3%E5%AF%B9%E6%AF%94/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文通过对比当前主流的几种分布式存储方案（Ceph,TFS,FastDFS,MogileFS,MooseFS,GlusterFS等），让你知道他们的优缺点，便于你根据使用场景选择合适的方案。&lt;/p>
+&lt;h2 id="系统整体对比">系统整体对比
+&lt;a class="header-anchor" href="#%e7%b3%bb%e7%bb%9f%e6%95%b4%e4%bd%93%e5%af%b9%e6%af%94">&lt;/a>
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>对比说明/文件系统&lt;/th>
+&lt;th>TFS&lt;/th>
+&lt;th>FastDFS&lt;/th>
+&lt;th>MogileFS&lt;/th>
+&lt;th>MooseFS&lt;/th>
+&lt;th>GlusterFS&lt;/th>
+&lt;th>Ceph&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>开发语言&lt;/td>
+&lt;td>C++&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>Perl&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>C&lt;/td>
+&lt;td>C++&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>开源协议&lt;/td>
+&lt;td>GPL V2&lt;/td>
+&lt;td>GPL V3&lt;/td>
+&lt;td>GPL&lt;/td>
+&lt;td>GPL V3&lt;/td>
+&lt;td>GPL V3&lt;/td>
+&lt;td>LGPL&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>数据存储方式&lt;/td>
+&lt;td>块&lt;/td>
+&lt;td>文件/Trunk&lt;/td>
+&lt;td>文件&lt;/td>
+&lt;td>块&lt;/td>
+&lt;td>文件/块&lt;/td>
+&lt;td>对象/文件/块&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>集群节点通信协议&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;td>HTTP&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;td>私有协议（TCP）/ RDAM(远程直接访问内存)&lt;/td>
+&lt;td>私有协议（TCP）&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>专用元数据存储点&lt;/td>
+&lt;td>占用NS&lt;/td>
+&lt;td>无&lt;/td>
+&lt;td>占用DB&lt;/td>
+&lt;td>占用MFS&lt;/td>
+&lt;td>无&lt;/td>
+&lt;td>占用MDS&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>在线扩容&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>冗余备份&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>单点故障&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>不存在&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;td>不存在&lt;/td>
+&lt;td>存在&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>跨集群同步&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>部分支持&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>支持&lt;/td>
+&lt;td>不适用&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>易用性&lt;/td>
+&lt;td>安装复杂，官方文档少&lt;/td>
+&lt;td>安装简单，社区相对活跃&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>安装简单，官方文档多&lt;/td>
+&lt;td>安装简单，官方文档专业化&lt;/td>
+&lt;td>安装简单，官方文档专业化&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>适用场景&lt;/td>
+&lt;td>跨集群的小文件&lt;/td>
+&lt;td>单集群的中小文件&lt;/td>
+&lt;td>-&lt;/td>
+&lt;td>单集群的大中文件&lt;/td>
+&lt;td>跨集群云存储&lt;/td>
+&lt;td>单集群的大中小文件&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>开源协议说明&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>GPL:不允许修改后和衍生的代码做为闭源的商业软件发布和销售，修改后该软件产品必须也采用GPL协议；
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>GPL V2：修改文本的整体就必须按照GPL流通，不仅该修改文本的源码必须向社 会公开，而且对于这种修改文本的流通不准许附加修改者自己作出的限制;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>GPL V3：要求用户公布修改的源代码，还要求公布相关硬件;LGPL：更宽松的GPL
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>基于Keepalived+Haproxy搭建四层负载均衡器</title><link>/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</link><pubDate>Sat, 02 Nov 2019 21:42:25 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Ekeepalived-haproxy%E6%90%AD%E5%BB%BA%E5%9B%9B%E5%B1%82%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%99%A8/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>​ Haproxy是稳定、高性能、高可用性的负载均衡解决方案，支持HTTP及TCP代理后端服务器池，因支持强大灵活的7层acl规则，广泛作为HTTP反向代理。本文则详细介绍如何利用它的四层交换与Keepalived实现一个负载均衡器，适用于Socket、ICE、Mail、Mysql、私有通讯等任意TCP服务。系统架构图如下：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="0.027865917857136546.png" alt="点击在新窗口中浏览此图片" />&lt;/p></description></item><item><title>centos7安装redis教程</title><link>/post/centos7%E5%AE%89%E8%A3%85redis%E6%95%99%E7%A8%8B/</link><pubDate>Sat, 02 Nov 2019 10:54:48 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85redis%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="安装">&lt;strong>安装&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#通过wget方式直接在linux上下载Redis&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget http://download.redis.io/releases/redis-4.0.9.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#解压下载的redis-2.6.17.tar.gz 文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar xzf redis-4.0.9.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#进入解压后的文件夹&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd redis-4.0.9
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#编译安装&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>haproxy+keepalived实现Web服务器负载均衡</title><link>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link><pubDate>Sat, 02 Nov 2019 10:17:03 +0800</pubDate><guid>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid><description>&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>操作系统&lt;/strong>：CentOS 6.X 64位&lt;/p>
+&lt;p>&lt;strong>Web服务器&lt;/strong>：192.168.21.127、192.168.21.128&lt;/p>
+&lt;p>&lt;strong>站点&lt;/strong>：bbs.osyunwei.com和sns.osyunwei.com部署在两台Web服务器上&lt;/p>
+&lt;h2 id="实现目的">&lt;strong>实现目的&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>增加两台服务器（主主模式），通过HAProxy+Keepalived实现Web服务器负载均衡&lt;/p>
+&lt;h2 id="架构规划">&lt;strong>架构规划&lt;/strong>
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e8%a7%84%e5%88%92">&lt;/a>
+&lt;/h2>&lt;p>HAProxy服务器：192.168.21.129、192.168.21.130&lt;/p>
+&lt;p>虚拟服务器（VIP）：192.168.21.253、192.168.21.254&lt;/p>
+&lt;h2 id="验证说明">&lt;strong>验证说明&lt;/strong>
+&lt;a class="header-anchor" href="#%e9%aa%8c%e8%af%81%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;ol>
+&lt;li>VIP：192.168.21.253指向192.168.21.129；VIP：192.168.21.254指向192.168.21.130；&lt;/li>
+&lt;li>当192.168.21.129宕机时，VIP：192.168.21.253漂移到192.168.21.130上；&lt;/li>
+&lt;li>当192.168.21.130宕机时，VIP：192.168.21.254漂移到192.168.21.129上；&lt;/li>
+&lt;/ol>
+&lt;p>这样的主主模式好处是，两台服务器在提供服务的同时，又互为对方的备份服务器。&lt;/p></description></item><item><title>haproxy+keepalived实现高可用负载均衡</title><link>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</link><pubDate>Sat, 02 Nov 2019 09:53:34 +0800</pubDate><guid>/post/haproxy-keepalived%E5%AE%9E%E7%8E%B0%E9%AB%98%E5%8F%AF%E7%94%A8%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在运维的日常工作中和很多服务打交道，为了保证各个服务健康稳定运行，高可用和高负载是在一个服务搭建好后，必须要考虑的问题。本文介绍了一种常用的高可用和负载均衡的解决方案：KA+HA(haproxy+keepalived)&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>haproxy keepalived 主：192.168.1.192
+haproxy keepalived 备：192.168.1.193
+vip：192.168.1.200
+web：192.168.1.187:80&lt;/p>
+&lt;p>​ 192.168.1.187:8000&lt;/p>
+&lt;h2 id="架构图">架构图
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e5%9b%be">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="0.115069789831175.png" alt="img" />&lt;/p></description></item><item><title>ssh端口转发：ssh隧道</title><link>/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/</link><pubDate>Wed, 30 Oct 2019 10:43:48 +0800</pubDate><guid>/post/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91ssh%E9%9A%A7%E9%81%93/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>&amp;ldquo;ssh端口转发&amp;quot;还有一个更加形象的名字，叫做&amp;quot;ssh隧道&amp;rdquo;，当然，只是纯粹的通过&amp;quot;ssh隧道&amp;quot;这几个字去理解它可能不太容易，我们来描述一些实际的场景，在这些场景中我们可能会遇到一些问题，而这些问题可以通过&amp;quot;ssh隧道&amp;quot;解决，通过这样的方式，我们反而更加容易理解&amp;quot;ssh隧道&amp;quot;是什么以及它的作用。&lt;/p>
+&lt;p>假如我们现在有两个台主机，主机A与主机B，主机A上安装有mysql客户端，主机B上安装有mysql服务端，现在，主机A中的mysql客户端需要与主机B中的mysql服务端进行通讯，则需要从mysql的客户端连接到mysql服务端。如下图所示&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="ssh端口转发：ssh隧道" />&lt;/p>
+&lt;p>然而我们知道，mysql在传输数据时是进行明文传输的，如果主机A与主机B只能通过公网进行通讯，那么暴露在公网的mysql通讯是非常不安全的，所以，我们需要借助一些手段，提高访问mysql服务时的安全性，比如，我们可以使用SSL证书为数据加密，或者使用stunnel加密隧道，我们还可以使用VPN，当然，这些方法都不是这篇文章所要描述的重点，我们此处要总结的是&amp;quot;ssh隧道&amp;quot;这种方法，我们可以利用ssh，搭建出一条&amp;quot;通道&amp;quot;，然后将mysq的客户端与服务端通过这条&amp;quot;ssh通道&amp;quot;连接起来，如下图所示&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="ssh端口转发：ssh隧道" />&lt;/p>
+&lt;p>mysql的客户端与服务端的连接方式从原来直连的方式变成了如上图所示的连接方式，它们之间并不直接进行通讯，而是借助ssh隧道将通讯数据转发，虽然仍然跨越了公网，但是由于ssh本身的安全特性，所以别人无法看到明文传输的数据，数据依靠ssh隧道实现了加密的效果，达到了保护数据安全的作用，提升了mysql的客户端与服务端通讯的安全性。&lt;/p></description></item><item><title>SSH隧道与端口转发及内网穿透</title><link>/post/ssh%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%8F%8A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</link><pubDate>Tue, 29 Oct 2019 19:30:24 +0800</pubDate><guid>/post/ssh%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91%E5%8F%8A%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/</guid><description>&lt;h2 id="ssh隧道与端口转发及内网穿透">SSH隧道与端口转发及内网穿透
+&lt;a class="header-anchor" href="#ssh%e9%9a%a7%e9%81%93%e4%b8%8e%e7%ab%af%e5%8f%a3%e8%bd%ac%e5%8f%91%e5%8f%8a%e5%86%85%e7%bd%91%e7%a9%bf%e9%80%8f">&lt;/a>
+&lt;/h2>&lt;p>大家都知道SSH是一种安全的传输协议，用在连接服务器上比较多。不过其实除了这个功能，它的隧道转发功能更是吸引人。下面是个人根据自己的需求以及在网上查找的资料配合自己的实际操作所得到的一些心得。&lt;/p>
+&lt;p>&lt;strong>SSH/plink命令的基本资料：&lt;/strong>&lt;/p>
+&lt;p>首先，认识下这三个非常强大的命令：&lt;/p>
+&lt;blockquote>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -L listen_port:DST_Host:DST_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -R listen_port:DST_Host:DST_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>ssh -C -f -N -g -D listen_port user@Tunnel_Host
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/blockquote>
+&lt;p>相关参数的解释：&lt;/p>
+&lt;p>-f Fork into background after authentication.
+后台认证用户/密码，通常和-N连用，不用登录到远程主机。&lt;/p>
+&lt;p>-L port:host:hostport
+将本地机(客户机)的某个端口转发到远端指定机器的指定端口. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 同时远程主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有 root 才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p>
+&lt;p>-R port:host:hostport
+将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口. 工作原理是这样的, 远程主机上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转向出去, 同时本地主机和 host 的 hostport 端口建立连接. 可以在配置文件中指定端口的转发. 只有用 root 登录远程主机才能转发特权端口. IPv6 地址用另一种格式说明: port/host/hostport&lt;/p>
+&lt;p>-D port
+指定一个本地机器 “动态的’’ 应用程序端口转发. 工作原理是这样的, 本地机器上分配了一个 socket 侦听 port 端口, 一旦这个端口上有了连接, 该连接就经过安全通道转发出去, 根据应用程序的协议可以判断出远程主机将和哪里连接. 目前支持 SOCKS4 协议, 将充当 SOCKS4 服务器. 只有 root 才能转发特权端口. 可以在配置文件中指定动态端口的转发.&lt;/p>
+&lt;p>-C Enable compression.
+压缩数据传输。&lt;/p>
+&lt;p>-N Do not execute a shell or command.
+不执行脚本或命令，通常与-f连用。&lt;/p>
+&lt;p>-g Allow remote hosts to connect to forwarded ports.
+在-L/-R/-D参数中，允许远程主机连接到建立的转发的端口，如果不加这个参数，只允许本地主机建立连接。注：这个参数我在实践中似乎始终不起作用。&lt;/p></description></item><item><title>Zabbix Server增加微信告警</title><link>/post/zabbix-server%E5%A2%9E%E5%8A%A0%E5%BE%AE%E4%BF%A1%E5%91%8A%E8%AD%A6/</link><pubDate>Tue, 29 Oct 2019 17:06:37 +0800</pubDate><guid>/post/zabbix-server%E5%A2%9E%E5%8A%A0%E5%BE%AE%E4%BF%A1%E5%91%8A%E8%AD%A6/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>微信现在是我们手机中必不可少的软件，通过它可以和朋友亲人聊天视频等。作为运维，让监控系统通过微信报警，及时提醒我们，保证线上服务稳定运行，这是SRE的职责所在。通过本教程学习，让zabbix server增加微信报警媒介。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># cat /etc/redhat-release &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CentOS Linux release 7.7.1908 &lt;span style="color:#f92672">(&lt;/span>Core&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># python -V&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Python 2.7.5
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># zabbix_server -V&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zabbix_server &lt;span style="color:#f92672">(&lt;/span>Zabbix&lt;span style="color:#f92672">)&lt;/span> 4.0.13
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Revision 4e383bb6c5 &lt;span style="color:#ae81ff">2&lt;/span> October 2019, compilation time: Oct &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> 08:45:35
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copyright &lt;span style="color:#f92672">(&lt;/span>C&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> Zabbix SIA
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>License GPLv2+: GNU GPL version &lt;span style="color:#ae81ff">2&lt;/span> or later &amp;lt;http://gnu.org/licenses/gpl.html&amp;gt;.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This is free software: you are free to change and redistribute it according to
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>the license. There is NO WARRANTY, to the extent permitted by law.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This product includes software developed by the OpenSSL Project
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> use in the OpenSSL Toolkit &lt;span style="color:#f92672">(&lt;/span>http://www.openssl.org/&lt;span style="color:#f92672">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Compiled with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># zabbix_agentd -V&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>zabbix_agentd &lt;span style="color:#f92672">(&lt;/span>daemon&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#f92672">(&lt;/span>Zabbix&lt;span style="color:#f92672">)&lt;/span> 4.0.9
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Revision 97a69d5d5a &lt;span style="color:#ae81ff">5&lt;/span> June 2019, compilation time: Jun &lt;span style="color:#ae81ff">7&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> 08:45:50
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copyright &lt;span style="color:#f92672">(&lt;/span>C&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#ae81ff">2019&lt;/span> Zabbix SIA
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>License GPLv2+: GNU GPL version &lt;span style="color:#ae81ff">2&lt;/span> or later &amp;lt;http://gnu.org/licenses/gpl.html&amp;gt;.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This is free software: you are free to change and redistribute it according to
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>the license. There is NO WARRANTY, to the extent permitted by law.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>This product includes software developed by the OpenSSL Project
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> use in the OpenSSL Toolkit &lt;span style="color:#f92672">(&lt;/span>http://www.openssl.org/&lt;span style="color:#f92672">)&lt;/span>.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Compiled with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Running with OpenSSL 1.0.1e-fips &lt;span style="color:#ae81ff">11&lt;/span> Feb &lt;span style="color:#ae81ff">2013&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@p34044v ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>zabbix使用LDAP认证并批量导入用户</title><link>/post/zabbix%E4%BD%BF%E7%94%A8ldap%E8%AE%A4%E8%AF%81%E5%B9%B6%E6%89%B9%E9%87%8F%E5%AF%BC%E5%85%A5%E7%94%A8%E6%88%B7/</link><pubDate>Tue, 29 Oct 2019 13:57:07 +0800</pubDate><guid>/post/zabbix%E4%BD%BF%E7%94%A8ldap%E8%AE%A4%E8%AF%81%E5%B9%B6%E6%89%B9%E9%87%8F%E5%AF%BC%E5%85%A5%E7%94%A8%E6%88%B7/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>公司用openldap搭了一套ldap认证系统，用于统一内部各个系统的账户，避免每次添加或删除用户还得一个个登陆上去操作，使账户密码统一，能减轻很多工作和保证安全性，今天是想把ldap与zabbix进行结合。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>centos7.x&lt;/p>
+&lt;p>zabbix4.0.x&lt;/p></description></item><item><title>Nat回环(Lan-->Lan端口映射原理)</title><link>/post/nat%E5%9B%9E%E7%8E%AF-lan-lan%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86/</link><pubDate>Fri, 25 Oct 2019 18:46:58 +0800</pubDate><guid>/post/nat%E5%9B%9E%E7%8E%AF-lan-lan%E7%AB%AF%E5%8F%A3%E6%98%A0%E5%B0%84%E5%8E%9F%E7%90%86/</guid><description>&lt;p>局域网内网有服务器对外发布，基于对服务器的保护，内网用户需通过域名或者公网ip来访问内网服务器。&lt;/p>
+&lt;p>如下图所示：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="img" />&lt;/p>
+&lt;h2 id="名词解释">名词解释
+&lt;a class="header-anchor" href="#%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a">&lt;/a>
+&lt;/h2>&lt;p>DNAT：转换目标ip地址。&lt;/p>
+&lt;p>SNAT： 转换源ip地址。&lt;/p></description></item><item><title>zabbix教程之自动注册</title><link>/post/zabbix%E6%95%99%E7%A8%8B%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C/</link><pubDate>Fri, 25 Oct 2019 10:25:23 +0800</pubDate><guid>/post/zabbix%E6%95%99%E7%A8%8B%E4%B9%8B%E8%87%AA%E5%8A%A8%E6%B3%A8%E5%86%8C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对于监控服务器越来越多的情况，如果还单独一个一个添加，那效率也太低，因此就要实现批量添加监控服务器的操作，Zabbix提供两种批量自动监控的方式：&lt;/p>
+&lt;p>&lt;strong>自动发现：由服务端主动发起，Zabbix Server开启发现进程，定时扫描局域网中IP服务器、设备。&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>自动注册：由客户端主动发起，客户端必须安装并启动Agentd，否则无法被自动注册添加至主机列表。对于使用SNMP的就要采用自动发现了。&lt;/strong>&lt;/p>
+&lt;p>本篇教程就是自动注册，让客户端自动向Server去注册。&lt;/p></description></item><item><title>Zabbix在Ubuntu 14.04上apt-get安装</title><link>/post/zabbix%E5%9C%A8ubuntu-14-04%E4%B8%8Aapt-get%E5%AE%89%E8%A3%85/</link><pubDate>Thu, 24 Oct 2019 22:25:16 +0800</pubDate><guid>/post/zabbix%E5%9C%A8ubuntu-14-04%E4%B8%8Aapt-get%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="安装">安装
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85">&lt;/a>
+&lt;/h2>&lt;p>安装Apache、Mysql、Php、zabbix&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>sudo apt-get update
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install apache2 mysql-server libapache2-mod-php5 php5-gd php5-mysql php5-common zabbix-server-mysql zabbix-frontend-php
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>git拉取项目下单个目录</title><link>/post/git%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%B8%8B%E5%8D%95%E4%B8%AA%E7%9B%AE%E5%BD%95/</link><pubDate>Thu, 24 Oct 2019 22:13:58 +0800</pubDate><guid>/post/git%E6%8B%89%E5%8F%96%E9%A1%B9%E7%9B%AE%E4%B8%8B%E5%8D%95%E4%B8%AA%E7%9B%AE%E5%BD%95/</guid><description>有时git库里的东西比较多，我们只希望像SVN一样，只拉取git库的一个目录。 例如：基础代码仓库infra-code_ops有很多基础代码，</description></item><item><title>Docker知识点</title><link>/post/docker%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Thu, 24 Oct 2019 22:08:06 +0800</pubDate><guid>/post/docker%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>运维日常工作中常见服务的docker快速安装汇总。&lt;/p>
+&lt;p>cadvisor docker监控&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>docker run —cpu-period=100000 —cpu-quota=100000 -m 1g --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=9999:8080 --name=cadvisor google/cadvisor -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=172.18.203.15:8086 -storage_driver_user=cadvisor -storage_driver_password=cadvisor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>centos7 yum安装zabbix4.0长期稳定版及优化</title><link>/post/centos7-yum%E5%AE%89%E8%A3%85zabbix4-0%E9%95%BF%E6%9C%9F%E7%A8%B3%E5%AE%9A%E7%89%88%E5%8F%8A%E4%BC%98%E5%8C%96/</link><pubDate>Thu, 24 Oct 2019 12:33:35 +0800</pubDate><guid>/post/centos7-yum%E5%AE%89%E8%A3%85zabbix4-0%E9%95%BF%E6%9C%9F%E7%A8%B3%E5%AE%9A%E7%89%88%E5%8F%8A%E4%BC%98%E5%8C%96/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>zabbix监控系统是目前企业常用的监控系统之一。具有快速上手，监控简单明了等特点。通过本文教程快速安装zabbix4.0 LST监控系统，为企业搭建监控系统，保驾护航。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>centos7.x&lt;/p>
+&lt;p>zabbix4.0.x LST&lt;/p>
+&lt;h2 id="参考文档和下载地址">参考文档和下载地址
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3%e5%92%8c%e4%b8%8b%e8%bd%bd%e5%9c%b0%e5%9d%80">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://www.zabbix.com/documentation/4.0/zh/manual" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="http://repo.zabbix.com/zabbix/4.0/rhel/7/x86_64/" title="下载地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+下载地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>jira低版本(7.4.1)发现漏洞升级到最新版本(8.4.1)</title><link>/post/jira%E4%BD%8E%E7%89%88%E6%9C%AC-7-4-1-%E5%8F%91%E7%8E%B0%E6%BC%8F%E6%B4%9E%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC-8-4-1/</link><pubDate>Fri, 27 Sep 2019 11:55:30 +0800</pubDate><guid>/post/jira%E4%BD%8E%E7%89%88%E6%9C%AC-7-4-1-%E5%8F%91%E7%8E%B0%E6%BC%8F%E6%B4%9E%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC-8-4-1/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>早上到公司就接到总部信息安全组邮件。邮件内容是：Atlassian公开了一个Jira未授权SSRF漏洞。Jira的/plugins/servlet/gadgets/makeRequest资源存在SSRF漏洞，原因在于JiraWhitelist这个类的逻辑缺陷，成功利用此漏洞的远程攻击者可以以Jira服务端的身份访问内网资源。此漏洞无需任何凭据即可触发。&lt;/p>
+&lt;p>&lt;strong>影响范围&lt;/strong>&lt;/p>
+&lt;p>版本小于8.4.0&lt;/p>
+&lt;p>漏洞详情链接：
+&lt;a href="https://jira.atlassian.com/browse/JRASERVER-69793" title="https://jira.atlassian.com/browse/JRASERVER-69793" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+https://jira.atlassian.com/browse/JRASERVER-69793
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>基于以上情况，把在线上的jira 7.4.1版本升级为最新版本8.4.1，因为官方在8.4.0已经修复这个漏洞。&lt;/p></description></item><item><title>nginx中https的配置和http强制跳转</title><link>/post/nginx%E4%B8%ADhttps%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Chttp%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/</link><pubDate>Fri, 20 Sep 2019 19:11:13 +0800</pubDate><guid>/post/nginx%E4%B8%ADhttps%E7%9A%84%E9%85%8D%E7%BD%AE%E5%92%8Chttp%E5%BC%BA%E5%88%B6%E8%B7%B3%E8%BD%AC/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>随着现在网络互联网的告诉发展，给人们带来的很多便利，但也出现了很多隐患。作为站长，网站的安全至关重要。怎么做才安全呢？建议把http改为https，因为增加了证书认证，相对来说就会安全很多，并且对用户的体验也比较好，谁也不想访问个网站，在地址栏中显示不安全或直接显示不安全等。&lt;/p></description></item><item><title>nginx升级或重新加载模块</title><link>/post/nginx%E5%8D%87%E7%BA%A7%E6%88%96%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97/</link><pubDate>Fri, 20 Sep 2019 18:34:08 +0800</pubDate><guid>/post/nginx%E5%8D%87%E7%BA%A7%E6%88%96%E9%87%8D%E6%96%B0%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在日常运维工作中，有几个场景：&lt;/p>
+&lt;p>1，nginx web服务升级 。&lt;/p>
+&lt;p>2，https证书配置后，发现nginx编译没有加入ssl模块。&lt;/p>
+&lt;p>3，nginx配置后，有&lt;code>nginx: [emerg] the &amp;quot;xxx&amp;quot; parameter requires &lt;/code>等等报错。&lt;/p>
+&lt;p>这些都需要重新编译nginx程序，并把需要的模块加载进去，但是对于不熟悉nginx的人，又头疼和担心，需要重新编译，会不会对原来有啥影响等等。本文就是针对这些场景给出解决方案。&lt;/p></description></item><item><title>centos7下使用yum源安装mysql5.7</title><link>/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/</link><pubDate>Tue, 17 Sep 2019 17:21:05 +0800</pubDate><guid>/post/centos7%E4%B8%8B%E4%BD%BF%E7%94%A8yum%E6%BA%90%E5%AE%89%E8%A3%85mysql5-7/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>现在centos上默认是没有yum源的，yum安装的是 MariaDB。本文详细介绍了centos7下使用yum源安装mysql5.7。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>系统：centos7&lt;/p></description></item><item><title>关于我</title><link>/about/</link><pubDate>Tue, 17 Sep 2019 14:05:01 +0800</pubDate><guid>/about/</guid><description>名言 当你的才华撑不起你的野心时，就应该静下心来学习；当你的能力驾驭不了你的目标时，就应该沉下心来历练！ 我不怕千万人阻挡，只怕自己投降! 碎片时</description></item><item><title>docker安装redmine服务</title><link>/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 05 Sep 2019 13:38:52 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>快速搭建redmine服务，以便能够对项目和工作流进行管控。&lt;/p>
+&lt;h2 id="参考文档">参考文档
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hub.docker.com/_/redmine" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>或者
+&lt;a href="https://docs.docker.com/samples/library/redmine/" title="docker官方" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+docker官方
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>docker构建自己的openldap自助密码服务</title><link>/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/</link><pubDate>Tue, 03 Sep 2019 15:17:12 +0800</pubDate><guid>/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。&lt;/p>
+&lt;p>在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。&lt;/p>
+&lt;h2 id="教程">教程
+&lt;a class="header-anchor" href="#%e6%95%99%e7%a8%8b">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://github.com/wandouduoduo/docker-ssp" title="参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>confluence6.3.1升级最新版本6.15.8</title><link>/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/</link><pubDate>Mon, 02 Sep 2019 12:00:40 +0800</pubDate><guid>/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>收到公司总部安全部门扫描测试，查出公司内部confluence的版本太低，存在安全漏洞。给出的解决方案是升级到最新版本，最新版本已经把该漏洞修复。本文就详细介绍下confluence的升级过程。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://www.cwiki.us/display/CONFLUENCEWIKI/Upgrading&amp;#43;Confluence" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>cmdbuild接入openldap方法</title><link>/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/</link><pubDate>Fri, 30 Aug 2019 18:19:54 +0800</pubDate><guid>/post/cmdbuild%E6%8E%A5%E5%85%A5openldap%E6%96%B9%E6%B3%95/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>cmdbuid接入openldap用户权限，便于用户统一管理。&lt;/p></description></item><item><title>Docker版快速安装OpenLDAP</title><link>/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/</link><pubDate>Wed, 28 Aug 2019 14:58:44 +0800</pubDate><guid>/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。&lt;/p></description></item><item><title>OpenLDAP启用MemberOf</title><link>/post/openldap%E5%90%AF%E7%94%A8memberof/</link><pubDate>Wed, 28 Aug 2019 14:35:09 +0800</pubDate><guid>/post/openldap%E5%90%AF%E7%94%A8memberof/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>默认情况下OpenLDAP的用户组属性是Posixgroup，Posixgroup用户组和用户没有实际的对应关系。如果需要把Posixgroup和user关联起来则需要将用户添加到对应的组中。 通过如上配置可以满足大部分业务场景，但是如果需要通过用户组来查找用户的话，Posixgroup用户组属性，是无法满足要求的。此时需要使用OpenLDAP的groupOfUniqueNames用户组属性。本篇文章Fayson主要介绍如何为OpenLDAP启用MemberOf。&lt;/p></description></item><item><title>Centos7上配置最新版openldap服务多主模式(镜像模式)</title><link>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/</link><pubDate>Wed, 28 Aug 2019 13:54:54 +0800</pubDate><guid>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E5%A4%9A%E4%B8%BB%E6%A8%A1%E5%BC%8F-%E9%95%9C%E5%83%8F%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在实际产线运维环境下，使用最多的就是镜像模式，当然多IDC机房的情况下也会结合使用其他模式，例如主从模式。&lt;/p>
+&lt;p>镜像模式只允许2个主节点，如果超过2个节点其他节点只会同步获取前面2个节点的配置（这个是博客文档里面看到的，没有验证）&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">主机名称&lt;/th>
+&lt;th style="text-align:center">地址&lt;/th>
+&lt;th style="text-align:center">版本&lt;/th>
+&lt;th style="text-align:center">角色&lt;/th>
+&lt;th style="text-align:center">备注&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.11&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap, httpd, phpldapadmin&lt;/td>
+&lt;td style="text-align:center">主节点&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-2&lt;/td>
+&lt;td style="text-align:center">10.116.72.12&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap, httpd, phpldapadmin&lt;/td>
+&lt;td style="text-align:center">主节点&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">systerm-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.15&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap client&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>前提条件，为了方便配置防火墙以及禁用selinux
+配置示例:dc=example,dc=com&lt;/p></description></item><item><title>Centos7上配置最新版openldap服务主从架构</title><link>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/</link><pubDate>Wed, 28 Aug 2019 13:44:44 +0800</pubDate><guid>/post/centos7%E4%B8%8A%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1%E4%B8%BB%E4%BB%8E%E6%9E%B6%E6%9E%84/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在实际产线运维环境下，可能包含多个IDC机房，每个机房的主机都需要通过OpenLDAP体系管理运维账户登录。这种情况下可以配置OpenLDAP的主从架构实现(当然同一个机房也可以配置主从架构，客户端配置ldap uri指定多个地址)。主openldap节点称为“provider”可读可写，从openldap节点称为“consumer”只读。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th style="text-align:center">主机名称&lt;/th>
+&lt;th style="text-align:center">地址&lt;/th>
+&lt;th style="text-align:center">版本&lt;/th>
+&lt;th style="text-align:center">角色&lt;/th>
+&lt;th style="text-align:center">备注&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.11&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap, httpd, phpldapadmin&lt;/td>
+&lt;td style="text-align:center">主节点&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">sysldap-shylf-2&lt;/td>
+&lt;td style="text-align:center">10.116.72.12&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap&lt;/td>
+&lt;td style="text-align:center">从节点，可以配置多从的&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td style="text-align:center">systerm-shylf-1&lt;/td>
+&lt;td style="text-align:center">10.116.72.15&lt;/td>
+&lt;td style="text-align:center">CentOS7.6 min&lt;/td>
+&lt;td style="text-align:center">openLdap client&lt;/td>
+&lt;td style="text-align:center">&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>前提条件，为了方便配置防火墙以及禁用selinux
+配置示例:dc=example,dc=com&lt;/p></description></item><item><title>Centos7上单节点安装配置最新版openldap服务</title><link>/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/</link><pubDate>Wed, 28 Aug 2019 11:31:13 +0800</pubDate><guid>/post/centos7%E4%B8%8A%E5%8D%95%E8%8A%82%E7%82%B9%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%9C%80%E6%96%B0%E7%89%88openldap%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了在centos7上安装最新版openldap的过程和常见场景。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>操作系统：centos7.6&lt;/p>
+&lt;p>软件版本：openldap-2.4.44&lt;/p>
+&lt;p>配置示例: dc=example,dc=com&lt;/p></description></item><item><title>基于OpenLDAP_MirrorMode的OpenLDAP高可用</title><link>/post/%E5%9F%BA%E4%BA%8Eopenldap-mirrormode%E7%9A%84openldap%E9%AB%98%E5%8F%AF%E7%94%A8/</link><pubDate>Mon, 19 Aug 2019 12:06:31 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Eopenldap-mirrormode%E7%9A%84openldap%E9%AB%98%E5%8F%AF%E7%94%A8/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>LDAP是一款轻量级目录访问协议（Lightweight Directory Access Protocol，简称LDAP），属于开源集中账号管理架构的实现，且支持众多系统版本，被广大互联网公司所采用。目录服务是一种特殊的数据库系统，对于数据的读取、浏览、搜索有很好的效果。同时做为用户中心，数据库的高可用显得尤为重要。在客户生产环境中使用的是客户的负载均衡设备，基于思杰的硬件负载均衡设备，后端配置的是OpenLDAP_MirrorMode,相当于Mysql的双主模式，后面某一台服务器出现问题，负载均衡会将后端的服务器剔除，另一台仍能提供服务，如下图所示
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="1" />&lt;/p></description></item><item><title>自制yum源离线安装开发代码时的对应版本ansible</title><link>/post/%E8%87%AA%E5%88%B6yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E6%97%B6%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%ACansible/</link><pubDate>Fri, 16 Aug 2019 16:59:17 +0800</pubDate><guid>/post/%E8%87%AA%E5%88%B6yum%E6%BA%90%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E5%BC%80%E5%8F%91%E4%BB%A3%E7%A0%81%E6%97%B6%E7%9A%84%E5%AF%B9%E5%BA%94%E7%89%88%E6%9C%ACansible/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>由于在工作环境中，经常遇到批量安装的服务器，不具备连接互联网的条件。同时通过简单的下载安装 ansible 源码安装，又会遇到各种奇葩问题，推荐使用自制 yum 源方法，然后使用 yum安装 ansible。不得不说，ansible很好用，ansible团队也一致在维护和更新。但是，版本之间存在比较大的差异。以前写的代码，现在直接安装新版本的ansible后可能就不能用了，你想想下：代码中用到的类没有了，模块消失了，变量不见了等等，当然可以查看新的文档更改代码适应新版本，但是代码沉淀时间久了，做迁移还是会遇到这种问题，这个问题困扰了很多Devops。如何安装写代码时的版本，如何在断网模式下安装代码对应版本的ansible, 这成为了一种刚需和痛点，本文就以安装旧版本：2.3.1为例，详细阐述。&lt;/p></description></item><item><title>Docker安装Confluence(破解版)</title><link>/post/docker%E5%AE%89%E8%A3%85confluence-%E7%A0%B4%E8%A7%A3%E7%89%88/</link><pubDate>Tue, 30 Jul 2019 18:17:29 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85confluence-%E7%A0%B4%E8%A7%A3%E7%89%88/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>confluence是一个专业的企业知识管理与协同软件，可以用于构建企业wiki。通过它可以实现团队成员之间的协作和知识共享。现在大多数公司都会部署一套confluence，用作内部wiki。现在confluence已收费，那么下面将介绍下Docker安装破解confluence的操作记录。&lt;/p></description></item><item><title>Redis-cluster集群[四]:redis-cluster集群配置</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E5%9B%9B-redis-cluster%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/</link><pubDate>Tue, 30 Jul 2019 18:01:08 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E5%9B%9B-redis-cluster%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="redis分片">Redis分片：
+&lt;a class="header-anchor" href="#redis%e5%88%86%e7%89%87">&lt;/a>
+&lt;/h2>&lt;p>为什么要分片：随着Redis存储的数据越来越庞大，会导致Redis的性能越来越差！&lt;/p>
+&lt;p>目前分片的方法：&lt;/p>
+&lt;p>1,客户端分片&lt;/p>
+&lt;p>在应用层面分片，程序里指定什么数据存放在那个Redis 优势：比较灵活 缺点：加个节点扩容就很费劲&lt;/p>
+&lt;p>2, 代理Proxy分片 第三方的Twemproxy 使用代理的缺点，你代理什么性能，那么你整个Redis的性能就是什么样的！&lt;/p>
+&lt;p>3, redis cluster&lt;/p>
+&lt;p>4, codis （豌豆荚）开源&lt;/p></description></item><item><title>Redis-cluster集群[三]:redis主从复制</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%89-redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</link><pubDate>Tue, 30 Jul 2019 17:54:51 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%89-redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</guid><description>&lt;h2 id="redis主从复制原理">Redis主从复制原理：
+&lt;a class="header-anchor" href="#redis%e4%b8%bb%e4%bb%8e%e5%a4%8d%e5%88%b6%e5%8e%9f%e7%90%86">&lt;/a>
+&lt;/h2>&lt;p>通过把这个RDB文件或AOF文件传给slave服务器，slave服务器重新加载RDB文件，来实现复制的功能！&lt;/p>
+&lt;p>复制的话：主服务器可以有多个从服务器！！！ 不仅这样从服务器还可以有从服务器，可以做成星状的结构！&lt;/p>
+&lt;p>复制的话也不会阻塞进程，同样fork一个子进程来做！&lt;/p>
+&lt;p>复制的原理：&lt;/p>
+&lt;p>当建立一个从服务器后，从服务器会想主服务器发送一个SYNC的命令，主服务器接收到SYNC命令之后会执行BGSAVE&lt;/p>
+&lt;p>然后保存到RDB文件，然后发送到从服务器！收到RDB文件然后就载入到内存！&lt;/p>
+&lt;p>最早不支持增量，到2.8之后就支持增量了！&lt;/p></description></item><item><title>Redis-cluster集群[二]:redis持久化</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%BA%8C-redis%E6%8C%81%E4%B9%85%E5%8C%96/</link><pubDate>Tue, 30 Jul 2019 15:14:21 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%BA%8C-redis%E6%8C%81%E4%B9%85%E5%8C%96/</guid><description>&lt;h2 id="redis持久化原理">Redis持久化原理：
+&lt;a class="header-anchor" href="#redis%e6%8c%81%e4%b9%85%e5%8c%96%e5%8e%9f%e7%90%86">&lt;/a>
+&lt;/h2>&lt;p>Redis支持两种持久化：&lt;strong>RDB&lt;/strong>和&lt;strong>AOF&lt;/strong>模式&lt;/p></description></item><item><title>Redis-cluster集群[一]:redis安装及redis数据类型</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%80-redis%E5%AE%89%E8%A3%85%E5%8F%8Aredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Tue, 30 Jul 2019 14:25:29 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%80-redis%E5%AE%89%E8%A3%85%E5%8F%8Aredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;h2 id="redis介绍">Redis介绍：
+&lt;a class="header-anchor" href="#redis%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h3 id="介绍">&lt;strong>介绍&lt;/strong>
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h3>&lt;p>redis 是一个开源的、使用C语言编写的、支持网络交互的、可以基于内存也可以持久化的Key-Value数据库。&lt;/p>
+&lt;p>redis的源码非常简单，只要有时间看看谭浩强的C语言，在去看redis的源码能看懂50-60%。&lt;/p>
+&lt;p>redis目前最大的集群应该是新浪的应该。&lt;/p>
+&lt;p>redis目前是vmvaer来支持的，很多的开源软件都需要某些组织来支持的。如果一个开源软件没有金钱来支持的话很难走的持久&lt;/p>
+&lt;h3 id="redis和memcache对比">&lt;strong>Redis和Memcache对比&lt;/strong>
+&lt;a class="header-anchor" href="#redis%e5%92%8cmemcache%e5%af%b9%e6%af%94">&lt;/a>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>持久化：以电商举例，session用memcache来做的，购物车用redis来做的，当你退出的时候会提示你购物车里的物品会在你退出后继续保存。相对来说memcache存储更单一化！&lt;/p>
+&lt;p>主从复制：redis的主从复制类似mysql的主从复制但是原理是不同的！&lt;/p>
+&lt;p>虚拟内存：说白了就是把内存里一些不用的东西放在硬盘上，最好不要用，降低效率，现在内存来说比较便宜。&lt;/p></description></item><item><title>Python之进程线程协程</title><link>/post/python%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</link><pubDate>Mon, 29 Jul 2019 09:37:25 +0800</pubDate><guid>/post/python%E4%B9%8B%E8%BF%9B%E7%A8%8B%E7%BA%BF%E7%A8%8B%E5%8D%8F%E7%A8%8B/</guid><description>Socket Server模块 SocketServer内部使用 IO多路复用 以及 “多线程” 和 “多进程” ，从而实现并发处理多个客户端请求的Socket服务端</description></item><item><title>Java定时器设定详解</title><link>/post/java%E5%AE%9A%E6%97%B6%E5%99%A8%E8%AE%BE%E5%AE%9A%E8%AF%A6%E8%A7%A3/</link><pubDate>Mon, 29 Jul 2019 09:29:39 +0800</pubDate><guid>/post/java%E5%AE%9A%E6%97%B6%E5%99%A8%E8%AE%BE%E5%AE%9A%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>本文通过实例详细介绍了Java定时和linux通用的crontab之间的差异。&lt;/p></description></item><item><title>lsof文件句柄工具</title><link>/post/lsof%E6%96%87%E4%BB%B6%E5%8F%A5%E6%9F%84%E5%B7%A5%E5%85%B7/</link><pubDate>Mon, 29 Jul 2019 09:25:02 +0800</pubDate><guid>/post/lsof%E6%96%87%E4%BB%B6%E5%8F%A5%E6%9F%84%E5%B7%A5%E5%85%B7/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>在linux环境下，一切皆文件，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件，如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，文件描述符提供了大量关于这个应用程序本身的信息。&lt;/p>
+&lt;h2 id="参数">参数：
+&lt;a class="header-anchor" href="#%e5%8f%82%e6%95%b0">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span> -a 列出被打开的文件的进程列表
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-c&amp;lt;进程名&amp;gt; 列出指定进程所打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-g 列出GID号进程详情
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-d&amp;lt;文件号&amp;gt; 列出占用该文件号的进程
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+d&amp;lt;目录&amp;gt; 列出目录下被打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>+D&amp;lt;目录&amp;gt; 递归列出目录下被打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-n&amp;lt;目录&amp;gt; 列出使用NFS的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-i&amp;lt;条件&amp;gt; 列出符合条件的进程。（4、6、协议、:端口、 @ip ）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-p&amp;lt;进程号&amp;gt; 列出指定进程号所打开的文件
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>-u 列出UID号进程详情
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>tmux参考手册</title><link>/post/tmux%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/</link><pubDate>Mon, 29 Jul 2019 09:21:26 +0800</pubDate><guid>/post/tmux%E5%8F%82%E8%80%83%E6%89%8B%E5%86%8C/</guid><description>&lt;h2 id="tmux是什么">tmux是什么
+&lt;a class="header-anchor" href="#tmux%e6%98%af%e4%bb%80%e4%b9%88">&lt;/a>
+&lt;/h2>&lt;p>tmux（terminal multiplexer）是Linux上的终端复用神器，可从一个屏幕上管理多个终端（准确说是伪终端）。使用该工具，用户可以连接或断开会话，而保持终端在后台运行。类似的工具还有screen，个人对这二者的使用感受是，用过tmux就再也不想用screen了。&lt;/p>
+&lt;h2 id="tmux基本结构">tmux基本结构
+&lt;a class="header-anchor" href="#tmux%e5%9f%ba%e6%9c%ac%e7%bb%93%e6%9e%84">&lt;/a>
+&lt;/h2>&lt;p>tmux的结构包括&lt;strong>会话&lt;/strong>(session)、&lt;strong>窗口&lt;/strong>(window)、&lt;strong>窗格&lt;/strong>(pane)三部分，会话实质是伪终端的集合，每个窗格表示一个伪终端，多个窗格展现在一个屏幕上，这一屏幕就叫窗口。基本结构及状态信息如下图所示：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>LDAP部署和第三方服务接入</title><link>/post/ldap%E9%83%A8%E7%BD%B2%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%85%A5/</link><pubDate>Thu, 25 Jul 2019 16:17:53 +0800</pubDate><guid>/post/ldap%E9%83%A8%E7%BD%B2%E5%92%8C%E7%AC%AC%E4%B8%89%E6%96%B9%E6%9C%8D%E5%8A%A1%E6%8E%A5%E5%85%A5/</guid><description>&lt;h1 id="ldap部署">LDAP部署
+&lt;a class="header-anchor" href="#ldap%e9%83%a8%e7%bd%b2">&lt;/a>
+&lt;/h1>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>可以通过以下三句话快速的认识一下LDAP：&lt;/p>
+&lt;ol>
+&lt;li>LDAP：Lightweight Directory Access Protocol，轻量目录访问协议。&lt;/li>
+&lt;li>LDAP服务是一个为只读（查询、浏览、搜索）访问而优化的非关系型数据库，呈树状结构组织数据。&lt;/li>
+&lt;li>LDAP主要用做用户信息查询（如邮箱、电话等）或对各种服务访问做后台认证以及用户数据权限管控。&lt;/li>
+&lt;/ol>
+&lt;h3 id="名词解释">名词解释
+&lt;a class="header-anchor" href="#%e5%90%8d%e8%af%8d%e8%a7%a3%e9%87%8a">&lt;/a>
+&lt;/h3>&lt;ul>
+&lt;li>DC：domain component一般为公司名，例如：dc=163,dc=com&lt;/li>
+&lt;li>OU：organization unit为组织单元，最多可以有四级，每级最长32个字符，可以为中文&lt;/li>
+&lt;li>CN：common name为用户名或者服务器名，最长可以到80个字符，可以为中文&lt;/li>
+&lt;li>DN：distinguished name为一条LDAP记录项的名字，有唯一性，例如：dc:&amp;ldquo;cn=admin,ou=developer,dc=163,dc=com&amp;rdquo;&lt;/li>
+&lt;/ul>
+&lt;h3 id="图形示例">图形示例
+&lt;a class="header-anchor" href="#%e5%9b%be%e5%bd%a2%e7%a4%ba%e4%be%8b">&lt;/a>
+&lt;/h3>&lt;p>上边来了一堆的名词解释，看的云里雾里，还不是很明白，怎么跟自己的组织架构对应起来呢？看看下边的图是不是清晰明了&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p></description></item><item><title>Docker中安装Wiki软件Confluence</title><link>/post/docker%E4%B8%AD%E5%AE%89%E8%A3%85wiki%E8%BD%AF%E4%BB%B6confluence/</link><pubDate>Thu, 25 Jul 2019 15:07:14 +0800</pubDate><guid>/post/docker%E4%B8%AD%E5%AE%89%E8%A3%85wiki%E8%BD%AF%E4%BB%B6confluence/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文通过在centos 7上Docker安装Wiki软件Confluence，并通过破解，让公司有一个稳定高效的文档平台。&lt;/p></description></item><item><title>使用Prometheus+Grafana监控JVM</title><link>/post/%E4%BD%BF%E7%94%A8prometheus-grafana%E7%9B%91%E6%8E%A7jvm/</link><pubDate>Wed, 24 Jul 2019 17:56:09 +0800</pubDate><guid>/post/%E4%BD%BF%E7%94%A8prometheus-grafana%E7%9B%91%E6%8E%A7jvm/</guid><description>&lt;h2 id="摘要">摘要
+&lt;a class="header-anchor" href="#%e6%91%98%e8%a6%81">&lt;/a>
+&lt;/h2>&lt;p>工具：&lt;/p>
+&lt;ul>
+&lt;li>Docker，本文大量使用了Docker来启动各个应用。&lt;/li>
+&lt;li>
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，负责抓取/存储指标信息，并提供查询功能。&lt;/li>
+&lt;li>
+&lt;a href="https://grafana.com/" title="Grafana" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Grafana
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，负责数据可视化。&lt;/li>
+&lt;li>
+&lt;a href="https://github.com/prometheus/jmx_exporter" title="JMX exporter" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+JMX exporter
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，提供JMX中和JVM相关的metrics。&lt;/li>
+&lt;li>Tomcat，用来模拟一个Java应用。&lt;/li>
+&lt;/ul>
+&lt;p>步骤：&lt;/p>
+&lt;ol>
+&lt;li>利用
+&lt;a href="https://github.com/prometheus/jmx_exporter" title="JMX exporter" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+JMX exporter
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，在Java进程内启动一个小型的Http server&lt;/li>
+&lt;li>配置
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>抓取那个Http server提供的metrics。&lt;/li>
+&lt;li>配置
+&lt;a href="https://grafana.com/" title="Grafana" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Grafana
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>连接
+&lt;a href="https://prometheus.io/" title="Prometheus" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Prometheus
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，配置Dashboard。&lt;/li>
+&lt;/ol></description></item><item><title>gitlab安装配置手册(Docker版)</title><link>/post/gitlab%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C-docker%E7%89%88/</link><pubDate>Wed, 24 Jul 2019 14:32:39 +0800</pubDate><guid>/post/gitlab%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C-docker%E7%89%88/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>使用Docker容器来快速安装配置和使用的gitlab&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hub.docker.com/r/twang2218/gitlab-ce-zh/" title="gitlab官网镜像" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+gitlab官网镜像
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>微服务架构系列思考&lt;三></title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%89/</link><pubDate>Wed, 17 Jul 2019 22:03:49 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%89/</guid><description>&lt;h2 id="问题起源">问题起源
+&lt;a class="header-anchor" href="#%e9%97%ae%e9%a2%98%e8%b5%b7%e6%ba%90">&lt;/a>
+&lt;/h2>&lt;p>Spring Cloud微服务架构体系中，Eureka是一个至关重要的组件，它扮演着微服务注册中心的角色，所有的服务注册与服务发现，都是依赖Eureka的。&lt;/p>
+&lt;p>之前不少初学Spring Cloud的朋友在落地公司的生产环境部署时，经常会有一个疑问：Eureka Server到底要部署几台机器？&lt;/p>
+&lt;p>我们的系统那么多服务，到底会对Eureka Server产生多大的访问压力？Eureka Server能不能抗住一个大型系统的访问压力？&lt;/p>
+&lt;p>你现在心里一定很多疑问，别着急，咱们这就去探索一下，Eureka作为微服务注册中心的核心原理。下面这些问题，大伙儿先看看，有个大概的印象。&lt;/p>
+&lt;p>带着这些问题，来看后面的内容，效果更佳。&lt;/p>
+&lt;p>● Eureka注册中心使用什么样的方式来储存各个服务注册时发送过来的机器地址和端口号？&lt;/p>
+&lt;p>● 各个服务找Eureka Server拉取注册表的时候，是什么样的频率？&lt;/p>
+&lt;p>● 各个服务是如何拉取注册表的？&lt;/p>
+&lt;p>● 对于一个有几百个服务，部署上千台机器的大型分布式系统来说，这套系统会对Eureka Server造成多大的访问压力？&lt;/p>
+&lt;p>● Eureka Server从技术层面是如何抗住日千万级访问量的？&lt;/p></description></item><item><title>微服务架构系列思考&lt;二></title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%BA%8C/</link><pubDate>Wed, 17 Jul 2019 21:43:53 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%BA%8C/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>相信不少朋友都在自己公司使用Spring Cloud框架来构建微服务架构，毕竟现在这是非常火的一门技术。&lt;/p>
+&lt;p>如果只是用户量很少的传统IT系统，使用Spring Cloud可能还暴露不出什么问题。&lt;/p>
+&lt;p>如果是较多用户量，高峰每秒高达上万并发请求的互联网公司的系统，使用Spring Cloud技术就有一些问题需要注意了。&lt;/p></description></item><item><title>微服务架构系列思考&lt;一></title><link>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%80-/</link><pubDate>Wed, 17 Jul 2019 21:08:42 +0800</pubDate><guid>/post/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E7%B3%BB%E5%88%97%E6%80%9D%E8%80%83-%E4%B8%80-/</guid><description>&lt;h2 id="概述">概述
+&lt;a class="header-anchor" href="#%e6%a6%82%e8%bf%b0">&lt;/a>
+&lt;/h2>&lt;p>毫无疑问，Spring Cloud是目前微服务架构领域的翘楚，无数的书籍博客都在讲解这个技术。不过大多数讲解还停留在对Spring Cloud功能使用的层面，其底层的很多原理，很多人可能并不知晓。因此本文将通过大量的手绘图，给大家谈谈Spring Cloud微服务架构的底层原理。&lt;/p>
+&lt;p>实际上，Spring Cloud是一个全家桶式的技术栈，包含了很多组件。本文先从其最核心的几个组件入手，来剖析一下其底层的工作原理。也就是Eureka、Ribbon、Feign、Hystrix、Zuul这几个组件。&lt;/p></description></item><item><title>Prometheus基本原理和使用</title><link>/post/prometheus%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 17 Jul 2019 19:21:08 +0800</pubDate><guid>/post/prometheus%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Prometheus是由SoundCloud开发的开源监控报警系统和时序列数据库(TSDB)。Prometheus使用Go语言开发，是Google BorgMon监控系统的开源版本。&lt;/p>
+&lt;p>2016年由Google发起Linux基金会旗下的原生云基金会(Cloud Native Computing Foundation), 将Prometheus纳入其下第二大开源项目。Prometheus目前在开源社区相当活跃。&lt;/p>
+&lt;p>Prometheus和Heapster(Heapster是K8S的一个子项目，用于获取集群的性能数据。)相比功能更完善、更全面。Prometheus性能也足够支撑上万台规模的集群。&lt;/p></description></item><item><title>openfalcon的基本原理和使用</title><link>/post/openfalcon%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Wed, 17 Jul 2019 17:07:16 +0800</pubDate><guid>/post/openfalcon%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本篇文章介绍下openfalcon的基本原理和使用，粒度相对较粗，主要目的是使大家迅速掌握open-falcon的数据模型、功能模块、运作流程和使用方法。&lt;/p></description></item><item><title>Rocketchat安装手册</title><link>/post/rocketchat%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/</link><pubDate>Tue, 16 Jul 2019 19:19:23 +0800</pubDate><guid>/post/rocketchat%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了Chatops的实现服务Rocketchat的安装。&lt;/p></description></item><item><title>CentOS7下CMDBuild源码安装</title><link>/post/centos7%E4%B8%8Bcmdbuild%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</link><pubDate>Tue, 16 Jul 2019 18:12:45 +0800</pubDate><guid>/post/centos7%E4%B8%8Bcmdbuild%E6%BA%90%E7%A0%81%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文对CMDBuild的安装配置进行了详细说明。&lt;/p></description></item><item><title>MongodDB[三]:基本操作</title><link>/post/mongoddb-%E4%B8%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 16 Jul 2019 17:36:39 +0800</pubDate><guid>/post/mongoddb-%E4%B8%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文介绍MongoDB的基本操作，包括文档的创建、删除、和更新。&lt;/p></description></item><item><title>MongoDB[二]:逻辑与物理存储结构</title><link>/post/mongodb-%E4%BA%8C-%E9%80%BB%E8%BE%91%E4%B8%8E%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</link><pubDate>Mon, 15 Jul 2019 18:11:59 +0800</pubDate><guid>/post/mongodb-%E4%BA%8C-%E9%80%BB%E8%BE%91%E4%B8%8E%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对MongoDB中操作逻辑和存储结构进行详细介绍。&lt;/p></description></item><item><title>MongoDB[一]:初识</title><link>/post/mongodb-%E4%B8%80-%E5%88%9D%E8%AF%86/</link><pubDate>Mon, 15 Jul 2019 17:49:45 +0800</pubDate><guid>/post/mongodb-%E4%B8%80-%E5%88%9D%E8%AF%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文对Nosql进行介绍，并且引申出mongodb，进而对mango安装过程进行记录。&lt;/p></description></item><item><title>网络传输中的表和包的流经过程</title><link>/post/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E8%A1%A8%E5%92%8C%E5%8C%85%E7%9A%84%E6%B5%81%E7%BB%8F%E8%BF%87%E7%A8%8B/</link><pubDate>Mon, 15 Jul 2019 17:21:17 +0800</pubDate><guid>/post/%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E8%A1%A8%E5%92%8C%E5%8C%85%E7%9A%84%E6%B5%81%E7%BB%8F%E8%BF%87%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了网络传输过程中3张表：MAC地址表，ARP缓存表和路由表。并且也介绍了数据包在网络传输中从源到目的主机的过程。&lt;/p></description></item><item><title>Http认证</title><link>/post/http%E8%AE%A4%E8%AF%81/</link><pubDate>Mon, 15 Jul 2019 17:10:35 +0800</pubDate><guid>/post/http%E8%AE%A4%E8%AF%81/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详解介绍了http的认证。认证分为：单向认证和双向认证。&lt;/p></description></item><item><title>ssh认证原理</title><link>/post/ssh%E8%AE%A4%E8%AF%81%E5%8E%9F%E7%90%86/</link><pubDate>Mon, 15 Jul 2019 15:40:26 +0800</pubDate><guid>/post/ssh%E8%AE%A4%E8%AF%81%E5%8E%9F%E7%90%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通常，通过ssh登录远程服务器时，使用&lt;strong>密码认证&lt;/strong>，分别输入用户名和密码，两者满足一定规则就可以登录。但是密码认证有以下的缺点：&lt;/p>
+&lt;ul>
+&lt;li>用户无法设置空密码（即使系统允许空密码，也会十分危险）&lt;/li>
+&lt;li>密码容易被人偷窥或猜到&lt;/li>
+&lt;li>服务器上的一个帐户若要给多人使用，则必须让所有使用者都知道密码，导致密码容易泄露，而且修改密码时必须通知所有人&lt;/li>
+&lt;/ul>
+&lt;p>而使用&lt;strong>公钥认证&lt;/strong>则可以解决上述问题。&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>公钥认证允许使用空密码，省去每次登录都需要输入密码的麻烦&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>多个使用者可以通过各自的密钥登录到系统上的同一个用户&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>iptables使用详解</title><link>/post/iptables%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</link><pubDate>Mon, 15 Jul 2019 15:28:26 +0800</pubDate><guid>/post/iptables%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>防 火墙，其实说白了讲，就是用于实现Linux下访问控制的功能的，它分为硬件的或者软件的防火墙两种。无论是在哪个网络中，防火墙工作的地方一定是在网络 的边缘。而我们的任务就是需要去定义到底防火墙如何工作，这就是防火墙的策略规则。制定策略规则以达到让它对出入网络的IP、数据进行检测。&lt;/p>
+&lt;p>目前市面上比较常见的有3、4层的防火墙，叫网络层的防火墙，还有7层的防火墙，其实是代理层的网关。&lt;/p>
+&lt;p>对于TCP/IP的七层模型来讲，我们知道第三层是网络层，三层的防火墙会在这层对源地址和目标地址进行检测。但是对于七层的防火墙，不管你源端口或者目标端口，源地址或者目标地址是什么，都将对你所有的东西进行检查。 所以，对于设计原理来讲，七层防火墙更加安全，但是这却带来了效率更低。所以市面上通常的防火墙方案，都是两者结合的。而又由于我们都需要从防火墙所控制 的这个口来访问，所以防火墙的工作效率就成了用户能够访问数据多少的一个最重要的控制，配置的不好甚至有可能成为流量的瓶颈。&lt;/p></description></item><item><title>智能家居实践(三):接入硬件</title><link>/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%B8%89-%E6%8E%A5%E5%85%A5%E7%A1%AC%E4%BB%B6/</link><pubDate>Mon, 15 Jul 2019 15:09:53 +0800</pubDate><guid>/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%B8%89-%E6%8E%A5%E5%85%A5%E7%A1%AC%E4%BB%B6/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>终于到了这一临门一脚了。前面了解了这么多基础知识，这一篇，我们终于可以完成这最后一步了 ———— 接入硬件。&lt;/p></description></item><item><title>智能家居实践(二):初识HomeAssistant</title><link>/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/</link><pubDate>Mon, 15 Jul 2019 14:53:03 +0800</pubDate><guid>/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%BA%8C-%E5%88%9D%E8%AF%86homeassistant/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>这一篇我们要开始学习使用 HomeAssistant 了。在此之前，为了更方便地写代码，我们还需要做一些准备工作。&lt;/p></description></item><item><title>智能家居实践(一):树莓派的配置</title><link>/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%B8%80-%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%85%8D%E7%BD%AE/</link><pubDate>Mon, 15 Jul 2019 14:21:24 +0800</pubDate><guid>/post/%E6%99%BA%E8%83%BD%E5%AE%B6%E5%B1%85%E5%AE%9E%E8%B7%B5-%E4%B8%80-%E6%A0%91%E8%8E%93%E6%B4%BE%E7%9A%84%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>某天我像往常一样逛知乎，突然就看到了一篇文章，文章内容是“马克扎克伯格自己打造的智能家庭 AI — Javals”，我相信看过这篇文章或者知道这个报道的人肯定不少。我当时也没觉得我自己也能打造一个 AI 系统，因为小扎的一套完全从改装硬件电路到中央服务器都是自己实现，我没那么大本事，但我当时正好沉迷于效率软件　IFTTT、Workflow、Alfred，其中我发现 IFTTT 里面有很多 Applets 和硬件有关，这勾起了我的好奇心，我虽做不到小扎那样的工程，但能不能利用市面上现有的产品，打造一个类似的智能家居系统？&lt;/p>
+&lt;p>首先我觉得，一个真正智能的家庭系统一定是时刻待命的，而不是当我需要的时候还得掏手机，然后按下一个按键或者把手机拿到嘴边进行语音控制。所以我一开始就明确了让 Amazon echo 作为前端，它是一个时刻待命的只需要你叫一声 Alexa 就能唤醒的设备，而且可以覆盖一个50平米的家庭，真正做到了时刻在你身边。&lt;/p>
+&lt;p>然后就是解决问题的常规套路：Google 搜索关键字 Hack,Amazon echo，经过一番信息筛选，我发现了一个普遍被大家提及的名词 — HomeAssistant。&lt;/p>
+&lt;p>HomeAssistant 是国外一个成熟的，开源的智能家居平台，这个平台的目的是把所有能通过 Wifi 控制的电器全部接入进来统一管理，这样你可以在手机、电脑上随时随地了解家里的情况并做出控制。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="img" />&lt;/p>
+&lt;p>而好消息是， echo 也已经被黑客黑客攻克并且集成到了这里面，原理其实是把 HomeAssistant 上已经接入的设备伪装成 echo 能够识别的 Hue Bridge, 从而达到让 echo 控制普通电器的目的。&lt;/p></description></item><item><title>shell替换和截取字符串详解</title><link>/post/shell%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 17:30:17 +0800</pubDate><guid>/post/shell%E6%9B%BF%E6%8D%A2%E5%92%8C%E6%88%AA%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了shell中替换和截取字符串等其他的妙用。&lt;/p></description></item><item><title>supervisor使用详解</title><link>/post/supervisor%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 17:08:40 +0800</pubDate><guid>/post/supervisor%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>supervisor是用Python开发的一个client/server服务，是Linux/Unix系统下的一个进程管理工具。可以很方便的监听、启动、停止、重启一个或多个进程。用supervisor管理的进程，当一个进程意外被杀死，supervisor监听到进程死后，会自动将它重启，很方便的做到进程自动恢复的功能，不再需要自己写shell脚本来控制。&lt;/p></description></item><item><title>kali之信息收集</title><link>/post/kali%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</link><pubDate>Thu, 11 Jul 2019 15:44:01 +0800</pubDate><guid>/post/kali%E4%B9%8B%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>在本文中，我们将讨论渗透测试中第二个阶段——信息收集。我们会介绍Kali中一系列的信息收集工具。在阅读本文之后，我们希望你能对信息收集有更好的理解。&lt;/strong>&lt;/p>
+&lt;p>在这个阶段我们需要尽可能多的收集目标的信息，例如：域名的信息，DNS，IP，使用的技术和配置，文件，联系方式等等。在信息收集中，每一个信息都是重要的。&lt;/p></description></item><item><title>DNS解析过程详解</title><link>/post/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 15:28:24 +0800</pubDate><guid>/post/dns%E8%A7%A3%E6%9E%90%E8%BF%87%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了dns的解析过程，以及对解析过程中所涉及的名词进行说明。&lt;/p></description></item><item><title>http协议详解</title><link>/post/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 15:22:05 +0800</pubDate><guid>/post/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>HTTP是一个属于应用层的面向对象的协议，由于其简捷、快速的方式，适用于分布式超媒体信息系统。它于1990年提出，经过几年的使用与发展，得到不断地完善和扩展。目前在WWW中使用的是HTTP/1.0的第六版，HTTP/1.1的规范化工作正在进行之中，而且HTTP-NG(Next Generation of HTTP)的建议已经提出。&lt;/p></description></item><item><title>iptables原理详解</title><link>/post/iptables%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 14:56:13 +0800</pubDate><guid>/post/iptables%E5%8E%9F%E7%90%86%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="iptables简介">&lt;strong>iptables简介&lt;/strong>
+&lt;a class="header-anchor" href="#iptables%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>netfilter/iptables（简称为iptables）组成Linux平台下的包过滤防火墙，与大多数的Linux软件一样，这个包过滤防火墙是免费的，它可以代替昂贵的商业防火墙解决方案。它工作在网络层，针对TCP/IP数据包实施过滤和限制，是典型的包过滤防火墙；它也可以实现网络地址转换（NAT）等功能。&lt;/p></description></item><item><title>DNS中的七大资源记录详解</title><link>/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 11 Jul 2019 11:12:45 +0800</pubDate><guid>/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="概要">概要
+&lt;a class="header-anchor" href="#%e6%a6%82%e8%a6%81">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>域名系统&lt;/strong>（
+&lt;a href="https://baike.baidu.com/item/%e8%8b%b1%e6%96%87" title="英文" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+英文
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>：&lt;strong>D&lt;/strong>omain &lt;strong>N&lt;/strong>ame &lt;strong>S&lt;/strong>ystem，
+&lt;a href="https://baike.baidu.com/item/%e7%bc%a9%e5%86%99" title="缩写" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+缩写
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>：&lt;strong>DNS&lt;/strong>）是
+&lt;a href="https://baike.baidu.com/item/%e4%ba%92%e8%81%94%e7%bd%91" title="互联网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+互联网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>的一项服务。它作为将
+&lt;a href="https://baike.baidu.com/item/%e5%9f%9f%e5%90%8d" title="域名" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+域名
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>和
+&lt;a href="https://baike.baidu.com/item/IP%e5%9c%b0%e5%9d%80" title="IP地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+IP地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>相互
+&lt;a href="https://baike.baidu.com/item/%e6%98%a0%e5%b0%84" title="映射" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+映射
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>的一个
+&lt;a href="https://baike.baidu.com/item/%e5%88%86%e5%b8%83%e5%bc%8f%e6%95%b0%e6%8d%ae%e5%ba%93" title="分布式数据库" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+分布式数据库
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，能够使人更方便地访问
+&lt;a href="https://baike.baidu.com/item/%e4%ba%92%e8%81%94%e7%bd%91" title="互联网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+互联网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>。DNS使用
+&lt;a href="https://baike.baidu.com/item/TCP" title="TCP" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+TCP
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>和
+&lt;a href="https://baike.baidu.com/item/UDP" title="UDP" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+UDP
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://baike.baidu.com/item/%e7%ab%af%e5%8f%a3" title="端口" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+端口
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>53[1]。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.jpg" alt="" />&lt;/p>
+&lt;p>DNS分为正向查找区域和反向查找区域，然后在分为，主要，辅助，存根区域，在这些区域里，又存在着很多的记录，今天，就让我们来看看这些记录。&lt;/p></description></item><item><title>PostgreSQL基本命令</title><link>/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</link><pubDate>Thu, 27 Jun 2019 14:37:33 +0800</pubDate><guid>/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文介绍了Postgresql数据库的常用用法，方便你正确的用库。&lt;/p></description></item><item><title>windows批处理用法之FOR</title><link>/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/</link><pubDate>Thu, 27 Jun 2019 13:56:07 +0800</pubDate><guid>/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/</guid><description>&lt;h2 id="大纲">&lt;strong>大纲&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%a4%a7%e7%ba%b2">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>一 前言
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>二 for语句的基本用法
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>三 for /f （delims、tokens、skip、eol、userbackq、变量延迟）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>四 for /r （递归遍历）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>五 for /d （遍历目录）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>六 for /l （计数循环）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>开源云笔记:程序员云笔记服务的不二之选</title><link>/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/</link><pubDate>Thu, 27 Jun 2019 09:42:10 +0800</pubDate><guid>/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/</guid><description>&lt;h2 id="前言">&lt;strong>前言&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>在这个互联网知识呈爆炸增长的时代，作为一个程序员要掌握的知识越来越多，然再好的记性也不如烂笔头，有了笔记我们就是可以时常扒拉扒拉以前的知识，顺便可以整理下自己的知识体系。&lt;/p>
+&lt;p>如今市面上云笔记产品，说实在真不少，什么有道，印象，为知等等，本人目前使用的是有道，无它，免费而已其他几个倒没怎么接触过，毕竟重复的产品一个就够了。笔记用了有三年多时间了，基本都是写写工作日志，备忘一下工作中遇到的脚本命令，顺便记录下工作中遇到的问题，由于只是记录文字，目前10G的空间仅仅使用了冰山一角。&lt;/p>
+&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>今天，给大家一起分享的是蚂蚁笔记，一个有极客范的云笔记！官方的介绍也相当牛逼：前所未有的文档体验，近乎完美的平台覆盖，支持团队协同，企业级私有云，蚂蚁笔记 = 笔记 + 博客 + 协作 + 私有云。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="8.png" alt="img" />&lt;/p>
+&lt;p>其实最主要的是蚂蚁笔记开源了，既然如此，云服务器又那么便宜，我们何不自己搭建一个云笔记服务，无论是自己还是分享给同事都是极好的，最主要的是还可以绑定域名生成博客，笔记AND博客一举两得岂不乐哉。&lt;/p>
+&lt;p>当然，如果有些小伙伴对信息安全要求较高的，不希望自己的信息记录在别人的服务器上，对开源源码有一定研究，使用起来还是不错的。但是如果单纯是为了省钱就没必要了，即使收费的有道一天也就几毛钱而已，而云服务器费用，自身是否有技术支持也是以后使用的硬伤，下面开始如何安装使用教程。&lt;/p></description></item><item><title>redis安全机制设置</title><link>/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/</link><pubDate>Thu, 27 Jun 2019 09:31:03 +0800</pubDate><guid>/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>redis作为一个高速数据库，在互联网上广泛使用，但是在生产环境必须有对应的安全机制来进行保护。那么怎么保护呢？&lt;/p></description></item><item><title>confd模板语法详解</title><link>/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 26 Jun 2019 10:43:45 +0800</pubDate><guid>/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了confd模板的语法和结构。并且在结尾给出示例演示，帮助你充分理解好消化。&lt;/p></description></item><item><title>confd配置管理工具详解</title><link>/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 26 Jun 2019 09:44:20 +0800</pubDate><guid>/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="概述">概述
+&lt;a class="header-anchor" href="#%e6%a6%82%e8%bf%b0">&lt;/a>
+&lt;/h2>&lt;p>当系统变的复杂，配置项越来越多，一方面配置管理变得繁琐，另一方面配置修改后需要重新上线同样十分痛苦。这时候，需要有一套集中化配置管理系统，一方面提供统一的配置管理，另一方面提供配置变更的自动下发，及时生效。提到统一配置管理系统，大家应该比较熟悉，常见的：zookeeper、etcd、consul、git等等。上述的集中配置中心使用的时候，部署图大致是这样的：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>server端只需要调用config-server对应客户端获取配置，和监听配置变更就可以了。总体来说没有太大难度。&lt;/p>
+&lt;p>接下来要说一下confd，它提供了一种新的集成思路。confd的存在有点类似于快递员，买了东西不需要自己到店去取货了，confd这个快递员会把货取过来，然后送到家里，并且通知你货已经送到了。加入confd之后的架构大致是这样的：&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="2.png" alt="" />&lt;/p></description></item><item><title>基于Docker+Consul+Registrator的服务注册与发现集群搭建</title><link>/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link><pubDate>Tue, 25 Jun 2019 19:01:05 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>微服务架构在互联网应用领域中愈来愈火，引入微服务主要解决了单体应用&lt;strong>多个模块的紧耦合&lt;/strong>、&lt;strong>无法扩展&lt;/strong>和&lt;strong>运维困难&lt;/strong>等问题。微服务架构就是按照&lt;strong>功能粒度&lt;/strong>将业务模块进行&lt;strong>垂直拆分&lt;/strong>，对单体应用本身进行&lt;strong>服务化&lt;/strong>和&lt;strong>组件化&lt;/strong>，每个组件单独部署为&lt;strong>小应用&lt;/strong>（从&lt;code>DB&lt;/code>到&lt;code>UI&lt;/code>）。微服务与微服务之间通过&lt;code>Service API&lt;/code>进行交互，同时为了支持&lt;strong>水平扩展&lt;/strong>、&lt;strong>性能提升&lt;/strong>和&lt;strong>服务可用性&lt;/strong>，单个服务允许同时部署一个或者多个&lt;strong>服务实例&lt;/strong>。在运行时，每个实例通常是一个&lt;strong>云虚拟机&lt;/strong>或者&lt;code>Docker&lt;/code>&lt;strong>容器&lt;/strong>。&lt;/p>
+&lt;p>微服务系统内部多个服务的实例之间如何通信？如何感知到彼此的存在和销毁？生产者服务如何知道消费者服务的地址？如何实现服务与注册中心的解耦？这就需要一个第三方的服务注册中心，提供对生产者服务节点的注册管理和消费者服务节点的发现管理。&lt;/p></description></item><item><title>基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现</title><link>/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</link><pubDate>Tue, 25 Jun 2019 17:22:41 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现过程。&lt;/p></description></item><item><title>mysql之yum安装</title><link>/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/</link><pubDate>Mon, 24 Jun 2019 18:01:25 +0800</pubDate><guid>/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>在CentOS7中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB，本文yum一键安装mysql数据库。&lt;/p></description></item><item><title>nginx配置管理平台</title><link>/post/nginx%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</link><pubDate>Mon, 24 Jun 2019 17:25:11 +0800</pubDate><guid>/post/nginx%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B9%B3%E5%8F%B0/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>熟悉nginx的配置不难发现，nginx是一个典型的key value类型的，而且与文件系统的非常类似，一个目录下面可以包含其他配置，目录下还可以有目录，嵌套多层。如今key value类型的数据库非常多，redis、leveldb等，最近新秀etcd也是key-value分布式数据库，提供类似文件系统操作，使用raft协议保持数据一致性，非常适合云计算分布式部署场景，将confd与etcd搭配，非常适合nginx这样的配置格式。本文就详细讲解了nginx配置管理平台的实现。&lt;/p></description></item><item><title>Redis系列之数据类型和操作</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 21 Jun 2019 09:46:11 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Redis是一种支持Key-Value等多种数据结构的存储系统。可用于缓存，事件发布或订阅，高速队列等场景。该数据库使用ANSI C语言编写，支持网络，提供字符串，哈希，列表，队列，集合结构直接存取，基于内存，可持久化。本文介绍Redis的数据类型和相关操作。&lt;/p></description></item><item><title>Redis系列之安装</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E5%AE%89%E8%A3%85/</link><pubDate>Fri, 21 Jun 2019 09:16:41 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>redis作为nosql家族中非常热门的一员，也是被大型互联网公司所青睐，无论你是开发、测试或者运维，学习掌握它总会为你的职业生涯增色添彩。本文介绍Redis的安装及配置详解。&lt;/p></description></item><item><title>Redis系列之介绍</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%8B%E7%BB%8D/</link><pubDate>Thu, 20 Jun 2019 19:14:47 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%8B%E7%BB%8D/</guid><description>&lt;h2 id="redis简介">redis简介
+&lt;a class="header-anchor" href="#redis%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>redis是Nosql数据库中使用较为广泛的非关系型内存数据库。redis内部是一个key-value存储系统。它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型，类似于Java中的map）。Redis基于内存运行并支持持久化的NoSQL数据库，是当前最热门的NoSql数据库之一，也被人们称为数据结构服务器。&lt;/p></description></item><item><title>大型网站架构演变</title><link>/post/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/</link><pubDate>Thu, 20 Jun 2019 17:21:53 +0800</pubDate><guid>/post/%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%9E%B6%E6%9E%84%E6%BC%94%E5%8F%98/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>世间几乎所有东西都不是一蹴而就的，都是有个演变过程。互联网公司也都是从一个小网站开始，渐进地发展起来的。例如：中国的BAT，TMD，美国的Google,Youtube,Facebook等等都是这样的。Facebook 是扎克伯格同学在哈佛大学的宿舍里开发的；Google 的第一台服务器部署在斯坦福大学的实验室；阿里巴巴是在马云家的客厅诞生的。本文通过详解大型网站的演变过程，让你对公司网站以后优化改进方向有一个清晰的认识。&lt;/p></description></item><item><title>IaaS、PaaS、SaaS的区别</title><link>/post/iaaspaassaas%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Wed, 19 Jun 2019 15:40:07 +0800</pubDate><guid>/post/iaaspaassaas%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>你一定听说过云计算中的三个“高大上”的你一定听说过云计算中的三个“高大上”的概念：IaaS、PaaS和SaaS，这几个术语并不好理解。**不过，如果你是个吃货，还喜欢披萨，这个问题就好解决了!**好吧，其实你根本不是一个吃货，之所以自我标榜为吃货，其实是为了收获赞叹式的夸奖，“吃货还这么瘦，好羡慕啊!”或者，总得给站长身材的微丰找个像样的理由。本文通过通俗简单的例子，让你完全理解云计算这三大术语的区别。&lt;/p></description></item><item><title>Docker版cmdbuild安装教程</title><link>/post/docker%E7%89%88cmdbuild%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link><pubDate>Wed, 19 Jun 2019 09:53:39 +0800</pubDate><guid>/post/docker%E7%89%88cmdbuild%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>CMDB &amp;ndash;Configuration Management Database 配置管理数据库, CMDB存储与管理企业IT架构中设备的各种配置信息，它与所有服务支持和服务交付流程都紧密相联，支持这些流程的运转、发挥配置信息的价值，同时依赖于相关流程保证数据的准确性。&lt;/p>
+&lt;p>CMDB，几乎是每个运维人都绕不过去的字眼，但又是很多运维人的痛，因为基本上所有的互联网公司都在搞，都在想着把尽可能多信息都收集汇总过来，然后实现自动化,智能化，但是CMDB很少有成功的，因此它也被称为运维人的耻辱。&lt;/p>
+&lt;p>我们运维人不要再为了KPI，绩效等东东重复造轮子，并且造出来的轮子只能自己用。我们运维人工作中共同的迫切需求点是什么呢？&lt;/p>
+&lt;p>1，中文的web页面即使丑点也可以接受。日常查看导入导出，新增等等操作方便，而且防止语言不通误操作。&lt;/p>
+&lt;p>2，数据库模型和业务逻辑是分离开的。只需要建业务逻辑字段就能自动映射为数据库模型。&lt;/p>
+&lt;p>3，动态实现表间关系。随着收集数据的完善，表与表之间关系越来越复杂，不要因后续业务需要，对表做出改动，而影响以前的关系和调用，可以动态扩展。想想一下，增加个关系字段，原来的代码都要改的酸爽。&lt;/p>
+&lt;p>4，自定义表。可以自定义根据业务需求建表和逻辑关系。&lt;/p>
+&lt;p>5，动态API接口。根据表逻辑改动API动态自动更改，弱化业务和数据关系的实现，并且能够和外部系统做联动，支持API接口调用，方便扩展和自动化。&lt;/p>
+&lt;p>以上需求是最迫切的，本人工作多年，自己用django写过cmdb系统，但到后来维护成本会越来越大，考察了国内外开源的软件，最终找到cmdbuild，基本上可以满足上面全部需求，下面就来介绍下用docker容器快速安装cmdbuild，因cmdbuild是国外的软件，所以国内文档很少。&lt;/p></description></item><item><title>渗透测试之从收集信息到入侵提权</title><link>/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B9%8B%E4%BB%8E%E6%94%B6%E9%9B%86%E4%BF%A1%E6%81%AF%E5%88%B0%E5%85%A5%E4%BE%B5%E6%8F%90%E6%9D%83/</link><pubDate>Mon, 17 Jun 2019 11:49:11 +0800</pubDate><guid>/post/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B9%8B%E4%BB%8E%E6%94%B6%E9%9B%86%E4%BF%A1%E6%81%AF%E5%88%B0%E5%85%A5%E4%BE%B5%E6%8F%90%E6%9D%83/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文你将了解黑客常用的入手思路和技术手法，适合热爱网络信息安全的新手朋友了解学习。本文将从最开始的信息收集开始讲述黑客是如何一步步的攻破你的网站和服务器的.阅读本文你会学到以下内容：&lt;/p>
+&lt;p>1.渗透测试前的简单信息收集。&lt;/p>
+&lt;p>2.sqlmap的使用&lt;/p>
+&lt;p>3.nmap的使用&lt;/p>
+&lt;p>4.nc反弹提权&lt;/p>
+&lt;p>5.linux系统的权限提升&lt;/p>
+&lt;p>6.backtrack 5中渗透测试工具nikto和w3af的使用等.&lt;/p></description></item><item><title>zabbix-proxy安装部署</title><link>/post/zabbix-proxy%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</link><pubDate>Mon, 17 Jun 2019 10:44:36 +0800</pubDate><guid>/post/zabbix-proxy%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>随着互联网公司的不断发展和业务的不断拓展，只用zabbix-server单节点作为数据收集已越来越吃力，不能满足需求，这是扩展zabbix监控系统势在必行，zabbix-proxy代理就可以帮到你，能够有效的分担server压力。本文详细介绍了zabbix-proxy的安装部署过程，因互联网公司线上业务稳定性是最重要的，监控系统更是如此，所有监控系统搭建时版本建议用长期支持版。&lt;/p></description></item><item><title>zabbix3.0.x在lnmp全编译安装</title><link>/post/zabbix3-0-x%E5%9C%A8lnmp%E5%85%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</link><pubDate>Mon, 17 Jun 2019 09:39:40 +0800</pubDate><guid>/post/zabbix3-0-x%E5%9C%A8lnmp%E5%85%A8%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>zabbix是一个基于WEB界面的提供分布式系统监视以及网络监视功能的企业级的开源解决方案。因其监控方式多样，上手容易在互联网行业备受欢迎。那么本文就详细介绍编译安装zabbix长期支持版本(LST).&lt;/p></description></item><item><title>zabbix api调用步骤</title><link>/post/zabbix-api%E8%B0%83%E7%94%A8%E6%AD%A5%E9%AA%A4/</link><pubDate>Fri, 14 Jun 2019 16:33:33 +0800</pubDate><guid>/post/zabbix-api%E8%B0%83%E7%94%A8%E6%AD%A5%E9%AA%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>明确调用zabbix api的步骤，便于利用zabbix进行二次开发。&lt;/p>
+&lt;h2 id="步骤">步骤
+&lt;a class="header-anchor" href="#%e6%ad%a5%e9%aa%a4">&lt;/a>
+&lt;/h2>&lt;p>简单来说，zabbix api调用分4步：获取userid–&amp;gt;获取hostid–&amp;gt;获取itemid–&amp;gt;根据时间节点获取数据，流程如下:&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>Mesos集群搭建(host)</title><link>/post/mesos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA-host/</link><pubDate>Fri, 14 Jun 2019 15:13:10 +0800</pubDate><guid>/post/mesos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA-host/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文构建mesos集群，用mesos+marathon把docker玩起来。&lt;/p>
+&lt;h2 id="架构图">架构图
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e5%9b%be">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>Linux修改时区正确姿势</title><link>/post/linux%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</link><pubDate>Fri, 14 Jun 2019 15:01:17 +0800</pubDate><guid>/post/linux%E4%BF%AE%E6%94%B9%E6%97%B6%E5%8C%BA%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>CentOS和Ubuntu的时区文件是/etc/localtime，但是在CentOS7以后localtime以及变成了一个链接文件，那要怎么正确修改时区呢？&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>root@centos7 ~&lt;span style="color:#f92672">]&lt;/span>&lt;span style="color:#75715e"># ll /etc/localtime &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>lrwxrwxrwx &lt;span style="color:#ae81ff">1&lt;/span> root root &lt;span style="color:#ae81ff">33&lt;/span> Oct &lt;span style="color:#ae81ff">12&lt;/span> 11:01 /etc/localtime -&amp;gt; /usr/share/zoneinfo/Asia/Shanghai
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>安装Go环境</title><link>/post/%E5%AE%89%E8%A3%85go%E7%8E%AF%E5%A2%83/</link><pubDate>Fri, 14 Jun 2019 14:31:30 +0800</pubDate><guid>/post/%E5%AE%89%E8%A3%85go%E7%8E%AF%E5%A2%83/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文构建Go语言环境，便于以后开发go项目需求。&lt;/p></description></item><item><title>基于Docker的高可用集群xxl-job分布式任务调度</title><link>/post/%E5%9F%BA%E4%BA%8Edocker%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8xxl-job%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Thu, 13 Jun 2019 09:38:53 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Edocker%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8xxl-job%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>XXL-JOB是一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。本文是基于docker从编译到高可用集群方案的制定和部署实施，做了详细阐述。&lt;/p></description></item><item><title>Stackstorm之一键安装</title><link>/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/</link><pubDate>Wed, 12 Jun 2019 17:52:24 +0800</pubDate><guid>/post/stackstorm%E4%B9%8B%E4%B8%80%E9%94%AE%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="安装">安装
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85">&lt;/a>
+&lt;/h2>&lt;p>StackStorm作为RPM和Debs分发用于RedHat / CentOS和Ubuntu Linux系统，以及Docker镜像。您可以使用脚本在单个系统上自动安装和配置所有组件，也可以按照操作系统的手动说明进行操作。&lt;/p>
+&lt;p>以下是选项概述：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>**一键安装：**运行我们的安装脚本，在单个系统上进行所有组件的固定安装。这是我们推荐的入门方式。有关详细信息，请参阅下面的“
+&lt;a href="https://docs.stackstorm.com/install/index.html#ref-one-line-install" title="快速安装" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+快速安装
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**手动安装：**有定制需求吗？也许您的服务器无法访问Internet？或者只是不喜欢使用脚本安装？阅读适用于您的操作系统的手册安装说明（
+&lt;a href="https://docs.stackstorm.com/install/deb.html" title="Ubuntu 14 " rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Ubuntu 14
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://docs.stackstorm.com/install/rhel6.html" title="/ " rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+/
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>
+&lt;a href="https://docs.stackstorm.com/install/deb.html" title="16" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+16
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，
+&lt;a href="https://docs.stackstorm.com/install/rhel6.html" title="RHEL / CentOS 6" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+RHEL / CentOS 6
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>，
+&lt;a href="https://docs.stackstorm.com/install/rhel7.html" title="RHEL / CentOS 7" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+RHEL / CentOS 7
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>），并根据您的需要进行调整。以下是为StackStorm repos设置内部镜像的一些
+&lt;a href="https://stackstorm.com/2017/02/10/installing-stackstorm-offline-systems/" title="其他指导" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+其他指导
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>**Ansible Playbooks：**如果您是Ansible用户，请查看这些
+&lt;a href="https://docs.stackstorm.com/install/ansible.html" title="Ansible Playbooks" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Ansible Playbooks
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>以安装StackStorm。非常适合StackStorm的可重复，一致，幂等安装。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>高可用性将&lt;/strong>业务关键自动化任务委托给像StackStorm这样的系统会对该系统产生更高的要求。StackStorm可以在HA模式下运行以确保满足这些需求。
+&lt;a href="https://docs.stackstorm.com/install/k8s_ha.html" title="Kubernetes中的StackStorm HA集群 - BETA将" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Kubernetes中的StackStorm HA集群 - BETA将
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>整个复杂的基础架构自动化为可重现的蓝图。&lt;/p>
+&lt;/li>
+&lt;/ul></description></item><item><title>Stackstorm的介绍与入门</title><link>/post/stackstorm%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%85%A5%E9%97%A8/</link><pubDate>Wed, 12 Jun 2019 17:25:00 +0800</pubDate><guid>/post/stackstorm%E7%9A%84%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%85%A5%E9%97%A8/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>&lt;strong>一句话概况：stackstorm是一个事件驱动的自动化引擎。&lt;/strong>&lt;/p>
+&lt;p>官方解释：StackStorm是一个功能强大的开源自动化平台，可将所有应用程序，服务和工作流程连接起来。 它具有可扩展性，灵活性, 设计中包含了对DevOps和ChatOps的热爱。它可以将您现有的基础架构和应用程序环境联系在一起，以便您可以更轻松地自动化操作该环境。它特别专注于针对事件采取行动。&lt;/p>
+&lt;p>主要用途：&lt;/p>
+&lt;ul>
+&lt;li>便利的故障排除 - 触发由Nagios，Sensu，New Relic和其他监控系统捕获的系统故障，在物理节点、OpenStack或Amazon实例和应用程序组件上运行一系列诊断检查，并将结果发布到共享通信环境中，如HipChat或JIRA。&lt;/li>
+&lt;li>自动修复 - 识别和验证OpenStack计算节点上的硬件故障，正确排空实例并向管理员发送关于潜在停机时间的电子邮件，但如果出现任何问题 - 冻结工作流程并呼叫PagerDuty唤醒人员。&lt;/li>
+&lt;li>持续部署 - 与Jenkins一起构建和测试，配置新的AWS群集，基于NewRelic的应用程序性能数据，打开负载均衡器的一些流量，以及前滚或回滚。&lt;/li>
+&lt;/ul>
+&lt;h2 id="参考文档">参考文档
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://stackstorm.com/" title="官网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>Django ORM模型详解</title><link>/post/django-orm%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/</link><pubDate>Wed, 12 Jun 2019 15:52:34 +0800</pubDate><guid>/post/django-orm%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Django框架后面对数据库的ORM操作已经帮我们做了，我们只需要在创建model时，按照框架定义创建即可。但定义的几种ORM操作有哪些区别和怎么去操作呢？本篇详细说明。&lt;/p></description></item><item><title>sftp和ftp文件传输服务</title><link>/post/sftp%E5%92%8Cftp%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1/</link><pubDate>Wed, 12 Jun 2019 14:47:28 +0800</pubDate><guid>/post/sftp%E5%92%8Cftp%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="适用场景">适用场景
+&lt;a class="header-anchor" href="#%e9%80%82%e7%94%a8%e5%9c%ba%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>我们平时习惯了使用ftp来上传下载文件，尤其是很多Linux环境下，我们一般都会通过第三方的SSH工具连接到Linux，但是当我们需要传输文件到Linux服务器当中，很多人习惯用ftp来传输，其实Linux默认是不提供ftp的，需要你额外安装FTP服务器。而且ftp服务器端会占用一定的VPS服务器资源。其实更建议使用sftp代替ftp。理由如下：&lt;/p>
+&lt;ol>
+&lt;li>可以不用额外安装任何服务器端程序&lt;/li>
+&lt;li>会更省系统资源。&lt;/li>
+&lt;li>SFTP使用加密传输认证信息和传输数据，相对来说会更安全。&lt;/li>
+&lt;li>也不需要单独配置，对新手来说比较简单(开启SSH默认就开启了SFTP)。&lt;/li>
+&lt;/ol></description></item><item><title>Tomcat性能优化和测试</title><link>/post/tomcat%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E6%B5%8B%E8%AF%95/</link><pubDate>Tue, 11 Jun 2019 14:52:22 +0800</pubDate><guid>/post/tomcat%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%92%8C%E6%B5%8B%E8%AF%95/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Tomcat是我们经常使用的 servlet容器之一，甚至很多线上产品都使用 Tomcat充当服务器。而且优化后的Tomcat性能提升显著，本文从以下几方面进行分析优化。&lt;/p></description></item><item><title>nginx之后端节点健康检查</title><link>/post/nginx%E4%B9%8B%E5%90%8E%E7%AB%AF%E8%8A%82%E7%82%B9%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5/</link><pubDate>Tue, 11 Jun 2019 09:56:54 +0800</pubDate><guid>/post/nginx%E4%B9%8B%E5%90%8E%E7%AB%AF%E8%8A%82%E7%82%B9%E5%81%A5%E5%BA%B7%E6%A3%80%E6%9F%A5/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>公司前一段对业务线上的nginx做了整理，重点就是对nginx上负载均衡器的后端节点做健康检查。目前，nginx对后端节点健康检查的方式主要有3种，这里列出：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>1、ngx_http_proxy_module 模块和ngx_http_upstream_module模块（自带）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 官网地址：http://nginx.org/cn/docs/http/ngx_http_proxy_module.html#proxy_next_upstream
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2、nginx_upstream_check_module模块
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 官网网址：https://github.com/yaoweibin/nginx_upstream_check_module
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3、ngx_http_healthcheck_module模块
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> 官网网址：http://wiki.nginx.org/NginxHttpHealthcheckModule
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>公司业务线上对后端节点的健康检查是通过nginx_upstream_check_module模块做的，这里我将分别介绍这三种实现方式以及之间的差异性。&lt;/p></description></item><item><title>ELK日志系统最新版本详细教程</title><link>/post/elk%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</link><pubDate>Mon, 10 Jun 2019 17:41:46 +0800</pubDate><guid>/post/elk%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>为什么要做日志分析平台？&lt;/p>
+&lt;p>随着业务量的增长，每天业务服务器将会产生上亿条的日志，单个日志文件达几个GB，这时我们发现用Linux自带工具，cat grep awk 分析越来越力不从心了，而且除了服务器日志，还有程序报错日志，分布在不同的服务器，查阅繁琐。&lt;/p>
+&lt;p>&lt;strong>待解决的痛点:&lt;/strong>&lt;/p>
+&lt;p>1、大量不同种类的日志成为了运维人员的负担，不方便管理;&lt;/p>
+&lt;p>2、单个日志文件巨大，无法使用常用的文本工具分析，检索困难;&lt;/p>
+&lt;p>3、日志分布在多台不同的服务器上，业务一旦出现故障，需要一台台查看日志。&lt;/p>
+&lt;p>为了解决以上困扰: 接下来我们要一步步构建这个日志分析平台，架构图如下:&lt;/p></description></item><item><title>python操作gitlab API接口</title><link>/post/python%E6%93%8D%E4%BD%9Cgitlab-api%E6%8E%A5%E5%8F%A3/</link><pubDate>Mon, 10 Jun 2019 17:09:34 +0800</pubDate><guid>/post/python%E6%93%8D%E4%BD%9Cgitlab-api%E6%8E%A5%E5%8F%A3/</guid><description>&lt;p>使用 &lt;code>python-gitlab&lt;/code> 模块来调用gitlab的API来管理和操作gitlab。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="http://python-gitlab.readthedocs.io/en/stable/" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>Git命令汇总</title><link>/post/git%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</link><pubDate>Mon, 10 Jun 2019 16:25:42 +0800</pubDate><guid>/post/git%E5%91%BD%E4%BB%A4%E6%B1%87%E6%80%BB/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对常用的git命令进行汇总和注释，在使用时如需查询可更高效的查询到。&lt;/p></description></item><item><title>玩转Jenkins Pipeline</title><link>/post/%E7%8E%A9%E8%BD%ACjenkins-pipeline/</link><pubDate>Thu, 06 Jun 2019 17:04:29 +0800</pubDate><guid>/post/%E7%8E%A9%E8%BD%ACjenkins-pipeline/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>Pipeline，简而言之，就是一套运行于Jenkins上的工作流框架，将原本独立运行于单个或者多个节点的任务连接起来，实现单个任务难以完成的复杂流程编排与可视化。&lt;/p>
+&lt;p>Pipeline是Jenkins2.X的最核心的特性，帮助Jenkins实现从CI到CD与DevOps的转变。Pipeline是一组插件，让Jenkins可以实现持续交付管道的落地和实施。&lt;/p>
+&lt;p>持续交付管道（CD Pipeline）是将软件从版本控制阶段到交付给用户或客户的完整过程的自动化表现。软件的每一次更改（提交到源代码管理系统）都要经过一个复杂的过程才能被发布。&lt;/p>
+&lt;p>Pipeline提供了一组可扩展的工具，通过Pipeline Domain Specific Language（DSL）syntax可以达到Pipeline as Code（Jenkinsfile存储在项目的源代码库）的目的。&lt;/p></description></item><item><title>Linux用法技巧</title><link>/post/linux%E7%94%A8%E6%B3%95%E6%8A%80%E5%B7%A7/</link><pubDate>Thu, 06 Jun 2019 11:46:28 +0800</pubDate><guid>/post/linux%E7%94%A8%E6%B3%95%E6%8A%80%E5%B7%A7/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>根据自己多年的工作经历和经验，对日常中的细节技巧和用法进行归纳和总结。&lt;/p>
+&lt;p>持续更新中&amp;hellip;&lt;/p></description></item><item><title>Dig命令详解</title><link>/post/dig%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</link><pubDate>Thu, 06 Jun 2019 11:06:25 +0800</pubDate><guid>/post/dig%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</guid><description>&lt;h2 id="简介">&lt;strong>简介：&lt;/strong>
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Dig是一个在类Unix命令行模式下查询DNS包括NS记录，A记录，MX记录等相关信息的工具。由于一直缺失
+Dig man page文档，本文就权当一个dig使用向导吧。Dig的源码是ISC BIND大包的一部分，但是大多编译和安装Bind的文档都不把它包括在内，但是在linux系统下，它通常是某个包的一部分，在Gentoo下是bind-tools，在Redhat/Fedora下是 bind-utils，或者在Debian下是 dnsutils。 &lt;br>
+如果你要查找Bind的配置相关的信息，请详读
+&lt;a href="http://www.madboa.com/geek/soho-bind/" title="参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>。&lt;/p>
+&lt;p>看懂默认输出：最简单最常见的查询是查询一台主机，但是默认情况下，Dig的输出信息很详细。你可能不需要所有的输出，但是它确实值得知道。&lt;/p></description></item><item><title>详解linux中文件的三种time</title><link>/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/</link><pubDate>Wed, 05 Jun 2019 18:53:41 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3linux%E4%B8%AD%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%89%E7%A7%8Dtime/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>linux下文件有3个时间的，分别是atime,mtime,ctime。有些博友对这3个时间还是比较迷茫和困惑的，我整理了下，写下来希望对博友们有所帮助。&lt;/p></description></item><item><title>proxy_pass后加不加斜杠的区别</title><link>/post/proxy-pass%E5%90%8E%E5%8A%A0%E4%B8%8D%E5%8A%A0%E6%96%9C%E6%9D%A0%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Wed, 05 Jun 2019 14:50:08 +0800</pubDate><guid>/post/proxy-pass%E5%90%8E%E5%8A%A0%E4%B8%8D%E5%8A%A0%E6%96%9C%E6%9D%A0%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>在nginx中配置proxy_pass时，当在后面的url上加不加/，区别是如此的大呢。&lt;/p>
+&lt;p>如加上了/，相当于是绝对根路径，则nginx不会把location中匹配的路径部分代理走;&lt;/p>
+&lt;p>如果没有加/，则会把匹配的路径部分也给代理走。&lt;/p></description></item><item><title>详解zabbix的监控方式</title><link>/post/%E8%AF%A6%E8%A7%A3zabbix%E7%9A%84%E7%9B%91%E6%8E%A7%E6%96%B9%E5%BC%8F/</link><pubDate>Wed, 05 Jun 2019 09:30:02 +0800</pubDate><guid>/post/%E8%AF%A6%E8%A7%A3zabbix%E7%9A%84%E7%9B%91%E6%8E%A7%E6%96%B9%E5%BC%8F/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>zabbix支持的主要监控方式：&lt;/p>
+&lt;p>​ zabbix主要Agent，Trapper，SNMP，JMX，IPMI这几种监控方式，本文章主要通过监控理论和实际操作测试等方式来简单介绍这几种方式的监控原理和优缺点等 。下面对几种监控方式的监控原理进行介绍：&lt;/p></description></item><item><title>nginx+uwsgi+flask搭建web服务</title><link>/post/nginx-uwsgi-flask%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1/</link><pubDate>Mon, 03 Jun 2019 14:42:05 +0800</pubDate><guid>/post/nginx-uwsgi-flask%E6%90%AD%E5%BB%BAweb%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h1 id="1目的">1，目的
+&lt;a class="header-anchor" href="#1%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h1>&lt;p>在生产环境下，可以通过Nginx+uwsgi+Flask部署Web服务，从而达到高并发高稳定性的要求。
+如果要部署多个APP，可以采用单个Nginx，多个uwsgi+Flask的方式来实现，如下图所示。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="img" />&lt;/p></description></item><item><title>业务监控工具Sentry的搭建与使用</title><link>/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 03 Jun 2019 14:22:04 +0800</pubDate><guid>/post/%E4%B8%9A%E5%8A%A1%E7%9B%91%E6%8E%A7%E5%B7%A5%E5%85%B7sentry%E7%9A%84%E6%90%AD%E5%BB%BA%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid><description>&lt;h3 id="官方网址">官方网址
+&lt;a class="header-anchor" href="#%e5%ae%98%e6%96%b9%e7%bd%91%e5%9d%80">&lt;/a>
+&lt;/h3>&lt;p>参考
+&lt;a href="https://sentry.io/welcome/" title="Django Sentry 官网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Django Sentry 官网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h3 id="sentry-简介">Sentry 简介
+&lt;a class="header-anchor" href="#sentry-%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h3>&lt;p>Sentry 是一个开源的实时错误报告工具，支持 web 前后端、移动应用以及游戏，支持 Python、OC、Java、Go、Node、Django、RoR 等主流编程语言和框架 ，还提供了 GitHub、Slack、Trello 等常见开发工具的集成。
+Sentry 服务支持多用户、多团队、多应用管理，每个应用都对应一个 PROJECT_ID，以及用于身份认证的 PUBLIC_KEY 和 SECRET_KEY。由此组成一个这样的 DSN：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>{PROTOCOL}://{PUBLIC_KEY}:{SECRET_KEY}@{HOST}/{PATH}{PROJECT_ID}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>PROTOCOL 通常会是 http 或者 https，HOST 为 Sentry 服务的主机名和端口，PATH 通常为空。&lt;/p></description></item><item><title>阿里Java神级诊断工具arthas</title><link>/post/%E9%98%BF%E9%87%8Cjava%E7%A5%9E%E7%BA%A7%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7arthas/</link><pubDate>Thu, 30 May 2019 16:56:21 +0800</pubDate><guid>/post/%E9%98%BF%E9%87%8Cjava%E7%A5%9E%E7%BA%A7%E8%AF%8A%E6%96%AD%E5%B7%A5%E5%85%B7arthas/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>在阿里巴巴内部，有很多自研工具供开发者使用，其中有一款工具，是几乎每个Java开发都使用过的工具，那就是&lt;strong>Arthas&lt;/strong>，这是一款&lt;strong>Java诊断工具&lt;/strong>，是一款牛逼&lt;strong>带闪电的工具&lt;/strong>。该工具已于2018年9月份开源。&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/alibaba/arthas" title="GitHub 地址" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+GitHub 地址
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://alibaba.github.io/arthas/" title="用户文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+用户文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>在日常开发中，你是否遇到过以下问题：&lt;/p>
+&lt;blockquote>
+&lt;ol>
+&lt;li>这个类从哪个 jar 包加载的？为什么会报各种类相关的 Exception？&lt;/li>
+&lt;li>我改的代码为什么没有执行到？难道是我没 commit？分支搞错了？&lt;/li>
+&lt;li>遇到问题无法在线上 debug，难道只能通过加日志再重新发布吗？&lt;/li>
+&lt;li>线上遇到某个用户的数据处理有问题，但线上同样无法 debug，线下无法重现！&lt;/li>
+&lt;li>是否有一个全局视角来查看系统的运行状况？&lt;/li>
+&lt;li>有什么办法可以监控到JVM的实时运行状态？&lt;/li>
+&lt;/ol>
+&lt;/blockquote>
+&lt;p>以上问题，通通可以通过Arthas来进行问题诊断！！！是不是很好很强大。&lt;/p></description></item><item><title>分布式开源监控系统open-falcon安装使用笔记</title><link>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BC%80%E6%BA%90%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9Fopen-falcon%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</link><pubDate>Wed, 29 May 2019 18:22:45 +0800</pubDate><guid>/post/%E5%88%86%E5%B8%83%E5%BC%8F%E5%BC%80%E6%BA%90%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9Fopen-falcon%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</guid><description>&lt;h2 id="官方介绍">官方介绍
+&lt;a class="header-anchor" href="#%e5%ae%98%e6%96%b9%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>监控系统是整个运维环节，乃至整个产品生命周期中最重要的一环，事前及时预警发现故障，事后提供翔实的数据用于追查定位问题。监控系统作为一个成熟的运维产品，业界有很多开源的实现可供选择。当公司刚刚起步，业务规模较小，运维团队也刚刚建立的初期，选择一款开源的监控系统，是一个省时省力，效率最高的方案。之后，随着业务规模的持续快速增长，监控的对象也越来越多，越来越复杂，监控系统的使用对象也从最初少数的几个SRE，扩大为更多的DEVS，SRE。这时候，监控系统的容量和用户的“使用效率”成了最为突出的问题。&lt;/p>
+&lt;p>​ 监控系统业界有很多杰出的开源监控系统。我们在早期，一直在用zabbix，不过随着业务的快速发展，以及互联网公司特有的一些需求，现有的开源的监控系统在性能、扩展性、和用户的使用效率方面，已经无法支撑了。&lt;/p>
+&lt;p>​ 因此，我们在过去的一年里，从互联网公司的一些需求出发，从各位SRE、SA、DEVS的使用经验和反馈出发，结合业界的一些大的互联网公司做监控，用监控的一些思考出发，设计开发了小米的监控系统：Open-Falcon。&lt;/p></description></item><item><title>hexo最新next主题炫酷特效教程</title><link>/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/</link><pubDate>Wed, 29 May 2019 01:26:12 +0800</pubDate><guid>/post/hexo%E6%9C%80%E6%96%B0next%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96%E7%82%AB%E9%85%B7%E6%95%99%E7%A8%8B/</guid><description>&lt;p>有很多next主题的网站都配置了很多特效，网站看起来很是炫酷。人都是视觉动物，让你的网站或博客酷炫、与众不同，是提高网站逼格和吸引人气的必备技能。那么这些特效都是是怎么配置的呢？接下来我会讲一讲如何配置next6.x或7.x最新版本实现一些炫酷的效果。先看下我博客网站的效果吧：wandouduoduo.github.io&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hexo.io/zh-cn/" title="Hexo官网" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Hexo官网
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://hexo.io/themes/" title="Theme选择" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+Theme选择
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://github.com/theme-next/hexo-theme-next" title="NexT主题" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+NexT主题
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>mac和windows等多台机器上协同写hexo博客的实现</title><link>/post/mac%E5%92%8Cwindows%E7%AD%89%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E4%B8%8A%E5%8D%8F%E5%90%8C%E5%86%99hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%9E%E7%8E%B0/</link><pubDate>Wed, 29 May 2019 00:44:16 +0800</pubDate><guid>/post/mac%E5%92%8Cwindows%E7%AD%89%E5%A4%9A%E5%8F%B0%E6%9C%BA%E5%99%A8%E4%B8%8A%E5%8D%8F%E5%90%8C%E5%86%99hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>在公司上的mac机器上部署了hexo博客，家里的电脑是windows机，想在家和公司都可以写博客，要怎么实现呢？&lt;/p></description></item><item><title>超详细的hexo+github page搭建.md</title><link>/post/%E8%B6%85%E8%AF%A6%E7%BB%86%E7%9A%84hexo+gitpage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link><pubDate>Mon, 27 May 2019 14:05:01 +0800</pubDate><guid>/post/%E8%B6%85%E8%AF%A6%E7%BB%86%E7%9A%84hexo+gitpage%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="安装nodejs">安装node.js
+&lt;a class="header-anchor" href="#%e5%ae%89%e8%a3%85nodejs">&lt;/a>
+&lt;/h2>&lt;p>在 Windows 环境下安装 Node.js 非常简单，仅须到
+&lt;a href="https://nodejs.org/en/download/" title="官网下载" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官网下载
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>安装文件并执行即可完成安装，其中LTS是长期支持版，Current为最新版，但最新版一般都在开发阶段，还不稳定。建议选择LTS版本&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="nodejs.png" alt="" />&lt;/p>
+&lt;p>像我的是Windows 64位LTS，直接下载后执行，无脑下一步就行了，不需要配置环境变量。&lt;/p></description></item><item><title>神级的Go开源项目</title><link>/post/%E7%A5%9E%E7%BA%A7%E7%9A%84go%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</link><pubDate>Mon, 27 May 2019 14:05:01 +0800</pubDate><guid>/post/%E7%A5%9E%E7%BA%A7%E7%9A%84go%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/</guid><description>Golang/go 介绍： Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。go本身，也是用go语言实</description></item></channel></rss>

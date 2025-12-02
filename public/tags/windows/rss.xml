@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Windows on 豌豆多多</title><link>/tags/windows/</link><description>Recent content in Windows on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Jun 2019 13:56:07 +0800</lastBuildDate><atom:link href="/tags/windows/rss.xml" rel="self" type="application/rss+xml"/><item><title>windows批处理用法之FOR</title><link>/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/</link><pubDate>Thu, 27 Jun 2019 13:56:07 +0800</pubDate><guid>/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/</guid><description>&lt;h2 id="大纲">&lt;strong>大纲&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%a4%a7%e7%ba%b2">&lt;/a>
+&lt;/h2>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>一 前言
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>二 for语句的基本用法
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>三 for /f （delims、tokens、skip、eol、userbackq、变量延迟）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>四 for /r （递归遍历）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>五 for /d （遍历目录）
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>六 for /l （计数循环）
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>

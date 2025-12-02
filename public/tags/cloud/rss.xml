@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cloud on 豌豆多多</title><link>/tags/cloud/</link><description>Recent content in Cloud on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 27 Jun 2019 09:42:10 +0800</lastBuildDate><atom:link href="/tags/cloud/rss.xml" rel="self" type="application/rss+xml"/><item><title>开源云笔记:程序员云笔记服务的不二之选</title><link>/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/</link><pubDate>Thu, 27 Jun 2019 09:42:10 +0800</pubDate><guid>/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/</guid><description>&lt;h2 id="前言">&lt;strong>前言&lt;/strong>
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>在这个互联网知识呈爆炸增长的时代，作为一个程序员要掌握的知识越来越多，然再好的记性也不如烂笔头，有了笔记我们就是可以时常扒拉扒拉以前的知识，顺便可以整理下自己的知识体系。&lt;/p>
+&lt;p>如今市面上云笔记产品，说实在真不少，什么有道，印象，为知等等，本人目前使用的是有道，无它，免费而已其他几个倒没怎么接触过，毕竟重复的产品一个就够了。笔记用了有三年多时间了，基本都是写写工作日志，备忘一下工作中遇到的脚本命令，顺便记录下工作中遇到的问题，由于只是记录文字，目前10G的空间仅仅使用了冰山一角。&lt;/p>
+&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>今天，给大家一起分享的是蚂蚁笔记，一个有极客范的云笔记！官方的介绍也相当牛逼：前所未有的文档体验，近乎完美的平台覆盖，支持团队协同，企业级私有云，蚂蚁笔记 = 笔记 + 博客 + 协作 + 私有云。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="8.png" alt="img" />&lt;/p>
+&lt;p>其实最主要的是蚂蚁笔记开源了，既然如此，云服务器又那么便宜，我们何不自己搭建一个云笔记服务，无论是自己还是分享给同事都是极好的，最主要的是还可以绑定域名生成博客，笔记AND博客一举两得岂不乐哉。&lt;/p>
+&lt;p>当然，如果有些小伙伴对信息安全要求较高的，不希望自己的信息记录在别人的服务器上，对开源源码有一定研究，使用起来还是不错的。但是如果单纯是为了省钱就没必要了，即使收费的有道一天也就几毛钱而已，而云服务器费用，自身是否有技术支持也是以后使用的硬伤，下面开始如何安装使用教程。&lt;/p></description></item><item><title>IaaS、PaaS、SaaS的区别</title><link>/post/iaaspaassaas%E7%9A%84%E5%8C%BA%E5%88%AB/</link><pubDate>Wed, 19 Jun 2019 15:40:07 +0800</pubDate><guid>/post/iaaspaassaas%E7%9A%84%E5%8C%BA%E5%88%AB/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>你一定听说过云计算中的三个“高大上”的你一定听说过云计算中的三个“高大上”的概念：IaaS、PaaS和SaaS，这几个术语并不好理解。**不过，如果你是个吃货，还喜欢披萨，这个问题就好解决了!**好吧，其实你根本不是一个吃货，之所以自我标榜为吃货，其实是为了收获赞叹式的夸奖，“吃货还这么瘦，好羡慕啊!”或者，总得给站长身材的微丰找个像样的理由。本文通过通俗简单的例子，让你完全理解云计算这三大术语的区别。&lt;/p></description></item></channel></rss>

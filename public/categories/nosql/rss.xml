@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>NoSQL on 豌豆多多</title><link>/categories/nosql/</link><description>Recent content in NoSQL on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 30 Jul 2019 18:01:08 +0800</lastBuildDate><atom:link href="/categories/nosql/rss.xml" rel="self" type="application/rss+xml"/><item><title>Redis-cluster集群[四]:redis-cluster集群配置</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E5%9B%9B-redis-cluster%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/</link><pubDate>Tue, 30 Jul 2019 18:01:08 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E5%9B%9B-redis-cluster%E9%9B%86%E7%BE%A4%E9%85%8D%E7%BD%AE/</guid><description>&lt;h2 id="redis分片">Redis分片：
+&lt;a class="header-anchor" href="#redis%e5%88%86%e7%89%87">&lt;/a>
+&lt;/h2>&lt;p>为什么要分片：随着Redis存储的数据越来越庞大，会导致Redis的性能越来越差！&lt;/p>
+&lt;p>目前分片的方法：&lt;/p>
+&lt;p>1,客户端分片&lt;/p>
+&lt;p>在应用层面分片，程序里指定什么数据存放在那个Redis 优势：比较灵活 缺点：加个节点扩容就很费劲&lt;/p>
+&lt;p>2, 代理Proxy分片 第三方的Twemproxy 使用代理的缺点，你代理什么性能，那么你整个Redis的性能就是什么样的！&lt;/p>
+&lt;p>3, redis cluster&lt;/p>
+&lt;p>4, codis （豌豆荚）开源&lt;/p></description></item><item><title>Redis-cluster集群[三]:redis主从复制</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%89-redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</link><pubDate>Tue, 30 Jul 2019 17:54:51 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%89-redis%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6/</guid><description>&lt;h2 id="redis主从复制原理">Redis主从复制原理：
+&lt;a class="header-anchor" href="#redis%e4%b8%bb%e4%bb%8e%e5%a4%8d%e5%88%b6%e5%8e%9f%e7%90%86">&lt;/a>
+&lt;/h2>&lt;p>通过把这个RDB文件或AOF文件传给slave服务器，slave服务器重新加载RDB文件，来实现复制的功能！&lt;/p>
+&lt;p>复制的话：主服务器可以有多个从服务器！！！ 不仅这样从服务器还可以有从服务器，可以做成星状的结构！&lt;/p>
+&lt;p>复制的话也不会阻塞进程，同样fork一个子进程来做！&lt;/p>
+&lt;p>复制的原理：&lt;/p>
+&lt;p>当建立一个从服务器后，从服务器会想主服务器发送一个SYNC的命令，主服务器接收到SYNC命令之后会执行BGSAVE&lt;/p>
+&lt;p>然后保存到RDB文件，然后发送到从服务器！收到RDB文件然后就载入到内存！&lt;/p>
+&lt;p>最早不支持增量，到2.8之后就支持增量了！&lt;/p></description></item><item><title>Redis-cluster集群[二]:redis持久化</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%BA%8C-redis%E6%8C%81%E4%B9%85%E5%8C%96/</link><pubDate>Tue, 30 Jul 2019 15:14:21 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%BA%8C-redis%E6%8C%81%E4%B9%85%E5%8C%96/</guid><description>&lt;h2 id="redis持久化原理">Redis持久化原理：
+&lt;a class="header-anchor" href="#redis%e6%8c%81%e4%b9%85%e5%8c%96%e5%8e%9f%e7%90%86">&lt;/a>
+&lt;/h2>&lt;p>Redis支持两种持久化：&lt;strong>RDB&lt;/strong>和&lt;strong>AOF&lt;/strong>模式&lt;/p></description></item><item><title>Redis-cluster集群[一]:redis安装及redis数据类型</title><link>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%80-redis%E5%AE%89%E8%A3%85%E5%8F%8Aredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</link><pubDate>Tue, 30 Jul 2019 14:25:29 +0800</pubDate><guid>/post/redis-cluster%E9%9B%86%E7%BE%A4-%E4%B8%80-redis%E5%AE%89%E8%A3%85%E5%8F%8Aredis%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</guid><description>&lt;h2 id="redis介绍">Redis介绍：
+&lt;a class="header-anchor" href="#redis%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;h3 id="介绍">&lt;strong>介绍&lt;/strong>
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h3>&lt;p>redis 是一个开源的、使用C语言编写的、支持网络交互的、可以基于内存也可以持久化的Key-Value数据库。&lt;/p>
+&lt;p>redis的源码非常简单，只要有时间看看谭浩强的C语言，在去看redis的源码能看懂50-60%。&lt;/p>
+&lt;p>redis目前最大的集群应该是新浪的应该。&lt;/p>
+&lt;p>redis目前是vmvaer来支持的，很多的开源软件都需要某些组织来支持的。如果一个开源软件没有金钱来支持的话很难走的持久&lt;/p>
+&lt;h3 id="redis和memcache对比">&lt;strong>Redis和Memcache对比&lt;/strong>
+&lt;a class="header-anchor" href="#redis%e5%92%8cmemcache%e5%af%b9%e6%af%94">&lt;/a>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>持久化：以电商举例，session用memcache来做的，购物车用redis来做的，当你退出的时候会提示你购物车里的物品会在你退出后继续保存。相对来说memcache存储更单一化！&lt;/p>
+&lt;p>主从复制：redis的主从复制类似mysql的主从复制但是原理是不同的！&lt;/p>
+&lt;p>虚拟内存：说白了就是把内存里一些不用的东西放在硬盘上，最好不要用，降低效率，现在内存来说比较便宜。&lt;/p></description></item><item><title>MongodDB[三]:基本操作</title><link>/post/mongoddb-%E4%B8%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</link><pubDate>Tue, 16 Jul 2019 17:36:39 +0800</pubDate><guid>/post/mongoddb-%E4%B8%89-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文介绍MongoDB的基本操作，包括文档的创建、删除、和更新。&lt;/p></description></item><item><title>MongoDB[二]:逻辑与物理存储结构</title><link>/post/mongodb-%E4%BA%8C-%E9%80%BB%E8%BE%91%E4%B8%8E%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</link><pubDate>Mon, 15 Jul 2019 18:11:59 +0800</pubDate><guid>/post/mongodb-%E4%BA%8C-%E9%80%BB%E8%BE%91%E4%B8%8E%E7%89%A9%E7%90%86%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>对MongoDB中操作逻辑和存储结构进行详细介绍。&lt;/p></description></item><item><title>MongoDB[一]:初识</title><link>/post/mongodb-%E4%B8%80-%E5%88%9D%E8%AF%86/</link><pubDate>Mon, 15 Jul 2019 17:49:45 +0800</pubDate><guid>/post/mongodb-%E4%B8%80-%E5%88%9D%E8%AF%86/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文对Nosql进行介绍，并且引申出mongodb，进而对mango安装过程进行记录。&lt;/p></description></item><item><title>redis安全机制设置</title><link>/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/</link><pubDate>Thu, 27 Jun 2019 09:31:03 +0800</pubDate><guid>/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>redis作为一个高速数据库，在互联网上广泛使用，但是在生产环境必须有对应的安全机制来进行保护。那么怎么保护呢？&lt;/p></description></item><item><title>Redis系列之数据类型和操作</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 21 Jun 2019 09:46:11 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%93%8D%E4%BD%9C/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Redis是一种支持Key-Value等多种数据结构的存储系统。可用于缓存，事件发布或订阅，高速队列等场景。该数据库使用ANSI C语言编写，支持网络，提供字符串，哈希，列表，队列，集合结构直接存取，基于内存，可持久化。本文介绍Redis的数据类型和相关操作。&lt;/p></description></item><item><title>Redis系列之安装</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E5%AE%89%E8%A3%85/</link><pubDate>Fri, 21 Jun 2019 09:16:41 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E5%AE%89%E8%A3%85/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>redis作为nosql家族中非常热门的一员，也是被大型互联网公司所青睐，无论你是开发、测试或者运维，学习掌握它总会为你的职业生涯增色添彩。本文介绍Redis的安装及配置详解。&lt;/p></description></item><item><title>Redis系列之介绍</title><link>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%8B%E7%BB%8D/</link><pubDate>Thu, 20 Jun 2019 19:14:47 +0800</pubDate><guid>/post/redis%E7%B3%BB%E5%88%97%E4%B9%8B%E4%BB%8B%E7%BB%8D/</guid><description>&lt;h2 id="redis简介">redis简介
+&lt;a class="header-anchor" href="#redis%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>redis是Nosql数据库中使用较为广泛的非关系型内存数据库。redis内部是一个key-value存储系统。它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型，类似于Java中的map）。Redis基于内存运行并支持持久化的NoSQL数据库，是当前最热门的NoSql数据库之一，也被人们称为数据结构服务器。&lt;/p></description></item></channel></rss>

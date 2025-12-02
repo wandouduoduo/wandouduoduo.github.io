@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Mesos on 豌豆多多</title><link>/categories/mesos/</link><description>Recent content in Mesos on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 14 Jun 2019 15:13:10 +0800</lastBuildDate><atom:link href="/categories/mesos/rss.xml" rel="self" type="application/rss+xml"/><item><title>Mesos集群搭建(host)</title><link>/post/mesos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA-host/</link><pubDate>Fri, 14 Jun 2019 15:13:10 +0800</pubDate><guid>/post/mesos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA-host/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文构建mesos集群，用mesos+marathon把docker玩起来。&lt;/p>
+&lt;h2 id="架构图">架构图
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e5%9b%be">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item></channel></rss>

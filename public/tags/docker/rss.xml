@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on 豌豆多多</title><link>/tags/docker/</link><description>Recent content in Docker on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 09 Apr 2021 11:57:50 +0800</lastBuildDate><atom:link href="/tags/docker/rss.xml" rel="self" type="application/rss+xml"/><item><title>Docker快速安装jumperserver</title><link>/post/docker%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85jumperserver/</link><pubDate>Fri, 09 Apr 2021 11:57:50 +0800</pubDate><guid>/post/docker%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85jumperserver/</guid><description>&lt;p>Jumpserver堡垒机的作用和好处这里就不再赘述，本文教你快速用docker容器安装jumperserver，让你快速体验。本教程是在单机上操作，处于以后扩展的需求，强烈建议在多台服务器上搭建。&lt;/p></description></item><item><title>Docker安装zabbix5.0LTS教程和优化</title><link>/post/docker%E5%AE%89%E8%A3%85zabbix5-0lts%E6%95%99%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96/</link><pubDate>Wed, 18 Nov 2020 14:57:48 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85zabbix5-0lts%E6%95%99%E7%A8%8B%E5%92%8C%E4%BC%98%E5%8C%96/</guid><description>&lt;p>在操作系统上直接部署安装zabbix太麻烦了，最近在搞k8s，正好研究下用docker容器来安装zabbix5.0LTS长期支持版。&lt;/p></description></item><item><title>单台centos7服务器Docker部署sentry服务</title><link>/post/%E5%8D%95%E5%8F%B0centos7%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E9%83%A8%E7%BD%B2sentry%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 06 Aug 2020 11:45:38 +0800</pubDate><guid>/post/%E5%8D%95%E5%8F%B0centos7%E6%9C%8D%E5%8A%A1%E5%99%A8docker%E9%83%A8%E7%BD%B2sentry%E6%9C%8D%E5%8A%A1/</guid><description>&lt;p>&lt;code>Sentry&lt;/code> 是一个实时事件的日志聚合平台。它专门监测错误并提取所有有用信息用于分析，不再麻烦地依赖用户反馈来定位问题。它是一款基于 &lt;code>Django&lt;/code>实现的错误日志收集和聚合的平台，它是 &lt;code>Python&lt;/code> 实现的，但是其日志监控功能却不局限于&lt;code>python&lt;/code>，对诸如 &lt;code>Node.js&lt;/code>, &lt;code>php&lt;/code>,&lt;code>ruby&lt;/code>, &lt;code>C#&lt;/code>,&lt;code>java&lt;/code> 等语言的项目都可以做到无缝集成，甚至可以用来对&lt;code>iOS&lt;/code>, &lt;code>Android&lt;/code> 移动客户端以及 &lt;code>Web&lt;/code>前端异常进行跟踪。我们可以在程序中捕获异常，并发送到 &lt;code>Sentry&lt;/code>服务端进行聚合统计、展示和报警。sentry官方推荐docker方式安装，使用到了docker-compose。本文就详细教你如果搭建部署sentry服务。&lt;/p></description></item><item><title>CentOS7安装指定版本Docker-ce</title><link>/post/centos7%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%ACdocker-ce/</link><pubDate>Thu, 02 Jul 2020 14:09:58 +0800</pubDate><guid>/post/centos7%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%ACdocker-ce/</guid><description>&lt;h2 id="docker版本说明">&lt;strong>Docker版本说明&lt;/strong>
+&lt;a class="header-anchor" href="#docker%e7%89%88%e6%9c%ac%e8%af%b4%e6%98%8e">&lt;/a>
+&lt;/h2>&lt;p>Docker-CE指Docker社区版，由社区维护和提供技术支持，为免费版本，适合个人开发人员和小团队使用。&lt;/p>
+&lt;p>Docker-EE指Docker企业版，为收费版本，由售后团队和技术团队提供技术支持，专为企业开发和IT团队而设计。&lt;/p>
+&lt;p>相比Docker-EE，增加一些额外功能，更重要的是提供了更安全的保障。&lt;/p>
+&lt;p>此外，Docker的发布版本分为Stable版和Edge版，区别在于前者是按季度发布的稳定版(发布慢)，后者是按月发布的边缘版(发布快)。&lt;/p>
+&lt;p>通常情况下，Docker-CE足以满足我们的需求。&lt;/p></description></item><item><title>kubernetes1.18安装Dashboard</title><link>/post/kubernetes1-18%E5%AE%89%E8%A3%85dashboard/</link><pubDate>Mon, 22 Jun 2020 12:06:34 +0800</pubDate><guid>/post/kubernetes1-18%E5%AE%89%E8%A3%85dashboard/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>k8s的集群搭建已经完成，那么页面怎么管理呢？本文详细介绍k8s-dashboard页面管理。&lt;/p></description></item><item><title>centos7使用kubeadm安装kubernetes集群</title><link>/post/centos7%E4%BD%BF%E7%94%A8kubeadm%E5%AE%89%E8%A3%85kubernetes%E9%9B%86%E7%BE%A4/</link><pubDate>Mon, 22 Jun 2020 10:25:57 +0800</pubDate><guid>/post/centos7%E4%BD%BF%E7%94%A8kubeadm%E5%AE%89%E8%A3%85kubernetes%E9%9B%86%E7%BE%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Kubernetes是Google 2014年创建管理的，是Google 10多年大规模容器管理技术Borg的开源版本。它是容器集群管理系统，是一个开源的平台，可以实现容器集群的自动化部署、自动扩缩容、维护等功能。本文详细介绍了集群的搭建。&lt;/p></description></item><item><title>Docker知识点</title><link>/post/docker%E7%9F%A5%E8%AF%86%E7%82%B9/</link><pubDate>Thu, 24 Oct 2019 22:08:06 +0800</pubDate><guid>/post/docker%E7%9F%A5%E8%AF%86%E7%82%B9/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>运维日常工作中常见服务的docker快速安装汇总。&lt;/p>
+&lt;p>cadvisor docker监控&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2;">&lt;code class="language-fallback" data-lang="fallback">&lt;span style="display:flex;">&lt;span>docker run —cpu-period=100000 —cpu-quota=100000 -m 1g --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --publish=9999:8080 --name=cadvisor google/cadvisor -storage_driver=influxdb -storage_driver_db=cadvisor -storage_driver_host=172.18.203.15:8086 -storage_driver_user=cadvisor -storage_driver_password=cadvisor
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>docker安装redmine服务</title><link>/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/</link><pubDate>Thu, 05 Sep 2019 13:38:52 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85redmine%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>快速搭建redmine服务，以便能够对项目和工作流进行管控。&lt;/p>
+&lt;h2 id="参考文档">参考文档
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83%e6%96%87%e6%a1%a3">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hub.docker.com/_/redmine" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>或者
+&lt;a href="https://docs.docker.com/samples/library/redmine/" title="docker官方" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+docker官方
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>docker构建自己的openldap自助密码服务</title><link>/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/</link><pubDate>Tue, 03 Sep 2019 15:17:12 +0800</pubDate><guid>/post/docker%E6%9E%84%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84openldap%E8%87%AA%E5%8A%A9%E5%AF%86%E7%A0%81%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>OpenLDAP安装完毕后，如果用户要修改密码的话，就需要通过OpenLDAP管理员来进行修改。为了解放管理员的工作，让OpenLDAP用户可以自行进行密码的修改和重置，就需要我们来搭建一套自助修改密码系统。&lt;/p>
+&lt;p>在此我们使用的是开源的基于php语言开发的ldap自助修改密码系统Self Service Password。&lt;/p>
+&lt;h2 id="教程">教程
+&lt;a class="header-anchor" href="#%e6%95%99%e7%a8%8b">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://github.com/wandouduoduo/docker-ssp" title="参考文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>Docker版快速安装OpenLDAP</title><link>/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/</link><pubDate>Wed, 28 Aug 2019 14:58:44 +0800</pubDate><guid>/post/docker%E7%89%88%E5%BF%AB%E9%80%9F%E5%AE%89%E8%A3%85openldap/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>互联网公司中，会开发很多平台系统，有开源的有自演的，但是每个平台或系统在用户认证方面都需要做，而且处于安全等因素考虑还必须做，统一的用户管理机制可以解决这一痛点。openldap就是这么一个工具。本文，通过docker快速搭建起来，让你体会到它的魅力。&lt;/p></description></item><item><title>Docker安装Confluence(破解版)</title><link>/post/docker%E5%AE%89%E8%A3%85confluence-%E7%A0%B4%E8%A7%A3%E7%89%88/</link><pubDate>Tue, 30 Jul 2019 18:17:29 +0800</pubDate><guid>/post/docker%E5%AE%89%E8%A3%85confluence-%E7%A0%B4%E8%A7%A3%E7%89%88/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>confluence是一个专业的企业知识管理与协同软件，可以用于构建企业wiki。通过它可以实现团队成员之间的协作和知识共享。现在大多数公司都会部署一套confluence，用作内部wiki。现在confluence已收费，那么下面将介绍下Docker安装破解confluence的操作记录。&lt;/p></description></item><item><title>Docker中安装Wiki软件Confluence</title><link>/post/docker%E4%B8%AD%E5%AE%89%E8%A3%85wiki%E8%BD%AF%E4%BB%B6confluence/</link><pubDate>Thu, 25 Jul 2019 15:07:14 +0800</pubDate><guid>/post/docker%E4%B8%AD%E5%AE%89%E8%A3%85wiki%E8%BD%AF%E4%BB%B6confluence/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文通过在centos 7上Docker安装Wiki软件Confluence，并通过破解，让公司有一个稳定高效的文档平台。&lt;/p></description></item><item><title>gitlab安装配置手册(Docker版)</title><link>/post/gitlab%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C-docker%E7%89%88/</link><pubDate>Wed, 24 Jul 2019 14:32:39 +0800</pubDate><guid>/post/gitlab%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E6%89%8B%E5%86%8C-docker%E7%89%88/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>使用Docker容器来快速安装配置和使用的gitlab&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://hub.docker.com/r/twang2218/gitlab-ce-zh/" title="gitlab官网镜像" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+gitlab官网镜像
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>基于Docker+Consul+Registrator的服务注册与发现集群搭建</title><link>/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</link><pubDate>Tue, 25 Jun 2019 19:01:05 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</guid><description>&lt;h2 id="前言">前言
+&lt;a class="header-anchor" href="#%e5%89%8d%e8%a8%80">&lt;/a>
+&lt;/h2>&lt;p>微服务架构在互联网应用领域中愈来愈火，引入微服务主要解决了单体应用&lt;strong>多个模块的紧耦合&lt;/strong>、&lt;strong>无法扩展&lt;/strong>和&lt;strong>运维困难&lt;/strong>等问题。微服务架构就是按照&lt;strong>功能粒度&lt;/strong>将业务模块进行&lt;strong>垂直拆分&lt;/strong>，对单体应用本身进行&lt;strong>服务化&lt;/strong>和&lt;strong>组件化&lt;/strong>，每个组件单独部署为&lt;strong>小应用&lt;/strong>（从&lt;code>DB&lt;/code>到&lt;code>UI&lt;/code>）。微服务与微服务之间通过&lt;code>Service API&lt;/code>进行交互，同时为了支持&lt;strong>水平扩展&lt;/strong>、&lt;strong>性能提升&lt;/strong>和&lt;strong>服务可用性&lt;/strong>，单个服务允许同时部署一个或者多个&lt;strong>服务实例&lt;/strong>。在运行时，每个实例通常是一个&lt;strong>云虚拟机&lt;/strong>或者&lt;code>Docker&lt;/code>&lt;strong>容器&lt;/strong>。&lt;/p>
+&lt;p>微服务系统内部多个服务的实例之间如何通信？如何感知到彼此的存在和销毁？生产者服务如何知道消费者服务的地址？如何实现服务与注册中心的解耦？这就需要一个第三方的服务注册中心，提供对生产者服务节点的注册管理和消费者服务节点的发现管理。&lt;/p></description></item><item><title>基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现</title><link>/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</link><pubDate>Tue, 25 Jun 2019 17:22:41 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现过程。&lt;/p></description></item><item><title>Docker版cmdbuild安装教程</title><link>/post/docker%E7%89%88cmdbuild%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</link><pubDate>Wed, 19 Jun 2019 09:53:39 +0800</pubDate><guid>/post/docker%E7%89%88cmdbuild%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</guid><description>&lt;h2 id="介绍">介绍
+&lt;a class="header-anchor" href="#%e4%bb%8b%e7%bb%8d">&lt;/a>
+&lt;/h2>&lt;p>CMDB &amp;ndash;Configuration Management Database 配置管理数据库, CMDB存储与管理企业IT架构中设备的各种配置信息，它与所有服务支持和服务交付流程都紧密相联，支持这些流程的运转、发挥配置信息的价值，同时依赖于相关流程保证数据的准确性。&lt;/p>
+&lt;p>CMDB，几乎是每个运维人都绕不过去的字眼，但又是很多运维人的痛，因为基本上所有的互联网公司都在搞，都在想着把尽可能多信息都收集汇总过来，然后实现自动化,智能化，但是CMDB很少有成功的，因此它也被称为运维人的耻辱。&lt;/p>
+&lt;p>我们运维人不要再为了KPI，绩效等东东重复造轮子，并且造出来的轮子只能自己用。我们运维人工作中共同的迫切需求点是什么呢？&lt;/p>
+&lt;p>1，中文的web页面即使丑点也可以接受。日常查看导入导出，新增等等操作方便，而且防止语言不通误操作。&lt;/p>
+&lt;p>2，数据库模型和业务逻辑是分离开的。只需要建业务逻辑字段就能自动映射为数据库模型。&lt;/p>
+&lt;p>3，动态实现表间关系。随着收集数据的完善，表与表之间关系越来越复杂，不要因后续业务需要，对表做出改动，而影响以前的关系和调用，可以动态扩展。想想一下，增加个关系字段，原来的代码都要改的酸爽。&lt;/p>
+&lt;p>4，自定义表。可以自定义根据业务需求建表和逻辑关系。&lt;/p>
+&lt;p>5，动态API接口。根据表逻辑改动API动态自动更改，弱化业务和数据关系的实现，并且能够和外部系统做联动，支持API接口调用，方便扩展和自动化。&lt;/p>
+&lt;p>以上需求是最迫切的，本人工作多年，自己用django写过cmdb系统，但到后来维护成本会越来越大，考察了国内外开源的软件，最终找到cmdbuild，基本上可以满足上面全部需求，下面就来介绍下用docker容器快速安装cmdbuild，因cmdbuild是国外的软件，所以国内文档很少。&lt;/p></description></item><item><title>Mesos集群搭建(host)</title><link>/post/mesos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA-host/</link><pubDate>Fri, 14 Jun 2019 15:13:10 +0800</pubDate><guid>/post/mesos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA-host/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>通过本文构建mesos集群，用mesos+marathon把docker玩起来。&lt;/p>
+&lt;h2 id="架构图">架构图
+&lt;a class="header-anchor" href="#%e6%9e%b6%e6%9e%84%e5%9b%be">&lt;/a>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>基于Docker的高可用集群xxl-job分布式任务调度</title><link>/post/%E5%9F%BA%E4%BA%8Edocker%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8xxl-job%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Thu, 13 Jun 2019 09:38:53 +0800</pubDate><guid>/post/%E5%9F%BA%E4%BA%8Edocker%E7%9A%84%E9%AB%98%E5%8F%AF%E7%94%A8xxl-job%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>XXL-JOB是一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。本文是基于docker从编译到高可用集群方案的制定和部署实施，做了详细阐述。&lt;/p></description></item></channel></rss>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>K8s on 豌豆多多</title><link>/categories/k8s/</link><description>Recent content in K8s on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Jul 2022 11:18:20 +0800</lastBuildDate><atom:link href="/categories/k8s/rss.xml" rel="self" type="application/rss+xml"/><item><title>k8s详解Service和Ingress</title><link>/post/k8s%E8%AF%A6%E8%A7%A3service%E5%92%8Cingress/</link><pubDate>Tue, 26 Jul 2022 11:18:20 +0800</pubDate><guid>/post/k8s%E8%AF%A6%E8%A7%A3service%E5%92%8Cingress/</guid><description>&lt;h1 id="service-的概念">Service 的概念
+&lt;a class="header-anchor" href="#service-%e7%9a%84%e6%a6%82%e5%bf%b5">&lt;/a>
+&lt;/h1>&lt;p>Kubernetes Service定义了这样一种抽象：一个Pod的逻辑分组，一种可以访问它们的策略 —— 通常称为微服务。这一组Pod能够被Service访问到，通常是通过Label Selector&lt;/p>
+&lt;p>通俗的讲：SVC负责检测Pod的状态信息，不会因pod的改动IP地址改变（因为关注的是标签），导致Nginx负载均衡影响&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>Service能够提供负载均衡的能力，但是在使用上有以下限制：&lt;/p>
+&lt;ul>
+&lt;li>默认只提供 4 层负载均衡能力（IP+端口），而没有 7 层功能（主机名和域名），但有时我们可能需要更多的匹配规则来转发请求，这点上 4 层负载均衡是不支持的&lt;/li>
+&lt;li>后续可以通过Ingress方案，添加7层的能力&lt;/li>
+&lt;/ul></description></item><item><title>k8s网络flannel和calico网络模式对比</title><link>/post/k8s%E7%BD%91%E7%BB%9Cflannel%E5%92%8Ccalico%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/</link><pubDate>Mon, 12 Apr 2021 11:40:08 +0800</pubDate><guid>/post/k8s%E7%BD%91%E7%BB%9Cflannel%E5%92%8Ccalico%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%BC%8F%E5%AF%B9%E6%AF%94/</guid><description>&lt;p>Kubernetes跨主机容器之间的通信组件，目前主流的是flannel和calico，本文对两个组件进行简单介绍和对比。&lt;/p></description></item><item><title>手把手搭建k8s集群和kubesphere</title><link>/post/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E5%92%8Ckubesphere/</link><pubDate>Wed, 17 Mar 2021 16:45:52 +0800</pubDate><guid>/post/%E6%89%8B%E6%8A%8A%E6%89%8B%E6%90%AD%E5%BB%BAk8s%E9%9B%86%E7%BE%A4%E5%92%8Ckubesphere/</guid><description>&lt;p>本文将从零开始在干净的机器上安装 &lt;code>Docker、Kubernetes (使用 kubeadm)、Calico、NFS StorageClass等&lt;/code>，通过手把手的教程演示如何搭建一个 &lt;code>Kubernetes集群&lt;/code>，并在 K8s集群之上安装开源的&lt;code>KubeSphere&lt;/code> 容器平台可视化运营集群环境。&lt;/p></description></item><item><title>k8s之详解Ingress并实战</title><link>/post/k8s%E4%B9%8B%E8%AF%A6%E8%A7%A3ingress%E5%B9%B6%E5%AE%9E%E6%88%98/</link><pubDate>Tue, 07 Jul 2020 17:39:06 +0800</pubDate><guid>/post/k8s%E4%B9%8B%E8%AF%A6%E8%A7%A3ingress%E5%B9%B6%E5%AE%9E%E6%88%98/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文对k8s中Ingress反向代理进行详细剖析，详细介绍了原理，并通过实际例子来详细说明。&lt;/p></description></item><item><title>容器版Jenkins连接K8s</title><link>/post/%E5%AE%B9%E5%99%A8%E7%89%88jenkins%E8%BF%9E%E6%8E%A5k8s/</link><pubDate>Thu, 02 Jul 2020 17:08:51 +0800</pubDate><guid>/post/%E5%AE%B9%E5%99%A8%E7%89%88jenkins%E8%BF%9E%E6%8E%A5k8s/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详解介绍了容器版jenkins连接k8s的配置和使用详情。特别注意：必须用谷歌浏览器，而且非容器版jenkins是无法安装kubernetes插件的，所以无法连接k8s。
+&lt;a href="https://wandouduoduo.github.io/articles/87f87b20.html" title="搭建k8s集群教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+搭建k8s集群教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>操作系统版本: Ubuntu 18.04 TLS&lt;/p>
+&lt;p>软件版本: Jenkins 2.121.2&lt;/p></description></item><item><title>k8s版jenkins带maven、jdk、git各种工具用master/slave模式实现CI/CD</title><link>/post/k8s%E7%89%88jenkins%E5%B8%A6mavenjdkgit%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7%E7%94%A8master-slave%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0ci-cd/</link><pubDate>Thu, 02 Jul 2020 14:56:01 +0800</pubDate><guid>/post/k8s%E7%89%88jenkins%E5%B8%A6mavenjdkgit%E5%90%84%E7%A7%8D%E5%B7%A5%E5%85%B7%E7%94%A8master-slave%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0ci-cd/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文在k8s集群中把各种工具（jdk，git, maven等）集成到jenkins，用master/slave模式实现CI/CD。&lt;/p>
+&lt;h2 id="环境">环境
+&lt;a class="header-anchor" href="#%e7%8e%af%e5%a2%83">&lt;/a>
+&lt;/h2>&lt;p>k8s集群
+&lt;a href="https://wandouduoduo.github.io/articles/87f87b20.html" title="参考教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>Hubor镜像服务
+&lt;a href="https://wandouduoduo.github.io/articles/b9ccc582.html" title="参考教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>nfs/Ceph持久存储
+&lt;a href="https://wandouduoduo.github.io/articles/3acab424.html" title="参考教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+参考教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>
+&lt;a href="https://wandouduoduo.github.io/articles/12aa61a7.html" title="K8s中Jenkins实践教程" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+K8s中Jenkins实践教程
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item><item><title>k8s之jenkins动态创建slave</title><link>/post/k8s%E4%B9%8Bjenkins%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BAslave/</link><pubDate>Tue, 30 Jun 2020 15:42:05 +0800</pubDate><guid>/post/k8s%E4%B9%8Bjenkins%E5%8A%A8%E6%80%81%E5%88%9B%E5%BB%BAslave/</guid><description>&lt;h2 id="简述">简述
+&lt;a class="header-anchor" href="#%e7%ae%80%e8%bf%b0">&lt;/a>
+&lt;/h2>&lt;p>持续构建与发布是我们日常工作中必不可少的一个步骤，目前大多公司都采用 Jenkins 集群来搭建符合需求的 CI/CD 流程，然而传统的 Jenkins Slave 一主多从方式会存在一些痛点，比如：&lt;/p>
+&lt;ul>
+&lt;li>主 Master 发生单点故障时，整个流程都不可用了&lt;/li>
+&lt;li>每个 Slave 的配置环境不一样，来完成不同语言的编译打包等操作，但是这些差异化的配置导致管理起来非常不方便，维护起来也是比较费劲&lt;/li>
+&lt;li>资源分配不均衡，有的 Slave 要运行的 job 出现排队等待，而有的 Slave 处于空闲状态&lt;/li>
+&lt;li>资源有浪费，每台 Slave 可能是物理机或者虚拟机，当 Slave 处于空闲状态时，也不会完全释放掉资源。&lt;/li>
+&lt;/ul>
+&lt;p>正因为上面的这些种种痛点，我们渴望一种更高效更可靠的方式来完成这个 CI/CD 流程，而 Docker 虚拟化容器技术能很好的解决这个痛点，又特别是在 Kubernetes 集群环境下面能够更好来解决上面的问题，下图是基于 Kubernetes 搭建 Jenkins 集群的简单示意图：
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p>
+&lt;p>从图上可以看到 Jenkins Master 和 Jenkins Slave 以 Pod 形式运行在 Kubernetes 集群的 Node 上，Master 运行在其中一个节点，并且将其配置数据存储到一个 Volume 上去，Slave 运行在各个节点上，并且它不是一直处于运行状态，它会按照需求动态的创建并自动删除。&lt;/p>
+&lt;p>这种方式的工作流程大致为：当 Jenkins Master 接受到 Build 请求时，会根据配置的 Label 动态创建一个运行在 Pod 中的 Jenkins Slave 并注册到 Master 上，当运行完 Job 后，这个 Slave 会被注销并且这个 Pod 也会自动删除，恢复到最初状态。&lt;/p>
+&lt;p>使用jenkins动态slave的优势：&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>服务高可用&lt;/strong>，当 Jenkins Master 出现故障时，Kubernetes 会自动创建一个新的 Jenkins Master 容器，并且将 Volume 分配给新创建的容器，保证数据不丢失，从而达到集群服务高可用。&lt;/li>
+&lt;li>&lt;strong>动态伸缩&lt;/strong>，合理使用资源，每次运行 Job 时，会自动创建一个 Jenkins Slave，Job 完成后，Slave 自动注销并删除容器，资源自动释放，而且 Kubernetes 会根据每个资源的使用情况，动态分配 Slave 到空闲的节点上创建，降低出现因某节点资源利用率高，还排队等待在该节点的情况。&lt;/li>
+&lt;li>&lt;strong>扩展性好&lt;/strong>，当 Kubernetes 集群的资源严重不足而导致 Job 排队等待时，可以很容易的添加一个 Kubernetes Node 到集群中，从而实现扩展。&lt;/li>
+&lt;/ul></description></item><item><title>k8s之存储服务</title><link>/post/k8s%E4%B9%8B%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</link><pubDate>Tue, 30 Jun 2020 12:19:41 +0800</pubDate><guid>/post/k8s%E4%B9%8B%E5%AD%98%E5%82%A8%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>本文详细介绍了kubernentes的存储，使用NFS进行演示，让你充分了解和使用pv和pvc，可以举一反三的使用持久化存储。&lt;/p></description></item><item><title>K8S之CI/CD自动化</title><link>/post/k8s%E4%B9%8Bci-cd%E8%87%AA%E5%8A%A8%E5%8C%96/</link><pubDate>Sun, 28 Jun 2020 17:27:59 +0800</pubDate><guid>/post/k8s%E4%B9%8Bci-cd%E8%87%AA%E5%8A%A8%E5%8C%96/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>CICD 是 持续集成（Continuous Integration）和持续部署（Continuous Deployment）简称。指在开发过程中自动执行一系列脚本来减低开发引入 bug 的概率，在新代码从开发再到部署的过程中，尽量减少人工的介入。&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="1.png" alt="" />&lt;/p></description></item><item><title>K8S之镜像管理服务</title><link>/post/k8s%E4%B9%8B%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/</link><pubDate>Sun, 28 Jun 2020 15:41:52 +0800</pubDate><guid>/post/k8s%E4%B9%8B%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86%E6%9C%8D%E5%8A%A1/</guid><description>&lt;h2 id="简介">简介
+&lt;a class="header-anchor" href="#%e7%ae%80%e4%bb%8b">&lt;/a>
+&lt;/h2>&lt;p>Harbor是构建企业级私有docker镜像的仓库的开源解决方案，它是Docker Registry的更高级封装，它除了提供友好的Web UI界面，角色和用户权限管理，用户操作审计等功能外，它还整合了K8s的插件(Add-ons)仓库，即Helm通过chart方式下载，管理，安装K8s插件，而chartmuseum可以提供存储chart数据的仓库【注:helm就相当于k8s的yum】。另外它还整合了两个开源的安全组件，一个是Notary，另一个是Clair，Notary类似于私有CA中心，而Clair则是容器安全扫描工具，它通过各大厂商提供的CVE漏洞库来获取最新漏洞信息，并扫描用户上传的容器是否存在已知的漏洞信息，这两个安全功能对于企业级私有仓库来说是非常具有意义的。&lt;/p></description></item><item><title>kubernetes1.18安装Dashboard</title><link>/post/kubernetes1-18%E5%AE%89%E8%A3%85dashboard/</link><pubDate>Mon, 22 Jun 2020 12:06:34 +0800</pubDate><guid>/post/kubernetes1-18%E5%AE%89%E8%A3%85dashboard/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>k8s的集群搭建已经完成，那么页面怎么管理呢？本文详细介绍k8s-dashboard页面管理。&lt;/p></description></item><item><title>centos7使用kubeadm安装kubernetes集群</title><link>/post/centos7%E4%BD%BF%E7%94%A8kubeadm%E5%AE%89%E8%A3%85kubernetes%E9%9B%86%E7%BE%A4/</link><pubDate>Mon, 22 Jun 2020 10:25:57 +0800</pubDate><guid>/post/centos7%E4%BD%BF%E7%94%A8kubeadm%E5%AE%89%E8%A3%85kubernetes%E9%9B%86%E7%BE%A4/</guid><description>&lt;h2 id="目的">目的
+&lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
+&lt;/h2>&lt;p>Kubernetes是Google 2014年创建管理的，是Google 10多年大规模容器管理技术Borg的开源版本。它是容器集群管理系统，是一个开源的平台，可以实现容器集群的自动化部署、自动扩缩容、维护等功能。本文详细介绍了集群的搭建。&lt;/p></description></item></channel></rss>

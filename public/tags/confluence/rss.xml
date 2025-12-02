@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Confluence on 豌豆多多</title><link>/tags/confluence/</link><description>Recent content in Confluence on 豌豆多多</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 27 Sep 2019 11:55:30 +0800</lastBuildDate><atom:link href="/tags/confluence/rss.xml" rel="self" type="application/rss+xml"/><item><title>jira低版本(7.4.1)发现漏洞升级到最新版本(8.4.1)</title><link>/post/jira%E4%BD%8E%E7%89%88%E6%9C%AC-7-4-1-%E5%8F%91%E7%8E%B0%E6%BC%8F%E6%B4%9E%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC-8-4-1/</link><pubDate>Fri, 27 Sep 2019 11:55:30 +0800</pubDate><guid>/post/jira%E4%BD%8E%E7%89%88%E6%9C%AC-7-4-1-%E5%8F%91%E7%8E%B0%E6%BC%8F%E6%B4%9E%E5%8D%87%E7%BA%A7%E5%88%B0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC-8-4-1/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>早上到公司就接到总部信息安全组邮件。邮件内容是：Atlassian公开了一个Jira未授权SSRF漏洞。Jira的/plugins/servlet/gadgets/makeRequest资源存在SSRF漏洞，原因在于JiraWhitelist这个类的逻辑缺陷，成功利用此漏洞的远程攻击者可以以Jira服务端的身份访问内网资源。此漏洞无需任何凭据即可触发。&lt;/p>
+&lt;p>&lt;strong>影响范围&lt;/strong>&lt;/p>
+&lt;p>版本小于8.4.0&lt;/p>
+&lt;p>漏洞详情链接：
+&lt;a href="https://jira.atlassian.com/browse/JRASERVER-69793" title="https://jira.atlassian.com/browse/JRASERVER-69793" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+https://jira.atlassian.com/browse/JRASERVER-69793
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p>
+&lt;p>基于以上情况，把在线上的jira 7.4.1版本升级为最新版本8.4.1，因为官方在8.4.0已经修复这个漏洞。&lt;/p></description></item><item><title>confluence6.3.1升级最新版本6.15.8</title><link>/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/</link><pubDate>Mon, 02 Sep 2019 12:00:40 +0800</pubDate><guid>/post/confluence6-3-1%E5%8D%87%E7%BA%A7%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC6-15-8/</guid><description>&lt;h2 id="背景">背景
+&lt;a class="header-anchor" href="#%e8%83%8c%e6%99%af">&lt;/a>
+&lt;/h2>&lt;p>收到公司总部安全部门扫描测试，查出公司内部confluence的版本太低，存在安全漏洞。给出的解决方案是升级到最新版本，最新版本已经把该漏洞修复。本文就详细介绍下confluence的升级过程。&lt;/p>
+&lt;h2 id="参考">参考
+&lt;a class="header-anchor" href="#%e5%8f%82%e8%80%83">&lt;/a>
+&lt;/h2>&lt;p>
+&lt;a href="https://www.cwiki.us/display/CONFLUENCEWIKI/Upgrading&amp;#43;Confluence" title="官方文档" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+官方文档
+&lt;i class="fa fa-external-link-alt">&lt;/i>
+&lt;/a>&lt;/p></description></item></channel></rss>

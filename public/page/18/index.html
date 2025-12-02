@@ -1,0 +1,276 @@
+<!doctype html><html lang=zh-CN data-theme=dark><head><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: dark)"><meta name=generator content="Hugo 0.115.4"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon-32x32.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple-touch-icon.png><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=keywords content="架构师,运维,yunwei,豌豆,wandou,笔记,note,自动化,工具,DevOps,工程师,Linux,Shell,数据库,互联网,k8s,docker,云计算,python,程序员,虚拟化"><meta property="og:type" content="website"><meta property="og:title" content="豌豆多多"><meta property="og:description" content="资深运维架构师豌豆多多的呕心笔记"><meta property="og:image" content="/imgs/yunwei.png"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="/"><meta property="og:site_name" content="豌豆多多"><meta property="og:locale" content="zh-CN"><meta name=google-site-verification content="27nKwb_oPifd-peB2Juh7eiKE-ZIpIcPp7ug9xPLKh4"><meta name=baidu-site-verification content="2U3NKVcqUGdR2dZr"><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.css><link rel=stylesheet href=/css/main.min.758ca92e2d3921bfec60f8dcce1d704a58b52488aeb3a8e4cd1df130a70724a9.css><style type=text/css>.post-footer,.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script class=next-config data-name=page type=application/json>{"comments":true,"isHome":true,"isPage":false,"path":"/","permalink":"/","title":"豌豆多多","waline":{"js":[{"alias":"waline","alias_name":"@waline/client","file":"dist/pageview.js","name":"pageview","version":"2.13.0"},{"alias":"waline","alias_name":"@waline/client","file":"dist/comment.js","name":"comment","version":"2.13.0"}]}}</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>豌豆多多</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>豌豆多多</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>SRE & Devops & Architect</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class="hvr-icon-pulse menu-item-active" rel=section><i class="fa fa-home hvr-icon"></i>首页</a></li><li class="menu-item menu-item-archives"><a href=/archives/ class=hvr-icon-pulse rel=section><i class="fa fa-archive hvr-icon"></i>归档
+<span class=badge>218</span></a></li><li class="menu-item menu-item-about"><a href=/about/ class=hvr-icon-pulse rel=section><i class="fa fa-user hvr-icon"></i>关于</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-overview-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=豌豆多多 src=/imgs/img-lazy-loading.gif data-src=/imgs/yunwei.png><p class=site-author-name itemprop=name>豌豆多多</p><div class=site-description itemprop=description>资深运维架构师豌豆多多的呕心笔记</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/><span class=site-state-item-count>218</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>44</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>71</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/wandouduoduo title="GitHub → https://github.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+GitHub</a></span>
+<span class=links-of-social-item><a href=mailto:wandouduoduo@163.com title="E-Mail → mailto:wandouduoduo@163.com" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-envelope fa-fw hvr-icon"></i>
+E-Mail</a></span>
+<span class=links-of-social-item><a href=https://gitee.com/wandouduoduo title="Gitee → https://gitee.com/wandouduoduo" rel=noopener class=hvr-icon-pulse target=_blank><i class="fa fa-heartbeat fa-fw hvr-icon"></i>
+Gitee</a></span>
+<span class=links-of-social-item><a href="https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" title="微博 → https://weibo.com/u/1989032071/home?topnav=1&amp;wvr=6" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-weibo fa-fw hvr-icon"></i>
+微博</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/big/by_nc_sa.svg alt=共享知识></a></div><div class="links-of-blogroll site-overview-item animated"><div class=links-of-blogroll-title><i class="fa fa-globe fa-fw"></i>
+友情链接</div><ul class=links-of-blogroll-list><li class=links-of-blogroll-item><a href=https://www.runoob.com/ title=https://www.runoob.com/ target=_blank>菜鸟教程</a></li><li class=links-of-blogroll-item><a href=https://code.ziqiangxuetang.com/ title=https://code.ziqiangxuetang.com/ target=_blank>自强学堂</a></li><li class=links-of-blogroll-item><a href=http://www.ttlsa.com/ title=http://www.ttlsa.com/ target=_blank>运维生存时间</a></li><li class=links-of-blogroll-item><a href=http://www.zsythink.net/ title=http://www.zsythink.net/ target=_blank>朱双印博客</a></li><li class=links-of-blogroll-item><a href=https://me.jinchuang.org/ title=https://me.jinchuang.org/ target=_blank>靳闯博客</a></li><li class=links-of-blogroll-item><a href=http://bingdang.github.io/ title=http://bingdang.github.io/ target=_blank>运维饼铛</a></li><li class=links-of-blogroll-item><a href=https://gitee.com/hugo-next/hugo-theme-next title=https://gitee.com/hugo-next/hugo-theme-next target=_blank>Hugo-NexT</a></li><li class=links-of-blogroll-item><a href=https://lisenhui.cn title=https://lisenhui.cn target=_blank>凡梦星尘空间站</a></li></ul></div></div></div></div><div id=siteinfo-card-widget class=sidebar-card-widget><div class=item-headline><i class="fas fa-chart-line"></i>
+<span>网站资讯</span></div><div class=siteinfo><div class=siteinfo-item><div class=item-name><i class="fa-solid fa-calendar-check"></i>已运行：</div><div class=item-count id=runTimes data-publishdate=2019-05-27T14:05:01+08:00></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-user"></i>总访客数：</div><div class=item-count id=busuanzi_value_site_uv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fas fa fa-eye"></i>页面浏览：</div><div class=item-count id=busuanzi_value_site_pv><i class="fa fa-sync fa-spin"></i></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-font"></i>总字数：</div><div class=item-count id=wordsCount data-count=636296></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-mug-hot"></i>阅读约：</div><div class=item-count id=readTimes data-times=1370></div></div><div class=siteinfo-item><div class=item-name><i class="fa fa-clock-rotate-left"></i>最后更新于：</div><div class=item-count id=last-push-date data-lastpushdate=2023-05-19T11:03:36+08:00></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=goto-comments class="button goto-comments" title=直达评论><i class="fas fa-comments"></i></div><div id=goto-gtranslate class=button title=多语言翻译><i class="fas fa-globe"></i></div><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a>
+<a href=https://github.com/wandouduoduo rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg></a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script>
+<script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner index posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="DNS中的七大资源记录详解"><meta itemprop=description content="概要
+
+域名系统（
+
+    英文
+    
+    
+    
+：Domain Name System，
+
+    缩写
+    
+    
+    
+：DNS）是
+
+    互联网
+    
+    
+    
+的一项服务。它作为将
+
+    域名
+    
+    
+    
+和
+
+    IP地址
+    
+    
+    
+相互
+
+    映射
+    
+    
+    
+的一个
+
+    分布式数据库
+    
+    
+    
+，能够使人更方便地访问
+
+    互联网
+    
+    
+    
+。DNS使用
+
+    TCP
+    
+    
+    
+和
+
+    UDP
+    
+    
+    
+
+
+    端口
+    
+    
+    
+53[1]。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。
+
+DNS分为正向查找区域和反向查找区域，然后在分为，主要，辅助，存根区域，在这些区域里，又存在着很多的记录，今天，就让我们来看看这些记录。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/ itemprop=url class=post-title-link>DNS中的七大资源记录详解</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-07-11 11:12:45 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-07-11 11:12:45 +0800 CST">2019-07-11</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E7%BD%91%E7%BB%9C%E6%8A%80%E6%9C%AF itemprop=url rel=index><span itemprop=name>网络技术</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=概要>概要
+<a class=header-anchor href=#%e6%a6%82%e8%a6%81></a></h2><p><strong>域名系统</strong>（
+<a href=https://baike.baidu.com/item/%e8%8b%b1%e6%96%87 title=英文 rel="noopener external nofollow noreferrer" target=_blank class=exturl>英文
+<i class="fa fa-external-link-alt"></i>
+</a>：<strong>D</strong>omain <strong>N</strong>ame <strong>S</strong>ystem，
+<a href=https://baike.baidu.com/item/%e7%bc%a9%e5%86%99 title=缩写 rel="noopener external nofollow noreferrer" target=_blank class=exturl>缩写
+<i class="fa fa-external-link-alt"></i>
+</a>：<strong>DNS</strong>）是
+<a href=https://baike.baidu.com/item/%e4%ba%92%e8%81%94%e7%bd%91 title=互联网 rel="noopener external nofollow noreferrer" target=_blank class=exturl>互联网
+<i class="fa fa-external-link-alt"></i>
+</a>的一项服务。它作为将
+<a href=https://baike.baidu.com/item/%e5%9f%9f%e5%90%8d title=域名 rel="noopener external nofollow noreferrer" target=_blank class=exturl>域名
+<i class="fa fa-external-link-alt"></i>
+</a>和
+<a href=https://baike.baidu.com/item/IP%e5%9c%b0%e5%9d%80 title=IP地址 rel="noopener external nofollow noreferrer" target=_blank class=exturl>IP地址
+<i class="fa fa-external-link-alt"></i>
+</a>相互
+<a href=https://baike.baidu.com/item/%e6%98%a0%e5%b0%84 title=映射 rel="noopener external nofollow noreferrer" target=_blank class=exturl>映射
+<i class="fa fa-external-link-alt"></i>
+</a>的一个
+<a href=https://baike.baidu.com/item/%e5%88%86%e5%b8%83%e5%bc%8f%e6%95%b0%e6%8d%ae%e5%ba%93 title=分布式数据库 rel="noopener external nofollow noreferrer" target=_blank class=exturl>分布式数据库
+<i class="fa fa-external-link-alt"></i>
+</a>，能够使人更方便地访问
+<a href=https://baike.baidu.com/item/%e4%ba%92%e8%81%94%e7%bd%91 title=互联网 rel="noopener external nofollow noreferrer" target=_blank class=exturl>互联网
+<i class="fa fa-external-link-alt"></i>
+</a>。DNS使用
+<a href=https://baike.baidu.com/item/TCP title=TCP rel="noopener external nofollow noreferrer" target=_blank class=exturl>TCP
+<i class="fa fa-external-link-alt"></i>
+</a>和
+<a href=https://baike.baidu.com/item/UDP title=UDP rel="noopener external nofollow noreferrer" target=_blank class=exturl>UDP
+<i class="fa fa-external-link-alt"></i></a>
+<a href=https://baike.baidu.com/item/%e7%ab%af%e5%8f%a3 title=端口 rel="noopener external nofollow noreferrer" target=_blank class=exturl>端口
+<i class="fa fa-external-link-alt"></i>
+</a>53[1]。当前，对于每一级域名长度的限制是63个字符，域名总长度则不能超过253个字符。</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.jpg alt></p><p>DNS分为正向查找区域和反向查找区域，然后在分为，主要，辅助，存根区域，在这些区域里，又存在着很多的记录，今天，就让我们来看看这些记录。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/dns%E4%B8%AD%E7%9A%84%E4%B8%83%E5%A4%A7%E8%B5%84%E6%BA%90%E8%AE%B0%E5%BD%95%E8%AF%A6%E8%A7%A3/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="PostgreSQL基本命令"><meta itemprop=description content="目的
+
+本文介绍了Postgresql数据库的常用用法，方便你正确的用库。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/ itemprop=url class=post-title-link>PostgreSQL基本命令</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-27 14:37:33 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-27 14:37:33 +0800 CST">2019-06-27</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/postgresql itemprop=url rel=index><span itemprop=name>数据库/SQL/PostgreSQL</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>本文介绍了Postgresql数据库的常用用法，方便你正确的用库。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/postgresql%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="windows批处理用法之FOR"><meta itemprop=description content="大纲
+
+一 前言
+二 for语句的基本用法
+三 for /f （delims、tokens、skip、eol、userbackq、变量延迟）
+四 for /r （递归遍历）
+五 for /d （遍历目录）
+六 for /l （计数循环）
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/ itemprop=url class=post-title-link>windows批处理用法之FOR</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-27 13:56:07 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-27 13:56:07 +0800 CST">2019-06-27</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%89%B9%E5%A4%84%E7%90%86 itemprop=url rel=index><span itemprop=name>编程积累/批处理</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=大纲><strong>大纲</strong>
+<a class=header-anchor href=#%e5%a4%a7%e7%ba%b2></a></h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:2;-o-tab-size:2;tab-size:2><code class=language-fallback data-lang=fallback><span style=display:flex><span>一 前言
+</span></span><span style=display:flex><span>二 for语句的基本用法
+</span></span><span style=display:flex><span>三 for /f （delims、tokens、skip、eol、userbackq、变量延迟）
+</span></span><span style=display:flex><span>四 for /r （递归遍历）
+</span></span><span style=display:flex><span>五 for /d （遍历目录）
+</span></span><span style=display:flex><span>六 for /l （计数循环）
+</span></span></code></pre></div></div><footer class=post-footer><div class=post-button><a class=btn href=/post/windows%E6%89%B9%E5%A4%84%E7%90%86%E7%94%A8%E6%B3%95%E4%B9%8Bfor/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="开源云笔记:程序员云笔记服务的不二之选"><meta itemprop=description content="前言
+
+在这个互联网知识呈爆炸增长的时代，作为一个程序员要掌握的知识越来越多，然再好的记性也不如烂笔头，有了笔记我们就是可以时常扒拉扒拉以前的知识，顺便可以整理下自己的知识体系。
+如今市面上云笔记产品，说实在真不少，什么有道，印象，为知等等，本人目前使用的是有道，无它，免费而已其他几个倒没怎么接触过，毕竟重复的产品一个就够了。笔记用了有三年多时间了，基本都是写写工作日志，备忘一下工作中遇到的脚本命令，顺便记录下工作中遇到的问题，由于只是记录文字，目前10G的空间仅仅使用了冰山一角。
+介绍
+
+今天，给大家一起分享的是蚂蚁笔记，一个有极客范的云笔记！官方的介绍也相当牛逼：前所未有的文档体验，近乎完美的平台覆盖，支持团队协同，企业级私有云，蚂蚁笔记 = 笔记 + 博客 + 协作 + 私有云。
+
+其实最主要的是蚂蚁笔记开源了，既然如此，云服务器又那么便宜，我们何不自己搭建一个云笔记服务，无论是自己还是分享给同事都是极好的，最主要的是还可以绑定域名生成博客，笔记AND博客一举两得岂不乐哉。
+当然，如果有些小伙伴对信息安全要求较高的，不希望自己的信息记录在别人的服务器上，对开源源码有一定研究，使用起来还是不错的。但是如果单纯是为了省钱就没必要了，即使收费的有道一天也就几毛钱而已，而云服务器费用，自身是否有技术支持也是以后使用的硬伤，下面开始如何安装使用教程。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/ itemprop=url class=post-title-link>开源云笔记:程序员云笔记服务的不二之选</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-27 09:42:10 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-27 09:42:10 +0800 CST">2019-06-27</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E6%9C%8D%E5%8A%A1%E9%83%A8%E7%BD%B2 itemprop=url rel=index><span itemprop=name>运维技术/服务部署</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=前言><strong>前言</strong>
+<a class=header-anchor href=#%e5%89%8d%e8%a8%80></a></h2><p>在这个互联网知识呈爆炸增长的时代，作为一个程序员要掌握的知识越来越多，然再好的记性也不如烂笔头，有了笔记我们就是可以时常扒拉扒拉以前的知识，顺便可以整理下自己的知识体系。</p><p>如今市面上云笔记产品，说实在真不少，什么有道，印象，为知等等，本人目前使用的是有道，无它，免费而已其他几个倒没怎么接触过，毕竟重复的产品一个就够了。笔记用了有三年多时间了，基本都是写写工作日志，备忘一下工作中遇到的脚本命令，顺便记录下工作中遇到的问题，由于只是记录文字，目前10G的空间仅仅使用了冰山一角。</p><h2 id=介绍>介绍
+<a class=header-anchor href=#%e4%bb%8b%e7%bb%8d></a></h2><p>今天，给大家一起分享的是蚂蚁笔记，一个有极客范的云笔记！官方的介绍也相当牛逼：前所未有的文档体验，近乎完美的平台覆盖，支持团队协同，企业级私有云，蚂蚁笔记 = 笔记 + 博客 + 协作 + 私有云。</p><p><img src=/imgs/img-lazy-loading.gif data-src=8.png alt=img></p><p>其实最主要的是蚂蚁笔记开源了，既然如此，云服务器又那么便宜，我们何不自己搭建一个云笔记服务，无论是自己还是分享给同事都是极好的，最主要的是还可以绑定域名生成博客，笔记AND博客一举两得岂不乐哉。</p><p>当然，如果有些小伙伴对信息安全要求较高的，不希望自己的信息记录在别人的服务器上，对开源源码有一定研究，使用起来还是不错的。但是如果单纯是为了省钱就没必要了，即使收费的有道一天也就几毛钱而已，而云服务器费用，自身是否有技术支持也是以后使用的硬伤，下面开始如何安装使用教程。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E5%BC%80%E6%BA%90%E4%BA%91%E7%AC%94%E8%AE%B0-%E7%A8%8B%E5%BA%8F%E5%91%98%E4%BA%91%E7%AC%94%E8%AE%B0%E6%9C%8D%E5%8A%A1%E7%9A%84%E4%B8%8D%E4%BA%8C%E4%B9%8B%E9%80%89/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="redis安全机制设置"><meta itemprop=description content="背景
+
+redis作为一个高速数据库，在互联网上广泛使用，但是在生产环境必须有对应的安全机制来进行保护。那么怎么保护呢？"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/ itemprop=url class=post-title-link>redis安全机制设置</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-27 09:31:03 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-27 09:31:03 +0800 CST">2019-06-27</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/redis itemprop=url rel=index><span itemprop=name>数据库/NoSQL/Redis</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=背景>背景
+<a class=header-anchor href=#%e8%83%8c%e6%99%af></a></h2><p>redis作为一个高速数据库，在互联网上广泛使用，但是在生产环境必须有对应的安全机制来进行保护。那么怎么保护呢？</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/redis%E5%AE%89%E5%85%A8%E6%9C%BA%E5%88%B6%E8%AE%BE%E7%BD%AE/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="confd模板语法详解"><meta itemprop=description content="目的
+
+本文详细介绍了confd模板的语法和结构。并且在结尾给出示例演示，帮助你充分理解好消化。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/ itemprop=url class=post-title-link>confd模板语法详解</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-26 10:43:45 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-26 10:43:45 +0800 CST">2019-06-26</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86 itemprop=url rel=index><span itemprop=name>配置管理</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>本文详细介绍了confd模板的语法和结构。并且在结尾给出示例演示，帮助你充分理解好消化。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/confd%E6%A8%A1%E6%9D%BF%E8%AF%AD%E6%B3%95%E8%AF%A6%E8%A7%A3/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="confd配置管理工具详解"><meta itemprop=description content="概述
+
+当系统变的复杂，配置项越来越多，一方面配置管理变得繁琐，另一方面配置修改后需要重新上线同样十分痛苦。这时候，需要有一套集中化配置管理系统，一方面提供统一的配置管理，另一方面提供配置变更的自动下发，及时生效。提到统一配置管理系统，大家应该比较熟悉，常见的：zookeeper、etcd、consul、git等等。上述的集中配置中心使用的时候，部署图大致是这样的：
+
+server端只需要调用config-server对应客户端获取配置，和监听配置变更就可以了。总体来说没有太大难度。
+接下来要说一下confd，它提供了一种新的集成思路。confd的存在有点类似于快递员，买了东西不需要自己到店去取货了，confd这个快递员会把货取过来，然后送到家里，并且通知你货已经送到了。加入confd之后的架构大致是这样的：
+"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/ itemprop=url class=post-title-link>confd配置管理工具详解</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-26 09:44:20 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-26 09:44:20 +0800 CST">2019-06-26</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86 itemprop=url rel=index><span itemprop=name>配置管理</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=概述>概述
+<a class=header-anchor href=#%e6%a6%82%e8%bf%b0></a></h2><p>当系统变的复杂，配置项越来越多，一方面配置管理变得繁琐，另一方面配置修改后需要重新上线同样十分痛苦。这时候，需要有一套集中化配置管理系统，一方面提供统一的配置管理，另一方面提供配置变更的自动下发，及时生效。提到统一配置管理系统，大家应该比较熟悉，常见的：zookeeper、etcd、consul、git等等。上述的集中配置中心使用的时候，部署图大致是这样的：</p><p><img src=/imgs/img-lazy-loading.gif data-src=1.png alt></p><p>server端只需要调用config-server对应客户端获取配置，和监听配置变更就可以了。总体来说没有太大难度。</p><p>接下来要说一下confd，它提供了一种新的集成思路。confd的存在有点类似于快递员，买了东西不需要自己到店去取货了，confd这个快递员会把货取过来，然后送到家里，并且通知你货已经送到了。加入confd之后的架构大致是这样的：</p><p><img src=/imgs/img-lazy-loading.gif data-src=2.png alt></p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/confd%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7%E8%AF%A6%E8%A7%A3/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="基于Docker+Consul+Registrator的服务注册与发现集群搭建"><meta itemprop=description content="前言
+
+微服务架构在互联网应用领域中愈来愈火，引入微服务主要解决了单体应用多个模块的紧耦合、无法扩展和运维困难等问题。微服务架构就是按照功能粒度将业务模块进行垂直拆分，对单体应用本身进行服务化和组件化，每个组件单独部署为小应用（从DB到UI）。微服务与微服务之间通过Service API进行交互，同时为了支持水平扩展、性能提升和服务可用性，单个服务允许同时部署一个或者多个服务实例。在运行时，每个实例通常是一个云虚拟机或者Docker容器。
+微服务系统内部多个服务的实例之间如何通信？如何感知到彼此的存在和销毁？生产者服务如何知道消费者服务的地址？如何实现服务与注册中心的解耦？这就需要一个第三方的服务注册中心，提供对生产者服务节点的注册管理和消费者服务节点的发现管理。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/ itemprop=url class=post-title-link>基于Docker+Consul+Registrator的服务注册与发现集群搭建</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-25 19:01:05 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-25 19:01:05 +0800 CST">2019-06-25</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/%E8%87%AA%E5%8A%A8%E5%8C%96 itemprop=url rel=index><span itemprop=name>自动化</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=前言>前言
+<a class=header-anchor href=#%e5%89%8d%e8%a8%80></a></h2><p>微服务架构在互联网应用领域中愈来愈火，引入微服务主要解决了单体应用<strong>多个模块的紧耦合</strong>、<strong>无法扩展</strong>和<strong>运维困难</strong>等问题。微服务架构就是按照<strong>功能粒度</strong>将业务模块进行<strong>垂直拆分</strong>，对单体应用本身进行<strong>服务化</strong>和<strong>组件化</strong>，每个组件单独部署为<strong>小应用</strong>（从<code>DB</code>到<code>UI</code>）。微服务与微服务之间通过<code>Service API</code>进行交互，同时为了支持<strong>水平扩展</strong>、<strong>性能提升</strong>和<strong>服务可用性</strong>，单个服务允许同时部署一个或者多个<strong>服务实例</strong>。在运行时，每个实例通常是一个<strong>云虚拟机</strong>或者<code>Docker</code><strong>容器</strong>。</p><p>微服务系统内部多个服务的实例之间如何通信？如何感知到彼此的存在和销毁？生产者服务如何知道消费者服务的地址？如何实现服务与注册中心的解耦？这就需要一个第三方的服务注册中心，提供对生产者服务节点的注册管理和消费者服务节点的发现管理。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E5%9F%BA%E4%BA%8Edocker-consul-registrator%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%8E%E5%8F%91%E7%8E%B0%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现"><meta itemprop=description content="目的
+
+本文详细介绍基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现过程。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/ itemprop=url class=post-title-link>基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-25 17:22:41 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-25 17:22:41 +0800 CST">2019-06-25</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/nginx itemprop=url rel=index><span itemprop=name>Web服务/Nginx</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>本文详细介绍基于Docker+Consul+Nginx+Consul-Template的服务负载均衡实现过程。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/%E5%9F%BA%E4%BA%8Edocker-consul-nginx-consul-template%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E5%AE%9E%E7%8E%B0/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/yunwei.png"><meta itemprop=name content="豌豆多多"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="豌豆多多"><meta itemprop=description content="资深运维架构师豌豆多多的呕心笔记"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="mysql之yum安装"><meta itemprop=description content="目的
+
+在CentOS7中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB，本文yum一键安装mysql数据库。"></span><header class=post-header><h2 class=post-title itemprop="name headline"><a href=/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/ itemprop=url class=post-title-link>mysql之yum安装</a></h2><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-calendar"></i></span>
+<span class=post-meta-item-text title=发表于>发表于：</span>
+<time title="创建时间：2019-06-24 18:01:25 +0800 CST" itemprop="dateCreated datePublished" datetime="2019-06-24 18:01:25 +0800 CST">2019-06-24</time></span>
+<span class=post-meta-item><span class=post-meta-item-icon><i class="far fa-folder-open"></i></span>
+<span class=post-meta-item-text title=分类于>分类于：</span>
+<span itemprop=about itemscope itemtype=http://schema.org/Thing><a href=/categories/mysql itemprop=url rel=index><span itemprop=name>数据库/SQL/Mysql</span></a></span></span>
+<span class=post-meta-item title><span class=post-meta-item-icon><i class="far fa-comments"></i></span>
+<span class=post-meta-item-text title=评论>评论：</span>
+<span id=comments-count class=waline-comment-count data-path=/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h2 id=目的>目的
+<a class=header-anchor href=#%e7%9b%ae%e7%9a%84></a></h2><p>在CentOS7中默认安装有MariaDB，这个是MySQL的分支，但为了需要，还是要在系统中安装MySQL，而且安装完成之后可以直接覆盖掉MariaDB，本文yum一键安装mysql数据库。</p></div><footer class=post-footer><div class=post-button><a class=btn href=/post/mysql%E4%B9%8Byum%E5%AE%89%E8%A3%85/#more rel=contents>阅读全文 &#187;</a></div><div class=post-eof></div></footer></article></div><nav class=pagination><a class="extend prev" rel=prev href=/page/17/><i class="fa fa-angle-left"></i></a>
+<a class=page-number href=/page/14/>14</a>
+<a class=page-number href=/page/15/>15</a>
+<a class=page-number href=/page/16/>16</a>
+<a class=page-number href=/page/17/>17</a>
+<span class="page-number current">18</span>
+<a class=page-number href=/page/19/>19</a>
+<a class=page-number href=/page/20/>20</a>
+<a class=page-number href=/page/21/>21</a>
+<a class=page-number href=/page/22/>22</a>
+<a class="extend next" rel=next href=/page/19/><i class="fa fa-angle-right"></i></a></nav></div></main><footer class=footer><div class=footer-inner><div id=gtranslate class=google-translate><i class="fa fa-language"></i><div id=google_translate_element></div></div><div class=copyright>&copy;
+<span itemprop=copyrightYear>2023 - 2025</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder>豌豆多多</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.115.4 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.5.3 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div><div class=beian><a href=https://beian.miit.gov.cn target=_blank>沪ICP备 88888888-8 号</a>
+<img src=/imgs/gongan.png alt=沪公网安备>
+<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011402009770" target=_blank>沪公网安备 31011402009770 号</a></div><div class=vendors-list><a target=_blank href=https://vercel.com title=Vercel><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/vercel.svg alt=Vercel></a>
+<a target=_blank href=https://upyun.com title=又拍云><img src=/imgs/img-lazy-loading.gif data-src=/imgs/vendors/upyun.png alt=又拍云></a>
+<a target=_blank href=https://webify.cloudbase.net title=Webify>Webify</a>
+<span>提供CDN/云资源支持</span></div></div></footer><script type=text/javascript src=https://cdn.staticfile.org/animejs/3.2.1/anime.min.js defer></script>
+<script type=text/javascript src=https://cdn.staticfile.org/viewerjs/1.11.0/viewer.min.js defer></script>
+<script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":true,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"fadeInLeft","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"qiniu","router":"https://cdn.staticfile.org"},"version":"4.5.3","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"waline","file":"dist/waline.css","name":"@waline/client","version":"2.13.0"},"js":{"alias":"waline","file":"dist/waline.js","name":"@waline/client","version":"2.13.0"}}}</script><script type=text/javascript src=/js/main.min.b0c78e5a4df586ee46d02716ffa91a4a322e56763e04e91eb2ba052c9469ed02.js defer></script></body></html>
