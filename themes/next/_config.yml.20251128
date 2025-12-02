@@ -210,7 +210,10 @@ links_layout: inline
 links:
   菜鸟教程: https://www.runoob.com/   
   自强学堂: https://code.ziqiangxuetang.com/
-
+  运维生存时间: http://www.ttlsa.com/
+  朱双印博客: http://www.zsythink.net/
+  靳闯博客: https://me.jinchuang.org/
+  运维饼铛: http://bingdang.github.io/
 
 # Sidebar Avatar
 avatar:
@@ -403,10 +406,10 @@ cheers_enabled: true
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 font:
-  enable: true
+  enable: false
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default).
-  host: https://fonts.loli.net
+  host:
 
   # Font options:
   # `external: true` will load this font family from `host` above.
@@ -416,27 +419,27 @@ font:
   # Global font settings used for all elements in <body>.
   global:
     external: true
-    family: 
+    #family: Lato
     #size:
 
   # Font settings for Headlines (H1, H2, H3, H4, H5, H6).
   # Fallback to `global` font settings.
   headings:
     external: true
-    family: 
+    family:
     size:
 
   # Font settings for posts.
   # Fallback to `global` font settings.
   posts:
     external: true
-    family: Noto Serif SC
+    family:
 
   # Font settings for Logo.
   # Fallback to `global` font settings.
   logo:
     external: true
-    family: 
+    family:
     size:
 
   # Font settings for <code> and code blocks.
