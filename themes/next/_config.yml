@@ -335,7 +335,7 @@ reward:
   #wechatpay: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/wechatpay.png
   #alipay: //cdn.jsdelivr.net/gh/wandouduoduo/wandouduoduo.github.io/images/alipay.jpg
   wechatpay: /images/wechatpay.png
-  alipay: /images/alipay.jpg
+  alipay: /images/alipay.png
   #bitcoin: /images/bitcoin.jpg
 
 # Related popular posts
@@ -540,12 +540,13 @@ changyan:
 # You can get your appid and appkey from https://leancloud.cn
 # More info available at https://valine.js.org
 valine:
-  enable: false # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
-  appid:  # your leancloud application appid
-  appkey:  # your leancloud application appkey
+  enable: true # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
+  appid:  PGllapbmlKBALF2ZcMIyWQsE-MdYXbMMI # your leancloud application appid
+  appkey: 69m5h9hHOx0z6hjYZdYZaJzo # your leancloud application appkey
+  serverURLs: https://pgllapbm.api.lncldglobal.com
   notify: false # mail notifier, See: https://github.com/xCss/Valine/wiki
   verify: false # Verification code
-  placeholder: Just go go # comment box placeholder
+  placeholder: ヾﾉ≧∀≦)o 来呀！快活呀！~ # comment box placeholder
   avatar: mm # gravatar style
   guest_info: nick,mail,link # custom comment header
   pageSize: 10 # pagination size
@@ -575,7 +576,7 @@ gitment:
 # Demo: https://gitalk.github.io
 # Reference: https://asdfv1929.github.io/2018/01/20/gitalk/, https://liujunzhou.top/2018/8/10/gitalk-error/
 gitalk:
-  enable: true
+  enable: false
   github_id: wandouduoduo
   id: location.pathname
   repo: wandouduoduo.github.io
@@ -689,8 +690,8 @@ rating:
 # You can visit https://leancloud.cn get AppID and AppKey.
 leancloud_visitors:
   enable: false
-  app_id: #<app_id>
-  app_key: #<app_key>
+  app_id: 
+  app_key:  #<app_key>
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.

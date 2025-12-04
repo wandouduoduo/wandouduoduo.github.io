@@ -1,10 +1,10 @@
-{% set leancloud_uri = '//cdn1.lncld.net/static/js/3.11.1/av-min.js' %}
+{% set leancloud_uri = '//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js' %}
 {% if theme.vendors.leancloud %}
   {% set leancloud_uri = theme.vendors.leancloud %}
 {% endif %}
 <script src="{{ leancloud_uri }}"></script>
 
-{% set valine_uri = '//unpkg.com/valine/dist/Valine.min.js' %}
+{% set valine_uri = '//cdn.jsdelivr.net/npm/valine@1.5.3/dist/Valine.min.js' %}
 {% if theme.vendors.valine %}
   {% set valine_uri = theme.vendors.valine %}
 {% endif %}
@@ -24,6 +24,7 @@
     appKey: '{{ theme.valine.appkey }}',
     placeholder: '{{ theme.valine.placeholder }}',
     avatar: '{{ theme.valine.avatar }}',
+    serverURLs: '{{ theme.valine.serverURLs }}',
     meta: guest,
     pageSize: '{{ theme.valine.pageSize }}' || 10,
     visitor: {{ theme.valine.visitor }}
