@@ -145,7 +145,7 @@ nofollow:
 readmore:
   enable: true
   blogId: 59497-4326679676988-167
-  name: 运维随笔
+  name: 开源觅宝
   qrcode: https://wandouduoduo.github.io/about/index/gongzhonghao.jpg
   keyword: vip
   # 自定义的 JS 资源链接，可用于 CDN 加速

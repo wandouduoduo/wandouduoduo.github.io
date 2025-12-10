@@ -2,6 +2,7 @@ const ap = new APlayer({
     container: document.getElementById('aplayer'),
     fixed: true,
     autoplay: false,
+    preload: 'auto',
     audio: [
 	   {
         name: "还有多少个十年",
